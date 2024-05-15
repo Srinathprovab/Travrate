@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Medium.ttf">
+            <string>OpenSans-Medium</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="KGk-i7-Jjw" customClass="BaggageInfoTVCell" customModule="Travgate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="437" height="223"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="437" height="223"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1l-Vm-tHe" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="417" height="203"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fg5-0q-OMt" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="100" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyb-f4-L04">
+                                        <rect key="frame" x="16.333333333333336" y="5.3333333333333321" width="67.333333333333314" height="19.333333333333332"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                        <color key="textColor" red="0.96078431369999995" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Buttoncolor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Je3-wU-qz5"/>
+                                    <constraint firstItem="Iyb-f4-L04" firstAttribute="centerY" secondItem="fg5-0q-OMt" secondAttribute="centerY" id="VEl-92-XkF"/>
+                                    <constraint firstItem="Iyb-f4-L04" firstAttribute="centerX" secondItem="fg5-0q-OMt" secondAttribute="centerX" id="eh2-1I-niw"/>
+                                    <constraint firstAttribute="width" constant="100" id="mCt-1I-AyB"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kuwati - Dubai" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hix-Fh-X7b">
+                                <rect key="frame" x="125" y="14" width="110.66666666666669" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bag1" translatesAutoresizingMaskIntoConstraints="NO" id="LRE-Kn-Rut">
+                                <rect key="frame" x="10" y="60" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="M1g-IA-MaO"/>
+                                    <constraint firstAttribute="width" constant="34" id="byA-Oj-16H"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="C7K-Au-PYr">
+                                <rect key="frame" x="59" y="54" width="343" height="46.333333333333343"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carry-on Baggage:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0X-tl-u1B">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 Kilograms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guO-hD-j7N">
+                                        <rect key="frame" x="0.0" y="27" width="343" height="19.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bag2" translatesAutoresizingMaskIntoConstraints="NO" id="DJ9-ai-wgJ">
+                                <rect key="frame" x="10" y="144" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="V3f-J0-faO"/>
+                                    <constraint firstAttribute="height" constant="34" id="fZr-x6-mfI"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vEw-Fw-Zsj">
+                                <rect key="frame" x="59" y="138" width="343" height="46.333333333333343"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checked -In Baggage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9t6-aj-k8o">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnh-7J-MAS">
+                                        <rect key="frame" x="0.0" y="27" width="343" height="19.333333333333329"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19.333333333333329" id="HLO-FI-OlX"/>
+                                        </constraints>
+                                        <string key="text">0 Kilograms per person.
+</string>
+                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fg5-0q-OMt" firstAttribute="top" secondItem="i1l-Vm-tHe" secondAttribute="top" constant="10" id="5lg-Sx-g7B"/>
+                            <constraint firstItem="vEw-Fw-Zsj" firstAttribute="centerY" secondItem="DJ9-ai-wgJ" secondAttribute="centerY" id="CMs-EI-RW1"/>
+                            <constraint firstAttribute="trailing" secondItem="C7K-Au-PYr" secondAttribute="trailing" constant="15" id="EQq-TF-jtp"/>
+                            <constraint firstAttribute="height" constant="203" id="Fpj-mB-5wD"/>
+                            <constraint firstItem="DJ9-ai-wgJ" firstAttribute="leading" secondItem="i1l-Vm-tHe" secondAttribute="leading" constant="10" id="G9C-Zs-wQM"/>
+                            <constraint firstAttribute="trailing" secondItem="vEw-Fw-Zsj" secondAttribute="trailing" constant="15" id="IgJ-Dg-rkC"/>
+                            <constraint firstItem="vEw-Fw-Zsj" firstAttribute="leading" secondItem="DJ9-ai-wgJ" secondAttribute="trailing" constant="15" id="ORf-yB-ftE"/>
+                            <constraint firstItem="LRE-Kn-Rut" firstAttribute="leading" secondItem="i1l-Vm-tHe" secondAttribute="leading" constant="10" id="QvP-xY-H7f"/>
+                            <constraint firstItem="fg5-0q-OMt" firstAttribute="leading" secondItem="i1l-Vm-tHe" secondAttribute="leading" constant="10" id="b0T-sl-SXr"/>
+                            <constraint firstItem="C7K-Au-PYr" firstAttribute="leading" secondItem="LRE-Kn-Rut" secondAttribute="trailing" constant="15" id="dJb-Bd-9Oo"/>
+                            <constraint firstItem="Hix-Fh-X7b" firstAttribute="centerY" secondItem="fg5-0q-OMt" secondAttribute="centerY" id="fCs-DJ-aEv"/>
+                            <constraint firstItem="Hix-Fh-X7b" firstAttribute="leading" secondItem="fg5-0q-OMt" secondAttribute="trailing" constant="15" id="q7v-Bn-K52"/>
+                            <constraint firstItem="C7K-Au-PYr" firstAttribute="centerY" secondItem="LRE-Kn-Rut" secondAttribute="centerY" id="qgm-s5-O6O"/>
+                            <constraint firstItem="DJ9-ai-wgJ" firstAttribute="top" secondItem="LRE-Kn-Rut" secondAttribute="bottom" constant="50" id="sG7-ub-Irx"/>
+                            <constraint firstItem="LRE-Kn-Rut" firstAttribute="top" secondItem="fg5-0q-OMt" secondAttribute="bottom" constant="20" id="vhq-T3-T4y"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="BorderColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="i1l-Vm-tHe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="8My-jm-bYz"/>
+                    <constraint firstAttribute="bottom" secondItem="i1l-Vm-tHe" secondAttribute="bottom" constant="10" id="ZNn-hP-Pzf"/>
+                    <constraint firstAttribute="trailing" secondItem="i1l-Vm-tHe" secondAttribute="trailing" constant="10" id="b7h-gI-dda"/>
+                    <constraint firstItem="i1l-Vm-tHe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gdz-N3-X4u"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="carronbaggagelbl" destination="guO-hD-j7N" id="RBB-Tt-Rhl"/>
+                <outlet property="checkedinbaggagelbl" destination="lnh-7J-MAS" id="8td-2o-shw"/>
+                <outlet property="cityslbl" destination="Hix-Fh-X7b" id="uuI-yD-g8i"/>
+                <outlet property="titlelbl" destination="Iyb-f4-L04" id="zXg-Xt-MAm"/>
+            </connections>
+            <point key="canvasLocation" x="412.97709923664121" y="201.05633802816902"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bag1" width="33" height="33"/>
+        <image name="bag2" width="27" height="32.333332061767578"/>
+        <namedColor name="BorderColor">
+            <color red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Buttoncolor">
+            <color red="0.2669999897480011" green="0.70999997854232788" blue="0.046999998390674591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
