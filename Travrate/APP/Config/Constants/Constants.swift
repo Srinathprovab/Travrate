@@ -41,6 +41,8 @@ var authorizationkey = "Api-Key mXSkj6CS.hXxp9suftZUk7X8zagbA9GhQnhQL9KOh"
 var defaultCountryCode = "+91"
 var mobilenoMaxLength = Int()
 var mobilenoMaxLengthBool = false
+var isLoadingData = false
+
 
 var whatsAppCheck = false
 var priceCheck = false
@@ -238,7 +240,9 @@ struct ApiEndpoints {
     //INSURENCE
     static let insurance_get_insurance_items = "insurance/get_insurance_items"
     static let general_mobile_pre_insurance_search = "general/mobile_pre_insurance_search"
-
+    static let holiday = "holiday"
+    static let holiday_more_info = "holiday/more_info"
+    static let holiday_holiday_requests = "holiday/holiday_requests"
     
 }
 
@@ -305,39 +309,13 @@ struct UserDefaultsKeys {
     static var tcity = "tcity"
     static var fcariername = "fcariername"
     static var fcariercode = "fcariercode"
-    
-    //ROUND TRIP
-    //    static var rlocationcity = "rlocation_city"
-    //    static var rfromCity = "rfromCity"
-    //    static var rtoCity = "rtoCity"
-    //    static var rcalDepDate = "rcalDepDate"
-    //    static var rcalRetDate = "rcalRetDate"
-    //    static var radultCount = "rAdult_Count"
-    //    static var rchildCount = "rChild_Count"
-    //    static var rhadultCount = "rHAdult_Count"
-    //    static var rhchildCount = "rHChild_Count"
-    //    static var rinfantsCount = "rInfants_Count"
-    //    static var rselectClass = "rselect_class"
-    //    static var rfromlocid = "rfrom_loc_id"
-    //    static var rtolocid = "rto_loc_id"
-    //    static var rfromcityname = "rfromcityname"
-    //    static var rtocityname = "rtocityname"
-    
-    
+   
     //MULTICITY TRIP
     static var mlocationcity = "mlocation_city"
     static var mfromCity = "mfromCity"
     static var mtoCity = "mtoCity"
     
-    //    static var mcalDepDate = "mcalDepDate"
-    //    static var mcalRetDate = "mcalRetDate"
-    //    static var madultCount = "mAdult_Count"
-    //    static var mchildCount = "mChild_Count"
-    //    static var mhadultCount = "mHAdult_Count"
-    //    static var mhchildCount = "mHChild_Count"
-    //    static var minfantsCount = "mInfants_Count"
-    //    static var mselectClass = "mselect_class"
-    
+  
     static var mfromlocid = "mfrom_loc_id"
     static var mtolocid = "mto_loc_id"
     static var mfromcityname = "mfromcityname"
@@ -363,6 +341,7 @@ struct UserDefaultsKeys {
     static var addTarvellerDetails = "addTarvellerDetails"
     static var travellerDetails = "traveller_Details"
     // static var mtravellerDetails = "mtraveller_Details"
+    
     static var roomcount = "room_count"
     static var hoteladultscount = "hotel_adults_count"
     static var hotelchildcount = "hotel_child_count"
@@ -390,7 +369,6 @@ struct UserDefaultsKeys {
     //Transfer
     static var transfercalDepDate = "transfercalDepDate"
     static var transfercalRetDate = "transfercalRetDate"
-
     static var transfercalDepTime = "transfercalDepTime"
     static var transfercalRetTime = "transfercalRetTime"
     
@@ -398,6 +376,15 @@ struct UserDefaultsKeys {
     //sportds
     static var sportcalDepDate = "sportcalDepDate"
     static var sportcalRetDate = "sportcalRetDate"
+    
+    
+    //Holiday
+    static var holidayfromtravelDate = "holidayfromtravelDate"
+    static var holidaytotravelDate = "holidaytotravelDate"
+    static var holidaydultCount = "holidaydultCount"
+    static var holidaychildCount = "holidaychildCount"
+    static var holidayinfantsCount = "holidayinfantsCount"
+    static var holidaytotalpassengercount = "holidaytotalpassengercount"
 }
 
 

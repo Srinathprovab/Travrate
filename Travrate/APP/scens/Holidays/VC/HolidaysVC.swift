@@ -7,7 +7,8 @@
 
 import UIKit
 
-class HolidaysVC: BaseTableVC {
+class HolidaysVC: BaseTableVC, HolidayListVMDelegate {
+    
     
     
     
@@ -19,6 +20,9 @@ class HolidaysVC: BaseTableVC {
     }
     
     
+    var imageurl = String()
+    var desc = String()
+    
     override func viewWillAppear(_ animated: Bool) {
         addObserver()
     }
@@ -29,6 +33,8 @@ class HolidaysVC: BaseTableVC {
         
         // Do any additional setup after loading the view.
         setupUI()
+        
+        MySingleton.shared.holidayListVM = HolidayListVM(self)
     }
     
     
@@ -41,21 +47,23 @@ class HolidaysVC: BaseTableVC {
     
     //MARK: - didTapOnHolidayPackage   gotoSelectedHolidayPackageVC
     override func didTapOnHolidayPackage(cell:HolidayPackagesTVCell){
-        gotoSelectedHolidayPackageVC()
+        gotoSelectedHolidayPackageVC(key: cell.holidayKey)
     }
     
     
-    func gotoSelectedHolidayPackageVC(){
+    func gotoSelectedHolidayPackageVC(key:String){
         guard let vc = SelectedHolidayPackageVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
+        vc.holidaykey = key
         present(vc, animated: true)
     }
     
 }
 
 
+
+
 extension HolidaysVC {
-    
     
     func setupUI(){
         
@@ -66,16 +74,54 @@ extension HolidaysVC {
         commonTableView.registerTVCells(["HolidayPackagesTVCell",
                                          "EmptyTVCell"])
         
-        setupVisaTVCells()
-        
+       
     }
     
     
     
-    func setupVisaTVCells() {
+    
+    func callAPI() {
+        
+        
+        MySingleton.shared.loderString = "fdetails"
+        MySingleton.shared.afterResultsBool = true
+        loderBool = true
+        showLoadera()
+        
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.holidayListVM?.CALL_GET_HOLIDAY_LIST_API(dictParam: [:])
+    }
+    
+    func holidayListResponse(response: HolidayListModel) {
+        
+        loderBool = false
+        hideLoadera()
+        
+        if response.status == true {
+            MySingleton.shared.holidaylist = response.data ?? []
+            
+            desc = response.home_sliders?.text ?? ""
+            imageurl = response.home_sliders?.image ?? ""
+            
+            DispatchQueue.main.async {
+                self.setupTVCells()
+            }
+        }
+    }
+    
+    
+    
+    func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
-        MySingleton.shared.tablerow.append(TableRow(cellType:.HolidayPackagesTVCell))
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(title:desc,
+                                                    image:imageurl,
+                                                    cellType:.HolidayPackagesTVCell))
+        
+        
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow
@@ -86,25 +132,18 @@ extension HolidaysVC {
     
 }
 
-
-
-extension HolidaysVC {
-    
-    
-    func callAPI() {
-        print("callAPI")
-    }
-    
-}
-
 extension HolidaysVC {
     
     func addObserver() {
         
+       
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
+        if MySingleton.shared.callboolapi == true {
+            callAPI()
+        }
     }
     
     

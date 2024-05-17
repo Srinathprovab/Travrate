@@ -17,6 +17,7 @@ class HolidaysInfoTVCell: UITableViewCell {
     @IBOutlet weak var bottomView: UIView!
     
     var cruiseKey = String()
+    var holidayKey = String()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

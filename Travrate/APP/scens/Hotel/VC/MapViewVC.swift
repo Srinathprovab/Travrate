@@ -32,6 +32,7 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? MapViewVC
         return vc
     }
+    
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -40,18 +41,20 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
         setupUI()
         
-        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
     }
     
     func setupUI() {
         
         self.googleMapView.backgroundColor = .clear
-        
         closebtn.addTarget(self, action: #selector(backbtnAction), for: .touchUpInside)
+        
     }
+    
+    
     
     
     @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -63,8 +66,13 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
             // Set the camera to center on the average coordinates
             let camera = GMSCameraPosition.camera(withLatitude: averageLatitude, longitude: averageLongitude, zoom: 12.0)
             
-            let gmsView = GMSMapView.map(withFrame: view.bounds, camera: camera)
+            // Initialize the GMSMapView with the camera and frame
+            let gmsView = GMSMapView.map(withFrame: googleMapView.bounds, camera: camera)
+            
+            // Set the mapView as googleMapView's subview
             googleMapView.addSubview(gmsView)
+            
+            // Add markers to the mapView
             addMarkersToMap(gmsView)
             
             locationManager.stopUpdatingLocation() // You may want to stop updates after you have the user's location
@@ -76,24 +84,28 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
     
     
     func addMarkersToMap(_ mapView: GMSMapView) {
+        
         for mapModel in mapModelArray {
             if let latitude = Double(mapModel.latitude), let longitude = Double(mapModel.longitude) {
                 // Create and configure markers based on the mapModel data
-                
                 let marker = GMSMarker()
                 marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 marker.title = mapModel.hotelname
-               
+                // Customize the marker as needed
                 
-                // Set a custom icon for the marker
-                let customMarkerImage = UIImage(named: "mapicon")
-                marker.icon = customMarkerImage
-                
-
-                
+                // Create a custom marker icon with an image
+                if let markerImage = UIImage(named: "mapicon") {
+                    let markerView = UIImageView(image: markerImage)
+                    marker.iconView = markerView
+                } else {
+                    print("Error: Marker image not found or is nil.")
+                }
                 
                 // Add the marker to the map
                 marker.map = mapView
+                
+                mapView.selectedMarker = marker
+                
             } else {
                 print("Error: Invalid latitude or longitude values in mapModel.")
             }
@@ -107,7 +119,7 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    
 }
+
 
 

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2851D8F4DF5553A1C66D2BFB /* Pods_TravrateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD1499C19BCF668666470A0 /* Pods_TravrateTests.framework */; };
 		4A745E1EAC3A667146C1E92D /* Pods_Travrate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6270A6B84A65A4EA1F77F2 /* Pods_Travrate.framework */; };
+		6500CADF2BF7910000433C89 /* SubmitOTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6500CADE2BF7910000433C89 /* SubmitOTPVC.swift */; };
+		6500CAE12BF7979400433C89 /* HolidayEnquireyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6500CAE02BF7979400433C89 /* HolidayEnquireyModel.swift */; };
 		652078DB2BF4934A0076EF76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652078DA2BF4934A0076EF76 /* AppDelegate.swift */; };
 		652078DD2BF4934A0076EF76 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652078DC2BF4934A0076EF76 /* SceneDelegate.swift */; };
 		652078E42BF4934C0076EF76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652078E32BF4934C0076EF76 /* Assets.xcassets */; };
@@ -605,6 +607,13 @@
 		65207EDC2BF494320076EF76 /* ResetPasswordTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65207C8D2BF494300076EF76 /* ResetPasswordTVCell.xib */; };
 		65207EDD2BF494320076EF76 /* ResetPasswordTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C8E2BF494300076EF76 /* ResetPasswordTVCell.swift */; };
 		65207EDE2BF497A60076EF76 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6520794A2BF4942E0076EF76 /* OpenSans-Medium.ttf */; };
+		65D327362BF71F0900FE879D /* HolidayListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D327352BF71F0900FE879D /* HolidayListModel.swift */; };
+		65D327382BF71F2500FE879D /* Home_sliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D327372BF71F2500FE879D /* Home_sliders.swift */; };
+		65D3273A2BF71F5D00FE879D /* HolidayListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D327392BF71F5D00FE879D /* HolidayListVM.swift */; };
+		65D3273D2BF72B0E00FE879D /* HolidaySelectedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D3273C2BF72B0E00FE879D /* HolidaySelectedModel.swift */; };
+		65D327402BF72B6000FE879D /* Tour__2_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D3273E2BF72B6000FE879D /* Tour__2_data.swift */; };
+		65D327412BF72B6000FE879D /* Tour_departure_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D3273F2BF72B6000FE879D /* Tour_departure_details.swift */; };
+		65D327442BF72BB600FE879D /* HolidaySelectedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D327432BF72BB600FE879D /* HolidaySelectedVM.swift */; };
 		8D990CD965677534C9B33A1A /* Pods_Travrate_TravrateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352E76BB6C18FFBDFA9E4BAC /* Pods_Travrate_TravrateUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -632,6 +641,8 @@
 		4A0459D604EDD31B98861294 /* Pods-TravrateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravrateTests.debug.xcconfig"; path = "Target Support Files/Pods-TravrateTests/Pods-TravrateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5C2CBD5AFFE7D7CDC9C9A280 /* Pods-Travrate-TravrateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate-TravrateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		616D38084225F5EABC9751F0 /* Pods-Travrate-TravrateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate-TravrateUITests.release.xcconfig"; path = "Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6500CADE2BF7910000433C89 /* SubmitOTPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitOTPVC.swift; sourceTree = "<group>"; };
+		6500CAE02BF7979400433C89 /* HolidayEnquireyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayEnquireyModel.swift; sourceTree = "<group>"; };
 		652078D72BF4934A0076EF76 /* Travrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		652078DA2BF4934A0076EF76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		652078DC2BF4934A0076EF76 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1233,6 +1244,13 @@
 		65207C8B2BF494300076EF76 /* LoginTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTVCell.swift; sourceTree = "<group>"; };
 		65207C8D2BF494300076EF76 /* ResetPasswordTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordTVCell.xib; sourceTree = "<group>"; };
 		65207C8E2BF494300076EF76 /* ResetPasswordTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordTVCell.swift; sourceTree = "<group>"; };
+		65D327352BF71F0900FE879D /* HolidayListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayListModel.swift; sourceTree = "<group>"; };
+		65D327372BF71F2500FE879D /* Home_sliders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home_sliders.swift; sourceTree = "<group>"; };
+		65D327392BF71F5D00FE879D /* HolidayListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayListVM.swift; sourceTree = "<group>"; };
+		65D3273C2BF72B0E00FE879D /* HolidaySelectedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaySelectedModel.swift; sourceTree = "<group>"; };
+		65D3273E2BF72B6000FE879D /* Tour__2_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour__2_data.swift; sourceTree = "<group>"; };
+		65D3273F2BF72B6000FE879D /* Tour_departure_details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour_departure_details.swift; sourceTree = "<group>"; };
+		65D327432BF72BB600FE879D /* HolidaySelectedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaySelectedVM.swift; sourceTree = "<group>"; };
 		8DD1499C19BCF668666470A0 /* Pods_TravrateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravrateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D6270A6B84A65A4EA1F77F2 /* Pods_Travrate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travrate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72FB7CD8ACAF005CA724D93 /* Pods-Travrate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate.debug.xcconfig"; path = "Target Support Files/Pods-Travrate/Pods-Travrate.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2051,6 +2069,8 @@
 		652079F32BF4942F0076EF76 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				65D327392BF71F5D00FE879D /* HolidayListVM.swift */,
+				65D327432BF72BB600FE879D /* HolidaySelectedVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -2060,6 +2080,7 @@
 			children = (
 				652079F52BF4942F0076EF76 /* HolidaysVC.swift */,
 				652079F62BF4942F0076EF76 /* SelectedHolidayPackageVC.swift */,
+				6500CADE2BF7910000433C89 /* SubmitOTPVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -2067,6 +2088,8 @@
 		652079F72BF4942F0076EF76 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				65D3273B2BF72AFB00FE879D /* HolidaySelectedModel */,
+				65D327342BF71EED00FE879D /* HolidayListModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4403,6 +4426,26 @@
 			path = CVCells;
 			sourceTree = "<group>";
 		};
+		65D327342BF71EED00FE879D /* HolidayListModel */ = {
+			isa = PBXGroup;
+			children = (
+				65D327352BF71F0900FE879D /* HolidayListModel.swift */,
+				65D327372BF71F2500FE879D /* Home_sliders.swift */,
+			);
+			path = HolidayListModel;
+			sourceTree = "<group>";
+		};
+		65D3273B2BF72AFB00FE879D /* HolidaySelectedModel */ = {
+			isa = PBXGroup;
+			children = (
+				65D3273C2BF72B0E00FE879D /* HolidaySelectedModel.swift */,
+				65D3273E2BF72B6000FE879D /* Tour__2_data.swift */,
+				65D3273F2BF72B6000FE879D /* Tour_departure_details.swift */,
+				6500CAE02BF7979400433C89 /* HolidayEnquireyModel.swift */,
+			);
+			path = HolidaySelectedModel;
+			sourceTree = "<group>";
+		};
 		9BB6B282C797305FD6DD1AC6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -4908,12 +4951,15 @@
 				65207DCB2BF494310076EF76 /* AddonTVCell.swift in Sources */,
 				65207D622BF494310076EF76 /* Details.swift in Sources */,
 				65207D4D2BF494310076EF76 /* MBViewModel.swift in Sources */,
+				65D327382BF71F2500FE879D /* Home_sliders.swift in Sources */,
 				65207DA12BF494310076EF76 /* SortbyTVCell.swift in Sources */,
 				65207CD32BF494310076EF76 /* SearchHotelLoderViewModel.swift in Sources */,
 				65207D502BF494310076EF76 /* FlightDeatilsVC.swift in Sources */,
 				65207D122BF494310076EF76 /* AddRoomsGuestsTVCell.swift in Sources */,
 				65207D9B2BF494310076EF76 /* PopularFiltersTVCell.swift in Sources */,
 				65207CDC2BF494310076EF76 /* MapViewVC.swift in Sources */,
+				65D327402BF72B6000FE879D /* Tour__2_data.swift in Sources */,
+				65D3273A2BF71F5D00FE879D /* HolidayListVM.swift in Sources */,
 				65207EC22BF494320076EF76 /* LoginViewModel.swift in Sources */,
 				65207CEF2BF494310076EF76 /* HFiltersFacility.swift in Sources */,
 				65207E5C2BF494320076EF76 /* City_guides.swift in Sources */,
@@ -4932,6 +4978,7 @@
 				65207CDA2BF494310076EF76 /* SearchHotelVC.swift in Sources */,
 				65207E732BF494320076EF76 /* CruiseDetailsModel.swift in Sources */,
 				65207DA82BF494310076EF76 /* checkOptionsTVCell.swift in Sources */,
+				65D3273D2BF72B0E00FE879D /* HolidaySelectedModel.swift in Sources */,
 				65207D712BF494310076EF76 /* FareFamily.swift in Sources */,
 				65207ED72BF494320076EF76 /* EditProfileTVCell.swift in Sources */,
 				65207D7D2BF494310076EF76 /* MPBFormParams.swift in Sources */,
@@ -4939,6 +4986,7 @@
 				65207D482BF494310076EF76 /* MobilePaymentVM.swift in Sources */,
 				65207CD82BF494310076EF76 /* HotelDetailsViewModel.swift in Sources */,
 				65207E4A2BF494320076EF76 /* DashBoardTBVC.swift in Sources */,
+				6500CADF2BF7910000433C89 /* SubmitOTPVC.swift in Sources */,
 				65207D302BF494310076EF76 /* ButtonCollectionViewCell.swift in Sources */,
 				65207E1D2BF494320076EF76 /* VisaTVCell.swift in Sources */,
 				65207CC82BF494310076EF76 /* ProgressHUD.swift in Sources */,
@@ -4991,6 +5039,7 @@
 				65207D062BF494310076EF76 /* AllCountryCodeListModel.swift in Sources */,
 				65207E982BF494320076EF76 /* LoadWebViewVC.swift in Sources */,
 				65207CA52BF494310076EF76 /* DateExtension.swift in Sources */,
+				65D327442BF72BB600FE879D /* HolidaySelectedVM.swift in Sources */,
 				65207CC62BF494310076EF76 /* Loader.swift in Sources */,
 				65207D582BF494310076EF76 /* FlightItinarryPopupVC.swift in Sources */,
 				65207DB72BF494310076EF76 /* OperatorsCheckBoxTVCell.swift in Sources */,
@@ -5086,6 +5135,7 @@
 				65207CFA2BF494310076EF76 /* Hotel_details.swift in Sources */,
 				65207CA32BF494310076EF76 /* StringExtension.swift in Sources */,
 				65207CEC2BF494310076EF76 /* Discount.swift in Sources */,
+				65D327412BF72B6000FE879D /* Tour_departure_details.swift in Sources */,
 				65207CD42BF494310076EF76 /* HotelCitySearchViewModel.swift in Sources */,
 				65207D412BF494310076EF76 /* HolidaysImagesCVCell.swift in Sources */,
 				65207E532BF494320076EF76 /* EmptyTVCell.swift in Sources */,
@@ -5113,6 +5163,7 @@
 				65207CE92BF494310076EF76 /* Hotel_desc.swift in Sources */,
 				65207DC52BF494310076EF76 /* AddonContentTVCell.swift in Sources */,
 				65207CAC2BF494310076EF76 /* UIColorManager.swift in Sources */,
+				65D327362BF71F0900FE879D /* HolidayListModel.swift in Sources */,
 				65207D132BF494310076EF76 /* TermsPopupTVCell.swift in Sources */,
 				65207C9D2BF494310076EF76 /* BorderView.swift in Sources */,
 				65207D7F2BF494310076EF76 /* Pre_booking_params.swift in Sources */,
@@ -5123,6 +5174,7 @@
 				65207E022BF494320076EF76 /* StarRatingCVCell.swift in Sources */,
 				65207D542BF494310076EF76 /* PopupVC.swift in Sources */,
 				65207EC32BF494320076EF76 /* LogoutViewModel.swift in Sources */,
+				6500CAE12BF7979400433C89 /* HolidayEnquireyModel.swift in Sources */,
 				65207CA02BF494310076EF76 /* ButtonExtension.swift in Sources */,
 				65207CCF2BF494310076EF76 /* FareListVC.swift in Sources */,
 				65207D002BF494310076EF76 /* Room_paxes_details.swift in Sources */,

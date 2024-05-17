@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Medium.ttf">
+        <array key="Inter-Medium.otf">
             <string>Inter-Medium</string>
         </array>
         <array key="Inter-SemiBold.ttf">
@@ -32,7 +32,7 @@
         <!--Search HotelVC-->
         <scene sceneID="3fU-UW-z8R">
             <objects>
-                <viewController storyboardIdentifier="SearchHotelVC" id="33e-Yh-6Zx" customClass="SearchHotelVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchHotelVC" id="33e-Yh-6Zx" customClass="SearchHotelVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r1v-Ix-Oga">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +79,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="y2I-vi-dPc"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69g-fB-Cvk" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69g-fB-Cvk" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                 <rect key="frame" x="136.66666666666666" y="62" width="119.99999999999997" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotel Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWQ-ky-1cw">
@@ -157,7 +157,7 @@
         <!--NationalityVC-->
         <scene sceneID="Fom-C8-KPe">
             <objects>
-                <viewController storyboardIdentifier="NationalityVC" id="FzP-mV-FHN" customClass="NationalityVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NationalityVC" id="FzP-mV-FHN" customClass="NationalityVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QD9-7a-TVf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,7 +217,7 @@
                                             <constraint firstItem="vvN-hc-UKu" firstAttribute="centerY" secondItem="fkq-on-jmj" secondAttribute="centerY" id="XSg-6y-1xB"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0K-C2-c6y" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0K-C2-c6y" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                         <rect key="frame" x="30" y="120" width="333" height="45"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5CI-Hr-eX0">
@@ -300,7 +300,7 @@
         <!--Terms PopupVC-->
         <scene sceneID="85t-8t-RIN">
             <objects>
-                <viewController storyboardIdentifier="TermsPopupVC" id="mqj-8p-rJe" customClass="TermsPopupVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsPopupVC" id="mqj-8p-rJe" customClass="TermsPopupVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BmL-So-5ng">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -380,7 +380,7 @@
         <!--Add RoomsVC View Controller-->
         <scene sceneID="A3x-CM-alq">
             <objects>
-                <viewController storyboardIdentifier="AddRoomsVCViewController" id="Roi-uf-fID" customClass="AddRoomsVCViewController" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddRoomsVCViewController" id="Roi-uf-fID" customClass="AddRoomsVCViewController" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xcH-Ye-el9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -484,7 +484,7 @@
         <!--Search Hotels ResultVC-->
         <scene sceneID="MwC-Vb-7G0">
             <objects>
-                <viewController storyboardIdentifier="SearchHotelsResultVC" id="9RW-9V-Fvw" customClass="SearchHotelsResultVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchHotelsResultVC" id="9RW-9V-Fvw" customClass="SearchHotelsResultVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B2J-xj-jpg">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -562,7 +562,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="sFe-a2-CaE">
                                                 <rect key="frame" x="10" y="10" width="215" height="40"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpH-WW-U1O" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpH-WW-U1O" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter" translatesAutoresizingMaskIntoConstraints="NO" id="DFt-1A-U5w">
@@ -609,7 +609,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0HR-k4-xjD" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0HR-k4-xjD" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="115" y="0.0" width="100" height="40"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sort" translatesAutoresizingMaskIntoConstraints="NO" id="lSN-82-WZZ">
@@ -767,7 +767,7 @@
         <!--Hotel DetailsVC-->
         <scene sceneID="TJJ-vl-eTk">
             <objects>
-                <viewController storyboardIdentifier="HotelDetailsVC" id="3pa-l0-JAD" customClass="HotelDetailsVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HotelDetailsVC" id="3pa-l0-JAD" customClass="HotelDetailsVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w74-t7-ugT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -905,7 +905,7 @@
         <!--Modify Hotel SearchVC-->
         <scene sceneID="znB-6h-YQf">
             <objects>
-                <viewController storyboardIdentifier="ModifyHotelSearchVC" id="XGh-T3-349" customClass="ModifyHotelSearchVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModifyHotelSearchVC" id="XGh-T3-349" customClass="ModifyHotelSearchVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="trj-qb-YyX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -987,7 +987,7 @@
         <!--Hotel ImagesVC-->
         <scene sceneID="OAB-Da-Vfz">
             <objects>
-                <viewController storyboardIdentifier="HotelImagesVC" id="GXo-z3-Vmn" customClass="HotelImagesVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HotelImagesVC" id="GXo-z3-Vmn" customClass="HotelImagesVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1bj-Nv-CdX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1076,7 +1076,7 @@
         <!--Selected Hotel ImageVC-->
         <scene sceneID="SdF-p7-Fpn">
             <objects>
-                <viewController storyboardIdentifier="SelectedHotelImageVC" id="ejZ-CI-5jC" customClass="SelectedHotelImageVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectedHotelImageVC" id="ejZ-CI-5jC" customClass="SelectedHotelImageVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4dx-Bt-L30">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1135,7 +1135,7 @@
         <!--Hotel Booking DetailsVC-->
         <scene sceneID="1Vn-2Y-al6">
             <objects>
-                <viewController storyboardIdentifier="HotelBookingDetailsVC" id="4QP-ZJ-8b2" customClass="HotelBookingDetailsVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HotelBookingDetailsVC" id="4QP-ZJ-8b2" customClass="HotelBookingDetailsVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gku-NW-RJi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1267,79 +1267,67 @@
             <point key="canvasLocation" x="4029.770992366412" y="-2.1126760563380285"/>
         </scene>
         <!--Map ViewVC-->
-        <scene sceneID="x9H-0V-YMN">
+        <scene sceneID="trr-Z6-gcA">
             <objects>
-                <viewController storyboardIdentifier="MapViewVC" id="HEK-Dy-s0q" customClass="MapViewVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wcx-Bm-LQv">
+                <viewController storyboardIdentifier="MapViewVC" id="QpS-QT-NlP" customClass="MapViewVC" customModule="HolidaysCenter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f2v-dE-a2Q">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C64-D0-gEc">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zxh-Sr-JbC">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3K-YK-KKH" customClass="NavBar" customModule="Travgate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MapView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsP-SC-09m">
-                                                <rect key="frame" x="160" y="68" width="73.333333333333314" height="22"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZd-mA-5af">
-                                                <rect key="frame" x="15" y="62" width="34" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="RX9-xO-RBT"/>
-                                                    <constraint firstAttribute="width" constant="34" id="TPN-Fp-boz"/>
-                                                </constraints>
-                                                <color key="tintColor" name="TitleColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="back"/>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" name="LayoverColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MapView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zkn-d1-M6U">
+                                        <rect key="frame" x="160.66666666666666" y="61" width="71.666666666666657" height="19"/>
+                                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
+                                        <color key="textColor" name="HeadingColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Oj-SK-cs5">
+                                        <rect key="frame" x="10" y="50.666666666666657" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstItem="DsP-SC-09m" firstAttribute="centerX" secondItem="O3K-YK-KKH" secondAttribute="centerX" id="AYs-J4-J6W"/>
-                                            <constraint firstItem="tZd-mA-5af" firstAttribute="centerY" secondItem="DsP-SC-09m" secondAttribute="centerY" id="RYO-c6-O1B"/>
-                                            <constraint firstItem="tZd-mA-5af" firstAttribute="leading" secondItem="O3K-YK-KKH" secondAttribute="leading" constant="15" id="YNq-dy-0UX"/>
-                                            <constraint firstAttribute="bottom" secondItem="DsP-SC-09m" secondAttribute="bottom" constant="10" id="mPg-sv-0wV"/>
-                                            <constraint firstAttribute="height" constant="100" id="zaA-Xn-vQC"/>
+                                            <constraint firstAttribute="width" constant="40" id="2pd-PQ-FrD"/>
+                                            <constraint firstAttribute="height" constant="40" id="3rR-RJ-QWi"/>
                                         </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0p-cA-nEo">
-                                        <rect key="frame" x="0.0" y="100" width="393" height="752"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
+                                        <color key="tintColor" name="TitleColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="back"/>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="LayoverColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="O3K-YK-KKH" secondAttribute="trailing" id="DzF-QG-pFg"/>
-                                    <constraint firstItem="O3K-YK-KKH" firstAttribute="leading" secondItem="C64-D0-gEc" secondAttribute="leading" id="ZNU-fM-sqB"/>
-                                    <constraint firstItem="K0p-cA-nEo" firstAttribute="leading" secondItem="C64-D0-gEc" secondAttribute="leading" id="euS-OU-bJx"/>
-                                    <constraint firstAttribute="trailing" secondItem="K0p-cA-nEo" secondAttribute="trailing" id="kTe-2T-KzW"/>
-                                    <constraint firstItem="O3K-YK-KKH" firstAttribute="top" secondItem="C64-D0-gEc" secondAttribute="top" id="kd7-VT-Cgj"/>
-                                    <constraint firstItem="K0p-cA-nEo" firstAttribute="top" secondItem="O3K-YK-KKH" secondAttribute="bottom" id="n7P-Nd-fre"/>
-                                    <constraint firstAttribute="bottom" secondItem="K0p-cA-nEo" secondAttribute="bottom" id="xWU-Qe-P0W"/>
+                                    <constraint firstItem="Zkn-d1-M6U" firstAttribute="centerX" secondItem="Zxh-Sr-JbC" secondAttribute="centerX" id="S9F-4b-ZiV"/>
+                                    <constraint firstAttribute="height" constant="100" id="SjE-it-Q6H"/>
+                                    <constraint firstItem="7Oj-SK-cs5" firstAttribute="leading" secondItem="Zxh-Sr-JbC" secondAttribute="leading" constant="10" id="akv-ni-Iqi"/>
+                                    <constraint firstItem="7Oj-SK-cs5" firstAttribute="centerY" secondItem="Zkn-d1-M6U" secondAttribute="centerY" id="dQV-g3-Rfy"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zkn-d1-M6U" secondAttribute="bottom" constant="20" id="roD-gD-LsU"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9r-Ct-EZ9">
+                                <rect key="frame" x="0.0" y="100" width="393" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="eie-EP-8Uw"/>
+                        <viewLayoutGuide key="safeArea" id="NIk-xs-Uj3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="C64-D0-gEc" firstAttribute="top" secondItem="wcx-Bm-LQv" secondAttribute="top" id="0LR-yu-Gm3"/>
-                            <constraint firstAttribute="bottom" secondItem="C64-D0-gEc" secondAttribute="bottom" id="12K-LX-S2Q"/>
-                            <constraint firstItem="C64-D0-gEc" firstAttribute="leading" secondItem="eie-EP-8Uw" secondAttribute="leading" id="H6p-G6-db1"/>
-                            <constraint firstItem="eie-EP-8Uw" firstAttribute="trailing" secondItem="C64-D0-gEc" secondAttribute="trailing" id="rYV-ow-n7J"/>
+                            <constraint firstItem="NIk-xs-Uj3" firstAttribute="trailing" secondItem="F9r-Ct-EZ9" secondAttribute="trailing" id="DAE-KQ-Agt"/>
+                            <constraint firstItem="Zxh-Sr-JbC" firstAttribute="leading" secondItem="NIk-xs-Uj3" secondAttribute="leading" id="Dm3-sv-DW0"/>
+                            <constraint firstItem="Zxh-Sr-JbC" firstAttribute="top" secondItem="f2v-dE-a2Q" secondAttribute="top" id="Tle-mQ-gRg"/>
+                            <constraint firstAttribute="bottom" secondItem="F9r-Ct-EZ9" secondAttribute="bottom" id="r6K-Hl-x3T"/>
+                            <constraint firstItem="F9r-Ct-EZ9" firstAttribute="leading" secondItem="NIk-xs-Uj3" secondAttribute="leading" id="roA-Ed-aAq"/>
+                            <constraint firstItem="NIk-xs-Uj3" firstAttribute="trailing" secondItem="Zxh-Sr-JbC" secondAttribute="trailing" id="tph-2P-qDB"/>
+                            <constraint firstItem="F9r-Ct-EZ9" firstAttribute="top" secondItem="Zxh-Sr-JbC" secondAttribute="bottom" id="zOq-2F-EGB"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="closebtn" destination="tZd-mA-5af" id="UHd-VG-Iqu"/>
-                        <outlet property="googleMapView" destination="K0p-cA-nEo" id="mhk-Mv-5rb"/>
+                        <outlet property="closebtn" destination="7Oj-SK-cs5" id="cI2-SS-0Ti"/>
+                        <outlet property="googleMapView" destination="F9r-Ct-EZ9" id="upI-l8-Z7K"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gmM-KM-U2z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T11-Ah-buy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4828" y="-2"/>
+            <point key="canvasLocation" x="4790" y="-2"/>
         </scene>
     </scenes>
     <resources>
@@ -1359,7 +1347,7 @@
             <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BorderColor">
-            <color red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Buttoncolor">
             <color red="0.2669999897480011" green="0.70999997854232788" blue="0.046999998390674591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

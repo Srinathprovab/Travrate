@@ -251,14 +251,18 @@ extension ModifyHotelSearchVC {
     
     func gotoHotelResultVC() {
         
+        MySingleton.shared.afterResultsBool = false
+        hotelSearchResult.removeAll()
         loderBool = true
         callapibool = true
         defaults.set(false, forKey: "hoteltfilteronce")
+        
         guard let vc = SearchHotelsResultVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.countrycode = self.countrycode
         vc.payload =  MySingleton.shared.payload
         present(vc, animated: true)
+        
     }
     
     

@@ -3,15 +3,27 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--HolidaysVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="HolidaysVC" id="Y6W-OH-hqX" customClass="HolidaysVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HolidaysVC" id="Y6W-OH-hqX" customClass="HolidaysVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +80,7 @@
         <!--Selected Holiday PackageVC-->
         <scene sceneID="cr7-5x-t6Y">
             <objects>
-                <viewController storyboardIdentifier="SelectedHolidayPackageVC" id="XS9-23-rMF" customClass="SelectedHolidayPackageVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectedHolidayPackageVC" id="XS9-23-rMF" customClass="SelectedHolidayPackageVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bvG-Rc-h83">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,9 +134,137 @@
             </objects>
             <point key="canvasLocation" x="906" y="-2"/>
         </scene>
+        <!--SubmitOTPVC-->
+        <scene sceneID="6nU-iJ-ewc">
+            <objects>
+                <viewController storyboardIdentifier="SubmitOTPVC" id="1ZI-NZ-9PB" customClass="SubmitOTPVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lon-aO-FhU">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggP-fH-9gq" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                                <rect key="frame" x="24" y="226" width="345" height="400"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="mjc-Eq-ktq">
+                                        <rect key="frame" x="97.666666666666686" y="50" width="150" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="3kE-eT-Gyt"/>
+                                            <constraint firstAttribute="width" constant="150" id="AYb-V8-ECn"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Verification" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hgo-vW-A7M">
+                                        <rect key="frame" x="88.333333333333329" y="119.99999999999999" width="168.33333333333337" height="24.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Verification We have sent an OTP to the provided email. Kindly use the otp to submit Your enquiry.Thank You." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3T-Sp-7CF">
+                                        <rect key="frame" x="20" y="158.33333333333331" width="305" height="58.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzz-AD-eYt" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                                        <rect key="frame" x="62.666666666666686" y="236.66666666666669" width="220" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter OTP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNG-Qk-545">
+                                                <rect key="frame" x="0.0" y="0.0" width="220" height="50"/>
+                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="mNG-Qk-545" secondAttribute="trailing" id="2bZ-QU-cBP"/>
+                                            <constraint firstAttribute="bottom" secondItem="mNG-Qk-545" secondAttribute="bottom" id="AdY-wt-aJd"/>
+                                            <constraint firstAttribute="width" constant="220" id="LnZ-M1-7r8"/>
+                                            <constraint firstItem="mNG-Qk-545" firstAttribute="leading" secondItem="jzz-AD-eYt" secondAttribute="leading" id="RLp-R3-g7A"/>
+                                            <constraint firstAttribute="height" constant="50" id="Vk3-L6-RiV"/>
+                                            <constraint firstItem="mNG-Qk-545" firstAttribute="top" secondItem="jzz-AD-eYt" secondAttribute="top" id="fzw-Pb-34K"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="BorderColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDs-iU-tgm">
+                                        <rect key="frame" x="92.666666666666686" y="314.66666666666663" width="160" height="60"/>
+                                        <color key="backgroundColor" name="TransferBookNowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="160" id="0cm-eS-xpC"/>
+                                            <constraint firstAttribute="height" constant="60" id="IMU-Ay-0t5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" name="WhiteColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapOnSubMitBtnAction:" destination="1ZI-NZ-9PB" eventType="touchUpInside" id="lQF-Ta-U6y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="f3T-Sp-7CF" firstAttribute="top" secondItem="Hgo-vW-A7M" secondAttribute="bottom" constant="14" id="1Kw-md-o6k"/>
+                                    <constraint firstItem="mjc-Eq-ktq" firstAttribute="centerX" secondItem="ggP-fH-9gq" secondAttribute="centerX" id="687-Th-pJy"/>
+                                    <constraint firstItem="Hgo-vW-A7M" firstAttribute="top" secondItem="mjc-Eq-ktq" secondAttribute="bottom" constant="20" id="FMW-O8-4cO"/>
+                                    <constraint firstItem="f3T-Sp-7CF" firstAttribute="leading" secondItem="ggP-fH-9gq" secondAttribute="leading" constant="20" id="Hw8-1p-ocH"/>
+                                    <constraint firstItem="LDs-iU-tgm" firstAttribute="top" secondItem="jzz-AD-eYt" secondAttribute="bottom" constant="28" id="OKN-eQ-vgg"/>
+                                    <constraint firstItem="f3T-Sp-7CF" firstAttribute="centerX" secondItem="Hgo-vW-A7M" secondAttribute="centerX" id="ev0-Do-gD9"/>
+                                    <constraint firstItem="jzz-AD-eYt" firstAttribute="centerX" secondItem="ggP-fH-9gq" secondAttribute="centerX" id="ibb-0Y-L8A"/>
+                                    <constraint firstAttribute="trailing" secondItem="f3T-Sp-7CF" secondAttribute="trailing" constant="20" id="oPo-hw-6UB"/>
+                                    <constraint firstItem="jzz-AD-eYt" firstAttribute="top" secondItem="f3T-Sp-7CF" secondAttribute="bottom" constant="20" id="orz-wl-MDd"/>
+                                    <constraint firstAttribute="height" constant="400" id="qOX-RW-YkP"/>
+                                    <constraint firstItem="LDs-iU-tgm" firstAttribute="centerX" secondItem="ggP-fH-9gq" secondAttribute="centerX" id="r3d-kY-beD"/>
+                                    <constraint firstItem="mjc-Eq-ktq" firstAttribute="top" secondItem="ggP-fH-9gq" secondAttribute="top" constant="50" id="xbI-hE-fAX"/>
+                                    <constraint firstItem="Hgo-vW-A7M" firstAttribute="centerX" secondItem="mjc-Eq-ktq" secondAttribute="centerX" id="xf7-YA-6rv"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uZm-eh-uej"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ggP-fH-9gq" firstAttribute="centerY" secondItem="Lon-aO-FhU" secondAttribute="centerY" id="a8B-8n-oNt"/>
+                            <constraint firstItem="ggP-fH-9gq" firstAttribute="centerX" secondItem="Lon-aO-FhU" secondAttribute="centerX" id="dZX-Wb-B1z"/>
+                            <constraint firstItem="uZm-eh-uej" firstAttribute="trailing" secondItem="ggP-fH-9gq" secondAttribute="trailing" constant="24" id="edB-Ae-gGF"/>
+                            <constraint firstItem="ggP-fH-9gq" firstAttribute="leading" secondItem="uZm-eh-uej" secondAttribute="leading" constant="24" id="f6v-KY-VF0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="otpTF" destination="mNG-Qk-545" id="QVx-FS-V7U"/>
+                        <outlet property="submitBtn" destination="LDs-iU-tgm" id="wpe-QK-dub"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KSP-S4-scG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1688" y="-2"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back1" width="20" height="20"/>
+        <image name="logo" width="218" height="74"/>
+        <namedColor name="BorderColor">
+            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TransferBookNowColor">
+            <color red="0.96100002527236938" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WhiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

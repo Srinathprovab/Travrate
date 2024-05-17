@@ -63,11 +63,11 @@ class HolidayContactdetailsTVCell: TableViewCell {
     
     
     override func updateUI() {
-        totalPassengerlbl.text = defaults.string(forKey: UserDefaultsKeys.cruistotalpassengercount) ?? "1 Passenger"
+        totalPassengerlbl.text = defaults.string(forKey: UserDefaultsKeys.holidaytotalpassengercount) ?? "1 Passenger"
         
-        travelFromTF.text = defaults.string(forKey: UserDefaultsKeys.fromtravelDate) ?? "Select Date"
+        travelFromTF.text = defaults.string(forKey: UserDefaultsKeys.holidayfromtravelDate) ?? "Select Date"
         
-        travelToTF.text = defaults.string(forKey: UserDefaultsKeys.totravelDate) ?? "Select Date"
+        travelToTF.text = defaults.string(forKey: UserDefaultsKeys.holidaytotravelDate) ?? "Select Date"
         
         MySingleton.shared.travelfrom = travelFromTF.text ?? ""
         MySingleton.shared.travelto = travelToTF.text ?? ""
@@ -181,6 +181,7 @@ extension HolidayContactdetailsTVCell {
             self?.mobileTF.text = ""
             self?.cname = self?.countryNames[index] ?? ""
             MySingleton.shared.cruiseCountryCode = self?.countrycodesArray[index] ?? ""
+            MySingleton.shared.holidayCountryCode = self?.countrycodesArray[index] ?? ""
             //   self?.countrycodeView.layer.borderColor = UIColor.AppBorderColor.cgColor
             
         }

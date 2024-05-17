@@ -18,6 +18,8 @@ class HolidayPackagesTVCell: TableViewCell {
     @IBOutlet weak var holidaysTV: UITableView!
     @IBOutlet weak var tvHeight: NSLayoutConstraint!
     
+    
+    var holidayKey = String()
     var delegate:HolidayPackagesTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,12 +34,15 @@ class HolidayPackagesTVCell: TableViewCell {
     }
     
     override func updateUI() {
+        titlelbl.text = cellInfo?.title ?? ""
+        
         updateHeight()
     }
     
     
     func updateHeight() {
-        tvHeight.constant = 10 * 260
+        tvHeight.constant = CGFloat(MySingleton.shared.holidaylist.count * 260)
+        holidaysTV.reloadData()
     }
     
     
@@ -67,7 +72,7 @@ extension HolidayPackagesTVCell:UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return MySingleton.shared.holidaylist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,6 +80,13 @@ extension HolidayPackagesTVCell:UITableViewDelegate,UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? HolidaysInfoTVCell {
             
             cell.selectionStyle = .none
+            let data = MySingleton.shared.holidaylist[indexPath.row]
+            cell.titlelbl.text = data.heading ?? ""
+            cell.subtitlelbl.text = data.subheading ?? ""
+            cell.holidayKey = data.origin ?? ""
+            
+            cell.img.sd_setImage(with: URL(string: data.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            
             
             c = cell
             
@@ -84,7 +96,10 @@ extension HolidayPackagesTVCell:UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            delegate?.didTapOnHolidayPackage(cell: self)
+        if let cell = tableView.cellForRow(at: indexPath) as? HolidaysInfoTVCell {
+            self.holidayKey = cell.holidayKey
+        }
+        delegate?.didTapOnHolidayPackage(cell: self)
     }
     
     

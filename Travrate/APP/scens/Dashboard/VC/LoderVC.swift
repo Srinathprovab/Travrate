@@ -106,7 +106,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             
             img.sd_setImage(with: URL(string: searchHoteldata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
-            locationslbl.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? searchHoteldata?.city_name ?? ""
+            locationslbl.text = searchHoteldata?.city_name ?? ""
             checkinlbl.text = searchHoteldata?.check_in ?? ""
             checkoutlbl.text = searchHoteldata?.check_out ?? ""
             guestlbl.text = searchHoteldata?.adult?[0] ?? ""
@@ -118,7 +118,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
            
             MySingleton.shared.totalnights = "\(nights)"
             if MySingleton.shared.totalnights == "0" || MySingleton.shared.totalnights == "1" {
-                self.nightslbl.text = "\(nights) Nights"
+                self.nightslbl.text = "\(nights) Night"
             }else {
                 self.nightslbl.text = "\(nights) Nights"
             }
@@ -163,8 +163,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
         timer?.invalidate()
     }
     
-    
-    
+
     
     func numberOfNights(checkInDate: String, checkOutDate: String) -> Int {
         // Create date formatter
@@ -178,6 +177,11 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             return 0
         }
         
+        // If check-in and check-out dates are the same, return 1
+        if checkIn == checkOut {
+            return 1
+        }
+        
         // Calculate the difference in days
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: checkIn, to: checkOut)
@@ -188,11 +192,11 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             return 0
         }
         
-        // Subtract 1 to get the number of nights
-        let numberOfNights = numberOfDays
-        
-        return numberOfNights
+        // Return the number of nights
+        return numberOfDays
     }
+    
+    
 }
 
 

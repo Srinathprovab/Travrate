@@ -101,6 +101,7 @@ class FilterVC: BaseTableVC{
     var maxpricerangefilter = Double()
     var starRatingFilter = String()
     var stopsArray = ["0 Stop","1 Stop","2 Stop"]
+    var resetHotelBool = false
     
     var departurnTimeArray = ["12 am - 6 am","06 am - 12 pm","12 pm - 06 pm","06 pm - 12 am"]
     var tablerow = [TableRow]()
@@ -582,6 +583,9 @@ class FilterVC: BaseTableVC{
     @IBAction func didTapOnResetBtn(_ sender: Any) {
         sortBy = .nothing
         
+        
+        resetHotelBool = true
+        
         if let tabselect = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String  {
             if tabselect == "Flight" {
                 if filterKey == "filter" {
@@ -594,6 +598,7 @@ class FilterVC: BaseTableVC{
                     }
                 }
             }else {
+                
                 resetHotelFilter()
             }
         }
@@ -1072,6 +1077,8 @@ class FilterVC: BaseTableVC{
     //MARK: - Apply Filter
     override func btnAction(cell: ButtonTVCell) {
         
+      
+        
         if let tabselect = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String {
             let pricesFloat = prices.compactMap { Float($0) }
             
@@ -1169,7 +1176,13 @@ class FilterVC: BaseTableVC{
                 }
             }else {
                 
+                if resetHotelBool == true {
+                    MySingleton.shared.filterApplyedBool = false
+                }else {
+                    MySingleton.shared.filterApplyedBool = true
+                }
                 
+               
                 
                 if minpricerangefilter != 0.0 {
                     hotelfiltermodel.minPriceRange = minpricerangefilter

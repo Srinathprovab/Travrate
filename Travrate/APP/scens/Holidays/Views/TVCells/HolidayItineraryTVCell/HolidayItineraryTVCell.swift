@@ -9,10 +9,11 @@ import UIKit
 
 class HolidayItineraryTVCell: TableViewCell {
     
-    
+    @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var packegeImagesCV: UICollectionView!
     @IBOutlet weak var tvHeight: NSLayoutConstraint!
     @IBOutlet weak var itineraryTV: UITableView!
+    @IBOutlet weak var desclbl: UILabel!
     
     
     override func awakeFromNib() {
@@ -29,11 +30,18 @@ class HolidayItineraryTVCell: TableViewCell {
     
     
     override func updateUI() {
+        
+        self.img.sd_setImage(with: URL(string: MySingleton.shared.holidaySelectedData?.tour__2_data?[0].image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+        
+        
+        desclbl.attributedText = MySingleton.shared.holidaySelectedData?.tour__2_data?[0].desc?.htmlToAttributedString
+        
         updateHeight()
     }
     
     func updateHeight() {
         tvHeight.constant = 10 * 260
+        itineraryTV.reloadData()
     }
     
     func setupUI() {
@@ -67,28 +75,22 @@ extension HolidayItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return MySingleton.shared.holidaySelectedData?.tour__2_data?[0].more_image?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var commonCell = UICollectionViewCell()
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HolidaysImagesCVCell {
             
+            let data = MySingleton.shared.holidaySelectedData?.tour__2_data?[0].more_image?[indexPath.row]
+            
+            cell.img.sd_setImage(with: URL(string: data ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            
             
             commonCell = cell
         }
         return commonCell
     }
-    
-    
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           
-        }
-    
-    
-        func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-            
-        }
     
     
 }
@@ -127,6 +129,6 @@ extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         return c
     }
     
-  
+    
     
 }

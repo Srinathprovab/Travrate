@@ -42,11 +42,17 @@ class CruisePassengerSelectVC: BaseTableVC {
         NotificationCenter.default.addObserver(self, selector: #selector(offline), name: NSNotification.Name("offline"), object: nil)
         
         
-        adultsCount = Int(defaults.string(forKey: UserDefaultsKeys.cruisadultCount) ?? "1") ?? 1
-        childCount = Int(defaults.string(forKey: UserDefaultsKeys.cruischildCount) ?? "0") ?? 0
-        infantsCount = Int(defaults.string(forKey: UserDefaultsKeys.cruisinfantsCount) ?? "0") ?? 0
-        
-        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Cruise" {
+            adultsCount = Int(defaults.string(forKey: UserDefaultsKeys.cruisadultCount) ?? "1") ?? 1
+            childCount = Int(defaults.string(forKey: UserDefaultsKeys.cruischildCount) ?? "0") ?? 0
+            infantsCount = Int(defaults.string(forKey: UserDefaultsKeys.cruisinfantsCount) ?? "0") ?? 0
+        }else {
+            adultsCount = Int(defaults.string(forKey: UserDefaultsKeys.holidaydultCount) ?? "1") ?? 1
+            childCount = Int(defaults.string(forKey: UserDefaultsKeys.holidaychildCount) ?? "0") ?? 0
+            infantsCount = Int(defaults.string(forKey: UserDefaultsKeys.holidayinfantsCount) ?? "0") ?? 0
+        }
+    
         
     }
     
@@ -74,10 +80,18 @@ class CruisePassengerSelectVC: BaseTableVC {
         
         tableRow.removeAll()
         
-        tableRow.append(TableRow(title:"Adult",subTitle: "12+",text: "\(defaults.string(forKey: UserDefaultsKeys.cruisadultCount) ?? "1")",cellType:.TravellerEconomyTVCell))
-        tableRow.append(TableRow(title:"Child",subTitle: "2-11",text: "\(defaults.string(forKey: UserDefaultsKeys.cruischildCount) ?? "0")",cellType:.TravellerEconomyTVCell))
-        tableRow.append(TableRow(title:"Infant",subTitle: "0-2",text: "\(defaults.string(forKey: UserDefaultsKeys.cruisinfantsCount) ?? "0")",cellType:.TravellerEconomyTVCell))
         
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Cruise" {
+            tableRow.append(TableRow(title:"Adult",subTitle: "12+",text: "\(defaults.string(forKey: UserDefaultsKeys.cruisadultCount) ?? "1")",cellType:.TravellerEconomyTVCell))
+            tableRow.append(TableRow(title:"Child",subTitle: "2-11",text: "\(defaults.string(forKey: UserDefaultsKeys.cruischildCount) ?? "0")",cellType:.TravellerEconomyTVCell))
+            tableRow.append(TableRow(title:"Infant",subTitle: "0-2",text: "\(defaults.string(forKey: UserDefaultsKeys.cruisinfantsCount) ?? "0")",cellType:.TravellerEconomyTVCell))
+        }else {
+            tableRow.append(TableRow(title:"Adult",subTitle: "12+",text: "\(defaults.string(forKey: UserDefaultsKeys.holidaydultCount) ?? "1")",cellType:.TravellerEconomyTVCell))
+            tableRow.append(TableRow(title:"Child",subTitle: "2-11",text: "\(defaults.string(forKey: UserDefaultsKeys.holidaychildCount) ?? "0")",cellType:.TravellerEconomyTVCell))
+            tableRow.append(TableRow(title:"Infant",subTitle: "0-2",text: "\(defaults.string(forKey: UserDefaultsKeys.holidayinfantsCount) ?? "0")",cellType:.TravellerEconomyTVCell))
+        }
         
         
         
@@ -164,7 +178,14 @@ class CruisePassengerSelectVC: BaseTableVC {
     func gotoCruiseDetailsVC() {
         
         let totaltraverlers = "\(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "1") Passengers"
-        defaults.set(totaltraverlers, forKey: UserDefaultsKeys.cruistotalpassengercount)
+       
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Cruise" {
+            defaults.set(totaltraverlers, forKey: UserDefaultsKeys.cruistotalpassengercount)
+        }else {
+            defaults.set(totaltraverlers, forKey: UserDefaultsKeys.holidaytotalpassengercount)
+        }
         
         NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil)
         self.dismiss(animated: true)
@@ -178,9 +199,18 @@ class CruisePassengerSelectVC: BaseTableVC {
         print("childCount \(childCount)")
         print("infantsCount \(infantsCount)")
         
-        defaults.set(adultsCount, forKey: UserDefaultsKeys.cruisadultCount)
-        defaults.set(childCount, forKey: UserDefaultsKeys.cruischildCount)
-        defaults.set(infantsCount, forKey: UserDefaultsKeys.cruisinfantsCount)
+       
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Cruise" {
+            defaults.set(adultsCount, forKey: UserDefaultsKeys.cruisadultCount)
+            defaults.set(childCount, forKey: UserDefaultsKeys.cruischildCount)
+            defaults.set(infantsCount, forKey: UserDefaultsKeys.cruisinfantsCount)
+        }else {
+            defaults.set(adultsCount, forKey: UserDefaultsKeys.holidaydultCount)
+            defaults.set(childCount, forKey: UserDefaultsKeys.holidaychildCount)
+            defaults.set(infantsCount, forKey: UserDefaultsKeys.holidayinfantsCount)
+        }
         
         gotoCruiseDetailsVC()
         

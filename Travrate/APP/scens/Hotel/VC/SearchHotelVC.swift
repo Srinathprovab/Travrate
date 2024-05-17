@@ -276,7 +276,7 @@ extension SearchHotelVC {
     func gotoHotelResultVC() {
         
         MySingleton.shared.afterResultsBool = false
-        
+        hotelSearchResult.removeAll()
         loderBool = true
         callapibool = true
         defaults.set(false, forKey: "hoteltfilteronce")

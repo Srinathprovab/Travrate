@@ -128,10 +128,12 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     }
     
     override func didTapOnVisabtnAction(cell: TabSelectTVCell) {
+        defaults.set("Visa", forKey: UserDefaultsKeys.tabselect)
         gotoVisaVC()
     }
     
     override func didTapOnHolidaysbtnAction(cell: TabSelectTVCell) {
+        defaults.set("Holiday", forKey: UserDefaultsKeys.tabselect)
         gotoHolidaysVC()
     }
     
@@ -141,18 +143,22 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     }
     
     override func didTapOnSportsbtnAction(cell: TabSelectTVCell) {
+        defaults.set("Sports", forKey: UserDefaultsKeys.tabselect)
         gotoSportsSearchVC()
     }
     
     override func didTapOnCruisebtnAction(cell: TabSelectTVCell) {
+        defaults.set("Cruise", forKey: UserDefaultsKeys.tabselect)
         gotoCruiseVC()
     }
     
     override func didTapOnAutopaybtnAction(cell: TabSelectTVCell) {
+        defaults.set("Autopay", forKey: UserDefaultsKeys.tabselect)
         gotoAutoPaymentVC()
     }
     
     override func didTapOnInsurencebtnAction(cell:TabSelectTVCell) {
+        defaults.set("Insurence", forKey: UserDefaultsKeys.tabselect)
         gotoInsuranceVC()
     }
     
@@ -215,7 +221,7 @@ extension DashboardVC {
     
     
     func gotoHolidaysVC() {
-        callapibool = true
+        MySingleton.shared.callboolapi = true
         guard let vc = HolidaysVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)

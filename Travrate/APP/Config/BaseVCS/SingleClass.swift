@@ -66,6 +66,7 @@ class MySingleton {
     var loderimgurl = String()
     var afterResultsBool = false
     var directFlightBool = false
+    var filterApplyedBool = false
     var adultsCount = 1
     var childCount = 0
     var infantsCount = 0
@@ -146,6 +147,7 @@ class MySingleton {
     var visaCountryCode = String()
     var cruiseKeyStr = String()
     var cruiseCountryCode = String()
+    var holidayCountryCode = String()
     var selectedResultStr = String()
     
     var insurencetravelcode = String()
@@ -182,7 +184,8 @@ class MySingleton {
     var fareReturnFlightlistArray = [FligtsFareReturn]()
     var selectedIndexPathsDeparture: Set<IndexPath> = []
     var selectedIndexPathsReturn: Set<IndexPath> = []
-    
+    var holidaylist = [HolidayListData]()
+    var holidaySelectedData:HolidaySelectedData?
     
     //View Models
     var loginvm:LoginViewModel?
@@ -210,6 +213,8 @@ class MySingleton {
     var mobilepaymentvm:MobilePaymentVM?
     var passengerDetailsVM:MobileProcessPassengerDetailVM?
     var getInsuranceItemsVM:GetInsuranceItemsVM?
+    var holidayListVM:HolidayListVM?
+    var holidaySelectedVM:HolidaySelectedVM?
     
     
     //TIMER

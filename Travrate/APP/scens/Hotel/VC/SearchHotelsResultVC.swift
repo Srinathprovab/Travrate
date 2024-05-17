@@ -39,7 +39,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     var payload = [String:Any]()
     var payload1 = [String:Any]()
     var countrycode = String()
-    var isLoadingData = false
+    
     var bsDataArray = [ABSData]()
     var viewModel:HotelSearchViewModel?
     
@@ -416,7 +416,7 @@ extension SearchHotelsResultVC {
         hotelprices.removeAll()
         nearBylocationsArray.removeAll()
         faretypeArray .removeAll()
-        facilityArray.removeAll()
+        amenitiesArray.removeAll()
         mapModelArray.removeAll()
         hotelfiltermodel.starRatingNew = starRatingInputArray
         
@@ -432,7 +432,7 @@ extension SearchHotelsResultVC {
             
             i.facility?.forEach { j in
                 if let facilityName = j.name, !facilityName.isEmpty {
-                    facilityArray.append(facilityName)
+                    amenitiesArray.append(facilityName)
                 }
             }
         }
@@ -440,7 +440,7 @@ extension SearchHotelsResultVC {
         hotelprices = Array(Set(hotelprices))
         nearBylocationsArray = Array(Set(nearBylocationsArray))
         faretypeArray = Array(Set(faretypeArray))
-        facilityArray = Array(Set(facilityArray))
+        amenitiesArray = Array(Set(amenitiesArray))
         
         
         list.forEach { i in
@@ -525,7 +525,7 @@ extension SearchHotelsResultVC {
                     print("Facility array is empty or nil")
                 }
                 
-              
+                
                 if dict.star_rating == 0 {
                     cell.ratingView.isHidden = true
                 }else {
@@ -569,7 +569,7 @@ extension SearchHotelsResultVC {
                 
                 
                 cell.hotel_DescLabel = dict.hotel_desc ?? "bbbbb"
-               
+                
                 if let facilities = dict.facility, !facilities.isEmpty {
                     cell.facilityArray = facilities
                 } else {
@@ -577,7 +577,7 @@ extension SearchHotelsResultVC {
                     print("Facility array is empty or nil")
                 }
                 
-               
+                
                 
                 if dict.star_rating == 0 {
                     cell.ratingView.isHidden = true
@@ -612,7 +612,11 @@ extension SearchHotelsResultVC {
         
         
         if indexPath.row == lastRowIndex && !isLoadingData && lastRowIndex != 0{
-            callHotelSearchPaginationAPI()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+                callHotelSearchPaginationAPI()
+            }
+            
         }
     }
     
@@ -688,6 +692,12 @@ extension SearchHotelsResultVC:AppliedFilters{
         // Set the filter flag to true
         isSearchBool = true
         
+        if MySingleton.shared.filterApplyedBool == true {
+            isLoadingData = true
+        }else {
+            isLoadingData = false
+        }
+        
         // Print filter parameters for debugging
         print("Min Price Range: \(minpricerange)")
         print("Max Price Range: \(maxpricerange)")
@@ -732,6 +742,13 @@ extension SearchHotelsResultVC:AppliedFilters{
     
     //MARK: - SORT BY FILTER
     func filtersSortByApplied(sortBy: SortParameter) {
+        if MySingleton.shared.filterApplyedBool == true {
+            isLoadingData = true
+        }else {
+            isLoadingData = false
+        }
+        
+        
         commonTableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         switch sortBy {
             

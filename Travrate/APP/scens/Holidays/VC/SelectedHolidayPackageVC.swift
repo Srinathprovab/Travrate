@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectedHolidayPackageVC: BaseTableVC {
+class SelectedHolidayPackageVC: BaseTableVC, HolidaySelectedVMDelegate {
     
     
     
@@ -18,6 +18,11 @@ class SelectedHolidayPackageVC: BaseTableVC {
         return vc
     }
     
+    var holidaykey = String()
+    var fname = String()
+    var emailid = String()
+    var mobile = String()
+    var selectedHolidayOrigen = String()
     
     override func viewWillAppear(_ animated: Bool) {
         addObserver()
@@ -29,12 +34,97 @@ class SelectedHolidayPackageVC: BaseTableVC {
         
         // Do any additional setup after loading the view.
         setupUI()
+        
+        MySingleton.shared.holidaySelectedVM = HolidaySelectedVM(self)
     }
     
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        MySingleton.shared.callboolapi = false
         dismiss(animated: true)
+    }
+    
+    
+    //MARK: -  editingTextField
+    override func editingTextField(tf:UITextField){
+        switch tf.tag {
+        case 1:
+            fname = tf.text ?? ""
+            break
+            
+        case 2:
+            emailid = tf.text ?? ""
+            break
+            
+        case 3:
+            mobile = tf.text ?? ""
+            break
+            
+            
+        default:
+            break
+        }
+    }
+    
+    
+    //MARK: -  didTapOnAddPeopleBtnAction
+    override func didTapOnAddPeopleBtnAction(cell:HolidayContactdetailsTVCell){
+        guard let vc = CruisePassengerSelectVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true)
+    }
+    
+    
+    
+    //MARK: -  donedatePicker  cancelDatePicker
+    override func donedatePicker(cell:HolidayContactdetailsTVCell){
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        
+        defaults.set(formatter.string(from: cell.travelFromDatePicker.date), forKey: UserDefaultsKeys.holidayfromtravelDate)
+        
+        defaults.set(formatter.string(from: cell.travelToDatePicker.date), forKey: UserDefaultsKeys.holidaytotravelDate)
+        
+        
+        commonTableView.reloadData()
+        self.view.endEditing(false)
+    }
+    
+    
+    override func cancelDatePicker(cell:HolidayContactdetailsTVCell){
+        view.endEditing(true)
+    }
+    
+    //MARK: -  didTapOnSubmitEnquiryBtnAction
+    override func didTapOnSubmitEnquiryBtnAction(cell:HolidayContactdetailsTVCell){
+        
+        
+        if MySingleton.shared.mrtitle.isEmpty == true {
+            showToast(message: "Select Title For Your Name")
+        }else if fname.isEmpty == true {
+            showToast(message: "Enter First Name")
+        }else if emailid.isEmpty == true {
+            showToast(message: "Enter Email Address")
+        }else if emailid.isValidEmail() == false {
+            showToast(message: "Enter Valid Email Address")
+        }else if MySingleton.shared.holidayCountryCode.isEmpty == true {
+            showToast(message: "Select Country Code")
+        }else if mobile.isEmpty == true {
+            showToast(message: "Enter Mobile Number")
+        }else if MySingleton.shared.travelfrom.isEmpty == true {
+            showToast(message: "Enter travel Date")
+        }else {
+            callHolidayEnquireyAPI()
+        }
+        
+        
+    }
+    
+    //MARK: -  didTapOnRequestCallBackubmitEnquiryBtnAction
+    override func didTapOnRequestCallBackBtnAction(cell:HolidayContactdetailsTVCell){
+        
     }
     
     
@@ -54,16 +144,48 @@ extension SelectedHolidayPackageVC {
                                          "HolidayContactdetailsTVCell",
                                          "EmptyTVCell"])
         
-        setupVisaTVCells()
+        
         
     }
     
     
+    func callAPI() {
+        
+        MySingleton.shared.loderString = "fdetails"
+        MySingleton.shared.afterResultsBool = true
+        loderBool = true
+        showLoadera()
+        
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.holidaySelectedVM?.CALL_GET_SELECTED_HOLIDAY_LIST_API(dictParam: [:], key: self.holidaykey)
+    }
     
-    func setupVisaTVCells() {
+    
+    func holidaySelectedResponse(response: HolidaySelectedModel) {
+        loderBool = false
+        hideLoadera()
+        
+        
+        if response.status == true {
+            MySingleton.shared.holidaySelectedData = response.data
+            selectedHolidayOrigen = response.data?.tour__2_data?[0].origin ?? ""
+            
+            
+            DispatchQueue.main.async {
+                self.setupTVCells()
+            }
+            
+        }
+    }
+    
+    
+    
+    
+    func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
         MySingleton.shared.tablerow.append(TableRow(cellType:.HolidayItineraryTVCell))
+        
         MySingleton.shared.tablerow.append(TableRow(cellType:.HolidayContactdetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
@@ -76,15 +198,57 @@ extension SelectedHolidayPackageVC {
 }
 
 
+//origin:17
+//title:Mr
+//fullname:Shivam Provab
+//mailto:email:shivamrajpoot18897@gmail.com
+//country_code:104
+//p_number:7785070089
+//adult:2
+//child:1
+//infant:0
+//travel_date:31-07-2024
+//un_id:240517082858
+//otp:1234
+
+
 
 extension SelectedHolidayPackageVC {
     
+    func callHolidayEnquireyAPI() {
+        
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["origin"] = ""
+        MySingleton.shared.payload["title"] = MySingleton.shared.mrtitle
+        MySingleton.shared.payload["full_name"] = fname
+        MySingleton.shared.payload["email"] = emailid
+        MySingleton.shared.payload["country_code"] = MySingleton.shared.cruiseCountryCode
+        MySingleton.shared.payload["p_number"] = mobile
+        MySingleton.shared.payload["adult"] = defaults.string(forKey: UserDefaultsKeys.holidaydultCount)
+        MySingleton.shared.payload["child"] = defaults.string(forKey: UserDefaultsKeys.holidaychildCount)
+        MySingleton.shared.payload["infant"] = defaults.string(forKey: UserDefaultsKeys.holidayinfantsCount)
+        MySingleton.shared.payload["travel_date"] = defaults.string(forKey: UserDefaultsKeys.holidayfromtravelDate)
+        
+        MySingleton.shared.holidaySelectedVM?.CALL_HOLIDAY_ENQUIREY_API(dictParam: MySingleton.shared.payload)
+    }
     
-    func callAPI() {
-        print("callAPI")
+    
+    
+    func holidayEnquireySucesse(response: HolidayEnquireyModel) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.gotoSubmitOTPVC()
+        }
+    }
+    
+    
+    func gotoSubmitOTPVC() {
+        guard let vc = SubmitOTPVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: false)
     }
     
 }
+
 
 extension SelectedHolidayPackageVC {
     
@@ -94,6 +258,8 @@ extension SelectedHolidayPackageVC {
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
+        
+        callAPI()
     }
     
     
@@ -120,3 +286,5 @@ extension SelectedHolidayPackageVC {
     
     
 }
+
+
