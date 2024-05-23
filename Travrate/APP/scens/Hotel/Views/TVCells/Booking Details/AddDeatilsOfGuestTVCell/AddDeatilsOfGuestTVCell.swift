@@ -71,14 +71,14 @@ class AddDeatilsOfGuestTVCell: TableViewCell {
     
     
     func expandView() {
-        dropdownimg.image = UIImage(named: "downarrownew")?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
+        dropdownimg.image = UIImage(named: "dropup")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
         saveView.isHidden = false
         viewHeight.constant = 154
     }
     
     
     func collapsView() {
-        dropdownimg.image = UIImage(named: "downarrownew")?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
+        dropdownimg.image = UIImage(named: "downarrow")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
         saveView.isHidden = true
         viewHeight.constant = 0
     }

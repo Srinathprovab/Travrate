@@ -26,7 +26,7 @@ class AcceptCookiesTVCell: TableViewCell {
     var str2 = "Privacy & cookies"
     
     
-    var str3 = " and we receive the non-functional cookies. Via these non-functional cookies Travgate can approach you on another site based on the pages you have visited."
+    var str3 = " and we receive the non-functional cookies. Via these non-functional cookies Travrate can approach you on another site based on the pages you have visited."
     
     var delegate:AcceptCookiesTVCellDelegate?
     override func awakeFromNib() {

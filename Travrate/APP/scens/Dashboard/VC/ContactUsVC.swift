@@ -113,7 +113,7 @@ class ContactUsVC: BaseTableVC, mobilecontactusViewModelDelegate {
     }
     
     override func didTapOnMailBtnAction(cell: ContactUsTVCell) {
-        openEmail(mailstr: "support@travgate.com")
+        openEmail(mailstr: "support@travrate.com")
     }
   
     override func didTapOnPhoneBtnAction(cell: ContactUsTVCell) {

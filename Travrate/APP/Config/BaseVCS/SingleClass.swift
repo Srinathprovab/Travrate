@@ -61,7 +61,7 @@ class MySingleton {
     var farekey = String()
     var selectedFares = [SelectFare]()
     var indexpathA = [IndexPath]()
-    
+    var cancellationRoomStringArray = [Cancellation_string]()
     //Flight Search
     var loderimgurl = String()
     var afterResultsBool = false
@@ -123,6 +123,7 @@ class MySingleton {
     var mrtitle = String()
     var totalnights = String()
     var promocodebool = false
+    var un_id = String()
     
     
     var addBaggageBool = false
@@ -169,6 +170,14 @@ class MySingleton {
     var farerulesrefKey = [[String]]()
     var farerulesrefContent = [[String]]()
     var tapRegorLogonBool = false
+    var sportsTeamName = String()
+    var sportsTeamId = String()
+    var sportsVenuName = String()
+    var sportsVenuId = String()
+    var sportFromDate = String()
+    var sportToDate = String()
+    var sportscityName = String()
+    var sportscityId = String()
     
     var confpassword = String()
     var recentData:[Recent_searches]?
@@ -186,6 +195,8 @@ class MySingleton {
     var selectedIndexPathsReturn: Set<IndexPath> = []
     var holidaylist = [HolidayListData]()
     var holidaySelectedData:HolidaySelectedData?
+    var holidayItinerary = [Itinerary]()
+    
     
     //View Models
     var loginvm:LoginViewModel?
@@ -215,6 +226,14 @@ class MySingleton {
     var getInsuranceItemsVM:GetInsuranceItemsVM?
     var holidayListVM:HolidayListVM?
     var holidaySelectedVM:HolidaySelectedVM?
+    var sportsCityvm:SportServiceVM?
+    var sportsCityList = [SportsServiceData]()
+    var sportsTeamtList = [SportsServiceData]()
+    var sportsVenuList = [SportsServiceData]()
+    var sportListVM:SportListVM?
+    var sportlist = [SportListData]()
+    
+    
     
     
     //TIMER

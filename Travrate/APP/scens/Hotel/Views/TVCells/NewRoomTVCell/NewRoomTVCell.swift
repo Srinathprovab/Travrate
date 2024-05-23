@@ -131,6 +131,7 @@ extension NewRoomTVCell: UITableViewDataSource ,UITableViewDelegate {
                                  str1Color: .AppBtnColor,
                                  str2Color: .AppBtnColor)
             
+            cell.cancellatonStringArray = data.cancellation_string ?? []
             cell.exactprice = data.net ?? ""
             cell.currency = data.currency ?? ""
             cell.indexpathvalue = newRoomindexPath

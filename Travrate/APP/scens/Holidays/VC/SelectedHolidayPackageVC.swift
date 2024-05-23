@@ -8,8 +8,7 @@
 import UIKit
 
 class SelectedHolidayPackageVC: BaseTableVC, HolidaySelectedVMDelegate {
-    
-    
+  
     
     static var newInstance: SelectedHolidayPackageVC? {
         let storyboard = UIStoryboard(name: Storyboard.Holidays.name,
@@ -169,7 +168,7 @@ extension SelectedHolidayPackageVC {
         if response.status == true {
             MySingleton.shared.holidaySelectedData = response.data
             selectedHolidayOrigen = response.data?.tour__2_data?[0].origin ?? ""
-            
+            MySingleton.shared.holidayItinerary = response.data?.tour__2_data?[0].itinerary ?? []
             
             DispatchQueue.main.async {
                 self.setupTVCells()
@@ -200,7 +199,7 @@ extension SelectedHolidayPackageVC {
 
 //origin:17
 //title:Mr
-//fullname:Shivam Provab
+//fullname:Shivam
 //mailto:email:shivamrajpoot18897@gmail.com
 //country_code:104
 //p_number:7785070089
@@ -208,8 +207,6 @@ extension SelectedHolidayPackageVC {
 //child:1
 //infant:0
 //travel_date:31-07-2024
-//un_id:240517082858
-//otp:1234
 
 
 
@@ -218,26 +215,31 @@ extension SelectedHolidayPackageVC {
     func callHolidayEnquireyAPI() {
         
         MySingleton.shared.payload.removeAll()
-        MySingleton.shared.payload["origin"] = ""
+        MySingleton.shared.payload["origin"] = selectedHolidayOrigen
         MySingleton.shared.payload["title"] = MySingleton.shared.mrtitle
-        MySingleton.shared.payload["full_name"] = fname
+        MySingleton.shared.payload["fullname"] = fname
         MySingleton.shared.payload["email"] = emailid
         MySingleton.shared.payload["country_code"] = MySingleton.shared.cruiseCountryCode
         MySingleton.shared.payload["p_number"] = mobile
-        MySingleton.shared.payload["adult"] = defaults.string(forKey: UserDefaultsKeys.holidaydultCount)
-        MySingleton.shared.payload["child"] = defaults.string(forKey: UserDefaultsKeys.holidaychildCount)
-        MySingleton.shared.payload["infant"] = defaults.string(forKey: UserDefaultsKeys.holidayinfantsCount)
-        MySingleton.shared.payload["travel_date"] = defaults.string(forKey: UserDefaultsKeys.holidayfromtravelDate)
+        MySingleton.shared.payload["adult"] = defaults.string(forKey: UserDefaultsKeys.holidaydultCount) ?? "1"
+        MySingleton.shared.payload["child"] = defaults.string(forKey: UserDefaultsKeys.holidaychildCount) ?? "0"
+        MySingleton.shared.payload["infant"] = defaults.string(forKey: UserDefaultsKeys.holidayinfantsCount) ?? "0"
+        MySingleton.shared.payload["travel_date"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.holidayfromtravelDate) ?? "", f1: "dd/MM/yyyy", f2: "dd-MM-yyyy")
         
-        MySingleton.shared.holidaySelectedVM?.CALL_HOLIDAY_ENQUIREY_API(dictParam: MySingleton.shared.payload)
+        MySingleton.shared.holidaySelectedVM?.CALL_SEND_OTP_REQUEST_API(dictParam: MySingleton.shared.payload)
     }
     
     
     
-    func holidayEnquireySucesse(response: HolidayEnquireyModel) {
+    func otpRequestResponse(response: OTPSucessModel) {
+        MySingleton.shared.un_id = response.data?.un_id ?? ""
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.gotoSubmitOTPVC()
         }
+    }
+    
+    func holidayEnquireySucesse(response: HolidayEnquireyModel) {
+        
     }
     
     

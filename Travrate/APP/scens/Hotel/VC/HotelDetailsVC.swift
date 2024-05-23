@@ -173,19 +173,20 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     
     //MARK: - didTapOnCancellationPolicyBtnAction
     override func didTapOnCancellationPolicyBtnAction(cell:NewRoomDetailsTVCell){
+        MySingleton.shared.cancellationRoomStringArray = cell.cancellatonStringArray
         
-        //        guard let vc = CancellationPolicyPopupVC.newInstance.self else {return}
-        //        vc.modalPresentationStyle = .overCurrentContext
-        //        vc.amount = cell.CancellationPolicyAmount
-        //        vc.datetime = cell.CancellationPolicyFromDate
-        //        vc.fartType = cell.fareTypeString
-        //        self.present(vc, animated: false)
+        
+        guard let vc = CancellationPolicyPopupVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
         
     }
     
     
     //MARK: - didTapOnSelectRoomBtnAction
     override func didTapOnSelectRoomBtnAction(cell:NewRoomDetailsTVCell){
+        
+        MySingleton.shared.cancellationRoomStringArray = cell.cancellatonStringArray
         
         bookNowlbl.isHidden = false
         

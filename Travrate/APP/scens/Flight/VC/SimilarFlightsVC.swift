@@ -86,7 +86,8 @@ class SimilarFlightsVC: BaseTableVC {
         MySingleton.shared.bookingsource = cell.bookingsource
         MySingleton.shared.bookingsourcekey = cell.bookingsourcekey
         
-        gotoSelectFareVC()
+       // gotoSelectFareVC()
+        showToast(message: "Still Under Development")
     }
     
     func gotoSelectFareVC() {

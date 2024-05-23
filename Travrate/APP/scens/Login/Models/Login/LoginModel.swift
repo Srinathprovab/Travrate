@@ -13,6 +13,7 @@ struct LoginModel : Codable {
     let msg : String?
     let message : String?
     let logindetails : Logindetails?
+    let search_id : Int?
     
     enum CodingKeys: String, CodingKey {
         
@@ -22,6 +23,7 @@ struct LoginModel : Codable {
         case msg = "msg"
         case message = "message"
         case logindetails = "user_id"
+        case search_id = "search_id"
     }
     
     init(from decoder: Decoder) throws {
@@ -32,6 +34,7 @@ struct LoginModel : Codable {
         msg = try values.decodeIfPresent(String.self, forKey: .msg)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         logindetails = try values.decodeIfPresent(Logindetails.self, forKey: .logindetails)
+        search_id = try values.decodeIfPresent(Int.self, forKey: .search_id)
     }
     
 }

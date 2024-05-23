@@ -23,7 +23,7 @@
         <!--Item 2-->
         <scene sceneID="f1d-8Z-qAp">
             <objects>
-                <viewController storyboardIdentifier="TripsVC" id="Nay-bV-Czo" customClass="TripsVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripsVC" id="Nay-bV-Czo" customClass="TripsVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bdb-Iu-KVH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,7 +86,7 @@
         <!--Item-->
         <scene sceneID="Sf1-4c-L5l">
             <objects>
-                <viewController storyboardIdentifier="MyAccountVC" id="D0i-1E-YHb" customClass="MyAccountVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyAccountVC" id="D0i-1E-YHb" customClass="MyAccountVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QVP-JN-d23">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,7 +129,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="3Z1-IZ-v5R">
                                         <rect key="frame" x="138" y="100" width="117" height="113"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dss-w2-b4F" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dss-w2-b4F" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                 <rect key="frame" x="18.666666666666657" y="0.0" width="80" height="80"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab3" translatesAutoresizingMaskIntoConstraints="NO" id="GxY-dW-y4M">
@@ -234,7 +234,7 @@
         <!--Item 1-->
         <scene sceneID="fWE-yD-T4Y">
             <objects>
-                <viewController storyboardIdentifier="DashboardVC" id="jcA-w4-Xr8" customClass="DashboardVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardVC" id="jcA-w4-Xr8" customClass="DashboardVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iZM-9Q-UxN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -265,7 +265,7 @@
         <!--View Controller-->
         <scene sceneID="hQ6-NR-noK">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="aOT-gx-Opk" customClass="ViewController" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="aOT-gx-Opk" customClass="ViewController" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ibm-Jg-M33">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -300,7 +300,7 @@
         <!--Dash BoardTBVC-->
         <scene sceneID="UN9-HT-s3r">
             <objects>
-                <tabBarController storyboardIdentifier="DashBoardTBVC" id="880-9x-frI" customClass="DashBoardTBVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="DashBoardTBVC" id="880-9x-frI" customClass="DashBoardTBVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KOS-MB-PC3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -321,7 +321,7 @@
         <!--Item-->
         <scene sceneID="Djd-tp-HRm">
             <objects>
-                <viewController storyboardIdentifier="MoreVC" id="1fJ-Fn-9ed" customClass="MoreVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MoreVC" id="1fJ-Fn-9ed" customClass="MoreVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9ir-Kv-KvI">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -384,12 +384,12 @@
         <!--Select LanguageVC-->
         <scene sceneID="lmM-ag-P3m">
             <objects>
-                <viewController storyboardIdentifier="SelectLanguageVC" id="Tw1-BK-V6G" customClass="SelectLanguageVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectLanguageVC" id="Tw1-BK-V6G" customClass="SelectLanguageVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fHJ-R9-e6A">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lk-j5-axA" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lk-j5-axA" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="209" width="393" height="643"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iF8-S3-49X">
@@ -411,7 +411,7 @@
                                             <action selector="closeBtnAction:" destination="Tw1-BK-V6G" eventType="touchUpInside" id="Mmg-g0-cIX"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUr-TW-oPU" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUr-TW-oPU" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                         <rect key="frame" x="16" y="74.666666666666686" width="80" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klt-8J-beU">
@@ -457,7 +457,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAX-hj-3So" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAX-hj-3So" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                         <rect key="frame" x="136" y="74.666666666666686" width="75" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHy-M7-X9d">
@@ -562,7 +562,7 @@
         <!--BookingsVC-->
         <scene sceneID="yMl-hq-9pD">
             <objects>
-                <viewController storyboardIdentifier="BookingsVC" id="J9G-Au-b1w" customClass="BookingsVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookingsVC" id="J9G-Au-b1w" customClass="BookingsVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wi0-AJ-wk4">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -607,13 +607,13 @@
                                         <rect key="frame" x="15" y="190" width="363" height="662"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XlC-Ed-hmp" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XlC-Ed-hmp" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                         <rect key="frame" x="10" y="120" width="373" height="60"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QcH-o6-PuL">
                                                 <rect key="frame" x="15" y="10" width="343" height="40"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Pm-5B-Hfg" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Pm-5B-Hfg" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="101" height="40"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egc-3b-ynh">
@@ -647,7 +647,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrO-GY-kvp" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrO-GY-kvp" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="121" y="0.0" width="101" height="40"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APn-PV-w5I">
@@ -681,7 +681,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMW-sy-ZcC" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMW-sy-ZcC" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="242" y="0.0" width="101" height="40"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancelled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uB-Jq-qX1">
@@ -774,7 +774,7 @@
         <!--LoderVC-->
         <scene sceneID="cLg-BA-Bak">
             <objects>
-                <viewController storyboardIdentifier="LoderVC" id="zcy-sH-JMr" customClass="LoderVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoderVC" id="zcy-sH-JMr" customClass="LoderVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fNV-iK-Dq9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -788,7 +788,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="l25-XI-TrN">
                                                 <rect key="frame" x="116.66666666666669" y="0.0" width="140" height="140"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-po-Fmn" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-po-Fmn" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dest" translatesAutoresizingMaskIntoConstraints="NO" id="Znw-uG-AlA">
@@ -1017,6 +1017,52 @@
                                                     <constraint firstAttribute="trailing" secondItem="PQj-wO-dlO" secondAttribute="trailing" constant="10" id="uEH-mi-oGd"/>
                                                 </constraints>
                                             </view>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HIT-em-5cu">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="120"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport Dubai International" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM5-Wl-C7W">
+                                                        <rect key="frame" x="10" y="9.9999999999999982" width="353" height="19.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport Ai Maktoum Dubai International Airport" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWt-Ls-Ji0">
+                                                        <rect key="frame" x="10" y="29.333333333333314" width="353" height="19.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 May 2024 To 23 May 2024" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zY6-93-A9M">
+                                                        <rect key="frame" x="10" y="48.666666666666686" width="353" height="19.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It will take a couple of seconds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buy-Wk-b1y">
+                                                        <rect key="frame" x="10" y="78" width="353" height="19.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" name="subtitleNewcolor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="cM5-Wl-C7W" secondAttribute="trailing" constant="10" id="1Je-9d-GJH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zY6-93-A9M" secondAttribute="trailing" constant="10" id="ACP-fC-cTS"/>
+                                                    <constraint firstItem="GWt-Ls-Ji0" firstAttribute="leading" secondItem="HIT-em-5cu" secondAttribute="leading" constant="10" id="BO6-um-i6W"/>
+                                                    <constraint firstAttribute="height" constant="120" id="BZr-Tn-EpT"/>
+                                                    <constraint firstItem="cM5-Wl-C7W" firstAttribute="top" secondItem="HIT-em-5cu" secondAttribute="top" constant="10" id="I6P-Ii-jvD"/>
+                                                    <constraint firstItem="zY6-93-A9M" firstAttribute="leading" secondItem="HIT-em-5cu" secondAttribute="leading" constant="10" id="U0j-Gv-foB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Buy-Wk-b1y" secondAttribute="trailing" constant="10" id="ZJf-3p-Mmp"/>
+                                                    <constraint firstItem="Buy-Wk-b1y" firstAttribute="leading" secondItem="HIT-em-5cu" secondAttribute="leading" constant="10" id="d4b-H6-T6l"/>
+                                                    <constraint firstItem="Buy-Wk-b1y" firstAttribute="top" secondItem="zY6-93-A9M" secondAttribute="bottom" constant="10" id="g3F-7s-w8I"/>
+                                                    <constraint firstItem="zY6-93-A9M" firstAttribute="top" secondItem="GWt-Ls-Ji0" secondAttribute="bottom" id="iiN-Eh-TPI"/>
+                                                    <constraint firstItem="cM5-Wl-C7W" firstAttribute="leading" secondItem="HIT-em-5cu" secondAttribute="leading" constant="10" id="isd-em-v4P"/>
+                                                    <constraint firstItem="GWt-Ls-Ji0" firstAttribute="top" secondItem="cM5-Wl-C7W" secondAttribute="bottom" id="kxy-X5-BcO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="GWt-Ls-Ji0" secondAttribute="trailing" constant="10" id="tC3-Xz-sOV"/>
+                                                    <constraint firstItem="Buy-Wk-b1y" firstAttribute="centerX" secondItem="HIT-em-5cu" secondAttribute="centerX" id="wPj-OY-gLB"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -1051,6 +1097,10 @@
                         <outlet property="locationslbl" destination="m0d-JP-ugV" id="oWe-ln-Jbc"/>
                         <outlet property="nightslbl" destination="vlH-8Y-c37" id="2PO-Qw-paV"/>
                         <outlet property="roomslbl" destination="Pb8-MD-maP" id="0ih-GZ-VJd"/>
+                        <outlet property="sportdateslbl" destination="zY6-93-A9M" id="2oh-b0-QIE"/>
+                        <outlet property="sporteventlbl" destination="cM5-Wl-C7W" id="gUR-CX-Ylo"/>
+                        <outlet property="sportsView" destination="HIT-em-5cu" id="dmU-aU-EDt"/>
+                        <outlet property="sportvenulbl" destination="GWt-Ls-Ji0" id="HWb-Ju-qut"/>
                         <outlet property="transfersInfoView" destination="jYA-E6-L83" id="q8P-sg-nac"/>
                         <outlet property="triptypelbl" destination="NE5-ck-e7C" id="wOV-39-B7z"/>
                     </connections>
@@ -1062,7 +1112,7 @@
         <!--Contact UsVC-->
         <scene sceneID="p1l-9O-Qn1">
             <objects>
-                <viewController storyboardIdentifier="ContactUsVC" id="PQJ-li-pTf" customClass="ContactUsVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactUsVC" id="PQJ-li-pTf" customClass="ContactUsVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HSe-Ng-Oaa">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1140,7 +1190,7 @@
         <!--More DetailsVC-->
         <scene sceneID="93p-V4-Mts">
             <objects>
-                <viewController storyboardIdentifier="MoreDetailsVC" id="Ehb-U1-0UJ" customClass="MoreDetailsVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MoreDetailsVC" id="Ehb-U1-0UJ" customClass="MoreDetailsVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZKn-x4-UuW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1220,7 +1270,7 @@
         <!--Accept CookiesVC-->
         <scene sceneID="kRo-lq-9zp">
             <objects>
-                <viewController storyboardIdentifier="AcceptCookiesVC" id="GFU-gc-ihe" customClass="AcceptCookiesVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AcceptCookiesVC" id="GFU-gc-ihe" customClass="AcceptCookiesVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e6A-rr-bV9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1299,6 +1349,9 @@
         </namedColor>
         <namedColor name="WhiteColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subtitleNewcolor">
+            <color red="0.3449999988079071" green="0.3449999988079071" blue="0.3449999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

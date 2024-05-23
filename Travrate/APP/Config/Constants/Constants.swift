@@ -243,7 +243,13 @@ struct ApiEndpoints {
     static let holiday = "holiday"
     static let holiday_more_info = "holiday/more_info"
     static let holiday_holiday_requests = "holiday/holiday_requests"
-    
+    static let holiday_send_otp_for_special_offer = "holiday/send_otp_for_special_offer"
+    static let general_get_sport_city_list = "general/get_sport_city_list"
+    static let general_get_sport_event_list = "general/get_sport_event_list"
+    static let general_get_sport_type = "general/get_sport_type"
+    static let sport_api_sport_search = "sport/api_sport_search"
+    static let general_pre_sports_search = "general/pre_sports_search"
+ 
 }
 
 /*App messages*/

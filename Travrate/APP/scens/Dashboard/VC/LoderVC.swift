@@ -25,6 +25,10 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     @IBOutlet weak var roomslbl: UILabel!
     @IBOutlet weak var transfersInfoView: UIView!
     
+    @IBOutlet weak var sportsView: UIView!
+    @IBOutlet weak var sporteventlbl: UILabel!
+    @IBOutlet weak var sportvenulbl: UILabel!
+    @IBOutlet weak var sportdateslbl: UILabel!
     
     var searchdata:SearchData?
     var searchHoteldata:SearchHotelData?
@@ -98,6 +102,10 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
            
             MySingleton.shared.loderString = "fdetails"
            
+            
+        }else if tabselect == "Sports" {
+            
+            
             
         }else {
             
@@ -218,6 +226,14 @@ extension LoderVC {
                 MySingleton.shared.loderString = "fdetails"
             }
             
+        }else if tabselect == "Sports" {
+            
+            sportsView.isHidden = false
+            MySingleton.shared.loderString = "fdetails"
+            sporteventlbl.text = MySingleton.shared.sportsTeamName
+            sportvenulbl.text = MySingleton.shared.sportsVenuName
+            sportdateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")) To \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy"))"
+           
         }else {
            // MySingleton.shared.hotellodervm?.CALL_HOTEL_LODER_DETAILS_API(dictParam: MySingleton.shared.payload)
             

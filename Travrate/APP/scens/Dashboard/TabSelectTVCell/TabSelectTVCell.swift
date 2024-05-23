@@ -40,9 +40,11 @@ class TabSelectTVCell: TableViewCell {
     @IBOutlet weak var moreServiceCV: UICollectionView!
     @IBOutlet weak var titlelbl: UILabel!
     
-    
-    var serviceArray = ["Visa","Holidays","Transfers","Sports","Cruise","Auto pay","Insurence"]
-    var serviceImgsArray = ["s1","s2","s3","sports","s5","s6","s7"]
+//    var serviceArray1 = ["Visa","Holidays","Transfers","Sports","Cruise","Auto pay","Insurence"]
+//    var serviceImgsArray1 = ["s1","s2","s3","sports","s5","s6","s7"]
+
+    var serviceArray = ["Insurence","Transfers","Sports","Car rental","Holidays","Cruise","Auto pay"]
+    var serviceImgsArray = ["s7","s3","sports","s3","s2","s5","s6"]
     var delegate:TabSelectTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -176,6 +178,42 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as? MoreServiceCVCell {
             cell.titlelbl.text = serviceArray[indexPath.row]
             cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal)
+            
+            
+            
+            switch cell.titlelbl.text {
+                
+            case "Visa":
+                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
+                break
+                
+           
+            case "Car rental":
+                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
+                break
+                
+            case "Transfers":
+                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
+                break
+                
+            case "Sports":
+                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
+                break
+                
+           
+            case "Auto pay":
+                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
+                break
+                
+                
+            case "Insurence":
+                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
+                break
+                
+                
+            default:
+                break
+            }
             
             
             // Check if the cell is selected and set its border color accordingly

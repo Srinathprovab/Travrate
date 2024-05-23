@@ -29,8 +29,14 @@ class CruiseEnquireySucessVC: UIViewController {
         
         callapibool = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
-            
+           
+            if let  tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect), tabselect == "Cruise" {
+                self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
+                
+            }else {
+                self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
+                
+            }
         }
     }
     

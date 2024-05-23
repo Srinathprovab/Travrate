@@ -275,6 +275,7 @@ extension SearchHotelVC {
     
     func gotoHotelResultVC() {
         
+        MySingleton.shared.loderString = "loder"
         MySingleton.shared.afterResultsBool = false
         hotelSearchResult.removeAll()
         loderBool = true

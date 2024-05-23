@@ -72,8 +72,10 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     
     var timeArray = ["12:00 AM - 06:00 AM","06:00 AM - 12:00 PM","12:00 PM - 12:00 PM","06:00 PM - 12:00 AM"]
     var selectClassArray = ["Economy","Premium","First","Business"]
-    var infoimgArray = ["in1","in2","in3","in4","in5","in6"]
-    var infoArray = ["Add Baggage","Meal","Add Insurance","Add Special assistance","Add Seat","Add airport Transfers"]
+    var infoimgArray = ["in1","in2","in3","in4"]
+   // var infoimgArray1 = ["in1","in2","in3","in4","in5","in6"]
+  //  var infoArray1 = ["Add Baggage","Meal","Add Insurance","Add Special assistance","Add Seat","Add airport Transfers"]
+    var infoArray = ["Add Baggage","Meal","Add Insurance","Add Special assistance"]
     var delegate:FlightSearchTVCellDelegate?
     var infoViewbool = false
     let onewayclassDropdown = DropDown()
@@ -529,7 +531,7 @@ extension FlightSearchTVCell:UICollectionViewDelegate,UICollectionViewDataSource
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 5
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         infoCV.collectionViewLayout = layout
         infoCV.isScrollEnabled = false
         infoCV.allowsMultipleSelection = true

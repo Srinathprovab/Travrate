@@ -114,6 +114,7 @@ enum TVCellType {
     case HotelFareSummaryTVCell
     case UserSpecificationTVCell
     case AddDeatilsOfGuestTVCell
+    case CancellationStringTVCell
     
     
     //VISA
@@ -144,6 +145,8 @@ enum TVCellType {
     case SportInfoTVCell
     case SelectedSportInfoTVCell
     case SportsStadiumTVCell
+    case ViewStadiumBtnsTVCell
+    case SportsBookNowTVCell
     
     
     //Insurence

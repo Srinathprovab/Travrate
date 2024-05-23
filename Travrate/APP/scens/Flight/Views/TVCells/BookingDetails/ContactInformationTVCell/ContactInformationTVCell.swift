@@ -139,7 +139,16 @@ class ContactInformationTVCell: TableViewCell {
         
         
         setupLabels(lbl: titlelbl, text: "Contact Information", textcolor: .AppLabelColor, font: .LatoSemibold(size: 16))
-        setupLabels(lbl: subTitlelbl, text: "E-Ticket will be sent to the registered email address", textcolor: .SubTitleColor, font: .LatoRegular(size: 12))
+       // setupLabels(lbl: subTitlelbl, text: "E-Ticket will be sent to the registered email address", textcolor: .SubTitleColor, font: .LatoRegular(size: 12))
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Flight" {
+            setupLabels(lbl: subTitlelbl, text: "E-Ticket will be sent to the registered email address.", textcolor: .SubTitleColor, font: .LatoRegular(size: 12))
+        }else {
+            setupLabels(lbl: subTitlelbl, text: "Your confirmation mail will be sent to your registered email address.", textcolor: .SubTitleColor, font: .LatoRegular(size: 12))
+        }
+        
+        
         setupLabels(lbl: countryCodeLbl, text: "", textcolor: .SubTitleColor, font: .LatoRegular(size: 16))
         
         

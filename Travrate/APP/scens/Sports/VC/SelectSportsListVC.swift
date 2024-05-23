@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SelectSportsListVC: BaseTableVC {
+class SelectSportsListVC: BaseTableVC, SportListVMDelegate {
+    
+    
     
     static var newInstance: SelectSportsListVC? {
         let storyboard = UIStoryboard(name: Storyboard.Sports.name,
@@ -19,14 +21,9 @@ class SelectSportsListVC: BaseTableVC {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        MySingleton.shared.loderString = "fdetails"
-        MySingleton.shared.afterResultsBool = true
-        loderBool = true
-        showLoadera()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [unowned self] in
-            loderBool = false
-            hideLoadera()
+        if callapibool == true {
+            callAPI()
         }
         
     }
@@ -37,6 +34,7 @@ class SelectSportsListVC: BaseTableVC {
         
         // Do any additional setup after loading the view.
         setupUI()
+        MySingleton.shared.sportListVM = SportListVM(self)
     }
     
     
@@ -72,22 +70,52 @@ extension SelectSportsListVC {
         commonTableView.registerTVCells(["SportInfoTVCell",
                                          "EmptyTVCell"])
         
-        setupVisaTVCells()
         
     }
     
     
-    func setupVisaTVCells() {
+    func callAPI() {
+        
+        MySingleton.shared.loderString = "loder"
+        loderBool = true
+        showLoadera()
+        
+    
+        MySingleton.shared.sportListVM?.CALL_GET_PRE_SPORTS_SEARCH_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    func sportPreSearchResponse(response: LoginModel) {
+        
+        
+        DispatchQueue.main.async {
+            MySingleton.shared.payload.removeAll()
+            MySingleton.shared.sportListVM?.CALL_GET_SPORTS_SEARCH_API(dictParam: [:], searchid: "\(response.search_id ?? 0)")
+        }
+    }
+    
+    func sportListResponse(response: SportListModel) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [unowned self] in
+            loderBool = false
+            hideLoadera()
+        }
+        
+        
+        DispatchQueue.main.async {
+            self.setupTVCells()
+        }
+        
+        
+    }
+    
+    
+    func setupTVCells() {
+        
         MySingleton.shared.tablerow.removeAll()
-        
-        
         
         for _ in 0...100 {
             MySingleton.shared.tablerow.append(TableRow(cellType:.SportInfoTVCell))
         }
-        
-        
-        
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
@@ -104,6 +132,7 @@ extension SelectSportsListVC {
     
     
     func gotoViewTicketInfoVC() {
+        callapibool = true
         guard let vc = ViewTicketInfoVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)

@@ -7,7 +7,10 @@
 
 import UIKit
 
-class SubmitOTPVC: UIViewController {
+class SubmitOTPVC: UIViewController, HolidaySelectedVMDelegate {
+  
+   
+    
     
     @IBOutlet weak var otpTF: UITextField!
     @IBOutlet weak var submitBtn: UIButton!
@@ -25,6 +28,8 @@ class SubmitOTPVC: UIViewController {
         
         // Do any additional setup after loading the view.
         setupUI()
+        
+        MySingleton.shared.holidaySelectedVM = HolidaySelectedVM(self)
     }
     
     
@@ -46,20 +51,25 @@ class SubmitOTPVC: UIViewController {
 extension SubmitOTPVC {
     
     func callHolidayEnquireyAPI() {
-        
-        MySingleton.shared.payload["un_id"] = "240517082858"
-        MySingleton.shared.payload["otp"] = otpTF.text
-        
-        printContent(MySingleton.shared.payload)
-        
-       // MySingleton.shared.holidaySelectedVM?.CALL_HOLIDAY_ENQUIREY_API(dictParam: MySingleton.shared.payload)
+        if otpTF.text?.isEmpty == true {
+            showToast(message: "Please Enter Otp")
+        }else {
+            MySingleton.shared.payload["un_id"] = MySingleton.shared.un_id
+            MySingleton.shared.payload["otp"] = otpTF.text
+            
+            print(MySingleton.shared.payload)
+            
+            MySingleton.shared.holidaySelectedVM?.CALL_HOLIDAY_ENQUIREY_API(dictParam: MySingleton.shared.payload)
+        }
+       
+      
     }
     
     
     
-    func holidayEnquireySucesse(response: LoginModel) {
+    func holidayEnquireySucesse(response: HolidayEnquireyModel) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-           // self.gotoCruiseEnquireySucessVC()
+            self.gotoCruiseEnquireySucessVC()
          }
     }
     
@@ -71,4 +81,8 @@ extension SubmitOTPVC {
         present(vc, animated: false)
     }
     
+    func holidaySelectedResponse(response: HolidaySelectedModel) {}
+    func otpRequestResponse(response: OTPSucessModel) {}
+    
+   
 }

@@ -75,7 +75,7 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
         locname = cellInfo?.buttonTitle ?? ""
         
         
-        updateHeight(height: 188)
+        updateHeight(height: 200)
         
         
     }
@@ -171,7 +171,7 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
         
         NotificationCenter.default.post(name: NSNotification.Name("roomtapbool"), object: true)
         
-        updateHeight(height: 188)
+        updateHeight(height: 200)
         delegate?.didTapOnRoomsBtn(cell:self)
     }
     

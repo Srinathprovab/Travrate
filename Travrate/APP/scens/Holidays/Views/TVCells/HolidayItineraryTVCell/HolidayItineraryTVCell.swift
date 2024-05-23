@@ -40,7 +40,7 @@ class HolidayItineraryTVCell: TableViewCell {
     }
     
     func updateHeight() {
-        tvHeight.constant = 10 * 260
+        tvHeight.constant =  CGFloat(MySingleton.shared.holidayItinerary.count * 260)
         itineraryTV.reloadData()
     }
     
@@ -114,7 +114,7 @@ extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return  MySingleton.shared.holidayItinerary.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -122,7 +122,10 @@ extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CruiseAddItineraryTVCell {
             
             cell.selectionStyle = .none
-            
+            let data =  MySingleton.shared.holidayItinerary[indexPath.row]
+            cell.daylbl.text = "Day \(indexPath.row + 1)"
+            cell.titlelbl.text = data.title ?? ""
+            cell.subtitlelbl.text = data.desc ?? ""
             c = cell
             
         }

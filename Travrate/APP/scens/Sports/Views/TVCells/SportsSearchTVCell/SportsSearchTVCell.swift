@@ -17,7 +17,9 @@ protocol SportsSearchTVCellDelegate {
     
 }
 
-class SportsSearchTVCell: TableViewCell {
+class SportsSearchTVCell: TableViewCell, SportServiceVMDelegate {
+    
+    
     
     @IBOutlet weak var selectServiceView: UIView!
     @IBOutlet weak var selectServicelbl: UILabel!
@@ -29,7 +31,15 @@ class SportsSearchTVCell: TableViewCell {
     @IBOutlet weak var retDatelbl: UILabel!
     @IBOutlet weak var searchbtn: UIButton!
     
+    @IBOutlet weak var teamTV: UITableView!
+    @IBOutlet weak var teamTVheight: NSLayoutConstraint!
+    @IBOutlet weak var venuTV: UITableView!
+    @IBOutlet weak var venuTVHeight: NSLayoutConstraint!
     
+    
+    var txtbool = Bool()
+    var sportCityNameArray = [String]()
+    var sportCityIdArray = [String]()
     let depDatePicker = UIDatePicker()
     let retDatePicker = UIDatePicker()
     let dropDown = DropDown()
@@ -39,6 +49,9 @@ class SportsSearchTVCell: TableViewCell {
         super.awakeFromNib()
         // Initialization code
         setupUI()
+        
+        MySingleton.shared.sportsCityvm = SportServiceVM(self)
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -52,17 +65,52 @@ class SportsSearchTVCell: TableViewCell {
         
         showdepDatePicker()
         showretDatePicker()
-        setupTF(tf: teamTF)
-        setupTF(tf: venuTF)
-        setupDropDown()
+       
+        
         searchbtn.layer.cornerRadius = 4
+        
+        teamTF.tag = 1
+        teamTF.textColor = .TitleColor
+        teamTF.font = .OpenSansMedium(size: 16)
+        teamTF.delegate = self
+        teamTF.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
+        teamTF.setLeftPaddingPoints(35)
+        
+        venuTF.tag = 2
+        venuTF.textColor = .TitleColor
+        venuTF.font = .OpenSansMedium(size: 16)
+        venuTF.delegate = self
+        venuTF.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
+        venuTF.setLeftPaddingPoints(35)
+        
+        teamTV.layer.borderWidth = 1
+        teamTV.layer.borderColor = UIColor.AppBorderColor.cgColor
+        
+        
+        venuTV.layer.borderWidth = 1
+        venuTV.layer.borderColor = UIColor.AppBorderColor.cgColor
         
     }
     
-    func setupTF(tf:UITextField) {
-        tf.font = .OpenSansRegular(size: 14)
-        tf.setLeftPaddingPoints(35)
+    override func updateUI() {
+        
+        
+        setupTV()
+        teamTVheight.constant = 0
+        venuTVHeight.constant = 0
+       // CallSportTeamListAPI(str: "")
+        
+        sportCityNameArray.removeAll()
+        sportCityNameArray.append("Please Select Service")
+        sportCityIdArray.append("")
+        MySingleton.shared.sportsCityList.forEach { i in
+            sportCityNameArray.append("\(i.value ?? "")")
+            sportCityIdArray.append("\(i.id ?? "")")
+        }
+        
+        setupDropDown()
     }
+  
     
     @IBAction func didTapOnClearvenuTFBtnAction(_ sender: Any) {
         venuTF.text = ""
@@ -81,6 +129,9 @@ class SportsSearchTVCell: TableViewCell {
         delegate?.didTapOnSearchSportsBtnAction(cell: self)
     }
     
+    
+   
+  
 }
 
 
@@ -92,7 +143,7 @@ extension SportsSearchTVCell {
     
     func setupDropDown() {
         
-        dropDown.dataSource = ["aaaaaa","bbbbbb","cccccc","dddddd"]
+        dropDown.dataSource = sportCityNameArray
         dropDown.direction = .bottom
         dropDown.backgroundColor = .WhiteColor
         dropDown.anchorView = self.selectServiceView
@@ -100,8 +151,11 @@ extension SportsSearchTVCell {
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
             
             
-            self?.selectServicelbl.text = item
+            self?.selectServicelbl.text = self?.sportCityNameArray[index]
             self?.selectServicelbl.textColor = .TitleColor
+            
+            MySingleton.shared.sportscityName = self?.sportCityNameArray[index] ?? ""
+            MySingleton.shared.sportscityId = self?.sportCityIdArray[index] ?? ""
             
             self?.delegate?.didTapOnSelectServiceBtn(cell: self!)
             
@@ -222,3 +276,162 @@ extension SportsSearchTVCell {
     
 }
 
+
+
+extension SportsSearchTVCell:UITableViewDelegate, UITableViewDataSource {
+    
+    //MARK: - setupTV
+    func setupTV() {
+        teamTV.delegate = self
+        teamTV.dataSource = self
+        teamTV.register(UINib(nibName: "SelectSportServiceTVCell", bundle: nil), forCellReuseIdentifier: "cell")
+        
+        venuTV.delegate = self
+        venuTV.dataSource = self
+        venuTV.register(UINib(nibName: "SelectSportServiceTVCell", bundle: nil), forCellReuseIdentifier: "cell1")
+    }
+    
+    
+    
+    //MARK: - Text Filed Editing Changed
+    
+    @objc func textFiledEditingChanged(_ textField:UITextField) {
+        
+        
+        if textField == teamTF {
+            txtbool = true
+            CallSportTeamListAPI(str: textField.text ?? "")
+        }else {
+            txtbool = false
+            CallSportVenuListAPI(str: textField.text ?? "")
+        }
+        
+        
+    }
+    
+    
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == teamTF {
+            teamTF.placeholder = ""
+          //  CallSportTeamListAPI(str: textField.text ?? "")
+        }else {
+            venuTF.placeholder = ""
+         //   CallSportVenuListAPI(str: textField.text ?? "")
+        }
+    }
+    
+    
+    
+    
+    
+    func CallSportTeamListAPI(str:String) {
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["term"] = str
+        MySingleton.shared.sportsCityvm?.CALL_GET_SPORTS_EVENT_LIST_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    func CallSportVenuListAPI(str:String) {
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["term"] = str
+        MySingleton.shared.sportsCityvm?.CALL_GET_SPORTS_TYPE_LIST_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    
+    
+    func sportServiceList(response: SportsServiceModel) {
+        if txtbool == true {
+            
+            MySingleton.shared.sportsTeamtList = response.data ?? []
+            teamTVheight.constant = 260
+            venuTVHeight.constant = 0
+            
+            DispatchQueue.main.async {[self] in
+                teamTV.reloadData()
+            }
+        }else {
+            
+            MySingleton.shared.sportsVenuList = response.data ?? []
+            
+            
+            venuTVHeight.constant = 260
+            teamTVheight.constant = 0
+            
+            DispatchQueue.main.async {[self] in
+                venuTV.reloadData()
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if tableView == teamTV {
+            return MySingleton.shared.sportsTeamtList.count
+        }else {
+            return MySingleton.shared.sportsVenuList.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var ccell = UITableViewCell()
+        
+        if tableView == teamTV {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? SelectSportServiceTVCell {
+                cell.selectionStyle = .none
+                let data = MySingleton.shared.sportsTeamtList[indexPath.row]
+                cell.titlelbl.text = data.label
+                cell.teamid = data.id ?? ""
+                ccell = cell
+            }
+        }else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? SelectSportServiceTVCell {
+                cell.selectionStyle = .none
+                let data = MySingleton.shared.sportsVenuList[indexPath.row]
+                cell.titlelbl.text = data.name
+                cell.venuId = data.id ?? ""
+                ccell = cell
+            }
+        }
+        
+        return ccell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? SelectSportServiceTVCell {
+            
+            
+            
+            
+            if tableView == teamTV {
+                
+                
+                teamTF.text = cell.titlelbl.text ?? ""
+                teamTF.resignFirstResponder()
+                venuTF.becomeFirstResponder()
+                MySingleton.shared.sportsTeamName = cell.titlelbl.text ?? ""
+                MySingleton.shared.sportsTeamId = cell.teamid
+                
+            }else {
+               
+                venuTF.text = cell.titlelbl.text ?? ""
+                venuTF.resignFirstResponder()
+                MySingleton.shared.sportsVenuName = cell.titlelbl.text ?? ""
+                MySingleton.shared.sportsVenuId = cell.venuId
+                
+                
+               
+            }
+            
+            teamTVheight.constant = 0
+            venuTVHeight.constant = 0
+        }
+    }
+    
+    
+    
+    
+}

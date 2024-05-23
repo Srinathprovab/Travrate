@@ -249,6 +249,7 @@ extension DashboardVC {
     }
     
     func gotoSportsSearchVC() {
+        callapibool = true
         guard let vc = SportsSearchVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)

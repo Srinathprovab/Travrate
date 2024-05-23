@@ -21,6 +21,8 @@ class NewRoomDetailsTVCell: UITableViewCell {
     @IBOutlet weak var bablbl: UILabel!
     @IBOutlet weak var selectRoomBtnView: BorderedView!
     
+    
+    var cancellatonStringArray = [Cancellation_string]()
     var selectedRoom = String()
     var currency = ""
     var exactprice = ""

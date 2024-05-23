@@ -9,6 +9,7 @@ import Foundation
 protocol HolidaySelectedVMDelegate : BaseViewModelProtocol {
     func holidaySelectedResponse(response : HolidaySelectedModel)
     func holidayEnquireySucesse(response : HolidayEnquireyModel)
+    func otpRequestResponse(response : OTPSucessModel)
 }
 
 class HolidaySelectedVM {
@@ -41,17 +42,40 @@ class HolidaySelectedVM {
     }
     
     
+    func CALL_SEND_OTP_REQUEST_API(dictParam: [String: Any]){
+        let parms = NSDictionary(dictionary:dictParam)
+        print("Parameters = \(parms)")
+
+       // self.view?.showLoader()
+
+        ServiceManager.postOrPutApiCall(endPoint: ApiEndpoints.holiday_send_otp_for_special_offer, parameters: parms, resultType: OTPSucessModel.self, p:dictParam) { sucess, result, errorMessage in
+
+            DispatchQueue.main.async {
+               // self.view?.hideLoader()
+                if sucess {
+                    guard let response = result else {return}
+                    self.view.otpRequestResponse(response: response)
+                } else {
+                   
+                    self.view.showToast(message: errorMessage ?? "")
+                }
+            }
+        }
+    }
+    
+    
+    
     
     func CALL_HOLIDAY_ENQUIREY_API(dictParam: [String: Any]){
         let parms = NSDictionary(dictionary:dictParam)
         print("Parameters = \(parms)")
 
-        self.view?.showLoader()
+       // self.view?.showLoader()
 
         ServiceManager.postOrPutApiCall(endPoint: ApiEndpoints.holiday_holiday_requests, parameters: parms, resultType: HolidayEnquireyModel.self, p:dictParam) { sucess, result, errorMessage in
 
             DispatchQueue.main.async {
-                self.view?.hideLoader()
+               // self.view?.hideLoader()
                 if sucess {
                     guard let response = result else {return}
                     self.view.holidayEnquireySucesse(response: response)

@@ -146,26 +146,26 @@
                                 <rect key="frame" x="24" y="226" width="345" height="400"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="mjc-Eq-ktq">
-                                        <rect key="frame" x="97.666666666666686" y="50" width="150" height="50"/>
+                                        <rect key="frame" x="97.666666666666686" y="30" width="150" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="3kE-eT-Gyt"/>
                                             <constraint firstAttribute="width" constant="150" id="AYb-V8-ECn"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Verification" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hgo-vW-A7M">
-                                        <rect key="frame" x="88.333333333333329" y="119.99999999999999" width="168.33333333333337" height="24.333333333333329"/>
+                                        <rect key="frame" x="88.333333333333329" y="100" width="168.33333333333337" height="24.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Verification We have sent an OTP to the provided email. Kindly use the otp to submit Your enquiry.Thank You." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3T-Sp-7CF">
-                                        <rect key="frame" x="20" y="158.33333333333331" width="305" height="58.333333333333343"/>
+                                        <rect key="frame" x="20" y="138.33333333333331" width="305" height="58.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzz-AD-eYt" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                                        <rect key="frame" x="62.666666666666686" y="236.66666666666669" width="220" height="50"/>
+                                        <rect key="frame" x="62.666666666666686" y="216.66666666666669" width="220" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter OTP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNG-Qk-545">
                                                 <rect key="frame" x="0.0" y="0.0" width="220" height="50"/>
@@ -195,7 +195,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDs-iU-tgm">
-                                        <rect key="frame" x="92.666666666666686" y="314.66666666666663" width="160" height="60"/>
+                                        <rect key="frame" x="92.666666666666686" y="294.66666666666663" width="160" height="60"/>
                                         <color key="backgroundColor" name="TransferBookNowColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="0cm-eS-xpC"/>
@@ -224,7 +224,7 @@
                                     <constraint firstItem="jzz-AD-eYt" firstAttribute="top" secondItem="f3T-Sp-7CF" secondAttribute="bottom" constant="20" id="orz-wl-MDd"/>
                                     <constraint firstAttribute="height" constant="400" id="qOX-RW-YkP"/>
                                     <constraint firstItem="LDs-iU-tgm" firstAttribute="centerX" secondItem="ggP-fH-9gq" secondAttribute="centerX" id="r3d-kY-beD"/>
-                                    <constraint firstItem="mjc-Eq-ktq" firstAttribute="top" secondItem="ggP-fH-9gq" secondAttribute="top" constant="50" id="xbI-hE-fAX"/>
+                                    <constraint firstItem="mjc-Eq-ktq" firstAttribute="top" secondItem="ggP-fH-9gq" secondAttribute="top" constant="30" id="xbI-hE-fAX"/>
                                     <constraint firstItem="Hgo-vW-A7M" firstAttribute="centerX" secondItem="mjc-Eq-ktq" secondAttribute="centerX" id="xf7-YA-6rv"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

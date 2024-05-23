@@ -103,10 +103,3 @@ struct Post_data : Codable {
 }
 
 
-
-//"appreference": "BAS-H-DW-1410",
-//            "searchid": "520",
-//            "apicurrency": "KWD",
-//            "url": "https://provab.net/travgate/mobile/index.php/payment_gateway/updatePayment",
-//            "pg_record": null
-//        }

@@ -106,6 +106,10 @@ extension HotelBookingDetailsVC {
         
     }
     
+    
+    
+    
+    
 }
 
 
@@ -296,6 +300,24 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
         }
         
     }
+    
+    
+    //MARK: - HotelFareSummaryTVCell Delegate Methods
+    override func didTapOnUserTermsBtnAction(cell: HotelFareSummaryTVCell) {
+        gotoMoreDetailsVC(str: "Terms & Conditions")
+    }
+    
+    override func didTapOnPrivacyPolicyBtnAction(cell: HotelFareSummaryTVCell) {
+        gotoMoreDetailsVC(str: "Privacy Policy")
+    }
+    
+    func gotoMoreDetailsVC(str:String){
+        guard let vc = MoreDetailsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.titleString = str
+        present(vc, animated: true)
+    }
+    
 }
 
 //MARK: - setupUI
