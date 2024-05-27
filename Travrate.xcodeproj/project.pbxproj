@@ -613,6 +613,9 @@
 		65207EDC2BF494320076EF76 /* ResetPasswordTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65207C8D2BF494300076EF76 /* ResetPasswordTVCell.xib */; };
 		65207EDD2BF494320076EF76 /* ResetPasswordTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C8E2BF494300076EF76 /* ResetPasswordTVCell.swift */; };
 		65207EDE2BF497A60076EF76 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6520794A2BF4942E0076EF76 /* OpenSans-Medium.ttf */; };
+		653467B72C0207C90059A0E1 /* AddFareRulesTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653467B52C0207C90059A0E1 /* AddFareRulesTVCell.swift */; };
+		653467B82C0207C90059A0E1 /* AddFareRulesTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653467B62C0207C90059A0E1 /* AddFareRulesTVCell.xib */; };
+		653467BA2C0210630059A0E1 /* Penalty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653467B92C0210630059A0E1 /* Penalty.swift */; };
 		6545D8142BFC509C00FBCB60 /* SelectSportServiceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545D8122BFC509C00FBCB60 /* SelectSportServiceTVCell.swift */; };
 		6545D8152BFC509C00FBCB60 /* SelectSportServiceTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6545D8132BFC509C00FBCB60 /* SelectSportServiceTVCell.xib */; };
 		6545D8172BFC6FCA00FBCB60 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545D8162BFC6FCA00FBCB60 /* Itinerary.swift */; };
@@ -1276,6 +1279,9 @@
 		65207C8B2BF494300076EF76 /* LoginTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTVCell.swift; sourceTree = "<group>"; };
 		65207C8D2BF494300076EF76 /* ResetPasswordTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordTVCell.xib; sourceTree = "<group>"; };
 		65207C8E2BF494300076EF76 /* ResetPasswordTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordTVCell.swift; sourceTree = "<group>"; };
+		653467B52C0207C90059A0E1 /* AddFareRulesTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFareRulesTVCell.swift; sourceTree = "<group>"; };
+		653467B62C0207C90059A0E1 /* AddFareRulesTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFareRulesTVCell.xib; sourceTree = "<group>"; };
+		653467B92C0210630059A0E1 /* Penalty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Penalty.swift; sourceTree = "<group>"; };
 		6545D8122BFC509C00FBCB60 /* SelectSportServiceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSportServiceTVCell.swift; sourceTree = "<group>"; };
 		6545D8132BFC509C00FBCB60 /* SelectSportServiceTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectSportServiceTVCell.xib; sourceTree = "<group>"; };
 		6545D8162BFC6FCA00FBCB60 /* Itinerary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
@@ -2442,6 +2448,7 @@
 				65207A622BF4942F0076EF76 /* JourneySummary.swift */,
 				65207A632BF4942F0076EF76 /* ItinearyFlightDetails.swift */,
 				65207A642BF4942F0076EF76 /* FlightDetailsModel.swift */,
+				653467B92C0210630059A0E1 /* Penalty.swift */,
 			);
 			path = FlightDetailsModel;
 			sourceTree = "<group>";
@@ -2885,6 +2892,7 @@
 		65207AE12BF4942F0076EF76 /* Fdetails */ = {
 			isa = PBXGroup;
 			children = (
+				653467B42C0207AF0059A0E1 /* AddFareRulesTVCell */,
 				65207AE22BF4942F0076EF76 /* FareRulesTVCell */,
 				65207AE52BF4942F0076EF76 /* FRulesTVCell */,
 				65207AE82BF4942F0076EF76 /* FareBreakdownTVCell */,
@@ -4515,6 +4523,15 @@
 			path = CVCells;
 			sourceTree = "<group>";
 		};
+		653467B42C0207AF0059A0E1 /* AddFareRulesTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				653467B52C0207C90059A0E1 /* AddFareRulesTVCell.swift */,
+				653467B62C0207C90059A0E1 /* AddFareRulesTVCell.xib */,
+			);
+			path = AddFareRulesTVCell;
+			sourceTree = "<group>";
+		};
 		6545D8112BFC507400FBCB60 /* SelectSportServiceTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -4853,6 +4870,7 @@
 				65207EC02BF494320076EF76 /* InsurenceSearchTVCell.xib in Resources */,
 				65207DB62BF494310076EF76 /* OperatorsCheckBoxTVCell.xib in Resources */,
 				65207E082BF494320076EF76 /* Transfers.storyboard in Resources */,
+				653467B82C0207C90059A0E1 /* AddFareRulesTVCell.xib in Resources */,
 				65207EBA2BF494320076EF76 /* PremiumInfoTVCell.xib in Resources */,
 				65207DA02BF494310076EF76 /* SortbyTVCell.xib in Resources */,
 				65207E062BF494320076EF76 /* Ottu.storyboard in Resources */,
@@ -5157,6 +5175,7 @@
 				65207E792BF494320076EF76 /* CruisePackegesTVCell.swift in Sources */,
 				65207CC42BF494310076EF76 /* NSObject+Helper.swift in Sources */,
 				65207E6E2BF494320076EF76 /* FlightUpcomingTVCell.swift in Sources */,
+				653467BA2C0210630059A0E1 /* Penalty.swift in Sources */,
 				65207D632BF494310076EF76 /* FlightSummery.swift in Sources */,
 				65207E832BF494320076EF76 /* UIImageViewExtension.swift in Sources */,
 				65207CF92BF494310076EF76 /* Rooms.swift in Sources */,
@@ -5415,6 +5434,7 @@
 				65207D802BF494310076EF76 /* SearchDataModel.swift in Sources */,
 				65207E1A2BF494320076EF76 /* VisaPassengerSelectVC.swift in Sources */,
 				65207DF92BF494310076EF76 /* FlightSearchTVCell.swift in Sources */,
+				653467B72C0207C90059A0E1 /* AddFareRulesTVCell.swift in Sources */,
 				65207EDD2BF494320076EF76 /* ResetPasswordTVCell.swift in Sources */,
 				65207E3D2BF494320076EF76 /* ContactUsTVCell.swift in Sources */,
 				65207DBB2BF494310076EF76 /* RegisterSelectionLoginTableViewCell.swift in Sources */,

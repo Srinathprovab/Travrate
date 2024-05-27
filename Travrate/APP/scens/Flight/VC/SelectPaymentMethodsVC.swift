@@ -37,6 +37,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
                                          "PaymentTypeTVCell",
                                          "BookedTravelDetailsTVCell",
                                          "BDTransfersInf0TVCell",
+                                         "PriceSummaryTVCell",
                                          "EmptyTVCell"])
         
         
@@ -125,6 +126,11 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
                                                     key:"payment",
                                                     cellType:.BookedTravelDetailsTVCell))
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        MySingleton.shared.tablerow.append(TableRow(covetedAmnt: totlConvertedGrand, cellType:.PriceSummaryTVCell))
+        
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         

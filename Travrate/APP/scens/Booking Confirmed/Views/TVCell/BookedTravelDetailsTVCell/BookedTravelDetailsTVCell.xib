@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="BookedTravelDetailsTVCell" customModule="Travgate" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="BookedTravelDetailsTVCell" customModule="Travrate" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="372" height="65"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -28,19 +27,25 @@
                                         <rect key="frame" x="12" y="7" width="316" height="27.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1N-Xx-gXM">
-                                                <rect key="frame" x="0.0" y="0.0" width="105.5" height="27.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="79" height="27.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8H3-Da-dfh">
-                                                <rect key="frame" x="105.5" y="0.0" width="105" height="27.5"/>
+                                                <rect key="frame" x="79" y="0.0" width="79" height="27.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-ob-fgw">
-                                                <rect key="frame" x="210.5" y="0.0" width="105.5" height="27.5"/>
+                                                <rect key="frame" x="158" y="0.0" width="79" height="27.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDS-zj-ZGf">
+                                                <rect key="frame" x="237" y="0.0" width="79" height="27.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -101,12 +106,13 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="adultDetailsTV" destination="EMe-Gc-70c" id="uVs-v0-ecP"/>
+                <outlet property="emaillbl" destination="pfI-ob-fgw" id="MWK-AO-oSp"/>
                 <outlet property="holderView" destination="EpR-wM-lNK" id="ehN-Ck-5Fn"/>
                 <outlet property="labelsView" destination="slv-Ja-WLS" id="mge-lY-nJp"/>
-                <outlet property="seatlbl" destination="pfI-ob-fgw" id="MWK-AO-oSp"/>
-                <outlet property="travellerNamelbl" destination="v1N-Xx-gXM" id="7PI-k6-4FE"/>
+                <outlet property="mobilelbl" destination="rDS-zj-ZGf" id="rf4-Ul-jLk"/>
+                <outlet property="passengerTypelbl" destination="v1N-Xx-gXM" id="7PI-k6-4FE"/>
+                <outlet property="travellerNamelbl" destination="8H3-Da-dfh" id="Zas-HH-C77"/>
                 <outlet property="tvHeight" destination="Lxu-NO-eru" id="8TC-Wy-ici"/>
-                <outlet property="typelbl" destination="8H3-Da-dfh" id="Zas-HH-C77"/>
                 <outlet property="ulView" destination="rg9-Mb-ySe" id="k5q-d7-Xnl"/>
             </connections>
             <point key="canvasLocation" x="175.36231884057972" y="104.79910714285714"/>

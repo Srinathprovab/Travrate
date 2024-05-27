@@ -14,6 +14,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
     @IBOutlet weak var sessionlbl: UILabel!
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var continuetoPaymentBtnView: UIView!
+    @IBOutlet weak var continuetoPaymentBtnlbl: UILabel!
     
     
     static var newInstance: BookingDetailsVC? {
@@ -401,6 +402,11 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         
     }
     
+    
+    
+    override func didTapClosepromoViewBtnAction(cell:UsePromoCodesTVCell) {
+        commonTableView.reloadData()
+    }
 }
 
 
@@ -580,7 +586,6 @@ extension BookingDetailsVC {
         MySingleton.shared.tablerow.append(TableRow(moreData: services, cellType:.AddonTableViewCell))
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        //     MySingleton.shared.tablerow.append(TableRow(cellType:.FareSummaryTVCell))
         MySingleton.shared.tablerow.append(TableRow(covetedAmnt: totlConvertedGrand, cellType:.PriceSummaryTVCell))
         
         MySingleton.shared.tablerow.append(TableRow(cellType:.OperatorsCheckBoxTVCell))
@@ -915,6 +920,12 @@ extension BookingDetailsVC:TimerManagerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
+        
+        if MySingleton.shared.infoArray.count > 0 {
+            continuetoPaymentBtnlbl.text = "Continue To Next"
+        }else {
+            continuetoPaymentBtnlbl.text = "Continue To Payment"
+        }
         
         if MySingleton.shared.callboolapi == true {
             callAPI()

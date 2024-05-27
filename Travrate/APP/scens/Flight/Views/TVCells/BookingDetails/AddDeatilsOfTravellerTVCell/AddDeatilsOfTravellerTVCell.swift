@@ -182,7 +182,7 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
                 travelerArray[self.indexposition ].middlename = ""
                 travelerArray[self.indexposition ].laedpassenger = "0"
                 titledropDown.dataSource = ["Mr","Ms","Mrs"]
-                
+                travelerArray[self.indexposition ].passengertype = "Adult"
             } else if cellInfo.key == "child" {
                 if travelerArray.count <= self.indexposition {
                     travelerArray += Array(repeating: Traveler(), count: (self.indexposition ) - travelerArray.count + 1)
@@ -192,6 +192,7 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
                 travelerArray[self.indexposition ].middlename = ""
                 travelerArray[self.indexposition ].laedpassenger = "0"
                 titledropDown.dataSource = ["Master","Miss"]
+                travelerArray[self.indexposition ].passengertype = "Child"
                 
             } else {
                 if travelerArray.count <= self.indexposition {
@@ -202,6 +203,7 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
                 travelerArray[self.indexposition ].middlename = ""
                 travelerArray[self.indexposition ].laedpassenger = "0"
                 titledropDown.dataSource = ["Master","Miss"]
+                travelerArray[self.indexposition ].passengertype = "Infant"
                 
             }
             showdobDatePicker()

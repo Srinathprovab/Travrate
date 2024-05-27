@@ -10,9 +10,10 @@ import UIKit
 class BookedAdultDetailsTVCell: UITableViewCell {
     
     @IBOutlet weak var holderView: UIView!
+    @IBOutlet weak var passengerTypelbl: UILabel!
     @IBOutlet weak var travellerNamelbl: UILabel!
-    @IBOutlet weak var typelbl: UILabel!
-    @IBOutlet weak var seatlbl: UILabel!
+    @IBOutlet weak var emaillbl: UILabel!
+    @IBOutlet weak var mobileLbl: UILabel!
     
     
     override func awakeFromNib() {
@@ -30,10 +31,11 @@ class BookedAdultDetailsTVCell: UITableViewCell {
     func setupUI() {
         
         holderView.backgroundColor = .WhiteColor
+        setuplabels(lbl: passengerTypelbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 12), align: .center)
         setuplabels(lbl: travellerNamelbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 14), align: .center)
-        setuplabels(lbl: typelbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 14), align: .center)
-        setuplabels(lbl: seatlbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 14), align: .center)
+        setuplabels(lbl: emaillbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 12), align: .center)
         
+        setuplabels(lbl: mobileLbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 12), align: .center)
     }
     
     func setupViews(v:UIView,radius:CGFloat,color:UIColor) {
@@ -49,7 +51,7 @@ class BookedAdultDetailsTVCell: UITableViewCell {
     func setAttributedText(str1:String,str2:String)  {
         
         
-        let atter1 = [NSAttributedString.Key.foregroundColor:UIColor.AppCalenderDateSelectColor,NSAttributedString.Key.font:UIFont.LatoRegular(size: 14)] as [NSAttributedString.Key : Any]
+        let atter1 = [NSAttributedString.Key.foregroundColor:UIColor.AppCalenderDateSelectColor,NSAttributedString.Key.font:UIFont.LatoRegular(size: 12)] as [NSAttributedString.Key : Any]
         
         //        let atter1 = [NSAttributedString.Key.foregroundColor:HexColor("#5B5B5B"),NSAttributedString.Key.font:UIFont.LatoRegular(size: 14)] as [NSAttributedString.Key : Any]
         let atter2 = [NSAttributedString.Key.foregroundColor:UIColor.AppCalenderDateSelectColor,NSAttributedString.Key.font:UIFont.LatoRegular(size: 10)] as [NSAttributedString.Key : Any]
@@ -62,7 +64,7 @@ class BookedAdultDetailsTVCell: UITableViewCell {
         combination.append(atterStr1)
         combination.append(atterStr2)
         
-        travellerNamelbl.attributedText = combination
+        passengerTypelbl.attributedText = combination
         
     }
     

@@ -23,7 +23,6 @@ class FlightDeatilsVC: BaseTableVC, FlightDetailsViewModelDelegate {
     @IBOutlet weak var kwdlbl: UILabel!
     
     
-    
     var fd = [[ItinearyFlightDetails]]()
     
     static var newInstance: FlightDeatilsVC? {
@@ -63,6 +62,7 @@ class FlightDeatilsVC: BaseTableVC, FlightDetailsViewModelDelegate {
                                          "BaggageInfoTVCell",
                                          "BaggageInfoImageTVCell",
                                          "FareRulesTVCell",
+                                         "AddFareRulesTVCell",
                                          "FareBreakdownTVCell"])
         
         
@@ -92,13 +92,9 @@ class FlightDeatilsVC: BaseTableVC, FlightDetailsViewModelDelegate {
     }
     
     
-    
-    
-    
     @IBAction func didTapOnBookNowBtnAction(_ sender: Any) {
         gotoBookingDetailsVC()
     }
-    
     
     
     func gotoBookingDetailsVC() {
@@ -120,10 +116,16 @@ class FlightDeatilsVC: BaseTableVC, FlightDetailsViewModelDelegate {
             cell.hide()
         }
         
-        
-        
         commonTableView.beginUpdates()
         commonTableView.endUpdates()
+        
+        
+    }
+    
+    
+    //MARK: - didTapOnMoreFareRulesBtnAction
+    override func didTapOnMoreFareRulesBtnAction(cell: AddFareRulesTVCell) {
+        commonTableView.reloadData()
     }
     
     
@@ -200,7 +202,7 @@ extension FlightDeatilsVC {
 extension FlightDeatilsVC {
     
     func callAPI() {
-       
+        
         holderView.isHidden = true
         
         MySingleton.shared.loderString = "fdetails"
@@ -360,6 +362,7 @@ extension FlightDeatilsVC {
     func farerulesList(response: FareRulesModel) {
         
         MySingleton.shared.fareRulesData = response.data ?? []
+        MySingleton.shared.penalityArray = response.penalty ?? []
         
         DispatchQueue.main.async {
             self.setupFareRulesTVCell()
@@ -379,13 +382,14 @@ extension FlightDeatilsVC {
             TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
             
             
-            MySingleton.shared.fareRulesData.forEach { i in
-                MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
-                                                            subTitle: i.rule_content?.htmlToString,
-                                                            cellType:.FareRulesTVCell))
-            }
+            //            MySingleton.shared.fareRulesData.forEach { i in
+            //                MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
+            //                                                            subTitle: i.rule_content?.htmlToString,
+            //                                                            cellType:.FareRulesTVCell))
+            //            }
             
             
+            MySingleton.shared.tablerow.append(TableRow(cellType:.AddFareRulesTVCell))
             
         }else {
             
@@ -409,6 +413,7 @@ extension FlightDeatilsVC {
 extension FlightDeatilsVC {
     
     func addObserver() {
+        
         
         NotificationCenter.default.post(name: NSNotification.Name("hideDetails"), object: nil)
         

@@ -11,6 +11,7 @@ import Foundation
 struct FlightDetailsModel : Codable {
     
     let status : Bool?
+   
     let journeySummary : [JourneySummary]?
     let flightDetails : [[ItinearyFlightDetails]]?
     let baggage_details : [Baggage_details]?
@@ -29,6 +30,7 @@ struct FlightDetailsModel : Codable {
         case custom_farerules = "custom_farerules"
         case fare_rule_ref_key = "fare_rule_ref_key"
         case farerulesref_content = "farerulesref_content"
+      
     }
 
     init(from decoder: Decoder) throws {
@@ -41,6 +43,7 @@ struct FlightDetailsModel : Codable {
         custom_farerules = try values.decodeIfPresent(Custom_farerules.self, forKey: .custom_farerules)
         fare_rule_ref_key = try values.decodeIfPresent(String.self, forKey: .fare_rule_ref_key)
         farerulesref_content = try values.decodeIfPresent(String.self, forKey: .farerulesref_content)
+        
     }
 
 }

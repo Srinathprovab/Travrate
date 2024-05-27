@@ -127,7 +127,7 @@ extension AirlineSelectVC {
         airlineNamesArray.removeAll()
         airlineCodesArray.removeAll()
         
-        airlineNamesArray.append("ALL")
+        airlineNamesArray.append("ALL AIRLINES")
         airlineCodesArray.append("ALL")
         airlineList.forEach { i in
             airlineNamesArray.append(i.airline_name ?? "")

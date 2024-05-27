@@ -11,9 +11,10 @@ class BookedTravelDetailsTVCell: TableViewCell {
     
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var labelsView: UIView!
+    @IBOutlet weak var passengerTypelbl: UILabel!
     @IBOutlet weak var travellerNamelbl: UILabel!
-    @IBOutlet weak var typelbl: UILabel!
-    @IBOutlet weak var seatlbl: UILabel!
+    @IBOutlet weak var emaillbl: UILabel!
+    @IBOutlet weak var mobilelbl: UILabel!
     @IBOutlet weak var ulView: UIView!
     @IBOutlet weak var adultDetailsTV: UITableView!
     @IBOutlet weak var tvHeight: NSLayoutConstraint!
@@ -46,11 +47,11 @@ class BookedTravelDetailsTVCell: TableViewCell {
                 tvHeight.constant = CGFloat(Customerdetails.count * 48)
             }
         }else {
-            travellerNamelbl.text = "Passenger"
-            typelbl.text = "Name"
-           // seatlbl.text = "Mobile Number"
-           // typelbl.isHidden = true
-            seatlbl.isHidden = true
+            passengerTypelbl.text = "Passenger"
+            travellerNamelbl.text = "Name"
+            emaillbl.text = "Email"
+            mobilelbl.text = "Mobile"
+          
             if travelerArray.count > 0 {
                 tvHeight.constant = CGFloat(travelerArray.count * 48)
             }
@@ -74,12 +75,13 @@ class BookedTravelDetailsTVCell: TableViewCell {
         labelsView.layer.borderColor = UIColor.WhiteColor.cgColor
         // labelsView.addBottomBorderWithColor(color: .SubTitleColor, width: 1)
         ulView.backgroundColor = HexColor("#E6E8E7")
-        setuplabels(lbl: travellerNamelbl, text: "Traveller Name", textcolor: HexColor("#5B5B5B"), font: .OpenSansBold(size: 14), align: .center)
-        setuplabels(lbl: typelbl, text: "Ticket No", textcolor: HexColor("#5B5B5B"), font: .OpenSansBold(size: 14), align: .center)
-        setuplabels(lbl: seatlbl, text: "Status", textcolor: HexColor("#5B5B5B"), font: .OpenSansBold(size: 14), align: .center)
-        travellerNamelbl.text = "Passenger Name"
-        typelbl.text = "Passport No"
-        seatlbl.text = "    Country"
+        
+        setuplabels(lbl: passengerTypelbl, text: "Traveller Name", textcolor: HexColor("#5B5B5B"), font: .OpenSansBold(size: 14), align: .center)
+        setuplabels(lbl: travellerNamelbl, text: "Ticket No", textcolor: HexColor("#5B5B5B"), font: .OpenSansBold(size: 14), align: .center)
+        setuplabels(lbl: emaillbl, text: "Status", textcolor: HexColor("#5B5B5B"), font: .OpenSansBold(size: 14), align: .center)
+        passengerTypelbl.text = "Passenger Name"
+        travellerNamelbl.text = "Passport No"
+        emaillbl.text = "    Country"
         
         
         setupTV()
@@ -129,9 +131,9 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 cell.selectionStyle = .none
                 
                 let data = Customerdetails[indexPath.row]
-                cell.travellerNamelbl.text = "\(data.first_name ?? "") \(data.last_name ?? "")"
-                cell.typelbl.text = data.passport_number ?? ""
-                cell.seatlbl.text = data.passenger_nationality_name ?? ""
+                cell.passengerTypelbl.text = "\(data.first_name ?? "") \(data.last_name ?? "")"
+                cell.travellerNamelbl.text = data.passport_number ?? ""
+                cell.emaillbl.text = data.passenger_nationality_name ?? ""
                 if indexPath.row == 0{
                     cell.setAttributedText(str1: "\(data.first_name ?? "") \(data.last_name ?? "")", str2: "\n\(cellInfo?.title ?? "")")
                 }
@@ -144,16 +146,23 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 cell.selectionStyle = .none
                 
                 let data = travelerArray[indexPath.row]
-                //cell.travellerNamelbl.text = "\(data.firstName ?? "")"
-                cell.typelbl.text = "\(data.firstName ?? "")"
-                cell.seatlbl.text = MySingleton.shared.paymobile
+                
+                cell.passengerTypelbl.text = data.passengertype
+                cell.travellerNamelbl.text = data.firstName
+                cell.emaillbl.text = "----"
+                cell.mobileLbl.text = "----"
+                
                 
                 if indexPath.row == 0{
                     cell.setAttributedText(str1: "\(cellInfo?.title ?? "")", str2: "")
+                    //cell.passengerTypelbl.text = "Lead Passenger"
+                    cell.travellerNamelbl.text = data.firstName
+                    cell.emaillbl.text = MySingleton.shared.payemail
+                    cell.mobileLbl.text = MySingleton.shared.paymobile
                 }
                 
                
-                cell.seatlbl.isHidden = true
+               // cell.emaillbl.isHidden = true
                 
                 c = cell
             }

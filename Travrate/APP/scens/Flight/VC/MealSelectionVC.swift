@@ -55,6 +55,7 @@ class MealSelectionVC: BaseTableVC {
                                          "BookingDetailsFlightDataTVCell",
                                          "EmptyTVCell",
                                          "SelectMealTVCell",
+                                         "PriceSummaryTVCell",
                                          "NewSpecialAssistanceTVCell"])
         
         
@@ -192,7 +193,8 @@ extension MealSelectionVC {
             
         }
         
-        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        MySingleton.shared.tablerow.append(TableRow(covetedAmnt: totlConvertedGrand, cellType:.PriceSummaryTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.OperatorsCheckBoxTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:20,cellType:.EmptyTVCell))
         
