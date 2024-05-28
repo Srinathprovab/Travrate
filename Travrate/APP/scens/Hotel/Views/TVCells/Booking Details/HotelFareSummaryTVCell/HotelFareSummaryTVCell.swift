@@ -21,17 +21,12 @@ class HotelFareSummaryTVCell: TableViewCell {
     @IBOutlet weak var checkoutlbl: UILabel!
     @IBOutlet weak var roomlbl: UILabel!
     @IBOutlet weak var kwdpricelbl: UILabel!
-    @IBOutlet weak var checkboximg: UIImageView!
     @IBOutlet weak var addonView: UIView!
     @IBOutlet weak var addonValue: UILabel!
-    @IBOutlet weak var termslbl: UILabel!
     
     
     var delegate:HotelFareSummaryTVCellDelegate?
-    var checkBool = false
-    var str1 = "By booking this item, you agree to pay the total amount shown, which includes Service Fees, on the right and to the,"
-    var str2 = " User Terms, "
-    var str3 = "Privacy policy."
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -75,7 +70,6 @@ class HotelFareSummaryTVCell: TableViewCell {
         faresummeryView.layer.cornerRadius = 8
         
         
-        setAttributedString(str1: str1, str2: str2, str3: str3)
         
         let grandTotalString =  MySingleton.shared.roompaxesdetails[0].net
         let grandTotalDecimal = Decimal(string: grandTotalString ?? "0.0") ?? Decimal(0.0)
@@ -86,19 +80,7 @@ class HotelFareSummaryTVCell: TableViewCell {
     
     
     
-    @IBAction func didTapOnCheckBoxBtnAction(_ sender: Any) {
-        // checkboximg.image = UIImage(named: checkBool ? "check" : "uncheck")
-        
-        
-        checkBool.toggle()
-        if checkBool {
-            checkboximg.image = UIImage(named: "check")
-            MySingleton.shared.checkTermsAndCondationStatus = true
-        }else {
-            checkboximg.image = UIImage(named: "uncheck")
-            MySingleton.shared.checkTermsAndCondationStatus = false
-        }
-    }
+    
     
     
     func updateTotalAmount(updatedGrandTotal:Decimal) {
@@ -132,57 +114,6 @@ class HotelFareSummaryTVCell: TableViewCell {
     
 }
 
-
-extension HotelFareSummaryTVCell {
-    
-    
-    
-    func setAttributedString(str1: String, str2: String, str3: String) {
-        let atter1: [NSAttributedString.Key: Any] = [
-            .foregroundColor: HexColor("#ED1654"),
-            .font: UIFont.OpenSansRegular(size: 12)
-        ]
-        
-        
-        let atter2: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.Buttoncolor,
-            .font: UIFont.OpenSansRegular(size: 12),
-            .underlineStyle: NSUnderlineStyle.single.rawValue,
-            .underlineColor:UIColor.Buttoncolor
-        ]
-        
-        let atterStr1 = NSMutableAttributedString(string: str1, attributes: atter1)
-        let atterStr2 = NSMutableAttributedString(string: str2, attributes: atter2)
-        let atterStr3 = NSMutableAttributedString(string: str3, attributes: atter2)
-        
-        let combination = NSMutableAttributedString()
-        combination.append(atterStr1)
-        combination.append(atterStr2)
-        combination.append(atterStr3)
-        
-        termslbl.attributedText = combination
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped(_:)))
-        termslbl.addGestureRecognizer(tapGesture)
-        termslbl.isUserInteractionEnabled = true
-    }
-    
-    @objc func labelTapped(_ gesture: UITapGestureRecognizer) {
-        if gesture.didTapAttributedString(" User Terms, ", in: termslbl) {
-            checkBool = true
-            checkboximg.image = UIImage(named: "check")
-            MySingleton.shared.checkTermsAndCondationStatus = true
-            delegate?.didTapOnUserTermsBtnAction(cell: self)
-            
-        } else if gesture.didTapAttributedString("Privacy policy", in: termslbl) {
-            checkBool = true
-            checkboximg.image = UIImage(named: "check")
-            MySingleton.shared.checkTermsAndCondationStatus = true
-            delegate?.didTapOnPrivacyPolicyBtnAction(cell: self)
-            
-        }
-    }
-}
 
 
 

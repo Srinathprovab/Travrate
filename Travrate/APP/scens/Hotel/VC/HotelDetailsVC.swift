@@ -285,7 +285,7 @@ extension HotelDetailsVC {
         htoken = response.hotel_details?.token ?? ""
         htokenkey = response.hotel_details?.tokenKey ?? ""
         
-        
+        MySingleton.shared.hotelDetails = response.hotel_details
         hotelDetails = response.hotel_details
         roomsDetails = response.hotel_details?.rooms ?? [[]]
         imagesArray = response.hotel_details?.images ?? []

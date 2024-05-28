@@ -48,6 +48,8 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
     
     func setupUI() {
         MySingleton.shared.addon_servicesArray.removeAll()
+        
+        origin_array.removeAll()
         whatsAppCheck = false
         notificationCheck = false
         priceCheck = false
@@ -302,7 +304,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
     
     
     //MARK: -
-    override func didSelectAddon(index: Int) {
+    override func didSelectAddon(index: Int, origen: String) {
         if index == 0 {
             whatsAppCheck = false
             totlConvertedGrand = totlConvertedGrand - Double(whatsAppAmount)
@@ -319,12 +321,13 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         // setuplabels(lbl: bookNowlbl, text: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""): \(totlConvertedGrand)", textcolor: .WhiteColor, font: .InterBold(size: 18), align: .left)
         
         
-        setupTVCell()
+       // setupTVCell()
+        commonTableView.reloadData()
         
     }
     
     
-    override func didDeselectAddon(index: Int) {
+    override func didDeselectAddon(index: Int, origen: String) {
         if index == 0 {
             
             whatsAppCheck = true
@@ -340,7 +343,8 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
             totlConvertedGrand = totlConvertedGrand + Double(notificationAmount)
         }
         //    setuplabels(lbl: bookNowlbl, text: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""): \(totlConvertedGrand)", textcolor: .WhiteColor, font: .InterBold(size: 18), align: .left)
-        setupTVCell()
+       // setupTVCell()
+        commonTableView.reloadData()
     }
     
     
@@ -583,7 +587,7 @@ extension BookingDetailsVC {
         //        MySingleton.shared.tablerow.append(TableRow(cellType:.AddonTVCell))
         
         MySingleton.shared.tablerow.append(TableRow(height: 10,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
-        MySingleton.shared.tablerow.append(TableRow(moreData: services, cellType:.AddonTableViewCell))
+        MySingleton.shared.tablerow.append(TableRow(key: "flight", moreData: services, cellType:.AddonTableViewCell))
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(covetedAmnt: totlConvertedGrand, cellType:.PriceSummaryTVCell))
@@ -753,7 +757,7 @@ extension BookingDetailsVC {
         let passengertypeArrayString = "[\"" + MySingleton.shared.passengertypeArray.joined(separator: "\",\"") + "\"]"
         
         let addon_servicesArrayString = "[\"" + MySingleton.shared.addon_servicesArray.joined(separator: "\",\"") + "\"]"
-        
+        let origin_arrayString = "[\"" + origin_array.joined(separator: "\",\"") + "\"]"
         
         
         
@@ -819,7 +823,7 @@ extension BookingDetailsVC {
         
         
         
-        MySingleton.shared.payload["addon_services"] = addon_servicesArrayString
+        MySingleton.shared.payload["addon_services"] = origin_arrayString
         
         
         

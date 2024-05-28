@@ -44,7 +44,7 @@ class ViewTicketInfoVC: BaseTableVC {
     }
     
     
-   
+    
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
         callapibool = false
@@ -60,9 +60,7 @@ class ViewTicketInfoVC: BaseTableVC {
         gotoViewStadiumVC(keystr: "seat")
     }
     
-    override func didTapOnBookNowBtnAction(cell: SportsBookNowTVCell) {
-      
-    }
+    
     
     func gotoViewStadiumVC(keystr:String) {
         guard let vc = ViewStadiumVC.newInstance.self else {return}
@@ -76,7 +74,16 @@ class ViewTicketInfoVC: BaseTableVC {
     }
     
     
+    override func didTapOnBookNowBtnAction(cell: SportsBookNowTVCell) {
+        gotoSportsBookingDetailsVC()
+    }
     
+    func gotoSportsBookingDetailsVC() {
+        callapibool = true
+        guard let vc = SportsBookingDetailsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
     
 }
 
@@ -92,12 +99,12 @@ extension ViewTicketInfoVC {
                                          "ViewStadiumBtnsTVCell",
                                          "SportsBookNowTVCell",
                                          "EmptyTVCell"])
-        setupVisaTVCells()
+        setupTVCells()
         
     }
     
     
-    func setupVisaTVCells() {
+    func setupTVCells() {
         
         MySingleton.shared.tablerow.removeAll()
         
@@ -109,7 +116,7 @@ extension ViewTicketInfoVC {
         for _ in 0...10 {
             MySingleton.shared.tablerow.append(TableRow(cellType:.SportsBookNowTVCell))
         }
-
+        
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow
@@ -117,5 +124,5 @@ extension ViewTicketInfoVC {
     }
     
     
-   
+    
 }

@@ -20,6 +20,7 @@ class AddonContentTVCell: UITableViewCell {
     
 //    var isChecked = true
     var originValue = String()
+    var priceValue = String()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

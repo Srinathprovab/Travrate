@@ -31,6 +31,11 @@ class ContactInformationTVCell: TableViewCell {
     @IBOutlet weak var countryCodeBtn: UIButton!
     @IBOutlet weak var countrycodeTF: UITextField!
     
+    
+    @IBOutlet weak var contactNameView: UIView!
+    @IBOutlet weak var contactnameTF: UITextField!
+    @IBOutlet weak var suntitlelblView: UIView!
+    
     var maxLength = 8
     var isSearchBool = Bool()
     var searchText = String()
@@ -67,8 +72,15 @@ class ContactInformationTVCell: TableViewCell {
         filterdcountrylist =  MySingleton.shared.countrylist
         loadCountryNamesAndCode()
         
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Sports" {
+            contactNameView.isHidden = false
+            suntitlelblView.isHidden = true
+        }else {
+            contactNameView.isHidden = true
+            suntitlelblView.isHidden = false
+        }
         
-       
         
         if MySingleton.shared.guestbool == true {
             emailTF.text =  MySingleton.shared.payemail
@@ -120,9 +132,6 @@ class ContactInformationTVCell: TableViewCell {
         }
         
         
-       
-        
-        
         
     }
     
@@ -139,7 +148,7 @@ class ContactInformationTVCell: TableViewCell {
         
         
         setupLabels(lbl: titlelbl, text: "Contact Information", textcolor: .AppLabelColor, font: .LatoSemibold(size: 16))
-       // setupLabels(lbl: subTitlelbl, text: "E-Ticket will be sent to the registered email address", textcolor: .SubTitleColor, font: .LatoRegular(size: 12))
+        // setupLabels(lbl: subTitlelbl, text: "E-Ticket will be sent to the registered email address", textcolor: .SubTitleColor, font: .LatoRegular(size: 12))
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
@@ -147,7 +156,7 @@ class ContactInformationTVCell: TableViewCell {
         }else {
             setupLabels(lbl: subTitlelbl, text: "Your confirmation mail will be sent to your registered email address.", textcolor: .SubTitleColor, font: .LatoRegular(size: 12))
         }
-        
+        subTitlelbl.numberOfLines = 0
         
         setupLabels(lbl: countryCodeLbl, text: "", textcolor: .SubTitleColor, font: .LatoRegular(size: 16))
         
@@ -157,9 +166,10 @@ class ContactInformationTVCell: TableViewCell {
         
         countryCodeBtn.setTitle("", for: .normal)
         
-        setuptf(tf: emailTF, tag1: 1, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Email Address")
-        setuptf(tf: mobileTF, tag1: 2, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Enter Mobile Number")
+        setuptf(tf: emailTF, tag1: 1, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Email Address*")
+        setuptf(tf: mobileTF, tag1: 2, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Enter Mobile Number*")
         setuptf(tf: countrycodeTF, tag1: 3, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "+355")
+        setuptf(tf: contactnameTF, tag1: 4, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Contact Name*")
         
         
         setupDropDown()

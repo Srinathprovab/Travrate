@@ -46,6 +46,16 @@ class BookedTravelDetailsTVCell: TableViewCell {
             if Customerdetails.count > 0 {
                 tvHeight.constant = CGFloat(Customerdetails.count * 48)
             }
+        }else if keystr == "hotel"{
+            passengerTypelbl.text = "Guest"
+            travellerNamelbl.text = "Name"
+            emaillbl.text = "Email"
+            mobilelbl.text = "Mobile"
+          
+            if travelerArray.count > 0 {
+                tvHeight.constant = CGFloat(travelerArray.count * 48)
+            }
+            
         }else {
             passengerTypelbl.text = "Passenger"
             travellerNamelbl.text = "Name"
@@ -147,6 +157,8 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 
                 let data = travelerArray[indexPath.row]
                 
+                
+                
                 cell.passengerTypelbl.text = data.passengertype
                 cell.travellerNamelbl.text = data.firstName
                 cell.emaillbl.text = "----"
@@ -162,7 +174,7 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 }
                 
                
-               // cell.emaillbl.isHidden = true
+                
                 
                 c = cell
             }

@@ -122,6 +122,24 @@ var dateArray = [String]()
 var flnew : [[FlightList]]?
 var btnTapString = "departure"
 
+var hbookingDetails:Hotel_details?
+var hoteltotalprice = ""
+var hotelwhatsAppCheck = false
+var hotelpriceCheck = false
+var hotelflexibleCheck = false
+var hotelnotificationCheck = false
+var hotelwhatsAppPrice = String()
+var hotelflexiblePrie = String()
+var hotelpriceChange = String()
+var hotelnotificationPrice = String()
+var hotelflexibleAmount = Int()
+var hotelwhatsAppAmount = Int()
+var hotelpriceChangeAmount = Int()
+var hotelnotificationAmount = Int()
+var HoteladdonAmount = Int()
+var hotel_Addservices = [HotelAddonModel]()
+var origin_array = [String]()
+
 
 var bookedjurnycitys = String()
 var lastContentOffset: CGFloat = 0

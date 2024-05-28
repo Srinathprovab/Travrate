@@ -277,8 +277,8 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func didTapOnLoginBtnAction(cell:PrimaryContactInfoTVCell) {}
     func enableContinuetoPaymentBtn(cell: OperatorsCheckBoxTVCell) {}
     
-    func didSelectAddon(index: Int) {}
-    func didDeselectAddon(index: Int) {}
+    func didSelectAddon(index: Int, origen: String) {}
+    func didDeselectAddon(index: Int, origen: String ) {}
     func didTapOnRemoveTravelInsuranceBtn(cell: PriceSummaryTVCell) {}
     func didTapOnRemovePromoCodeBtnAction(cell:PriceSummaryTVCell) {}
     func didTapOnAcceptAllCookieBtnAction(cell: AcceptCookiesTVCell) {}
@@ -310,6 +310,7 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func donedatePicker(cell: SportsSearchTVCell) {}
     func cancelDatePicker(cell: SportsSearchTVCell) {}
     func didTapOnViewTicketBtnAction(cell: SportInfoTVCell) {}
+    func didTapOnViewStadiumBtnAction(cell:SportInfoTVCell) {}
     func didTapOnInsurenceSearchBtnAction(cell: InsurenceSearchTVCell) {}
     func didTapOnWhoTravellingBtnAction(cell:InsurenceSearchTVCell) {}
     func didTapOnWithWhomTravellingBtnAction(cell:InsurenceSearchTVCell) {}
@@ -334,8 +335,8 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     
     
   
-    
-    
+   
+   
     
     
     
@@ -1039,6 +1040,17 @@ extension BaseTableVC: UITableViewDataSource {
             case .AddFareRulesTVCell :
                 let cell: AddFareRulesTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 cell.delegate = self
+                commonCell = cell
+                
+                
+            case .SportsFareSummeryTVCell :
+                let cell: SportsFareSummeryTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+                
+            case .NewHotelPriceSummeryTVCell :
+                let cell: NewHotelPriceSummeryTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
                 
                 

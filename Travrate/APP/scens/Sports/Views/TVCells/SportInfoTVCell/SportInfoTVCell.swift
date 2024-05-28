@@ -9,6 +9,7 @@ import UIKit
 
 protocol SportInfoTVCellDelegate {
     func didTapOnViewTicketBtnAction(cell:SportInfoTVCell)
+    func didTapOnViewStadiumBtnAction(cell:SportInfoTVCell)
 }
 
 class SportInfoTVCell: TableViewCell {
@@ -21,6 +22,7 @@ class SportInfoTVCell: TableViewCell {
     @IBOutlet weak var subtitlelbl: UILabel!
     @IBOutlet weak var sportcitylbl: UILabel!
     @IBOutlet weak var viewTicketBtn: UIButton!
+    @IBOutlet weak var kwdlbl: UILabel!
     
     
     var delegate:SportInfoTVCellDelegate?
@@ -38,7 +40,10 @@ class SportInfoTVCell: TableViewCell {
     
     
     override func updateUI() {
-        
+        if cellInfo?.key == "bookingdetails" {
+            kwdlbl.isHidden = true
+            viewTicketBtn.setTitle("View Stadium", for: .normal)
+        }
     }
     
     
@@ -48,7 +53,12 @@ class SportInfoTVCell: TableViewCell {
     
     
     @IBAction func didTapOnViewTicketBtnAction(_ sender: Any) {
-        delegate?.didTapOnViewTicketBtnAction(cell: self)
+        if (sender as AnyObject).titleLabel.text == "View Stadium" {
+            delegate?.didTapOnViewStadiumBtnAction(cell: self)
+        }else {
+            delegate?.didTapOnViewTicketBtnAction(cell: self)
+        }
+       
     }
     
 }

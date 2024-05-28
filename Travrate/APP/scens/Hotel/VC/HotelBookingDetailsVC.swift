@@ -108,8 +108,6 @@ extension HotelBookingDetailsVC {
     
     
     
-    
-    
 }
 
 
@@ -129,7 +127,6 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
     var regViewModel: RegisterViewModel?
     //  var mbviewmodel:MBViewModel?
     var hdvm:HotelBookingVM?
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -162,12 +159,13 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
                                          "HotelBookingCancellationpolicyTVCell",
                                          "RegisterSelectionLoginTableViewCell",
                                          "GuestTVCell",
-                                         "AddonTVCell",
+                                         "AddonTableViewCell",
                                          "RegisterSelectionLoginTableViewCell",
                                          "PrimaryContactInfoTVCell",
                                          "RegisterNowTableViewCell",
                                          "LoginDetailsTableViewCell",
-                                         "HotelFareSummaryTVCell",
+                                         "NewHotelPriceSummeryTVCell",
+                                         "TermsAgreeTVCell",
                                          "ContactInformationTVCell",
                                          "TotalNoofTravellerTVCell",
                                          "AddDeatilsOfGuestTVCell",
@@ -318,6 +316,49 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
         present(vc, animated: true)
     }
     
+    
+    
+    override func didSelectAddon(index: Int, origen: String) {
+        if index == 0 {
+            hotelwhatsAppCheck = false
+            totlConvertedGrand = totlConvertedGrand - Double(hotelwhatsAppAmount)
+        } else if index == 1 {
+            hotelflexibleCheck = false
+            totlConvertedGrand = totlConvertedGrand - Double(hotelflexibleAmount)
+        } else if index == 2 {
+            hotelpriceCheck = false
+            totlConvertedGrand = totlConvertedGrand - Double(hotelpriceChangeAmount)
+        } else {
+            hotelnotificationCheck = false
+            totlConvertedGrand = totlConvertedGrand - Double(hotelnotificationAmount)
+        }
+//        setuplabels(lbl: bookNowlbl, text: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""): \(totlConvertedGrand)", textcolor: .WhiteColor, font: .InterBold(size: 18), align: .left)
+        
+        
+        setuptv()
+      
+    }
+    
+    
+    override func didDeselectAddon(index: Int,  origen: String) {
+        if index == 0 {
+            
+            hotelwhatsAppCheck = true
+            totlConvertedGrand = totlConvertedGrand + Double(hotelwhatsAppAmount)
+        } else if index == 1 {
+            hotelflexibleCheck = true
+            totlConvertedGrand = totlConvertedGrand + Double(hotelflexibleAmount)
+        } else if index == 2 {
+            hotelpriceCheck = true
+            totlConvertedGrand = totlConvertedGrand + Double(hotelpriceChangeAmount)
+        } else {
+            hotelnotificationCheck = true
+            totlConvertedGrand = totlConvertedGrand + Double(hotelnotificationAmount)
+        }
+//       /* setuplabels(lbl: bookNowlbl, text: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""): \(*/totlConvertedGrand)", textcolor: .WhiteColor, font: .InterBold(size: 18), align: .left)
+         setuptv()
+    }
+    
 }
 
 //MARK: - setupUI
@@ -383,9 +424,24 @@ extension HotelBookingDetailsVC {
         MySingleton.shared.tablerow.append(TableRow(cellType:.UserSpecificationTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.ContactInformationTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.AddonTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.HotelFareSummaryTVCell))
-        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(key: "hotel", moreData: services, cellType:.AddonTableViewCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(title:hbookingDetails?.name,
+                                 subTitle: hbookingDetails?.address,
+                                 covetedAmnt: totlConvertedGrand, price: hoteltotalprice,
+                                 text: MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
+                                 headerText: "\(MySingleton.shared.roompaxesdetails[0].no_of_rooms ?? 0) \(MySingleton.shared.roompaxesdetails[0].room_name ?? "")",
+                                 buttonTitle:MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
+                                 tempText: "\(MySingleton.shared.totalnights )",
+                                 TotalQuestions: "\(MySingleton.shared.roompaxesdetails[0].no_of_adults ?? "0")",
+                                 cellType: .NewHotelPriceSummeryTVCell,
+                                 questionBase: "\(MySingleton.shared.roompaxesdetails[0].no_of_children ?? "0")"))
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(title:"By Booking This item, You agree to pay the total amount shown, with includes service fees. you also agree to the terms ans conditions and privacy policy .",cellType:.TermsAgreeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(height:20,cellType:.EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -429,11 +485,13 @@ extension HotelBookingDetailsVC {
         hideLoadera()
         MySingleton.shared.hotel_user_specification.removeAll()
         
+        hbookingDetails = response.data?.hotel_details
         MySingleton.shared.bhotelDetials = response.data?.hotel_details
         MySingleton.shared.hotel_user_specification = response.data?.user_specification ?? []
         MySingleton.shared.roompaxesdetails = response.data?.room_paxes_details ?? []
         MySingleton.shared.hotelAddonServices = response.data?.addon_services ?? []
-        
+        hoteltotalprice = "\(response.data?.hotel_total_price ?? 0.0)"
+        hotel_Addservices = response.data?.addon_services ?? []
         
         MySingleton.shared.setAttributedTextnew(str1: defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "",
                                                 str2: String(format: "%.2f", response.data?.hotel_total_price ?? 0.0) ,
@@ -711,7 +769,8 @@ extension HotelBookingDetailsVC {
         }else if MySingleton.shared.checkTermsAndCondationStatus == false {
             showToast(message: "Please Accept T&C and Privacy Policy")
         }else {
-            self.hdvm?.CALL_HOTEL_PRE_MOBILE_BOOKING_API(dictParam:  MySingleton.shared.payload)
+            //self.hdvm?.CALL_HOTEL_PRE_MOBILE_BOOKING_API(dictParam:  MySingleton.shared.payload)
+            gotoSelectPaymentMethodsVC()
         }
         
     }
@@ -719,6 +778,13 @@ extension HotelBookingDetailsVC {
     
     func hotelpreBookingDetails(response: HotelMBPModel) {
         print(response.data?.post_data?.url ?? "")
+    }
+    
+    
+    func gotoSelectPaymentMethodsVC() {
+        guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
     }
     
     

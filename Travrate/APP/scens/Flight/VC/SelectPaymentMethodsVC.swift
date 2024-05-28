@@ -19,7 +19,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     }
     
     
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,10 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
                                          "BookedTravelDetailsTVCell",
                                          "BDTransfersInf0TVCell",
                                          "PriceSummaryTVCell",
+                                         "SportInfoTVCell",
+                                         "NewHotelPriceSummeryTVCell",
+                                         "BookingHotelDetailsTVCell",
+                                         "SportsFareSummeryTVCell",
                                          "EmptyTVCell"])
         
         
@@ -52,9 +56,14 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
             hideLoadera()
             
             
-            if let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect), tabselect == "Flight" {
+            let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+            if tabselect == "Flight" {
                 setupTVCells()
-            }else {
+            }else if tabselect == "Hotel" {
+                setupHotelTVCells()
+            }else if tabselect == "Sports" {
+                setupSportsTVCells()
+            }else{
                 setupTransfersTVCells()
             }
             
@@ -66,19 +75,24 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     
     @IBAction func didTapOnCloseBtnAction(_ sender: Any) {
         MySingleton.shared.callboolapi = true
-       
-        if let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect), tabselect == "Flight" {
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Flight" {
             sameInputs_Again_CallSaerchAPI()
-        }else {
-            dismiss(animated: true)
+        }else if tabselect == "Sports" {
+            Same_Saerch_InPut_Sports()
+        }else{
+            Same_Input_Hotel_Serach()
         }
     }
     
     //MARK: - PaymentTypeTVCell
     override func didTapOnPayNowBtnAction(cell: PaymentTypeTVCell) {
-       
-        if let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect), tabselect == "Flight" {
-            CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Flight" {
+            showToast(message: "Still Under Development")
+            // CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
         }else {
             showToast(message: "Still Under Development")
         }
@@ -195,7 +209,7 @@ extension SelectPaymentMethodsVC {
 //MARK: - sameInputs_Again_CallSaerchAPI
 extension SelectPaymentMethodsVC {
     
-    
+    //MARK: - Flights
     func sameInputs_Again_CallSaerchAPI() {
         
         MySingleton.shared.payload.removeAll()
@@ -271,6 +285,138 @@ extension SelectPaymentMethodsVC {
     
     
     
+    //MARK: - Same_Input_Hotel_Serach
+    func Same_Input_Hotel_Serach() {
+        
+        NotificationCenter.default.post(name: NSNotification.Name("resetallFilters"), object: nil)
+        MySingleton.shared.payload.removeAll()
+        
+        MySingleton.shared.payload["city"] = defaults.string(forKey: UserDefaultsKeys.locationcity)
+        MySingleton.shared.payload["hotel_destination"] = defaults.string(forKey: UserDefaultsKeys.locationid)
+        
+        MySingleton.shared.payload["hotel_checkin"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
+        MySingleton.shared.payload["hotel_checkout"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
+        
+        MySingleton.shared.payload["rooms"] = "\(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? "1")"
+        MySingleton.shared.payload["adult"] = adtArray
+        MySingleton.shared.payload["child"] = chArray
+        
+        
+        if starRatingInputArray.count > 0 {
+            MySingleton.shared.payload["star_rating"] = starRatingInputArray
+        }
+        
+        
+        if defaults.string(forKey: UserDefaultsKeys.hotelchildcount) == "0" {
+            
+            MySingleton.shared.payload["childAge_1"] = [""]
+            
+        }else {
+            
+            for roomIndex in 0..<totalRooms {
+                if let numChildren = Int(chArray[roomIndex]), numChildren > 0 {
+                    var childAges: [String] = Array(repeating: "0", count: numChildren)
+                    
+                    if numChildren > 2 {
+                        childAges.append("0")
+                    }
+                    
+                    MySingleton.shared.payload["childAge_\(roomIndex + 1)"] = childAges
+                }
+            }
+            
+        }
+        
+        
+        
+        
+        MySingleton.shared.payload["nationality"] = defaults.string(forKey: UserDefaultsKeys.hnationalitycode)
+        
+        if defaults.string(forKey: UserDefaultsKeys.locationcity) == "Add City" || defaults.string(forKey: UserDefaultsKeys.locationcity) == nil{
+            showToast(message: "Enter Hotel or City ")
+        }else if defaults.string(forKey: UserDefaultsKeys.checkin) == "Add Check In Date" || defaults.string(forKey: UserDefaultsKeys.checkin) == nil{
+            showToast(message: "Enter Checkin Date")
+        }else if defaults.string(forKey: UserDefaultsKeys.checkout) == "Add Check Out Date" || defaults.string(forKey: UserDefaultsKeys.checkout) == nil{
+            showToast(message: "Enter Checkout Date")
+        }
+        else if defaults.string(forKey: UserDefaultsKeys.checkout) == defaults.string(forKey: UserDefaultsKeys.checkin) {
+            showToast(message: "Enter Different Dates")
+        }
+        //        else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.checkin),
+        //                  let checkoutDate = defaults.string(forKey: UserDefaultsKeys.checkout),
+        //                  let checkin = formatter.date(from: checkinDate),
+        //                  let checkout = formatter.date(from: checkoutDate),
+        //                  checkin > checkout {
+        //            showToast(message: "Invalid Date")
+        //        }
+        
+        else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
+            showToast(message: "Add Rooms For Booking")
+        }else if defaults.string(forKey: UserDefaultsKeys.hnationalitycode) == nil {
+            showToast(message: "Please Select Nationality.")
+        }else {
+            
+            
+            do{
+                
+                let jsonData = try JSONSerialization.data(withJSONObject: MySingleton.shared.payload, options: JSONSerialization.WritingOptions.prettyPrinted)
+                let jsonStringData =  NSString(data: jsonData as Data, encoding: NSUTF8StringEncoding)! as String
+                
+                print(jsonStringData)
+                
+                
+            }catch{
+                print(error.localizedDescription)
+            }
+            
+            gotoHotelResultVC()
+            
+        }
+    }
+    
+    
+    func gotoHotelResultVC() {
+        
+        MySingleton.shared.loderString = "loder"
+        MySingleton.shared.afterResultsBool = false
+        hotelSearchResult.removeAll()
+        loderBool = true
+        callapibool = true
+        defaults.set(false, forKey: "hoteltfilteronce")
+        guard let vc = SearchHotelsResultVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        //   vc.countrycode = self.countrycode
+        vc.payload =  MySingleton.shared.payload
+        present(vc, animated: true)
+    }
+    
+    
+    
+    //MARK: - For Sports
+    func Same_Saerch_InPut_Sports() {
+        
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["from"] = ""
+        MySingleton.shared.payload["destination_id"] = ""
+        MySingleton.shared.payload["from_type"] = ""
+        MySingleton.shared.payload["to"] = ""
+        MySingleton.shared.payload["event_id"] = ""
+        MySingleton.shared.payload["venue_type"] = ""
+        MySingleton.shared.payload["form_date"] = MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
+        MySingleton.shared.payload["to_date"] = MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
+        MySingleton.shared.payload["special_events_id"] = MySingleton.shared.sportscityId
+        
+        gotoSelectSportsListVC()
+    }
+    
+    
+    func gotoSelectSportsListVC() {
+        callapibool = true
+        guard let vc = SelectSportsListVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
+    
     
 }
 
@@ -295,4 +441,68 @@ extension SelectPaymentMethodsVC {
         commonTableView.reloadData()
         
     }
+    
+    
+    func setupHotelTVCells() {
+        MySingleton.shared.tablerow.removeAll()
+        
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.BookingHotelDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
+                                                    key:"hotel",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        
+        
+        
+        tablerow.append(TableRow(title:hbookingDetails?.name,
+                                 subTitle: hbookingDetails?.address,
+                                 covetedAmnt: totlConvertedGrand, price: hoteltotalprice,
+                                 text: MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
+                                 headerText: "\(MySingleton.shared.roompaxesdetails[0].no_of_rooms ?? 0) \(MySingleton.shared.roompaxesdetails[0].room_name ?? "")",
+                                 buttonTitle:MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
+                                 tempText: "\(MySingleton.shared.totalnights )",
+                                 TotalQuestions: "\(MySingleton.shared.roompaxesdetails[0].no_of_adults ?? "0")",
+                                 cellType: .NewHotelPriceSummeryTVCell,
+                                 questionBase: "\(MySingleton.shared.roompaxesdetails[0].no_of_children ?? "0")"))
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
+        
+        
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+    }
+    
+    
+    func setupSportsTVCells() {
+        MySingleton.shared.tablerow.removeAll()
+        
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(key:"",
+                                                    cellType:.SportInfoTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
+                                                    key:"sports",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.SportsFareSummeryTVCell))
+        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
+        
+        
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+    }
 }
+
+
+

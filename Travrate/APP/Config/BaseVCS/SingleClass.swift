@@ -197,7 +197,7 @@ class MySingleton {
     var holidaySelectedData:HolidaySelectedData?
     var holidayItinerary = [Itinerary]()
     var penalityArray = [Penalty]()
-    
+    var hotelDetails:Hotel_details?
     
     //View Models
     var loginvm:LoginViewModel?

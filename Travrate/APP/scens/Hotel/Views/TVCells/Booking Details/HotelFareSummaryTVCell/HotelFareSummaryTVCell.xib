@@ -25,15 +25,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="426" id="KGk-i7-Jjw" customClass="HotelFareSummaryTVCell" customModule="Travrate" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="507" height="428"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="310" id="KGk-i7-Jjw" customClass="HotelFareSummaryTVCell" customModule="Travrate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="507" height="312"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="507" height="428"/>
+                <rect key="frame" x="0.0" y="0.0" width="507" height="312"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v6l-8g-pOZ">
-                        <rect key="frame" x="0.0" y="0.0" width="507" height="428"/>
+                        <rect key="frame" x="0.0" y="0.0" width="507" height="312"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wrr-yF-VXS" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                 <rect key="frame" x="16" y="10" width="475" height="297"/>
@@ -227,62 +227,13 @@ burj nahar intersection</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nc-Od-PUS">
-                                <rect key="frame" x="0.0" y="317" width="507" height="111"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uncheck" translatesAutoresizingMaskIntoConstraints="NO" id="0BZ-ex-5Lw">
-                                        <rect key="frame" x="10" y="10" width="24" height="24"/>
-                                        <color key="tintColor" name="TitleColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="28d-WV-EVr"/>
-                                            <constraint firstAttribute="width" constant="24" id="v5X-Ym-dyZ"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2u-cC-2hH">
-                                        <rect key="frame" x="44" y="10.000000000000004" width="453" height="57.333333333333343"/>
-                                        <string key="text">By booking this item, you agree to pay the total amount shown, which includes Service Fees, on the right and to the , User Terms, Privacy policy .</string>
-                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="14"/>
-                                        <color key="textColor" name="BooknowBtnColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <string key="userLabel">By booking this item, you agree to pay the total amount shown, which includes Service Fees, on the right and to the , User Terms, Privacy policy .</string>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQx-Am-arw">
-                                        <rect key="frame" x="0.0" y="0.0" width="55" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="55" id="XXI-9x-XYP"/>
-                                            <constraint firstAttribute="height" constant="40" id="eX3-qT-3os"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <action selector="didTapOnCheckBoxBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aTg-v8-MmL"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="0BZ-ex-5Lw" firstAttribute="top" secondItem="5nc-Od-PUS" secondAttribute="top" constant="10" id="2kC-pm-Cvd"/>
-                                    <constraint firstItem="SQx-Am-arw" firstAttribute="leading" secondItem="5nc-Od-PUS" secondAttribute="leading" id="59H-MZ-122"/>
-                                    <constraint firstAttribute="height" constant="111" id="EkG-tK-eOj"/>
-                                    <constraint firstItem="SQx-Am-arw" firstAttribute="top" secondItem="5nc-Od-PUS" secondAttribute="top" id="GDQ-0Y-stz"/>
-                                    <constraint firstItem="0BZ-ex-5Lw" firstAttribute="leading" secondItem="5nc-Od-PUS" secondAttribute="leading" constant="10" id="Kpl-Me-IMi"/>
-                                    <constraint firstItem="e2u-cC-2hH" firstAttribute="leading" secondItem="0BZ-ex-5Lw" secondAttribute="trailing" constant="10" id="SVl-xj-JeP"/>
-                                    <constraint firstAttribute="trailing" secondItem="e2u-cC-2hH" secondAttribute="trailing" constant="10" id="XUd-Wp-nnA"/>
-                                    <constraint firstItem="e2u-cC-2hH" firstAttribute="top" secondItem="0BZ-ex-5Lw" secondAttribute="top" id="aba-xc-XAf"/>
-                                    <constraint firstItem="e2u-cC-2hH" firstAttribute="top" secondItem="5nc-Od-PUS" secondAttribute="top" constant="10" id="cdQ-gE-mQu"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Wrr-yF-VXS" firstAttribute="top" secondItem="v6l-8g-pOZ" secondAttribute="top" constant="10" id="PLb-8A-odw"/>
-                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="428" id="Qoo-4m-jpc"/>
-                            <constraint firstAttribute="trailing" secondItem="5nc-Od-PUS" secondAttribute="trailing" id="ZrL-BG-6yQ"/>
                             <constraint firstItem="Wrr-yF-VXS" firstAttribute="leading" secondItem="v6l-8g-pOZ" secondAttribute="leading" constant="16" id="cfV-4K-yjW"/>
+                            <constraint firstAttribute="bottom" secondItem="Wrr-yF-VXS" secondAttribute="bottom" constant="5" id="diH-6L-d2t"/>
                             <constraint firstAttribute="trailing" secondItem="Wrr-yF-VXS" secondAttribute="trailing" constant="16" id="oEY-Sz-r6f"/>
-                            <constraint firstItem="5nc-Od-PUS" firstAttribute="top" secondItem="Wrr-yF-VXS" secondAttribute="bottom" constant="10" id="ooK-P7-8QF"/>
-                            <constraint firstItem="5nc-Od-PUS" firstAttribute="leading" secondItem="v6l-8g-pOZ" secondAttribute="leading" id="qyo-Js-Jsi"/>
-                            <constraint firstAttribute="bottom" secondItem="5nc-Od-PUS" secondAttribute="bottom" id="sSZ-im-cTS"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -297,7 +248,6 @@ burj nahar intersection</string>
             <connections>
                 <outlet property="addonValue" destination="lcU-zs-Lhq" id="YYZ-KL-TGc"/>
                 <outlet property="addonView" destination="7Kx-oz-o8u" id="zro-gg-fJ2"/>
-                <outlet property="checkboximg" destination="0BZ-ex-5Lw" id="V4v-vf-XZv"/>
                 <outlet property="checkoutlbl" destination="iuN-8f-gWE" id="SO1-3h-DRM"/>
                 <outlet property="chickinlbl" destination="S3J-IB-6bI" id="U1U-tU-gkK"/>
                 <outlet property="faresummeryView" destination="REs-5C-E1o" id="DGo-uN-M6x"/>
@@ -305,21 +255,13 @@ burj nahar intersection</string>
                 <outlet property="hotelnamelbl" destination="tDx-Ml-q53" id="a3B-mO-9xh"/>
                 <outlet property="kwdpricelbl" destination="pga-4K-vJF" id="kCt-HM-dVH"/>
                 <outlet property="roomlbl" destination="3SN-Ux-SkT" id="dlF-IE-hiQ"/>
-                <outlet property="termslbl" destination="e2u-cC-2hH" id="gNC-oZ-XUg"/>
             </connections>
-            <point key="canvasLocation" x="240.45801526717557" y="434.50704225352115"/>
+            <point key="canvasLocation" x="240.45801526717557" y="475.35211267605638"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="uncheck" width="28" height="30"/>
-        <namedColor name="BooknowBtnColor">
-            <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="BorderColor">
             <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="TitleColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
