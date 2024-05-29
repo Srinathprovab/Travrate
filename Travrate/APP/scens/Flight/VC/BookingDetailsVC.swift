@@ -24,7 +24,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         return vc
     }
     
-    var promocodeValue = Double()
+    
     var regViewModel: RegisterViewModel?
     var mbviewmodel:MBViewModel?
     

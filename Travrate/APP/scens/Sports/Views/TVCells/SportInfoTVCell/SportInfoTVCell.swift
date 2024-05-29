@@ -25,6 +25,8 @@ class SportInfoTVCell: TableViewCell {
     @IBOutlet weak var kwdlbl: UILabel!
     
     
+    var searchid = String()
+    var token = String()
     var delegate:SportInfoTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,9 +42,31 @@ class SportInfoTVCell: TableViewCell {
     
     
     override func updateUI() {
+        
+        
+        
+        titlelbl.text = cellInfo?.title ?? ""
+        subtitlelbl.text = cellInfo?.subTitle ?? ""
+        searchid = cellInfo?.searchid ?? ""
+        token = cellInfo?.tokenid ?? ""
+        sportcitylbl.text = cellInfo?.headerText ?? ""
+        
+        MySingleton.shared.setAttributedTextnew(str1: "\(cellInfo?.currency ?? ""): ",
+                                                str2: cellInfo?.price ?? "",
+                                                lbl: kwdlbl,
+                                                str1font: .OpenSansRegular(size: 12),
+                                                str2font: .OpenSansBold(size: 20),
+                                                str1Color: .TitleColor,
+                                                str2Color: .TitleColor)
+        
         if cellInfo?.key == "bookingdetails" {
             kwdlbl.isHidden = true
             viewTicketBtn.setTitle("View Stadium", for: .normal)
+            
+            titlelbl.text = MySingleton.shared.sportEventList?.eventType?.name
+            subtitlelbl.text = MySingleton.shared.sportEventList?.name
+            sportcitylbl.text = MySingleton.shared.sportEventList?.venue?.name
+            
         }
     }
     

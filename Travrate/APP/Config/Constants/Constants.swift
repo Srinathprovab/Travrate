@@ -43,7 +43,7 @@ var mobilenoMaxLength = Int()
 var mobilenoMaxLengthBool = false
 var isLoadingData = false
 
-
+var promocodeValue = Double()
 var whatsAppCheck = false
 var priceCheck = false
 var flexibleCheck = false
@@ -267,7 +267,10 @@ struct ApiEndpoints {
     static let general_get_sport_type = "general/get_sport_type"
     static let sport_api_sport_search = "sport/api_sport_search"
     static let general_pre_sports_search = "general/pre_sports_search"
- 
+    static let sport_pre_sport_tickets = "sport/pre_sport_tickets"
+    static let sport_pre_booking = "sport/pre_booking"
+    
+    
 }
 
 /*App messages*/

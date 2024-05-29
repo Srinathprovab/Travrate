@@ -9,6 +9,9 @@ import UIKit
 
 class SelectSportsListVC: BaseTableVC, SportListVMDelegate {
     
+    @IBOutlet weak var teamlbl: UILabel!
+    @IBOutlet weak var venulbl: UILabel!
+    @IBOutlet weak var dateslbl: UILabel!
     
     
     static var newInstance: SelectSportsListVC? {
@@ -47,17 +50,34 @@ class SelectSportsListVC: BaseTableVC, SportListVMDelegate {
     }
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         dismiss(animated: true)
     }
     
     
     
     override func didTapOnViewTicketBtnAction(cell: SportInfoTVCell) {
+        
+        MySingleton.shared.sports_searchid = cell.searchid
+        MySingleton.shared.sports_token = cell.token
+        
         didTapOnViewTicketBtnAction()
+        
+        
     }
     
     
     
+    @IBAction func didTapOnModifySearchBtnAction(_ sender: Any) {
+        gotoModifySportSearchVC()
+    }
+    
+    func gotoModifySportSearchVC() {
+        callapibool = true
+        guard let vc = ModifySportSearchVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
 }
 
 
@@ -76,7 +96,8 @@ extension SelectSportsListVC {
     
     func callAPI() {
         
-        MySingleton.shared.loderString = "loder"
+        MySingleton.shared.loderString = "fdetails"
+        MySingleton.shared.afterResultsBool = true
         loderBool = true
         showLoadera()
         
@@ -95,6 +116,11 @@ extension SelectSportsListVC {
     
     func sportListResponse(response: SportListModel) {
         
+        teamlbl.text = MySingleton.shared.sportscityName
+        venulbl.text = MySingleton.shared.sportsVenuName
+        dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "MMM dd"))"
+        
+        MySingleton.shared.sportslistArray = response.data ?? []
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [unowned self] in
             loderBool = false
             hideLoadera()
@@ -113,8 +139,17 @@ extension SelectSportsListVC {
         
         MySingleton.shared.tablerow.removeAll()
         
-        for _ in 0...100 {
-            MySingleton.shared.tablerow.append(TableRow(cellType:.SportInfoTVCell))
+        
+        
+        MySingleton.shared.sportslistArray.forEach { i in
+            MySingleton.shared.tablerow.append(TableRow(title:i.eventType?.name,
+                                                        subTitle: i.name,
+                                                        price: "\(i.minTicketPrice?.price ?? 0)",
+                                                        currency: "\(i.minTicketPrice?.currency ?? "")",
+                                                        searchid: i.search_id,
+                                                        tokenid: i.token,
+                                                        headerText: i.venue?.name,
+                                                        cellType:.SportInfoTVCell))
         }
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
@@ -127,6 +162,8 @@ extension SelectSportsListVC {
     
     func didTapOnViewTicketBtnAction() {
         gotoViewTicketInfoVC()
+        
+        
     }
     
     

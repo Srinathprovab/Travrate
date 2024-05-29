@@ -150,6 +150,8 @@ enum TVCellType {
     case ViewStadiumBtnsTVCell
     case SportsBookNowTVCell
     case SportsFareSummeryTVCell
+    case AddDeatilsOfPersonTVCell
+    case PersonInformationTVCell
     
     
     //Insurence
@@ -251,6 +253,9 @@ class TableRow {
     var kwdprice: String?
     var refundable: String?
     var price:String?
+    var currency: String?
+    var searchid: String?
+    var tokenid: String?
     var travelTime:String?
     
     
@@ -270,6 +275,9 @@ class TableRow {
          kwdprice: String? = nil ,
          refundable: String? = nil ,
          price: String? = nil ,
+         currency: String? = nil ,
+         searchid: String? = nil ,
+         tokenid: String? = nil ,
          travelTime: String? = nil ,
          
          
@@ -294,6 +302,9 @@ class TableRow {
         self.kwdprice = kwdprice
         self.refundable = refundable
         self.price = price
+        self.currency = currency
+        self.searchid = searchid
+        self.tokenid = tokenid
         self.travelTime = travelTime
         
         

@@ -23,7 +23,9 @@ class SportsBookNowTVCell: TableViewCell {
     @IBOutlet weak var servicefeelbl: UILabel!
     
     
-    
+    var searchid = String()
+    var token = String()
+    var ticketValue = String()
     var delegate:SportsBookNowTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,7 +46,13 @@ class SportsBookNowTVCell: TableViewCell {
     }
     
     override func updateUI() {
-        MySingleton.shared.setAttributedTextnew(str1: "kwd:", str2: "250.00", lbl: kwdlbk, str1font: .OpenSansRegular(size: 12), str2font: .OpenSansBold(size: 16), str1Color: .TitleColor, str2Color: .TitleColor)
+        MySingleton.shared.setAttributedTextnew(str1: "\(cellInfo?.currency ?? ""):", str2: "\(cellInfo?.price ?? "")", lbl: kwdlbk, str1font: .OpenSansRegular(size: 14), str2font: .OpenSansBold(size: 20), str1Color: .TitleColor, str2Color: .TitleColor)
+        
+        sportnamelbl.text = cellInfo?.title ?? ""
+        searchid = cellInfo?.searchid ?? ""
+        token = cellInfo?.tokenid ?? ""
+        ticketValue = cellInfo?.subTitle ?? ""
+        servicefeelbl.text = cellInfo?.headerText ?? ""
     }
     
     

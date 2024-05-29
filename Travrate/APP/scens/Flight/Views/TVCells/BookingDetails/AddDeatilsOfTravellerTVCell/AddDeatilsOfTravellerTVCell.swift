@@ -27,6 +27,10 @@ struct Traveler {
     var passengertype:String?
     var laedpassenger:String?
     var middlename:String?
+    var cityofbirth:String?
+    var day: String?
+    var month: String?
+    var year: String?
     
 }
 
@@ -225,7 +229,7 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
         dropdownimg.image = UIImage(named: "down")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
         
         
-       
+        
         
         collapsView()
         

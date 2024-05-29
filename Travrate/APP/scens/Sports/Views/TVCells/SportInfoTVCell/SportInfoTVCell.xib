@@ -91,9 +91,6 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD:25.597" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00i-X1-Gpn">
                                 <rect key="frame" x="339.66666666666669" y="47.666666666666664" width="116.33333333333331" height="27.333333333333336"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="116.33" id="yyg-Cl-HKw"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -110,7 +107,7 @@
                             <constraint firstItem="sWe-9b-lVw" firstAttribute="leading" secondItem="ZdL-a7-IFE" secondAttribute="leading" constant="10" id="W99-Ib-YxU"/>
                             <constraint firstAttribute="trailing" secondItem="00i-X1-Gpn" secondAttribute="trailing" constant="10" id="WEK-xP-9PH"/>
                             <constraint firstItem="AZM-2Y-FQ9" firstAttribute="leading" secondItem="ZdL-a7-IFE" secondAttribute="leading" constant="10" id="ZlY-1v-uIX"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sWe-9b-lVw" secondAttribute="trailing" constant="40" id="fXH-vS-wOz"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sWe-9b-lVw" secondAttribute="trailing" constant="80" id="fXH-vS-wOz"/>
                             <constraint firstAttribute="trailing" secondItem="SfH-xq-9KV" secondAttribute="trailing" constant="10" id="feY-VR-ftr"/>
                             <constraint firstItem="Gxj-mM-QOL" firstAttribute="centerY" secondItem="WHr-nc-M73" secondAttribute="centerY" id="h98-rP-VtZ"/>
                             <constraint firstAttribute="bottom" secondItem="KiY-gl-fvC" secondAttribute="bottom" constant="14.33" id="l2v-Rb-nQn"/>

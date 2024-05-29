@@ -63,9 +63,11 @@ class SportsSearchTVCell: TableViewCell, SportServiceVMDelegate {
     
     func setupUI(){
         
-        showdepDatePicker()
-        showretDatePicker()
-       
+//        showdepDatePicker()
+//        showretDatePicker()
+        
+        showCheckInDatePicker()
+        showCheckoutDatePicker()
         
         searchbtn.layer.cornerRadius = 4
         
@@ -98,7 +100,7 @@ class SportsSearchTVCell: TableViewCell, SportServiceVMDelegate {
         setupTV()
         teamTVheight.constant = 0
         venuTVHeight.constant = 0
-       // CallSportTeamListAPI(str: "")
+        // CallSportTeamListAPI(str: "")
         
         sportCityNameArray.removeAll()
         sportCityNameArray.append("Please Select Service")
@@ -109,8 +111,35 @@ class SportsSearchTVCell: TableViewCell, SportServiceVMDelegate {
         }
         
         setupDropDown()
+        
+        if MySingleton.shared.sportscityName.isEmpty == false {
+            selectServicelbl.text = MySingleton.shared.sportscityName
+            selectServicelbl.textColor = .TitleColor
+        }
+        
+        if MySingleton.shared.sportsTeamName.isEmpty == false {
+            teamTF.text = MySingleton.shared.sportsTeamName
+            teamTF.textColor = .TitleColor
+        }
+        
+        if MySingleton.shared.sportsVenuName.isEmpty == false {
+            venuTF.text = MySingleton.shared.sportsVenuName
+            venuTF.textColor = .TitleColor
+        }
+        
+        if MySingleton.shared.sportFromDate.isEmpty == false {
+            depDatelbl.text = MySingleton.shared.sportFromDate
+            depDatelbl.textColor = .TitleColor
+        }
+        
+        if MySingleton.shared.sportToDate.isEmpty == false {
+            retDatelbl.text = MySingleton.shared.sportToDate
+            retDatelbl.textColor = .TitleColor
+        }
+        
+        
     }
-  
+    
     
     @IBAction func didTapOnClearvenuTFBtnAction(_ sender: Any) {
         venuTF.text = ""
@@ -130,8 +159,8 @@ class SportsSearchTVCell: TableViewCell, SportServiceVMDelegate {
     }
     
     
-   
-  
+    
+    
 }
 
 
@@ -162,117 +191,8 @@ extension SportsSearchTVCell {
         }
     }
     
+
     
-    //MARK: - showdepDatePicker
-    func showdepDatePicker(){
-        //Formate Date
-        depDatePicker.datePickerMode = .date
-        depDatePicker.minimumDate = Date()
-        depDatePicker.preferredDatePickerStyle = .wheels
-        
-        let formter = DateFormatter()
-        formter.dateFormat = "dd-MM-yyyy"
-        
-        
-        if let calDepDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "") {
-            depDatePicker.date = calDepDate
-            
-            if self.retDatelbl.text == "Select Date" {
-                retDatePicker.date = calDepDate
-            }
-            
-            
-            // Check if returnDate date is smaller than calDepDate date
-            if let returnDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? ""),
-               returnDate < calDepDate {
-                retDatePicker.date = calDepDate
-                
-                // Also update the label to reflect the change
-                self.retDatelbl.text = formter.string(from: calDepDate)
-            }
-            
-        }
-        
-        
-        
-        //ToolBar
-        let toolbar = UIToolbar();
-        toolbar.sizeToFit()
-        
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        
-        self.depDateTF.inputAccessoryView = toolbar
-        self.depDateTF.inputView = depDatePicker
-        
-    }
-    
-    
-    
-    //MARK: - showretDatePicker
-    func showretDatePicker(){
-        //Formate Date
-        retDatePicker.datePickerMode = .date
-        //        retDatePicker.minimumDate = Date()
-        // Set minimumDate for retDatePicker based on depDatePicker or retdepDatePicker
-        let selectedDate = self.depDateTF.isFirstResponder ? depDatePicker.date : retDatePicker.date
-        retDatePicker.minimumDate = selectedDate
-        retDatePicker.preferredDatePickerStyle = .wheels
-        
-        
-        let formter = DateFormatter()
-        formter.dateFormat = "dd-MM-yyyy"
-        
-        
-        if let calDepDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "") {
-            
-            if self.retDatelbl.text == "Select Date" {
-                retDatePicker.date = calDepDate
-                
-            }else {
-                if let rcalRetDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "") {
-                    retDatePicker.date = rcalRetDate
-                }
-            }
-        }
-        
-        
-        //ToolBar
-        let toolbar = UIToolbar();
-        toolbar.sizeToFit()
-        
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        
-        
-        
-        self.retDateTF.inputAccessoryView = toolbar
-        self.retDateTF.inputView = retDatePicker
-        
-        
-    }
-    
-    
-    @objc func donedatePicker(){
-        
-        depDatelbl.textColor = .TitleColor
-        retDatelbl.textColor = .TitleColor
-        
-        delegate?.donedatePicker(cell:self)
-    }
-    
-    
-    @objc func cancelDatePicker(){
-        delegate?.cancelDatePicker(cell:self)
-    }
     
 }
 
@@ -313,10 +233,10 @@ extension SportsSearchTVCell:UITableViewDelegate, UITableViewDataSource {
     override func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == teamTF {
             teamTF.placeholder = ""
-          //  CallSportTeamListAPI(str: textField.text ?? "")
+            //  CallSportTeamListAPI(str: textField.text ?? "")
         }else {
             venuTF.placeholder = ""
-         //   CallSportVenuListAPI(str: textField.text ?? "")
+            //   CallSportVenuListAPI(str: textField.text ?? "")
         }
     }
     
@@ -351,6 +271,7 @@ extension SportsSearchTVCell:UITableViewDelegate, UITableViewDataSource {
         }else {
             
             MySingleton.shared.sportsVenuList = response.data ?? []
+           
             
             
             venuTVHeight.constant = 260
@@ -416,14 +337,14 @@ extension SportsSearchTVCell:UITableViewDelegate, UITableViewDataSource {
                 MySingleton.shared.sportsTeamId = cell.teamid
                 
             }else {
-               
+                
                 venuTF.text = cell.titlelbl.text ?? ""
                 venuTF.resignFirstResponder()
                 MySingleton.shared.sportsVenuName = cell.titlelbl.text ?? ""
                 MySingleton.shared.sportsVenuId = cell.venuId
                 
                 
-               
+                
             }
             
             teamTVheight.constant = 0
@@ -434,4 +355,120 @@ extension SportsSearchTVCell:UITableViewDelegate, UITableViewDataSource {
     
     
     
+}
+
+
+
+extension SportsSearchTVCell {
+
+
+    //MARK: - showdepDatePicker
+    func showCheckInDatePicker(){
+        //Formate Date
+        depDatePicker.datePickerMode = .date
+        depDatePicker.minimumDate = Date()
+        depDatePicker.preferredDatePickerStyle = .wheels
+
+        let formter = DateFormatter()
+        formter.dateFormat = "dd-MM-yyyy"
+
+
+        if let checkindate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "") {
+            depDatePicker.date = checkindate
+
+            if self.retDatelbl.text == "Select date" {
+                retDatePicker.date = checkindate
+            }
+
+            // Check if checkout date is smaller than checkin date
+            if let checkoutDate = formter.date(from: self.retDatelbl.text ?? ""),
+               checkoutDate < checkindate {
+                retDatePicker.date = checkindate
+
+                // Also update the label to reflect the change
+                self.retDatelbl.text = formter.string(from: checkindate)
+            }
+        }
+
+
+
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+
+        self.depDateTF.inputAccessoryView = toolbar
+        self.depDateTF.inputView = depDatePicker
+
+    }
+
+
+
+
+
+
+    //MARK: - showretDatePicker
+    func showCheckoutDatePicker(){
+        //Formate Date
+        retDatePicker.datePickerMode = .date
+        //        retDatePicker.minimumDate = Date()
+        // Set minimumDate for retDatePicker based on depDatePicker or retdepDatePicker
+        let selectedDate = self.depDateTF.isFirstResponder ? depDatePicker.date : retDatePicker.date
+        retDatePicker.minimumDate = selectedDate
+
+        retDatePicker.preferredDatePickerStyle = .wheels
+
+
+        let formter = DateFormatter()
+        formter.dateFormat = "dd-MM-yyyy"
+
+
+
+        if let checkindate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "") {
+
+            if self.retDatelbl.text == "Select date" {
+                retDatePicker.date = checkindate
+
+            }else {
+                if let checkoutdate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "") {
+                    retDatePicker.date = checkoutdate
+                }
+            }
+        }
+
+
+
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+
+        self.retDateTF.inputAccessoryView = toolbar
+        self.retDateTF.inputView = retDatePicker
+
+
+    }
+
+
+    @objc func donedatePicker(){
+        
+        depDatelbl.textColor = .TitleColor
+        retDatelbl.textColor = .TitleColor
+        
+        delegate?.donedatePicker(cell:self)
+    }
+    
+    
+    @objc func cancelDatePicker(){
+        delegate?.cancelDatePicker(cell:self)
+    }
+
 }

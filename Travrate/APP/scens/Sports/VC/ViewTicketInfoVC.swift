@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewTicketInfoVC: BaseTableVC {
+class ViewTicketInfoVC: BaseTableVC, SportDetailsVMDelegate {
+    
+    
     
     static var newInstance: ViewTicketInfoVC? {
         let storyboard = UIStoryboard(name: Storyboard.Sports.name,
@@ -20,20 +22,12 @@ class ViewTicketInfoVC: BaseTableVC {
     override func viewWillAppear(_ animated: Bool) {
         
         if callapibool == true {
-            
-            MySingleton.shared.loderString = "fdetails"
-            MySingleton.shared.afterResultsBool = true
-            loderBool = true
-            showLoadera()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [unowned self] in
-                loderBool = false
-                hideLoadera()
-            }
-            
+            callAPI()
         }
         
     }
+    
+    
     
     
     override func viewDidLoad() {
@@ -41,6 +35,8 @@ class ViewTicketInfoVC: BaseTableVC {
         
         // Do any additional setup after loading the view.
         setupUI()
+        
+        MySingleton.shared.sportsdetailsvm = SportDetailsVM(self)
     }
     
     
@@ -75,7 +71,10 @@ class ViewTicketInfoVC: BaseTableVC {
     
     
     override func didTapOnBookNowBtnAction(cell: SportsBookNowTVCell) {
+      
+        MySingleton.shared.sport_ticket_value = cell.ticketValue
         gotoSportsBookingDetailsVC()
+        
     }
     
     func gotoSportsBookingDetailsVC() {
@@ -99,23 +98,59 @@ extension ViewTicketInfoVC {
                                          "ViewStadiumBtnsTVCell",
                                          "SportsBookNowTVCell",
                                          "EmptyTVCell"])
-        setupTVCells()
+       
         
     }
     
+    
+    
+    func callAPI() {
+        
+        MySingleton.shared.loderString = "fdetails"
+        MySingleton.shared.afterResultsBool = true
+        loderBool = true
+        showLoadera()
+        
+        
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["search_id"] = MySingleton.shared.sports_searchid
+        MySingleton.shared.payload["dl_token"] = MySingleton.shared.sports_token
+        MySingleton.shared.sportsdetailsvm?.CALL_SPORTS_DETAILS_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    func sportDetails(response: SportsDetailsModel) {
+        
+        MySingleton.shared.sports_searchid = response.search_id ?? ""
+        MySingleton.shared.sportsDetailsData = response.data ?? []
+        MySingleton.shared.sportListData = response.event_list
+        MySingleton.shared.sport_mapUrl = response.event_list?.venue?.mapUrl ?? ""
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+            loderBool = false
+            hideLoadera()
+            
+            setupTVCells()
+        }
+    }
     
     func setupTVCells() {
         
         MySingleton.shared.tablerow.removeAll()
         
-        MySingleton.shared.tablerow.append(TableRow(cellType:.SelectedSportInfoTVCell))
+        MySingleton.shared.tablerow.append(TableRow(key:"details",cellType:.SelectedSportInfoTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.SportsStadiumTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.ViewStadiumBtnsTVCell))
         
         
-        for _ in 0...10 {
-            MySingleton.shared.tablerow.append(TableRow(cellType:.SportsBookNowTVCell))
-        }
+        MySingleton.shared.sportsDetailsData?.forEach({ i in
+            MySingleton.shared.tablerow.append(TableRow(title:i.categoryName,
+                                                        subTitle: i.ticket_value,
+                                                        price: "\(i.price ?? 0)",
+                                                        currency: i.currency,
+                                                        headerText: "Service fee- \(i.serviceFee ?? 0) \(i.currency ?? "")",
+                                                        cellType:.SportsBookNowTVCell))
+        })
+        
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         

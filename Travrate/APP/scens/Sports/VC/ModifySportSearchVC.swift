@@ -1,19 +1,20 @@
 //
-//  SportsSearchVC.swift
-//  Travgate
+//  ModifySportSearchVC.swift
+//  Travrate
 //
-//  Created by FCI on 10/05/24.
+//  Created by FCI on 29/05/24.
 //
 
 import UIKit
 
-class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
+class ModifySportSearchVC: BaseTableVC, SportServiceVMDelegate {
     
-   
-    static var newInstance: SportsSearchVC? {
+    
+    
+    static var newInstance: ModifySportSearchVC? {
         let storyboard = UIStoryboard(name: Storyboard.Sports.name,
                                       bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? SportsSearchVC
+        let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? ModifySportSearchVC
         return vc
     }
     
@@ -39,6 +40,7 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     
     //MARK: - didTapOnBackBtnAction
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         dismiss(animated: true)
     }
     
@@ -113,7 +115,7 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
 
 
 
-extension SportsSearchVC {
+extension ModifySportSearchVC {
     
     
     func setupUI(){
@@ -143,13 +145,12 @@ extension SportsSearchVC {
 }
 
 
-extension SportsSearchVC {
+extension ModifySportSearchVC {
     
     func callGetSportsServiceListAPI() {
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["term"] = ""
         MySingleton.shared.sportsCityvm?.CALL_GET_SPORTS_CITY_LIST_API(dictParam:  MySingleton.shared.payload)
-        
     }
     
     func sportServiceList(response: SportsServiceModel) {

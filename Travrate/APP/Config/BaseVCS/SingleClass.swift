@@ -68,6 +68,7 @@ class MySingleton {
     var directFlightBool = false
     var filterApplyedBool = false
     var adultsCount = 1
+    var sportsPersonCount = 0
     var childCount = 0
     var infantsCount = 0
     var acount = 0
@@ -100,6 +101,7 @@ class MySingleton {
     var positionsCount = 0
     var searchTextArray = [String]()
     var payemail = String()
+    var payusername = String()
     var regpassword = String()
     var paymobile = String()
     var paymobilecountrycode = String()
@@ -178,6 +180,11 @@ class MySingleton {
     var sportToDate = String()
     var sportscityName = String()
     var sportscityId = String()
+    var sports_searchid = String()
+    var sports_token = String()
+    var sport_mapUrl = String()
+    var sport_ticket_value = String()
+    var sport_eventlist = String()
     
     var confpassword = String()
     var recentData:[Recent_searches]?
@@ -198,6 +205,12 @@ class MySingleton {
     var holidayItinerary = [Itinerary]()
     var penalityArray = [Penalty]()
     var hotelDetails:Hotel_details?
+    var sportslistArray = [SportListData]()
+    var sportsDetailsData : [SportsDetailsData]?
+    var sportListData : SportListData?
+    var sportBookingData : SportsBookingData?
+    var sportEventList : Event_list?
+    var sportTicketValue : Ticket_value?
     
     //View Models
     var loginvm:LoginViewModel?
@@ -233,7 +246,8 @@ class MySingleton {
     var sportsVenuList = [SportsServiceData]()
     var sportListVM:SportListVM?
     var sportlist = [SportListData]()
-    
+    var sportsdetailsvm: SportDetailsVM?
+    var sportsbookingvm:SportsBookingVM?
     
     
     

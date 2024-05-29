@@ -33,7 +33,9 @@ class SelectedSportInfoTVCell: TableViewCell {
     
     
     override func updateUI() {
-        
+        titlelbl.text = MySingleton.shared.sportListData?.eventType?.name
+        subtitlelbl.text = MySingleton.shared.sportListData?.name
+        sportcitylbl.text = MySingleton.shared.sportListData?.venue?.name
     }
     
     
