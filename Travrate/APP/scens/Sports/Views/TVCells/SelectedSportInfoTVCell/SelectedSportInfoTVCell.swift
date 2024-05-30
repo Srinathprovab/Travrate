@@ -16,7 +16,7 @@ class SelectedSportInfoTVCell: TableViewCell {
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var subtitlelbl: UILabel!
     @IBOutlet weak var sportcitylbl: UILabel!
-    
+    @IBOutlet weak var tournamentnamelbl: UILabel!
     
     var delegate:SportInfoTVCellDelegate?
     override func awakeFromNib() {
@@ -36,6 +36,8 @@ class SelectedSportInfoTVCell: TableViewCell {
         titlelbl.text = MySingleton.shared.sportListData?.eventType?.name
         subtitlelbl.text = MySingleton.shared.sportListData?.name
         sportcitylbl.text = MySingleton.shared.sportListData?.venue?.name
+        datelbl.text = "\(MySingleton.shared.sportListData?.dateOfEvent ?? "")-\(MySingleton.shared.sportListData?.timeOfEvent ?? "")"
+        tournamentnamelbl.text = MySingleton.shared.sportListData?.tournament?.name
     }
     
     

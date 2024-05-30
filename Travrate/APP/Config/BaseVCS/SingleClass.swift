@@ -203,11 +203,13 @@ class MySingleton {
     var holidaylist = [HolidayListData]()
     var holidaySelectedData:HolidaySelectedData?
     var holidayItinerary = [Itinerary]()
+    var cruiseItinerary = [Itinerary]()
     var penalityArray = [Penalty]()
     var hotelDetails:Hotel_details?
     var sportslistArray = [SportListData]()
     var sportsDetailsData : [SportsDetailsData]?
-    var sportListData : SportListData?
+    var sportListData : Event_list?
+    var seatingArrangementList = [Seating_arrangement]()
     var sportBookingData : SportsBookingData?
     var sportEventList : Event_list?
     var sportTicketValue : Ticket_value?
@@ -261,9 +263,10 @@ class MySingleton {
     
 
     func setupTipView(arrowPosition:EasyTipView.ArrowPosition){
+        
         preferences.drawing.font = .OpenSansMedium(size: 13)
         preferences.drawing.foregroundColor = UIColor.white
-        preferences.drawing.backgroundColor = .Buttoncolor
+        preferences.drawing.backgroundColor = .black
         preferences.drawing.arrowPosition = arrowPosition
         
         preferences.animating.dismissTransform = CGAffineTransform(translationX: 0, y: -15)

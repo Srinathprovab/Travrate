@@ -26,9 +26,7 @@ class ViewTicketInfoVC: BaseTableVC, SportDetailsVMDelegate {
         }
         
     }
-    
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +53,6 @@ class ViewTicketInfoVC: BaseTableVC, SportDetailsVMDelegate {
     override func didTapOnSeatingArrangementsBtnAction(cell: ViewStadiumBtnsTVCell) {
         gotoViewStadiumVC(keystr: "seat")
     }
-    
-    
     
     func gotoViewStadiumVC(keystr:String) {
         guard let vc = ViewStadiumVC.newInstance.self else {return}
@@ -123,6 +119,7 @@ extension ViewTicketInfoVC {
         MySingleton.shared.sports_searchid = response.search_id ?? ""
         MySingleton.shared.sportsDetailsData = response.data ?? []
         MySingleton.shared.sportListData = response.event_list
+        MySingleton.shared.seatingArrangementList = response.seating_arrangement ?? []
         MySingleton.shared.sport_mapUrl = response.event_list?.venue?.mapUrl ?? ""
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in

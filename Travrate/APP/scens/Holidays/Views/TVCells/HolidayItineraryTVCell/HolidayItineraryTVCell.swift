@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol HolidayItineraryTVCellDelegate {
+    func didTapOnContactusBtnAction(cell:HolidayItineraryTVCell)
+    func didTapOnImage()
+}
+
 class HolidayItineraryTVCell: TableViewCell {
     
     @IBOutlet weak var img: UIImageView!
@@ -14,8 +19,10 @@ class HolidayItineraryTVCell: TableViewCell {
     @IBOutlet weak var tvHeight: NSLayoutConstraint!
     @IBOutlet weak var itineraryTV: UITableView!
     @IBOutlet weak var desclbl: UILabel!
+    @IBOutlet weak var contactusBtn: UIButton!
     
     
+    var delegate : HolidayItineraryTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -45,10 +52,15 @@ class HolidayItineraryTVCell: TableViewCell {
     }
     
     func setupUI() {
+        contactusBtn.addTarget(self, action: #selector(didTapOnContactusBtnAction(_:)), for: .touchUpInside)
         setupCV()
         setupTV()
     }
     
+    
+    @objc func didTapOnContactusBtnAction(_ sender:UIButton) {
+        delegate?.didTapOnContactusBtnAction(cell: self)
+    }
 }
 
 
@@ -90,6 +102,11 @@ extension HolidayItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSo
             commonCell = cell
         }
         return commonCell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didTapOnImage()
     }
     
     

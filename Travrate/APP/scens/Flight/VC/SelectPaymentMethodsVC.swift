@@ -51,7 +51,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         showLoadera()
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
             loderBool = false
             hideLoadera()
             
@@ -75,14 +75,17 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     
     @IBAction func didTapOnCloseBtnAction(_ sender: Any) {
         MySingleton.shared.callboolapi = true
+        callapibool = true
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
             sameInputs_Again_CallSaerchAPI()
+        }else if tabselect == "Hotel" {
+            Same_Input_Hotel_Serach()
         }else if tabselect == "Sports" {
             Same_Saerch_InPut_Sports()
         }else{
-            Same_Input_Hotel_Serach()
+            
         }
     }
     
@@ -92,13 +95,19 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
             showToast(message: "Still Under Development")
-            // CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
-        }else {
+        }else if tabselect == "Hotel" {
             showToast(message: "Still Under Development")
+        }else if tabselect == "Sports" {
+            print(MySingleton.shared.payload)
+            showToast(message: "Still Under Development")
+        }else{
+            
         }
     }
     
     
+    
+    //MARK: - MPBDetails MobilePreProcessBookingModel
     func MPBDetails(response: MobilePreProcessBookingModel) {
         
     }
@@ -114,8 +123,18 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     }
     
     
+    //MARK: - ViewStadiumBtnsTVCell Delegate Methods
+    override func didTapOnViewStadiumBtnAction(cell: SportInfoTVCell) {
+        gotoViewStadiumVC(keystr: "stadium")
+    }
+    
+    func gotoViewStadiumVC(keystr:String) {
+        guard let vc = ViewStadiumVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.keystr = keystr
+        self.present(vc, animated: false)
+    }
 }
-
 
 
 //MARK: - CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API
@@ -489,9 +508,9 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         
         MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
-        MySingleton.shared.tablerow.append(TableRow(key:"",
+        MySingleton.shared.tablerow.append(TableRow(key:"bookingdetails",
                                                     cellType:.SportInfoTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead",
                                                     key:"sports",
                                                     cellType:.BookedTravelDetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.SportsFareSummeryTVCell))
@@ -502,6 +521,8 @@ extension SelectPaymentMethodsVC {
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()
     }
+    
+    
 }
 
 

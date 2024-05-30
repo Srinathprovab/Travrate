@@ -252,12 +252,116 @@
             </objects>
             <point key="canvasLocation" x="1688" y="-2"/>
         </scene>
+        <!--All Images PopupVC-->
+        <scene sceneID="Hbh-Hd-ffs">
+            <objects>
+                <viewController storyboardIdentifier="AllImagesPopupVC" id="ot0-Ha-Toa" customClass="AllImagesPopupVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FkT-cC-7yK">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SmY-7D-szO">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZTZ-zM-ilB">
+                                        <rect key="frame" x="20" y="226" width="353" height="400"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="400" id="hfB-Ai-SNA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Vc-g4-swz">
+                                        <rect key="frame" x="91.666666666666686" y="686" width="210" height="45"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGu-Ta-ICm">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="45"/>
+                                                <color key="backgroundColor" name="Buttoncolor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="GTs-Us-w1Y"/>
+                                                    <constraint firstAttribute="width" constant="100" id="wBi-pj-Nvc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="PERVIOUS">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapOnPrevoousBtnAction:" destination="ot0-Ha-Toa" eventType="touchUpInside" id="yF5-7f-8bA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rul-YQ-p2S">
+                                                <rect key="frame" x="110" y="0.0" width="100" height="45"/>
+                                                <color key="backgroundColor" name="Buttoncolor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="CWq-7l-WXX"/>
+                                                    <constraint firstAttribute="width" constant="100" id="dGb-gy-xhz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="NEXT">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTaspOnNextButtonAction:" destination="ot0-Ha-Toa" eventType="touchUpInside" id="61D-Us-m6M"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sqf-2f-ToH">
+                                        <rect key="frame" x="343" y="176" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Efp-GS-TjT"/>
+                                            <constraint firstAttribute="width" constant="30" id="htT-sk-WFU"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="close"/>
+                                        <connections>
+                                            <action selector="didTapOnCloseBtnAction:" destination="ot0-Ha-Toa" eventType="touchUpInside" id="6aA-5A-RYE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="1Vc-g4-swz" firstAttribute="centerX" secondItem="SmY-7D-szO" secondAttribute="centerX" id="8LE-PG-vp9"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZTZ-zM-ilB" secondAttribute="trailing" constant="20" id="9TQ-q0-xYS"/>
+                                    <constraint firstItem="ZTZ-zM-ilB" firstAttribute="centerY" secondItem="SmY-7D-szO" secondAttribute="centerY" id="WE5-a0-CYb"/>
+                                    <constraint firstItem="Sqf-2f-ToH" firstAttribute="trailing" secondItem="ZTZ-zM-ilB" secondAttribute="trailing" id="bif-wW-c5f"/>
+                                    <constraint firstItem="ZTZ-zM-ilB" firstAttribute="leading" secondItem="SmY-7D-szO" secondAttribute="leading" constant="20" id="cnP-n1-bcc"/>
+                                    <constraint firstItem="1Vc-g4-swz" firstAttribute="top" secondItem="ZTZ-zM-ilB" secondAttribute="bottom" constant="60" id="kzW-iv-2Da"/>
+                                    <constraint firstItem="ZTZ-zM-ilB" firstAttribute="top" secondItem="Sqf-2f-ToH" secondAttribute="bottom" constant="20" id="pem-5U-4Ue"/>
+                                    <constraint firstItem="ZTZ-zM-ilB" firstAttribute="centerX" secondItem="SmY-7D-szO" secondAttribute="centerX" id="rGR-ec-xDA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VmC-xb-VK9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SmY-7D-szO" firstAttribute="leading" secondItem="VmC-xb-VK9" secondAttribute="leading" id="96N-bl-T27"/>
+                            <constraint firstItem="SmY-7D-szO" firstAttribute="top" secondItem="FkT-cC-7yK" secondAttribute="top" id="JcX-Ub-NUn"/>
+                            <constraint firstAttribute="bottom" secondItem="SmY-7D-szO" secondAttribute="bottom" id="adE-LM-2Rp"/>
+                            <constraint firstItem="VmC-xb-VK9" firstAttribute="trailing" secondItem="SmY-7D-szO" secondAttribute="trailing" id="l9r-b8-l5c"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="img" destination="ZTZ-zM-ilB" id="WU3-GI-oaI"/>
+                        <outlet property="nextBtn" destination="Rul-YQ-p2S" id="vXV-Vh-Fh9"/>
+                        <outlet property="previousBtn" destination="XGu-Ta-ICm" id="W2s-tt-a0r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ozw-On-MZ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2454" y="-2"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back1" width="20" height="20"/>
+        <image name="close" width="26" height="26"/>
         <image name="logo" width="218" height="74"/>
         <namedColor name="BorderColor">
             <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Buttoncolor">
+            <color red="0.2669999897480011" green="0.70999997854232788" blue="0.046999998390674591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TransferBookNowColor">
             <color red="0.96100002527236938" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

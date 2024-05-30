@@ -121,7 +121,7 @@ extension SelectSportsListVC {
         dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "MMM dd"))"
         
         MySingleton.shared.sportslistArray = response.data ?? []
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
             loderBool = false
             hideLoadera()
         }
@@ -149,6 +149,7 @@ extension SelectSportsListVC {
                                                         searchid: i.search_id,
                                                         tokenid: i.token,
                                                         headerText: i.venue?.name,
+                                                        tempText: "\(i.dateOfEvent ?? "")-\(i.timeOfEvent ?? "")",
                                                         cellType:.SportInfoTVCell))
         }
         

@@ -39,7 +39,11 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     
     //MARK: - didTapOnBackBtnAction
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        dismiss(animated: true)
+        MySingleton.shared.callboolapi = true
+        guard let vc = DashBoardTBVC.newInstance.self else {return}
+        vc.selectedIndex = 0
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false)
     }
     
     
@@ -62,7 +66,6 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     }
     
     override func didTapOnSearchSportsBtnAction(cell: SportsSearchTVCell) {
-       // gotoSelectSportsListVC()
         
         print("sportscityName : \(MySingleton.shared.sportscityName)")
         print("sportscityId : \(MySingleton.shared.sportscityId)")
@@ -75,16 +78,6 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
         
         print("sportFromDate : \(MySingleton.shared.sportFromDate)")
         print("sportToDate : \(MySingleton.shared.sportToDate)")
-        
-//    from:
-//    destination_id:
-//    from_type:
-//    to:
-//    event_id:
-//    venue_type:
-//    form_date:25/08/2024
-//    to_date:28/08/2024
-//    special_events_id:1000
         
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["from"] = ""
@@ -153,7 +146,7 @@ extension SportsSearchVC {
     }
     
     func sportServiceList(response: SportsServiceModel) {
-        MySingleton.shared.sportsCityList = response.data ?? []
+        MySingleton.shared.sportsVenuList = response.data ?? []
         
         DispatchQueue.main.async {
             self.setupTVCells()

@@ -18,6 +18,9 @@ class CruiseDetailsVC: BaseTableVC, CruiseDetailsViewModelDelegate {
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? CruiseDetailsVC
         return vc
     }
+    
+    var imgsArray = [String]()
+    var selectedCruiseOrigen = String()
     var fname = String()
     var emailid = String()
     var mobile = String()
@@ -126,6 +129,25 @@ class CruiseDetailsVC: BaseTableVC, CruiseDetailsViewModelDelegate {
     }
     
     
+    //MARK: - didTapOnContactusBtnAction  CruiseItineraryTVCell
+    override func didTapOnContactusBtnAction(cell: CruiseItineraryTVCell) {
+        var indexPath = NSIndexPath(row: 1, section: 0)
+        commonTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+    }
+    
+    override func didTapOnImage() {
+        gotoAllImagesPopupVC()
+    }
+    
+    
+    func gotoAllImagesPopupVC() {
+        guard let vc = AllImagesPopupVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.imagesArray = self.imgsArray
+        present(vc, animated: false)
+    }
+    
+    
 }
 
 
@@ -152,6 +174,12 @@ extension CruiseDetailsVC {
     
     
     func callAPI() {
+        
+        MySingleton.shared.loderString = "fdetails"
+        MySingleton.shared.afterResultsBool = true
+        loderBool = true
+        showLoadera()
+        
         MySingleton.shared.payload.removeAll()
         BASE_URL = ""
         MySingleton.shared.cruisedetailsvm?.CALL_CRUISE_DETAILS_API(dictParam:  [:])
@@ -159,8 +187,18 @@ extension CruiseDetailsVC {
     
     
     func cruiseDetails(response: CruiseDetailsModel) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+            loderBool = false
+            hideLoadera()
+        }
+        
         BASE_URL = BASE_URL1
         MySingleton.shared.cruiseDetails = response
+        selectedCruiseOrigen = response.cruise_data?.origin ?? ""
+        MySingleton.shared.cruiseItinerary = response.cruise_data?.itinerary ?? []
+        imgsArray = response.cruise_data?.more_url ?? []
+        
         
         DispatchQueue.main.async {
             self.setupVisaTVCells()
@@ -172,7 +210,8 @@ extension CruiseDetailsVC {
     func setupVisaTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
-        MySingleton.shared.tablerow.append(TableRow(cellType:.CruiseItineraryTVCell))
+        MySingleton.shared.tablerow.append(TableRow(moreData:imgsArray,
+                                                    cellType:.CruiseItineraryTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.CruiseContactdetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
@@ -234,8 +273,10 @@ extension CruiseDetailsVC {
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
+        if callapibool == true {
+            callAPI()
+        }
         
-        callAPI()
     }
     
     

@@ -50,6 +50,7 @@ class SportInfoTVCell: TableViewCell {
         searchid = cellInfo?.searchid ?? ""
         token = cellInfo?.tokenid ?? ""
         sportcitylbl.text = cellInfo?.headerText ?? ""
+        datelbl.text = cellInfo?.tempText ?? ""
         
         MySingleton.shared.setAttributedTextnew(str1: "\(cellInfo?.currency ?? ""): ",
                                                 str2: cellInfo?.price ?? "",
@@ -66,6 +67,20 @@ class SportInfoTVCell: TableViewCell {
             titlelbl.text = MySingleton.shared.sportEventList?.eventType?.name
             subtitlelbl.text = MySingleton.shared.sportEventList?.name
             sportcitylbl.text = MySingleton.shared.sportEventList?.venue?.name
+            datelbl.text = "\(MySingleton.shared.sportEventList?.dateOfEvent ?? "")-\(MySingleton.shared.sportEventList?.timeOfEvent ?? "")"
+           
+            
+        }
+        
+        if cellInfo?.key == "sports" {
+            kwdlbl.isHidden = false
+            viewTicketBtn.setTitle("View Stadium", for: .normal)
+            
+            titlelbl.text = MySingleton.shared.sportEventList?.eventType?.name
+            subtitlelbl.text = MySingleton.shared.sportEventList?.name
+            sportcitylbl.text = MySingleton.shared.sportEventList?.venue?.name
+            datelbl.text = "\(MySingleton.shared.sportEventList?.dateOfEvent ?? "")-\(MySingleton.shared.sportEventList?.timeOfEvent ?? "")"
+           
             
         }
     }

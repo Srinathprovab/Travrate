@@ -40,6 +40,7 @@ class HolidaysVC: BaseTableVC, HolidayListVMDelegate {
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         dismiss(animated: true)
     }
     
@@ -52,6 +53,7 @@ class HolidaysVC: BaseTableVC, HolidayListVMDelegate {
     
     
     func gotoSelectedHolidayPackageVC(key:String){
+        callapibool = true
         guard let vc = SelectedHolidayPackageVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.holidaykey = key
@@ -141,7 +143,7 @@ extension HolidaysVC {
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
-        if MySingleton.shared.callboolapi == true {
+        if callapibool == true {
             callAPI()
         }
     }

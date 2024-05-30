@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
         <array key="OpenSans-Bold.ttf">
             <string>OpenSans-Bold</string>
         </array>
@@ -70,9 +73,17 @@
                                                     <constraint firstItem="gfi-1f-4Lt" firstAttribute="top" secondItem="ckb-F3-tZJ" secondAttribute="top" id="zGI-Yr-UOC"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indulge Your Self" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhj-dZ-MzD">
+                                                <rect key="frame" x="113.66666666666669" y="65" width="166" height="24"/>
+                                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="qhj-dZ-MzD" firstAttribute="centerX" secondItem="MUp-1s-BlO" secondAttribute="centerX" id="74o-Ve-3D5"/>
+                                            <constraint firstItem="qhj-dZ-MzD" firstAttribute="centerY" secondItem="gfi-1f-4Lt" secondAttribute="centerY" id="NhH-zl-voh"/>
                                             <constraint firstAttribute="height" constant="260" id="OHi-4A-BSM"/>
                                             <constraint firstAttribute="bottom" secondItem="ZuP-g9-tFn" secondAttribute="bottom" id="Pff-aD-cED"/>
                                             <constraint firstItem="ZuP-g9-tFn" firstAttribute="leading" secondItem="MUp-1s-BlO" secondAttribute="leading" id="a0z-uG-hey"/>
@@ -428,7 +439,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krr-rc-4VN">
-                                        <rect key="frame" x="0.0" y="100" width="393" height="100"/>
+                                        <rect key="frame" x="0.0" y="100" width="393" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rK4-Xq-DML">
                                                 <rect key="frame" x="353" y="0.0" width="40" height="40"/>
@@ -456,28 +467,20 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seating in pairs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eC-B0-hhu">
-                                                <rect key="frame" x="16" y="63.33333333333335" width="102" height="19.333333333333336"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="ZwI-oa-4Qy" firstAttribute="top" secondItem="krr-rc-4VN" secondAttribute="top" constant="10" id="105-e8-s3q"/>
                                             <constraint firstItem="ZwI-oa-4Qy" firstAttribute="leading" secondItem="krr-rc-4VN" secondAttribute="leading" constant="16" id="5RD-iL-Puc"/>
-                                            <constraint firstItem="4eC-B0-hhu" firstAttribute="leading" secondItem="krr-rc-4VN" secondAttribute="leading" constant="16" id="D9k-Re-tIh"/>
                                             <constraint firstAttribute="trailing" secondItem="rK4-Xq-DML" secondAttribute="trailing" id="GMz-DU-5tC"/>
-                                            <constraint firstItem="4eC-B0-hhu" firstAttribute="top" secondItem="Pzq-rC-5j9" secondAttribute="bottom" constant="6" id="IHL-hq-SPy"/>
                                             <constraint firstItem="Pzq-rC-5j9" firstAttribute="top" secondItem="ZwI-oa-4Qy" secondAttribute="bottom" constant="6" id="Icj-e2-dvH"/>
                                             <constraint firstItem="rK4-Xq-DML" firstAttribute="top" secondItem="krr-rc-4VN" secondAttribute="top" id="K78-Si-XcX"/>
-                                            <constraint firstAttribute="height" constant="100" id="aEs-bN-Luo"/>
+                                            <constraint firstAttribute="height" constant="60" id="aEs-bN-Luo"/>
                                             <constraint firstItem="Pzq-rC-5j9" firstAttribute="leading" secondItem="krr-rc-4VN" secondAttribute="leading" constant="16" id="cns-Bv-rOp"/>
                                         </constraints>
                                     </view>
                                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="llP-yD-954">
-                                        <rect key="frame" x="0.0" y="200" width="393" height="652"/>
+                                        <rect key="frame" x="0.0" y="160" width="393" height="692"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4rg-Pr-v2V">

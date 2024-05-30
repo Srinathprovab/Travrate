@@ -17,6 +17,8 @@ class SelectedHolidayPackageVC: BaseTableVC, HolidaySelectedVMDelegate {
         return vc
     }
     
+    
+    var imgsArray = [String]()
     var holidaykey = String()
     var fname = String()
     var emailid = String()
@@ -127,6 +129,24 @@ class SelectedHolidayPackageVC: BaseTableVC, HolidaySelectedVMDelegate {
     }
     
     
+    //MARK: - didTapOnContactusBtnAction  HolidayItineraryTVCell
+    override func didTapOnContactusBtnAction(cell:HolidayItineraryTVCell) {
+        var indexPath = NSIndexPath(row: 1, section: 0)
+        commonTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+    }
+
+    
+    override func didTapOnImage() {
+        gotoAllImagesPopupVC()
+    }
+    
+    
+    func gotoAllImagesPopupVC() {
+        guard let vc = AllImagesPopupVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.imagesArray = self.imgsArray
+        present(vc, animated: false)
+    }
 }
 
 
@@ -167,6 +187,7 @@ extension SelectedHolidayPackageVC {
         
         if response.status == true {
             MySingleton.shared.holidaySelectedData = response.data
+            imgsArray = response.data?.tour__2_data?[0].more_image ?? []
             selectedHolidayOrigen = response.data?.tour__2_data?[0].origin ?? ""
             MySingleton.shared.holidayItinerary = response.data?.tour__2_data?[0].itinerary ?? []
             
@@ -260,8 +281,10 @@ extension SelectedHolidayPackageVC {
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
+        if callapibool == true {
+            callAPI()
+        }
         
-        callAPI()
     }
     
     

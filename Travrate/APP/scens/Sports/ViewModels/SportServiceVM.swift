@@ -24,7 +24,7 @@ class SportServiceVM {
 
        // self.view?.showLoader()
 
-        ServiceManager.postOrPutApiCall(endPoint: ApiEndpoints.general_get_sport_city_list ,urlParams: parms as? Dictionary<String, String>, parameters: parms, resultType: SportsServiceModel.self, p:dictParam) { sucess, result, errorMessage in
+        ServiceManager.postOrPutApiCall(endPoint: ApiEndpoints.general_get_sport_type ,urlParams: parms as? Dictionary<String, String>, parameters: parms, resultType: SportsServiceModel.self, p:dictParam) { sucess, result, errorMessage in
 
             DispatchQueue.main.async {
               //  self.view?.hideLoader()
@@ -67,9 +67,9 @@ class SportServiceVM {
         let parms = NSDictionary(dictionary:dictParam)
         print("Parameters = \(parms)")
 
-       // self.view?.showLoader()
+       // self.view?.showLoader() general_get_sport_city_list   general_get_sport_type
 
-        ServiceManager.postOrPutApiCall(endPoint: ApiEndpoints.general_get_sport_type ,parameters: parms, resultType: SportsServiceModel.self, p:dictParam) { sucess, result, errorMessage in
+        ServiceManager.postOrPutApiCall(endPoint: ApiEndpoints.general_get_sport_city_list,urlParams: parms as? Dictionary<String, String> ,parameters: parms, resultType: SportsServiceModel.self, p:dictParam) { sucess, result, errorMessage in
 
             DispatchQueue.main.async {
               //  self.view?.hideLoader()

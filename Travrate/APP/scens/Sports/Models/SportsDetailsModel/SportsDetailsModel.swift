@@ -9,28 +9,31 @@ import Foundation
 
 
 struct SportsDetailsModel : Codable {
-    let data : [SportsDetailsData]?
-    let event_list : SportListData?
-    let search_id : String?
-    let msg : String?
     let status : Bool?
+    let data : [SportsDetailsData]?
+    let search_id : String?
+    let event_list : Event_list?
+    let seating_arrangement : [Seating_arrangement]?
+    let msg : String?
 
     enum CodingKeys: String, CodingKey {
 
-        case data = "data"
-        case event_list = "event_list"
-        case search_id = "search_id"
-        case msg = "msg"
         case status = "status"
+        case data = "data"
+        case search_id = "search_id"
+        case event_list = "event_list"
+        case seating_arrangement = "seating_arrangement"
+        case msg = "msg"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        data = try values.decodeIfPresent([SportsDetailsData].self, forKey: .data)
-        event_list = try values.decodeIfPresent(SportListData.self, forKey: .event_list)
-        search_id = try values.decodeIfPresent(String.self, forKey: .search_id)
-        msg = try values.decodeIfPresent(String.self, forKey: .msg)
         status = try values.decodeIfPresent(Bool.self, forKey: .status)
+        data = try values.decodeIfPresent([SportsDetailsData].self, forKey: .data)
+        search_id = try values.decodeIfPresent(String.self, forKey: .search_id)
+        event_list = try values.decodeIfPresent(Event_list.self, forKey: .event_list)
+        seating_arrangement = try values.decodeIfPresent([Seating_arrangement].self, forKey: .seating_arrangement)
+        msg = try values.decodeIfPresent(String.self, forKey: .msg)
     }
 
 }

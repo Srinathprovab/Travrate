@@ -152,6 +152,7 @@ enum TVCellType {
     case SportsFareSummeryTVCell
     case AddDeatilsOfPersonTVCell
     case PersonInformationTVCell
+    case SeatingArrangementTVCell
     
     
     //Insurence

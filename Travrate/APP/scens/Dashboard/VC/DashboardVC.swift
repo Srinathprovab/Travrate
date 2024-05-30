@@ -202,18 +202,21 @@ extension DashboardVC {
     }
     
     func gotoFlightSearchVC() {
+        callapibool = true
         guard let vc = FlightSearchVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
     
     func gotoSearchHotelVC() {
+        callapibool = true
         guard let vc = SearchHotelVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
     
     func gotoVisaVC() {
+        callapibool = true
         guard let vc = VisaVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
@@ -221,7 +224,7 @@ extension DashboardVC {
     
     
     func gotoHolidaysVC() {
-        MySingleton.shared.callboolapi = true
+        callapibool = true
         guard let vc = HolidaysVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
@@ -237,12 +240,14 @@ extension DashboardVC {
     
     
     func gotoAutoPaymentVC() {
+        callapibool = true
         guard let vc = AutoPaymentVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
     
     func gotoBookTransfersVC() {
+        callapibool = true
         guard let vc = BookTransfersVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
@@ -256,6 +261,7 @@ extension DashboardVC {
     }
     
     func gotoInsuranceVC() {
+        callapibool = true
         guard let vc = InsuranceVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)

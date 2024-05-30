@@ -165,6 +165,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="contactusBtn" destination="74h-iK-u84" id="qfb-aN-dVx"/>
                 <outlet property="desclbl" destination="PB3-52-nBk" id="lJh-kv-I01"/>
                 <outlet property="img" destination="kQ6-VO-AkB" id="ecM-JK-gSq"/>
                 <outlet property="itineraryTV" destination="fQy-Na-r0i" id="ViJ-Fp-w5w"/>

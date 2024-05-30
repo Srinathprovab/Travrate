@@ -36,6 +36,7 @@ class CruiseVC: BaseTableVC, CruiseViewModelDelegate {
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         dismiss(animated: true)
     }
     
@@ -49,6 +50,7 @@ class CruiseVC: BaseTableVC, CruiseViewModelDelegate {
     
     
     func gotoCruiseDetailsVC() {
+        callapibool = true
         guard let vc = CruiseDetailsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
@@ -76,12 +78,20 @@ extension CruiseVC {
     
     func callAPI() {
         
+        MySingleton.shared.loderString = "fdetails"
         MySingleton.shared.afterResultsBool = true
+        loderBool = true
+        showLoadera()
        
         MySingleton.shared.cruisevm?.CALL_CRUISE_LIST_API(dictParam: [:])
     }
     
     func cruiseList(response: CruiseModel) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+            loderBool = false
+            hideLoadera()
+        }
         
         MySingleton.shared.cruiseList = response.data ?? []
         MySingleton.shared.cruise = response

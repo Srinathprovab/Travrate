@@ -163,7 +163,7 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
     //MARK: - ContactInformationTVCell Delegate Methods
     
     override func editingTextField(tf:UITextField){
-    
+        
         switch tf.tag {
         case 1:
             MySingleton.shared.payemail = tf.text ?? ""
@@ -185,7 +185,7 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
     }
     
     
-   
+    
     override func didTapOnCountryCodeBtn(cell: ContactInformationTVCell) {
         MySingleton.shared.paymobilecountrycode = cell.countrycodeTF.text ?? ""
     }
@@ -259,15 +259,8 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
     
     //MARK: - didTapOnContinueBtnAction
     @objc func didTapOnContinueBtnAction(_ sender :UIButton) {
-        // gotoSelectPaymentMethodsVC()
+        
         ContinueToPaymentBtnTap()
-    }
-    
-    
-    func gotoSelectPaymentMethodsVC() {
-        guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false)
     }
 }
 
@@ -314,7 +307,7 @@ extension SportsBookingDetailsVC {
         MySingleton.shared.sportEventList = response.data?.event_list
         MySingleton.shared.sportTicketValue = response.data?.ticket_value
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
             loderBool = false
             hideLoadera()
             
@@ -681,11 +674,18 @@ extension SportsBookingDetailsVC {
         }else {
             
             
-            print(MySingleton.shared.payload)
-            
-            
+           
+            gotoSelectPaymentMethodsVC()
             
         }
+    }
+    
+    
+    
+    func gotoSelectPaymentMethodsVC() {
+        guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
     }
 }
 

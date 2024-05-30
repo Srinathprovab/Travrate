@@ -105,8 +105,8 @@ class SportsSearchTVCell: TableViewCell, SportServiceVMDelegate {
         sportCityNameArray.removeAll()
         sportCityNameArray.append("Please Select Service")
         sportCityIdArray.append("")
-        MySingleton.shared.sportsCityList.forEach { i in
-            sportCityNameArray.append("\(i.value ?? "")")
+        MySingleton.shared.sportsVenuList.forEach { i in
+            sportCityNameArray.append("\(i.name ?? "")")
             sportCityIdArray.append("\(i.id ?? "")")
         }
         
@@ -270,7 +270,7 @@ extension SportsSearchTVCell:UITableViewDelegate, UITableViewDataSource {
             }
         }else {
             
-            MySingleton.shared.sportsVenuList = response.data ?? []
+            MySingleton.shared.sportsCityList = response.data ?? []
            
             
             
@@ -292,7 +292,7 @@ extension SportsSearchTVCell:UITableViewDelegate, UITableViewDataSource {
         if tableView == teamTV {
             return MySingleton.shared.sportsTeamtList.count
         }else {
-            return MySingleton.shared.sportsVenuList.count
+            return MySingleton.shared.sportsCityList.count
         }
     }
     
@@ -310,8 +310,8 @@ extension SportsSearchTVCell:UITableViewDelegate, UITableViewDataSource {
         }else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? SelectSportServiceTVCell {
                 cell.selectionStyle = .none
-                let data = MySingleton.shared.sportsVenuList[indexPath.row]
-                cell.titlelbl.text = data.name
+                let data = MySingleton.shared.sportsCityList[indexPath.row]
+                cell.titlelbl.text = data.value
                 cell.venuId = data.id ?? ""
                 ccell = cell
             }

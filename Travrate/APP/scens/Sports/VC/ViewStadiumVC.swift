@@ -12,10 +12,11 @@ class ViewStadiumVC: BaseTableVC {
     @IBOutlet weak var stadiumView: UIView!
     @IBOutlet weak var topview: UIView!
     @IBOutlet weak var img: UIImageView!
-    
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    
+    
     var keystr = String()
-    var str = "Lorem ipsum dolor sit amet consectetur. Laoreet tristique nibh ipsum eget. Blandit sed risus tellus ac at in. Nulla dolor tempor bibendum congue ipsum nec sapien. Praesent dignissim a tellus nunc id justo viverra pellentesque. Enim ipsum sit lectus tellus non massa. Molestie vulputate habitant quis phasellus dui. Lorem libero arcu est sit. Sodales habitant ultrices at scelerisque. Sed sagittis purus mi nam.\n\n Lorem ipsum dolor sit amet consectetur. Laoreet tristique nibh ipsum eget. Blandit sed risus tellus ac at in. Nulla dolor tempor bibendum congue ipsum nec sapien. Praesent dignissim a tellus nunc id justo viverra pellentesque. Enim ipsum sit lectus tellus non massa. Molestie vulputate habitant quis phasellus dui. Lorem libero arcu est sit. Sodales habitant ultrices at scelerisque. Sed sagittis purus mi nam."
     static var newInstance: ViewStadiumVC? {
         let storyboard = UIStoryboard(name: Storyboard.Sports.name,
                                       bundle: nil)
@@ -35,21 +36,12 @@ class ViewStadiumVC: BaseTableVC {
     }
     
     
-    
-    
-    
+
     
     @IBAction func didTaponCloseBtnAction(_ sender: Any) {
         callapibool = false
         dismiss(animated: false)
     }
-    
-    
-    override func didTapOnCloseBtn(cell:LabelTVCell) {
-        callapibool = false
-        dismiss(animated: false)
-    }
-    
     
     
 }
@@ -65,7 +57,8 @@ extension ViewStadiumVC {
         }else {
             topview.isHidden = false
             commonTableView.isHidden = false
-            commonTableView.registerTVCells(["LabelTVCell","EmptyTVCell"])
+            commonTableView.registerTVCells(["SeatingArrangementTVCell",
+                                             "EmptyTVCell"])
             setupTVCell()
         }
     }
@@ -74,7 +67,15 @@ extension ViewStadiumVC {
         
         MySingleton.shared.tablerow.removeAll()
         
-        MySingleton.shared.tablerow.append(TableRow(title:str,cellType:.LabelTVCell))
+       
+        
+        MySingleton.shared.seatingArrangementList.forEach { i in
+            MySingleton.shared.tablerow.append(TableRow(title:i.title,
+                                                        subTitle: i.desc,
+                                                        cellType:.SeatingArrangementTVCell))
+        }
+        
+        
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow

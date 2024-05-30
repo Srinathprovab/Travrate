@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol CruiseItineraryTVCellDelegate {
+    func didTapOnContactusBtnAction(cell:CruiseItineraryTVCell)
+    func didTapOnImage()
+}
+
 class CruiseItineraryTVCell: TableViewCell {
     
     @IBOutlet weak var bannerImage: UIImageView!
@@ -14,8 +19,10 @@ class CruiseItineraryTVCell: TableViewCell {
     @IBOutlet weak var packegeImagesCV: UICollectionView!
     @IBOutlet weak var tvHeight: NSLayoutConstraint!
     @IBOutlet weak var itineraryTV: UITableView!
+    @IBOutlet weak var desclbl: UILabel!
     
-    
+    var imagesArray = [String]()
+    var delegate:CruiseItineraryTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,8 +38,11 @@ class CruiseItineraryTVCell: TableViewCell {
     
     override func updateUI() {
         
-    //    self.bannerImage.sd_setImage(with: URL(string: MySingleton.shared.cruiseDetails?.cruise_data?.image_url ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+        imagesArray = cellInfo?.moreData as! [String]
+        packegeImagesCV.reloadData()
         
+        
+        desclbl.attributedText = MySingleton.shared.cruiseDetails?.cruise_data?.desc?.htmlToAttributedString
         
         // Load banner image
         self.bannerImage.sd_setImage(with: URL(string: MySingleton.shared.cruiseDetails?.cruise_data?.image_url ?? ""),
@@ -55,7 +65,8 @@ class CruiseItineraryTVCell: TableViewCell {
     }
     
     func updateHeight() {
-        tvHeight.constant = 3 * 185
+        tvHeight.constant = CGFloat(MySingleton.shared.cruiseItinerary.count * 206)
+        itineraryTV.reloadData()
     }
     
     func setupUI() {
@@ -63,9 +74,16 @@ class CruiseItineraryTVCell: TableViewCell {
         contactusBtn.layer.borderWidth = 1.5
         contactusBtn.layer.borderColor = UIColor.BooknowBtnColor.cgColor
         contactusBtn.layer.cornerRadius = 15
+        contactusBtn.addTarget(self, action: #selector(didTapOnContactusBtnAction(_:)), for: .touchUpInside)
+        
         
         setupCV()
         setupTV()
+    }
+    
+    
+    @objc func didTapOnContactusBtnAction(_ sender:UIButton) {
+        delegate?.didTapOnContactusBtnAction(cell: self)
     }
     
 }
@@ -75,6 +93,8 @@ extension CruiseItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSou
     
     func setupCV() {
         
+        print("MySingleton.shared.cruiseDetails?.cruise_data?.more_url?.count")
+        print(MySingleton.shared.cruiseDetails?.cruise_data?.more_url?.count ?? 0)
         
         let nib = UINib(nibName: "HolidaysImagesCVCell", bundle: nil)
         packegeImagesCV.register(nib, forCellWithReuseIdentifier: "cell")
@@ -94,12 +114,15 @@ extension CruiseItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return imagesArray.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var commonCell = UICollectionViewCell()
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HolidaysImagesCVCell {
+            
+            let data = imagesArray[indexPath.row]
+            cell.img.sd_setImage(with: URL(string: data), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
             
             commonCell = cell
@@ -108,15 +131,11 @@ extension CruiseItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           
-        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didTapOnImage()
+    }
     
-    
-        func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-            
-        }
-    
+  
     
 }
 
@@ -139,7 +158,7 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return MySingleton.shared.cruiseItinerary.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -147,8 +166,10 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CruiseAddItineraryTVCell {
             
             cell.selectionStyle = .none
-            cell.daylbl.text = "Day \(indexPath.row)"
-            
+            let data =  MySingleton.shared.cruiseItinerary[indexPath.row]
+            cell.daylbl.text = "Day \(indexPath.row + 1)"
+            cell.titlelbl.text = data.title ?? ""
+            cell.subtitlelbl.text = data.desc ?? ""
             c = cell
             
         }
