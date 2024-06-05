@@ -132,7 +132,7 @@ class CruiseDetailsVC: BaseTableVC, CruiseDetailsViewModelDelegate {
     //MARK: - didTapOnContactusBtnAction  CruiseItineraryTVCell
     override func didTapOnContactusBtnAction(cell: CruiseItineraryTVCell) {
         var indexPath = NSIndexPath(row: 1, section: 0)
-        commonTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+        commonTableView.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
     }
     
     override func didTapOnImage() {

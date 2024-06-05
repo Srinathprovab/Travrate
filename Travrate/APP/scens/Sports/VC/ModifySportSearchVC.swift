@@ -107,6 +107,7 @@ class ModifySportSearchVC: BaseTableVC, SportServiceVMDelegate {
     
     func gotoSelectSportsListVC() {
         callapibool = true
+        defaults.set(false, forKey: "sportfilteronce")
         guard let vc = SelectSportsListVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)

@@ -103,9 +103,17 @@ var filterTap = String()
 var filterPrice = String()
 var prices = [String]()
 var hotelprices = [String]()
+
 var filterModel = FlightFilterModel()
 var sortBy: SortParameter = .nothing
 var hotelfiltermodel = HotelFilterModel()
+var sportsfilterModel = SportsFilterModel()
+var tournamentArray = [String]()
+var eventsArray = [String]()
+var sportsCityArray = [String]()
+var sportsCountryArray = [String]()
+
+
 var mapModelArray: [MapModel] = []
 var faretypeArray = [String]()
 var directFlightBool = true

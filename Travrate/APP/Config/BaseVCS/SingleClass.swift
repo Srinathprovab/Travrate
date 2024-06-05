@@ -213,6 +213,7 @@ class MySingleton {
     var sportBookingData : SportsBookingData?
     var sportEventList : Event_list?
     var sportTicketValue : Ticket_value?
+    var participantsArray = [Participants]()
     
     //View Models
     var loginvm:LoginViewModel?

@@ -46,7 +46,7 @@ class CruiseItineraryTVCell: TableViewCell {
         
         // Load banner image
         self.bannerImage.sd_setImage(with: URL(string: MySingleton.shared.cruiseDetails?.cruise_data?.image_url ?? ""),
-                                      placeholderImage: UIImage(named: "placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                                     placeholderImage: UIImage(named: "placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
             if let error = error {
                 // Handle error loading image
                 print("Error loading banner image: \(error.localizedDescription)")
@@ -68,6 +68,20 @@ class CruiseItineraryTVCell: TableViewCell {
         tvHeight.constant = CGFloat(MySingleton.shared.cruiseItinerary.count * 206)
         itineraryTV.reloadData()
     }
+    
+    
+    //    func updateHeight() {
+    //        // Reload the table view to ensure the height calculations are accurate
+    //        itineraryTV.reloadData()
+    //
+    //        // Force layout to calculate the correct content size
+    //        itineraryTV.layoutIfNeeded()
+    //
+    //        // Update the table view height constraint based on the content size
+    //        let contentHeight = itineraryTV.contentSize.height
+    //        tvHeight.constant = CGFloat(MySingleton.shared.cruiseItinerary.count * contentHeight)
+    //    }
+    
     
     func setupUI() {
         
@@ -114,7 +128,7 @@ extension CruiseItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imagesArray.count 
+        return imagesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -135,7 +149,7 @@ extension CruiseItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSou
         delegate?.didTapOnImage()
     }
     
-  
+    
     
 }
 
@@ -153,6 +167,10 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         itineraryTV.separatorStyle = .singleLine
         itineraryTV.isScrollEnabled = false
         itineraryTV.separatorStyle = .none
+        
+        // Enable automatic dimension
+        //           itineraryTV.estimatedRowHeight = 200
+        //           itineraryTV.rowHeight = UITableView.automaticDimension
         
     }
     
@@ -175,5 +193,9 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         }
         return c
     }
+    
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return UITableView.automaticDimension
+    //    }
     
 }

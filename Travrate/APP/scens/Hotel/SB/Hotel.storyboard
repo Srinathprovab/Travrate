@@ -27,6 +27,9 @@
         <array key="OpenSans-SemiBold.ttf">
             <string>OpenSans-SemiBold</string>
         </array>
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Search HotelVC-->
@@ -1266,69 +1269,6 @@
             </objects>
             <point key="canvasLocation" x="4029.770992366412" y="-2.1126760563380285"/>
         </scene>
-        <!--Map ViewVC-->
-        <scene sceneID="trr-Z6-gcA">
-            <objects>
-                <viewController storyboardIdentifier="MapViewVC" id="QpS-QT-NlP" customClass="MapViewVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="f2v-dE-a2Q">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zxh-Sr-JbC">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MapView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zkn-d1-M6U">
-                                        <rect key="frame" x="160.66666666666666" y="61" width="71.666666666666657" height="19"/>
-                                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
-                                        <color key="textColor" name="HeadingColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Oj-SK-cs5">
-                                        <rect key="frame" x="10" y="50.666666666666657" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="2pd-PQ-FrD"/>
-                                            <constraint firstAttribute="height" constant="40" id="3rR-RJ-QWi"/>
-                                        </constraints>
-                                        <color key="tintColor" name="TitleColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="back"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" name="LayoverColor"/>
-                                <constraints>
-                                    <constraint firstItem="Zkn-d1-M6U" firstAttribute="centerX" secondItem="Zxh-Sr-JbC" secondAttribute="centerX" id="S9F-4b-ZiV"/>
-                                    <constraint firstAttribute="height" constant="100" id="SjE-it-Q6H"/>
-                                    <constraint firstItem="7Oj-SK-cs5" firstAttribute="leading" secondItem="Zxh-Sr-JbC" secondAttribute="leading" constant="10" id="akv-ni-Iqi"/>
-                                    <constraint firstItem="7Oj-SK-cs5" firstAttribute="centerY" secondItem="Zkn-d1-M6U" secondAttribute="centerY" id="dQV-g3-Rfy"/>
-                                    <constraint firstAttribute="bottom" secondItem="Zkn-d1-M6U" secondAttribute="bottom" constant="20" id="roD-gD-LsU"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9r-Ct-EZ9">
-                                <rect key="frame" x="0.0" y="100" width="393" height="752"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="NIk-xs-Uj3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="NIk-xs-Uj3" firstAttribute="trailing" secondItem="F9r-Ct-EZ9" secondAttribute="trailing" id="DAE-KQ-Agt"/>
-                            <constraint firstItem="Zxh-Sr-JbC" firstAttribute="leading" secondItem="NIk-xs-Uj3" secondAttribute="leading" id="Dm3-sv-DW0"/>
-                            <constraint firstItem="Zxh-Sr-JbC" firstAttribute="top" secondItem="f2v-dE-a2Q" secondAttribute="top" id="Tle-mQ-gRg"/>
-                            <constraint firstAttribute="bottom" secondItem="F9r-Ct-EZ9" secondAttribute="bottom" id="r6K-Hl-x3T"/>
-                            <constraint firstItem="F9r-Ct-EZ9" firstAttribute="leading" secondItem="NIk-xs-Uj3" secondAttribute="leading" id="roA-Ed-aAq"/>
-                            <constraint firstItem="NIk-xs-Uj3" firstAttribute="trailing" secondItem="Zxh-Sr-JbC" secondAttribute="trailing" id="tph-2P-qDB"/>
-                            <constraint firstItem="F9r-Ct-EZ9" firstAttribute="top" secondItem="Zxh-Sr-JbC" secondAttribute="bottom" id="zOq-2F-EGB"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="closebtn" destination="7Oj-SK-cs5" id="cI2-SS-0Ti"/>
-                        <outlet property="googleMapView" destination="F9r-Ct-EZ9" id="upI-l8-Z7K"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T11-Ah-buy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4790" y="-2"/>
-        </scene>
         <!--Cancellation Policy PopupVC-->
         <scene sceneID="ulv-df-C6z">
             <objects>
@@ -1415,6 +1355,142 @@
             </objects>
             <point key="canvasLocation" x="5493.8931297709923" y="3.5211267605633805"/>
         </scene>
+        <!--Map ViewVC-->
+        <scene sceneID="vBh-Zl-p06">
+            <objects>
+                <viewController storyboardIdentifier="MapViewVC" id="5qm-xw-phw" customClass="MapViewVC" customModule="HolidaysCenter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c5S-5S-YmW">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jnn-l3-HnD">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MapView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEL-La-NXs">
+                                        <rect key="frame" x="161.33333333333334" y="60.333333333333336" width="70.333333333333343" height="19.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                        <color key="textColor" name="TitleColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G80-Uu-Lqr">
+                                        <rect key="frame" x="10" y="50.333333333333343" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="1NS-Q6-Ja6"/>
+                                            <constraint firstAttribute="height" constant="40" id="qCW-uE-RbD"/>
+                                        </constraints>
+                                        <color key="tintColor" name="TitleColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="back"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="LayoverColor"/>
+                                <constraints>
+                                    <constraint firstItem="G80-Uu-Lqr" firstAttribute="centerY" secondItem="qEL-La-NXs" secondAttribute="centerY" id="4I1-QH-j4j"/>
+                                    <constraint firstItem="G80-Uu-Lqr" firstAttribute="leading" secondItem="Jnn-l3-HnD" secondAttribute="leading" constant="10" id="Tb5-FD-C8W"/>
+                                    <constraint firstItem="qEL-La-NXs" firstAttribute="centerX" secondItem="Jnn-l3-HnD" secondAttribute="centerX" id="VO0-FU-yrv"/>
+                                    <constraint firstAttribute="height" constant="100" id="Yvm-ET-wxh"/>
+                                    <constraint firstAttribute="bottom" secondItem="qEL-La-NXs" secondAttribute="bottom" constant="20" id="bBn-zk-8jg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mtp-0L-Joe">
+                                <rect key="frame" x="0.0" y="100" width="393" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sWw-Oe-eB6">
+                                <rect key="frame" x="10" y="110" width="210" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZh-AL-f1m">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="45"/>
+                                        <color key="backgroundColor" name="AppBtnColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="6au-gG-dOh"/>
+                                            <constraint firstAttribute="width" constant="100" id="Jlf-CS-9gX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Map">
+                                            <color key="titleColor" red="0.96078431369999995" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.96078431369999995" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTaspOnShowMapViewBtnAction:" destination="5qm-xw-phw" eventType="touchUpInside" id="nkb-ZC-0av"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ld-vq-m6Z">
+                                        <rect key="frame" x="110" y="0.0" width="100" height="45"/>
+                                        <color key="backgroundColor" name="AppBtnColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="PLC-kz-uAd"/>
+                                            <constraint firstAttribute="width" constant="100" id="aqK-3m-GPJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Satellite">
+                                            <color key="titleColor" red="0.96078431369999995" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.96078431369999995" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapOnShowSatelliteViewBtnAction:" destination="5qm-xw-phw" eventType="touchUpInside" id="66r-hi-E7d"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZkU-Pd-0iV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sWw-Oe-eB6" firstAttribute="leading" secondItem="ZkU-Pd-0iV" secondAttribute="leading" constant="10" id="3nS-pg-6Tl"/>
+                            <constraint firstItem="Mtp-0L-Joe" firstAttribute="leading" secondItem="ZkU-Pd-0iV" secondAttribute="leading" id="6nj-C9-jWN"/>
+                            <constraint firstItem="ZkU-Pd-0iV" firstAttribute="trailing" secondItem="Mtp-0L-Joe" secondAttribute="trailing" id="8IG-SA-p8s"/>
+                            <constraint firstItem="Mtp-0L-Joe" firstAttribute="top" secondItem="Jnn-l3-HnD" secondAttribute="bottom" id="ExP-i5-iDK"/>
+                            <constraint firstItem="ZkU-Pd-0iV" firstAttribute="trailing" secondItem="Jnn-l3-HnD" secondAttribute="trailing" id="Swy-a5-UEQ"/>
+                            <constraint firstAttribute="bottom" secondItem="Mtp-0L-Joe" secondAttribute="bottom" id="dym-jj-ZHO"/>
+                            <constraint firstItem="sWw-Oe-eB6" firstAttribute="top" secondItem="Jnn-l3-HnD" secondAttribute="bottom" constant="10" id="g6p-1R-O4U"/>
+                            <constraint firstItem="Jnn-l3-HnD" firstAttribute="top" secondItem="c5S-5S-YmW" secondAttribute="top" id="uYh-Ps-91E"/>
+                            <constraint firstItem="Jnn-l3-HnD" firstAttribute="leading" secondItem="ZkU-Pd-0iV" secondAttribute="leading" id="vRi-Ed-SAi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="G80-Uu-Lqr" id="Ua3-3q-bAo"/>
+                        <outlet property="googleMapView" destination="Mtp-0L-Joe" id="uYK-tC-Pys"/>
+                        <outlet property="mapBtn" destination="zZh-AL-f1m" id="BXi-qX-ExR"/>
+                        <outlet property="satelliteBtn" destination="2Ld-vq-m6Z" id="Thu-N2-UOp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8L-12-8xG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4760" y="4"/>
+        </scene>
+        <!--Map Hotel InfoVC-->
+        <scene sceneID="CEV-h6-J8F">
+            <objects>
+                <viewController storyboardIdentifier="MapHotelInfoVC" id="uJn-gJ-gYW" customClass="MapHotelInfoVC" customModule="HolidaysCenter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WTH-dB-A5S">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wV7-Rr-Yn3">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RRt-2D-xcf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wV7-Rr-Yn3" firstAttribute="top" secondItem="WTH-dB-A5S" secondAttribute="top" id="Bh1-MX-3BC"/>
+                            <constraint firstItem="wV7-Rr-Yn3" firstAttribute="leading" secondItem="RRt-2D-xcf" secondAttribute="leading" id="Fm3-Zt-f09"/>
+                            <constraint firstItem="RRt-2D-xcf" firstAttribute="trailing" secondItem="wV7-Rr-Yn3" secondAttribute="trailing" id="Hrc-Mf-OxS"/>
+                            <constraint firstAttribute="bottom" secondItem="wV7-Rr-Yn3" secondAttribute="bottom" id="LSG-T1-jpE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="holderView" destination="wV7-Rr-Yn3" id="guH-T0-fvO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iXd-Yh-pEM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4760" y="754"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Group 18076" width="79" height="30"/>
@@ -1426,6 +1502,9 @@
         <image name="mapview" width="196" height="52.333332061767578"/>
         <image name="multiply" catalog="system" width="128" height="111"/>
         <image name="sort" width="26" height="26"/>
+        <namedColor name="AppBtnColor">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BackBtnColor">
             <color red="0.10599999874830246" green="0.29399999976158142" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1454,7 +1533,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

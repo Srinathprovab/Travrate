@@ -132,7 +132,7 @@ class SelectedHolidayPackageVC: BaseTableVC, HolidaySelectedVMDelegate {
     //MARK: - didTapOnContactusBtnAction  HolidayItineraryTVCell
     override func didTapOnContactusBtnAction(cell:HolidayItineraryTVCell) {
         var indexPath = NSIndexPath(row: 1, section: 0)
-        commonTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+        commonTableView.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
     }
 
     

@@ -44,7 +44,7 @@ class TabSelectTVCell: TableViewCell {
 //    var serviceImgsArray1 = ["s1","s2","s3","sports","s5","s6","s7"]
 
     var serviceArray = ["Insurence","Transfers","Sports","Car rental","Holidays","Cruise","Auto pay"]
-    var serviceImgsArray = ["s7","s3","sports","s3","s2","s5","s6"]
+    var serviceImgsArray = ["s7","transfer","sports","s3","s2","s5","s6"]
     var delegate:TabSelectTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()

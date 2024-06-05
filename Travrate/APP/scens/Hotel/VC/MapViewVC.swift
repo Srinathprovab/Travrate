@@ -10,21 +10,23 @@ import MapKit
 import GoogleMaps
 
 
-
 struct MapModel {
     var longitude =  String()
     var latitude =  String()
     var hotelname = String()
     var hotelimg = String()
+    var identifier = Int()
 }
 
 
-class MapViewVC: UIViewController, CLLocationManagerDelegate {
+
+class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var googleMapView: UIView!
-    @IBOutlet weak var closebtn: UIButton!
-    
+    @IBOutlet weak var mapBtn: UIButton!
+    @IBOutlet weak var satelliteBtn: UIButton!
     
     static var newInstance: MapViewVC? {
         let storyboard = UIStoryboard(name: Storyboard.Hotel.name,
@@ -33,6 +35,7 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
         return vc
     }
     
+    var gmsView: GMSMapView?
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -41,76 +44,77 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
         setupUI()
         
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        
         
     }
     
     func setupUI() {
         
-        self.googleMapView.backgroundColor = .clear
-        closebtn.addTarget(self, action: #selector(backbtnAction), for: .touchUpInside)
         
+        self.googleMapView.backgroundColor = .clear
+        backButton.addTarget(self, action: #selector(backbtnAction), for: .touchUpInside)
+        
+        mapBtn.layer.cornerRadius = 4
+        mapBtn.layer.borderWidth = 1
+        mapBtn.layer.borderColor = UIColor.AppBorderColor.cgColor
+        
+        satelliteBtn.layer.cornerRadius = 4
+        satelliteBtn.layer.borderWidth = 1
+        satelliteBtn.layer.borderColor = UIColor.AppBorderColor.cgColor
+        
+        taponMapBtn()
+        
+        
+        // Add the map view
+        initializeGoogleMapView()
     }
     
-    
-    
-    
-    @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func initializeGoogleMapView() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
         if !mapModelArray.isEmpty {
-            // Calculate the average latitude and longitude from mapModelArray
             let averageLatitude = mapModelArray.map { Double($0.latitude) ?? 0.0 }.reduce(0.0, +) / Double(mapModelArray.count)
             let averageLongitude = mapModelArray.map { Double($0.longitude) ?? 0.0 }.reduce(0.0, +) / Double(mapModelArray.count)
             
-            // Set the camera to center on the average coordinates
             let camera = GMSCameraPosition.camera(withLatitude: averageLatitude, longitude: averageLongitude, zoom: 12.0)
+            gmsView = GMSMapView.map(withFrame: googleMapView.bounds, camera: camera)
+            gmsView?.delegate = self
             
-            // Initialize the GMSMapView with the camera and frame
-            let gmsView = GMSMapView.map(withFrame: googleMapView.bounds, camera: camera)
-            
-            // Set the mapView as googleMapView's subview
-            googleMapView.addSubview(gmsView)
-            
-            // Add markers to the mapView
-            addMarkersToMap(gmsView)
-            
-            locationManager.stopUpdatingLocation() // You may want to stop updates after you have the user's location
-        }
-    }
-    
-    
-    
-    
-    
-    func addMarkersToMap(_ mapView: GMSMapView) {
-        
-        for mapModel in mapModelArray {
-            if let latitude = Double(mapModel.latitude), let longitude = Double(mapModel.longitude) {
-                // Create and configure markers based on the mapModel data
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                marker.title = mapModel.hotelname
-                // Customize the marker as needed
-                
-                // Create a custom marker icon with an image
-                if let markerImage = UIImage(named: "mapicon") {
-                    let markerView = UIImageView(image: markerImage)
-                    marker.iconView = markerView
-                } else {
-                    print("Error: Marker image not found or is nil.")
-                }
-                
-                // Add the marker to the map
-                marker.map = mapView
-                
-                mapView.selectedMarker = marker
-                
-            } else {
-                print("Error: Invalid latitude or longitude values in mapModel.")
+            if let gmsView = gmsView {
+                googleMapView.addSubview(gmsView)
+                addMarkersToMap(gmsView)
             }
         }
     }
+    
+    
+    
+    
+    //    @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    //        if !mapModelArray.isEmpty {
+    //            // Calculate the average latitude and longitude from mapModelArray
+    //            let averageLatitude = mapModelArray.map { Double($0.latitude) ?? 0.0 }.reduce(0.0, +) / Double(mapModelArray.count)
+    //            let averageLongitude = mapModelArray.map { Double($0.longitude) ?? 0.0 }.reduce(0.0, +) / Double(mapModelArray.count)
+    //
+    //            // Set the camera to center on the average coordinates
+    //            let camera = GMSCameraPosition.camera(withLatitude: averageLatitude, longitude: averageLongitude, zoom: 12.0)
+    //
+    //            // Initialize the GMSMapView with the camera and frame
+    //            let gmsView = GMSMapView.map(withFrame: googleMapView.bounds, camera: camera)
+    //
+    //            gmsView.delegate = self
+    //            // Set the mapView as googleMapView's subview
+    //            googleMapView.addSubview(gmsView)
+    //
+    //            // Add markers to the mapView
+    //            addMarkersToMap(gmsView)
+    //
+    //            locationManager.stopUpdatingLocation() // You may want to stop updates after you have the user's location
+    //        }
+    //    }
+    
     
     
     @objc func backbtnAction() {
@@ -119,7 +123,201 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
     }
     
     
+    @IBAction func didTaspOnShowMapViewBtnAction(_ sender: Any) {
+           taponMapBtn()
+        
+        
+        
+//        let popVC = MapHotelInfoVC()
+//        popVC.modalPresentationStyle = .popover
+//        //popVC.mapModel = mapModel
+//        
+//        if let popOverVC = popVC.popoverPresentationController {
+//            popOverVC.delegate = self
+//            
+//            // Set source view and source rect
+//            popOverVC.sourceView = sender as? UIView
+//            popOverVC.sourceRect = (sender as AnyObject).bounds
+//            
+//            
+//            // Set arrow direction and content size
+//            popOverVC.permittedArrowDirections = .up
+//            popVC.preferredContentSize = CGSize(width: 200, height: 200)
+//        }
+//        
+//        self.present(popVC, animated: true, completion: nil)
+//        
+        
+        
+    }
+    
+    func taponMapBtn() {
+        mapBtn.setTitleColor(.WhiteColor, for: .normal)
+        mapBtn.backgroundColor = .AppBtnColor
+        
+        satelliteBtn.setTitleColor(.black, for: .normal)
+        satelliteBtn.backgroundColor = .WhiteColor
+        
+        switchToMapView()
+        
+    }
+    
+    
+    @IBAction func didTapOnShowSatelliteViewBtnAction(_ sender: Any) {
+        taponSatelliteBtn()
+    }
+    
+    func taponSatelliteBtn() {
+        satelliteBtn.setTitleColor(.WhiteColor, for: .normal)
+        satelliteBtn.backgroundColor = .AppBtnColor
+        
+        mapBtn.setTitleColor(.black, for: .normal)
+        mapBtn.backgroundColor = .WhiteColor
+        
+        switchToSatelliteView()
+        
+    }
+    
+    func switchToMapView() {
+        if let mapView = googleMapView.subviews.first(where: { $0 is GMSMapView }) as? GMSMapView {
+            mapView.mapType = .normal
+        }
+    }
+    
+    func switchToSatelliteView() {
+        if let mapView = googleMapView.subviews.first(where: { $0 is GMSMapView }) as? GMSMapView {
+            mapView.mapType = .satellite
+        }
+    }
+    
+    
 }
 
 
 
+
+// Implementing GMSMapViewDelegate
+extension MapViewVC: GMSMapViewDelegate {
+    
+    
+    
+    
+    
+    func createMarkerButton(mapModel: MapModel) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40) // Adjust size as needed
+        button.setImage(UIImage(named: "mapicon"), for: .normal) // Set your marker image here
+        button.addTarget(self, action: #selector(markerButtonTapped(_:)), for: .touchUpInside)
+        button.tag = mapModel.identifier // Assuming each mapModel has a unique identifier
+        return button
+    }
+    
+    func addMarkersToMap(_ mapView: GMSMapView) {
+        for mapModel in mapModelArray {
+            if let latitude = Double(mapModel.latitude), let longitude = Double(mapModel.longitude) {
+                // Create and configure markers based on the mapModel data
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                marker.title = mapModel.hotelname
+                marker.userData = mapModel
+                mapView.delegate = self
+                
+                
+                // Assign the custom button as the marker's icon view
+                let markerButton = createMarkerButton(mapModel: mapModel)
+                marker.iconView = markerButton
+                
+                // Add the marker to the map
+                marker.map = mapView
+            } else {
+                print("Error: Invalid latitude or longitude values in mapModel.")
+            }
+        }
+    }
+    
+    
+    
+    
+    func findMapModelByIdentifier(_ identifier: Int) -> MapModel? {
+        // Implement this function to find and return the MapModel by its identifier
+        return mapModelArray.first { $0.identifier == identifier }
+    }
+    
+    
+    
+    @objc func markerButtonTapped(_ sender: UIButton) {
+        
+        
+        guard let mapModel = findMapModelByIdentifier(sender.tag) else {
+            print("Map model not found for tag \(sender.tag)")
+            return
+        }
+        
+        print("Map model found: \(mapModel.hotelname)")
+        
+        let popVC = MapHotelInfoVC()
+        popVC.modalPresentationStyle = .popover
+        popVC.mapModel = mapModel
+        
+        if let popOverVC = popVC.popoverPresentationController {
+            popOverVC.delegate = self
+            popOverVC.sourceView = sender
+            popOverVC.sourceRect = sender.bounds
+            popOverVC.permittedArrowDirections = .up
+            popVC.preferredContentSize = CGSize(width: 200, height: 200)
+        } else {
+            print("PopoverPresentationController is nil")
+        }
+        
+        self.present(popVC, animated: true, completion: nil)
+        print("Popover presented")
+    }
+    
+    
+}
+
+
+extension MapViewVC {
+    
+    
+//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//        // Handle marker tap event here
+//        if let mapModel = marker.userData as? MapModel {
+//            let popVC = MapHotelInfoVC()
+//            popVC.modalPresentationStyle = .popover
+//            popVC.mapModel = mapModel
+//            
+//            if let popOverVC = popVC.popoverPresentationController {
+//                popOverVC.delegate = self
+//                
+//                // Set source view and source rect
+//                popOverVC.sourceView = mapView
+//                popOverVC.sourceRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+//                
+//                // If the marker has an icon view, use its bounds to set the sourceRect
+//                if let iconView = marker.iconView {
+//                    popOverVC.sourceRect = mapView.convert(iconView.bounds, from: iconView)
+//                } else {
+//                    // Fallback: use the marker's position on the map view
+//                    let point = mapView.projection.point(for: marker.position)
+//                    popOverVC.sourceRect = CGRect(x: point.x, y: point.y, width: 1, height: 1)
+//                }
+//                
+//                // Set arrow direction and content size
+//                popOverVC.permittedArrowDirections = .up
+//                popVC.preferredContentSize = CGSize(width: 200, height: 200)
+//            }
+//            
+//            self.present(popVC, animated: true, completion: nil)
+//        }
+//        
+//        return true // Return true to consume the tap event
+//    }
+    
+    
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+}

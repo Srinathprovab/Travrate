@@ -138,7 +138,7 @@ extension InsurenceSearchTVCell {
     func setupTravellingDropDropDown() {
         
         travellingDropDown.dataSource = ["Select",
-                                         "Traveller vouncer tnan lo vears",
+                                         "Traveller younger tnan 18 vears old",
                                          "Traveller between 18 and 65 years old",
                                          "Traveller between 65 and 75 vears old",
                                          "Traveller between 75 and 80 years old",

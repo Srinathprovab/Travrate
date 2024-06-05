@@ -176,6 +176,8 @@ extension CheckBoxTVCell: UITableViewDataSource, UITableViewDelegate {
         if let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect) {
             if tabselect == "Flight" {
                 showSelectedFlightsFilterValues(cell: cell, indexPath: indexPath)
+            } else if tabselect == "Sports" {
+                showSelectedSportFilterValues(cell: cell, indexPath: indexPath)
             } else {
                 showSelectedHotelFilterValues(cell: cell, indexPath: indexPath)
             }
@@ -577,6 +579,134 @@ extension CheckBoxTVCell {
                 
                 
                 if hotelfiltermodel.aminitiesA.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.sele()
+                        self.selectedIndices.append(indexPath)
+                        self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    }
+                    print("Selected: \(cell.titlelbl.text ?? "")")
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.unselected() // Deselect the cell
+                    }
+                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    cell.unselected() // Deselect the cell
+                }
+            }
+            
+            
+            
+        default:
+            break
+        }
+    }
+    
+    
+    
+    
+    
+    //MARK: - showSelectedSportFilterValues checkOptionsTVCell
+    
+    func showSelectedSportFilterValues(cell:checkOptionsTVCell,indexPath:IndexPath) {
+        
+        
+        //
+        // Check the section title to determine which filter to apply
+        switch titlelbl.text {
+            
+        case "Tournament":
+            if !sportsfilterModel.TournamentA.isEmpty {
+                // Check if the cell's title matches any value in the luggage array
+                
+                
+                if sportsfilterModel.TournamentA.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.sele()
+                        self.selectedIndices.append(indexPath)
+                        self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    }
+                    print("Selected: \(cell.titlelbl.text ?? "")")
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.unselected() // Deselect the cell
+                    }
+                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    cell.unselected() // Deselect the cell
+                }
+            }
+            
+            
+            
+        case "Events":
+            if !sportsfilterModel.EventsA.isEmpty {
+                // Check if the cell's title matches any value in the luggage array
+                
+                
+                if sportsfilterModel.EventsA.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.sele()
+                        self.selectedIndices.append(indexPath)
+                        self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    }
+                    print("Selected: \(cell.titlelbl.text ?? "")")
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.unselected() // Deselect the cell
+                    }
+                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    cell.unselected() // Deselect the cell
+                }
+            }
+            
+            
+        case "City":
+            if !sportsfilterModel.SportsCityA.isEmpty {
+                // Check if the cell's title matches any value in the luggage array
+                
+                
+                if sportsfilterModel.SportsCityA.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.sele()
+                        self.selectedIndices.append(indexPath)
+                        self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    }
+                    print("Selected: \(cell.titlelbl.text ?? "")")
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.unselected() // Deselect the cell
+                    }
+                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    cell.unselected() // Deselect the cell
+                }
+            }
+            
+            
+        case "Country":
+            if !sportsfilterModel.SportsCountryA.isEmpty {
+                // Check if the cell's title matches any value in the luggage array
+                
+                
+                if sportsfilterModel.SportsCountryA.contains(cell.titlelbl.text ?? "") {
                     
                     DispatchQueue.main.async {
                         cell.sele()

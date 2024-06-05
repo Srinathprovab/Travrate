@@ -36,6 +36,16 @@ struct HotelFilterModel {
 }
 
 
+struct SportsFilterModel {
+    
+    var TournamentA: [String] = []
+    var EventsA: [String] = []
+    var SportsCityA: [String] = []
+    var SportsCountryA: [String] = []
+    
+}
+
+
 
 enum SortParameter {
     case PriceHigh
@@ -51,6 +61,16 @@ enum SortParameter {
     case nothing
     case airlinessortatoz
     case airlinessortztoa
+}
+
+
+protocol AppliedSportsFilters {
+    
+    func sportFilterByApplied(tournamentA:[String],
+                              eventsA:[String],
+                              sportsCityA:[String],
+                              sportsCountryA:[String])
+    
 }
 
 protocol AppliedFilters:AnyObject {
@@ -77,6 +97,11 @@ protocol AppliedFilters:AnyObject {
                               nearByLocA:[String],
                               niberhoodA:[String],
                               aminitiesA:[String])
+    
+    
+    
+    
+    
 }
 
 
@@ -97,6 +122,7 @@ class FilterVC: BaseTableVC{
     
     //MARK: - Flights
     weak var delegate: AppliedFilters?
+    var sportsdelegate: AppliedSportsFilters?
     var minpricerangefilter = Double()
     var maxpricerangefilter = Double()
     var starRatingFilter = String()
@@ -108,6 +134,15 @@ class FilterVC: BaseTableVC{
     var filterKey = String()
     var noOverNightFlightArray = ["No"]
     var paymentTypeArray = ["Refundable","Non Refundable"]
+    
+    
+    
+    
+    var selectedTournamentArray = [String]()
+    var selectedEventsArray = [String]()
+    var selectedSportsCityArray = [String]()
+    var selectedSportsCountryArray = [String]()
+    
     
     var noOvernightFlightFilterStr = [String]()
     var noOfStopsFilterArray = [String]()
@@ -196,6 +231,12 @@ class FilterVC: BaseTableVC{
             setupHotelsFilterTVCells()
             break
             
+            
+        case "sportfilter":
+            sortBylbl.text = "Filter"
+            setupSportsFilterTVCells()
+            break
+            
         case "hotelsort":
             sortBylbl.text = "Sort"
             setupHotelsSortByTVCells()
@@ -234,6 +275,7 @@ class FilterVC: BaseTableVC{
     
     
     
+    //MARK: - setupFilterTVCells setupSortByTVCells
     func setupFilterTVCells() {
         commonTableView.isScrollEnabled = true
         tablerow.removeAll()
@@ -297,7 +339,7 @@ class FilterVC: BaseTableVC{
     
     
     
-    
+    //MARK: - setupHotelsFilterTVCells setupHotelsSortByTVCells
     func setupHotelsFilterTVCells() {
         
         commonTableView.isScrollEnabled = true
@@ -339,6 +381,30 @@ class FilterVC: BaseTableVC{
     
     
     
+    //MARK: - setupSportsFilterTVCells
+    func setupSportsFilterTVCells() {
+        
+        commonTableView.isScrollEnabled = true
+        tablerow.removeAll()
+        
+        tablerow.append(TableRow(title:"Tournament",data: tournamentArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Events",data: eventsArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"City",data: sportsCityArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Country",data: sportsCountryArray,cellType:.CheckBoxTVCell))
+        
+        
+        tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))
+        tablerow.append(TableRow(title:"Apply",key: "btn",cellType:.ButtonTVCell))
+        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        
+        
+        commonTVData = tablerow
+        commonTableView.reloadData()
+    }
+    
+    
+    
+    
     
     override func didTapOnShowMoreBtn(cell:CheckBoxTVCell){
         
@@ -360,7 +426,7 @@ class FilterVC: BaseTableVC{
         
     }
     
-   
+    
     
     override func didTapOnLowtoHighBtn(cell: SortbyTVCell) {
         cell.lowtoHighlbl.textColor = .WhiteColor
@@ -573,11 +639,11 @@ class FilterVC: BaseTableVC{
         cell.hightoLowView.backgroundColor = .WhiteColor
     }
     
-    func resetFilterValues() {
-        DispatchQueue.main.async {
-            self.setupFilterTVCells()
-        }
-    }
+    //    func resetFilterValues() {
+    //        DispatchQueue.main.async {
+    //            self.setupFilterTVCells()
+    //        }
+    //    }
     
     
     @IBAction func didTapOnResetBtn(_ sender: Any) {
@@ -595,6 +661,12 @@ class FilterVC: BaseTableVC{
                 }else {
                     DispatchQueue.main.async {[self] in
                         resetFlightSortFilter()
+                    }
+                }
+            }else if tabselect == "Sports" {
+                if filterKey == "sportfilter" {
+                    DispatchQueue.main.async {[self] in
+                        sportsResetFilter()
                     }
                 }
             }else {
@@ -630,6 +702,9 @@ class FilterVC: BaseTableVC{
         if let tabSelected = defaults.string(forKey: UserDefaultsKeys.tabselect) {
             if tabSelected == "Flight" {
                 setupSortByTVCells()
+            }else if tabSelected == "Sports" {
+                
+                
             }else {
                 setupHotelsSortByTVCells()
             }
@@ -704,6 +779,32 @@ class FilterVC: BaseTableVC{
                 default:
                     break
                 }
+            }else  if tabselect == "Sports"  {
+                
+                switch cell.filtertitle {
+                    
+                case "Tournament":
+                    selectedTournamentArray.append(cell.titlelbl.text ?? "")
+                    break
+                    
+                case "Events":
+                    selectedEventsArray.append(cell.titlelbl.text ?? "")
+                    break
+                    
+                case "City":
+                    selectedSportsCityArray.append(cell.titlelbl.text ?? "")
+                    break
+                    
+                case "Country":
+                    selectedSportsCountryArray.append(cell.titlelbl.text ?? "")
+                    break
+                    
+                    
+                default:
+                    break
+                }
+                
+                
             }else {
                 
                 switch cell.filtertitle {
@@ -812,9 +913,9 @@ class FilterVC: BaseTableVC{
                         selectedLuggageArray.remove(at: index)
                     }
                     
-//                    if selectedLuggageArray.isEmpty == true {
-//                        filterModel.luggage.removeAll()
-//                    }
+                    //                    if selectedLuggageArray.isEmpty == true {
+                    //                        filterModel.luggage.removeAll()
+                    //                    }
                     
                     print(selectedLuggageArray.joined(separator: "---"))
                     break
@@ -845,6 +946,41 @@ class FilterVC: BaseTableVC{
                 default:
                     break
                 }
+            }else if tabselect == "Sports"  {
+                
+                switch cell.filtertitle {
+                    
+                    
+                case "Tournament":
+                    if let index = selectedTournamentArray.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedTournamentArray.remove(at: index)
+                    }
+                    break
+                    
+                case "Events":
+                    if let index = selectedEventsArray.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedEventsArray.remove(at: index)
+                    }
+                    break
+                    
+                case "City":
+                    if let index = selectedSportsCityArray.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedSportsCityArray.remove(at: index)
+                    }
+                    break
+                    
+                case "Country":
+                    if let index = selectedSportsCountryArray.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedSportsCountryArray.remove(at: index)
+                    }
+                    break
+                    
+                    
+                default:
+                    break
+                }
+                
+                
             }else {
                 
                 
@@ -1068,6 +1204,8 @@ class FilterVC: BaseTableVC{
         if let tabSelected = defaults.string(forKey: UserDefaultsKeys.tabselect) {
             if tabSelected == "Flight" {
                 setupFilterTVCells()
+            }else if tabSelected == "Sports" {
+                setupSportsFilterTVCells()
             }else {
                 setupHotelsFilterTVCells()
             }
@@ -1077,7 +1215,7 @@ class FilterVC: BaseTableVC{
     //MARK: - Apply Filter
     override func btnAction(cell: ButtonTVCell) {
         
-      
+        
         
         if let tabselect = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String {
             let pricesFloat = prices.compactMap { Float($0) }
@@ -1174,6 +1312,41 @@ class FilterVC: BaseTableVC{
                 }else {
                     delegate?.filtersSortByApplied(sortBy: sortBy)
                 }
+            }else if tabselect == "Sports" {
+                
+                if filterKey == "sportfilter" {
+                    
+                    if selectedTournamentArray.isEmpty == false {
+                        sportsfilterModel.TournamentA = selectedTournamentArray
+                    }else {
+                        sportsfilterModel.TournamentA.removeAll()
+                    }
+                    
+                    if selectedEventsArray.isEmpty == false {
+                        sportsfilterModel.EventsA = selectedEventsArray
+                    }else {
+                        sportsfilterModel.EventsA.removeAll()
+                    }
+                    
+                    if selectedSportsCityArray.isEmpty == false {
+                        sportsfilterModel.SportsCityA = selectedSportsCityArray
+                    }else {
+                        sportsfilterModel.SportsCityA.removeAll()
+                    }
+                    
+                    
+                    if selectedSportsCountryArray.isEmpty == false {
+                        sportsfilterModel.SportsCountryA = selectedSportsCountryArray
+                    }else {
+                        sportsfilterModel.SportsCountryA.removeAll()
+                    }
+                    
+                    
+                    sportsdelegate?.sportFilterByApplied(tournamentA: selectedTournamentArray,
+                                                         eventsA: selectedEventsArray,
+                                                         sportsCityA: selectedSportsCityArray,
+                                                         sportsCountryA: selectedSportsCountryArray)
+                }
             }else {
                 
                 if resetHotelBool == true {
@@ -1182,7 +1355,7 @@ class FilterVC: BaseTableVC{
                     MySingleton.shared.filterApplyedBool = true
                 }
                 
-               
+                
                 
                 if minpricerangefilter != 0.0 {
                     hotelfiltermodel.minPriceRange = minpricerangefilter
@@ -1241,7 +1414,7 @@ class FilterVC: BaseTableVC{
                 
                 delegate?.hotelFilterByApplied(minpricerange:  hotelfiltermodel.minPriceRange ?? 0.0,
                                                maxpricerange:  hotelfiltermodel.maxPriceRange ?? 0.0,
-                                               starRating:  hotelfiltermodel.starRating, 
+                                               starRating:  hotelfiltermodel.starRating,
                                                starRatingNew: startRatingArray,
                                                refundableTypeArray: hotelfiltermodel.refundableTypes,
                                                nearByLocA: hotelfiltermodel.nearByLocA,
@@ -1326,6 +1499,8 @@ extension FilterVC {
 
 extension FilterVC {
     
+    
+    //MARK: - ResetFilter For Floights
     func resetFilter() {
         // Reset all values in the FilterModel
         
@@ -1414,6 +1589,67 @@ extension FilterVC {
     }
     
     
+    
+    //MARK: - For Sports
+    func sportsResetFilter() {
+        // Reset all values in the FilterModel
+        
+        sportsfilterModel.TournamentA = []
+        sportsfilterModel.EventsA = []
+        sportsfilterModel.SportsCityA = []
+        sportsfilterModel.SportsCountryA = []
+        
+        selectedTournamentArray.removeAll()
+        selectedEventsArray.removeAll()
+        selectedSportsCityArray.removeAll()
+        selectedSportsCountryArray.removeAll()
+        
+        // Deselect all cells in your checkOptionsTVCell table view
+        deselectAllCheckOptionsCells()
+        
+        // Reload the table view to reflect the changes
+        commonTableView.reloadData()
+    }
+    
+    
+    
+    //MARK: - Reset Hotel Filter
+    func resetHotelFilter() {
+        // Reset all values in the FilterModel
+        
+        let pricesFloat = hotelprices.compactMap { Float($0) }
+        hotelfiltermodel.minPriceRange = Double((pricesFloat.min() ?? hotelprices.compactMap { Float($0) }.min()) ?? 0.0)
+        hotelfiltermodel.maxPriceRange = Double((pricesFloat.max() ?? hotelprices.compactMap { Float($0) }.max()) ?? 0.0)
+        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SliderTVCell {
+            cell.setupUI()
+        }
+        minpricerangefilter = hotelfiltermodel.minPriceRange ?? 0.0
+        maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? 0.0
+        
+        
+        
+        hotelfiltermodel.refundableTypes.removeAll()
+        hotelfiltermodel.aminitiesA.removeAll()
+        hotelfiltermodel.nearByLocA.removeAll()
+        hotelfiltermodel.niberhoodA.removeAll()
+        hotelfiltermodel.starRating = ""
+        
+        starRatingFilter = ""
+        hotelRefundablerTypeFilteArray.removeAll()
+        selectednearBylocationsArray.removeAll()
+        selectedNeighbourwoodArray.removeAll()
+        selectedamenitiesArray.removeAll()
+        hotelfiltermodel.starRatingNew.removeAll()
+        startRatingArray.removeAll()
+        
+        
+        // Deselect all cells in your checkOptionsTVCell table view
+        deselectAllCheckOptionsCells()
+        
+        // Reload the table view to reflect the changes
+        commonTableView.reloadData()
+    }
+    
 }
 
 
@@ -1424,6 +1660,8 @@ extension FilterVC {
         if let tabSelected = defaults.string(forKey: UserDefaultsKeys.tabselect) {
             if tabSelected == "Flight" {
                 loadinitiallFlightFilterValues()
+            }else if tabSelected == "Sports" {
+                loadinitiallSportsFilterValues()
             }else {
                 loadinitiallHotelFilterValues()
             }
@@ -1523,39 +1761,38 @@ extension FilterVC {
     }
     
     
-    func resetHotelFilter() {
-        // Reset all values in the FilterModel
+    
+    
+    
+    func loadinitiallSportsFilterValues(){
         
-        let pricesFloat = hotelprices.compactMap { Float($0) }
-        hotelfiltermodel.minPriceRange = Double((pricesFloat.min() ?? hotelprices.compactMap { Float($0) }.min()) ?? 0.0)
-        hotelfiltermodel.maxPriceRange = Double((pricesFloat.max() ?? hotelprices.compactMap { Float($0) }.max()) ?? 0.0)
-        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SliderTVCell {
-            cell.setupUI()
+        if !UserDefaults.standard.bool(forKey: "sportfilteronce") {
+            sportsResetFilter()
+            defaults.set(true, forKey: "sportfilteronce")
         }
-        minpricerangefilter = hotelfiltermodel.minPriceRange ?? 0.0
-        maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? 0.0
         
         
         
-        hotelfiltermodel.refundableTypes.removeAll()
-        hotelfiltermodel.aminitiesA.removeAll()
-        hotelfiltermodel.nearByLocA.removeAll()
-        hotelfiltermodel.niberhoodA.removeAll()
-        hotelfiltermodel.starRating = ""
         
-        starRatingFilter = ""
-        hotelRefundablerTypeFilteArray.removeAll()
-        selectednearBylocationsArray.removeAll()
-        selectedNeighbourwoodArray.removeAll()
-        selectedamenitiesArray.removeAll()
-        hotelfiltermodel.starRatingNew.removeAll()
-        startRatingArray.removeAll()
+        if !sportsfilterModel.TournamentA.isEmpty {
+            selectedTournamentArray = sportsfilterModel.TournamentA
+        }
+        
+        if !sportsfilterModel.EventsA.isEmpty {
+            selectedEventsArray = sportsfilterModel.EventsA
+        }
+        
+        if !sportsfilterModel.SportsCityA.isEmpty {
+            selectedSportsCityArray = sportsfilterModel.SportsCityA
+        }
+        
+        if !sportsfilterModel.SportsCountryA.isEmpty {
+            selectedSportsCountryArray = sportsfilterModel.SportsCountryA
+        }
         
         
-        // Deselect all cells in your checkOptionsTVCell table view
-        deselectAllCheckOptionsCells()
         
-        // Reload the table view to reflect the changes
-        commonTableView.reloadData()
     }
+    
+    
 }

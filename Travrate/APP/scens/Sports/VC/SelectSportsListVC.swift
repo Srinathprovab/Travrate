@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SelectSportsListVC: BaseTableVC, SportListVMDelegate {
+class SelectSportsListVC: BaseTableVC, SportListVMDelegate, AppliedSportsFilters {
+    
+    
     
     @IBOutlet weak var teamlbl: UILabel!
     @IBOutlet weak var venulbl: UILabel!
@@ -42,11 +44,11 @@ class SelectSportsListVC: BaseTableVC, SportListVMDelegate {
     
     
     @IBAction func didTapOnFilterBtnAction(_ sender: Any) {
-        print("didTapOnFilterBtnAction")
+        gotoFilterVC(strkey: "sportfilter")
     }
     
     @IBAction func didTapOnSortBtnAction(_ sender: Any) {
-        print("didTapOnSortBtnAction")
+       // gotoFilterVC(strkey: "sportfilter")
     }
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
@@ -78,6 +80,19 @@ class SelectSportsListVC: BaseTableVC, SportListVMDelegate {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
+    
+    
+    
+    
+    
+    //MARK: - gotoFilterVC
+    func gotoFilterVC(strkey:String) {
+        guard let vc = FilterVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.sportsdelegate = self
+        vc.filterKey = strkey
+        present(vc, animated: true)
+    }
 }
 
 
@@ -101,7 +116,7 @@ extension SelectSportsListVC {
         loderBool = true
         showLoadera()
         
-    
+        
         MySingleton.shared.sportListVM?.CALL_GET_PRE_SPORTS_SEARCH_API(dictParam: MySingleton.shared.payload)
     }
     
@@ -127,33 +142,53 @@ extension SelectSportsListVC {
         }
         
         
+        
+        
         DispatchQueue.main.async {
-            self.setupTVCells()
+            self.appendValues(list: MySingleton.shared.sportslistArray)
+        }
+        
+        DispatchQueue.main.async {
+            self.setupTVCells(list: MySingleton.shared.sportslistArray)
         }
         
         
     }
     
     
-    func setupTVCells() {
+    func setupTVCells(list:[SportListData]) {
         
         MySingleton.shared.tablerow.removeAll()
         
-        
-        
-        MySingleton.shared.sportslistArray.forEach { i in
-            MySingleton.shared.tablerow.append(TableRow(title:i.eventType?.name,
-                                                        subTitle: i.name,
-                                                        price: "\(i.minTicketPrice?.price ?? 0)",
-                                                        currency: "\(i.minTicketPrice?.currency ?? "")",
-                                                        searchid: i.search_id,
-                                                        tokenid: i.token,
-                                                        headerText: i.venue?.name,
-                                                        tempText: "\(i.dateOfEvent ?? "")-\(i.timeOfEvent ?? "")",
-                                                        cellType:.SportInfoTVCell))
+        if list.isEmpty == false {
+            
+            list.forEach { i in
+                MySingleton.shared.tablerow.append(TableRow(title:i.eventType?.name,
+                                                            subTitle: i.name,
+                                                            
+                                                            price: "\(i.minTicketPrice?.price ?? 0)",
+                                                            currency: "\(i.minTicketPrice?.currency ?? "")",
+                                                            
+                                                            searchid: i.search_id,
+                                                            tokenid: i.token, 
+                                                            key: "list",
+                                                            headerText: i.venue?.name,
+                                                            moreData: i.participants,
+                                                            tempText: "\(i.dateOfEvent ?? "")-\(i.timeOfEvent ?? "")",
+                                                            cellType:.SportInfoTVCell))
+                
+                
+                
+                
+            }
+            
+            MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+            
+            
+        }else {
+            TableViewHelper.EmptyMessage(message: "No Data Found", tableview: self.commonTableView, vc: self)
         }
         
-        MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -175,5 +210,59 @@ extension SelectSportsListVC {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
+    
+}
+
+
+extension SelectSportsListVC {
+    
+    
+    func appendValues(list:[SportListData]) {
+        
+        tournamentArray.removeAll()
+        eventsArray.removeAll()
+        sportsCityArray.removeAll()
+        sportsCountryArray.removeAll()
+        
+        list.forEach { i in
+            
+            tournamentArray.append(i.tournament?.name ?? "")
+            eventsArray.append(i.eventType?.name ?? "")
+            sportsCityArray.append(i.city?.name ?? "")
+            sportsCountryArray.append(i.country?.name ?? "")
+            
+        }
+        
+        tournamentArray = tournamentArray.unique()
+        eventsArray = eventsArray.unique()
+        sportsCityArray = sportsCityArray.unique()
+        sportsCountryArray = sportsCountryArray.unique()
+        
+    }
+    
+    func sportFilterByApplied(tournamentA: [String], eventsA: [String], sportsCityA: [String], sportsCountryA: [String]) {
+        // Print the input arrays
+        print(" ===== tournamentA ====== \n\(tournamentA.joined(separator: ","))")
+        print(" ===== eventsA ====== \n\(eventsA.joined(separator: ","))")
+        print(" ===== sportsCityA ====== \n\(sportsCityA.joined(separator: ","))")
+        print(" ===== sportsCountryA ====== \n\(sportsCountryA.joined(separator: ","))")
+
+        // Filter the sports list array based on the input arrays
+        let filteredSportsList = MySingleton.shared.sportslistArray.filter { event in
+            let isTournamentMatch = tournamentA.isEmpty || (event.tournament?.name != nil && tournamentA.contains(event.tournament!.name!))
+            let isEventMatch = eventsA.isEmpty || (event.eventType?.name != nil && eventsA.contains(event.eventType!.name!))
+            
+            let isCityMatch = sportsCityA.isEmpty || (event.city?.name != nil && sportsCityA.contains(event.city?.name ?? ""))
+            let isCountryMatch = sportsCountryA.isEmpty || (event.country?.name != nil && sportsCountryA.contains(event.country?.name! ?? ""))
+            
+            return isTournamentMatch && isEventMatch && isCityMatch && isCountryMatch
+        }
+
+        setupTVCells(list: filteredSportsList)
+        
+    }
+
+    
+    
     
 }

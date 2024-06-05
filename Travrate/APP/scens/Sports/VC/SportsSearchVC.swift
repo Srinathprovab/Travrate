@@ -9,7 +9,7 @@ import UIKit
 
 class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     
-   
+    
     static var newInstance: SportsSearchVC? {
         let storyboard = UIStoryboard(name: Storyboard.Sports.name,
                                       bundle: nil)
@@ -35,8 +35,6 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     }
     
     
-    
-    
     //MARK: - didTapOnBackBtnAction
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
         MySingleton.shared.callboolapi = true
@@ -52,12 +50,24 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
-        cell.depDatelbl.text = formatter.string(from: cell.depDatePicker.date)
-        cell.retDatelbl.text = formatter.string(from: cell.retDatePicker.date)
         
-        MySingleton.shared.sportFromDate = cell.depDatelbl.text ?? ""
-        MySingleton.shared.sportToDate = cell.retDatelbl.text ?? ""
         
+        if cell.depDateTF.isFirstResponder {
+            defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
+            defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
+            cell.retDatePicker.date = cell.depDatePicker.date
+            
+            MySingleton.shared.sportFromDate = cell.depDatelbl.text ?? ""
+            MySingleton.shared.sportToDate = cell.retDatelbl.text ?? ""
+        } else if cell.retDateTF.isFirstResponder {
+            defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
+            defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
+            MySingleton.shared.sportFromDate = cell.depDatelbl.text ?? ""
+            MySingleton.shared.sportToDate = cell.retDatelbl.text ?? ""
+        }
+        
+        
+        commonTableView.reloadData()
         self.view.endEditing(true)
     }
     
@@ -90,14 +100,26 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
         MySingleton.shared.payload["to_date"] = MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
         MySingleton.shared.payload["special_events_id"] = MySingleton.shared.sportscityId
         
-        gotoSelectSportsListVC()
+        
+        if MySingleton.shared.sportFromDate.isEmpty == true {
+            
+        }else if MySingleton.shared.sportToDate.isEmpty == true {
+            
+        }else if MySingleton.shared.sportscityId.isEmpty == true {
+            
+        }else {
+            gotoSelectSportsListVC()
+        }
+        
+        
     }
     
     
-   
+    
     
     func gotoSelectSportsListVC() {
         callapibool = true
+        defaults.set(false, forKey: "sportfilteronce")
         guard let vc = SelectSportsListVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)

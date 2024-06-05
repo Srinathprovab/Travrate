@@ -25,6 +25,7 @@ class SportInfoTVCell: TableViewCell {
     @IBOutlet weak var kwdlbl: UILabel!
     
     
+    var participantsA = [Participants]()
     var searchid = String()
     var token = String()
     var delegate:SportInfoTVCellDelegate?
@@ -44,7 +45,6 @@ class SportInfoTVCell: TableViewCell {
     override func updateUI() {
         
         
-        
         titlelbl.text = cellInfo?.title ?? ""
         subtitlelbl.text = cellInfo?.subTitle ?? ""
         searchid = cellInfo?.searchid ?? ""
@@ -60,6 +60,12 @@ class SportInfoTVCell: TableViewCell {
                                                 str1Color: .TitleColor,
                                                 str2Color: .TitleColor)
         
+        
+        
+        if cellInfo?.key == "list" {
+            participantsA = cellInfo?.moreData as! [Participants]
+        }
+        
         if cellInfo?.key == "bookingdetails" {
             kwdlbl.isHidden = true
             viewTicketBtn.setTitle("View Stadium", for: .normal)
@@ -68,8 +74,8 @@ class SportInfoTVCell: TableViewCell {
             subtitlelbl.text = MySingleton.shared.sportEventList?.name
             sportcitylbl.text = MySingleton.shared.sportEventList?.venue?.name
             datelbl.text = "\(MySingleton.shared.sportEventList?.dateOfEvent ?? "")-\(MySingleton.shared.sportEventList?.timeOfEvent ?? "")"
-           
             
+            participantsA = MySingleton.shared.sportEventList?.participants ?? []
         }
         
         if cellInfo?.key == "sports" {
@@ -80,7 +86,17 @@ class SportInfoTVCell: TableViewCell {
             subtitlelbl.text = MySingleton.shared.sportEventList?.name
             sportcitylbl.text = MySingleton.shared.sportEventList?.venue?.name
             datelbl.text = "\(MySingleton.shared.sportEventList?.dateOfEvent ?? "")-\(MySingleton.shared.sportEventList?.timeOfEvent ?? "")"
-           
+            
+            participantsA = MySingleton.shared.sportEventList?.participants ?? []
+        }
+        
+        
+        if participantsA.isEmpty == false {
+            
+            self.sportimg1.sd_setImage(with: URL(string: participantsA[0].participants_img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            
+            self.sportimg2.sd_setImage(with: URL(string: participantsA[1].participants_img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            
             
         }
     }
@@ -97,7 +113,7 @@ class SportInfoTVCell: TableViewCell {
         }else {
             delegate?.didTapOnViewTicketBtnAction(cell: self)
         }
-       
+        
     }
     
 }

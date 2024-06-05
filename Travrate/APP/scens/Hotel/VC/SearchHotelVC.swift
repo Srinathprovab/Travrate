@@ -69,8 +69,16 @@ class SearchHotelVC: BaseTableVC {
     override func donedatePicker(cell:HotelSearchTVCell){
         
         
-        defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
-        defaults.set(formatter.string(from: cell.checkoutDatePicker.date), forKey: UserDefaultsKeys.checkout)
+        
+        
+        if cell.checkinTF.isFirstResponder == true {
+            defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
+            defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkout)
+            cell.checkoutDatePicker.date = cell.checkinDatePicker.date
+        }else {
+            defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
+            defaults.set(formatter.string(from: cell.checkoutDatePicker.date), forKey: UserDefaultsKeys.checkout)
+        }
         
         commonTableView.reloadData()
         self.view.endEditing(true)
