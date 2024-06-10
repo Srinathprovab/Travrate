@@ -148,6 +148,11 @@ class CruiseDetailsVC: BaseTableVC, CruiseDetailsViewModelDelegate {
     }
     
     
+    //MARK: - CruiseAddItineraryTVCell  didTapOnTitleDropDownBtnAction
+    override func didTapOnTitleDropDownBtnAction(cell:CruiseAddItineraryTVCell) {
+        commonTableView.reloadData()
+    }
+    
 }
 
 

@@ -12,7 +12,8 @@ protocol CruiseItineraryTVCellDelegate {
     func didTapOnImage()
 }
 
-class CruiseItineraryTVCell: TableViewCell {
+class CruiseItineraryTVCell: TableViewCell, CruiseAddItineraryTVCellDelegate {
+    
     
     @IBOutlet weak var bannerImage: UIImageView!
     @IBOutlet weak var contactusBtn: UIButton!
@@ -64,23 +65,6 @@ class CruiseItineraryTVCell: TableViewCell {
         updateHeight()
     }
     
-    func updateHeight() {
-        tvHeight.constant = CGFloat(MySingleton.shared.cruiseItinerary.count * 206)
-        itineraryTV.reloadData()
-    }
-    
-    
-    //    func updateHeight() {
-    //        // Reload the table view to ensure the height calculations are accurate
-    //        itineraryTV.reloadData()
-    //
-    //        // Force layout to calculate the correct content size
-    //        itineraryTV.layoutIfNeeded()
-    //
-    //        // Update the table view height constraint based on the content size
-    //        let contentHeight = itineraryTV.contentSize.height
-    //        tvHeight.constant = CGFloat(MySingleton.shared.cruiseItinerary.count * contentHeight)
-    //    }
     
     
     func setupUI() {
@@ -99,6 +83,12 @@ class CruiseItineraryTVCell: TableViewCell {
     @objc func didTapOnContactusBtnAction(_ sender:UIButton) {
         delegate?.didTapOnContactusBtnAction(cell: self)
     }
+    
+    
+    func didTapOnTitleDropDownBtnAction(cell: CruiseAddItineraryTVCell) {
+        
+    }
+    
     
 }
 
@@ -157,6 +147,20 @@ extension CruiseItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSou
 extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     
     
+    func updateHeight() {
+        itineraryTV.reloadData()
+        itineraryTV.layoutIfNeeded()
+        
+        let height = itineraryTV.contentSize.height
+        tvHeight.constant = height
+        
+        UIView.animate(withDuration: 0.3) {
+            self.layoutIfNeeded()
+        }
+        
+        updateParentTableView()
+    }
+    
     
     func setupTV() {
         itineraryTV.register(UINib(nibName: "CruiseAddItineraryTVCell", bundle: nil), forCellReuseIdentifier: "cell")
@@ -168,34 +172,83 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         itineraryTV.isScrollEnabled = false
         itineraryTV.separatorStyle = .none
         
-        // Enable automatic dimension
-        //           itineraryTV.estimatedRowHeight = 200
-        //           itineraryTV.rowHeight = UITableView.automaticDimension
+        itineraryTV.rowHeight = UITableView.automaticDimension
+        itineraryTV.estimatedRowHeight = 360
+        
         
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MySingleton.shared.cruiseItinerary.count
+        return  MySingleton.shared.cruiseItinerary.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var c = UITableViewCell()
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CruiseAddItineraryTVCell {
-            
+            cell.delegate = self
             cell.selectionStyle = .none
+            
             let data =  MySingleton.shared.cruiseItinerary[indexPath.row]
             cell.daylbl.text = "Day \(indexPath.row + 1)"
             cell.titlelbl.text = data.title ?? ""
             cell.subtitlelbl.text = data.desc ?? ""
+        
+            
+            cell.img.sd_setImage(with: URL(string: data.image ?? ""),
+                                         placeholderImage: UIImage(named: "placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                if let error = error {
+                    // Handle error loading image
+                    print("Error loading banner image: \(error.localizedDescription)")
+                    // Check if the error is due to a 404 Not Found response
+                    if (error as NSError).code == NSURLErrorBadServerResponse {
+                        // Set placeholder image for 404 error
+                        cell.img.image = UIImage(named: "noimage")
+                    } else {
+                        // Set placeholder image for other errors
+                        cell.img.image = UIImage(named: "noimage")
+                    }
+                }
+            })
+            
+            
+            
             c = cell
             
         }
         return c
     }
     
-    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        return UITableView.automaticDimension
+    
+    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        itineraryTV.deselectRow(at: indexPath, animated: true)
+    //        guard let cell = tableView.cellForRow(at: indexPath) as? CruiseAddItineraryTVCell else { return }
+    //
+    //        cell.showbool.toggle()
+    //        cell.dropdownimg.image = UIImage(named: cell.showbool ? "dropup" : "downarrow")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
+    //        cell.subtitleHolderView.isHidden = !cell.showbool
+    //
+    //
+    //
+    //        itineraryTV.beginUpdates()
+    //        itineraryTV.endUpdates()
+    //
+    //        updateHeight()
+    //        delegate?.didTapOnTitleDropDownBtnAction(cell: cell)
     //    }
+    
+    
+    func updateParentTableView() {
+        guard let parentTableView = self.superview as? UITableView else { return }
+        UIView.setAnimationsEnabled(false)
+        parentTableView.beginUpdates()
+        parentTableView.endUpdates()
+        UIView.setAnimationsEnabled(true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     
 }

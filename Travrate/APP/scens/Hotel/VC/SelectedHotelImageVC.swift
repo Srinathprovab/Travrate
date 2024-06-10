@@ -30,6 +30,7 @@ class SelectedHotelImageVC: UIViewController {
             img.image = UIImage(named: imageurlString)
         }else {
             img.sd_setImage(with: URL(string: imageurlString ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            
         }
         
     }

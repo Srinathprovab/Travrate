@@ -54,7 +54,6 @@ class NationalityVC: BaseTableVC, AirlineListViewModelDelegate {
     }
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -75,8 +75,7 @@ class AddDeatilsOfGuestTVCell: TableViewCell {
         saveView.isHidden = false
         viewHeight.constant = 154
     }
-    
-    
+   
     func collapsView() {
         dropdownimg.image = UIImage(named: "downarrow")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
         saveView.isHidden = true

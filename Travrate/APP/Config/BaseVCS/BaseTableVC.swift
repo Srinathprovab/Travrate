@@ -343,14 +343,7 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func didTapOnContactusBtnAction(cell: CruiseItineraryTVCell) {}
     func didTapOnContactusBtnAction(cell: HolidayItineraryTVCell) {}
     func didTapOnImage() {}
-    
-    
-    
-  
-   
-   
-    
-    
+    func didTapOnTitleDropDownBtnAction(cell:CruiseAddItineraryTVCell) {}
     
     
     
