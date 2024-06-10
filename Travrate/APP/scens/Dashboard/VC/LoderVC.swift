@@ -30,6 +30,12 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     @IBOutlet weak var sportvenulbl: UILabel!
     @IBOutlet weak var sportdateslbl: UILabel!
     
+    
+    @IBOutlet weak var carrentalView: UIView!
+    @IBOutlet weak var carRentalNamelbl: UILabel!
+    @IBOutlet weak var carRentalDateslbl: UILabel!
+    
+    
     var searchdata:SearchData?
     var searchHoteldata:SearchHotelData?
     var gifImages: [UIImage] = []
@@ -106,6 +112,10 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
         }else if tabselect == "Sports" {
             
             
+            
+        }else if tabselect == "CarRental" {
+            
+            carrentalView.isHidden = false
             
         }else {
             
@@ -234,6 +244,12 @@ extension LoderVC {
             sportvenulbl.text = MySingleton.shared.sportsVenuName
             sportdateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")) To \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy"))"
            
+        }else if tabselect == "CarRental" {
+            
+            carrentalView.isHidden = false
+            carRentalNamelbl.text = "Istanbul Airport"
+            carRentalDateslbl.text = "22-8-2024 to 31-08-2024"
+            
         }else {
            // MySingleton.shared.hotellodervm?.CALL_HOTEL_LODER_DETAILS_API(dictParam: MySingleton.shared.payload)
             

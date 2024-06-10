@@ -185,6 +185,7 @@ class MySingleton {
     var sport_mapUrl = String()
     var sport_ticket_value = String()
     var sport_eventlist = String()
+    var carRentalDriverAge = String()
     
     var confpassword = String()
     var recentData:[Recent_searches]?

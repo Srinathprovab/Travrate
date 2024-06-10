@@ -162,6 +162,12 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         gotoInsuranceVC()
     }
     
+    
+    override func didTapOnCarRentalBtnAction(cell:TabSelectTVCell) {
+        defaults.set("CarRental", forKey: UserDefaultsKeys.tabselect)
+        gotoSearchCarRentalVC()
+    }
+    
 }
 
 
@@ -267,6 +273,13 @@ extension DashboardVC {
     func gotoInsuranceVC() {
         callapibool = true
         guard let vc = InsuranceVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
+    
+    func gotoSearchCarRentalVC() {
+        callapibool = true
+        guard let vc = SearchCarRentalVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }

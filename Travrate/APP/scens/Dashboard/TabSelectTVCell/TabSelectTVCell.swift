@@ -26,6 +26,7 @@ protocol TabSelectTVCellDelegate {
     func didTapOnCruisebtnAction(cell:TabSelectTVCell)
     func didTapOnAutopaybtnAction(cell:TabSelectTVCell)
     func didTapOnInsurencebtnAction(cell:TabSelectTVCell)
+    func didTapOnCarRentalBtnAction(cell:TabSelectTVCell)
 }
 
 
@@ -263,6 +264,11 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
                 
             case "Insurence":
                 delegate?.didTapOnInsurencebtnAction(cell: self)
+                break
+                
+                
+            case "Car rental":
+                delegate?.didTapOnCarRentalBtnAction(cell: self)
                 break
                 
                 
