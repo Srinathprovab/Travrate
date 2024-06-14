@@ -1106,6 +1106,33 @@ extension BaseTableVC: UITableViewDataSource {
                 commonCell = cell
                 
                 
+            case .SelectedCarRentalTVCell :
+                let cell: SelectedCarRentalTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+            case .SelectedCRPackageTVCell :
+                let cell: SelectedCRPackageTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+                
+            case .ChooseAdditionalOptionsTVCell :
+                let cell: ChooseAdditionalOptionsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+            case .CRFareSummaryTVCell :
+                let cell: CRFareSummaryTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+                
+            case .DriverDetailsTVCell :
+                let cell: DriverDetailsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
                 
             default:
                 print("handle this case in getCurrentCellAt")

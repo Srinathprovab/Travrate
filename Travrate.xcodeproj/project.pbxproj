@@ -646,6 +646,18 @@
 		6545D82C2BFC769100FBCB60 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545D8222BFC769000FBCB60 /* Venue.swift */; };
 		6545D82D2BFC769100FBCB60 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545D8232BFC769100FBCB60 /* EventType.swift */; };
 		6545D82F2BFC76B500FBCB60 /* SportListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545D82E2BFC76B500FBCB60 /* SportListVM.swift */; };
+		65684C8D2C1C31A4002A96BE /* CRProceedToBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65684C8C2C1C31A4002A96BE /* CRProceedToBookVC.swift */; };
+		65684C912C1C3268002A96BE /* CRBookingDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65684C902C1C3268002A96BE /* CRBookingDetailsVC.swift */; };
+		65684C952C1C40BC002A96BE /* SelectedCarRentalTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65684C932C1C40BC002A96BE /* SelectedCarRentalTVCell.swift */; };
+		65684C962C1C40BC002A96BE /* SelectedCarRentalTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65684C942C1C40BC002A96BE /* SelectedCarRentalTVCell.xib */; };
+		65684C9A2C1C41D6002A96BE /* SelectedCRPackageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65684C982C1C41D6002A96BE /* SelectedCRPackageTVCell.swift */; };
+		65684C9B2C1C41D6002A96BE /* SelectedCRPackageTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65684C992C1C41D6002A96BE /* SelectedCRPackageTVCell.xib */; };
+		65684C9F2C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65684C9D2C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.swift */; };
+		65684CA02C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65684C9E2C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.xib */; };
+		65684CA42C1C57F5002A96BE /* CRFareSummaryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65684CA22C1C57F5002A96BE /* CRFareSummaryTVCell.swift */; };
+		65684CA52C1C57F5002A96BE /* CRFareSummaryTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65684CA32C1C57F5002A96BE /* CRFareSummaryTVCell.xib */; };
+		65684CA92C1C7F28002A96BE /* DriverDetailsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65684CA72C1C7F28002A96BE /* DriverDetailsTVCell.swift */; };
+		65684CAA2C1C7F28002A96BE /* DriverDetailsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65684CA82C1C7F28002A96BE /* DriverDetailsTVCell.xib */; };
 		656CB1702C103702006CEBA5 /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656CB16F2C103702006CEBA5 /* MapViewVC.swift */; };
 		656CB1722C1037EA006CEBA5 /* MapHotelInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656CB1712C1037E9006CEBA5 /* MapHotelInfoVC.swift */; };
 		657BF2FC2C059056000E636A /* AddDeatilsOfPersonTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657BF2FA2C059056000E636A /* AddDeatilsOfPersonTVCell.swift */; };
@@ -1351,6 +1363,18 @@
 		6545D8222BFC769000FBCB60 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		6545D8232BFC769100FBCB60 /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		6545D82E2BFC76B500FBCB60 /* SportListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportListVM.swift; sourceTree = "<group>"; };
+		65684C8C2C1C31A4002A96BE /* CRProceedToBookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRProceedToBookVC.swift; sourceTree = "<group>"; };
+		65684C902C1C3268002A96BE /* CRBookingDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRBookingDetailsVC.swift; sourceTree = "<group>"; };
+		65684C932C1C40BC002A96BE /* SelectedCarRentalTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCarRentalTVCell.swift; sourceTree = "<group>"; };
+		65684C942C1C40BC002A96BE /* SelectedCarRentalTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedCarRentalTVCell.xib; sourceTree = "<group>"; };
+		65684C982C1C41D6002A96BE /* SelectedCRPackageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCRPackageTVCell.swift; sourceTree = "<group>"; };
+		65684C992C1C41D6002A96BE /* SelectedCRPackageTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedCRPackageTVCell.xib; sourceTree = "<group>"; };
+		65684C9D2C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAdditionalOptionsTVCell.swift; sourceTree = "<group>"; };
+		65684C9E2C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseAdditionalOptionsTVCell.xib; sourceTree = "<group>"; };
+		65684CA22C1C57F5002A96BE /* CRFareSummaryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRFareSummaryTVCell.swift; sourceTree = "<group>"; };
+		65684CA32C1C57F5002A96BE /* CRFareSummaryTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CRFareSummaryTVCell.xib; sourceTree = "<group>"; };
+		65684CA72C1C7F28002A96BE /* DriverDetailsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailsTVCell.swift; sourceTree = "<group>"; };
+		65684CA82C1C7F28002A96BE /* DriverDetailsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverDetailsTVCell.xib; sourceTree = "<group>"; };
 		656CB16F2C103702006CEBA5 /* MapViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
 		656CB1712C1037E9006CEBA5 /* MapHotelInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHotelInfoVC.swift; sourceTree = "<group>"; };
 		657BF2FA2C059056000E636A /* AddDeatilsOfPersonTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeatilsOfPersonTVCell.swift; sourceTree = "<group>"; };
@@ -1457,6 +1481,8 @@
 				6512C75B2C16B5670077EA68 /* SearchCarRentalVC.swift */,
 				6512C7622C16EE080077EA68 /* CarRentalResultsVC.swift */,
 				6512C7692C16FEFF0077EA68 /* CarRentalChoosePackageVC.swift */,
+				65684C8C2C1C31A4002A96BE /* CRProceedToBookVC.swift */,
+				65684C902C1C3268002A96BE /* CRBookingDetailsVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1481,6 +1507,11 @@
 		6512C7552C16B4CA0077EA68 /* TVCells */ = {
 			isa = PBXGroup;
 			children = (
+				65684CA62C1C7E85002A96BE /* DriverDetailsTVCell */,
+				65684CA12C1C57DB002A96BE /* CRFareSummaryTVCell */,
+				65684C9C2C1C44E3002A96BE /* ChooseAdditionalOptionsTVCell */,
+				65684C972C1C41BD002A96BE /* SelectedCRPackageTVCell */,
+				65684C922C1C409E002A96BE /* SelectedCarRentalTVCell */,
 				6512C76B2C170C6E0077EA68 /* ChoosePackageTVCell */,
 				6512C7642C16EFCF0077EA68 /* CarRentalResultTVCell */,
 				6512C75D2C16B7E90077EA68 /* SearchCarRentalTVCell */,
@@ -4749,6 +4780,51 @@
 			path = SelectSportServiceTVCell;
 			sourceTree = "<group>";
 		};
+		65684C922C1C409E002A96BE /* SelectedCarRentalTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				65684C932C1C40BC002A96BE /* SelectedCarRentalTVCell.swift */,
+				65684C942C1C40BC002A96BE /* SelectedCarRentalTVCell.xib */,
+			);
+			path = SelectedCarRentalTVCell;
+			sourceTree = "<group>";
+		};
+		65684C972C1C41BD002A96BE /* SelectedCRPackageTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				65684C982C1C41D6002A96BE /* SelectedCRPackageTVCell.swift */,
+				65684C992C1C41D6002A96BE /* SelectedCRPackageTVCell.xib */,
+			);
+			path = SelectedCRPackageTVCell;
+			sourceTree = "<group>";
+		};
+		65684C9C2C1C44E3002A96BE /* ChooseAdditionalOptionsTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				65684C9D2C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.swift */,
+				65684C9E2C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.xib */,
+			);
+			path = ChooseAdditionalOptionsTVCell;
+			sourceTree = "<group>";
+		};
+		65684CA12C1C57DB002A96BE /* CRFareSummaryTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				65684CA22C1C57F5002A96BE /* CRFareSummaryTVCell.swift */,
+				65684CA32C1C57F5002A96BE /* CRFareSummaryTVCell.xib */,
+			);
+			path = CRFareSummaryTVCell;
+			sourceTree = "<group>";
+		};
+		65684CA62C1C7E85002A96BE /* DriverDetailsTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				65684CA72C1C7F28002A96BE /* DriverDetailsTVCell.swift */,
+				65684CA82C1C7F28002A96BE /* DriverDetailsTVCell.xib */,
+			);
+			path = DriverDetailsTVCell;
+			sourceTree = "<group>";
+		};
 		657BF2F92C059030000E636A /* AddDeatilsOfPersonTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -5053,6 +5129,7 @@
 				65207D9A2BF494310076EF76 /* PopularFiltersTVCell.xib in Resources */,
 				65207E202BF494320076EF76 /* TravellerEconomyTVCell.xib in Resources */,
 				65207DA32BF494310076EF76 /* NewDepartureTimeTVCell.xib in Resources */,
+				65684CAA2C1C7F28002A96BE /* DriverDetailsTVCell.xib in Resources */,
 				65207E7C2BF494320076EF76 /* CruiseItineraryTVCell.xib in Resources */,
 				65207EBE2BF494320076EF76 /* InsurancePlaneTVCell.xib in Resources */,
 				65207E252BF494320076EF76 /* Sports.storyboard in Resources */,
@@ -5083,6 +5160,7 @@
 				65207EDA2BF494320076EF76 /* LoginTVCell.xib in Resources */,
 				65207E7E2BF494320076EF76 /* CruiseContactdetailsTVCell.xib in Resources */,
 				65207E122BF494320076EF76 /* TContactDetailsTVCell.xib in Resources */,
+				65684C962C1C40BC002A96BE /* SelectedCarRentalTVCell.xib in Resources */,
 				65207D292BF494310076EF76 /* HotelSearchTVCell.xib in Resources */,
 				65207E522BF494320076EF76 /* TopcityGuidesTVCell.xib in Resources */,
 				65207E0E2BF494320076EF76 /* TransfersInf0TVCell.xib in Resources */,
@@ -5130,6 +5208,7 @@
 				65207D212BF494310076EF76 /* HotelImagesTVCell.xib in Resources */,
 				65207D1E2BF494310076EF76 /* HotelFareSummaryTVCell.xib in Resources */,
 				65207E642BF494320076EF76 /* SelectCityCVCell.xib in Resources */,
+				65684CA52C1C57F5002A96BE /* CRFareSummaryTVCell.xib in Resources */,
 				65207EA32BF494320076EF76 /* NewBookingConfirmedTVCell.xib in Resources */,
 				65207D0B2BF494310076EF76 /* RoomsCountTVCell.xib in Resources */,
 				65207D172BF494310076EF76 /* HotelBookingCancellationpolicyTVCell.xib in Resources */,
@@ -5146,6 +5225,7 @@
 				65207EC02BF494320076EF76 /* InsurenceSearchTVCell.xib in Resources */,
 				65207DB62BF494310076EF76 /* OperatorsCheckBoxTVCell.xib in Resources */,
 				6512C76F2C170E910077EA68 /* ChoosePackageTVCell.xib in Resources */,
+				65684CA02C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.xib in Resources */,
 				65207E082BF494320076EF76 /* Transfers.storyboard in Resources */,
 				653467B82C0207C90059A0E1 /* AddFareRulesTVCell.xib in Resources */,
 				65207EBA2BF494320076EF76 /* PremiumInfoTVCell.xib in Resources */,
@@ -5175,6 +5255,7 @@
 				65207D3E2BF494310076EF76 /* HolidayItineraryTVCell.xib in Resources */,
 				65207CCA2BF494310076EF76 /* clist.json in Resources */,
 				65207D0E2BF494310076EF76 /* TitleLabelTVCell.xib in Resources */,
+				65684C9B2C1C41D6002A96BE /* SelectedCRPackageTVCell.xib in Resources */,
 				65207DBA2BF494310076EF76 /* RegisterSelectionLoginTableViewCell.xib in Resources */,
 				652078E42BF4934C0076EF76 /* Assets.xcassets in Resources */,
 				65207D9F2BF494310076EF76 /* FilterDepartureTVCell.xib in Resources */,
@@ -5526,6 +5607,7 @@
 				65207DD82BF494310076EF76 /* AddSpecialAssistanceTVCell.swift in Sources */,
 				65207DD02BF494310076EF76 /* ContactInformationTVCell.swift in Sources */,
 				65207D462BF494310076EF76 /* MPBViewModel.swift in Sources */,
+				65684CA42C1C57F5002A96BE /* CRFareSummaryTVCell.swift in Sources */,
 				65207D7C2BF494310076EF76 /* MPBSearchData.swift in Sources */,
 				65207D562BF494310076EF76 /* FlightResultVC.swift in Sources */,
 				65207EC52BF494320076EF76 /* ProfileViewModel.swift in Sources */,
@@ -5558,6 +5640,7 @@
 				65207CE32BF494310076EF76 /* HotelImagesVC.swift in Sources */,
 				65207CF12BF494310076EF76 /* Filter_sumry.swift in Sources */,
 				65207D762BF494310076EF76 /* CountrylistModel.swift in Sources */,
+				65684CA92C1C7F28002A96BE /* DriverDetailsTVCell.swift in Sources */,
 				65207E1F2BF494320076EF76 /* TravellerEconomyTVCell.swift in Sources */,
 				65207EB92BF494320076EF76 /* PremiumInfoTVCell.swift in Sources */,
 				65207E0D2BF494320076EF76 /* BookTransfersTVCell.swift in Sources */,
@@ -5602,6 +5685,7 @@
 				653467C02C0475730059A0E1 /* SportsFareSummeryTVCell.swift in Sources */,
 				65207E1B2BF494320076EF76 /* VisaVC.swift in Sources */,
 				65207E492BF494320076EF76 /* DashboardVC.swift in Sources */,
+				65684C952C1C40BC002A96BE /* SelectedCarRentalTVCell.swift in Sources */,
 				656CB1722C1037EA006CEBA5 /* MapHotelInfoVC.swift in Sources */,
 				65207DBD2BF494310076EF76 /* GuestTVCell.swift in Sources */,
 				65207D222BF494310076EF76 /* HotelImagesTVCell.swift in Sources */,
@@ -5645,6 +5729,7 @@
 				65207CC22BF494310076EF76 /* ColorManager.swift in Sources */,
 				65207D702BF494310076EF76 /* SFAttr.swift in Sources */,
 				65207D742BF494310076EF76 /* SFAirlinersapi.swift in Sources */,
+				65684C9F2C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.swift in Sources */,
 				65207E592BF494320076EF76 /* Deail_code_list.swift in Sources */,
 				65207D732BF494310076EF76 /* SFSearch_params.swift in Sources */,
 				65207D0C2BF494310076EF76 /* RoomsCountTVCell.swift in Sources */,
@@ -5697,6 +5782,7 @@
 				65207E292BF494320076EF76 /* SportsSearchTVCell.swift in Sources */,
 				65207D5A2BF494310076EF76 /* ViewFlightDetailsVC.swift in Sources */,
 				65207EB42BF494320076EF76 /* GetInsuranceItemsModel.swift in Sources */,
+				65684C912C1C3268002A96BE /* CRBookingDetailsVC.swift in Sources */,
 				65207E5F2BF494320076EF76 /* CurrencyListModel.swift in Sources */,
 				65207DFF2BF494310076EF76 /* InfoCVCell.swift in Sources */,
 				651B93A72BFF2906005BC158 /* CancellationStringTVCell.swift in Sources */,
@@ -5717,6 +5803,7 @@
 				65207D5D2BF494310076EF76 /* SimilarFlightsVC.swift in Sources */,
 				6545D8292BFC769100FBCB60 /* AwayTeam.swift in Sources */,
 				65207D022BF494310076EF76 /* HotelBookingData.swift in Sources */,
+				65684C9A2C1C41D6002A96BE /* SelectedCRPackageTVCell.swift in Sources */,
 				65207DFB2BF494310076EF76 /* YourRecentSearchesTVCell.swift in Sources */,
 				65207D0F2BF494310076EF76 /* NewRoomDetailsTVCell.swift in Sources */,
 				657BF3092C05EE63000E636A /* Tags.swift in Sources */,
@@ -5813,6 +5900,7 @@
 				65207DFD2BF494310076EF76 /* DepartureTimeCVCell.swift in Sources */,
 				65207E7D2BF494320076EF76 /* CruiseItineraryTVCell.swift in Sources */,
 				65207DC72BF494310076EF76 /* TravellerAdultTVCell.swift in Sources */,
+				65684C8D2C1C31A4002A96BE /* CRProceedToBookVC.swift in Sources */,
 				65207E762BF494320076EF76 /* CruisePassengerSelectVC.swift in Sources */,
 				65207E412BF494320076EF76 /* ContactUsVC.swift in Sources */,
 			);

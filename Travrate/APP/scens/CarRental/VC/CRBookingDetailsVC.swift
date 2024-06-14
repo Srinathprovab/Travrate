@@ -1,20 +1,20 @@
 //
-//  CarRentalChoosePackageVC.swift
+//  CRBookingDetailsVC.swift
 //  Travrate
 //
-//  Created by FCI on 10/06/24.
+//  Created by FCI on 14/06/24.
 //
 
 import UIKit
 
-class CarRentalChoosePackageVC: BaseTableVC {
+class CRBookingDetailsVC: BaseTableVC {
     
-
+    @IBOutlet weak var continuebtn: UIButton!
     
-    static var newInstance: CarRentalChoosePackageVC? {
+    static var newInstance: CRBookingDetailsVC? {
         let storyboard = UIStoryboard(name: Storyboard.CarRental.name,
                                       bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? CarRentalChoosePackageVC
+        let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? CRBookingDetailsVC
         return vc
     }
     
@@ -25,7 +25,6 @@ class CarRentalChoosePackageVC: BaseTableVC {
     }
     
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,8 +33,6 @@ class CarRentalChoosePackageVC: BaseTableVC {
         
     }
     
-    
-   
     
     //MARK: - didTapOnBackBtnAction
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
@@ -46,35 +43,31 @@ class CarRentalChoosePackageVC: BaseTableVC {
     
     //MARK: - didTapOnSelectPackageBtnAction  ChoosePackageTVCell
     override func didTapOnSelectPackageBtnAction(cell: ChoosePackageTVCell) {
-        gotoCRProceedToBookVC()
+        print("didTapOnSelectPackageBtnAction")
     }
     
     
-    func gotoCRProceedToBookVC() {
-        callapibool = true
-        guard let vc = CRProceedToBookVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
-    }
+    
 }
 
 
 
-extension CarRentalChoosePackageVC {
+extension CRBookingDetailsVC {
     
     
     func setupUI(){
         
         
-        
+        continuebtn.layer.cornerRadius = 4
         commonTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // Top left corner, Top right corner respectively
         commonTableView.layer.cornerRadius = 12
         commonTableView.clipsToBounds = true
-        commonTableView.registerTVCells(["ChoosePackageTVCell",
+        commonTableView.registerTVCells(["SelectedCarRentalTVCell",
+                                         "CRFareSummaryTVCell",
+                                         "DriverDetailsTVCell",
+                                         "TermsAgreeTVCell",
                                          "EmptyTVCell"])
         
-        
-      
         
     }
     
@@ -93,23 +86,16 @@ extension CarRentalChoosePackageVC {
         }
     }
     
-    
-    
-    
     func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
        
-        MySingleton.shared.tablerow.append(TableRow(title:"Basic",
-                                                    cellType:.ChoosePackageTVCell))
-        
-        MySingleton.shared.tablerow.append(TableRow(title:"Plus+",
-                                                    cellType:.ChoosePackageTVCell))
-        
-        MySingleton.shared.tablerow.append(TableRow(title:"Premium plus+",
-                                                    cellType:.ChoosePackageTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.SelectedCarRentalTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.DriverDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.CRFareSummaryTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"* By booking this item, you agree to pay the total amount shown, which includes Service Fees. You also agree to the Terms and Conditions and privacy policy",
+                                                    cellType:.TermsAgreeTVCell))
 
-        
         
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()

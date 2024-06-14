@@ -163,6 +163,11 @@ enum TVCellType {
     case SearchCarRentalTVCell
     case CarRentalResultTVCell
     case ChoosePackageTVCell
+    case SelectedCarRentalTVCell
+    case SelectedCRPackageTVCell
+    case ChooseAdditionalOptionsTVCell
+    case CRFareSummaryTVCell
+    case DriverDetailsTVCell
     
     
     
