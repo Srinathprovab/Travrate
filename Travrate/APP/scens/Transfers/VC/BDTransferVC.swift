@@ -18,6 +18,21 @@ class BDTransferVC: BaseTableVC {
         return vc
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if callapibool == true {
+            MySingleton.shared.loderString = "fdetails"
+            MySingleton.shared.afterResultsBool = true
+            loderBool = true
+            showLoadera()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+                loderBool = false
+                hideLoadera()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +42,7 @@ class BDTransferVC: BaseTableVC {
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         dismiss(animated: true)
     }
     
@@ -52,6 +68,7 @@ class BDTransferVC: BaseTableVC {
     
     
     func gotoBDTransferVC() {
+        callapibool = true
        guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
        vc.modalPresentationStyle = .fullScreen
        self.present(vc, animated: true)

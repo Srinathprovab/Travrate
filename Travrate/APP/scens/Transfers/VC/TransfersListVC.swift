@@ -16,24 +16,40 @@ class TransfersListVC: BaseTableVC {
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? TransfersListVC
         return vc
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if callapibool == true {
+            MySingleton.shared.loderString = "fdetails"
+            MySingleton.shared.afterResultsBool = true
+            loderBool = true
+            showLoadera()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+                loderBool = false
+                hideLoadera()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupUI()
     }
     
-
+    
     @IBAction func didTapOnFilterBtnAction(_ sender: Any) {
         print("didTapOnFilterBtnAction")
     }
     
     @IBAction func didTapOnSortBtnAction(_ sender: Any) {
-       print("didTapOnSortBtnAction")
+        print("didTapOnSortBtnAction")
     }
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         dismiss(animated: true)
     }
     
@@ -51,14 +67,14 @@ extension TransfersListVC {
     
     
     func setupUI(){
-    
+        
         commonTableView.registerTVCells(["TransfersInf0TVCell",
                                          "EmptyTVCell"])
         
         setupVisaTVCells(keystr: "oneway")
         
     }
-   
+    
     
     func setupVisaTVCells(keystr:String) {
         MySingleton.shared.tablerow.removeAll()
@@ -71,7 +87,7 @@ extension TransfersListVC {
         }
         
         
-       
+        
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
@@ -80,31 +96,16 @@ extension TransfersListVC {
     }
     
     
-    
     func didTapOnBookNowBtnAction() {
-        print("didTapOnSearchBtnAction")
-        
-        
-        MySingleton.shared.loderString = "fdetails"
-        MySingleton.shared.afterResultsBool = true
-        loderBool = true
-        showLoadera()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [unowned self] in
-            loderBool = false
-            hideLoadera()
-            
-            
-            gotoBDTransferVC()
-        }
+        gotoBDTransferVC()
     }
-    
-    
+
     
     func gotoBDTransferVC() {
-       guard let vc = BDTransferVC.newInstance.self else {return}
-       vc.modalPresentationStyle = .fullScreen
-       self.present(vc, animated: true)
-   }
+        callapibool = true
+        guard let vc = BDTransferVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
     
 }

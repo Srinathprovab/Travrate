@@ -28,9 +28,10 @@ class AutoPaymentTVCell: TableViewCell {
     @IBOutlet weak var TF4: UITextField!
     @IBOutlet weak var paynowBtn: UIButton!
     @IBOutlet weak var autopayTabscv: UICollectionView!
+    @IBOutlet weak var otpView: UIStackView!
+    @IBOutlet weak var refView: UIView!
     
-    
-    var cvtabsName = ["Flight","Hotel","Insurence","Visa","Top up"]
+    var cvtabsName = ["Flight","Hotel","Insurence","Visa"]
     var delegate:AutoPaymentTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -102,8 +103,6 @@ class AutoPaymentTVCell: TableViewCell {
             
             
             
-            
-            
         default:
             break
         }
@@ -136,7 +135,7 @@ extension AutoPaymentTVCell:UICollectionViewDelegate,UICollectionViewDataSource 
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 80, height: 30)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 5
         autopayTabscv.collectionViewLayout = layout
@@ -174,6 +173,14 @@ extension AutoPaymentTVCell:UICollectionViewDelegate,UICollectionViewDataSource 
         if let cell = collectionView.cellForItem(at: indexPath) as? AutopayTabCVCell {
             cell.titlelbl.textColor = .WhiteColor
             cell.holderView.backgroundColor = .KWDcolor
+            
+            if cell.titlelbl.text == "Visa" {
+                otpView.isHidden = true
+                refView.isHidden = true
+            }else {
+                otpView.isHidden = false
+                refView.isHidden = false
+            }
         }
     }
     
@@ -217,9 +224,6 @@ extension AutoPaymentTVCell {
             let newString: NSString =  currentString.replacingCharacters(in: range, with: string) as NSString
             return newString.length <= maxLength
         }
-        
-        
-        
     }
     
     

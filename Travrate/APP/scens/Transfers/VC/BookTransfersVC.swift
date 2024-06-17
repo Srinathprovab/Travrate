@@ -143,23 +143,12 @@ extension BookTransfersVC {
     
     
     func didTapOnSearchBtnAction() {
-        print("didTapOnSearchBtnAction")
-        
-        
-        MySingleton.shared.loderString = "fdetails"
-        loderBool = true
-        showLoadera()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [unowned self] in
-            loderBool = false
-            hideLoadera()
-            
-            gotoTransfersListVC()
-        }
+        gotoTransfersListVC()
     }
     
     
     func gotoTransfersListVC() {
+        callapibool = true
         guard let vc = TransfersListVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)

@@ -8,7 +8,7 @@
 import UIKit
 
 class PlaneDetailsVC: BaseTableVC {
-
+    
     
     
     
@@ -18,19 +18,23 @@ class PlaneDetailsVC: BaseTableVC {
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? PlaneDetailsVC
         return vc
     }
-
-   
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
-        MySingleton.shared.loderString = "fdetails"
-        MySingleton.shared.afterResultsBool = true
-        loderBool = true
-        showLoadera()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [unowned self] in
-            loderBool = false
-            hideLoadera()
+        if callapibool == true {
+            
+            MySingleton.shared.loderString = "fdetails"
+            MySingleton.shared.afterResultsBool = true
+            loderBool = true
+            showLoadera()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+                loderBool = false
+                hideLoadera()
+            }
+            
         }
         
     }
@@ -49,6 +53,7 @@ class PlaneDetailsVC: BaseTableVC {
     
     
     func gotoPremiumDetailsVC() {
+        callapibool = true
         guard let vc = PremiumDetailsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
@@ -57,6 +62,7 @@ class PlaneDetailsVC: BaseTableVC {
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         dismiss(animated: false)
     }
     
@@ -74,7 +80,7 @@ extension PlaneDetailsVC {
     
     func setupUI(){
         
-      
+        
         commonTableView.registerTVCells(["InsurancePlaneTVCell",
                                          "MainTravelPersonTVCell",
                                          "TermsAgreeTVCell",
@@ -99,5 +105,5 @@ extension PlaneDetailsVC {
         commonTableView.reloadData()
     }
     
-
+    
 }

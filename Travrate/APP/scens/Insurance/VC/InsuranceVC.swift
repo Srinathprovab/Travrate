@@ -102,6 +102,7 @@ class InsuranceVC: BaseTableVC, GetInsuranceItemsVMDelegate {
     
     
     func gotoInsurancePlaneVC() {
+        callapibool = true
         guard let vc = InsurancePlaneVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
@@ -225,6 +226,8 @@ extension InsuranceVC {
         MySingleton.shared.payload["item_name"] = "select_age"
         MySingleton.shared.getInsuranceItemsVM?.CALL_GET_INSURENCE_AGE_ITEMS_API(dictParam: MySingleton.shared.payload)
     }
+    
+    
     func insurenceAgeItemlist(response: GetInsuranceItemsModel) {
         withwhomtitleArray.append("Select")
         withwhomcodeArray.append("Select")

@@ -20,16 +20,20 @@ class InsurancePlaneVC: BaseTableVC {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        MySingleton.shared.loderString = "fdetails"
-        MySingleton.shared.afterResultsBool = true
-        loderBool = true
-        showLoadera()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [unowned self] in
-            loderBool = false
-            hideLoadera()
+        if callapibool == true {
+            
+            MySingleton.shared.loderString = "fdetails"
+            MySingleton.shared.afterResultsBool = true
+            loderBool = true
+            showLoadera()
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+                loderBool = false
+                hideLoadera()
+            }
+            
         }
-        
     }
     
     override func viewDidLoad() {
@@ -43,6 +47,7 @@ class InsurancePlaneVC: BaseTableVC {
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         dismiss(animated: true)
     }
     
@@ -95,18 +100,21 @@ extension InsurancePlaneVC {
     
     
     func gotoBDTransferVC() {
+        callapibool = true
         guard let vc = BDTransferVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
     
     func gotoPremiumDetailsVC() {
+        callapibool = true
         guard let vc = PremiumDetailsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }
     
     func gotoPlaneDetailsVC() {
+        callapibool = true
         guard let vc = PlaneDetailsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)

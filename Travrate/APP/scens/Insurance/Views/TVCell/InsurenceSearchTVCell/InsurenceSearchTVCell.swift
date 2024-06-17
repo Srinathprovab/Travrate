@@ -65,8 +65,6 @@ class InsurenceSearchTVCell: TableViewCell {
         // Initialization code
         setupUI()
         
-      
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -155,14 +153,18 @@ extension InsurenceSearchTVCell {
             
             
             self?.travellinglbl.text = item
+            
+            
+            
+            
             if item == "Select" {
+                MySingleton.shared.insurencetravelcode = ""
                 self?.travellinglbl.textColor = .SubtitleColor
             }else {
+                MySingleton.shared.insurencetravelcode = "\(index)"
                 self?.travellinglbl.textColor = .TitleColor
             }
             
-            
-            MySingleton.shared.insurencetravelcode = "\(index)"
             self?.delegate?.didTapOnWhoTravellingBtnAction(cell: self!)
             
         }
@@ -189,8 +191,10 @@ extension InsurenceSearchTVCell {
             self?.selectagecode = withwhomcodeArray[index]
             
             if item == "Select" {
+                MySingleton.shared.insurencwhomcode = ""
                 self?.withWhomTravellinglbl.textColor = .SubtitleColor
             }else {
+                MySingleton.shared.insurencwhomcode = withwhomcodeArray[index]
                 self?.withWhomTravellinglbl.textColor = .TitleColor
             }
             
@@ -201,7 +205,7 @@ extension InsurenceSearchTVCell {
             }
             
             
-            MySingleton.shared.insurencwhomcode = withwhomcodeArray[index]
+            
             self?.delegate?.didTapOnWithWhomTravellingBtnAction(cell: self!)
             
         }
@@ -226,13 +230,15 @@ extension InsurenceSearchTVCell {
             self?.selectwhomcode = zonecodeArray[index]
             
             if item == "Select" {
+                MySingleton.shared.insurenczonecode = ""
                 self?.travelZonelbl.textColor = .SubtitleColor
             }else {
+                MySingleton.shared.insurenczonecode = zonecodeArray[index]
                 self?.travelZonelbl.textColor = .TitleColor
             }
             
             
-            MySingleton.shared.insurenczonecode = zonecodeArray[index]
+           
             self?.delegate?.didTapOnTravelZoneBtnAction(cell: self!)
             
         }
@@ -257,12 +263,14 @@ extension InsurenceSearchTVCell {
             self?.selectzonecode = multitripscodeArray[index]
             
             if item == "Select" {
+                MySingleton.shared.insurencmultitripscode = ""
                 self?.multiTripslbl.textColor = .SubtitleColor
             }else {
+                MySingleton.shared.insurencmultitripscode = multitripscodeArray[index]
                 self?.multiTripslbl.textColor = .TitleColor
             }
             
-            MySingleton.shared.insurencmultitripscode = multitripscodeArray[index]
+           
             self?.delegate?.didTapOnMultiTripslblBtnAction(cell: self!)
             
         }
@@ -285,12 +293,14 @@ extension InsurenceSearchTVCell {
             
             self?.additionalTravelerslbl.text = "\(item)"
             if item == "Select" {
+                MySingleton.shared.insurencePaxCount = ""
                 self?.additionalTravelerslbl.textColor = .SubtitleColor
             }else {
+                MySingleton.shared.insurencePaxCount = item
                 self?.additionalTravelerslbl.textColor = .TitleColor
             }
             
-            MySingleton.shared.insurencePaxCount = item
+            
             self?.delegate?.didTapOnAddAdditionalTravellerBtnAction(cell: self!)
             
         }

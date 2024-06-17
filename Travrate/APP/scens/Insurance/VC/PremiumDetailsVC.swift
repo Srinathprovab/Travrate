@@ -21,6 +21,7 @@ class PremiumDetailsVC: BaseTableVC {
     @IBOutlet weak var holderview: UIView!
    
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,12 +29,10 @@ class PremiumDetailsVC: BaseTableVC {
         setupUI()
     }
     
-    
-    
-  
-    
+
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         dismiss(animated: false)
     }
     
