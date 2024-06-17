@@ -18,6 +18,7 @@ class CarRentalChoosePackageVC: BaseTableVC {
         return vc
     }
     
+    var packageTitleStr = String()
     override func viewWillAppear(_ animated: Bool) {
         if callapibool == true {
             callAPI()
@@ -46,6 +47,7 @@ class CarRentalChoosePackageVC: BaseTableVC {
     
     //MARK: - didTapOnSelectPackageBtnAction  ChoosePackageTVCell
     override func didTapOnSelectPackageBtnAction(cell: ChoosePackageTVCell) {
+        packageTitleStr = cell.titlelbl.text ?? ""
         gotoCRProceedToBookVC()
     }
     
@@ -54,8 +56,11 @@ class CarRentalChoosePackageVC: BaseTableVC {
         callapibool = true
         guard let vc = CRProceedToBookVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
+        vc.pkgtitleStr = packageTitleStr
         self.present(vc, animated: true)
     }
+    
+    
 }
 
 

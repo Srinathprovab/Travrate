@@ -19,6 +19,8 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
     @IBOutlet weak var multicityView: BorderedView!
     @IBOutlet weak var multicitylbl: UILabel!
     
+    
+    var isfromVC = String()
     static var newInstance: FlightSearchVC? {
         let storyboard = UIStoryboard(name: Storyboard.Flight.name,
                                       bundle: nil)
@@ -135,11 +137,17 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        MySingleton.shared.callboolapi = true
-        guard let vc = DashBoardTBVC.newInstance.self else {return}
-        vc.selectedIndex = 0
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false)
+        if isfromVC == "resultsReturn" {
+            MySingleton.shared.callboolapi = false
+            dismiss(animated: true)
+        }else {
+            MySingleton.shared.callboolapi = true
+            guard let vc = DashBoardTBVC.newInstance.self else {return}
+            vc.selectedIndex = 0
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: false)
+        }
+       
     }
     
     

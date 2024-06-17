@@ -625,6 +625,12 @@
 		65207EDC2BF494320076EF76 /* ResetPasswordTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65207C8D2BF494300076EF76 /* ResetPasswordTVCell.xib */; };
 		65207EDD2BF494320076EF76 /* ResetPasswordTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C8E2BF494300076EF76 /* ResetPasswordTVCell.swift */; };
 		65207EDE2BF497A60076EF76 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6520794A2BF4942E0076EF76 /* OpenSans-Medium.ttf */; };
+		65324F922C1FFBBA00BA1E5A /* SelectedServiceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65324F902C1FFBBA00BA1E5A /* SelectedServiceTVCell.swift */; };
+		65324F932C1FFBBA00BA1E5A /* SelectedServiceTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65324F912C1FFBBA00BA1E5A /* SelectedServiceTVCell.xib */; };
+		65324F962C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65324F942C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.swift */; };
+		65324F972C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65324F952C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.xib */; };
+		65324F9C2C200AB600BA1E5A /* UpgradeServiceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65324F9A2C200AB600BA1E5A /* UpgradeServiceTVCell.swift */; };
+		65324F9D2C200AB600BA1E5A /* UpgradeServiceTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65324F9B2C200AB600BA1E5A /* UpgradeServiceTVCell.xib */; };
 		653467B72C0207C90059A0E1 /* AddFareRulesTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653467B52C0207C90059A0E1 /* AddFareRulesTVCell.swift */; };
 		653467B82C0207C90059A0E1 /* AddFareRulesTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653467B62C0207C90059A0E1 /* AddFareRulesTVCell.xib */; };
 		653467BA2C0210630059A0E1 /* Penalty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653467B92C0210630059A0E1 /* Penalty.swift */; };
@@ -1342,6 +1348,12 @@
 		65207C8B2BF494300076EF76 /* LoginTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTVCell.swift; sourceTree = "<group>"; };
 		65207C8D2BF494300076EF76 /* ResetPasswordTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPasswordTVCell.xib; sourceTree = "<group>"; };
 		65207C8E2BF494300076EF76 /* ResetPasswordTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordTVCell.swift; sourceTree = "<group>"; };
+		65324F902C1FFBBA00BA1E5A /* SelectedServiceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedServiceTVCell.swift; sourceTree = "<group>"; };
+		65324F912C1FFBBA00BA1E5A /* SelectedServiceTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedServiceTVCell.xib; sourceTree = "<group>"; };
+		65324F942C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAdditionalOptionsTVCell.swift; sourceTree = "<group>"; };
+		65324F952C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedAdditionalOptionsTVCell.xib; sourceTree = "<group>"; };
+		65324F9A2C200AB600BA1E5A /* UpgradeServiceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeServiceTVCell.swift; sourceTree = "<group>"; };
+		65324F9B2C200AB600BA1E5A /* UpgradeServiceTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpgradeServiceTVCell.xib; sourceTree = "<group>"; };
 		653467B52C0207C90059A0E1 /* AddFareRulesTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFareRulesTVCell.swift; sourceTree = "<group>"; };
 		653467B62C0207C90059A0E1 /* AddFareRulesTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFareRulesTVCell.xib; sourceTree = "<group>"; };
 		653467B92C0210630059A0E1 /* Penalty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Penalty.swift; sourceTree = "<group>"; };
@@ -1507,6 +1519,9 @@
 		6512C7552C16B4CA0077EA68 /* TVCells */ = {
 			isa = PBXGroup;
 			children = (
+				65324F992C200A9A00BA1E5A /* UpgradeServiceTVCell */,
+				65324F982C20030500BA1E5A /* SelectedAdditionalOptionsTVCell */,
+				65324F8F2C1FFB7200BA1E5A /* SelectedServiceTVCell */,
 				65684CA62C1C7E85002A96BE /* DriverDetailsTVCell */,
 				65684CA12C1C57DB002A96BE /* CRFareSummaryTVCell */,
 				65684C9C2C1C44E3002A96BE /* ChooseAdditionalOptionsTVCell */,
@@ -4753,6 +4768,33 @@
 			path = CVCells;
 			sourceTree = "<group>";
 		};
+		65324F8F2C1FFB7200BA1E5A /* SelectedServiceTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				65324F902C1FFBBA00BA1E5A /* SelectedServiceTVCell.swift */,
+				65324F912C1FFBBA00BA1E5A /* SelectedServiceTVCell.xib */,
+			);
+			path = SelectedServiceTVCell;
+			sourceTree = "<group>";
+		};
+		65324F982C20030500BA1E5A /* SelectedAdditionalOptionsTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				65324F942C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.swift */,
+				65324F952C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.xib */,
+			);
+			path = SelectedAdditionalOptionsTVCell;
+			sourceTree = "<group>";
+		};
+		65324F992C200A9A00BA1E5A /* UpgradeServiceTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				65324F9A2C200AB600BA1E5A /* UpgradeServiceTVCell.swift */,
+				65324F9B2C200AB600BA1E5A /* UpgradeServiceTVCell.xib */,
+			);
+			path = UpgradeServiceTVCell;
+			sourceTree = "<group>";
+		};
 		653467B42C0207AF0059A0E1 /* AddFareRulesTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -5167,6 +5209,7 @@
 				65207DFE2BF494310076EF76 /* InfoCVCell.xib in Resources */,
 				65207DB82BF494310076EF76 /* UsePromoCodesTVCell.xib in Resources */,
 				65207D2C2BF494310076EF76 /* HotelImagesCVCell.xib in Resources */,
+				65324F972C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.xib in Resources */,
 				65207E7B2BF494320076EF76 /* CruiseAddItineraryTVCell.xib in Resources */,
 				65207D932BF494310076EF76 /* BaggageInfoImageTVCell.xib in Resources */,
 				65207EA02BF494320076EF76 /* BookedAdultDetailsTVCell.xib in Resources */,
@@ -5183,6 +5226,7 @@
 				65207DFC2BF494310076EF76 /* DepartureTimeCVCell.xib in Resources */,
 				65207D282BF494310076EF76 /* RoomsTVcell.xib in Resources */,
 				65207DE22BF494310076EF76 /* TicketIssuingTimeTVCell.xib in Resources */,
+				65324F9D2C200AB600BA1E5A /* UpgradeServiceTVCell.xib in Resources */,
 				65207E3B2BF494320076EF76 /* PopularDestinationsTVCell.xib in Resources */,
 				65207E102BF494320076EF76 /* TermsAgreeTVCell.xib in Resources */,
 				65207DB52BF494310076EF76 /* PrimaryContactInfoTVCell.xib in Resources */,
@@ -5246,6 +5290,7 @@
 				65207CB32BF494310076EF76 /* Lato-Medium.ttf in Resources */,
 				65207D3A2BF494310076EF76 /* HolidayAddItineraryTVCell.xib in Resources */,
 				65207E332BF494320076EF76 /* Main.storyboard in Resources */,
+				65324F932C1FFBBA00BA1E5A /* SelectedServiceTVCell.xib in Resources */,
 				65207E2A2BF494320076EF76 /* SportsSearchTVCell.xib in Resources */,
 				65207E182BF494320076EF76 /* Visa.storyboard in Resources */,
 				65207DC82BF494310076EF76 /* AddOnTitleTVCell.xib in Resources */,
@@ -5570,6 +5615,7 @@
 				65207DEF2BF494310076EF76 /* FlightResultTVCell.swift in Sources */,
 				65207D572BF494310076EF76 /* SelectFareVC.swift in Sources */,
 				65207D0D2BF494310076EF76 /* TitleLabelTVCell.swift in Sources */,
+				65324F9C2C200AB600BA1E5A /* UpgradeServiceTVCell.swift in Sources */,
 				65207E602BF494320076EF76 /* MoreDetailsModel.swift in Sources */,
 				65207E862BF494320076EF76 /* updatePaymentFlightViewModel.swift in Sources */,
 				65207CDE2BF494310076EF76 /* SelectedHotelImageVC.swift in Sources */,
@@ -5826,6 +5872,7 @@
 				65207D802BF494310076EF76 /* SearchDataModel.swift in Sources */,
 				65207E1A2BF494320076EF76 /* VisaPassengerSelectVC.swift in Sources */,
 				65207DF92BF494310076EF76 /* FlightSearchTVCell.swift in Sources */,
+				65324F922C1FFBBA00BA1E5A /* SelectedServiceTVCell.swift in Sources */,
 				653467B72C0207C90059A0E1 /* AddFareRulesTVCell.swift in Sources */,
 				65207EDD2BF494320076EF76 /* ResetPasswordTVCell.swift in Sources */,
 				65207E3D2BF494320076EF76 /* ContactUsTVCell.swift in Sources */,
@@ -5839,6 +5886,7 @@
 				65207D512BF494310076EF76 /* FilterVC.swift in Sources */,
 				6545D82B2BFC769100FBCB60 /* Search_data.swift in Sources */,
 				65207E362BF494320076EF76 /* MoreDetailsViewModel.swift in Sources */,
+				65324F962C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.swift in Sources */,
 				65207D182BF494310076EF76 /* HotelBookingCancellationpolicyTVCell.swift in Sources */,
 				65207E9F2BF494320076EF76 /* BCFlightInfoTVCell.swift in Sources */,
 				6512C75C2C16B5670077EA68 /* SearchCarRentalVC.swift in Sources */,

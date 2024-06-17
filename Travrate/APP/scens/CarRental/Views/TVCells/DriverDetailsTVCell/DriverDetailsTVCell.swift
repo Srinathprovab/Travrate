@@ -8,30 +8,35 @@
 import UIKit
 import DropDown
 
-class DriverDetailsTVCell: TableViewCell {
+protocol DriverDetailsTVCellDelegate {
+    func textViewDidChange(textView:UITextView)
+    func editingTextFieldChanged(tf:UITextField)
+}
+
+class DriverDetailsTVCell: TableViewCell,UITextViewDelegate {
     
     
     @IBOutlet weak var titleTF: UITextField!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var fnameTF: UITextField!
     @IBOutlet weak var lnameTF: UITextField!
-    @IBOutlet weak var dobTF: UITextField!
-    @IBOutlet weak var ageTF: UITextField!
-    @IBOutlet weak var dobView: UIView!
-    @IBOutlet weak var ageView: UIView!
-    @IBOutlet weak var passportnoTF: UITextField!
     @IBOutlet weak var nationaslityTF: UITextField!
-    @IBOutlet weak var civilidTF: UITextField!
+    @IBOutlet weak var cityTF: UITextField!
+    @IBOutlet weak var postalcodeTF: UITextField!
+    @IBOutlet weak var addressTextView: UITextView!
     @IBOutlet weak var emailidTF: UITextField!
     @IBOutlet weak var countrycodeView: UIView!
     @IBOutlet weak var countrycodeTF: UITextField!
     @IBOutlet weak var mobileTF: UITextField!
     
     
+    
+    var placeHolder = "Address"
+    var delegate:DriverDetailsTVCellDelegate?
     var dropDown = DropDown()
     var agedropDown = DropDown()
     let datePicker = UIDatePicker()
-    var delegate:MainTravelPersonTVCellDelete?
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -52,21 +57,35 @@ class DriverDetailsTVCell: TableViewCell {
         setupTF(tf: emailidTF)
         setupTF(tf: mobileTF)
         setupTF(tf: nationaslityTF)
-        setupTF(tf: civilidTF)
-        setupTF(tf: dobTF)
-        setupTF(tf: ageTF)
-        setupTF(tf: passportnoTF)
-        setupTF(tf: dobTF)
+        setupTF(tf: cityTF)
+        setupTF(tf: postalcodeTF)
         
         setupTitleDropDown()
-        showDatePicker()
-        
+        setupAddressTextView()
     }
     
     func setupTF(tf:UITextField) {
         tf.font = .OpenSansRegular(size: 14)
         tf.setLeftPaddingPoints(15)
         tf.addTarget(self, action: #selector(editingTextFieldChanged(_:)), for: .editingChanged)
+    }
+    
+    func setupAddressTextView() {
+        
+        addressTextView.layer.cornerRadius = 6
+        addressTextView.clipsToBounds = true
+        addressTextView.layer.borderWidth = 1
+        addressTextView.layer.borderColor = UIColor.AppBorderColor.cgColor
+        
+        addressTextView.text = ""
+        addressTextView.delegate = self
+        addressTextView.addCornerRadiusWithShadow(color: .clear, borderColor: .AppBorderColor, cornerRadius: 4)
+        addressTextView.setPlaceholder(ph: placeHolder)
+    }
+    
+    @objc func textViewDidChange(_ textView: UITextView) {
+        textView.checkPlaceholder()
+        delegate?.textViewDidChange(textView: textView)
     }
     
     @objc func editingTextFieldChanged( _ tf:UITextField) {
@@ -105,39 +124,8 @@ extension DriverDetailsTVCell {
     
     
     
-    //MARK: - DATE PICKER
-    func showDatePicker(){
-        //Formate Date
-        datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .wheels
-        
-        
-        //ToolBar
-        let toolbar = UIToolbar();
-        toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        
-        dobTF.inputAccessoryView = toolbar
-        dobTF.inputView = datePicker
-        
-    }
     
-    @objc func donedatePicker(){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        dobTF.text = formatter.string(from: datePicker.date)
-        dobTF.resignFirstResponder()
-        //delegate?.donedatePicker(cell: self)
-    }
-    
-    @objc func cancelDatePicker(){
-        dobTF.resignFirstResponder()
-        // delegate?.cancelDatePicker(cell: self)
-    }
+   
 }
 
 

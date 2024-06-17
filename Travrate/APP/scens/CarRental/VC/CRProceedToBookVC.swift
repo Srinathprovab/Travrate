@@ -19,6 +19,7 @@ class CRProceedToBookVC: BaseTableVC {
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? CRProceedToBookVC
         return vc
     }
+    var pkgtitleStr = String()
     
     override func viewWillAppear(_ animated: Bool) {
         if callapibool == true {
@@ -61,6 +62,11 @@ class CRProceedToBookVC: BaseTableVC {
     }
     
     
+    //MARK: - didTapOnUpgradeServiceBtnAction
+    override func didTapOnUpgradeServiceBtnAction(cell: UpgradeServiceTVCell) {
+        commonTableView.reloadData()
+    }
+    
 }
 
 
@@ -79,6 +85,7 @@ extension CRProceedToBookVC {
                                          "SelectedCRPackageTVCell",
                                          "ChooseAdditionalOptionsTVCell",
                                          "CRFareSummaryTVCell",
+                                         "UpgradeServiceTVCell",
                                          "EmptyTVCell"])
         
         
@@ -109,8 +116,8 @@ extension CRProceedToBookVC {
         
        
         MySingleton.shared.tablerow.append(TableRow(cellType:.SelectedCarRentalTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Basic",cellType:.SelectedCRPackageTVCell))
-
+        MySingleton.shared.tablerow.append(TableRow(title:pkgtitleStr,cellType:.SelectedCRPackageTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.UpgradeServiceTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.ChooseAdditionalOptionsTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.CRFareSummaryTVCell))
         

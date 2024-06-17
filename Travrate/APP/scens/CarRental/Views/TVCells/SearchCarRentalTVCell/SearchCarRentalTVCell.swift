@@ -34,6 +34,8 @@ class SearchCarRentalTVCell: TableViewCell {
     @IBOutlet weak var dropofDiffCheckImage: UIImageView!
     
     
+    var samelocbool = false
+    var difflocbool = false
     let pickupTimePicker = UIDatePicker()
     let dropupTimePicker = UIDatePicker()
     let pickupDatePicker = UIDatePicker()
@@ -103,17 +105,31 @@ class SearchCarRentalTVCell: TableViewCell {
     
     @IBAction func didTapOnDropOfSameLocBtnAction(_ sender: Any) {
         dropuplocView.isHidden = true
-        dropofSameCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
+       
         dropofDiffCheckImage.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
         NotificationCenter.default.post(name: NSNotification.Name("reloadTV"), object: nil)
+        samelocbool.toggle()
+        if samelocbool {
+            dropofSameCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
+        }else {
+            dropofSameCheckImage.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
+        }
     }
     
     
     @IBAction func didTapOnDropOfDifferentLocBtnAction(_ sender: Any) {
         dropuplocView.isHidden = false
         dropofSameCheckImage.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
-        dropofDiffCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
-        NotificationCenter.default.post(name: NSNotification.Name("reloadTV"), object: nil) 
+        NotificationCenter.default.post(name: NSNotification.Name("reloadTV"), object: nil)
+        
+        difflocbool.toggle()
+        if difflocbool {
+            dropuplocView.isHidden = false
+            dropofDiffCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
+        }else {
+            dropuplocView.isHidden = true
+            dropofDiffCheckImage.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
+        }
     }
     
     

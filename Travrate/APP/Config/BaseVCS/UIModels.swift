@@ -168,6 +168,9 @@ enum TVCellType {
     case ChooseAdditionalOptionsTVCell
     case CRFareSummaryTVCell
     case DriverDetailsTVCell
+    case SelectedServiceTVCell
+    case SelectedAdditionalOptionsTVCell
+    case UpgradeServiceTVCell
     
     
     

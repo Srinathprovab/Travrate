@@ -47,6 +47,20 @@ class CRBookingDetailsVC: BaseTableVC {
     }
     
     
+    //MARK: - didTapOnSelectServiceBtnAction SelectedServiceTVCell
+    override func editingTextFieldChanged(tf: UITextField) {
+        print(tf.text)
+    }
+    
+    override func didTapOnSelectServiceBtnAction(cell: SelectedServiceTVCell) {
+        commonTableView.reloadData()
+    }
+    
+    
+    //MARK: - didTapOnSelectedAdditionalOptionsBtnAction  SelectedAdditionalOptionsTVCell
+    override func didTapOnSelectedAdditionalOptionsBtnAction(cell: SelectedAdditionalOptionsTVCell) {
+        commonTableView.reloadData()
+    }
     
 }
 
@@ -66,6 +80,8 @@ extension CRBookingDetailsVC {
                                          "CRFareSummaryTVCell",
                                          "DriverDetailsTVCell",
                                          "TermsAgreeTVCell",
+                                         "SelectedServiceTVCell",
+                                         "SelectedAdditionalOptionsTVCell",
                                          "EmptyTVCell"])
         
         
@@ -86,11 +102,15 @@ extension CRBookingDetailsVC {
         }
     }
     
+    
+    
     func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
        
         MySingleton.shared.tablerow.append(TableRow(cellType:.SelectedCarRentalTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.SelectedServiceTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.SelectedAdditionalOptionsTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.DriverDetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.CRFareSummaryTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"* By booking this item, you agree to pay the total amount shown, which includes Service Fees. You also agree to the Terms and Conditions and privacy policy",

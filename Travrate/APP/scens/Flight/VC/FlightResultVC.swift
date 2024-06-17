@@ -154,6 +154,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
         MySingleton.shared.callboolapi = false
         guard let vc = FlightSearchVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
+        vc.isfromVC = "back"
         present(vc, animated: false)
     }
     
@@ -209,6 +210,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
     func gotoFlightSearchVC() {
         guard let vc = FlightSearchVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
+        vc.isfromVC = "resultsReturn"
         present(vc, animated: true)
     }
     
