@@ -9,7 +9,9 @@ import UIKit
 
 class CruiseDetailsVC: BaseTableVC, CruiseDetailsViewModelDelegate {
     
-    
+    func cruiseEnquireyDetails(response: LoginModel) {
+        
+    }
     
     
     static var newInstance: CruiseDetailsVC? {
@@ -26,6 +28,7 @@ class CruiseDetailsVC: BaseTableVC, CruiseDetailsViewModelDelegate {
     var mobile = String()
     
     override func viewWillAppear(_ animated: Bool) {
+        defaults.setValue("Select Date", forKey: UserDefaultsKeys.fromtravelDate)
         addObserver()
     }
     
@@ -108,7 +111,7 @@ class CruiseDetailsVC: BaseTableVC, CruiseDetailsViewModelDelegate {
             showToast(message: "Select Country Code")
         }else if mobile.isEmpty == true {
             showToast(message: "Enter Mobile Number")
-        }else if MySingleton.shared.travelfrom.isEmpty == true {
+        }else if MySingleton.shared.travelfrom.isEmpty == true || MySingleton.shared.travelfrom == "Select Date"{
             showToast(message: "Enter travel Date")
         }else {
             callCruiseEnquireyAPI()
@@ -241,29 +244,27 @@ extension CruiseDetailsVC {
         MySingleton.shared.payload["email"] = emailid
         MySingleton.shared.payload["country_id"] = MySingleton.shared.cruiseCountryCode
         MySingleton.shared.payload["contact_number"] = mobile
-        MySingleton.shared.payload["adult_count"] = defaults.string(forKey: UserDefaultsKeys.cruisadultCount)
-        MySingleton.shared.payload["child_count"] = defaults.string(forKey: UserDefaultsKeys.cruischildCount)
-        MySingleton.shared.payload["infant_count"] = defaults.string(forKey: UserDefaultsKeys.cruisinfantsCount)
+        MySingleton.shared.payload["adult_count"] = defaults.string(forKey: UserDefaultsKeys.cruisadultCount) ?? "1"
+        MySingleton.shared.payload["child_count"] = defaults.string(forKey: UserDefaultsKeys.cruischildCount) ?? "0"
+        MySingleton.shared.payload["infant_count"] = defaults.string(forKey: UserDefaultsKeys.cruisinfantsCount) ?? "0"
         MySingleton.shared.payload["travel_date"] = defaults.string(forKey: UserDefaultsKeys.fromtravelDate)
         
         MySingleton.shared.payload["created_for_cruise_id"] = "5"
         MySingleton.shared.payload["request_type"] = "1"
         
-        MySingleton.shared.cruisedetailsvm?.CALL_CRUISE_ENQUIREY_API(dictParam: MySingleton.shared.payload)
-    }
-    
-    
-    func cruiseEnquireyDetails(response: LoginModel) {
-       
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.gotoCruiseEnquireySucessVC()
+       // MySingleton.shared.cruisedetailsvm?.CALL_CRUISE_ENQUIREY_API(dictParam: MySingleton.shared.payload)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.gotoSubmitOTPVCC()
          }
+        
         
     }
     
     
-    func gotoCruiseEnquireySucessVC() {
-        guard let vc = CruiseEnquireySucessVC.newInstance.self else {return}
+    
+    func gotoSubmitOTPVCC() {
+        guard let vc = SubmitOTPVC.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: false)
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -195,7 +195,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDs-iU-tgm">
-                                        <rect key="frame" x="92.666666666666686" y="294.66666666666663" width="160" height="60"/>
+                                        <rect key="frame" x="92.666666666666686" y="316.66666666666663" width="160" height="60"/>
                                         <color key="backgroundColor" name="TransferBookNowColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="0cm-eS-xpC"/>
@@ -210,14 +210,22 @@
                                             <action selector="didTapOnSubMitBtnAction:" destination="1ZI-NZ-9PB" eventType="touchUpInside" id="lQF-Ta-U6y"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rri-mi-piY">
+                                        <rect key="frame" x="157.66666666666666" y="276.66666666666669" width="29.666666666666657" height="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="f3T-Sp-7CF" firstAttribute="top" secondItem="Hgo-vW-A7M" secondAttribute="bottom" constant="14" id="1Kw-md-o6k"/>
                                     <constraint firstItem="mjc-Eq-ktq" firstAttribute="centerX" secondItem="ggP-fH-9gq" secondAttribute="centerX" id="687-Th-pJy"/>
+                                    <constraint firstItem="rri-mi-piY" firstAttribute="top" secondItem="jzz-AD-eYt" secondAttribute="bottom" constant="10" id="Cyq-m4-Zn7"/>
                                     <constraint firstItem="Hgo-vW-A7M" firstAttribute="top" secondItem="mjc-Eq-ktq" secondAttribute="bottom" constant="20" id="FMW-O8-4cO"/>
                                     <constraint firstItem="f3T-Sp-7CF" firstAttribute="leading" secondItem="ggP-fH-9gq" secondAttribute="leading" constant="20" id="Hw8-1p-ocH"/>
-                                    <constraint firstItem="LDs-iU-tgm" firstAttribute="top" secondItem="jzz-AD-eYt" secondAttribute="bottom" constant="28" id="OKN-eQ-vgg"/>
+                                    <constraint firstItem="rri-mi-piY" firstAttribute="centerX" secondItem="mNG-Qk-545" secondAttribute="centerX" id="Nc4-Oa-jvL"/>
+                                    <constraint firstItem="LDs-iU-tgm" firstAttribute="top" secondItem="jzz-AD-eYt" secondAttribute="bottom" constant="50" id="OKN-eQ-vgg"/>
                                     <constraint firstItem="f3T-Sp-7CF" firstAttribute="centerX" secondItem="Hgo-vW-A7M" secondAttribute="centerX" id="ev0-Do-gD9"/>
                                     <constraint firstItem="jzz-AD-eYt" firstAttribute="centerX" secondItem="ggP-fH-9gq" secondAttribute="centerX" id="ibb-0Y-L8A"/>
                                     <constraint firstAttribute="trailing" secondItem="f3T-Sp-7CF" secondAttribute="trailing" constant="20" id="oPo-hw-6UB"/>
@@ -244,6 +252,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorlbl" destination="rri-mi-piY" id="dbO-3W-sWM"/>
                         <outlet property="otpTF" destination="mNG-Qk-545" id="QVx-FS-V7U"/>
                         <outlet property="submitBtn" destination="LDs-iU-tgm" id="wpe-QK-dub"/>
                     </connections>
@@ -357,6 +366,9 @@
         <image name="back1" width="20" height="20"/>
         <image name="close" width="26" height="26"/>
         <image name="logo" width="218" height="74"/>
+        <namedColor name="BooknowBtnColor">
+            <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BorderColor">
             <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

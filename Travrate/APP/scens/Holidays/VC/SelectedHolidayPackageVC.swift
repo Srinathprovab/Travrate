@@ -26,6 +26,7 @@ class SelectedHolidayPackageVC: BaseTableVC, HolidaySelectedVMDelegate {
     var selectedHolidayOrigen = String()
     
     override func viewWillAppear(_ animated: Bool) {
+        defaults.setValue("Select Date", forKey: UserDefaultsKeys.holidayfromtravelDate)
         addObserver()
     }
     
@@ -114,7 +115,7 @@ class SelectedHolidayPackageVC: BaseTableVC, HolidaySelectedVMDelegate {
             showToast(message: "Select Country Code")
         }else if mobile.isEmpty == true {
             showToast(message: "Enter Mobile Number")
-        }else if MySingleton.shared.travelfrom.isEmpty == true {
+        }else if MySingleton.shared.travelfrom.isEmpty == true || MySingleton.shared.travelfrom == "Select Date"{
             showToast(message: "Enter travel Date")
         }else {
             callHolidayEnquireyAPI()
@@ -216,20 +217,6 @@ extension SelectedHolidayPackageVC {
     
     
 }
-
-
-//origin:17
-//title:Mr
-//fullname:Shivam
-//mailto:email:shivamrajpoot18897@gmail.com
-//country_code:104
-//p_number:7785070089
-//adult:2
-//child:1
-//infant:0
-//travel_date:31-07-2024
-
-
 
 extension SelectedHolidayPackageVC {
     

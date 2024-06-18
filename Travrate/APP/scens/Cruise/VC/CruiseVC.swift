@@ -78,6 +78,7 @@ extension CruiseVC {
     
     func callAPI() {
         
+        MySingleton.shared.travelfrom = ""
         MySingleton.shared.loderString = "fdetails"
         MySingleton.shared.afterResultsBool = true
         loderBool = true

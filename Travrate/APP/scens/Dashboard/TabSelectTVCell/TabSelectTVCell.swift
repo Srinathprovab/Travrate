@@ -40,12 +40,13 @@ class TabSelectTVCell: TableViewCell {
     @IBOutlet weak var moreserviceView: UIView!
     @IBOutlet weak var moreServiceCV: UICollectionView!
     @IBOutlet weak var titlelbl: UILabel!
+    @IBOutlet weak var moreServicelbl: UILabel!
     
 //    var serviceArray1 = ["Visa","Holidays","Transfers","Sports","Cruise","Auto pay","Insurence"]
 //    var serviceImgsArray1 = ["s1","s2","s3","sports","s5","s6","s7"]
 
-    var serviceArray = ["Insurence","Transfers","Sports","Car rental","Holidays","Cruise","Auto pay"]
-    var serviceImgsArray = ["s7","transfer","sports","s3","s2","s5","s6"]
+    var serviceArray = ["Insurence","Transfers","Sports","Car rental","Holidays","Cruise","Visa","Auto pay"]
+    var serviceImgsArray = ["s7","transfer","sports","s3","s2","s5","s1","s6"]
     var delegate:TabSelectTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -93,7 +94,7 @@ class TabSelectTVCell: TableViewCell {
     
     func setupmoreServiceCV() {
         
-        
+        moreServicelbl.text = "More Service"
         let nib = UINib(nibName: "MoreServiceCVCell", bundle: nil)
         moreServiceCV.register(nib, forCellWithReuseIdentifier: "cell1")
         moreServiceCV.delegate = self
@@ -183,10 +184,6 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
             
             
             switch cell.titlelbl.text {
-                
-            case "Visa":
-                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
-                break
                 
            
             case "Car rental":

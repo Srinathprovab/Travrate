@@ -40,8 +40,10 @@ class MyAccountVC: BaseTableVC {
     
     
     func setupUI() {
-        profileView.layer.cornerRadius = 40
+        profileView.backgroundColor = .clear
         profilePic.layer.cornerRadius = 40
+        profilePic.layer.borderColor = UIColor.BorderColor.cgColor
+        profilePic.layer.borderWidth = 2
         setAttributedString(str1: "Login To View Your Profile")
         commonTableView.backgroundColor = .WhiteColor
         commonTableView.registerTVCells(["EditProfileTVCell",
