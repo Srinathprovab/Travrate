@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aOT-gx-Opk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aOT-gx-Opk">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -783,13 +784,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LWR-C9-3Gg">
-                                        <rect key="frame" x="10" y="356" width="373" height="140"/>
+                                        <rect key="frame" x="10" y="282" width="373" height="288"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="l25-XI-TrN">
-                                                <rect key="frame" x="116.66666666666669" y="0.0" width="140" height="140"/>
+                                                <rect key="frame" x="70.333333333333329" y="0.0" width="232.33333333333337" height="288"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-po-Fmn" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                        <rect key="frame" x="46.333333333333343" y="0.0" width="140" height="140"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dest" translatesAutoresizingMaskIntoConstraints="NO" id="Znw-uG-AlA">
                                                                 <rect key="frame" x="9.9999999999999858" y="10" width="120.00000000000001" height="120"/>
@@ -819,29 +820,35 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="rV3-m6-1e1">
-                                                        <rect key="frame" x="-46.333333333333343" y="0.0" width="232.33333333333334" height="18"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="rV3-m6-1e1">
+                                                        <rect key="frame" x="0.0" y="170" width="232.33333333333334" height="118"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kuwait(KWI) to Dubai(DXB)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPt-Kz-GyS">
-                                                                <rect key="frame" x="0.0" y="0.0" width="232.33333333333334" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="232.33333333333334" height="24.666666666666668"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="18"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Mar 24 to 8 Mar 24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asp-EJ-Ui3">
-                                                                <rect key="frame" x="47.666666666666671" y="6" width="137" height="0.0"/>
+                                                                <rect key="frame" x="47.666666666666671" y="30.666666666666686" width="137" height="19.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round Trip - 1 Adult" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NE5-ck-e7C">
-                                                                <rect key="frame" x="60.333333333333321" y="12" width="111.66666666666669" height="0.0"/>
+                                                                <rect key="frame" x="60.333333333333321" y="55.999999999999993" width="111.66666666666669" height="16.666666666666664"/>
+                                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Economy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ak5-V3-6sp">
+                                                                <rect key="frame" x="90.333333333333329" y="78.666666666666629" width="51.666666666666671" height="16.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It Will Take Couple Of Seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SET-ri-BHx">
-                                                                <rect key="frame" x="31.666666666666671" y="18" width="169.33333333333331" height="0.0"/>
+                                                                <rect key="frame" x="31.666666666666671" y="101.33333333333337" width="169.33333333333331" height="16.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -963,7 +970,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It Will Take Couple Of Seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybf-Ne-5Wz">
-                                                        <rect key="frame" x="56.666666666666686" y="159.66666666666663" width="233" height="22"/>
+                                                        <rect key="frame" x="56.666666666666686" y="159.66666666666669" width="233" height="22"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1129,6 +1136,7 @@
                         <outlet property="checkoutlbl" destination="vSM-XM-Xtg" id="JTR-le-F1W"/>
                         <outlet property="cityslbl" destination="bPt-Kz-GyS" id="su1-wz-4DB"/>
                         <outlet property="datelbl" destination="asp-EJ-Ui3" id="d4q-as-pi1"/>
+                        <outlet property="flightEconomylbl" destination="ak5-V3-6sp" id="JJv-NE-xDs"/>
                         <outlet property="flightinfo" destination="rV3-m6-1e1" id="90d-zv-QoH"/>
                         <outlet property="gifimg" destination="oct-hi-Pgh" id="f9a-Lg-9pT"/>
                         <outlet property="guestlbl" destination="8hj-Mw-Og5" id="YGE-at-nyl"/>

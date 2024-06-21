@@ -39,7 +39,7 @@ class AddonTVCell: TableViewCell {
     
     
     var delegate:AddonTVCellDelegate?
-   
+   var addonservicelist = [Addon_services]()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -58,8 +58,14 @@ class AddonTVCell: TableViewCell {
     }
     
     override func updateUI() {
+        
+        addonservicelist = cellInfo?.moreData as? [Addon_services] ?? []
+        
+        
         updateHeight()
     }
+    
+   
     
     
     func updateHeight() {
@@ -67,7 +73,7 @@ class AddonTVCell: TableViewCell {
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
-            tvHeight.constant = CGFloat(MySingleton.shared.addonServices.count * 110)
+            tvHeight.constant = CGFloat(addonservicelist.count * 110)
         }else {
             tvHeight.constant = CGFloat(MySingleton.shared.hotelAddonServices.count * 110)
         }
@@ -97,7 +103,7 @@ extension AddonTVCell:UITableViewDelegate,UITableViewDataSource {
        
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
-            return MySingleton.shared.addonServices.count
+            return addonservicelist.count
         }else {
             return MySingleton.shared.hotelAddonServices.count
         }
@@ -111,12 +117,12 @@ extension AddonTVCell:UITableViewDelegate,UITableViewDataSource {
            
             let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
             if tabselect == "Flight" {
-                cell.titlelbl.text = MySingleton.shared.addonServices[indexPath.row].display_title
-                cell.subtitlelbl.text = MySingleton.shared.addonServices[indexPath.row].details
+                cell.titlelbl.text = addonservicelist[indexPath.row].display_title
+                cell.subtitlelbl.text = addonservicelist[indexPath.row].details
                 
-                cell.addonLogo.sd_setImage(with: URL(string: MySingleton.shared.addonServices[indexPath.row].image ?? ""), completed: nil)
+                cell.addonLogo.sd_setImage(with: URL(string: addonservicelist[indexPath.row].image ?? ""), completed: nil)
                 
-                cell.kwdlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(MySingleton.shared.addonServices[indexPath.row].price ?? "0")"
+                cell.kwdlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(addonservicelist[indexPath.row].price ?? "0")"
                 
                 
                 
@@ -145,14 +151,14 @@ extension AddonTVCell:UITableViewDelegate,UITableViewDataSource {
             if tabselect == "Flight" {
                 cell.checkimg.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBtnColor)
                 
-                let price = Decimal(string: MySingleton.shared.addonServices[indexPath.row].price ?? "0") ?? 0.0
+                let price = Decimal(string: addonservicelist[indexPath.row].price ?? "0") ?? 0.0
                 MySingleton.shared.selectedAddonTotalPrice += (NSDecimalNumber(decimal: price).intValue)
                 
                 print(MySingleton.shared.selectedAddonTotalPrice)
               
                 
-                let selectedTitle = MySingleton.shared.addonServices[indexPath.row].display_title ?? ""
-                    let selectedPrice = MySingleton.shared.addonServices[indexPath.row].price ?? "0"
+                let selectedTitle = addonservicelist[indexPath.row].display_title ?? ""
+                    let selectedPrice = addonservicelist[indexPath.row].price ?? "0"
                     
                     let selectedAddon = SelectedAddonService(title: selectedTitle, price: selectedPrice)
                 MySingleton.shared.selectedAddonServices.append(selectedAddon)
@@ -191,14 +197,14 @@ extension AddonTVCell:UITableViewDelegate,UITableViewDataSource {
             if tabselect == "Flight" {
                 cell.checkimg.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBtnColor)
                 
-                let price = Decimal(string: MySingleton.shared.addonServices[indexPath.row].price ?? "0") ?? 0
+                let price = Decimal(string: addonservicelist[indexPath.row].price ?? "0") ?? 0
                 MySingleton.shared.selectedAddonTotalPrice -= (NSDecimalNumber(decimal: price).intValue)
                
                 print(MySingleton.shared.selectedAddonTotalPrice)
                 
                 
-                let deselectedTitle = MySingleton.shared.addonServices[indexPath.row].display_title ?? ""
-                    let deselectedPrice = MySingleton.shared.addonServices[indexPath.row].price ?? "0"
+                let deselectedTitle = addonservicelist[indexPath.row].display_title ?? ""
+                    let deselectedPrice = addonservicelist[indexPath.row].price ?? "0"
                     
                 let deselectedAddon = SelectedAddonService(title: deselectedTitle , price: deselectedPrice)
                     

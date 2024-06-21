@@ -306,7 +306,7 @@ extension FlightDeatilsVC {
         
         MySingleton.shared.tablerow.append(TableRow(title:"After booking you can contact a travel advisor to add extra baggage, subject to the airliness avaliblity & rates.",
                                                     cellType:.BaggageInfoImageTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"0 Kilograms Each Luggage piece cannot exceed the airline's allowed dimensions or size",
+        MySingleton.shared.tablerow.append(TableRow(title:"1 PEach Luggage piece cannot exceed the airline's allowed dimensions or size",
                                                     cellType:.BaggageInfoImageTVCell))
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))

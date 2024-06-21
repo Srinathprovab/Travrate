@@ -817,12 +817,43 @@ extension AddDeatilsOfTravellerTVCell {
             let currentString: NSString = (textField.text ?? "") as NSString
             let newString: NSString =  currentString.replacingCharacters(in: range, with: string) as NSString
             
+            // Get the current text
+                    guard let currentText = textField.text as NSString? else {
+                        return true
+                    }
+                    
+                    // Get the updated text
+                    let updatedText = currentText.replacingCharacters(in: range, with: string)
+                    
+                    // Check for repeating characters
+                    if hasMoreThanThreeConsecutiveRepeatingCharacters(in: updatedText) {
+                        // Show an alert or some kind of error feedback
+                        textField.text = ""
+                        showError()
+                        return false
+                    }
+            
             return newString.length <= maxLength
         }
         
-        
-        
     }
+    
+    
+    func hasMoreThanThreeConsecutiveRepeatingCharacters(in text: String) -> Bool {
+            // Regular expression to find more than three consecutive repeating characters
+            let regex = try! NSRegularExpression(pattern: "(.)\\1{2,}", options: [])
+            let range = NSRange(location: 0, length: text.utf16.count)
+            
+            if let _ = regex.firstMatch(in: text, options: [], range: range) {
+                return true
+            }
+            return false
+        }
+        
+        func showError() {
+            print("not repeate same character")
+        }
+    
     
     func setAttributedText(str1:String,str2:String)  {
         

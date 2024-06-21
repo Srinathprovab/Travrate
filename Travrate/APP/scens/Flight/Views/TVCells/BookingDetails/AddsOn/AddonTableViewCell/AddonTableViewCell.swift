@@ -14,29 +14,32 @@ protocol AddonTableViewCellDelegate {
 
 class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSource {
     
-//    @IBOutlet weak var tvheight: NSLayoutConstraint!
+    //    @IBOutlet weak var tvheight: NSLayoutConstraint!
     @IBOutlet weak var addonTV: UITableView!
     
-    
+    var displayFirstHalf: Bool = true
+    var firstHalfAddonServices: [Addon_services] = []
+    var secondHalfAddonServices: [Addon_services] = []
     var delegate: AddonTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         
-     
+        
         // Initialization code
         setupUI()
     }
     
     override func updateUI() {
-    
-       
-//        if cellInfo?.key == "flight" {
-//            tvheight.constant = CGFloat(addon_services.count * 74)
-//        } else {
-//            tvheight.constant = CGFloat(hotel_Addservices.count * 74)
-//        }
-//        
-//        addonTV.reloadData()
+        
+        
+        if cellInfo?.key1 == "first" {
+            displayFirstHalf = true
+        }else {
+            
+            displayFirstHalf = false
+        }
+        
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,7 +53,7 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
         setupTV()
     }
     
-
+    
     
 }
 
@@ -63,13 +66,39 @@ extension AddonTableViewCell {
         addonTV.allowsMultipleSelection = true
         let nib = UINib(nibName: "AddonContentTVCell", bundle: nil)
         addonTV.register(nib, forCellReuseIdentifier: "cell")
+        
+        splitAddonServices() // Split the add-on services
+    }
+    
+    // Function to split the add-on services into two arrays
+    func splitAddonServices() {
+        let count = addon_services.count
+        
+        // Ensure there's something to split
+        guard count > 0 else {
+            print("No addon services to split.")
+            return
+        }
+        
+        // Calculate the midpoint
+        let midpoint = (count + 1) / 2 // Rounded up to handle odd counts
+        
+        // Use slicing to create two arrays
+        firstHalfAddonServices = Array(addon_services.prefix(midpoint))
+        secondHalfAddonServices = Array(addon_services.suffix(from: midpoint))
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if cellInfo?.key == "flight" {
-            addon_services.count
+            // addon_services.count
+            if displayFirstHalf == true{
+                return secondHalfAddonServices.count
+            }else {
+                return firstHalfAddonServices.count
+            }
         } else {
-            hotel_Addservices.count
+            return hotel_Addservices.count
         }
     }
     
@@ -80,24 +109,54 @@ extension AddonTableViewCell {
             cell.selectionStyle = .none
             
             if cellInfo?.key == "flight" {
-                let data = addon_services[indexPath.row]
-                whatsAppPrice =  addon_services[0].price ?? "0"
-                flexiblePrie =  addon_services[1].price ?? "0"
-                priceChange =  addon_services[2].price ?? "0"
-                notificationPrice = addon_services[3].price ?? "0"
-               
-                cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
-                cell.titleLabel.text = data.title
-                cell.subTitleLabel.text = data.details
-                cell.originValue = data.origin ?? ""
-                cell.priceImage.text = "\(defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
+                //let data = addon_services[indexPath.row]
+                //                whatsAppPrice =  addon_services[0].price ?? "0"
+                //                flexiblePrie =  addon_services[1].price ?? "0"
+                //                priceChange =  addon_services[2].price ?? "0"
+                //                notificationPrice = addon_services[3].price ?? "0"
+                
+                //                cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
+                //                cell.titleLabel.text = data.title
+                //                cell.subTitleLabel.text = data.details
+                //                cell.originValue = data.origin ?? ""
+                //                cell.priceImage.text = "\(defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
+                
+               // let data: Addon_services
+                if displayFirstHalf == true{
+                    let data = secondHalfAddonServices[indexPath.row]
+                   
+                    priceChange =  addon_services[0].price ?? "0"
+                    notificationPrice = addon_services[1].price ?? "0"
+                    cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
+                    cell.titleLabel.text = data.title
+                    cell.subTitleLabel.text = data.details
+                    cell.originValue = data.origin ?? ""
+                    cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
+                    
+                    print(data.title)
+                    
+                } else {
+                    let data = firstHalfAddonServices[indexPath.row]
+                    whatsAppPrice =  addon_services[0].price ?? "0"
+                    flexiblePrie =  addon_services[1].price ?? "0"
+                    
+                    cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
+                    cell.titleLabel.text = data.title
+                    cell.subTitleLabel.text = data.details
+                    cell.originValue = data.origin ?? ""
+                    cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
+                    
+                    print(data.title)
+                }
+                
+             
             } else {
                 let data = hotel_Addservices[indexPath.row]
-//                hotelwhatsAppPrice =  hotel_Addservices[0].price ?? "0"
-//                hotelflexiblePrie =  hotel_Addservices[1].price ?? "0"
+                //                hotelwhatsAppPrice =  hotel_Addservices[0].price ?? "0"
+                //                hotelflexiblePrie =  hotel_Addservices[1].price ?? "0"
                 hotelpriceChange =  hotel_Addservices[0].price ?? "0"
                 hotelnotificationPrice = hotel_Addservices[1].price ?? "0"
-
+                
                 cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
                 cell.titleLabel.text = data.title
                 cell.subTitleLabel.text = data.details
@@ -113,12 +172,12 @@ extension AddonTableViewCell {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? AddonContentTVCell {
             cell.checkIMAGE.image = UIImage(named: "check")
-           
+            
             if cellInfo?.key == "flight" {
-               
+                
                 origin_array.append(cell.originValue)
                 print("value is \(origin_array.joined(separator: ",") )")
-               
+                
             }
             
             
@@ -128,7 +187,7 @@ extension AddonTableViewCell {
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? AddonContentTVCell {
-           
+            
             cell.checkIMAGE.image = UIImage(named: "uncheck")
             if cellInfo?.key == "flight" {
                 

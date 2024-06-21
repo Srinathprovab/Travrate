@@ -34,6 +34,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     @IBOutlet weak var carrentalView: UIView!
     @IBOutlet weak var carRentalNamelbl: UILabel!
     @IBOutlet weak var carRentalDateslbl: UILabel!
+    @IBOutlet weak var flightEconomylbl: UILabel!
     
     
     var searchdata:SearchData?
@@ -89,16 +90,23 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             img.sd_setImage(with: URL(string: searchdata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
             cityslbl.text = "\(searchdata?.from ?? "") To \(searchdata?.to ?? "")"
+            
     
             let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
             if journyType == "oneway" {
                 datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: searchdata?.from_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
+                
+                flightEconomylbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass)
+                triptypelbl.text = "Oneway - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
             }else {
                 datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: searchdata?.from_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM")) - \(MySingleton.shared.convertDateFormat(inputDate: searchdata?.to_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
+                
+                flightEconomylbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass)
+                triptypelbl.text = "RoundTrip - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
             }
             
            
-            triptypelbl.text = "\(searchdata?.trip_type ?? "") - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
+           
             
         }else if tabselect == "transfers" {
             

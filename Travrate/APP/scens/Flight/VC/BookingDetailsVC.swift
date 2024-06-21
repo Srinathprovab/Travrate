@@ -487,7 +487,7 @@ extension BookingDetailsVC {
             sub_total_child = i?.sub_total_child ?? "0"
             sub_total_infant = i?.sub_total_infant ?? "0"
             
-            
+          
             
             DispatchQueue.main.async {[self] in
                 setupTVCell()
@@ -496,6 +496,9 @@ extension BookingDetailsVC {
         
         
     }
+    
+    
+    
     
     
     
@@ -509,6 +512,8 @@ extension BookingDetailsVC {
                                                         data1: MySingleton.shared.mpbFlightData?.summary))
             
         }
+        
+        MySingleton.shared.tablerow.append(TableRow(key: "flight", key1: "first",moreData: MySingleton.shared.secondHalf_addonServices, cellType:.AddonTableViewCell))
         
         
         let userloggedBool = defaults.bool(forKey: UserDefaultsKeys.loggedInStatus)
@@ -587,7 +592,8 @@ extension BookingDetailsVC {
         //        MySingleton.shared.tablerow.append(TableRow(cellType:.AddonTVCell))
         
         MySingleton.shared.tablerow.append(TableRow(height: 10,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
-        MySingleton.shared.tablerow.append(TableRow(key: "flight", moreData: services, cellType:.AddonTableViewCell))
+        MySingleton.shared.tablerow.append(TableRow(key: "flight",key1: "second" ,moreData: MySingleton.shared.secondHalf_addonServices, cellType:.AddonTableViewCell))
+        
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(covetedAmnt: totlConvertedGrand, cellType:.PriceSummaryTVCell))

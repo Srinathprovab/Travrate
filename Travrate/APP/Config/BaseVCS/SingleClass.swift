@@ -95,6 +95,8 @@ class MySingleton {
     var mpbFlightData : MPBFlightDetails?
     var frequent_flyersArray = [Frequent_flyers]()
     var addonServices = [Addon_services]()
+    var firstHalf_addonServices: [Addon_services] = []
+       var secondHalf_addonServices: [Addon_services] = []
     var ageCategory: AgeCategory = .adult
     var passportExpireDateBool = false
     var passengertypeArray = [String]()
@@ -263,7 +265,7 @@ class MySingleton {
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     var preferences = EasyTipView.Preferences()
     
-
+    
     func setupTipView(arrowPosition:EasyTipView.ArrowPosition){
         
         preferences.drawing.font = .OpenSansMedium(size: 13)
@@ -321,7 +323,7 @@ class MySingleton {
     //MARK: - getCountryList
     func getCountryList() {
         
-       
+        
         
         // Get the path to the clist.json file in the Xcode project
         if let jsonFilePath = Bundle.main.path(forResource: "clist", ofType: "json") {
@@ -354,7 +356,7 @@ class MySingleton {
     
     
     //MARK: - convertToDesiredFormat
-
+    
     func convertToDesiredFormat(_ inputString: String) -> String {
         if let number = Int(inputString.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) {
             if inputString.contains("Kilograms") {
@@ -370,7 +372,7 @@ class MySingleton {
     
     
     
-   
+    
     
     //MARK: - Timer SETUP
     func startTimer(time:Int) {
@@ -378,16 +380,16 @@ class MySingleton {
         backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
             self?.endBackgroundTask()
         }
-
+        
         // Reset the totalTime to its initial value (e.g., 60 seconds)
         totalTime = time
-
+        
         // Schedule the timer in the common run loop mode
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         RunLoop.current.add(timer!, forMode: .common)
     }
-
-
+    
+    
     @objc func updateTimer() {
         if totalTime != 0 {
             totalTime -= 1
@@ -398,22 +400,22 @@ class MySingleton {
             endBackgroundTask()
         }
     }
-
+    
     @objc func sessionStop() {
         if let timer = timer {
             timer.invalidate()
             self.timer = nil
         }
     }
-
+    
     func stopTimer() {
         if let timer = timer {
             timer.invalidate()
             self.timer = nil
         }
     }
-
-
+    
+    
     private func endBackgroundTask() {
         guard backgroundTask != .invalid else { return }
         UIApplication.shared.endBackgroundTask(backgroundTask)
@@ -458,8 +460,8 @@ class MySingleton {
         // Return nil if the input format is invalid
         return nil
     }
-
-   
+    
+    
     
 }
 

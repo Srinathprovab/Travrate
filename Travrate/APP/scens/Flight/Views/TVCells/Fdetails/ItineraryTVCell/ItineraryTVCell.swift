@@ -68,12 +68,17 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         return fdetais.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var c = UITableViewCell()
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? AddItineraryTVCell {
             
             cell.selectionStyle = .none
             let data = fdetais[indexPath.row]
+            cell.totalJourneyTimelbl.text = "Total Journey Time: \(data.duration ?? "")"
+            
+            cell.economylbl.text = "\(data.cabin_class ?? "")"
+            
             cell.flightnumber.text = "\(data.flight_number ?? "")"
             cell.fromcitylbl.text = "\(data.origin?.city ?? "")"
             cell.fromdatelbl.text = "\(data.origin?.date ?? "")"
@@ -85,54 +90,145 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
             cell.toairportlbl.text = "\(data.destination?.airport_name ?? "")"
             cell.toterminallbl.text = "Terminal: \(data.destination?.terminal ?? "")"
             
+            if let operatorImageURL = data.operator_image {
+                cell.operatorimg.sd_setImage(with: URL(string: operatorImageURL), placeholderImage: UIImage(named: "placeholder.png"))
+            }
             
-            cell.operatorimg.sd_setImage(with: URL(string: data.operator_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
-            
-            
-            if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+            if let journeyType = UserDefaults.standard.string(forKey: UserDefaultsKeys.journeyType) {
                 if journeyType == "oneway" {
                     if indexPath.row == 0 {
                         cell.depimg.image = UIImage(named: "depflight")
                     }
-                    
-                }else {
+                } else {
                     if indexPath.row == 0 {
                         if depFind == indexPath.row {
-                            cell.depimg.image = UIImage(named: "depflight")
-                        }else {
-                            cell.depimg.image = UIImage(named: "flight")                                    }
+                            cell.depimg.image = UIImage(named: "depflight")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#279EFF"))
+                        } else {
+                            cell.depimg.image = UIImage(named: "retflight")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#44B50C"))
+                        }
                     }
                 }
             }
             
-            cell.timelbl.text = "Layover Duration \(data.destination?.city ?? "") (\(data.destination?.loc ?? "")) \(data.layover_duration ?? "")"
             if tableView.isLast(for: indexPath) {
                 cell.timeView.isHidden = true
                 cell.depimg.isHidden = true
                 cell.imgwidth.constant = 0
                 cell.imgleft.constant = 0
+                cell.totalJourneyTimelbl.isHidden = true
             }
             
+            var totalDuration: TimeInterval = 0
+            var totalLayoverTime: TimeInterval = 0
             
+            for i in 0..<fdetais.count {
+                let flight = fdetais[i]
+                if let duration = flight.duration {
+                    totalDuration += parseFlightDuration(duration)
+                }
+                
+                if i < fdetais.count - 1 {
+                    let currentFlight = fdetais[i]
+                    let nextFlight = fdetais[i + 1]
+                    if let layoverTime = addAllDurationandLayoverTime(startDateString: currentFlight.destination?.datetime ?? "", endDateString: nextFlight.origin?.datetime ?? "") {
+                        totalLayoverTime += layoverTime
+                    }
+                }
+            }
             
+            let totalJourneyTime = totalDuration + totalLayoverTime
+            cell.totalJourneyTimelbl.text = "Total Journey Time: \(formatDuration(totalJourneyTime))"
             
-            if let convertedString = MySingleton.shared.convertToPC(input: data.weight_Allowance ?? "") {
-                cell.worklbl.text = convertedString
+            if fdetais.count <= 1 {
+                cell.hourslbl.text = "\(data.duration ?? "")"
             } else {
-                print("Invalid input format")
+                cell.hourslbl.text = "\(data.duration ?? "")"
+                
+                if indexPath.row < fdetais.count - 1 {
+                    let currentFlight = fdetais[indexPath.row]
+                    let nextFlight = fdetais[indexPath.row + 1]
+                    
+                    if let layoverTime = calculateLayoverTime(startDateString: currentFlight.destination?.datetime ?? "", endDateString: nextFlight.origin?.datetime ?? "") {
+                        cell.timelbl.text = "Layover Duration \(nextFlight.origin?.city ?? "") (\(nextFlight.origin?.loc ?? "")) \(layoverTime)"
+                    } else {
+                        print("Could not calculate layover time")
+                        cell.timelbl.text = "Layover Duration: N/A"
+                    }
+                } else {
+                    cell.timelbl.text = ""
+                }
             }
             
-            cell.luggagelbl.text = data.cabin_baggage ?? ""
-            
-           
             
             c = cell
         }
         
-        
         return c
     }
     
+    
+    
+    
+    func calculateLayoverTime(startDateString: String, endDateString: String) -> String? {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        guard let startDate = dateFormatter.date(from: startDateString),
+              let endDate = dateFormatter.date(from: endDateString) else {
+            print("Invalid date format")
+            return nil
+        }
+        
+        let layoverInterval = endDate.timeIntervalSince(startDate)
+        let layoverHours = Int(layoverInterval) / 3600
+        let layoverMinutes = (Int(layoverInterval) % 3600) / 60
+        
+        return String(format: "%02dh %02dm", layoverHours, layoverMinutes)
+    }
+    
+    
+    
+    
+    func formatDuration(_ totalSeconds: TimeInterval) -> String {
+        let hours = Int(totalSeconds) / 3600
+        let minutes = (Int(totalSeconds) % 3600) / 60
+        return String(format: "%02dh %02dm", hours, minutes)
+    }
+    
+    
+    func parseFlightDuration(_ duration: String) -> TimeInterval {
+        let components = duration.split(separator: " ")
+        var totalSeconds: TimeInterval = 0
+        
+        for component in components {
+            if component.hasSuffix("h") {
+                if let hours = Double(component.dropLast()) {
+                    totalSeconds += hours * 3600
+                }
+            } else if component.hasSuffix("m") {
+                if let minutes = Double(component.dropLast()) {
+                    totalSeconds += minutes * 60
+                }
+            }
+        }
+        return totalSeconds
+    }
+    
+    
+    
+    
+    func addAllDurationandLayoverTime(startDateString: String, endDateString: String) -> TimeInterval? {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        guard let startDate = dateFormatter.date(from: startDateString),
+              let endDate = dateFormatter.date(from: endDateString) else {
+            print("Invalid date format")
+            return nil
+        }
+        
+        return endDate.timeIntervalSince(startDate)
+    }
     
     
 }
