@@ -8,12 +8,15 @@
 import UIKit
 
 protocol FlightResultTVCellDelegate {
+    
     func didTapOnFlightDetails(cell:FlightResultTVCell)
     func didTapOnBookNowBtnAction(cell:FlightResultTVCell)
     func didTapOnMoreSimilarFlightBtnAction(cell:FlightResultTVCell)
     func didTapFlightDetailsPopupBrtnBtnAction(cell:FlightResultTVCell)
     func didTapOnReturnDateBtnAction(cell:FlightResultTVCell)
     func didTapOnSelectFareBtnAction(cell:FlightResultTVCell)
+    func didTapOnShareBtnAction(cell:FlightResultTVCell)
+    
 }
 
 class FlightResultTVCell: TableViewCell {
@@ -155,6 +158,11 @@ class FlightResultTVCell: TableViewCell {
     
     @objc func didTapFlightDetailsPopupBrtnBtnAction(_ sender: UIButton) {
         delegate?.didTapFlightDetailsPopupBrtnBtnAction(cell: self)
+    }
+    
+    
+    @IBAction func didTapOnShareBtnAction(_ sender: Any) {
+        delegate?.didTapOnShareBtnAction(cell: self)
     }
     
 }

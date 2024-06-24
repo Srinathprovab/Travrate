@@ -10,6 +10,12 @@ import UIKit
 struct TopFlightListModel {
     let airport_city: String
     let image: String?
+    let traveldate: String?
+    let returndate: String?
+    let fromcitycode: String?
+    let tocitycode: String?
+    let triptype: String?
+    let v_class: String?
     // Add other properties as needed
 }
 
@@ -65,7 +71,15 @@ class PopularDestinationsTVCell: TableViewCell {
                 }
                 return false
             }.map { flight in
-                TopFlightListModel(airport_city: flight.airport_city ?? "", image: flight.image)
+               // TopFlightListModel(airport_city: flight.airport_city ?? "", image: flight.image)
+                TopFlightListModel(airport_city: flight.airport_city ?? "",
+                                   image: flight.image ?? "",
+                                   traveldate: flight.travel_date ?? "",
+                                   returndate: flight.return_date ?? "",
+                                   fromcitycode: flight.from_city ?? "",
+                                   tocitycode: flight.to_city ?? "",
+                                   triptype: flight.trip_type ?? "",
+                                   v_class: flight.airline_class ?? "")
             }
            
         }
@@ -205,7 +219,14 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                     }
                     return false
                 }.map { flight in
-                    TopFlightListModel(airport_city: flight.airport_city ?? "", image: flight.image)
+                    TopFlightListModel(airport_city: flight.airport_city ?? "",
+                                       image: flight.image ?? "",
+                                       traveldate: flight.travel_date ?? "",
+                                       returndate: flight.return_date ?? "",
+                                       fromcitycode: flight.from_city ?? "",
+                                       tocitycode: flight.to_city ?? "",
+                                       triptype: flight.trip_type ?? "",
+                                       v_class: flight.airline_class ?? "")
                 }
                 
                 // Update the selected index path
@@ -214,6 +235,15 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 
                 // Reload the collection view to update with filtered data
                 selectDestCV.reloadData()
+            }
+        }else {
+            if let cell = collectionView.cellForItem(at: indexPath) as? SelectDestCVCell {
+                let flight = filteredFlights[indexPath.row]
+                print("flight.airport_city:\(flight.airport_city)")
+                print("flight.traveldate:\(flight.traveldate)")
+                print("flight.returndate:\(flight.returndate)")
+                print("flight.tocitycode:\(flight.tocitycode)")
+                print("flight.fromcitycode:\(flight.fromcitycode)")
             }
         }
     }

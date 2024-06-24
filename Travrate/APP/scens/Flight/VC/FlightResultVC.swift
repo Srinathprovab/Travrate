@@ -238,6 +238,19 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
     }
     
     
+    
+    //MARK: - didTapOnShareBtnAction  FlightResultTVCell
+    override func didTapOnShareBtnAction(cell:FlightResultTVCell) {
+        gotoShareResultVC()
+    }
+    
+    
+    func gotoShareResultVC() {
+        guard let vc = ShareResultVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
+    
 }
 
 

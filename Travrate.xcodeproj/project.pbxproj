@@ -700,6 +700,9 @@
 		65D327412BF72B6000FE879D /* Tour_departure_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D3273F2BF72B6000FE879D /* Tour_departure_details.swift */; };
 		65D327442BF72BB600FE879D /* HolidaySelectedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D327432BF72BB600FE879D /* HolidaySelectedVM.swift */; };
 		84373E052C21A3DC0029CAB3 /* SingleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84373E042C21A3DC0029CAB3 /* SingleClass.swift */; };
+		845BB4DB2C297B7600571339 /* ShareResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB4DA2C297B7600571339 /* ShareResultVC.swift */; };
+		845BB4DF2C297C4300571339 /* ShareResultTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845BB4DE2C297C4300571339 /* ShareResultTVCell.xib */; };
+		845BB4E02C297C4300571339 /* ShareResultTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB4DD2C297C4300571339 /* ShareResultTVCell.swift */; };
 		8D990CD965677534C9B33A1A /* Pods_Travrate_TravrateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352E76BB6C18FFBDFA9E4BAC /* Pods_Travrate_TravrateUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -1423,6 +1426,9 @@
 		65D3273F2BF72B6000FE879D /* Tour_departure_details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour_departure_details.swift; sourceTree = "<group>"; };
 		65D327432BF72BB600FE879D /* HolidaySelectedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaySelectedVM.swift; sourceTree = "<group>"; };
 		84373E042C21A3DC0029CAB3 /* SingleClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleClass.swift; sourceTree = "<group>"; };
+		845BB4DA2C297B7600571339 /* ShareResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultVC.swift; sourceTree = "<group>"; };
+		845BB4DD2C297C4300571339 /* ShareResultTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultTVCell.swift; sourceTree = "<group>"; };
+		845BB4DE2C297C4300571339 /* ShareResultTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareResultTVCell.xib; sourceTree = "<group>"; };
 		8DD1499C19BCF668666470A0 /* Pods_TravrateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravrateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D6270A6B84A65A4EA1F77F2 /* Pods_Travrate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travrate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72FB7CD8ACAF005CA724D93 /* Pods-Travrate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate.debug.xcconfig"; path = "Target Support Files/Pods-Travrate/Pods-Travrate.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2558,6 +2564,7 @@
 				65207A2B2BF4942F0076EF76 /* AirlineSelectVC.swift */,
 				65207A2C2BF4942F0076EF76 /* SimilarFlightsVC.swift */,
 				65207A2D2BF4942F0076EF76 /* ModifySearchVC.swift */,
+				845BB4DA2C297B7600571339 /* ShareResultVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -3195,6 +3202,7 @@
 		65207AF42BF4942F0076EF76 /* Flight Result */ = {
 			isa = PBXGroup;
 			children = (
+				845BB4DC2C297C2D00571339 /* ShareResultTVCell */,
 				65207AF52BF4942F0076EF76 /* SelectFare */,
 				65207AFC2BF4942F0076EF76 /* FlightResultSummeryTVCell */,
 				65207AFF2BF4942F0076EF76 /* FlightResultTVCell */,
@@ -4968,6 +4976,15 @@
 			path = HolidaySelectedModel;
 			sourceTree = "<group>";
 		};
+		845BB4DC2C297C2D00571339 /* ShareResultTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				845BB4DD2C297C4300571339 /* ShareResultTVCell.swift */,
+				845BB4DE2C297C4300571339 /* ShareResultTVCell.xib */,
+			);
+			path = ShareResultTVCell;
+			sourceTree = "<group>";
+		};
 		9BB6B282C797305FD6DD1AC6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -5314,6 +5331,7 @@
 				65207D362BF494310076EF76 /* HolidayPackagesTVCell.xib in Resources */,
 				65207DC62BF494310076EF76 /* TravellerAdultTVCell.xib in Resources */,
 				65207D072BF494310076EF76 /* AmenitiesTVCell.xib in Resources */,
+				845BB4DF2C297C4300571339 /* ShareResultTVCell.xib in Resources */,
 				65207E9D2BF494320076EF76 /* BookedTravelDetailsTVCell.xib in Resources */,
 				65207CB82BF494310076EF76 /* Poppins-ExtraBold.ttf in Resources */,
 			);
@@ -5697,6 +5715,7 @@
 				65207E922BF494320076EF76 /* Booking_details.swift in Sources */,
 				65207D5C2BF494310076EF76 /* AirlineSelectVC.swift in Sources */,
 				65207E992BF494320076EF76 /* Calvc.swift in Sources */,
+				845BB4DB2C297B7600571339 /* ShareResultVC.swift in Sources */,
 				65207E2C2BF494320076EF76 /* SelectedSportInfoTVCell.swift in Sources */,
 				65207EAB2BF494320076EF76 /* ImportentInfoTableViewCell.swift in Sources */,
 				65207EA12BF494320076EF76 /* BookedAdultDetailsTVCell.swift in Sources */,
@@ -5806,6 +5825,7 @@
 				65207D1A2BF494310076EF76 /* AddDeatilsOfGuestTVCell.swift in Sources */,
 				65207CCD2BF494310076EF76 /* SelectFareListVC.swift in Sources */,
 				65207CC72BF494310076EF76 /* BaseViewModelProtocol.swift in Sources */,
+				845BB4E02C297C4300571339 /* ShareResultTVCell.swift in Sources */,
 				65207D672BF494310076EF76 /* FlightDataModel.swift in Sources */,
 				65207E432BF494320076EF76 /* SelectLanguageVC.swift in Sources */,
 				65207E512BF494320076EF76 /* TopcityGuidesTVCell.swift in Sources */,

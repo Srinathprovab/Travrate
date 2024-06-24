@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -25,7 +26,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="240" id="KGk-i7-Jjw" customClass="FlightResultTVCell" customModule="Travgate" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="240" id="KGk-i7-Jjw" customClass="FlightResultTVCell" customModule="Travrate" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="486" height="240"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -35,7 +36,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zjt-Xg-we7">
                         <rect key="frame" x="16" y="10" width="454" height="222"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqc-H4-Yzz" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqc-H4-Yzz" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="454" height="207"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9da-nO-lYn">
@@ -51,7 +52,7 @@
                                                             <constraint firstAttribute="height" constant="175" id="Pz9-XR-jN8"/>
                                                         </constraints>
                                                     </tableView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-Hd-0KV" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-Hd-0KV" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="364" y="15" width="85" height="26"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flight Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmt-QU-g5i">
@@ -92,7 +93,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaJ-ea-nKO" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaJ-ea-nKO" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="364" y="139" width="85" height="26"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhs-ye-EQg">
@@ -179,32 +180,60 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TpG-7W-ya0">
                                                 <rect key="frame" x="0.0" y="175" width="454" height="32"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKi-or-pAE">
-                                                        <rect key="frame" x="147" y="2.6666666666666572" width="160" height="27"/>
-                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" title="More option at same price 8">
-                                                            <color key="titleColor" name="BackBtnColor"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="didTapOnMoreSimilarFlightBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="azj-aJ-qAt"/>
-                                                        </connections>
-                                                    </button>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="similar" translatesAutoresizingMaskIntoConstraints="NO" id="cIm-ls-s4F">
-                                                        <rect key="frame" x="313" y="8" width="16" height="16"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="16" id="QbL-Z2-icd"/>
-                                                            <constraint firstAttribute="height" constant="16" id="WOm-ov-XSj"/>
-                                                        </constraints>
-                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="TsH-zO-2Mp">
+                                                        <rect key="frame" x="262" y="8" width="182" height="16"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKi-or-pAE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="160" height="16"/>
+                                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="More option at same price 8">
+                                                                    <color key="titleColor" name="BackBtnColor"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="didTapOnMoreSimilarFlightBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="azj-aJ-qAt"/>
+                                                                </connections>
+                                                            </button>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="similar" translatesAutoresizingMaskIntoConstraints="NO" id="cIm-ls-s4F">
+                                                                <rect key="frame" x="166" y="0.0" width="16" height="16"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="16" id="QbL-Z2-icd"/>
+                                                                    <constraint firstAttribute="height" constant="16" id="WOm-ov-XSj"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Lfp-ew-aOc">
+                                                        <rect key="frame" x="10" y="8" width="55" height="16"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="Ktc-BX-wjv">
+                                                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="16" id="QVS-4X-6YX"/>
+                                                                    <constraint firstAttribute="height" constant="16" id="uLn-7M-7mt"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9S-KA-GAb">
+                                                                <rect key="frame" x="22" y="0.0" width="33" height="16"/>
+                                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="Share">
+                                                                    <color key="titleColor" name="BackBtnColor"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="didTapOnShareBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YiP-ta-B6n"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" name="MoreSimilarColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="fKi-or-pAE" firstAttribute="centerY" secondItem="TpG-7W-ya0" secondAttribute="centerY" id="Fi4-Bm-4PP"/>
-                                                    <constraint firstItem="cIm-ls-s4F" firstAttribute="centerY" secondItem="fKi-or-pAE" secondAttribute="centerY" id="GPX-EH-vW4"/>
+                                                    <constraint firstItem="Lfp-ew-aOc" firstAttribute="leading" secondItem="TpG-7W-ya0" secondAttribute="leading" constant="10" id="Ord-y2-Cbl"/>
                                                     <constraint firstAttribute="height" constant="32" id="Pty-kM-ymL"/>
-                                                    <constraint firstItem="cIm-ls-s4F" firstAttribute="leading" secondItem="fKi-or-pAE" secondAttribute="trailing" constant="6" id="d81-II-9js"/>
-                                                    <constraint firstItem="fKi-or-pAE" firstAttribute="centerX" secondItem="TpG-7W-ya0" secondAttribute="centerX" id="yWs-87-Ivh"/>
+                                                    <constraint firstItem="TsH-zO-2Mp" firstAttribute="centerY" secondItem="TpG-7W-ya0" secondAttribute="centerY" id="d94-Gn-GBu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TsH-zO-2Mp" secondAttribute="trailing" constant="10" id="iQT-m6-xrd"/>
+                                                    <constraint firstItem="Lfp-ew-aOc" firstAttribute="centerY" secondItem="TpG-7W-ya0" secondAttribute="centerY" id="tx5-e1-0tS"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -266,6 +295,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="share" width="16" height="16"/>
         <image name="similar" width="16" height="16"/>
         <namedColor name="BackBtnColor">
             <color red="0.10599999874830246" green="0.29399999976158142" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -274,7 +304,7 @@
             <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BorderColor">
-            <color red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="FlightDetailsBtnColor">
             <color red="0.75700002908706665" green="0.94099998474121094" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -88,8 +88,8 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         if MySingleton.shared.deail_code_list.count > 0 {
             MySingleton.shared.tablerow.append(TableRow(cellType:.SpecialOffersTVCell))
         }
-       
-      
+        
+        
         MySingleton.shared.tablerow.append(TableRow(height:30,cellType:.EmptyTVCell))
         
         
@@ -183,9 +183,6 @@ extension DashboardVC:IndexPageViewModelDelegate {
         MySingleton.shared.topFlightDetails = response.topFlightDetails ?? []
         MySingleton.shared.topHotelDetails = response.city_guides ?? []
         MySingleton.shared.deail_code_list = response.deail_code_list ?? []
-        
-        
-        
         
         DispatchQueue.main.async {[self] in
             callCountryListAPI()
