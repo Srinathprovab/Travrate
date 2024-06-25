@@ -203,44 +203,63 @@
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Lfp-ew-aOc">
-                                                        <rect key="frame" x="10" y="8" width="55" height="16"/>
-                                                        <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="Ktc-BX-wjv">
-                                                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="16" id="QVS-4X-6YX"/>
-                                                                    <constraint firstAttribute="height" constant="16" id="uLn-7M-7mt"/>
-                                                                </constraints>
-                                                            </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9S-KA-GAb">
-                                                                <rect key="frame" x="22" y="0.0" width="33" height="16"/>
-                                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="Share">
-                                                                    <color key="titleColor" name="BackBtnColor"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="didTapOnShareBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YiP-ta-B6n"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Lfp-ew-aOc">
+                                                        <rect key="frame" x="8" y="8" width="55" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" name="MoreSimilarColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="Lfp-ew-aOc" firstAttribute="leading" secondItem="TpG-7W-ya0" secondAttribute="leading" constant="10" id="Ord-y2-Cbl"/>
                                                     <constraint firstAttribute="height" constant="32" id="Pty-kM-ymL"/>
                                                     <constraint firstItem="TsH-zO-2Mp" firstAttribute="centerY" secondItem="TpG-7W-ya0" secondAttribute="centerY" id="d94-Gn-GBu"/>
                                                     <constraint firstAttribute="trailing" secondItem="TsH-zO-2Mp" secondAttribute="trailing" constant="10" id="iQT-m6-xrd"/>
-                                                    <constraint firstItem="Lfp-ew-aOc" firstAttribute="centerY" secondItem="TpG-7W-ya0" secondAttribute="centerY" id="tx5-e1-0tS"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTf-RB-qKo">
+                                        <rect key="frame" x="0.0" y="175" width="80" height="32"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="aqD-0I-lQl">
+                                                <rect key="frame" x="12.666666666666671" y="8" width="55" height="16"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="Ktc-BX-wjv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="QVS-4X-6YX"/>
+                                                            <constraint firstAttribute="height" constant="16" id="uLn-7M-7mt"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9S-KA-GAb">
+                                                        <rect key="frame" x="22" y="0.0" width="33" height="16"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Share">
+                                                            <color key="titleColor" name="BackBtnColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="didTapOnShareBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YiP-ta-B6n"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="8vR-NW-o9C"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="MoreSimilarColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="d8A-Yu-mmT"/>
+                                            <constraint firstAttribute="height" constant="32" id="dcZ-gJ-J4D"/>
+                                            <constraint firstItem="aqD-0I-lQl" firstAttribute="centerY" secondItem="wTf-RB-qKo" secondAttribute="centerY" id="fpv-b5-t1D"/>
+                                            <constraint firstItem="aqD-0I-lQl" firstAttribute="centerX" secondItem="wTf-RB-qKo" secondAttribute="centerX" id="uRk-fk-AhW"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="wTf-RB-qKo" firstAttribute="leading" secondItem="qqc-H4-Yzz" secondAttribute="leading" id="GvJ-9U-Ujr"/>
+                                    <constraint firstAttribute="bottom" secondItem="wTf-RB-qKo" secondAttribute="bottom" id="Joq-hm-aHU"/>
                                     <constraint firstItem="9da-nO-lYn" firstAttribute="top" secondItem="qqc-H4-Yzz" secondAttribute="top" id="Lk7-dr-PBW"/>
                                     <constraint firstItem="9da-nO-lYn" firstAttribute="leading" secondItem="qqc-H4-Yzz" secondAttribute="leading" id="UI1-In-2ku"/>
                                     <constraint firstAttribute="trailing" secondItem="9da-nO-lYn" secondAttribute="trailing" id="YbP-gv-vVg"/>
@@ -284,6 +303,7 @@
                 <outlet property="fareTypelbl" destination="TWs-nU-U3w" id="3Vb-Ov-NY2"/>
                 <outlet property="kwdlbl" destination="n3w-1H-BJ9" id="x63-eK-nMj"/>
                 <outlet property="moreSimilarBtn" destination="fKi-or-pAE" id="AaK-aj-j7j"/>
+                <outlet property="moreSimilarImage" destination="cIm-ls-s4F" id="tPZ-SB-rxo"/>
                 <outlet property="returnBtn" destination="TML-6Q-Ged" id="v1B-am-EnH"/>
                 <outlet property="simalarView" destination="icm-gH-GXH" id="4n5-LT-xAo"/>
                 <outlet property="simalrViewHeight" destination="Ize-AI-lV1" id="TRT-u6-SIm"/>

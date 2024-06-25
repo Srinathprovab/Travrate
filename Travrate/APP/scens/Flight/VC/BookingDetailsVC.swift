@@ -322,7 +322,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         
         
        // setupTVCell()
-        commonTableView.reloadData()
+       // commonTableView.reloadData()
         
     }
     
@@ -344,7 +344,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         }
         //    setuplabels(lbl: bookNowlbl, text: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""): \(totlConvertedGrand)", textcolor: .WhiteColor, font: .InterBold(size: 18), align: .left)
        // setupTVCell()
-        commonTableView.reloadData()
+       // commonTableView.reloadData()
     }
     
     
@@ -496,10 +496,6 @@ extension BookingDetailsVC {
         
         
     }
-    
-    
-    
-    
     
     
     func setupTVCell() {

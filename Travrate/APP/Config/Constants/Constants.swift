@@ -148,6 +148,12 @@ var HoteladdonAmount = Int()
 var hotel_Addservices = [HotelAddonModel]()
 var origin_array = [String]()
 
+var totalWhatsAppPrice: Double = 0.0
+var totalFlexiblePrice: Double = 0.0
+var totalPriceChange: Double = 0.0
+var totalNotificationPrice: Double = 0.0
+
+
 
 var bookedjurnycitys = String()
 var lastContentOffset: CGFloat = 0
@@ -234,6 +240,7 @@ struct ApiEndpoints {
     static let ajax_mobile_get_fare_rules = "ajax/mobile_get_fare_rules"
     static let general_get_more_option_at_same_price = "general/get_more_option_at_same_price"
     static let management_promocode = "management/promocode"
+    static let ajax_share_itinerary = "ajax/share_itinerary"
     
     //LOGIN
     static let auth_mobile_login = "auth/mobile_login"

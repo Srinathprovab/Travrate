@@ -38,6 +38,8 @@ class MySingleton {
     var payload = [String:Any]()
     var payload1 = [String:Any]()
     
+    
+    
     //Home Page
     var tabselect = String()
     var indexpagevm:IndexPageViewModel?
@@ -78,6 +80,10 @@ class MySingleton {
     var countrylist = [Country_list]()
     var flights = [[FlightList]]()
     var callboolapi = false
+    var flighttoken = String()
+    var shareresultrandomid = String()
+    var shareresultaccesskey = String()
+    var shareresultbookingsource = String()
     var bookingsource = String()
     var bookingsourcekey = String()
     var searchid = String()
@@ -254,6 +260,7 @@ class MySingleton {
     var sportlist = [SportListData]()
     var sportsdetailsvm: SportDetailsVM?
     var sportsbookingvm:SportsBookingVM?
+    var shareresultvm:ShareResultViewModel?
     
     
     

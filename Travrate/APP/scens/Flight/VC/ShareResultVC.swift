@@ -7,9 +7,8 @@
 
 import UIKit
 
-class ShareResultVC: BaseTableVC {
-    
-    
+class ShareResultVC: BaseTableVC, ShareResultViewModelDelegate {
+   
     @IBOutlet weak var holderView: UIView!
     
     
@@ -35,14 +34,13 @@ class ShareResultVC: BaseTableVC {
         // Do any additional setup after loading the view.
         setUI()
         
-        
+        MySingleton.shared.shareresultvm = ShareResultViewModel(self)
     }
     
     
     func setUI() {
         
         commonTableView.registerTVCells(["ShareResultTVCell"])
-        
         setupTVCells()
         
     }
@@ -87,10 +85,8 @@ class ShareResultVC: BaseTableVC {
             NotificationCenter.default.post(name: NSNotification.Name("shareresultshow"), object: nil)
         }
         
-        
-        
-        
     }
+    
     
     override func didTapOnCopyWhatsapplinkBtnAction(cell: ShareResultTVCell) {
         print("didTapOnCopyWhatsapplinkBtnAction")
@@ -125,9 +121,40 @@ class ShareResultVC: BaseTableVC {
 
 extension ShareResultVC {
     
+//token:640fee6fe6e442cd06cfb5bbefcbd196*_*1*_*K3IS4qWlxWo9g4Qt
+//booking_source:PTBSID0000000016
+//id:1PTBSID00000000160
+//search_id:8035
+//to_email:poovarasan.g@provabmail.com
+//from:sathis
+    
     func callAPI() {
-        showToast(message: "Call API ....")
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["token"] = MySingleton.shared.shareresultaccesskey
+        MySingleton.shared.payload["booking_source"] = MySingleton.shared.shareresultbookingsource
+        MySingleton.shared.payload["id"] = MySingleton.shared.shareresultrandomid
+        MySingleton.shared.payload["search_id"] = MySingleton.shared.searchid
+        MySingleton.shared.payload["to_email"] = emailid
+        MySingleton.shared.payload["from"] = "\(fname) \(lname)"
+        
+        MySingleton.shared.shareresultvm?.CALL_SHARE_RESULT_API(dictParam: MySingleton.shared.payload)
     }
+    
+    
+    
+    func sahreResultResponse(response: LoginModel) {
+        if response.status == false {
+            showToast(message: response.msg ?? "")
+        }else {
+            showToast(message: "Link Sended To Your Mail ... ")
+            let seconds = 2.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                MySingleton.shared.callboolapi = false
+                self.dismiss(animated: true)
+            }
+        }
+    }
+    
     
     
     

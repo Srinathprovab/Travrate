@@ -700,6 +700,7 @@
 		65D327412BF72B6000FE879D /* Tour_departure_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D3273F2BF72B6000FE879D /* Tour_departure_details.swift */; };
 		65D327442BF72BB600FE879D /* HolidaySelectedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D327432BF72BB600FE879D /* HolidaySelectedVM.swift */; };
 		84373E052C21A3DC0029CAB3 /* SingleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84373E042C21A3DC0029CAB3 /* SingleClass.swift */; };
+		8459E3A82C2AC418007CED6C /* ShareResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459E3A72C2AC418007CED6C /* ShareResultViewModel.swift */; };
 		845BB4DB2C297B7600571339 /* ShareResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB4DA2C297B7600571339 /* ShareResultVC.swift */; };
 		845BB4DF2C297C4300571339 /* ShareResultTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845BB4DE2C297C4300571339 /* ShareResultTVCell.xib */; };
 		845BB4E02C297C4300571339 /* ShareResultTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB4DD2C297C4300571339 /* ShareResultTVCell.swift */; };
@@ -1426,6 +1427,7 @@
 		65D3273F2BF72B6000FE879D /* Tour_departure_details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour_departure_details.swift; sourceTree = "<group>"; };
 		65D327432BF72BB600FE879D /* HolidaySelectedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaySelectedVM.swift; sourceTree = "<group>"; };
 		84373E042C21A3DC0029CAB3 /* SingleClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleClass.swift; sourceTree = "<group>"; };
+		8459E3A72C2AC418007CED6C /* ShareResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultViewModel.swift; sourceTree = "<group>"; };
 		845BB4DA2C297B7600571339 /* ShareResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultVC.swift; sourceTree = "<group>"; };
 		845BB4DD2C297C4300571339 /* ShareResultTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultTVCell.swift; sourceTree = "<group>"; };
 		845BB4DE2C297C4300571339 /* ShareResultTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareResultTVCell.xib; sourceTree = "<group>"; };
@@ -2541,6 +2543,7 @@
 				65207A1A2BF4942F0076EF76 /* SearchLoaderViewModel.swift */,
 				65207A1B2BF4942F0076EF76 /* MBViewModel.swift */,
 				65207A1C2BF4942F0076EF76 /* SelectFareViewModel.swift */,
+				8459E3A72C2AC418007CED6C /* ShareResultViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -5536,6 +5539,7 @@
 				65207CF32BF494310076EF76 /* Airline_list.swift in Sources */,
 				65207E8A2BF494320076EF76 /* ViewController+CollectionViewDelegateAndDatSource.swift in Sources */,
 				65207D792BF494310076EF76 /* Addon_services.swift in Sources */,
+				8459E3A82C2AC418007CED6C /* ShareResultViewModel.swift in Sources */,
 				65207E632BF494320076EF76 /* SelectCityCVCell.swift in Sources */,
 				65207DD72BF494310076EF76 /* SpecialAssistanceTVCell.swift in Sources */,
 				65207DC02BF494310076EF76 /* AddsOnInfoTVCell.swift in Sources */,

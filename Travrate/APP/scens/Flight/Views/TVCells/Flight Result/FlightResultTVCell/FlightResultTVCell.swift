@@ -28,6 +28,7 @@ class FlightResultTVCell: TableViewCell {
     @IBOutlet weak var strikekwdlbl: UILabel!
     @IBOutlet weak var kwdlbl: UILabel!
     @IBOutlet weak var moreSimilarBtn: UIButton!
+    @IBOutlet weak var moreSimilarImage: UIImageView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var returnBtn: UIButton!
     
@@ -36,6 +37,11 @@ class FlightResultTVCell: TableViewCell {
     @IBOutlet weak var simalarView: UIView!
     @IBOutlet weak var simalrViewHeight: NSLayoutConstraint!
     
+    
+    
+    var shareresultaccesskey = String()
+    var shareresultrandomid = String()
+    var shareresultbookingsource = String()
     var selectedResult = String()
     var newsimilarList = [[FlightList]]()
     var delegate:FlightResultTVCellDelegate?
@@ -69,6 +75,10 @@ class FlightResultTVCell: TableViewCell {
     
     override func updateUI() {
         
+        
+        shareresultbookingsource = cellInfo?.subTitle ?? ""
+        shareresultaccesskey = cellInfo?.tempText ?? ""
+        shareresultrandomid = cellInfo?.key1 ?? ""
         returnBtn.layer.cornerRadius = 4
         selectedResult = cellInfo?.title ?? ""
         flightsummery = cellInfo?.data1 as! [Summary]
@@ -101,6 +111,9 @@ class FlightResultTVCell: TableViewCell {
         
         if cellInfo?.key == "similar" {
             bottomView.isHidden = true
+            moreSimilarBtn.isHidden = true
+            moreSimilarImage.isHidden = true
+            
         }
         
         let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType)
@@ -283,11 +296,15 @@ extension FlightResultTVCell {
     
     
     func hideSimilarlbl(){
-        bottomView.isHidden = true
+        bottomView.isHidden = false
+        moreSimilarBtn.isHidden = true
+        moreSimilarImage.isHidden = true
     }
     
     func showSimilarlbl(){
         bottomView.isHidden = false
+        moreSimilarBtn.isHidden = false
+        moreSimilarImage.isHidden = false
     }
     
     

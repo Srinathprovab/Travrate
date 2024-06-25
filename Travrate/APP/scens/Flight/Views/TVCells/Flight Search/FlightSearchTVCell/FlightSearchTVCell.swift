@@ -69,7 +69,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     
     
     
-    
+   
     var timeArray = ["12:00 AM - 06:00 AM","06:00 AM - 12:00 PM","12:00 PM - 12:00 PM","06:00 PM - 12:00 AM"]
     var selectClassArray = ["Economy","Premium","First","Business"]
     var infoimgArray = ["in1","in2","in3","in4"]
@@ -227,6 +227,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             returnDateView.alpha = 1
             self.depTF.isHidden = false
             self.retTF.isHidden = false
+           
             showreturndepDatePicker()
             showretDatePicker()
             
@@ -249,7 +250,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(returndate), name: Notification.Name("returndate"), object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(roundtripTap), name: Notification.Name("roundtripTap"), object: nil)
     }
     

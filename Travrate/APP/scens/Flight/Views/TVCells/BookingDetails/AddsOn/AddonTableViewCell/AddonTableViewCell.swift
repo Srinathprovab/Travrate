@@ -20,6 +20,18 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
     var displayFirstHalf: Bool = true
     var firstHalfAddonServices: [Addon_services] = []
     var secondHalfAddonServices: [Addon_services] = []
+    var selectedFirstHalfIndexPathArray = [IndexPath]()
+    var selectedSecondIndexPathArray = [IndexPath]()
+    var selectedAddonPrices: [Double] = [] // Track selected prices
+    var totalPrice: Double = 0.0 {
+        didSet {
+            print("Total Price: \(totalPrice)") // Print the total price
+        }
+    }
+    
+    var firstHalfSelectionState: [Bool] = []
+    var secondHalfSelectionState: [Bool] = []
+
     var delegate: AddonTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,12 +46,12 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
         
         if cellInfo?.key1 == "first" {
             displayFirstHalf = true
-        }else {
-            
+        } else {
             displayFirstHalf = false
         }
         
-        
+        setupTV()
+        addonTV.reloadData()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,7 +62,7 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
     
     
     func setupUI() {
-        setupTV()
+        //setupTV()
     }
     
     
@@ -68,138 +80,167 @@ extension AddonTableViewCell {
         addonTV.register(nib, forCellReuseIdentifier: "cell")
         
         splitAddonServices() // Split the add-on services
+        
+        
+        
     }
     
-    // Function to split the add-on services into two arrays
     func splitAddonServices() {
         let count = addon_services.count
-        
-        // Ensure there's something to split
         guard count > 0 else {
             print("No addon services to split.")
             return
         }
         
-        // Calculate the midpoint
-        let midpoint = (count + 1) / 2 // Rounded up to handle odd counts
-        
-        // Use slicing to create two arrays
+        let midpoint = (count + 1) / 2
         firstHalfAddonServices = Array(addon_services.prefix(midpoint))
         secondHalfAddonServices = Array(addon_services.suffix(from: midpoint))
         
+        firstHalfSelectionState = Array(repeating: false, count: firstHalfAddonServices.count)
+        secondHalfSelectionState = Array(repeating: false, count: secondHalfAddonServices.count)
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if cellInfo?.key == "flight" {
-            // addon_services.count
-            if displayFirstHalf == true{
-                return secondHalfAddonServices.count
-            }else {
-                return firstHalfAddonServices.count
-            }
+            return displayFirstHalf ? firstHalfAddonServices.count : secondHalfAddonServices.count
         } else {
             return hotel_Addservices.count
         }
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var ccell = UITableViewCell()
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? AddonContentTVCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? AddonContentTVCell else {
+            return UITableViewCell()
+        }
+        
+        cell.selectionStyle = .none
+        
+        if cellInfo?.key == "flight" {
+            let data: Addon_services
             
-            cell.selectionStyle = .none
             
-            if cellInfo?.key == "flight" {
-                //let data = addon_services[indexPath.row]
-                //                whatsAppPrice =  addon_services[0].price ?? "0"
-                //                flexiblePrie =  addon_services[1].price ?? "0"
-                //                priceChange =  addon_services[2].price ?? "0"
-                //                notificationPrice = addon_services[3].price ?? "0"
+            if displayFirstHalf {
+                data = firstHalfAddonServices[indexPath.row]
+               
                 
-                //                cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
-                //                cell.titleLabel.text = data.title
-                //                cell.subTitleLabel.text = data.details
-                //                cell.originValue = data.origin ?? ""
-                //                cell.priceImage.text = "\(defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
-                
-               // let data: Addon_services
-                if displayFirstHalf == true{
-                    let data = secondHalfAddonServices[indexPath.row]
-                   
-                    priceChange =  addon_services[0].price ?? "0"
-                    notificationPrice = addon_services[1].price ?? "0"
-                    cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
-                    cell.titleLabel.text = data.title
-                    cell.subTitleLabel.text = data.details
-                    cell.originValue = data.origin ?? ""
-                    cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
-                    
-                    print(data.title)
-                    
-                } else {
-                    let data = firstHalfAddonServices[indexPath.row]
-                    whatsAppPrice =  addon_services[0].price ?? "0"
-                    flexiblePrie =  addon_services[1].price ?? "0"
-                    
-                    cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
-                    cell.titleLabel.text = data.title
-                    cell.subTitleLabel.text = data.details
-                    cell.originValue = data.origin ?? ""
-                    cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
-                    
-                    print(data.title)
+                if selectedFirstHalfIndexPathArray.contains(indexPath) {
+                       cell.checkIMAGE.image = UIImage(named: "check")
+                    tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                }else {
+                    cell.checkIMAGE.image = UIImage(named: "uncheck")
+                    tableView.deselectRow(at: indexPath, animated: false)
                 }
                 
-             
             } else {
-                let data = hotel_Addservices[indexPath.row]
-                //                hotelwhatsAppPrice =  hotel_Addservices[0].price ?? "0"
-                //                hotelflexiblePrie =  hotel_Addservices[1].price ?? "0"
-                hotelpriceChange =  hotel_Addservices[0].price ?? "0"
-                hotelnotificationPrice = hotel_Addservices[1].price ?? "0"
+                data = secondHalfAddonServices[indexPath.row]
+               
                 
-                cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
-                cell.titleLabel.text = data.title
-                cell.subTitleLabel.text = data.details
-                cell.originValue = data.origin ?? ""
-                cell.priceImage.text = "\(defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
+                if selectedSecondIndexPathArray.contains(indexPath) {
+                       cell.checkIMAGE.image = UIImage(named: "check")
+                    tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                }else {
+                    cell.checkIMAGE.image = UIImage(named: "uncheck")
+                    tableView.deselectRow(at: indexPath, animated: false)
+                }
+                
             }
             
-            ccell = cell
+            // Display data in the cell
+            cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
+            cell.titleLabel.text = data.title
+            cell.subTitleLabel.text = data.details
+            cell.originValue = data.origin ?? ""
+            cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
+            
+           
+            
+            
+        } else {
+            let data = hotel_Addservices[indexPath.row]
+            // Display data in the cell
+            cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
+            cell.titleLabel.text = data.title
+            cell.subTitleLabel.text = data.details
+            cell.originValue = data.origin ?? ""
+            cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
         }
-        return ccell
+        
+        return cell
     }
+    
+    
+   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? AddonContentTVCell {
-            cell.checkIMAGE.image = UIImage(named: "check")
-            
-            if cellInfo?.key == "flight" {
-                
-                origin_array.append(cell.originValue)
-                print("value is \(origin_array.joined(separator: ",") )")
-                
+        guard let cell = tableView.cellForRow(at: indexPath) as? AddonContentTVCell else { return }
+        
+        if cellInfo?.key == "flight" {
+            if displayFirstHalf {
+                firstHalfSelectionState[indexPath.row] = true
+                let selectedAddon = firstHalfAddonServices[indexPath.row]
+                if let price = Double(selectedAddon.price ?? "0") {
+                    totalWhatsAppPrice += price
+                    print("Total WhatsApp Price: \(totalWhatsAppPrice)")
+                }
+                selectedFirstHalfIndexPathArray.append(indexPath)
+            } else {
+                secondHalfSelectionState[indexPath.row] = true
+                let selectedAddon = secondHalfAddonServices[indexPath.row]
+                if let price = Double(selectedAddon.price ?? "0") {
+                    totalPriceChange += price
+                    print("Total Price Change: \(totalPriceChange)")
+                }
+                selectedSecondIndexPathArray.append(indexPath)
             }
-            
-            
-            delegate?.didDeselectAddon(index: indexPath.row, origen: "")
         }
+        
+        // Update UI
+        cell.checkIMAGE.image = UIImage(named: "check")
+        
+        
+       // delegate?.didSelectAddon(index: indexPath.row, origen: "")
     }
-    
+
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? AddonContentTVCell {
-            
-            cell.checkIMAGE.image = UIImage(named: "uncheck")
-            if cellInfo?.key == "flight" {
-                
-                let unselectedItem = cell.originValue
-                if let index = origin_array.firstIndex(of: unselectedItem) {
-                    origin_array.remove(at: index)
+        guard let cell = tableView.cellForRow(at: indexPath) as? AddonContentTVCell else { return }
+        
+        if cellInfo?.key == "flight" {
+            if displayFirstHalf {
+                firstHalfSelectionState[indexPath.row] = false
+                let deselectedAddon = firstHalfAddonServices[indexPath.row]
+                if let price = Double(deselectedAddon.price ?? "0") {
+                    totalWhatsAppPrice -= price
+                    print("Total WhatsApp Price: \(totalWhatsAppPrice)")
                 }
                 
-                print("value is \(origin_array.joined(separator: ",") )")
+                if let indexpath1 = selectedFirstHalfIndexPathArray.firstIndex(of: indexPath) {
+                    selectedFirstHalfIndexPathArray.remove(at: indexpath1)
+                }
+                
+            } else {
+                secondHalfSelectionState[indexPath.row] = false
+                let deselectedAddon = secondHalfAddonServices[indexPath.row]
+                if let price = Double(deselectedAddon.price ?? "0") {
+                    totalPriceChange -= price
+                    print("Total Price Change: \(totalPriceChange)")
+                }
+                
+                if let indexpath1 = selectedSecondIndexPathArray.firstIndex(of: indexPath) {
+                    selectedSecondIndexPathArray.remove(at: indexpath1)
+                }
             }
-            
-            delegate?.didSelectAddon(index: indexPath.row, origen: "")
         }
+        
+        // Update UI
+        cell.checkIMAGE.image = UIImage(named: "uncheck")
+        
+        
+       // delegate?.didDeselectAddon(index: indexPath.row, origen: "")
     }
+
+    
 }
+
+
+

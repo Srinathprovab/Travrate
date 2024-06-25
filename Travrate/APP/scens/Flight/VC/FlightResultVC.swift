@@ -28,7 +28,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
         return vc
     }
     
-    
+    var arrayIndex = 0
     var filterdFlightList :[[FlightList]]?
     var bsDataArray = [ABSData]()
     var bookingSourceDataArrayCount = Int()
@@ -144,7 +144,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
             showToast(message: "No Flights Found")
         }
         
-       // commonTableView.reloadRows(at: [IndexPath(item: cell.indexPath?.row ?? 0, section: 0)], with: .automatic)
+        // commonTableView.reloadRows(at: [IndexPath(item: cell.indexPath?.row ?? 0, section: 0)], with: .automatic)
         
     }
     
@@ -225,7 +225,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
         MySingleton.shared.bookingsource = cell.bookingsource
         MySingleton.shared.bookingsourcekey = cell.bookingsourcekey
         
-       // gotoSelectFareVC()
+        // gotoSelectFareVC()
         
         showToast(message: "Still Under Development")
     }
@@ -241,6 +241,14 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
     
     //MARK: - didTapOnShareBtnAction  FlightResultTVCell
     override func didTapOnShareBtnAction(cell:FlightResultTVCell) {
+        MySingleton.shared.shareresultrandomid = cell.shareresultrandomid
+        MySingleton.shared.shareresultaccesskey = cell.shareresultaccesskey
+        MySingleton.shared.shareresultbookingsource = cell.shareresultbookingsource
+        
+        print(MySingleton.shared.shareresultrandomid)
+        print(MySingleton.shared.shareresultaccesskey)
+        print(MySingleton.shared.shareresultbookingsource)
+        
         gotoShareResultVC()
     }
     
@@ -1062,13 +1070,39 @@ extension FlightResultVC {
         updatedUniqueList = getUniqueElements_oneway(inputArray: list)
         
         
-        updatedUniqueList.forEach { i in
-            i.forEach { j in
+        //        updatedUniqueList.forEach { i in
+        //            i.forEach { j in
+        //
+        //
+        //
+        //                let similarFlights1 = similar(fare: Double(String(format: "%.2f", j.price?.api_total_display_fare ?? "")) ?? 0.0)
+        //
+        //
+        //                MySingleton.shared.tablerow.append(TableRow(title: j.selectedResult,
+        //                                                            subTitle: j.booking_source,
+        //                                                            refundable:j.fareType,
+        //                                                            key: "fl",
+        //                                                            text: j.booking_source_key,
+        //                                                            headerText: j.serialized_journeyKey,
+        //                                                            data: similarFlights1,
+        //                                                            moreData: j,
+        //                                                            tempInfo: j.farerulesref_Key,
+        //                                                            cellType:.FlightResultTVCell,
+        //                                                            userCatdetails:j.journeyKey,
+        //                                                            data1: j.flight_details?.summary,
+        //                                                            data2: j.farerulesref_content))
+        //            }
+        //        }
+        
+        
+       
+        
+        updatedUniqueList.forEach { array in
+            array.enumerated().forEach { (itemIndex, j) in
                 
-                
+                let uniqueID = generateUniqueID(for: arrayIndex, bookingSource: j.booking_source!, itemIndex: itemIndex)
                 
                 let similarFlights1 = similar(fare: Double(String(format: "%.2f", j.price?.api_total_display_fare ?? "")) ?? 0.0)
-                
                 
                 MySingleton.shared.tablerow.append(TableRow(title: j.selectedResult,
                                                             subTitle: j.booking_source,
@@ -1077,14 +1111,24 @@ extension FlightResultVC {
                                                             text: j.booking_source_key,
                                                             headerText: j.serialized_journeyKey,
                                                             data: similarFlights1,
-                                                            moreData: j,
+                                                            key1: uniqueID,
+                                                            moreData: j, 
+                                                            tempText: j.access_key,
                                                             tempInfo: j.farerulesref_Key,
                                                             cellType:.FlightResultTVCell,
                                                             userCatdetails:j.journeyKey,
                                                             data1: j.flight_details?.summary,
                                                             data2: j.farerulesref_content))
+                
+                
+                print(uniqueID)
             }
+            arrayIndex += 1
+            
+            
         }
+        
+        
         
         
         
@@ -1094,6 +1138,21 @@ extension FlightResultVC {
         
     }
     
+    
+    func generateUniqueID(for arrayIndex: Int, bookingSource: String, itemIndex: Int) -> String {
+        // Prefix for ID: Array index starting from 1
+        let prefix = "\(arrayIndex + 1)"
+        
+        // Booking source part
+        let bookingSourcePart = bookingSource
+        
+        // Suffix for ID: Zero-padded item index starting from 1 within the array
+        let suffix = String(format: "%08d", itemIndex + 1)
+        
+        // Combine all parts to form the unique ID
+        return "\(prefix)\(bookingSourcePart)\((Int(prefix) ?? 0) - 1)"
+    }
+
     
     
     
@@ -1105,10 +1164,11 @@ extension FlightResultVC {
         var updatedUniqueList: [FlightList] = []
         updatedUniqueList = getUniqueElements(inputArray: list)
         
-        updatedUniqueList.forEach { j in
+       // updatedUniqueList.forEach { j in
+            updatedUniqueList.enumerated().forEach { (itemIndex, j) in
             
             
-            
+            let uniqueID = generateUniqueID(for: arrayIndex, bookingSource: j.booking_source!, itemIndex: itemIndex)
             let similarFlights1 = similar(fare: Double(String(format: "%.2f", j.price?.api_total_display_fare ?? "")) ?? 0.0)
             
             
@@ -1119,16 +1179,20 @@ extension FlightResultVC {
                                                         text: j.booking_source_key,
                                                         headerText: j.serialized_journeyKey,
                                                         data: similarFlights1,
+                                                        key1: uniqueID,
                                                         moreData: j,
+                                                        tempText: j.access_key,
                                                         tempInfo: j.farerulesref_Key,
                                                         cellType:.FlightResultTVCell,
                                                         userCatdetails:j.journeyKey,
                                                         data1: j.flight_details?.summary,
                                                         data2: j.farerulesref_content))
+                
+               
             
         }
         
-        
+        arrayIndex += 1
         
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
