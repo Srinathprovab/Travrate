@@ -239,10 +239,6 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
 extension RoomsTVcell: UITableViewDataSource ,UITableViewDelegate {
     
     
-    
-    
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         if self.key == "rooms" {
             return roomsDetails.count
@@ -286,9 +282,6 @@ extension RoomsTVcell: UITableViewDataSource ,UITableViewDelegate {
                 } else {
                     print("Index out of range error: indexPath = \(indexPath)")
                 }
-                
-                
-             
                 
                 
                 ccell = cell
