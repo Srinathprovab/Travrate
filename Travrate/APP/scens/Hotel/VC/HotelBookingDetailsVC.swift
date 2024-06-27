@@ -318,7 +318,7 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
     
     
     
-    override func didSelectAddon(index: Int, origen: String) {
+    override  func didSelectAddon(index: Int, origen: String,price:String) {
         if index == 0 {
             hotelwhatsAppCheck = false
             totlConvertedGrand = totlConvertedGrand - Double(hotelwhatsAppAmount)

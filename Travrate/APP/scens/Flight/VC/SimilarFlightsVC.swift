@@ -39,17 +39,22 @@ class SimilarFlightsVC: BaseTableVC {
     
     
     override func didTapOnFlightDetails(cell: FlightResultTVCell) {
+        
         MySingleton.shared.callboolapi = true
         MySingleton.shared.selectedResult = cell.selectedResult
         MySingleton.shared.farerulesrefKey = cell.farerulesrefKey
         MySingleton.shared.farerulesrefContent = cell.farerulesrefContent
         MySingleton.shared.bookingsourceforpromocode = cell.bookingsource
         
-        
-        guard let vc = FlightDeatilsVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false)
-        
+        if cell.bookNowlbl.text != "Select Fare" {
+            
+            guard let vc = FlightDeatilsVC.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: false)
+            
+        }else {
+            showToast(message: "Still Under Development")
+        }
         
     }
     

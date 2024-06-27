@@ -24,6 +24,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         return vc
     }
     
+    var userinfo = [String:Any]()
     
     var regViewModel: RegisterViewModel?
     var mbviewmodel:MBViewModel?
@@ -57,7 +58,10 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         gifimg.isHidden = true
         
         continuetoPaymentBtnView.backgroundColor = .Buttoncolor
-        continuetoPaymentBtnView.isUserInteractionEnabled = false
+        continuetoPaymentBtnView.isUserInteractionEnabled = true
+        MySingleton.shared.enablePaymentButtonBool1 = false
+        MySingleton.shared.enablePaymentButtonBool2 = false
+        
         guard let gifURL = Bundle.main.url(forResource: "pay", withExtension: "gif") else { return }
         guard let imageData = try? Data(contentsOf: gifURL) else { return }
         guard let image = UIImage.gifImageWithData(imageData) else { return }
@@ -294,60 +298,104 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
             gifimg.isHidden = false
             
         }else {
-            
+            MySingleton.shared.enablePaymentButtonBool1 = false
             continuetoPaymentBtnView.backgroundColor = .Buttoncolor
-            continuetoPaymentBtnView.isUserInteractionEnabled = false
+            continuetoPaymentBtnView.isUserInteractionEnabled = true
             gifimg.isHidden = true
             
         }
     }
     
     
-    //MARK: -
-    override func didSelectAddon(index: Int, origen: String) {
-        if index == 0 {
-            whatsAppCheck = false
-            totlConvertedGrand = totlConvertedGrand - Double(whatsAppAmount)
-        } else if index == 1 {
-            flexibleCheck = false
-            totlConvertedGrand = totlConvertedGrand - Double(flexibleAmount)
-        } else if index == 2 {
-            priceCheck = false
-            totlConvertedGrand = totlConvertedGrand - Double(priceChangeAmount)
-        } else {
-            notificationCheck = false
-            totlConvertedGrand = totlConvertedGrand - Double(notificationAmount)
-        }
-        // setuplabels(lbl: bookNowlbl, text: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""): \(totlConvertedGrand)", textcolor: .WhiteColor, font: .InterBold(size: 18), align: .left)
-        
-        
-       // setupTVCell()
-       // commonTableView.reloadData()
-        
-    }
-    
-    
+    //MARK: - Addon didSelectAddon  didDeselectAddon
     override func didDeselectAddon(index: Int, origen: String) {
-        if index == 0 {
-            
-            whatsAppCheck = true
-            totlConvertedGrand = totlConvertedGrand + Double(whatsAppAmount)
-        } else if index == 1 {
-            flexibleCheck = true
-            totlConvertedGrand = totlConvertedGrand + Double(flexibleAmount)
-        } else if index == 2 {
-            priceCheck = true
-            totlConvertedGrand = totlConvertedGrand + Double(priceChangeAmount)
-        } else {
-            notificationCheck = true
-            totlConvertedGrand = totlConvertedGrand + Double(notificationAmount)
+        
+        if origen == "first" {
+            if index == 0 {
+                
+                
+                whatsAppCheck = false
+                updateTotalAndReload()
+            } else  {
+                flexibleCheck = false
+                updateTotalAndReload()
+            }
+        }else {
+            if index == 0 {
+                
+                
+                priceCheck = false
+                updateTotalAndReload()
+            } else {
+                notificationCheck = false
+                updateTotalAndReload()
+            }
         }
-        //    setuplabels(lbl: bookNowlbl, text: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""): \(totlConvertedGrand)", textcolor: .WhiteColor, font: .InterBold(size: 18), align: .left)
-       // setupTVCell()
-       // commonTableView.reloadData()
+        
+
+       
+        
     }
     
     
+    override  func didSelectAddon(index: Int, origen: String,price:String) {
+        
+        
+        if origen == "first" {
+            if index == 0 {
+                
+                whatsAppPrice = price
+                whatsAppCheck = true
+                updateTotalAndReload()
+            } else  {
+                flexiblePrie = price
+                flexibleCheck = true
+                updateTotalAndReload()
+              //  totlConvertedGrand = totlConvertedGrand + Double(flexibleAmount)
+            }
+        }else {
+            
+            
+            if index == 0 {
+                priceChange = price
+                priceCheck = true
+                updateTotalAndReload()
+            } else {
+                notificationPrice = price
+                notificationCheck = true
+                updateTotalAndReload()
+            }
+        }
+        
+        
+    }
+    
+    
+    func updateTotalAndReload() {
+        // Update total price or any related data
+        // totlConvertedGrand = newTotal
+
+        reloadPriceSummaryTVCell()
+    }
+    
+    func reloadPriceSummaryTVCell() {
+        if let indexPath = indexPathForPriceSummaryTVCell() {
+            commonTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func indexPathForPriceSummaryTVCell() -> IndexPath? {
+        if let row = MySingleton.shared.tablerow.firstIndex(where: { $0.cellType == .PriceSummaryTVCell }) {
+            return IndexPath(row: row, section: 0)
+        }
+        return nil
+    }
+
+
+    
+    
+    
+    //MARK: -  didTapOnApplyPromosCodesBtn
     override func didTapOnApplyPromosCodesBtn(cell:UsePromoCodesTVCell) {
         callApplyPromocodeAPI(promoStr: cell.codesTF.text ?? "")
     }
@@ -387,12 +435,12 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
     func promocodeDetails(response : PromocodeModel) {
         
         if response.status == 0 {
-            NotificationCenter.default.post(name: NSNotification.Name("invalidPromocode"), object: nil) 
+            NotificationCenter.default.post(name: NSNotification.Name("invalidPromocode"), object: nil)
             
         }else {
             
             NotificationCenter.default.post(name: NSNotification.Name("validPromocode"), object: nil)
-
+            
             MySingleton.shared.promocodebool.toggle()
             
             promocodeValue = totlConvertedGrand
@@ -487,7 +535,7 @@ extension BookingDetailsVC {
             sub_total_child = i?.sub_total_child ?? "0"
             sub_total_infant = i?.sub_total_infant ?? "0"
             
-          
+            
             
             DispatchQueue.main.async {[self] in
                 setupTVCell()
@@ -509,7 +557,7 @@ extension BookingDetailsVC {
             
         }
         
-        MySingleton.shared.tablerow.append(TableRow(key: "flight", key1: "first",moreData: MySingleton.shared.secondHalf_addonServices, cellType:.AddonTableViewCell))
+        MySingleton.shared.tablerow.append(TableRow(key: "flight", key1: "second",moreData: MySingleton.shared.secondHalf_addonServices, cellType:.AddonTableViewCell))
         
         
         let userloggedBool = defaults.bool(forKey: UserDefaultsKeys.loggedInStatus)
@@ -588,7 +636,7 @@ extension BookingDetailsVC {
         //        MySingleton.shared.tablerow.append(TableRow(cellType:.AddonTVCell))
         
         MySingleton.shared.tablerow.append(TableRow(height: 10,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
-        MySingleton.shared.tablerow.append(TableRow(key: "flight",key1: "second" ,moreData: MySingleton.shared.secondHalf_addonServices, cellType:.AddonTableViewCell))
+        MySingleton.shared.tablerow.append(TableRow(key: "flight",key1: "first" ,moreData: MySingleton.shared.secondHalf_addonServices, cellType:.AddonTableViewCell))
         
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
@@ -859,6 +907,9 @@ extension BookingDetailsVC {
             return
         }else if mobilenoMaxLengthBool == false {
             showToast(message: "Enter Valid Mobile No")
+            return
+        }else if MySingleton.shared.enablePaymentButtonBool1 == false && MySingleton.shared.enablePaymentButtonBool2 == false {
+            showToast(message: "Please Select Options")
             return
         }else {
             

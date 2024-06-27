@@ -25,7 +25,6 @@ class MyAccountVC: BaseTableVC {
     }
     
     
-    
     override func viewWillAppear(_ animated: Bool) {
         addObserver()
     }

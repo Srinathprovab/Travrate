@@ -52,7 +52,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
-            loderBool = false
+           // loderBool = false
             hideLoadera()
             
             

@@ -90,25 +90,38 @@ extension PopularFiltersTVCell:UICollectionViewDelegate,UICollectionViewDataSour
         var commonCell = UICollectionViewCell()
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? StarRatingCVCell {
             cell.titlelbl.text = starArray[indexPath.row]
-          
             
-            if hotelfiltermodel.starRatingNew.contains(cell.titlelbl.text ?? "") {
+            
+            
+            
+            if hotelstarratingArray.contains(cell.titlelbl.text ?? "") {
+                cell.holderView.alpha = 1
+                cell.isUserInteractionEnabled = true
                 
-                DispatchQueue.main.async {
-                    cell.holderView.backgroundColor = UIColor.Buttoncolor
-                    cell.titlelbl.textColor = .WhiteColor
-                    cell.starimg.tintColor = .WhiteColor
-                    collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+                
+                if hotelfiltermodel.starRatingNew.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.holderView.backgroundColor = HexColor("34C759")
+                        cell.titlelbl.textColor = .WhiteColor
+                        cell.starimg.tintColor = .lightGray
+                        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+                    }
+                    
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.holderView.backgroundColor = UIColor.WhiteColor
+                        cell.titlelbl.textColor = .TitleColor
+                        cell.starimg.tintColor = .black
+                    }
+                    
                 }
+                
                 
             } else {
-                
-                DispatchQueue.main.async {
-                    cell.holderView.backgroundColor = UIColor.WhiteColor
-                    cell.titlelbl.textColor = .TitleColor
-                    cell.starimg.tintColor = .black
-                }
-                
+                cell.holderView.alpha = 0.3
+                cell.isUserInteractionEnabled = false
             }
             
             

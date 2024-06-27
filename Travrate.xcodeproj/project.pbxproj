@@ -2559,13 +2559,13 @@
 				65207A232BF4942F0076EF76 /* PopupVC.swift */,
 				65207A242BF4942F0076EF76 /* FlightSearchVC.swift */,
 				65207A252BF4942F0076EF76 /* FlightResultVC.swift */,
+				65207A2C2BF4942F0076EF76 /* SimilarFlightsVC.swift */,
 				65207A262BF4942F0076EF76 /* SelectFareVC.swift */,
 				65207A272BF4942F0076EF76 /* FlightItinarryPopupVC.swift */,
 				65207A282BF4942F0076EF76 /* BookingDetailsVC.swift */,
 				65207A292BF4942F0076EF76 /* ViewFlightDetailsVC.swift */,
 				65207A2A2BF4942F0076EF76 /* SelectPaymentMethodsVC.swift */,
 				65207A2B2BF4942F0076EF76 /* AirlineSelectVC.swift */,
-				65207A2C2BF4942F0076EF76 /* SimilarFlightsVC.swift */,
 				65207A2D2BF4942F0076EF76 /* ModifySearchVC.swift */,
 				845BB4DA2C297B7600571339 /* ShareResultVC.swift */,
 			);
@@ -6166,7 +6166,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6209,7 +6209,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

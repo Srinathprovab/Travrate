@@ -282,7 +282,7 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func didTapOnLoginBtnAction(cell:PrimaryContactInfoTVCell) {}
     func enableContinuetoPaymentBtn(cell: OperatorsCheckBoxTVCell) {}
     
-    func didSelectAddon(index: Int, origen: String) {}
+    func didSelectAddon(index: Int, origen: String,price:String) {}
     func didDeselectAddon(index: Int, origen: String ) {}
     func didTapOnRemoveTravelInsuranceBtn(cell: PriceSummaryTVCell) {}
     func didTapOnRemovePromoCodeBtnAction(cell:PriceSummaryTVCell) {}

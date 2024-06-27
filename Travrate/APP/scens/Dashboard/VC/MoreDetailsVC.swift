@@ -35,7 +35,7 @@ class MoreDetailsVC: BaseTableVC, MoreDetailsViewModelDelegate {
         setupUI()
         MySingleton.shared.moredetailsvm = MoreDetailsViewModel(self)
     }
-    
+     
     
     
     func setupUI() {

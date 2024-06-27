@@ -81,8 +81,13 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
         MySingleton.shared.bookingsource = cell.bookingsourcekey
         MySingleton.shared.bookingsourcekey = cell.bookingsourcekey
         
+        if cell.bookNowlbl.text != "Select Fare" {
+            gotoFlightDeatilsVC()
+        }else {
+            showToast(message: "Still Under Development")
+        }
         
-        gotoFlightDeatilsVC()
+       
     }
     
     func gotoFlightDeatilsVC(){
@@ -135,11 +140,17 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
         
         if cell.newsimilarList.count != 0 {
             
-            guard let vc = SimilarFlightsVC.newInstance.self else {return}
-            vc.modalPresentationStyle = .overCurrentContext
-            callapibool = true
-            MySingleton.shared.similarflightList = cell.newsimilarList
-            present(vc, animated: true)
+            if cell.bookNowlbl.text != "Select Fare" {
+                guard let vc = SimilarFlightsVC.newInstance.self else {return}
+                vc.modalPresentationStyle = .overCurrentContext
+                callapibool = true
+                MySingleton.shared.similarflightList = cell.newsimilarList
+                present(vc, animated: true)
+            }else {
+                showToast(message: "Still Under Development")
+            }
+            
+           
         }else {
             showToast(message: "No Flights Found")
         }
@@ -249,7 +260,13 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
         print(MySingleton.shared.shareresultaccesskey)
         print(MySingleton.shared.shareresultbookingsource)
         
-        gotoShareResultVC()
+       
+        
+        if cell.bookNowlbl.text != "Select Fare" {
+            gotoShareResultVC()
+        }else {
+            showToast(message: "Still Under Development")
+        }
     }
     
     

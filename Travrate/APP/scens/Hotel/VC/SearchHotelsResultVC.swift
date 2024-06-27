@@ -418,6 +418,7 @@ extension SearchHotelsResultVC {
         faretypeArray .removeAll()
         amenitiesArray.removeAll()
         mapModelArray.removeAll()
+        hotelstarratingArray.removeAll()
         hotelfiltermodel.starRatingNew = starRatingInputArray
         
         hotelsCountlbl.text = "\(list.count)"
@@ -425,6 +426,7 @@ extension SearchHotelsResultVC {
         list.forEach { i in
             
             hotelprices.append(i.price ?? "0")
+            hotelstarratingArray.append("\(i.star_rating ?? 0)")
             
             if let refund = i.refund, !refund.isEmpty {
                 faretypeArray.append(refund)
@@ -441,7 +443,7 @@ extension SearchHotelsResultVC {
         nearBylocationsArray = Array(Set(nearBylocationsArray))
         faretypeArray = Array(Set(faretypeArray))
         amenitiesArray = Array(Set(amenitiesArray))
-        
+        hotelstarratingArray = Array(Set(hotelstarratingArray))
         
         list.forEach { i in
             let mapModel = MapModel(

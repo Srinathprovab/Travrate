@@ -92,6 +92,7 @@ var oldjournyType = ""
 var selectedSpecificatonArray = [String]()
 var startRatingArray = [String]()
 var starRatingInputArray = [String]()
+var hotelstarratingArray = [String]()
 
 
 //DASHBOARD

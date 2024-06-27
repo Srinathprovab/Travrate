@@ -43,7 +43,7 @@ class PriceSummaryTVCell: TableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        setupUI()
+        
         setupTV()
         addonView.isHidden = false
     }
@@ -55,6 +55,8 @@ class PriceSummaryTVCell: TableViewCell {
     }
     
     override func updateUI() {
+        
+        setupUI()
         
         if whatsAppCheck == true {
             whatsAppView.isHidden = false
@@ -90,12 +92,12 @@ class PriceSummaryTVCell: TableViewCell {
         
         self.key =  cellInfo?.key ?? ""
         MySingleton.shared.setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
-                             str2: String(cellInfo?.covetedAmnt ?? 0.00),
-                             lbl: totalPaymentValuelbl,
-                             str1font: .OpenSansMedium(size: 14),
-                             str2font: .InterBold(size: 20),
-                             str1Color: .AppLabelColor,
-                             str2Color: .AppLabelColor)
+                                                str2: "\(String(format: "%.2f", totlConvertedGrand))",
+                                                lbl: totalPaymentValuelbl,
+                                                str1font: .OpenSansMedium(size: 14),
+                                                str2font: .InterBold(size: 20),
+                                                str1Color: .AppLabelColor,
+                                                str2Color: .AppLabelColor)
         
         if let selectedTab = defaults.string(forKey: UserDefaultsKeys.tabselect){
             
@@ -147,7 +149,7 @@ class PriceSummaryTVCell: TableViewCell {
     }
     
     func setupUI(){
-    
+        
         whatsAppPriceLbl.text =  "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(whatsAppPrice)"
         flexiblePriceLbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(flexiblePrie)"
         notificationLabel.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(notificationPrice)"
@@ -156,7 +158,7 @@ class PriceSummaryTVCell: TableViewCell {
         setupViews(v: ulView, radius: 0, color: .clear)
         setupLabels(lbl: titlelbl, text: "   Fare Summary", textcolor: .white, font: .InterSemiBold(size: 18))
         setupLabels(lbl: totalPaymentlbl, text: "Total Amount", textcolor: HexColor("#515151"), font: .InterMedium(size: 16))
-      
+        
         flexibleAmount = Int(flexiblePrie) ?? 0
         whatsAppAmount = Int(whatsAppPrice) ?? 0
         priceChangeAmount = Int(priceChange) ?? 0
@@ -225,7 +227,7 @@ extension PriceSummaryTVCell :UITableViewDataSource,UITableViewDelegate {
             
             if indexPath.row == 0 {
                 cell.adultCountlbl.text = "Traveller x \(adultsCount)(Adult)"
-//                cell.adultKWDlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")  \(AdultsTotalPrice)"
+                //                cell.adultKWDlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")  \(AdultsTotalPrice)"
                 setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
                                      str2: (AdultsTotalPrice),
                                      lbl: cell.adultKWDlbl,
@@ -253,36 +255,36 @@ extension PriceSummaryTVCell :UITableViewDataSource,UITableViewDelegate {
                 
                 
             }else if indexPath.row == 1 {
-               
-                 if adultsCount > 0 && childCount > 0 && infantsCount == 0{
-                     cell.adultCountlbl.text = "Traveller x \(childCount)(Child)"
-                     
-                     setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
-                                          str2: (ChildTotalPrice),
-                                          lbl: cell.adultKWDlbl,
-                                          str1font: .InterSemiBold(size: 14),
-                                          str2font: .InterSemiBold(size: 16),
-                                          str1Color: .AppLabelColor,
-                                          str2Color: .AppLabelColor)
-//                     
-                     setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
-                                          str2:(Childs_Base_Price),
-                                          lbl: cell.fareKWDlbl,
-                                          str1font: .InterSemiBold(size: 12),
-                                          str2font: .InterSemiBold(size: 14),
-                                          str1Color: .AppLabelColor,
-                                          str2Color: .AppLabelColor)
-                     
-                     
-                     setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
-                                          str2: Childs_Tax_Price,
-                                          lbl: cell.taxesKWDlbl,
-                                          str1font: .InterSemiBold(size: 12),
-                                          str2font: .InterSemiBold(size: 14),
-                                          str1Color: .AppLabelColor,
-                                          str2Color: .AppLabelColor)
-                     
-                     
+                
+                if adultsCount > 0 && childCount > 0 && infantsCount == 0{
+                    cell.adultCountlbl.text = "Traveller x \(childCount)(Child)"
+                    
+                    setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
+                                         str2: (ChildTotalPrice),
+                                         lbl: cell.adultKWDlbl,
+                                         str1font: .InterSemiBold(size: 14),
+                                         str2font: .InterSemiBold(size: 16),
+                                         str1Color: .AppLabelColor,
+                                         str2Color: .AppLabelColor)
+                    //
+                    setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
+                                         str2:(Childs_Base_Price),
+                                         lbl: cell.fareKWDlbl,
+                                         str1font: .InterSemiBold(size: 12),
+                                         str2font: .InterSemiBold(size: 14),
+                                         str1Color: .AppLabelColor,
+                                         str2Color: .AppLabelColor)
+                    
+                    
+                    setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
+                                         str2: Childs_Tax_Price,
+                                         lbl: cell.taxesKWDlbl,
+                                         str1font: .InterSemiBold(size: 12),
+                                         str2font: .InterSemiBold(size: 14),
+                                         str1Color: .AppLabelColor,
+                                         str2Color: .AppLabelColor)
+                    
+                    
                     
                 }else if adultsCount > 0 && childCount == 0 && infantsCount > 0{
                     
@@ -342,10 +344,10 @@ extension PriceSummaryTVCell :UITableViewDataSource,UITableViewDelegate {
                     
                     
                 }
-               
+                
             }else {
                 cell.adultCountlbl.text = "Traveller x \(infantsCount)(Infant)"
-               
+                
                 
                 setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
                                      str2: String(format: "%.2f", Double(InfantTotalPrice) ?? 0.0),

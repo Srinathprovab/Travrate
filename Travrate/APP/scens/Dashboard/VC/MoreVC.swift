@@ -37,6 +37,7 @@ class MoreVC: BaseTableVC {
         MySingleton.shared.tablerow.append(TableRow(title:"Terms & Conditions",key: "more",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Privacy Policy",key: "more",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Contact Us",key: "more",cellType:.TripsTVCell))
+       
         
         
         

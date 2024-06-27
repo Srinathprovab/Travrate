@@ -25,16 +25,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IqJ-BL-rC9" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                        <rect key="frame" x="10" y="0.0" width="360" height="190"/>
+                        <rect key="frame" x="15" y="0.0" width="350" height="190"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7M-5N-LQd">
-                                <rect key="frame" x="15.999999999999996" y="10.000000000000002" width="54.666666666666657" height="19.666666666666671"/>
+                                <rect key="frame" x="15.999999999999996" y="10.000000000000002" width="54.666666666666657" height="18.666666666666671"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Krt-tI-Eti">
-                                <rect key="frame" x="0.0" y="40.666666666666671" width="360" height="144.33333333333331"/>
+                                <rect key="frame" x="0.0" y="39.666666666666671" width="350" height="145.33333333333331"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -64,9 +64,9 @@
                 <color key="backgroundColor" name="WhiteColor"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="IqJ-BL-rC9" secondAttribute="bottom" id="CdS-8l-nJi"/>
-                    <constraint firstAttribute="trailing" secondItem="IqJ-BL-rC9" secondAttribute="trailing" constant="10" id="DQ3-Wh-2ld"/>
+                    <constraint firstAttribute="trailing" secondItem="IqJ-BL-rC9" secondAttribute="trailing" constant="15" id="DQ3-Wh-2ld"/>
                     <constraint firstItem="IqJ-BL-rC9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="JGF-Am-cUx"/>
-                    <constraint firstItem="IqJ-BL-rC9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Nbf-sQ-SDU"/>
+                    <constraint firstItem="IqJ-BL-rC9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Nbf-sQ-SDU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

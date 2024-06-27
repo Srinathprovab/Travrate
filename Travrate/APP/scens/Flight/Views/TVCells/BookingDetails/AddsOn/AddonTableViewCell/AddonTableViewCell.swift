@@ -8,8 +8,8 @@
 import UIKit
 
 protocol AddonTableViewCellDelegate {
-    func didSelectAddon(index: Int, origen: String)
-    func didDeselectAddon(index: Int, origen: String )
+    func didSelectAddon(index: Int, origen: String,price:String)
+    func didDeselectAddon(index: Int, origen: String)
 }
 
 class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSource {
@@ -31,7 +31,7 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
     
     var firstHalfSelectionState: [Bool] = []
     var secondHalfSelectionState: [Bool] = []
-
+    
     var delegate: AddonTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -81,8 +81,6 @@ extension AddonTableViewCell {
         
         splitAddonServices() // Split the add-on services
         
-        
-        
     }
     
     func splitAddonServices() {
@@ -99,7 +97,7 @@ extension AddonTableViewCell {
         firstHalfSelectionState = Array(repeating: false, count: firstHalfAddonServices.count)
         secondHalfSelectionState = Array(repeating: false, count: secondHalfAddonServices.count)
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if cellInfo?.key == "flight" {
             return displayFirstHalf ? firstHalfAddonServices.count : secondHalfAddonServices.count
@@ -122,10 +120,10 @@ extension AddonTableViewCell {
             
             if displayFirstHalf {
                 data = firstHalfAddonServices[indexPath.row]
-               
+                
                 
                 if selectedFirstHalfIndexPathArray.contains(indexPath) {
-                       cell.checkIMAGE.image = UIImage(named: "check")
+                    cell.checkIMAGE.image = UIImage(named: "check")
                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
                 }else {
                     cell.checkIMAGE.image = UIImage(named: "uncheck")
@@ -134,10 +132,10 @@ extension AddonTableViewCell {
                 
             } else {
                 data = secondHalfAddonServices[indexPath.row]
-               
+                
                 
                 if selectedSecondIndexPathArray.contains(indexPath) {
-                       cell.checkIMAGE.image = UIImage(named: "check")
+                    cell.checkIMAGE.image = UIImage(named: "check")
                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
                 }else {
                     cell.checkIMAGE.image = UIImage(named: "uncheck")
@@ -153,7 +151,7 @@ extension AddonTableViewCell {
             cell.originValue = data.origin ?? ""
             cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
             
-           
+            
             
             
         } else {
@@ -170,7 +168,7 @@ extension AddonTableViewCell {
     }
     
     
-   
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? AddonContentTVCell else { return }
@@ -178,68 +176,65 @@ extension AddonTableViewCell {
         if cellInfo?.key == "flight" {
             if displayFirstHalf {
                 firstHalfSelectionState[indexPath.row] = true
-                let selectedAddon = firstHalfAddonServices[indexPath.row]
-                if let price = Double(selectedAddon.price ?? "0") {
-                    totalWhatsAppPrice += price
-                    print("Total WhatsApp Price: \(totalWhatsAppPrice)")
-                }
                 selectedFirstHalfIndexPathArray.append(indexPath)
+                updateTotal(for: firstHalfAddonServices[indexPath.row], isSelected: true)
+                
+                
+                delegate?.didSelectAddon(index: indexPath.row, origen: "first", price: firstHalfAddonServices[indexPath.row].price ?? "")
             } else {
                 secondHalfSelectionState[indexPath.row] = true
-                let selectedAddon = secondHalfAddonServices[indexPath.row]
-                if let price = Double(selectedAddon.price ?? "0") {
-                    totalPriceChange += price
-                    print("Total Price Change: \(totalPriceChange)")
-                }
                 selectedSecondIndexPathArray.append(indexPath)
+                updateTotal(for: secondHalfAddonServices[indexPath.row], isSelected: true)
+                
+                delegate?.didSelectAddon(index: indexPath.row, origen: "second", price: firstHalfAddonServices[indexPath.row].price ?? "")
             }
         }
         
-        // Update UI
         cell.checkIMAGE.image = UIImage(named: "check")
         
-        
-       // delegate?.didSelectAddon(index: indexPath.row, origen: "")
     }
-
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? AddonContentTVCell else { return }
         
         if cellInfo?.key == "flight" {
             if displayFirstHalf {
                 firstHalfSelectionState[indexPath.row] = false
-                let deselectedAddon = firstHalfAddonServices[indexPath.row]
-                if let price = Double(deselectedAddon.price ?? "0") {
-                    totalWhatsAppPrice -= price
-                    print("Total WhatsApp Price: \(totalWhatsAppPrice)")
-                }
+                removeIndexPath(&selectedFirstHalfIndexPathArray, indexPath: indexPath)
+                updateTotal(for: firstHalfAddonServices[indexPath.row], isSelected: false)
                 
-                if let indexpath1 = selectedFirstHalfIndexPathArray.firstIndex(of: indexPath) {
-                    selectedFirstHalfIndexPathArray.remove(at: indexpath1)
-                }
-                
+                delegate?.didDeselectAddon(index: indexPath.row, origen: "first")
             } else {
                 secondHalfSelectionState[indexPath.row] = false
-                let deselectedAddon = secondHalfAddonServices[indexPath.row]
-                if let price = Double(deselectedAddon.price ?? "0") {
-                    totalPriceChange -= price
-                    print("Total Price Change: \(totalPriceChange)")
-                }
+                removeIndexPath(&selectedSecondIndexPathArray, indexPath: indexPath)
+                updateTotal(for: secondHalfAddonServices[indexPath.row], isSelected: false)
                 
-                if let indexpath1 = selectedSecondIndexPathArray.firstIndex(of: indexPath) {
-                    selectedSecondIndexPathArray.remove(at: indexpath1)
-                }
+                delegate?.didDeselectAddon(index: indexPath.row, origen: "second")
             }
         }
         
-        // Update UI
         cell.checkIMAGE.image = UIImage(named: "uncheck")
-        
-        
-       // delegate?.didDeselectAddon(index: indexPath.row, origen: "")
     }
-
     
+    private func updateTotal(for service: Addon_services, isSelected: Bool) {
+        let amount = Double(service.price ?? "0") ?? 0
+        if isSelected {
+            totlConvertedGrand += amount
+        } else {
+            totlConvertedGrand -= amount
+        }
+        
+        // Optionally update your UI with the new total
+        // updateTotalLabel()
+        
+        print("Updated Total: \(totlConvertedGrand)")
+    }
+    
+    private func removeIndexPath(_ array: inout [IndexPath], indexPath: IndexPath) {
+        if let index = array.firstIndex(of: indexPath) {
+            array.remove(at: index)
+        }
+    }
 }
 
 
