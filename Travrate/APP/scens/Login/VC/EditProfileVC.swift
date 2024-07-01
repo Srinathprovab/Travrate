@@ -348,6 +348,12 @@ extension EditProfileVC {
             
             // MySingleton.shared.profilevm?.CALL_UPDATE_PROFILE_DETAILS_API(dictParam: MySingleton.shared.payload)
             callUpdateProfileAPI()
+            
+            let seconds = 1.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                NotificationCenter.default.post(name: NSNotification.Name("logindone"), object: nil)
+                self.dismiss(animated: true)
+            }
         }
     }
     
@@ -403,13 +409,9 @@ extension EditProfileVC {
                 self.showToast(message: profileUpdateModel.msg ?? "")
                 
                 MySingleton.shared.profiledata = profileUpdateModel.data
+                MySingleton.shared.username = "\(profileUpdateModel.data?.first_name ?? "") \(profileUpdateModel.data?.last_name ?? "")"
                 
                 
-                let seconds = 2.0
-                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                    NotificationCenter.default.post(name: NSNotification.Name("logindone"), object: nil)
-                    self.dismiss(animated: true)
-                }
                 
                 break
             case .failure(let error):

@@ -86,7 +86,7 @@ extension AddFareRulesTVCell:UITableViewDelegate,UITableViewDataSource {
         farerulesTV.isScrollEnabled = false
         farerulesTV.separatorStyle = .none
         farerulesTV.rowHeight = UITableView.automaticDimension
-        farerulesTV.estimatedRowHeight = 44
+        farerulesTV.estimatedRowHeight = 120
     }
     
     
@@ -153,7 +153,7 @@ extension AddFareRulesTVCell:UITableViewDelegate,UITableViewDataSource {
             farerulesTV.beginUpdates()
             farerulesTV.endUpdates()
             updateParentTableView()
-            delegate?.showContentBtnAction(cell: cell)
+           // delegate?.showContentBtnAction(cell: cell)
         }
     }
     

@@ -41,6 +41,10 @@ class MySingleton {
     
     
     //Home Page
+    var username = String()
+    var usermobile = String()
+    var useremail = String()
+    var userimage = String()
     var tabselect = String()
     var indexpagevm:IndexPageViewModel?
     var topFlightDetails = [TopFlightDetails]()

@@ -38,7 +38,8 @@ class MenuBGTVCell: TableViewCell {
     override func updateUI() {
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
             
-            loginBtn.setTitle("   \( MySingleton.shared.profiledata?.first_name ?? "") \( MySingleton.shared.profiledata?.last_name ?? "")", for: .normal)
+            loginBtn.setTitle("   \( MySingleton.shared.username)", for: .normal)
+//            loginBtn.setTitle("   \( MySingleton.shared.profiledata?.first_name ?? "") \( MySingleton.shared.profiledata?.last_name ?? "")", for: .normal)
             loginBtn.isUserInteractionEnabled = false
             editProfileView.isHidden = false
             

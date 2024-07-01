@@ -51,7 +51,7 @@ class YourRecentSearchesTVCell: TableViewCell, YourRecentSearchesCVCellDelegate 
         }else {
             recentsearchCV.restore()
             itemCount = MySingleton.shared.recentData?.count ?? 0
-            startAutoScroll()
+           // startAutoScroll()
         }
         
         recentsearchCV.reloadData()
@@ -61,9 +61,52 @@ class YourRecentSearchesTVCell: TableViewCell, YourRecentSearchesCVCellDelegate 
     
     
     
+    
+//    func didTapOnCloserecentSearchBtnAction(cell: YourRecentSearchesCVCell) {
+//        let indexToRemove = cell.cellindex
+//        if  (MySingleton.shared.recentData?.count ?? 0) > 0 {
+//            MySingleton.shared.recentData?.remove(at: indexToRemove)
+//            recentsearchCV.deleteItems(at: [IndexPath(item: indexToRemove, section: 0)])
+//        }
+//        
+//        delegate?.didTapOnCloserecentSearchBtnAction(cell: cell)
+//    }
+    
     func didTapOnCloserecentSearchBtnAction(cell: YourRecentSearchesCVCell) {
+        let indexToRemove = cell.cellindex
+        
+        // Ensure there is at least one item to remove
+        guard let recentData = MySingleton.shared.recentData, recentData.count > 0 else {
+            print("No items to remove.")
+            return
+        }
+        
+        // Remove item from data source
+        MySingleton.shared.recentData?.remove(at: indexToRemove)
+        
+        // Check if the collection view is empty after removal
+        if MySingleton.shared.recentData?.isEmpty ?? true {
+            // Reload data instead of deleting to avoid inconsistency
+            recentsearchCV.reloadData()
+        } else {
+            // Delete item from collection view
+            recentsearchCV.deleteItems(at: [IndexPath(item: indexToRemove, section: 0)])
+            
+            // Scroll to the previous item if it exists
+            if indexToRemove > 0 {
+                let previousIndexPath = IndexPath(item: indexToRemove - 1, section: 0)
+                recentsearchCV.scrollToItem(at: previousIndexPath, at: .centeredHorizontally, animated: true)
+            } else if recentsearchCV.numberOfItems(inSection: 0) > 0 {
+                // If deleting the first item, scroll to the new first item
+                let firstIndexPath = IndexPath(item: 0, section: 0)
+                recentsearchCV.scrollToItem(at: firstIndexPath, at: .centeredHorizontally, animated: true)
+            }
+        }
+
         delegate?.didTapOnCloserecentSearchBtnAction(cell: cell)
     }
+
+    
     
     func didTapOnSearchRecentFlightsBtnAction(cell: YourRecentSearchesCVCell) {
         delegate?.didTapOnSearchRecentFlightsBtnAction(cell: cell)
@@ -90,6 +133,10 @@ extension YourRecentSearchesTVCell:UICollectionViewDelegate,UICollectionViewData
         layout.minimumLineSpacing = 10
         recentsearchCV.collectionViewLayout = layout
         recentsearchCV.bounces = false
+        recentsearchCV.showsHorizontalScrollIndicator = true
+        recentsearchCV.showsVerticalScrollIndicator = true
+        
+        
         
         // Select the first item (cell) in the collection view
         let indexPath = IndexPath(item: 0, section: 0)
@@ -104,9 +151,17 @@ extension YourRecentSearchesTVCell:UICollectionViewDelegate,UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var commonCell = UICollectionViewCell()
+        
+        
+//        guard let recentData = MySingleton.shared.recentData, indexPath.row < MySingleton.shared.recentData?.count ?? 0 else {
+//                return commonCell
+//            }
+        
+        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? YourRecentSearchesCVCell {
             cell.delegate = self
 
+            cell.cellindex = indexPath.row
             cell.origin = MySingleton.shared.recentData?[indexPath.row].origin ?? ""
             
             cell.tripTypelbl.text = MySingleton.shared.recentData?[indexPath.row].arr_data?.trip_type ?? ""

@@ -32,6 +32,19 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
     override func viewWillAppear(_ animated: Bool) {
         basicloderBool = false
         addObserver()
+        
+        
+        
+        if isfromVC == "dashbord" {
+            roundtripTap()
+        }else {
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType), journytype == "circle" {
+                roundtripTap()
+            }else {
+                onewayTap()
+            }
+        }
+        
     }
     
     
@@ -43,6 +56,9 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
         
         MySingleton.shared.recentsearchvm = SearchDataViewModel(self)
         MySingleton.shared.airlinevm = GetAirlineViewModel(self)
+        
+        
+        
     }
     
     func onewayTap() {
@@ -159,9 +175,10 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
     
     
     override func didTapOnCloserecentSearchBtnAction(cell: YourRecentSearchesCVCell) {
+        
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["id"] = cell.origin
-        MySingleton.shared.recentsearchvm?.CALL_GET_REMOVE_FLIGHT_SEARCH_RECENT_DATA_API(dictParam: MySingleton.shared.payload)
+       callGetRemoveRecentSearchAPI()
     }
     
     override func didTapOnSearchRecentFlightsBtnAction(cell: YourRecentSearchesCVCell) {
@@ -191,6 +208,10 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
         defaults.setValue(cell.v_class, forKey: UserDefaultsKeys.selectClass)
         defaults.setValue(cell.fcityname, forKey: UserDefaultsKeys.fromcityname)
         defaults.setValue(cell.tcityname, forKey: UserDefaultsKeys.tocityname)
+        
+        
+        defaults.setValue(cell.fcityname, forKey: UserDefaultsKeys.fcity)
+        defaults.setValue(cell.tcityname, forKey: UserDefaultsKeys.tcity)
         
         didTapOnFlightSearchBtnAction()
         
@@ -268,7 +289,7 @@ extension FlightSearchVC {
             
         }
         
-        roundtripTap()
+//        roundtripTap()
         
         commonTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // Top left corner, Top right corner respectively
         commonTableView.layer.cornerRadius = 12
@@ -345,7 +366,12 @@ extension FlightSearchVC {
         
         if defaults.string(forKey: UserDefaultsKeys.journeyType) == "oneway" {
             
-            MySingleton.shared.payload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
+            
+            if defaults.string(forKey: UserDefaultsKeys.selectClass) == "P.Economy" {
+                MySingleton.shared.payload["v_class"] = "Premium"
+            }else {
+                MySingleton.shared.payload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
+            }
             MySingleton.shared.payload["return"] = ""
             
             if defaults.string(forKey: UserDefaultsKeys.fromCity) == nil {
@@ -359,7 +385,11 @@ extension FlightSearchVC {
             }
             
         }else {
-            MySingleton.shared.payload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
+            if defaults.string(forKey: UserDefaultsKeys.selectClass) == "P.Economy" {
+                MySingleton.shared.payload["v_class"] = "Premium"
+            }else {
+                MySingleton.shared.payload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
+            }
             // MySingleton.shared.payload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
             MySingleton.shared.payload["return"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
             
@@ -436,7 +466,17 @@ extension FlightSearchVC {
     }
     
     
-    //MARK: - removeflightRecentSearchDate
+    //MARK: -  callGetRemoveRecentSearchAPI   removeflightRecentSearchDate
+    
+    
+    
+    func callGetRemoveRecentSearchAPI() {
+       
+        MySingleton.shared.recentsearchvm?.CALL_GET_REMOVE_FLIGHT_SEARCH_RECENT_DATA_API(dictParam: MySingleton.shared.payload)
+        
+    }
+    
+    
     func removeflightRecentSearchDate(response: LoginModel) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {

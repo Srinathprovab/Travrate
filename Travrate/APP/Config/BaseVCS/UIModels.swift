@@ -72,6 +72,7 @@ enum TVCellType {
     case SelectFareInfoTVCell
     case AddFareRulesTVCell
     case ShareResultTVCell
+    case SeeMoreRulesBtnTVCell
     
     
     //Booking

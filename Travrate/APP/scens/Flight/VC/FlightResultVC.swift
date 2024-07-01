@@ -951,7 +951,10 @@ extension FlightResultVC {
         MySingleton.shared.enablePaymentButtonBool2 = false
         
         cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tcity) ?? "")"
-        paxlbl.text = "\(MySingleton.shared.adultsCount) Adults | \(MySingleton.shared.childCount) Child | \(MySingleton.shared.infantsCount) Infant | \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "")"
+        
+       
+        
+        paxlbl.text = "\(MySingleton.shared.adultsCount) Adult | \(MySingleton.shared.childCount) Child | \(MySingleton.shared.infantsCount) Infant | \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "")"
         depDatelbl.text = response.data?.search_params?.depature ?? ""
         retDatelbl.text = response.data?.search_params?.searchreturn ?? ""
         citycodeslbl.text = "(\(response.data?.search_params?.from_loc ?? "") - \(response.data?.search_params?.to_loc ?? ""))"

@@ -59,7 +59,7 @@ class FareRulesTVCell: TableViewCell {
         
         dropDownImg.image = UIImage(named: "downarrow")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#64276F"))
         
-        downBtn.isHidden = true
+       // downBtn.isHidden = true
     }
     
     

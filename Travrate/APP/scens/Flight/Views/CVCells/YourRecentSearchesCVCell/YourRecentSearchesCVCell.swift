@@ -22,7 +22,7 @@ class YourRecentSearchesCVCell: UICollectionViewCell {
     @IBOutlet weak var classlbl: UILabel!
     
  
-    
+    var cellindex = Int()
     var carrier = String()
     var adult = String()
     var from_loc_id = String()

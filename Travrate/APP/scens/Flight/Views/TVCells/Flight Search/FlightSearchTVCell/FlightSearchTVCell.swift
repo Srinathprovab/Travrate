@@ -68,10 +68,11 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     @IBOutlet weak var selectadditionallbl: UILabel!
     
     
-    
    
-    var timeArray = ["12:00 AM - 06:00 AM","06:00 AM - 12:00 PM","12:00 PM - 12:00 PM","06:00 PM - 12:00 AM"]
-    var selectClassArray = ["Economy","Premium","First","Business"]
+   
+    var timeArray = ["ALL times","12:00 AM - 06:00 AM","06:00 AM - 12:00 PM","12:00 PM - 12:00 PM","06:00 PM - 12:00 AM"]
+    var selectClassArray = ["Economy","P.Economy","First","Business"]
+   // var selectClassArray = ["Economy","Premium","First","Business"]
     var infoimgArray = ["in1","in2","in3","in4"]
    // var infoimgArray1 = ["in1","in2","in3","in4","in5","in6"]
   //  var infoArray1 = ["Add Baggage","Meal","Add Insurance","Add Special assistance","Add Seat","Add airport Transfers"]
@@ -634,6 +635,7 @@ extension FlightSearchTVCell {
         onewayclassDropdown.selectionAction = { [weak self] (index: Int, item: String) in
             self?.classlbl.text = item
             defaults.set(item, forKey: UserDefaultsKeys.selectClass)
+            
             self?.delegate?.didTapOnClassBtnAction(cell: self!)
         }
     }
@@ -646,7 +648,9 @@ extension FlightSearchTVCell {
         roundtripclassDropdown.bottomOffset = CGPoint(x: 0, y: roundtripclassView.frame.size.height + 10)
         roundtripclassDropdown.selectionAction = { [weak self] (index: Int, item: String) in
             self?.roundtripclasslbl.text = item
-            defaults.set(item, forKey: UserDefaultsKeys.rselectClass)
+            defaults.set(item, forKey: UserDefaultsKeys.selectClass)
+           
+            
             self?.delegate?.didTapOnClassBtnAction(cell: self!)
         }
     }

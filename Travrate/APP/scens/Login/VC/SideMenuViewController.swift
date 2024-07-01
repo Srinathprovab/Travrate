@@ -65,9 +65,10 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
         MySingleton.shared.tablerow.append(TableRow(cellType: .MenuBGTVCell))
         MySingleton.shared.tablerow.append(TableRow(height: 20,cellType: .EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Services",key: "links", image: "", height: 250, cellType: .QuickLinkTableViewCell))
-        MySingleton.shared.tablerow.append(TableRow(height: 10, bgColor: HexColor("#FFFFFF") , cellType: .EmptyTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Services",key: "bookings", image: "",height: 170, cellType: .QuickLinkTableViewCell))
-        MySingleton.shared.tablerow.append(TableRow(height: 80, cellType: .EmptyTVCell))
+//        MySingleton.shared.tablerow.append(TableRow(height: 10, bgColor: HexColor("#FFFFFF") , cellType: .EmptyTVCell))
+//
+//        MySingleton.shared.tablerow.append(TableRow(title:"Services",key: "bookings", image: "",height: 170, cellType: .QuickLinkTableViewCell))
+        MySingleton.shared.tablerow.append(TableRow(height: 40, cellType: .EmptyTVCell))
         
         
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
@@ -193,7 +194,7 @@ extension SideMenuViewController {
     func profileDetails(response: ProfileModel) {
         basicloderBool = false
         MySingleton.shared.profiledata = response.data
-        
+        MySingleton.shared.username = "\(response.data?.first_name ?? "") \(response.data?.last_name ?? "")"
         DispatchQueue.main.async {
             self.setupMenuTVCells()
         }

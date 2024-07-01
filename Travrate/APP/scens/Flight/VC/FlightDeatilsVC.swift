@@ -57,6 +57,7 @@ class FlightDeatilsVC: BaseTableVC, FlightDetailsViewModelDelegate {
         
         commonTableView.registerTVCells(["TicketIssuingTimeTVCell",
                                          "ItineraryTVCell",
+                                         "SeeMoreRulesBtnTVCell",
                                          "FRulesTVCell",
                                          "EmptyTVCell",
                                          "BaggageInfoTVCell",
@@ -365,16 +366,16 @@ extension FlightDeatilsVC {
         MySingleton.shared.penalityArray = response.penalty ?? []
         
         DispatchQueue.main.async {
-            self.setupFareRulesTVCell()
+            self.setupSeeLessFareRulesTVCell()
         }
         
     }
     
-    func setupFareRulesTVCell() {
+    func setupSeeMoreFareRulesTVCell() {
         
         MySingleton.shared.tablerow.removeAll()
         
-        
+        MySingleton.shared.tablerow.append(TableRow(height:20,cellType:.EmptyTVCell))
         if MySingleton.shared.fareRulesData.count > 0 {
             
             self.commonTableView.estimatedRowHeight = 500
@@ -382,14 +383,16 @@ extension FlightDeatilsVC {
             TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
             
             
-            //            MySingleton.shared.fareRulesData.forEach { i in
-            //                MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
-            //                                                            subTitle: i.rule_content?.htmlToString,
-            //                                                            cellType:.FareRulesTVCell))
-            //            }
+                        MySingleton.shared.fareRulesData.forEach { i in
+                            MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
+                                                                        subTitle: i.rule_content?.htmlToString,
+                                                                        cellType:.FareRulesTVCell))
+                        }
             
             
-            MySingleton.shared.tablerow.append(TableRow(cellType:.AddFareRulesTVCell))
+            MySingleton.shared.tablerow.append(TableRow(cellType:.SeeMoreRulesBtnTVCell))
+            
+           // MySingleton.shared.tablerow.append(TableRow(cellType:.AddFareRulesTVCell)) SeeMoreRulesBtnTVCell
             
         }else {
             
@@ -397,7 +400,44 @@ extension FlightDeatilsVC {
             TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)
         }
         
+        MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+        
+    }
+    
+    
+    func setupSeeLessFareRulesTVCell() {
+        
+        MySingleton.shared.tablerow.removeAll()
+        
+        MySingleton.shared.tablerow.append(TableRow(height:20,cellType:.EmptyTVCell))
+        if MySingleton.shared.penalityArray.count > 0 {
+            
+            self.commonTableView.estimatedRowHeight = 500
+            self.commonTableView.rowHeight = 40
+            TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
+            
+            
+                        MySingleton.shared.penalityArray.forEach { i in
+                            MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
+                                                                        subTitle: i.rule_content?.htmlToString,
+                                                                        cellType:.FareRulesTVCell))
+                        }
+            
+            
+            MySingleton.shared.tablerow.append(TableRow(cellType:.SeeMoreRulesBtnTVCell))
+            
+           // MySingleton.shared.tablerow.append(TableRow(cellType:.AddFareRulesTVCell)) SeeMoreRulesBtnTVCell
+            
+        }else {
+            
+            
+            TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)
+        }
+        
+        MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -422,9 +462,25 @@ extension FlightDeatilsVC {
         NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(SeeMoreRules), name: Notification.Name("SeeMoreRules"), object: nil)
         
         if MySingleton.shared.callboolapi == true {
             callAPI()
+        }
+    }
+    
+    
+    @objc func SeeMoreRules(notification:NSNotification) {
+        
+        let seerulestapbool = notification.object as? Bool
+        if seerulestapbool == true {
+            DispatchQueue.main.async {
+                self.setupSeeMoreFareRulesTVCell()
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.setupSeeLessFareRulesTVCell()
+            }
         }
     }
     

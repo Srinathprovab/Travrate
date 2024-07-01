@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,41 +12,32 @@
         <array key="OpenSans-Regular.ttf">
             <string>OpenSans-Regular</string>
         </array>
-        <array key="OpenSans-SemiBold.ttf">
-            <string>OpenSans-SemiBold</string>
-        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="170" id="KGk-i7-Jjw" customClass="AddFareRulesTVCell" customModule="Travrate" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="454" height="170"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="140" id="KGk-i7-Jjw" customClass="AddFareRulesTVCell" customModule="Travrate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="452" height="140"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="454" height="170"/>
+                <rect key="frame" x="0.0" y="0.0" width="452" height="140"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sO-5r-VDa">
-                        <rect key="frame" x="0.0" y="0.0" width="454" height="170"/>
+                        <rect key="frame" x="0.0" y="0.0" width="452" height="140"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FARE RULES AND CANCELLATIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdc-fc-un4">
-                                <rect key="frame" x="15" y="15" width="424" height="22"/>
-                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ka4-OC-niZ">
-                                <rect key="frame" x="15" y="47" width="424" height="110"/>
+                                <rect key="frame" x="15" y="10" width="422" height="117"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tg4-YF-YOg">
-                                        <rect key="frame" x="0.0" y="0.0" width="424" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="422" height="57"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="8On-MS-D1M"/>
                                         </constraints>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzg-dY-GrC" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="70" width="150" height="40"/>
+                                        <rect key="frame" x="0.0" y="77" width="150" height="40"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pcL-ev-8fy">
                                                 <rect key="frame" x="10.333333333333329" y="8" width="129.66666666666669" height="24"/>
@@ -109,10 +100,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ka4-OC-niZ" secondAttribute="trailing" constant="15" id="CY2-OQ-AhA"/>
-                            <constraint firstItem="cdc-fc-un4" firstAttribute="top" secondItem="2sO-5r-VDa" secondAttribute="top" constant="15" id="D6F-Y3-ale"/>
-                            <constraint firstAttribute="trailing" secondItem="cdc-fc-un4" secondAttribute="trailing" constant="15" id="GRy-jB-9pP"/>
-                            <constraint firstItem="Ka4-OC-niZ" firstAttribute="top" secondItem="cdc-fc-un4" secondAttribute="bottom" constant="10" id="TTI-Oh-fk4"/>
-                            <constraint firstItem="cdc-fc-un4" firstAttribute="leading" secondItem="2sO-5r-VDa" secondAttribute="leading" constant="15" id="ji1-z8-6qO"/>
+                            <constraint firstItem="Ka4-OC-niZ" firstAttribute="top" secondItem="2sO-5r-VDa" secondAttribute="top" constant="10" id="evt-yX-biu"/>
                             <constraint firstAttribute="bottom" secondItem="Ka4-OC-niZ" secondAttribute="bottom" constant="13" id="llF-eX-Ylj"/>
                             <constraint firstItem="Ka4-OC-niZ" firstAttribute="leading" secondItem="2sO-5r-VDa" secondAttribute="leading" constant="15" id="yfc-32-aOb"/>
                         </constraints>
@@ -132,7 +120,7 @@
                 <outlet property="seemorelbl" destination="x83-GT-DMn" id="wCm-uq-VpF"/>
                 <outlet property="tvheight" destination="8On-MS-D1M" id="vWm-Pp-1ca"/>
             </connections>
-            <point key="canvasLocation" x="241.22137404580153" y="154.92957746478874"/>
+            <point key="canvasLocation" x="239.69465648854961" y="165.49295774647888"/>
         </tableViewCell>
     </objects>
     <resources>

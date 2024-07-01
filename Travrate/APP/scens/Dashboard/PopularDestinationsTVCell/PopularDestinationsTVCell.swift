@@ -12,11 +12,21 @@ struct TopFlightListModel {
     let image: String?
     let traveldate: String?
     let returndate: String?
-    let fromcitycode: String?
-    let tocitycode: String?
+    let from_city: String?
+    let to_city: String?
+    let fromcityairportcode: String?
+    let tocityairportcode: String?
     let triptype: String?
     let v_class: String?
+    let from_loc: String?
+    let to_loc: String?
+    let airline_class:String?
     // Add other properties as needed
+}
+
+
+protocol PopularDestinationsTVCellDelegate {
+    func didTapOnPopulardestination(cell:PopularDestinationsTVCell)
 }
 
 
@@ -35,6 +45,8 @@ class PopularDestinationsTVCell: TableViewCell {
     var autoScrollTimer: Timer?
     var flightlist = [TopFlightDetails]()
     var countryArray = [String]()
+    var delegate:PopularDestinationsTVCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -76,10 +88,15 @@ class PopularDestinationsTVCell: TableViewCell {
                                    image: flight.image ?? "",
                                    traveldate: flight.travel_date ?? "",
                                    returndate: flight.return_date ?? "",
-                                   fromcitycode: flight.from_city ?? "",
-                                   tocitycode: flight.to_city ?? "",
+                                   from_city: flight.from_city ?? "",
+                                   to_city: flight.to_city ?? "",
+                                   fromcityairportcode: flight.from_city ?? "",
+                                   tocityairportcode: flight.to_city ?? "",
                                    triptype: flight.trip_type ?? "",
-                                   v_class: flight.airline_class ?? "")
+                                   v_class: flight.airline_class ?? "",
+                                   from_loc: flight.from_loc ?? "",
+                                   to_loc: flight.to_loc ?? "",
+                                   airline_class: flight.airline_class ?? "")
             }
            
         }
@@ -223,10 +240,15 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                                        image: flight.image ?? "",
                                        traveldate: flight.travel_date ?? "",
                                        returndate: flight.return_date ?? "",
-                                       fromcitycode: flight.from_city ?? "",
-                                       tocitycode: flight.to_city ?? "",
+                                       from_city: flight.from_city ?? "",
+                                       to_city: flight.to_city ?? "",
+                                       fromcityairportcode: flight.from_city ?? "",
+                                       tocityairportcode: flight.to_city ?? "",
                                        triptype: flight.trip_type ?? "",
-                                       v_class: flight.airline_class ?? "")
+                                       v_class: flight.airline_class ?? "",
+                                       from_loc: flight.from_loc ?? "",
+                                       to_loc: flight.to_loc ?? "",
+                                       airline_class: flight.airline_class ?? "")
                 }
                 
                 // Update the selected index path
@@ -239,16 +261,39 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
         }else {
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectDestCVCell {
                 let flight = filteredFlights[indexPath.row]
-                print("flight.airport_city:\(flight.airport_city)")
-                print("flight.traveldate:\(flight.traveldate)")
-                print("flight.returndate:\(flight.returndate)")
-                print("flight.tocitycode:\(flight.tocitycode)")
-                print("flight.fromcitycode:\(flight.fromcitycode)")
+               
+                
+               
+                
+                defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.traveldate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calDepDate)
+                defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.returndate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calRetDate)
+                defaults.setValue(flight.airline_class, forKey: UserDefaultsKeys.selectClass)
+                defaults.setValue("1", forKey: UserDefaultsKeys.adultCount)
+                defaults.setValue("0", forKey: UserDefaultsKeys.childCount)
+                defaults.setValue("0", forKey: UserDefaultsKeys.infantsCount)
+                defaults.setValue("1", forKey: UserDefaultsKeys.totalTravellerCount)
+                defaults.setValue(flight.triptype, forKey: UserDefaultsKeys.journeyType)
+                defaults.setValue("ALL", forKey: UserDefaultsKeys.fcariercode)
+        
+             
+                defaults.set(flight.from_loc, forKey: UserDefaultsKeys.fromCity)
+                defaults.set(flight.from_city, forKey: UserDefaultsKeys.fromlocid)
+                defaults.set(flight.to_loc, forKey: UserDefaultsKeys.toCity)
+                defaults.set(flight.to_city, forKey: UserDefaultsKeys.tolocid)
+                
+                
+                defaults.set("Kuwait", forKey: UserDefaultsKeys.fromcityname)
+                defaults.set(flight.airport_city, forKey: UserDefaultsKeys.tocityname)
+                defaults.set("Kuwait", forKey: UserDefaultsKeys.fcity)
+                defaults.set(flight.from_city, forKey: UserDefaultsKeys.tcity)
+                
+                
+              // delegate?.didTapOnPopulardestination(cell: self)
             }
         }
     }
     
-    
+
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView == citySelectCV {
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectCityCVCell {

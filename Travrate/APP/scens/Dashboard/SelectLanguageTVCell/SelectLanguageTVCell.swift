@@ -80,7 +80,7 @@ class SelectLanguageTVCell: TableViewCell {
         titlelbl.font = UIFont.OpenSansRegular(size: 16)
         
         subTitlelbl.textColor = .TitleColor
-        subTitlelbl.font = UIFont.OpenSansRegular(size: 16)
+        subTitlelbl.font = UIFont.OpenSansMedium(size: 16)
         
     }
     

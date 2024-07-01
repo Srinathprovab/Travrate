@@ -67,14 +67,17 @@ class TabSelectTVCell: TableViewCell {
             
         case "flight":
             taponflightView()
+            flightView.layer.borderColor = UIColor.AppBtnColor.cgColor
             break
             
         case "hotel":
             taponflightView()
+            hotelView.layer.borderColor = UIColor.AppBtnColor.cgColor
             break
             
         case "more":
             taponflightView()
+            moreView.layer.borderColor = UIColor.AppBtnColor.cgColor
             break
             
             
@@ -137,6 +140,8 @@ class TabSelectTVCell: TableViewCell {
     @IBAction func didTapOnMoreServiceBtnAction(_ sender: Any) {
         // NotificationCenter.default.post(name: NSNotification.Name("moreservice"), object: nil)
         moreserviceView.isHidden = false
+        moreView.layer.borderWidth = 1
+        moreView.layer.borderColor = UIColor.AppBtnColor.cgColor
         taponmoreView()
         delegate?.didTapOnMoreServiceBtnAction(cell: self)
     }
@@ -144,6 +149,7 @@ class TabSelectTVCell: TableViewCell {
     func taponflightView(){
         
         MySingleton.shared.tabselect = "flight"
+       
         //        flightView.layer.borderColor = UIColor.Buttoncolor.cgColor
         //        hotelView.layer.borderColor = UIColor.BorderColor.cgColor
         //        moreView.layer.borderColor = UIColor.BorderColor.cgColor
@@ -151,6 +157,8 @@ class TabSelectTVCell: TableViewCell {
     
     func taponhotelView(){
         MySingleton.shared.tabselect = "hotel"
+        
+        
         //        flightView.layer.borderColor = UIColor.BorderColor.cgColor
         //        hotelView.layer.borderColor = UIColor.Buttoncolor.cgColor
         //        moreView.layer.borderColor = UIColor.BorderColor.cgColor
@@ -158,6 +166,7 @@ class TabSelectTVCell: TableViewCell {
     
     func taponmoreView(){
         MySingleton.shared.tabselect = "more"
+        moreView.layer.borderColor = UIColor.AppBtnColor.cgColor
         //        flightView.layer.borderColor = UIColor.BorderColor.cgColor
         //        hotelView.layer.borderColor = UIColor.BorderColor.cgColor
         //        moreView.layer.borderColor = UIColor.Buttoncolor.cgColor

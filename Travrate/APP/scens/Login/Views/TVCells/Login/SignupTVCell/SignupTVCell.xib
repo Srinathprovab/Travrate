@@ -70,7 +70,7 @@
                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="eOb-QG-4pj">
                                                 <rect key="frame" x="0.0" y="0.0" width="376" height="48"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -121,7 +121,7 @@
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="2pI-Le-h84">
                                                 <rect key="frame" x="0.0" y="0.0" width="376" height="48"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -187,7 +187,7 @@
                                             <textField opaque="NO" tag="12" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="o92-Tw-gX1">
                                                 <rect key="frame" x="80" y="0.0" width="296" height="48"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHB-EG-VmS">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="48"/>
@@ -197,13 +197,23 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ye1-9A-jpB">
+                                                        <rect key="frame" x="79" y="0.0" width="1" height="48"/>
+                                                        <color key="backgroundColor" name="BorderColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="1" id="vce-o2-OW3"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="3z6-8Q-KnH" firstAttribute="top" secondItem="uHB-EG-VmS" secondAttribute="top" id="14b-sV-Za0"/>
                                                     <constraint firstAttribute="bottom" secondItem="3z6-8Q-KnH" secondAttribute="bottom" id="3bN-0Y-79u"/>
+                                                    <constraint firstItem="Ye1-9A-jpB" firstAttribute="top" secondItem="uHB-EG-VmS" secondAttribute="top" id="3qb-ll-hur"/>
                                                     <constraint firstAttribute="width" constant="80" id="8RV-js-ac4"/>
                                                     <constraint firstAttribute="trailing" secondItem="3z6-8Q-KnH" secondAttribute="trailing" id="ONS-Ym-8dp"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ye1-9A-jpB" secondAttribute="trailing" id="hc8-Qa-mhi"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Ye1-9A-jpB" secondAttribute="bottom" id="tDR-nW-d2h"/>
                                                     <constraint firstItem="3z6-8Q-KnH" firstAttribute="leading" secondItem="uHB-EG-VmS" secondAttribute="leading" id="yF3-UH-NIi"/>
                                                 </constraints>
                                             </view>
@@ -259,7 +269,7 @@
                                             <textField opaque="NO" tag="11" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Hjl-s7-K8y">
                                                 <rect key="frame" x="0.0" y="0.0" width="376" height="48"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="email"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

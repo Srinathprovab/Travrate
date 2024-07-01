@@ -168,6 +168,14 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         gotoSearchCarRentalVC()
     }
     
+    
+    //MARK: - Go To Flight Search
+    override func didTapOnPopulardestination(cell: PopularDestinationsTVCell) {
+        gotoFlightSearchVC()
+    }
+    
+   
+    
 }
 
 
@@ -208,6 +216,7 @@ extension DashboardVC {
         callapibool = true
         guard let vc = FlightSearchVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
+        vc.isfromVC = "dashbord"
         present(vc, animated: true)
     }
     
@@ -512,6 +521,8 @@ extension DashboardVC {
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedCurrency), name: Notification.Name("selectedCurrency"), object: nil)
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("logindone"), object: nil)
         
         if MySingleton.shared.callboolapi == true {
             callIndexPageAPI()
