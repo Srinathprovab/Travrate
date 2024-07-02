@@ -41,15 +41,16 @@ class MealSelectionVC: BaseTableVC {
     
     func setUI() {
         
-        gifimg.isHidden = true
-        continuetoPaymentBtnView.backgroundColor = .Buttoncolor
-        continuetoPaymentBtnView.isUserInteractionEnabled = false
+        
+        continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+        continuetoPaymentBtnView.isUserInteractionEnabled = true
+        
         guard let gifURL = Bundle.main.url(forResource: "pay", withExtension: "gif") else { return }
         guard let imageData = try? Data(contentsOf: gifURL) else { return }
         guard let image = UIImage.gifImageWithData(imageData) else { return }
         gifimg.image = image
-        
-        continuetoPaymentBtnView.isUserInteractionEnabled = false
+        gifimg.isHidden = false
+       
         commonTableView.backgroundColor = .WhiteColor
         commonTableView.registerTVCells(["OperatorsCheckBoxTVCell",
                                          "BookingDetailsFlightDataTVCell",
@@ -88,28 +89,24 @@ class MealSelectionVC: BaseTableVC {
     //MARK: - enableContinuetoPaymentBtn
     override func enableContinuetoPaymentBtn(cell: OperatorsCheckBoxTVCell) {
         
-        if MySingleton.shared.enablePaymentButtonBool1 == true && MySingleton.shared.enablePaymentButtonBool2 == true {
-            
+        
+        if cell.check1bool == true && cell.check2bool == true {
             continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
             continuetoPaymentBtnView.isUserInteractionEnabled = true
             gifimg.isHidden = false
-            
         }else {
-            
             continuetoPaymentBtnView.backgroundColor = .Buttoncolor
             continuetoPaymentBtnView.isUserInteractionEnabled = false
             gifimg.isHidden = true
-            
         }
+        
+        
     }
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
         travelerArray.removeAll()
         MySingleton.shared.positionsCount = 0
-        MySingleton.shared.enablePaymentButtonBool1 = false
-        MySingleton.shared.enablePaymentButtonBool2 = false
-        
         sameInputs_Again_CallSaerchAPI()
     }
     
@@ -117,10 +114,13 @@ class MealSelectionVC: BaseTableVC {
     //MARK: - didTapOnBackBtnAction
     @IBAction func didTapOnContinuetoBookBtnAction(_ sender: Any) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [unowned self] in
-            gotoSelectPaymentMethodsVC()
-        }
-        
+         if MySingleton.shared.enablePaymentButtonBool1 == false && MySingleton.shared.enablePaymentButtonBool2 == false {
+            showToast(message: "Please Select Options")
+            return
+         }else {
+             gotoSelectPaymentMethodsVC()
+         }
+       
     }
     
     func gotoSelectPaymentMethodsVC() {

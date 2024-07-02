@@ -114,6 +114,7 @@ class PriceSummaryTVCell: TableViewCell {
                         adultsCount = Int(defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "1") ?? 0
                         childCount = Int(defaults.string(forKey: UserDefaultsKeys.childCount) ?? "0") ?? 0
                         infantsCount = Int(defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "0") ?? 0
+                        
                     } else {
                         
                         adultsCount = Int(defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "1") ?? 0
@@ -231,8 +232,8 @@ extension PriceSummaryTVCell :UITableViewDataSource,UITableViewDelegate {
                 setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
                                      str2: (AdultsTotalPrice),
                                      lbl: cell.adultKWDlbl,
-                                     str1font: .InterSemiBold(size: 14),
-                                     str2font: .InterSemiBold(size: 16),
+                                     str1font: .InterSemiBold(size: 12),
+                                     str2font: .InterSemiBold(size: 14),
                                      str1Color: .AppLabelColor,
                                      str2Color: .AppLabelColor)
                 
@@ -262,8 +263,8 @@ extension PriceSummaryTVCell :UITableViewDataSource,UITableViewDelegate {
                     setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
                                          str2: (ChildTotalPrice),
                                          lbl: cell.adultKWDlbl,
-                                         str1font: .InterSemiBold(size: 14),
-                                         str2font: .InterSemiBold(size: 16),
+                                         str1font: .InterSemiBold(size: 12),
+                                         str2font: .InterSemiBold(size: 14),
                                          str1Color: .AppLabelColor,
                                          str2Color: .AppLabelColor)
                     //
@@ -293,8 +294,8 @@ extension PriceSummaryTVCell :UITableViewDataSource,UITableViewDelegate {
                     setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
                                          str2: InfantTotalPrice,
                                          lbl: cell.adultKWDlbl,
-                                         str1font: .InterSemiBold(size: 14),
-                                         str2font: .InterSemiBold(size: 16),
+                                         str1font: .InterSemiBold(size: 12),
+                                         str2font: .InterSemiBold(size: 14),
                                          str1Color: .AppLabelColor,
                                          str2Color: .AppLabelColor)
                     
@@ -352,8 +353,8 @@ extension PriceSummaryTVCell :UITableViewDataSource,UITableViewDelegate {
                 setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
                                      str2: String(format: "%.2f", Double(InfantTotalPrice) ?? 0.0),
                                      lbl: cell.adultKWDlbl,
-                                     str1font: .InterSemiBold(size: 14),
-                                     str2font: .InterSemiBold(size: 16),
+                                     str1font: .InterSemiBold(size: 12),
+                                     str2font: .InterSemiBold(size: 14),
                                      str1Color: .AppLabelColor,
                                      str2Color: .AppLabelColor)
                 

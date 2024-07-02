@@ -59,8 +59,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         
         continuetoPaymentBtnView.backgroundColor = .Buttoncolor
         continuetoPaymentBtnView.isUserInteractionEnabled = true
-        MySingleton.shared.enablePaymentButtonBool1 = false
-        MySingleton.shared.enablePaymentButtonBool2 = false
+        
         
         guard let gifURL = Bundle.main.url(forResource: "pay", withExtension: "gif") else { return }
         guard let imageData = try? Data(contentsOf: gifURL) else { return }
@@ -83,6 +82,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
                                          "PrimaryContactInfoTVCell",
                                          "AddonTableViewCell",
                                          "PriceSummaryTVCell",
+                                         "SelectOptionsTVCell",
                                          "GuestTVCell"])
     }
     
@@ -286,23 +286,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         commonTableView.reloadData()
     }
     
-    //MARK: - enableContinuetoPaymentBtn
-    override func enableContinuetoPaymentBtn(cell: OperatorsCheckBoxTVCell) {
-        
-        if MySingleton.shared.enablePaymentButtonBool1 == true && MySingleton.shared.enablePaymentButtonBool2 == true {
-            
-            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
-            continuetoPaymentBtnView.isUserInteractionEnabled = true
-            gifimg.isHidden = false
-            
-        }else {
-            MySingleton.shared.enablePaymentButtonBool1 = false
-            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
-            continuetoPaymentBtnView.isUserInteractionEnabled = true
-            gifimg.isHidden = true
-            
-        }
-    }
+   
     
     
     //MARK: - Addon didSelectAddon  didDeselectAddon
@@ -457,6 +441,49 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
     override func didTapClosepromoViewBtnAction(cell:UsePromoCodesTVCell) {
         commonTableView.reloadData()
     }
+    
+    //MARK: - enableContinuetoPaymentBtn
+    override func enableContinuetoPaymentBtn(cell: OperatorsCheckBoxTVCell) {
+        
+        
+        if cell.check1bool == true && cell.check2bool == true {
+            
+            MySingleton.shared.enablePaymentButtonBool1 = true
+            MySingleton.shared.enablePaymentButtonBool2 = true
+            
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            continuetoPaymentBtnView.isUserInteractionEnabled = true
+            gifimg.isHidden = false
+            
+        }else {
+            MySingleton.shared.enablePaymentButtonBool1 = false
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            continuetoPaymentBtnView.isUserInteractionEnabled = true
+            gifimg.isHidden = true
+        }
+        
+       
+        
+        
+    }
+    
+    
+    //MARK: - didTapOnOptionsButtonAction
+    override func didTapOnOptionsButtonAction(cell:SelectOptionsTVCell) {
+        
+        
+        if cell.infoArrayCountBool == true {
+            continuetoPaymentBtnlbl.text = "Continue To Next"
+        }else {
+            continuetoPaymentBtnlbl.text = "Continue To Payment"
+        }
+        
+        self.continuetoPaymentBtnlbl.layoutIfNeeded()
+        
+        
+        
+    }
+
 }
 
 
@@ -507,7 +534,7 @@ extension BookingDetailsVC {
             
             services = response.pre_booking_params?.addon_services ?? []
             addon_services = response.pre_booking_params?.addon_services ?? []
-            totlConvertedGrand = Double(response.pre_booking_params?.priceDetails?.grand_total ?? "") ?? 0.0
+           
             
             MySingleton.shared.tmpFlightPreBookingId = response.pre_booking_params?.transaction_id ?? ""
             MySingleton.shared.accesskeytp = response.access_key_tp ?? ""
@@ -533,7 +560,17 @@ extension BookingDetailsVC {
             sub_total_child = i?.sub_total_child ?? "0"
             sub_total_infant = i?.sub_total_infant ?? "0"
             
+            var totlConvertedGrand1 = Double(i?.grand_total ?? "0.0") ?? 0.0
+           
             
+    
+            
+           
+            if let totlConvertedGrandnew =  i?.grand_total {
+                totlConvertedGrand = Double(totlConvertedGrandnew) ?? totlConvertedGrand1
+            }
+            
+        
             
             DispatchQueue.main.async {[self] in
                 setupTVCell()
@@ -632,6 +669,14 @@ extension BookingDetailsVC {
         //        MySingleton.shared.tablerow.append(TableRow(cellType:.SpecialAssistanceTVCell))
         //        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         //        MySingleton.shared.tablerow.append(TableRow(cellType:.AddonTVCell))
+        
+        
+        
+        
+        if MySingleton.shared.infoArray.count == 0 {
+            MySingleton.shared.tablerow.append(TableRow(height: 10,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
+            MySingleton.shared.tablerow.append(TableRow(cellType:.SelectOptionsTVCell))
+        }
         
         MySingleton.shared.tablerow.append(TableRow(height: 10,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(key: "flight",key1: "first" ,moreData: MySingleton.shared.secondHalf_addonServices, cellType:.AddonTableViewCell))

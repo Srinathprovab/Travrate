@@ -33,24 +33,26 @@ class OperatorsCheckBoxTVCell: TableViewCell {
     }
     
     override func updateUI() {
+        
+        
         if MySingleton.shared.enablePaymentButtonBool1 == true {
-            check1bool = false
+            check1bool = true
             check1img.image = UIImage(named: "check")
         }
         
         if MySingleton.shared.enablePaymentButtonBool2 == true {
-            check2bool = false
+            check2bool = true
             check2img.image = UIImage(named: "check")
         }
         
-        if MySingleton.shared.enablePaymentButtonBool1 == true && MySingleton.shared.enablePaymentButtonBool2 == true {
-            check1bool = false
-            check2bool = false
-            check1img.image = UIImage(named: "check")
-            check2img.image = UIImage(named: "check")
-            
-            enableContinueToPaymentBool()
-        }
+//        if MySingleton.shared.enablePaymentButtonBool1 == true && MySingleton.shared.enablePaymentButtonBool2 == true {
+//            check1bool = false
+//            check2bool = false
+//            check1img.image = UIImage(named: "check")
+//            check2img.image = UIImage(named: "check")
+//            
+//            enableContinueToPaymentBool()
+//        }
         
         
     }
@@ -60,17 +62,18 @@ class OperatorsCheckBoxTVCell: TableViewCell {
         
         check1bool.toggle()
         
-        if check1bool {
-            MySingleton.shared.enablePaymentButtonBool1 = true
+        if check1bool  {
+           
             check1img.image = UIImage(named: "check")
             enableContinueToPaymentBool()
         }else {
-            MySingleton.shared.enablePaymentButtonBool1 = false
+           
             check1img.image = UIImage(named: "uncheck")
             enableContinueToPaymentBool()
         }
+
         
-        
+       
     }
     
     
@@ -79,15 +82,16 @@ class OperatorsCheckBoxTVCell: TableViewCell {
         check2bool.toggle()
         
         if check2bool {
-            MySingleton.shared.enablePaymentButtonBool2 = true
+           
             check2img.image = UIImage(named: "check")
             enableContinueToPaymentBool()
         }else {
-            MySingleton.shared.enablePaymentButtonBool2 = false
+        
             check2img.image = UIImage(named: "uncheck")
             enableContinueToPaymentBool()
         }
         
+       
         
     }
     
