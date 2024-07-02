@@ -96,14 +96,19 @@ class LoginDetailsTableViewCell: TableViewCell {
         
         if email == "" {
             showToastMsg(message: "Enter Email Adress")
+            return
         } else if email.isValidEmail() == false {
             showToastMsg(message: "Enter Valid Email")
+            return
         } else if phone == "" {
             showToastMsg(message: "Enter Phone Number")
+            return
         } else if pass == "" {
             showToastMsg(message: "Enter Password")
+            return
         } else if country_val == "" {
             showToastMsg(message: "Enter Country Code")
+            return
         } else {
             registerNowButton.backgroundColor = HexColor("#EE1935")
         }

@@ -44,8 +44,8 @@ class FareBreakdownTVCell: TableViewCell {
     @IBOutlet weak var childSubTotalpriceView: UIView!
     @IBOutlet weak var infanSubTotalpriceView: UIView!
     
-    @IBOutlet weak var totalDiscountlbl: UILabel!
-    @IBOutlet weak var totalAfterDiscountlbl: UILabel!
+    //    @IBOutlet weak var totalDiscountlbl: UILabel!
+    //    @IBOutlet weak var totalAfterDiscountlbl: UILabel!
     @IBOutlet weak var totalTripCostlbl: UILabel!
     
     
@@ -64,8 +64,8 @@ class FareBreakdownTVCell: TableViewCell {
     override func updateUI() {
         
         
-        totalDiscountlbl.text = "\(MySingleton.shared.flightPriceDetails?.api_currency ?? ""):\(MySingleton.shared.flightPriceDetails?.admin_discount ?? "")"
-        totalAfterDiscountlbl.text = "\(MySingleton.shared.flightPriceDetails?.api_currency ?? ""):\(MySingleton.shared.flightPriceDetails?.grand_total ?? "")"
+        //        totalDiscountlbl.text = "\(MySingleton.shared.flightPriceDetails?.api_currency ?? ""):\(MySingleton.shared.flightPriceDetails?.admin_discount ?? "")"
+        //        totalAfterDiscountlbl.text = "\(MySingleton.shared.flightPriceDetails?.api_currency ?? ""):\(MySingleton.shared.flightPriceDetails?.grand_total ?? "")"
         totalTripCostlbl.text = "\(MySingleton.shared.flightPriceDetails?.api_currency ?? ""):\(MySingleton.shared.flightPriceDetails?.grand_total ?? "")"
         
         showlbl(lbl: adultBasepricelbl, value:  MySingleton.shared.flightPriceDetails?.adultsBasePrice ?? "", v: adultBasepriceView)

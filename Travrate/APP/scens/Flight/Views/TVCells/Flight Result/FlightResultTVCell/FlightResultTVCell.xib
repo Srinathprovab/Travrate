@@ -87,8 +87,8 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refundable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWs-nU-U3w">
-                                                        <rect key="frame" x="395" y="45" width="54" height="12.333333333333336"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refundable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWs-nU-U3w">
+                                                        <rect key="frame" x="364" y="45" width="85" height="12.333333333333336"/>
                                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -175,6 +175,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="TML-6Q-Ged" secondAttribute="bottom" constant="10" id="dOW-sI-bYL"/>
                                                     <constraint firstAttribute="trailing" secondItem="hAu-iP-gQU" secondAttribute="trailing" constant="90" id="ePY-ny-o7j"/>
                                                     <constraint firstItem="4fA-Hd-0KV" firstAttribute="top" secondItem="4Pk-HT-IBf" secondAttribute="top" constant="15" id="nlV-l0-fPl"/>
+                                                    <constraint firstItem="TWs-nU-U3w" firstAttribute="leading" secondItem="Yq8-Cw-Ztn" secondAttribute="leading" id="wNi-mQ-fzO"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TpG-7W-ya0">

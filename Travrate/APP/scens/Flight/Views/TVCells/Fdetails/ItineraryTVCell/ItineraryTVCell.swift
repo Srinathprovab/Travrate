@@ -79,16 +79,16 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
             
             cell.economylbl.text = "\(data.cabin_class ?? "")"
             
-            cell.flightnumber.text = "\(data.flight_number ?? "")"
+            cell.flightnumber.text = "(\(data.operator_code ?? "")-\(data.flight_number ?? ""))"
             cell.fromcitylbl.text = "\(data.origin?.city ?? "")"
-            cell.fromdatelbl.text = "\(data.origin?.date ?? "")"
+            cell.fromdatelbl.text = "\(data.origin?.date ?? "") \(data.origin?.time ?? "")"
             cell.fromairportlbl.text = "\(data.origin?.airport_name ?? "")"
-            cell.fromterminallbl.text = "Terminal: \(data.origin?.terminal ?? "")"
+           
             
             cell.tocitylbl.text = "\(data.destination?.city ?? "")"
-            cell.todatelbl.text = "\(data.destination?.date ?? "")"
+            cell.todatelbl.text = "\(data.destination?.date ?? "") \(data.destination?.time ?? "")"
             cell.toairportlbl.text = "\(data.destination?.airport_name ?? "")"
-            cell.toterminallbl.text = "Terminal: \(data.destination?.terminal ?? "")"
+           
             
             if let operatorImageURL = data.operator_image {
                 cell.operatorimg.sd_setImage(with: URL(string: operatorImageURL), placeholderImage: UIImage(named: "placeholder.png"))
@@ -158,6 +158,27 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
                     cell.timelbl.text = ""
                 }
             }
+            
+            
+            if data.destination?.terminal?.isEmpty == true || data.destination?.terminal == "" {
+                cell.toterminallbl.text = "Terminal: TBC"
+            }else {
+                cell.toterminallbl.text = "Terminal: \(data.destination?.terminal ?? "")"
+            }
+            
+            if data.origin?.terminal?.isEmpty == true || data.destination?.terminal == "" {
+                cell.fromterminallbl.text = "Terminal: TBC"
+            }else {
+                cell.fromterminallbl.text = "Terminal: \(data.origin?.terminal ?? "")"
+            }
+            
+           
+            if indexPath.row == 0 {
+                cell.totalJourneyTimelbl.isHidden = false
+            }else {
+                cell.totalJourneyTimelbl.isHidden = true
+            }
+            
             
             
             c = cell

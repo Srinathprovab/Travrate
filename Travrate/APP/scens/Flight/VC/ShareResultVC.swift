@@ -7,8 +7,9 @@
 
 import UIKit
 
+
 class ShareResultVC: BaseTableVC, ShareResultViewModelDelegate {
-   
+    
     @IBOutlet weak var holderView: UIView!
     
     
@@ -89,12 +90,24 @@ class ShareResultVC: BaseTableVC, ShareResultViewModelDelegate {
     
     
     override func didTapOnCopyWhatsapplinkBtnAction(cell: ShareResultTVCell) {
-        print("didTapOnCopyWhatsapplinkBtnAction")
+        guard let textToCopy = cell.whatsappTF.text else { return }
+        UIPasteboard.general.string = textToCopy
+        
+        let seconds = 1.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            self.showToast(message: "Copied")
+        }
     }
     
     override func didTapOnCopyLinkBtnAction(cell: ShareResultTVCell) {
-        print("didTapOnCopyLinkBtnAction")
+        guard let textToCopy = cell.linkTF.text else { return }
+        UIPasteboard.general.string = textToCopy
+        let seconds = 1.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            self.showToast(message: "Copied")
+        }
     }
+    
     
     
     override func didTapOnSendBtnAction(cell: ShareResultTVCell) {
@@ -121,12 +134,12 @@ class ShareResultVC: BaseTableVC, ShareResultViewModelDelegate {
 
 extension ShareResultVC {
     
-//token:640fee6fe6e442cd06cfb5bbefcbd196*_*1*_*K3IS4qWlxWo9g4Qt
-//booking_source:PTBSID0000000016
-//id:1PTBSID00000000160
-//search_id:8035
-//to_email:poovarasan.g@provabmail.com
-//from:sathis
+    //token:640fee6fe6e442cd06cfb5bbefcbd196*_*1*_*K3IS4qWlxWo9g4Qt
+    //booking_source:PTBSID0000000016
+    //id:1PTBSID00000000160
+    //search_id:8035
+    //to_email:poovarasan.g@provabmail.com
+    //from:sathis
     
     func callAPI() {
         MySingleton.shared.payload.removeAll()
@@ -186,9 +199,9 @@ extension ShareResultVC {
         NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
-        
+   
         if MySingleton.shared.callboolapi == true {
-           // callAPI()
+            // callAPI()
         }
     }
     

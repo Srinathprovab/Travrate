@@ -11,8 +11,8 @@ class PopupVC: UIViewController {
     
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var titlelbl: UILabel!
-    @IBOutlet weak var searchBtnView: UIView!
-    @IBOutlet weak var searchlbl: UILabel!
+//    @IBOutlet weak var searchBtnView: UIView!
+   // @IBOutlet weak var searchlbl: UILabel!
     @IBOutlet weak var searchBtn: UIButton!
     
     static var newInstance: PopupVC? {
@@ -34,10 +34,12 @@ class PopupVC: UIViewController {
         holderView.backgroundColor = .WhiteColor
         holderView.addCornerRadiusWithShadow(color: .clear, borderColor: .clear, cornerRadius: 5)
         setuplabels(lbl: titlelbl, text: "Your session expired. Your booking wont be completed.Please search again.", textcolor: .AppLabelColor, font: .LatoRegular(size: 16), align: .center)
-        searchBtnView.addCornerRadiusWithShadow(color: .clear, borderColor: .clear, cornerRadius: 5)
-        searchBtnView.backgroundColor = .Buttoncolor
-        setuplabels(lbl: searchlbl, text: "Search Again", textcolor: .WhiteColor, font: .LatoBold(size: 15), align: .center)
-        searchBtn.setTitle("", for: .normal)
+//        searchBtnView.addCornerRadiusWithShadow(color: .clear, borderColor: .clear, cornerRadius: 5)
+//        searchBtnView.backgroundColor = .Buttoncolor
+     //   setuplabels(lbl: searchlbl, text: "Search Again", textcolor: .WhiteColor, font: .LatoBold(size: 15), align: .center)
+        
+        searchBtn.layer.cornerRadius = 4
+        searchBtn.titleLabel?.font = .LatoBold(size: 16)
         searchBtn.addTarget(self, action: #selector(didTapOnSearchFlightAgainBtn(_:)), for: .touchUpInside)
         
     }

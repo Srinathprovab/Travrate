@@ -138,7 +138,7 @@ class MySingleton {
     var totalnights = String()
     var promocodebool = false
     var un_id = String()
-    
+    var checkedbaggagevalue = String()
     
     var addBaggageBool = false
     var mealBool = false
@@ -370,10 +370,10 @@ class MySingleton {
     
     func convertToDesiredFormat(_ inputString: String) -> String {
         if let number = Int(inputString.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) {
-            if inputString.contains("Kilograms") {
+            if inputString.contains("Kilogram") {
                 return "\(number) kg"
             } else if inputString.contains("Kg") {
-                return "\(number) Kilograms"
+                return "\(number) Kilogram"
             } else if inputString.contains("NumberOfPieces") {
                 return "\(number) Piece per person."
             }

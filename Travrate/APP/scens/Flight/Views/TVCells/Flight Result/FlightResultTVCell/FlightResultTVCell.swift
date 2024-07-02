@@ -103,14 +103,14 @@ class FlightResultTVCell: TableViewCell {
         checkSimelarFlights()
         
         if fareTypelbl.text == "Refundable" {
-            fareTypelbl.textColor = .BackBtnColor
+            fareTypelbl.textColor = HexColor("#00711F")
         }else {
             fareTypelbl.textColor = .BooknowBtnColor
         }
         
         
         if cellInfo?.key == "similar" {
-            bottomView.isHidden = true
+            bottomView.isHidden = false
             moreSimilarBtn.isHidden = true
             moreSimilarImage.isHidden = true
             

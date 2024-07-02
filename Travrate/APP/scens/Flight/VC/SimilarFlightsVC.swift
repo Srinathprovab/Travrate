@@ -114,6 +114,7 @@ class SimilarFlightsVC: BaseTableVC {
     func gotoFlightSearchVC() {
         guard let vc = FlightSearchVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
+        vc.isfromVC = "resultsReturn"
         present(vc, animated: true)
     }
     

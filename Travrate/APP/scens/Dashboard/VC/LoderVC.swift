@@ -30,12 +30,11 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     @IBOutlet weak var sportvenulbl: UILabel!
     @IBOutlet weak var sportdateslbl: UILabel!
     
-    
     @IBOutlet weak var carrentalView: UIView!
     @IBOutlet weak var carRentalNamelbl: UILabel!
     @IBOutlet weak var carRentalDateslbl: UILabel!
     @IBOutlet weak var flightEconomylbl: UILabel!
-    
+    @IBOutlet weak var waitView: UIView!
     
     var searchdata:SearchData?
     var searchHoteldata:SearchHotelData?
@@ -49,11 +48,13 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
         
         
         if MySingleton.shared.afterResultsBool == false {
+            waitView.isHidden = true
             callAPI()
         }else {
             flightinfo.isHidden = true
             hotelinfoView.isHidden = true
-            img.image = UIImage(named: "travlogo")
+           img.image = UIImage(named: "travlogo")
+            waitView.isHidden = false
            // img.sd_setImage(with: URL(string: "MySingleton.shared.loderimgurl" ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
         }
         
@@ -87,18 +88,20 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             flightinfo.isHidden = false
             hotelinfoView.isHidden = true
            
+           
             img.sd_setImage(with: URL(string: searchdata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
-            cityslbl.text = "\(searchdata?.from ?? "") To \(searchdata?.to ?? "")"
+           
             
     
             let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
             if journyType == "oneway" {
+                cityslbl.text = "\(searchdata?.from ?? "") - \(searchdata?.to ?? "")"
                 datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: searchdata?.from_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
-                
                 flightEconomylbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass)
                 triptypelbl.text = "Oneway - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
             }else {
+                cityslbl.text = "\(searchdata?.from ?? "") - \(searchdata?.to ?? "") - \(searchdata?.from ?? "")"
                 datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: searchdata?.from_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM")) - \(MySingleton.shared.convertDateFormat(inputDate: searchdata?.to_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
                 
                 flightEconomylbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass)

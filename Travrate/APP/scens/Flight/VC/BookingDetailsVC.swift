@@ -78,8 +78,6 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
                                          "InternationalTravelInsuranceTVCell",
                                          "AddonTVCell",
                                          "LoginDetailsTableViewCell",
-                                         "GuestRegisterTableViewCell",
-                                         "RegisterSelectionLoginTableViewCell",
                                          "BookingDetailsFlightDataTVCell",
                                          "OperatorsCheckBoxTVCell",
                                          "PrimaryContactInfoTVCell",

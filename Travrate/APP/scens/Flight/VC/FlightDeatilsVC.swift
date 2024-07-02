@@ -295,20 +295,26 @@ extension FlightDeatilsVC {
             
             
             MySingleton.shared.tablerow.append(TableRow(title:"\(index)",
-                                                        
                                                         subTitle: "\(value.origin_loc ?? "")-\(value.destination_loc ?? "")",
                                                         text: value.weight_Allowance,
                                                         buttonTitle: value.cabin_baggage,
                                                         cellType:.BaggageInfoTVCell))
+            
+            
+            MySingleton.shared.checkedbaggagevalue = MySingleton.shared.convertToDesiredFormat(value.weight_Allowance ?? "0Kg")
         }
         
         
         
         
-        MySingleton.shared.tablerow.append(TableRow(title:"After booking you can contact a travel advisor to add extra baggage, subject to the airliness avaliblity & rates.",
+        MySingleton.shared.tablerow.append(TableRow(title:"After booking you can contact a travel advisor to add extra baggage, subject to the airline's avaliblity & rates.",
                                                     cellType:.BaggageInfoImageTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"1 PEach Luggage piece cannot exceed the airline's allowed dimensions or size",
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(title:"\(MySingleton.shared.checkedbaggagevalue) Each Luggage piece cannot exceed the airline's allowed dimensions or size",
                                                     cellType:.BaggageInfoImageTVCell))
+       
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
@@ -376,6 +382,7 @@ extension FlightDeatilsVC {
         MySingleton.shared.tablerow.removeAll()
         
         MySingleton.shared.tablerow.append(TableRow(height:20,cellType:.EmptyTVCell))
+        
         if MySingleton.shared.fareRulesData.count > 0 {
             
             self.commonTableView.estimatedRowHeight = 500
@@ -384,9 +391,16 @@ extension FlightDeatilsVC {
             
             
                         MySingleton.shared.fareRulesData.forEach { i in
-                            MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
-                                                                        subTitle: i.rule_content?.htmlToString,
-                                                                        cellType:.FareRulesTVCell))
+                            
+                            if i.rule_heading != "PENALTIES"{
+                                MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
+                                                                            subTitle: i.rule_content?.htmlToString,
+                                                                            cellType:.FareRulesTVCell))
+                                
+                                print(i.rule_heading)
+                            }
+                            
+                            
                         }
             
             
