@@ -20,8 +20,11 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
     var displayFirstHalf: Bool = true
     var firstHalfAddonServices: [Addon_services] = []
     var secondHalfAddonServices: [Addon_services] = []
+    
     var selectedFirstHalfIndexPathArray = [IndexPath]()
+    var hotelselectedIndexPathArray = [IndexPath]()
     var selectedSecondIndexPathArray = [IndexPath]()
+    
     var selectedAddonPrices: [Double] = [] // Track selected prices
     var totalPrice: Double = 0.0 {
         didSet {
@@ -31,6 +34,12 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
     
     var firstHalfSelectionState: [Bool] = []
     var secondHalfSelectionState: [Bool] = []
+   // var hotelSelectionState: [Bool] = []
+    
+    
+    //MARK - for hotel
+    var totalHotelGrand: Double = 0.0
+    
     
     var delegate: AddonTableViewCellDelegate?
     override func awakeFromNib() {
@@ -177,17 +186,25 @@ extension AddonTableViewCell {
             if displayFirstHalf {
                 firstHalfSelectionState[indexPath.row] = true
                 selectedFirstHalfIndexPathArray.append(indexPath)
-                updateTotal(for: firstHalfAddonServices[indexPath.row], isSelected: true)
+                updateFlightTotal(for: firstHalfAddonServices[indexPath.row], isSelected: true)
                 
                 
                 delegate?.didSelectAddon(index: indexPath.row, origen: "first", price: firstHalfAddonServices[indexPath.row].price ?? "")
             } else {
                 secondHalfSelectionState[indexPath.row] = true
                 selectedSecondIndexPathArray.append(indexPath)
-                updateTotal(for: secondHalfAddonServices[indexPath.row], isSelected: true)
+                updateFlightTotal(for: secondHalfAddonServices[indexPath.row], isSelected: true)
                 
                 delegate?.didSelectAddon(index: indexPath.row, origen: "second", price: firstHalfAddonServices[indexPath.row].price ?? "")
             }
+        }else {
+            
+            let hotelService = hotel_Addservices[indexPath.row] as HotelAddonModel
+//            hotelSelectionState[indexPath.row] = true
+            hotelselectedIndexPathArray.append(indexPath)
+            updateHotelTotal(for: hotelService, isSelected: true)
+            
+            delegate?.didSelectAddon(index: indexPath.row, origen: "", price: hotelService.price ?? "")
         }
         
         cell.checkIMAGE.image = UIImage(named: "check")
@@ -201,22 +218,31 @@ extension AddonTableViewCell {
             if displayFirstHalf {
                 firstHalfSelectionState[indexPath.row] = false
                 removeIndexPath(&selectedFirstHalfIndexPathArray, indexPath: indexPath)
-                updateTotal(for: firstHalfAddonServices[indexPath.row], isSelected: false)
+                updateFlightTotal(for: firstHalfAddonServices[indexPath.row], isSelected: false)
                 
                 delegate?.didDeselectAddon(index: indexPath.row, origen: "first")
             } else {
                 secondHalfSelectionState[indexPath.row] = false
                 removeIndexPath(&selectedSecondIndexPathArray, indexPath: indexPath)
-                updateTotal(for: secondHalfAddonServices[indexPath.row], isSelected: false)
+                updateFlightTotal(for: secondHalfAddonServices[indexPath.row], isSelected: false)
                 
                 delegate?.didDeselectAddon(index: indexPath.row, origen: "second")
             }
+        }else {
+            let hotelService = hotel_Addservices[indexPath.row] as HotelAddonModel
+        //    hotelSelectionState[indexPath.row] = false
+            removeIndexPath(&hotelselectedIndexPathArray, indexPath: indexPath)
+            updateHotelTotal(for: hotelService, isSelected: false)
+            
+            delegate?.didDeselectAddon(index: indexPath.row, origen: "")
         }
         
         cell.checkIMAGE.image = UIImage(named: "uncheck")
     }
     
-    private func updateTotal(for service: Addon_services, isSelected: Bool) {
+    
+    //MARK: - updateFlightTotal
+    private func updateFlightTotal(for service: Addon_services, isSelected: Bool) {
         let amount = Double(service.price ?? "0") ?? 0
         if isSelected {
             totlConvertedGrand += amount
@@ -227,7 +253,7 @@ extension AddonTableViewCell {
         // Optionally update your UI with the new total
         // updateTotalLabel()
         
-        print("Updated Total: \(totlConvertedGrand)")
+       
     }
     
     private func removeIndexPath(_ array: inout [IndexPath], indexPath: IndexPath) {
@@ -235,6 +261,25 @@ extension AddonTableViewCell {
             array.remove(at: index)
         }
     }
+    
+    
+    //MARK: - updateHotelTotal
+    
+    private func updateHotelTotal(for service: HotelAddonModel, isSelected: Bool) {
+        let amount = Double(service.price ?? "0") ?? 0
+        if isSelected {
+            totlConvertedGrand += amount
+        } else {
+            totlConvertedGrand -= amount
+        }
+        
+        // Optionally update your UI with the new total
+        // updateTotalLabel()
+        
+        print("Updated Hotel Total: \(totlConvertedGrand)")
+    }
+    
+    
 }
 
 

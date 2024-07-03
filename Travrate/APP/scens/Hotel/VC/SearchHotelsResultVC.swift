@@ -235,9 +235,16 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     
     //MARK: -  didTapOnViewMapBtnAction
     @objc func didTapOnViewMapBtnAction(_ sender:UIButton) {
-        guard let vc = MapViewVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        mapModelArray.removeAll()
+        hotelSearchResult.forEach { i in
+            let mapModel = MapModel(
+                longitude: i.longitude ?? "",
+                latitude: i.latitude ?? "",
+                hotelname: i.name ?? ""
+            )
+            mapModelArray.append(mapModel)
+        }
+        gotoMapViewVC()
     }
     
     
@@ -278,6 +285,24 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         present(vc, animated: true)
     }
     
+    
+    //MARK: - didTapOnLocationBtnAction
+    func didTapOnLocationBtnAction(cell: HotelsTVCell) {
+        mapModelArray.removeAll()
+        let mapModel = MapModel(
+            longitude: cell.lat,
+            latitude: cell.long,
+            hotelname: cell.hotelNamelbl.text ?? ""
+        )
+        mapModelArray.append(mapModel)
+        gotoMapViewVC()
+    }
+    
+    func gotoMapViewVC() {
+        guard let vc = MapViewVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
     
 }
 
@@ -445,14 +470,14 @@ extension SearchHotelsResultVC {
         amenitiesArray = Array(Set(amenitiesArray))
         hotelstarratingArray = Array(Set(hotelstarratingArray))
         
-        list.forEach { i in
-            let mapModel = MapModel(
-                longitude: i.longitude ?? "",
-                latitude: i.latitude ?? "",
-                hotelname: i.name ?? ""
-            )
-            mapModelArray.append(mapModel)
-        }
+//        list.forEach { i in
+//            let mapModel = MapModel(
+//                longitude: i.longitude ?? "",
+//                latitude: i.latitude ?? "",
+//                hotelname: i.name ?? ""
+//            )
+//            mapModelArray.append(mapModel)
+//        }
         
         
         DispatchQueue.main.async {[self] in
@@ -509,9 +534,9 @@ extension SearchHotelsResultVC {
                 
                 
                 if MySingleton.shared.totalnights == "0" || MySingleton.shared.totalnights == "1" {
-                    cell.markupPricelbl.text = "Total Price For 1 Night"
+                    cell.totalpricefornightslbl.text = "Total Price For 1 Night"
                 }else {
-                    cell.markupPricelbl.text = "Total Price For \(MySingleton.shared.totalnights) Nights"
+                    cell.totalpricefornightslbl.text = "Total Price For \(MySingleton.shared.totalnights) Nights"
                 }
                 
                 //   cell.setAttributedString1(str1:dict.currency ?? "", str2: dict.price ?? "")
@@ -563,9 +588,9 @@ extension SearchHotelsResultVC {
                 cell.long = dict.longitude ?? ""
                 
                 if MySingleton.shared.totalnights == "0" || MySingleton.shared.totalnights == "1" {
-                    cell.markupPricelbl.text = "Total Price For 1 Night"
+                    cell.totalpricefornightslbl.text = "Total Price For 1 Night"
                 }else {
-                    cell.markupPricelbl.text = "Total Price For \(MySingleton.shared.totalnights) Nights"
+                    cell.totalpricefornightslbl.text = "Total Price For \(MySingleton.shared.totalnights) Nights"
                 }
                 //      cell.setAttributedString1(str1:dict.currency ?? "", str2: dict.price ?? "")
                 
@@ -586,6 +611,9 @@ extension SearchHotelsResultVC {
                 }else {
                     cell.ratingView.isHidden = false
                 }
+                
+                
+            
                 
                 ccell = cell
             }
@@ -616,7 +644,10 @@ extension SearchHotelsResultVC {
         if indexPath.row == lastRowIndex && !isLoadingData && lastRowIndex != 0{
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
-                callHotelSearchPaginationAPI()
+                
+                if isSearchBool == false {
+                    callHotelSearchPaginationAPI()
+                }
             }
             
         }
@@ -736,6 +767,10 @@ extension SearchHotelsResultVC:AppliedFilters{
             TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
         }
         
+        if sortBy == .nothing {
+            isSearchBool = false
+        }
+        
         // Reload the table view with the filtered results
         commonTableView.reloadData()
     }
@@ -744,11 +779,11 @@ extension SearchHotelsResultVC:AppliedFilters{
     
     //MARK: - SORT BY FILTER
     func filtersSortByApplied(sortBy: SortParameter) {
-        if MySingleton.shared.filterApplyedBool == true {
-            isLoadingData = true
-        }else {
-            isLoadingData = false
-        }
+//        if MySingleton.shared.filterApplyedBool == true {
+//            isLoadingData = true
+//        }else {
+//            isLoadingData = false
+//        }
         
         
         commonTableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
@@ -812,7 +847,15 @@ extension SearchHotelsResultVC:AppliedFilters{
         default:
             break
         }
+        
+        
+        if sortBy == .nothing {
+            isSearchBool = false
+        }
+        
     }
+    
+    
     
 }
 

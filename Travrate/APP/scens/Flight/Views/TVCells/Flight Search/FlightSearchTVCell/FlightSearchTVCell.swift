@@ -528,7 +528,7 @@ extension FlightSearchTVCell:UICollectionViewDelegate,UICollectionViewDataSource
         infoCV.delegate = self
         infoCV.dataSource = self
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 50)
+        layout.itemSize = CGSize(width: 140, height: 50)
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 5
@@ -648,7 +648,7 @@ extension FlightSearchTVCell {
         roundtripclassDropdown.bottomOffset = CGPoint(x: 0, y: roundtripclassView.frame.size.height + 10)
         roundtripclassDropdown.selectionAction = { [weak self] (index: Int, item: String) in
             self?.roundtripclasslbl.text = item
-            defaults.set(item, forKey: UserDefaultsKeys.selectClass)
+            defaults.set(item, forKey: UserDefaultsKeys.rselectClass)
            
             
             self?.delegate?.didTapOnClassBtnAction(cell: self!)

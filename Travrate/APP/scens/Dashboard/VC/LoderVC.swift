@@ -96,20 +96,22 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     
             let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
             if journyType == "oneway" {
-                cityslbl.text = "\(searchdata?.from ?? "") - \(searchdata?.to ?? "")"
+                
+                cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tcity) ?? "")"
                 datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: searchdata?.from_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
                 flightEconomylbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass)
                 triptypelbl.text = "Oneway - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
+                
             }else {
-                cityslbl.text = "\(searchdata?.from ?? "") - \(searchdata?.to ?? "") - \(searchdata?.from ?? "")"
+                
+                cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tcity) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "")"
                 datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: searchdata?.from_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM")) - \(MySingleton.shared.convertDateFormat(inputDate: searchdata?.to_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
                 
-                flightEconomylbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass)
+                flightEconomylbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.rselectClass) ?? "")"
                 triptypelbl.text = "RoundTrip - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
+                
             }
             
-           
-           
             
         }else if tabselect == "transfers" {
             

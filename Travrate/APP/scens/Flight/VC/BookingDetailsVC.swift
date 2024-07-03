@@ -562,9 +562,6 @@ extension BookingDetailsVC {
             
             var totlConvertedGrand1 = Double(i?.grand_total ?? "0.0") ?? 0.0
            
-            
-    
-            
            
             if let totlConvertedGrandnew =  i?.grand_total {
                 totlConvertedGrand = Double(totlConvertedGrandnew) ?? totlConvertedGrand1

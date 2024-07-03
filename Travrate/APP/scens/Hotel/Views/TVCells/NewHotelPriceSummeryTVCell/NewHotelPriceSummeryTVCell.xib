@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -73,94 +73,94 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Majestic City Retreat Hotel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unt-lt-XVG">
-                                        <rect key="frame" x="16" y="82.333333333333329" width="313" height="17"/>
-                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Majestic City Retreat Hotel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unt-lt-XVG">
+                                        <rect key="frame" x="16" y="82.333333333333329" width="313" height="14.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                         <color key="textColor" name="AppGreenColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Check In " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnN-BN-T36">
-                                        <rect key="frame" x="16" y="111.66666666666667" width="49" height="14.666666666666671"/>
+                                        <rect key="frame" x="16" y="109.33333333333333" width="49" height="14.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Check Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4C6-Ko-ymp">
-                                        <rect key="frame" x="15.999999999999996" y="136.33333333333334" width="56.666666666666657" height="14.666666666666657"/>
+                                        <rect key="frame" x="15.999999999999996" y="134" width="56.666666666666657" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Number Of Nights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0D-fY-WSk">
-                                        <rect key="frame" x="16" y="161" width="97" height="14.666666666666657"/>
+                                        <rect key="frame" x="16" y="158.66666666666666" width="97" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JuL-zE-9bQ">
-                                        <rect key="frame" x="0.0" y="190.66666666666666" width="345" height="1"/>
+                                        <rect key="frame" x="0.0" y="188.33333333333334" width="345" height="1"/>
                                         <color key="backgroundColor" name="AppBorderColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="yD4-Dh-HFa"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26-08-2023" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6k-n5-nWo">
-                                        <rect key="frame" x="255" y="111.66666666666667" width="74" height="14.666666666666671"/>
+                                        <rect key="frame" x="255" y="109.33333333333333" width="74" height="14.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26-08-2023" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7h-sN-SnL">
-                                        <rect key="frame" x="255" y="136.33333333333334" width="74" height="14.666666666666657"/>
+                                        <rect key="frame" x="255" y="134" width="74" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrO-n4-nhJ">
-                                        <rect key="frame" x="321.33333333333331" y="161" width="7.6666666666666856" height="14.666666666666657"/>
+                                        <rect key="frame" x="321.33333333333331" y="158.66666666666666" width="7.6666666666666856" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Adults: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lum-ia-egv">
-                                        <rect key="frame" x="16" y="224.33333333333334" width="47" height="14.666666666666657"/>
+                                        <rect key="frame" x="16" y="222" width="47" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="No.of.Children: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Q9-J0-ieU">
-                                        <rect key="frame" x="16" y="247" width="89.333333333333329" height="14.666666666666686"/>
+                                        <rect key="frame" x="16" y="244.66666666666666" width="89.333333333333329" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBk-4h-UPX">
-                                        <rect key="frame" x="0.0" y="276.66666666666669" width="345" height="1"/>
+                                        <rect key="frame" x="0.0" y="274.33333333333331" width="345" height="1"/>
                                         <color key="backgroundColor" name="AppBorderColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="8Hw-oJ-mhw"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Room1 ; double Standard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHe-la-wf0">
-                                        <rect key="frame" x="16" y="201.66666666666666" width="133" height="14.666666666666657"/>
+                                        <rect key="frame" x="16" y="199.33333333333334" width="133" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKG-3C-7HV">
-                                        <rect key="frame" x="297" y="201.66666666666666" width="32" height="14.666666666666657"/>
+                                        <rect key="frame" x="297" y="199.33333333333334" width="32" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyw-Cr-zhf">
-                                        <rect key="frame" x="297" y="224.33333333333334" width="32" height="14.666666666666657"/>
+                                        <rect key="frame" x="297" y="222" width="32" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDx-pj-nKn">
-                                        <rect key="frame" x="297" y="247" width="32" height="14.666666666666686"/>
+                                        <rect key="frame" x="297" y="244.66666666666666" width="32" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

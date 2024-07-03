@@ -11,6 +11,7 @@ import AARatingBar
 protocol HotelsTVCellelegate{
     func didTapOnTermsAndConditionBtn(cell: HotelsTVCell)
     func didTapOnBookNowBtnAction(cell: HotelsTVCell)
+    func didTapOnLocationBtnAction(cell: HotelsTVCell)
 }
 
 class HotelsTVCell: TableViewCell {
@@ -26,7 +27,7 @@ class HotelsTVCell: TableViewCell {
     @IBOutlet weak var refundableView: UIView!
     @IBOutlet weak var termsAndConditionlbl: UILabel!
     @IBOutlet weak var refundableBtn: UIButton!
-    @IBOutlet weak var markupPricelbl: UILabel!
+    @IBOutlet weak var totalpricefornightslbl: UILabel!
     
     var bookingsource = String()
     var hotelid = String()
@@ -130,13 +131,19 @@ class HotelsTVCell: TableViewCell {
         combination.append(atterStr2)
         
         
-        markupPricelbl.attributedText = combination
+        totalpricefornightslbl.attributedText = combination
         
     }
     
     
     @IBAction func didTapOnBookNowBtnAction(_ sender: Any) {
         delegate?.didTapOnBookNowBtnAction(cell: self)
+    }
+    
+    
+    
+    @IBAction func didTapOnLocationBtnAction(_ sender: Any) {
+        delegate?.didTapOnLocationBtnAction(cell: self)
     }
     
 }

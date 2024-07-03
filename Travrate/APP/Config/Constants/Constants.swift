@@ -61,6 +61,7 @@ var whatsAppPrice = String()
 var flexiblePrie = String()
 var priceChange = String()
 var notificationPrice = String()
+var hotelselectedcountrycode = String()
 
 var AdultsTotalPrice = String()
 var ChildTotalPrice = String()

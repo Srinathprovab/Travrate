@@ -19,7 +19,7 @@ class SearchHotelVC: BaseTableVC {
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? SearchHotelVC
         return vc
     }
-    var countrycode = String()
+   
     let formatter = DateFormatter()
     
     
@@ -38,21 +38,21 @@ class SearchHotelVC: BaseTableVC {
     
     
     
-    //MARK: - didTapOnClassBtnAction
-    override func didTapOnClassBtnAction(cell:FlightSearchTVCell){
-        commonTableView.reloadData()
-    }
-    
-    
-    //MARK: - didTapOnAdvanceOption
-    override func didTapOnAdvanceOption(cell: FlightSearchTVCell) {
-        commonTableView.reloadData()
-    }
-    
-    
-    override func didTapOnFlightSearchBtnAction(cell:FlightSearchTVCell) {
-        didTapOnHotelSearchBtnAction()
-    }
+//    //MARK: - didTapOnClassBtnAction
+//    override func didTapOnClassBtnAction(cell:FlightSearchTVCell){
+//        commonTableView.reloadData()
+//    }
+//    
+//    
+//    //MARK: - didTapOnAdvanceOption
+//    override func didTapOnAdvanceOption(cell: FlightSearchTVCell) {
+//        commonTableView.reloadData()
+//    }
+//    
+//    
+//    override func didTapOnFlightSearchBtnAction(cell:FlightSearchTVCell) {
+//        didTapOnHotelSearchBtnAction()
+//    }
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
@@ -291,7 +291,6 @@ extension SearchHotelVC {
         defaults.set(false, forKey: "hoteltfilteronce")
         guard let vc = SearchHotelsResultVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
-        vc.countrycode = self.countrycode
         vc.payload =  MySingleton.shared.payload
         present(vc, animated: true)
     }

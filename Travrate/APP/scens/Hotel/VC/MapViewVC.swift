@@ -91,32 +91,6 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
     
     
     
-    
-    //    @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    //        if !mapModelArray.isEmpty {
-    //            // Calculate the average latitude and longitude from mapModelArray
-    //            let averageLatitude = mapModelArray.map { Double($0.latitude) ?? 0.0 }.reduce(0.0, +) / Double(mapModelArray.count)
-    //            let averageLongitude = mapModelArray.map { Double($0.longitude) ?? 0.0 }.reduce(0.0, +) / Double(mapModelArray.count)
-    //
-    //            // Set the camera to center on the average coordinates
-    //            let camera = GMSCameraPosition.camera(withLatitude: averageLatitude, longitude: averageLongitude, zoom: 12.0)
-    //
-    //            // Initialize the GMSMapView with the camera and frame
-    //            let gmsView = GMSMapView.map(withFrame: googleMapView.bounds, camera: camera)
-    //
-    //            gmsView.delegate = self
-    //            // Set the mapView as googleMapView's subview
-    //            googleMapView.addSubview(gmsView)
-    //
-    //            // Add markers to the mapView
-    //            addMarkersToMap(gmsView)
-    //
-    //            locationManager.stopUpdatingLocation() // You may want to stop updates after you have the user's location
-    //        }
-    //    }
-    
-    
-    
     @objc func backbtnAction() {
         callapibool = false
         dismiss(animated: true)
@@ -125,29 +99,6 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
     
     @IBAction func didTaspOnShowMapViewBtnAction(_ sender: Any) {
            taponMapBtn()
-        
-        
-        
-//        let popVC = MapHotelInfoVC()
-//        popVC.modalPresentationStyle = .popover
-//        //popVC.mapModel = mapModel
-//        
-//        if let popOverVC = popVC.popoverPresentationController {
-//            popOverVC.delegate = self
-//            
-//            // Set source view and source rect
-//            popOverVC.sourceView = sender as? UIView
-//            popOverVC.sourceRect = (sender as AnyObject).bounds
-//            
-//            
-//            // Set arrow direction and content size
-//            popOverVC.permittedArrowDirections = .up
-//            popVC.preferredContentSize = CGSize(width: 200, height: 200)
-//        }
-//        
-//        self.present(popVC, animated: true, completion: nil)
-//        
-        
         
     }
     
@@ -206,7 +157,7 @@ extension MapViewVC: GMSMapViewDelegate {
     func createMarkerButton(mapModel: MapModel) -> UIButton {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 40, height: 40) // Adjust size as needed
-        button.setImage(UIImage(named: "mapicon"), for: .normal) // Set your marker image here
+        button.setImage(UIImage(named: "loc9")?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor), for: .normal) // Set your marker image here
         button.addTarget(self, action: #selector(markerButtonTapped(_:)), for: .touchUpInside)
         button.tag = mapModel.identifier // Assuming each mapModel has a unique identifier
         return button

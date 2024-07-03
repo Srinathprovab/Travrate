@@ -45,10 +45,6 @@ class NewHotelPriceSummeryTVCell: TableViewCell {
         pricesummerylbl.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         pricesummerylbl.layer.cornerRadius = 8
         
-        whatsAppPriceLbl.text =  "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelwhatsAppPrice)"
-        flexiblePriceLbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelflexiblePrie)"
-        notificationLabel.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelnotificationPrice)"
-        priceChangeLabel.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelpriceChange)"
         
         hotelflexibleAmount = Int(hotelflexiblePrie) ?? 0
         hotelwhatsAppAmount = Int(hotelwhatsAppPrice) ?? 0
@@ -119,12 +115,19 @@ class NewHotelPriceSummeryTVCell: TableViewCell {
         }
         adultCountLabel.text = "\(cellInfo?.TotalQuestions ?? "")"
         MySingleton.shared.setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
-                             str2: String(format: "%.2f", cellInfo?.covetedAmnt ?? 0.000),
+                                                str2: String(format: "%.2f", totlConvertedGrand),
                              lbl: pricelbl,
                              str1font: .InterBold(size: 12),
                              str2font: .InterBold(size: 18),
                              str1Color: .TitleColor,
                              str2Color: .TitleColor)
+        
+        
+        
+        whatsAppPriceLbl.text =  "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelwhatsAppPrice)"
+        flexiblePriceLbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelflexiblePrie)"
+        notificationLabel.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelnotificationPrice)"
+        priceChangeLabel.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelpriceChange)"
         
     }
     
