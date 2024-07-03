@@ -126,7 +126,7 @@ class FilterVC: BaseTableVC{
     var minpricerangefilter = Double()
     var maxpricerangefilter = Double()
     var starRatingFilter = String()
-    var stopsArray = ["0 Stop","1 Stop","2 Stop"]
+    var stopsArray = [String]()
     var resetHotelBool = false
     
     var departurnTimeArray = ["12 am - 6 am","06 am - 12 pm","12 pm - 06 pm","06 pm - 12 am"]
@@ -173,6 +173,23 @@ class FilterVC: BaseTableVC{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
+        for noOfStops in noofstopsArray {
+            if let stopsInt = Int(noOfStops) {
+                if stopsInt == 1 {
+                    stopsArray.append("\(stopsInt) Stop")
+                } else {
+                    stopsArray.append("\(stopsInt) Stops")
+                }
+            }
+        }
+        
+        
+        print("====== print(stopsArray) =======")
+        print(stopsArray)
+        
+        
         addObserver()
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("nointernet"), object: nil)
         
@@ -204,8 +221,8 @@ class FilterVC: BaseTableVC{
         setupViews(v: filtersBtnView, radius: 0, color: .WhiteColor)
         setupViews(v: sortbyUL, radius: 0, color: .Buttoncolor)
         setupViews(v: filterUL, radius: 0, color: .WhiteColor)
-        setuplabels(lbl: sortBylbl, text: "Sort By", textcolor: .TitleColor, font: .OpenSansRegular(size: 18), align: .center)
-        setuplabels(lbl: filterslbl, text: "Filters", textcolor: .SubtitleColor, font: .OpenSansRegular(size: 18), align: .center)
+        setuplabels(lbl: sortBylbl, text: "Sort By", textcolor: .TitleColor, font: .OpenSansBold(size: 18), align: .center)
+        setuplabels(lbl: filterslbl, text: "Filters", textcolor: .SubtitleColor, font: .OpenSansBold(size: 18), align: .center)
         closeBtn.setTitle("", for: .normal)
         sortbyBtn.setTitle("", for: .normal)
         filtersBtn.setTitle("", for: .normal)
@@ -258,9 +275,13 @@ class FilterVC: BaseTableVC{
                                          "PopularFiltersTVCell",
                                          "LabelTVCell",
                                          "SliderTVCell",
+                                         "DurationSliderTVCell",
                                          "NewDepartureTimeTVCell",
                                          "DepartureTimeTVCell",
+                                         "TransitTimeSliderTVCell",
                                          "FilterDepartureTVCell"])
+        
+        
         
     }
     
@@ -281,10 +302,11 @@ class FilterVC: BaseTableVC{
         tablerow.removeAll()
         
         tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
-        tablerow.append(TableRow(title:"Stops",data: stopsArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"No. Of Stops",data: stopsArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Refundable Type",data: faretypeArray,cellType:.CheckBoxTVCell))
-        
         tablerow.append(TableRow(title:"Luggage",data: luggageArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(cellType:.DurationSliderTVCell))
+        tablerow.append(TableRow(cellType:.TransitTimeSliderTVCell))
         
         //        tablerow.append(TableRow(title:"Departure Time",cellType:.FilterDepartureTVCell))
         //        tablerow.append(TableRow(title:"Arrival Time",cellType:.FilterDepartureTVCell))
@@ -347,7 +369,7 @@ class FilterVC: BaseTableVC{
         
         tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
         tablerow.append(TableRow(title:"Star Ratings",cellType:.PopularFiltersTVCell))
-        tablerow.append(TableRow(title:"Booking Type",data: paymentTypeArray,cellType:.CheckBoxTVCell))
+        //   tablerow.append(TableRow(title:"Booking Type",data: paymentTypeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Neighbourhood",data: neighbourwoodArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Near By Location's",data: nearBylocationsArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Amenities",data: amenitiesArray,cellType:.CheckBoxTVCell))
@@ -732,7 +754,7 @@ class FilterVC: BaseTableVC{
                     break
                     
                     
-                case "Stops":
+                case "No. Of Stops":
                     if cell.titlelbl.text == "0 Stop" {
                         noOfStopsFilterArray.append("0")
                     }else if cell.titlelbl.text == "1 Stop" {
@@ -869,7 +891,7 @@ class FilterVC: BaseTableVC{
                     break
                     
                     
-                case "Stops":
+                case "No. Of Stops":
                     
                     if cell.titlelbl.text == "0 Stop" {
                         
@@ -1449,6 +1471,29 @@ class FilterVC: BaseTableVC{
         print(startRatingArray.joined(separator: ","))
     }
     
+    //MARK: - didTapOnShowSliderBtn
+    override func didTapOnShowSliderBtn(cell: DurationSliderTVCell) {
+        print("Selected minimum value: \(cell.minValue1)")
+        print("Selected maximum value: \(cell.maxValue1)")
+        
+        minpricerangefilter = cell.minValue1
+        maxpricerangefilter = cell.maxValue1
+        
+        
+    }
+    
+    
+    //MARK: - didTapOnShowSliderBtn
+    override func didTapOnShowSliderBtn(cell: TransitTimeSliderTVCell) {
+        print("Selected minimum value: \(cell.minValue1)")
+        print("Selected maximum value: \(cell.maxValue1)")
+        
+        minpricerangefilter = cell.minValue1
+        maxpricerangefilter = cell.maxValue1
+        
+    }
+    
+    
     
 }
 
@@ -1477,6 +1522,20 @@ extension FilterVC {
             }else {
                 cell.hide()
                 cell.showbool = true
+            }
+        }else if let cell = tableView.cellForRow(at: indexPath) as? DurationSliderTVCell {
+            cell.showbool.toggle()
+            if cell.showbool{
+                cell.expand()
+            }else {
+                cell.hide()
+            }
+        }else if let cell = tableView.cellForRow(at: indexPath) as? TransitTimeSliderTVCell {
+            cell.showbool.toggle()
+            if cell.showbool{
+                cell.expand()
+            }else {
+                cell.hide()
             }
         }else if let cell = tableView.cellForRow(at: indexPath) as? FilterDepartureTVCell {
             if cell.showbool == true {
@@ -1770,8 +1829,6 @@ extension FilterVC {
             sportsResetFilter()
             defaults.set(true, forKey: "sportfilteronce")
         }
-        
-        
         
         
         if !sportsfilterModel.TournamentA.isEmpty {

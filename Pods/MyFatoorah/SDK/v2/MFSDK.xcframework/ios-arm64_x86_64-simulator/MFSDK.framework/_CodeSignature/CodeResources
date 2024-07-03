@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		bJ/Mx5w6K5y79AWsfFdrE1u0L5w=
+		zmCyLpskQSTc3Hak/yGMBGddRQc=
 		</data>
 		<key>MFSDK.storyboardc/4Jw-DZ-Lak-view-ERe-8D-hyD.nib</key>
 		<data>
@@ -87,6 +87,10 @@
 		<key>Modules/module.modulemap</key>
 		<data>
 		+pL84a4ShTJamglUoPZXQumlIEQ=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		6PyG/Sn5jh81qqGDYJ701GSxHBw=
 		</data>
 		<key>SDKResources.bundle/Button.html</key>
 		<data>
@@ -250,6 +254,13 @@
 			<key>hash2</key>
 			<data>
 			imsEtfZ2swOp1vuKIWAd50x03bPBDrrskeh+w5EbKt8=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3I1+H5p9p/M4HzB0a1kgbuYs4iW2n+O8u2YjT4RZvjU=
 			</data>
 		</dict>
 		<key>SDKResources.bundle/Button.html</key>

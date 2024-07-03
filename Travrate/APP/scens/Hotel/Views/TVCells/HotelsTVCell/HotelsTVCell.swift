@@ -12,6 +12,8 @@ protocol HotelsTVCellelegate{
     func didTapOnTermsAndConditionBtn(cell: HotelsTVCell)
     func didTapOnBookNowBtnAction(cell: HotelsTVCell)
     func didTapOnLocationBtnAction(cell: HotelsTVCell)
+    func didTapOnShareResultBtnAction(cell: HotelsTVCell)
+    
 }
 
 class HotelsTVCell: TableViewCell {
@@ -144,6 +146,11 @@ class HotelsTVCell: TableViewCell {
     
     @IBAction func didTapOnLocationBtnAction(_ sender: Any) {
         delegate?.didTapOnLocationBtnAction(cell: self)
+    }
+    
+    
+    @IBAction func didTapOnShareResultBtnAction(_ sender: Any) {
+        delegate?.didTapOnShareResultBtnAction(cell: self)
     }
     
 }

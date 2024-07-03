@@ -96,7 +96,7 @@ class CheckBoxTVCell: TableViewCell {
         //    downImg.image = UIImage(named: "down")
         holderView.backgroundColor = .WhiteColor
         titlelbl.textColor = .AppLabelColor
-        titlelbl.font = UIFont.OpenSansMedium(size: 17)
+        titlelbl.font = UIFont.OpenSansMedium(size: 16)
         titlelbl.numberOfLines = 0
         
         btnlbl.text = "+ Show More"
@@ -126,12 +126,14 @@ class CheckBoxTVCell: TableViewCell {
     
     
     func hide() {
+        downImg.image = UIImage(named: "downarrow")
         tvHeight.constant = 0
         btnView.isHidden = true
         btnViewHeight.constant = 0
     }
     
     func expand() {
+        downImg.image = UIImage(named: "dropup")
         tvHeight.constant = CGFloat(nameArray.count * 50)
         if nameArray.count > 3 {
             btnView.isHidden = false
@@ -366,7 +368,7 @@ extension CheckBoxTVCell {
             }
             
             
-        case "Stops":
+        case "No. Of Stops":
             
             if !filterModel.noOfStops.isEmpty {
                 // Check if the cell's title matches any value in the luggage array

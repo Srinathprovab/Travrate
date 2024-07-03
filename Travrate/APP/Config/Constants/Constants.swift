@@ -34,6 +34,10 @@ var basicloderBool = false
 var BASE_URL = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/"
 var BASE_URL1 = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/"
 
+
+//var BASE_URL = "https://travrate.com/android_ios_webservices/mobile/index.php/"
+//var BASE_URL1 = "https://travrate.com/android_ios_webservices/mobile/index.php/"
+
 var accessToken = "e3VzZXJuYW1lOmFudWpob29kYSxwYXNzd29yZDp0cmF2Z2F0ZUBtb2JpbGVhcHAsYXV0aHR5cGU6dGVzdH0="
 var authorizationkey = "Api-Key mXSkj6CS.hXxp9suftZUk7X8zagbA9GhQnhQL9KOh"
 //var authorizationkey = "Api-Key 5d8f6bb5377bcf52b7da1d5cfbef843c94ee04ea"
@@ -104,6 +108,7 @@ var travelerArray: [Traveler] = []
 var filterTap = String()
 var filterPrice = String()
 var prices = [String]()
+var durationArray = [String]()
 var hotelprices = [String]()
 
 var filterModel = FlightFilterModel()
@@ -124,6 +129,7 @@ var AirlinesArray = [String]()
 var ConnectingFlightsArray = [String]()
 var ConnectingAirportsArray = [String]()
 var luggageArray = [String]()
+var noofstopsArray = [String]()
 var neighbourwoodArray = [String]()
 var amenitiesArray = [String]()
 var nearBylocationsArray = [String]()
@@ -243,6 +249,7 @@ struct ApiEndpoints {
     static let general_get_more_option_at_same_price = "general/get_more_option_at_same_price"
     static let management_promocode = "management/promocode"
     static let ajax_share_itinerary = "ajax/share_itinerary"
+    static let ajax_share_itinerary_hotel = "ajax/share_itinerary_hotel"
     
     //LOGIN
     static let auth_mobile_login = "auth/mobile_login"

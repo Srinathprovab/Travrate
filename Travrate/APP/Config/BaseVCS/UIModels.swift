@@ -74,6 +74,8 @@ enum TVCellType {
     case ShareResultTVCell
     case SeeMoreRulesBtnTVCell
     case SelectOptionsTVCell
+    case DurationSliderTVCell
+    case TransitTimeSliderTVCell
     
     
     //Booking

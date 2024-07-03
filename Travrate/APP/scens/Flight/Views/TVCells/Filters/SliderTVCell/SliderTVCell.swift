@@ -61,9 +61,9 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
         holderView.backgroundColor = .WhiteColor
         lblHolderView.backgroundColor = .WhiteColor
         sliderHolderView.backgroundColor = .WhiteColor
-        downImg.image = UIImage(named: "downarrow")
+        downImg.image = UIImage(named: "dropup")
         downBtn.setTitle("", for: .normal)
-        setupLabels(lbl: titlelbl, text: "", textcolor: .TitleColor, font: .OpenSansRegular(size: 16))
+        setupLabels(lbl: titlelbl, text: "", textcolor: .TitleColor, font: .OpenSansMedium(size: 16))
         setuplabels(lbl: minlbl, text: "", textcolor: .TitleColor, font: .OpenSansBold(size: 16), align: .center)
         setuplabels(lbl: maxlbl, text: "", textcolor: .TitleColor, font: .OpenSansBold(size: 16), align: .center)
         rangeSlider.isHidden = true
@@ -77,12 +77,12 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
         // rangeSlider.step = 10
         rangeSlider.handleType = .rectangle
         rangeSlider.lineHeight = 5
-        rangeSlider.tintColor = .Buttoncolor
-        rangeSlider.tintColorBetweenHandles = HexColor("#00A898")
-        rangeSlider.lineBorderColor = HexColor("#00A898")
+        rangeSlider.tintColor = .lightGray.withAlphaComponent(0.5)
+        rangeSlider.tintColorBetweenHandles = .Buttoncolor
+        rangeSlider.lineBorderColor = .Buttoncolor
         rangeSlider.handleDiameter = 40.0
         rangeSlider.hideLabels = true
-        rangeSlider.handleColor = HexColor("#00A898")
+        rangeSlider.handleColor = .Buttoncolor
         rangeSlider.maxLabelColour = .black
         rangeSlider.minLabelColour = .black
         rangeSlider.delegate = self
@@ -94,6 +94,11 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
     func setupInitivalues() {
         if let selectedTap = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String {
             if selectedTap == "Flight" {
+                
+                
+            
+                
+                
                 if let minPrice = filterModel.minPriceRange, let maxPrice = filterModel.maxPriceRange {
                     // Both minPrice and maxPrice have values in filterModel
                     minValue = Float(minPrice)
@@ -167,11 +172,13 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
     func expand() {
         sliderViewHeight.constant = 120
         rangeSlider.isHidden = false
+        downImg.image = UIImage(named: "dropup")
     }
     
     func hide() {
         sliderViewHeight.constant = 0
         rangeSlider.isHidden = true
+        downImg.image = UIImage(named: "downarrow")
     }
     
     

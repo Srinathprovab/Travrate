@@ -22,37 +22,37 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="212" id="KGk-i7-Jjw" customClass="HotelsTVCell" customModule="Travrate" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="376" height="319"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="256" id="KGk-i7-Jjw" customClass="HotelsTVCell" customModule="Travrate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="363"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="376" height="319"/>
+                <rect key="frame" x="0.0" y="0.0" width="384" height="363"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmt-nr-OOh" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                        <rect key="frame" x="10" y="10" width="356" height="304"/>
+                        <rect key="frame" x="10" y="10" width="364" height="348"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="NOF-Dc-Pnq">
-                                <rect key="frame" x="0.0" y="0.0" width="356" height="180"/>
+                                <rect key="frame" x="0.0" y="0.0" width="364" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="7Uv-u1-31n"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saffron Boutique Hotel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHI-Ar-zNd">
-                                <rect key="frame" x="10" y="196" width="246" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Saffron Boutique Hotel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHI-Ar-zNd">
+                                <rect key="frame" x="10" y="196" width="254" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc" translatesAutoresizingMaskIntoConstraints="NO" id="iXw-PS-N0r">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="loc" translatesAutoresizingMaskIntoConstraints="NO" id="iXw-PS-N0r">
                                 <rect key="frame" x="10" y="230" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="IfQ-Ax-keb"/>
                                     <constraint firstAttribute="height" constant="15" id="lZg-2O-yiA"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXb-aM-agc">
-                                <rect key="frame" x="35" y="223" width="186" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXb-aM-agc">
+                                <rect key="frame" x="35" y="223" width="309" height="29"/>
                                 <string key="text">burj nahar intersection al murar 7 
 burj nahar intersection</string>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
@@ -60,7 +60,7 @@ burj nahar intersection</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="KWD150.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zn-zS-eGV">
-                                <rect key="frame" x="260.5" y="222.5" width="90.5" height="19"/>
+                                <rect key="frame" x="268.5" y="266.5" width="90.5" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90.5" id="nfy-Ow-m2F"/>
                                 </constraints>
@@ -69,13 +69,13 @@ burj nahar intersection</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price For 2 Night" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjj-nZ-Ba6">
-                                <rect key="frame" x="253" y="246.5" width="98" height="12"/>
+                                <rect key="frame" x="261" y="290.5" width="98" height="12"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
                                 <color key="textColor" name="SubTitleColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnd-gJ-NWc">
-                                <rect key="frame" x="5" y="271" width="120" height="20"/>
+                                <rect key="frame" x="5" y="274" width="120" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEv-H4-aWJ">
                                         <rect key="frame" x="8.5" y="3" width="103.5" height="14"/>
@@ -114,7 +114,7 @@ burj nahar intersection</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQL-06-Y9S" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                                <rect key="frame" x="256" y="266" width="90" height="30"/>
+                                <rect key="frame" x="264" y="310" width="90" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Room" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjP-xJ-OQO">
                                         <rect key="frame" x="4.5" y="7" width="81" height="16.5"/>
@@ -148,8 +148,8 @@ burj nahar intersection</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abC-d0-qSz" customClass="AARatingBar" customModule="AARatingBar">
-                                <rect key="frame" x="266" y="199.5" width="80" height="15"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="abC-d0-qSz" customClass="AARatingBar" customModule="AARatingBar">
+                                <rect key="frame" x="274" y="199.5" width="80" height="15"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <constraints>
@@ -162,7 +162,7 @@ burj nahar intersection</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDZ-BW-Bgg">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDZ-BW-Bgg">
                                 <rect key="frame" x="5" y="220" width="207" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="6UR-YZ-pa1"/>
@@ -174,11 +174,55 @@ burj nahar intersection</string>
                                     <action selector="didTapOnLocationBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f9f-m5-2Z9"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqw-G2-Qsy" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                                <rect key="frame" x="10" y="310" width="120" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Result" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxD-BQ-nbS">
+                                        <rect key="frame" x="30" y="7" width="80" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                        <color key="textColor" name="TitleColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bc-26-TE0">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="didTapOnShareResultBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uKx-lt-Vrs"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="HK6-ib-2kf">
+                                        <rect key="frame" x="5" y="5" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="Nts-FP-1wL"/>
+                                            <constraint firstAttribute="width" constant="20" id="shT-39-nLX"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="WhiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="1Bc-26-TE0" secondAttribute="bottom" id="8U5-Ds-hWa"/>
+                                    <constraint firstAttribute="width" constant="120" id="VNM-7E-N9R"/>
+                                    <constraint firstAttribute="trailing" secondItem="AxD-BQ-nbS" secondAttribute="trailing" constant="10" id="aUD-M7-qRr"/>
+                                    <constraint firstItem="1Bc-26-TE0" firstAttribute="leading" secondItem="kqw-G2-Qsy" secondAttribute="leading" id="b2S-bp-tzg"/>
+                                    <constraint firstItem="AxD-BQ-nbS" firstAttribute="centerY" secondItem="kqw-G2-Qsy" secondAttribute="centerY" id="cOe-uU-nf0"/>
+                                    <constraint firstItem="1Bc-26-TE0" firstAttribute="top" secondItem="kqw-G2-Qsy" secondAttribute="top" id="m8H-4g-gcB"/>
+                                    <constraint firstItem="AxD-BQ-nbS" firstAttribute="leading" secondItem="HK6-ib-2kf" secondAttribute="trailing" constant="5" id="orB-xd-MXV"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Bc-26-TE0" secondAttribute="trailing" id="s4m-6E-yYn"/>
+                                    <constraint firstAttribute="height" constant="30" id="wSs-5k-cXr"/>
+                                    <constraint firstItem="HK6-ib-2kf" firstAttribute="centerY" secondItem="1Bc-26-TE0" secondAttribute="centerY" id="yEK-tM-Fp3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="kqw-G2-Qsy" firstAttribute="top" secondItem="ETh-gF-DEf" secondAttribute="top" id="08h-6P-1iI"/>
                             <constraint firstAttribute="bottom" secondItem="vQL-06-Y9S" secondAttribute="bottom" constant="8" id="0j6-iw-6Ug"/>
-                            <constraint firstAttribute="bottom" secondItem="qnd-gJ-NWc" secondAttribute="bottom" constant="13" id="5OB-1W-gvV"/>
                             <constraint firstAttribute="trailing" secondItem="0zn-zS-eGV" secondAttribute="trailing" constant="5" id="6fk-PC-b2p"/>
                             <constraint firstItem="iXw-PS-N0r" firstAttribute="centerY" secondItem="vXb-aM-agc" secondAttribute="centerY" id="7Kp-C6-XER"/>
                             <constraint firstItem="abC-d0-qSz" firstAttribute="leading" secondItem="gHI-Ar-zNd" secondAttribute="trailing" constant="10" id="7LY-3G-6uL"/>
@@ -189,19 +233,20 @@ burj nahar intersection</string>
                             <constraint firstItem="vXb-aM-agc" firstAttribute="leading" secondItem="iXw-PS-N0r" secondAttribute="trailing" constant="10" id="MQo-ju-FKw"/>
                             <constraint firstItem="gHI-Ar-zNd" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" constant="10" id="NYU-A6-Twu"/>
                             <constraint firstItem="NOF-Dc-Pnq" firstAttribute="top" secondItem="lmt-nr-OOh" secondAttribute="top" id="RBC-i4-MQZ"/>
-                            <constraint firstItem="qnd-gJ-NWc" firstAttribute="centerY" secondItem="ETh-gF-DEf" secondAttribute="centerY" id="XfD-I4-Svi"/>
                             <constraint firstItem="vXb-aM-agc" firstAttribute="top" secondItem="gHI-Ar-zNd" secondAttribute="bottom" constant="5" id="ag4-aj-OKF"/>
                             <constraint firstItem="iXw-PS-N0r" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" constant="10" id="czj-Zt-CK9"/>
                             <constraint firstItem="qDZ-BW-Bgg" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" constant="5" id="eEm-dp-Cw0"/>
+                            <constraint firstItem="kqw-G2-Qsy" firstAttribute="top" secondItem="qnd-gJ-NWc" secondAttribute="bottom" constant="16" id="iUV-Q0-Tma"/>
+                            <constraint firstItem="kqw-G2-Qsy" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" constant="10" id="lH4-Rh-boL"/>
                             <constraint firstItem="NOF-Dc-Pnq" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" id="lMd-hU-J8m"/>
                             <constraint firstItem="abC-d0-qSz" firstAttribute="centerY" secondItem="gHI-Ar-zNd" secondAttribute="centerY" id="me4-49-zPJ"/>
                             <constraint firstAttribute="trailing" secondItem="vQL-06-Y9S" secondAttribute="trailing" constant="10" id="nEy-yj-aXH"/>
-                            <constraint firstAttribute="trailing" secondItem="vXb-aM-agc" secondAttribute="trailing" constant="135" id="qSQ-Lc-amD"/>
+                            <constraint firstAttribute="trailing" secondItem="vXb-aM-agc" secondAttribute="trailing" constant="20" id="qSQ-Lc-amD"/>
                             <constraint firstItem="tjj-nZ-Ba6" firstAttribute="top" secondItem="0zn-zS-eGV" secondAttribute="bottom" constant="5" id="qjK-ld-M2I"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="304" id="sLI-FW-ycm"/>
                             <constraint firstAttribute="trailing" secondItem="tjj-nZ-Ba6" secondAttribute="trailing" constant="5" id="v6I-4h-hJL"/>
                             <constraint firstItem="vQL-06-Y9S" firstAttribute="top" secondItem="tjj-nZ-Ba6" secondAttribute="bottom" constant="7.5" id="w6N-F2-T7E"/>
-                            <constraint firstItem="qnd-gJ-NWc" firstAttribute="top" secondItem="vXb-aM-agc" secondAttribute="bottom" constant="19" id="xBp-r5-kPa"/>
+                            <constraint firstItem="qnd-gJ-NWc" firstAttribute="top" secondItem="vXb-aM-agc" secondAttribute="bottom" constant="10" id="xBp-r5-kPa"/>
                             <constraint firstAttribute="trailing" secondItem="abC-d0-qSz" secondAttribute="trailing" constant="10" id="zyg-if-Irc"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -240,12 +285,13 @@ burj nahar intersection</string>
                 <outlet property="termsAndConditionlbl" destination="BEv-H4-aWJ" id="VtN-CN-XtE"/>
                 <outlet property="totalpricefornightslbl" destination="tjj-nZ-Ba6" id="nVm-YJ-QVx"/>
             </connections>
-            <point key="canvasLocation" x="178.2608695652174" y="240.73660714285714"/>
+            <point key="canvasLocation" x="-91.304347826086968" y="-1882.03125"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="city" width="340" height="185"/>
         <image name="loc" width="20" height="20"/>
+        <image name="share" width="16" height="16"/>
         <namedColor name="AppBorderColor">
             <color red="0.90200001001358032" green="0.9100000262260437" blue="0.90600001811981201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -260,6 +306,12 @@ burj nahar intersection</string>
         </namedColor>
         <namedColor name="SubTitleColor">
             <color red="0.60000002384185791" green="0.59600001573562622" blue="0.59600001573562622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TitleColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WhiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

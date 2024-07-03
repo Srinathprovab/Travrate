@@ -304,6 +304,17 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         present(vc, animated: true)
     }
     
+    
+    //MARK: - didTapOnShareResultBtnAction
+    override func didTapOnShareResultBtnAction(cell: HotelsTVCell)  {
+        gotoShareResultVC()
+    }
+    
+    func gotoShareResultVC() {
+        guard let vc = ShareResultVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
 }
 
 
@@ -470,14 +481,14 @@ extension SearchHotelsResultVC {
         amenitiesArray = Array(Set(amenitiesArray))
         hotelstarratingArray = Array(Set(hotelstarratingArray))
         
-//        list.forEach { i in
-//            let mapModel = MapModel(
-//                longitude: i.longitude ?? "",
-//                latitude: i.latitude ?? "",
-//                hotelname: i.name ?? ""
-//            )
-//            mapModelArray.append(mapModel)
-//        }
+        //        list.forEach { i in
+        //            let mapModel = MapModel(
+        //                longitude: i.longitude ?? "",
+        //                latitude: i.latitude ?? "",
+        //                hotelname: i.name ?? ""
+        //            )
+        //            mapModelArray.append(mapModel)
+        //        }
         
         
         DispatchQueue.main.async {[self] in
@@ -613,7 +624,7 @@ extension SearchHotelsResultVC {
                 }
                 
                 
-            
+                
                 
                 ccell = cell
             }
@@ -779,11 +790,11 @@ extension SearchHotelsResultVC:AppliedFilters{
     
     //MARK: - SORT BY FILTER
     func filtersSortByApplied(sortBy: SortParameter) {
-//        if MySingleton.shared.filterApplyedBool == true {
-//            isLoadingData = true
-//        }else {
-//            isLoadingData = false
-//        }
+        //        if MySingleton.shared.filterApplyedBool == true {
+        //            isLoadingData = true
+        //        }else {
+        //            isLoadingData = false
+        //        }
         
         
         commonTableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
@@ -917,6 +928,7 @@ extension SearchHotelsResultVC {
     
     //MARK: - updateTimer
     func updateTimer() {
+        
         let totalTime = MySingleton.shared.totalTime
         let minutes =  totalTime / 60
         let seconds = totalTime % 60

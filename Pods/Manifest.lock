@@ -4,12 +4,12 @@ PODS:
   - ApplePayButton (1.0.3)
   - DropDown (2.3.13)
   - EasyTipView (2.1.0)
-  - GoogleMaps (8.4.0):
-    - GoogleMaps/Maps (= 8.4.0)
-  - GoogleMaps/Base (8.4.0)
-  - GoogleMaps/Maps (8.4.0):
+  - GoogleMaps (9.0.0):
+    - GoogleMaps/Maps (= 9.0.0)
+  - GoogleMaps/Base (9.0.0)
+  - GoogleMaps/Maps (9.0.0):
     - GoogleMaps/Base
-  - IQKeyboardManager (6.5.18)
+  - IQKeyboardManager (6.5.19)
   - JTAppleCalendar (7.1.8)
   - MaterialComponents/AnimationTiming (124.2.0)
   - MaterialComponents/Availability (124.2.0)
@@ -42,15 +42,15 @@ PODS:
     - "MaterialComponents/TextControls+BaseTextFields"
   - MBProgressHUD (1.2.0)
   - MDFInternationalization (3.0.0)
-  - MyFatoorah (2.0.144)
+  - MyFatoorah (2.0.147)
   - Ottu (1.0.84):
     - ApplePayButton (= 1.0.3)
   - ReachabilitySwift (4.3.1)
-  - SDWebImage (5.19.1):
-    - SDWebImage/Core (= 5.19.1)
-  - SDWebImage/Core (5.19.1)
+  - SDWebImage (5.19.4):
+    - SDWebImage/Core (= 5.19.4)
+  - SDWebImage/Core (5.19.4)
   - SwiftRangeSlider (2.0.0)
-  - SwiftyJSON (5.0.1)
+  - SwiftyJSON (5.0.2)
   - Toast-Swift (5.0.1)
   - TTRangeSlider (1.0.7)
 
@@ -101,21 +101,21 @@ SPEC CHECKSUMS:
   ApplePayButton: e4f076c0b42f5f87fb08cef2728468f45bb9aa28
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
-  GoogleMaps: 8939898920281c649150e0af74aa291c60f2e77d
-  IQKeyboardManager: 67f92bb29b650c094c40bd11c0545b47bdd25c5b
+  GoogleMaps: 4907d0d42bf8cd58f56743e31f91d23c10682745
+  IQKeyboardManager: c8665b3396bd0b79402b4c573eac345a31c7d485
   JTAppleCalendar: b7fb40852f5f319fe55c8ec3861f1de0edc99cc8
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
-  MyFatoorah: 4d65b69e2f1ed57dc166c8af4b86291a2f5de463
+  MyFatoorah: 89e81099aa934baeb19779beb5969d9a5a8c8850
   Ottu: f72a91963ea841c0a7c242842fed8b255f87bb42
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
-  SDWebImage: 40b0b4053e36c660a764958bff99eed16610acbb
+  SDWebImage: 066c47b573f408f18caa467d71deace7c0f8280d
   SwiftRangeSlider: f86e3b637c961120158fa1a89277c8343845cbe4
-  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TTRangeSlider: 8cf72eca457c3b700c92eb0074be908c986e25ec
 
 PODFILE CHECKSUM: a0dd0a4e5dfa25dde17de5fead3c7fe1a480c3d5
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.15.2

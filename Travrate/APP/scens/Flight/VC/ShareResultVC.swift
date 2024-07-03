@@ -9,6 +9,7 @@ import UIKit
 
 
 class ShareResultVC: BaseTableVC, ShareResultViewModelDelegate {
+   
     
     @IBOutlet weak var holderView: UIView!
     
@@ -47,6 +48,7 @@ class ShareResultVC: BaseTableVC, ShareResultViewModelDelegate {
     }
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         MySingleton.shared.callboolapi = false
         dismiss(animated: true)
     }
@@ -122,7 +124,15 @@ class ShareResultVC: BaseTableVC, ShareResultViewModelDelegate {
         }else if emailid.isValidEmail() == false {
             showToast(message: "Enter Valid Email Address")
         }else {
-            callAPI()
+            
+            let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+            if tabselect == "Flight" {
+                callAPI()
+            }else {
+                callHotelAPI()
+            }
+            
+            
         }
     }
     
@@ -134,12 +144,7 @@ class ShareResultVC: BaseTableVC, ShareResultViewModelDelegate {
 
 extension ShareResultVC {
     
-    //token:640fee6fe6e442cd06cfb5bbefcbd196*_*1*_*K3IS4qWlxWo9g4Qt
-    //booking_source:PTBSID0000000016
-    //id:1PTBSID00000000160
-    //search_id:8035
-    //to_email:poovarasan.g@provabmail.com
-    //from:sathis
+   
     
     func callAPI() {
         MySingleton.shared.payload.removeAll()
@@ -189,6 +194,39 @@ extension ShareResultVC {
 }
 
 
+extension ShareResultVC {
+    func callHotelAPI() {
+        MySingleton.shared.payload.removeAll()
+
+        MySingleton.shared.payload["search_id"] = hsearchid
+        MySingleton.shared.payload["to_email"] = emailid
+        MySingleton.shared.payload["first_name"] = "\(fname)"
+        MySingleton.shared.payload["last_name"] = "\(lname)"
+        
+
+        
+        MySingleton.shared.shareresultvm?.CALL_Hotel_SHARE_RESULT_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    
+    func sahreHotelResultResponse(response: LoginModel) {
+        if response.status == false {
+            showToast(message: response.msg ?? "")
+        }else {
+            showToast(message: "Link Sended To Your Mail ... ")
+            let seconds = 2.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                callapibool = false
+                self.dismiss(animated: true)
+            }
+        }
+    }
+    
+    
+}
+
+
+
 //MARK: - addObserver
 extension ShareResultVC {
     
@@ -199,7 +237,7 @@ extension ShareResultVC {
         NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
-   
+        
         if MySingleton.shared.callboolapi == true {
             // callAPI()
         }

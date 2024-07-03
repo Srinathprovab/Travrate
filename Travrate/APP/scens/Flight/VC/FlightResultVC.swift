@@ -256,12 +256,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
         MySingleton.shared.shareresultaccesskey = cell.shareresultaccesskey
         MySingleton.shared.shareresultbookingsource = cell.shareresultbookingsource
         
-        print(MySingleton.shared.shareresultrandomid)
-        print(MySingleton.shared.shareresultaccesskey)
-        print(MySingleton.shared.shareresultbookingsource)
-        
-       
-        
+      
         if cell.bookNowlbl.text != "Select Fare" {
             gotoShareResultVC()
         }else {
@@ -1008,13 +1003,14 @@ extension FlightResultVC {
         
         flnew = list
         prices.removeAll()
+        durationArray.removeAll()
         kwdPriceArray.removeAll()
         dateArray.removeAll()
         AirlinesArray.removeAll()
         ConnectingFlightsArray.removeAll()
         ConnectingAirportsArray.removeAll()
         luggageArray.removeAll()
-        
+        noofstopsArray.removeAll()
         
         
         list.forEach { i in
@@ -1023,6 +1019,9 @@ extension FlightResultVC {
                 k.flight_details?.summary.map({ l in
                     
                     l.map { m in
+                        
+                        durationArray.append(m.duration ?? "")
+                       // durationArray.append("\(k.price?.api_total_display_fare ?? 0.0)")
                         
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "dd MMM yyyy"
@@ -1036,7 +1035,7 @@ extension FlightResultVC {
                         prices.append("\(k.price?.api_total_display_fare ?? 0.0)")
                         AirlinesArray.append(m.operator_name ?? "")
                         
-                        
+                        noofstopsArray.append("\(m.no_of_stops ?? 0)")
                         
                         if let convertedString = MySingleton.shared.convertToPC(input: m.weight_Allowance ?? "") {
                             luggageArray.append(convertedString)
@@ -1066,6 +1065,8 @@ extension FlightResultVC {
         ConnectingAirportsArray = ConnectingAirportsArray.unique()
         prices = prices.unique()
         luggageArray = luggageArray.unique()
+        durationArray = durationArray.unique()
+        noofstopsArray = noofstopsArray.unique()
         
         
         DispatchQueue.main.async {
@@ -1081,6 +1082,8 @@ extension FlightResultVC {
         
     }
     
+
+    
     
     func setupTVCell(list:[[FlightList]]) {
         MySingleton.shared.tablerow.removeAll()
@@ -1089,33 +1092,7 @@ extension FlightResultVC {
         var updatedUniqueList: [[FlightList]] = []
         updatedUniqueList = getUniqueElements_oneway(inputArray: list)
         
-        
-        //        updatedUniqueList.forEach { i in
-        //            i.forEach { j in
-        //
-        //
-        //
-        //                let similarFlights1 = similar(fare: Double(String(format: "%.2f", j.price?.api_total_display_fare ?? "")) ?? 0.0)
-        //
-        //
-        //                MySingleton.shared.tablerow.append(TableRow(title: j.selectedResult,
-        //                                                            subTitle: j.booking_source,
-        //                                                            refundable:j.fareType,
-        //                                                            key: "fl",
-        //                                                            text: j.booking_source_key,
-        //                                                            headerText: j.serialized_journeyKey,
-        //                                                            data: similarFlights1,
-        //                                                            moreData: j,
-        //                                                            tempInfo: j.farerulesref_Key,
-        //                                                            cellType:.FlightResultTVCell,
-        //                                                            userCatdetails:j.journeyKey,
-        //                                                            data1: j.flight_details?.summary,
-        //                                                            data2: j.farerulesref_content))
-        //            }
-        //        }
-        
-        
-       
+      
         
         updatedUniqueList.forEach { array in
             array.enumerated().forEach { (itemIndex, j) in
@@ -1149,6 +1126,12 @@ extension FlightResultVC {
         }
         
         
+        if updatedUniqueList.count <= 0 {
+            MySingleton.shared.tablerow.removeAll()
+            TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)
+        }else {
+            TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
+        }
         
         
         
@@ -1214,6 +1197,13 @@ extension FlightResultVC {
         
         arrayIndex += 1
         
+        
+        if updatedUniqueList.count <= 0 {
+            MySingleton.shared.tablerow.removeAll()
+            TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)
+        }else {
+            TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
+        }
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         commonTVData = MySingleton.shared.tablerow
