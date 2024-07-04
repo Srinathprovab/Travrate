@@ -189,7 +189,9 @@ class FilterVC: BaseTableVC{
         
         for noOfStops in noofstopsArray {
             if let stopsInt = Int(noOfStops) {
-                if stopsInt == 1 {
+                if stopsInt == 0 {
+                    stopsArray.append("\(stopsInt) Stop")
+                } else if stopsInt == 1 {
                     stopsArray.append("\(stopsInt) Stop")
                 } else {
                     stopsArray.append("\(stopsInt) Stops")
@@ -198,8 +200,12 @@ class FilterVC: BaseTableVC{
         }
         
         
+       // stopsArray = ["0 Stop","1 Stop","2 Stop"]
+        
+        
         print("====== print(stopsArray) =======")
-        print(stopsArray)
+        print(stopsArray.joined(separator: ","))
+        print(noofstopsArray.joined(separator: ","))
         
         setupUI()
         addObserver()

@@ -572,18 +572,29 @@ extension FlightResultVC:AppliedFilters {
                 guard let price = j.first?.price?.api_total_display_fare else { return false }
                 guard let details = j.first?.flight_details?.details else { return false }
                 
-                
-                details.forEach { i in
-                    i.forEach { j in
-                        j.layover_duration
-                    }
-                }
-                
-                
+               
+              //  let priceRangeMatch = (Double(price) ?? 0) >= minpricerange && (Double(price) ?? 0) <= maxpricerange
+
                 let priceRangeMatch = ((Double(price) ) >= minpricerange && (Double(price) ) <= maxpricerange)
-                let noOfStopsMatch = noofStopsArray.isEmpty || summary.contains(where: { noofStopsArray.contains("\($0.no_of_stops ?? 0)") }) == true
+//                let noOfStopsMatch = noofStopsArray.isEmpty || summary.contains(where: { noofStopsArray.contains("\($0.no_of_stops ?? 0)") }) == true
+                
+                
+                guard let firstFlightDetail = summary.first else {
+                    print("No flight details found in the first element")
+                    // Handle case where there are no flight details
+                    return false // or handle accordingly
+                }
+                // Now you can apply your no_of_stops matching logic on the `firstFlightDetail`
+                let noOfStopsMatch = noofStopsArray.isEmpty || noofStopsArray.contains("\(firstFlightDetail.no_of_stops ?? 0)")
+                
+                
+                
                 let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(j.first?.fareType ?? "")
                 let airlinesMatch = airlinesFilterArray.isEmpty || summary.contains(where: { airlinesFilterArray.contains($0.operator_name ?? "") }) == true
+                
+                
+                
+               
                 
                 
                 
@@ -649,10 +660,20 @@ extension FlightResultVC:AppliedFilters {
                 
                 
                 
-                let luggageMatch = luggageFilterArray.isEmpty || summary.contains(where: {
-                    let formattedWeight = MySingleton.shared.convertToPC(input: $0.weight_Allowance ?? "")
-                    return luggageFilterArray.contains(formattedWeight ?? "")
-                }) == true
+//                let luggageMatch = luggageFilterArray.isEmpty || summary.contains(where: {
+//                    let formattedWeight = MySingleton.shared.convertToPC(input: $0.weight_Allowance ?? "")
+//                    return luggageFilterArray.contains(formattedWeight ?? "")
+//                }) == true
+                
+                guard let firstFlightDetail = details.first?.first else {
+                    print("No flight details found in the first element")
+                    // Handle case where there are no flight details
+                    return false // or handle accordingly
+                }
+
+                // Now you can apply your luggage matching logic on the `firstFlightDetail`
+                let formattedWeight = MySingleton.shared.convertToPC(input: firstFlightDetail.weight_Allowance ?? "")
+                let luggageMatch = luggageFilterArray.isEmpty || formattedWeight.map { luggageFilterArray.contains($0) } ?? false
                 
                 
                 // Duration filtering
@@ -680,7 +701,9 @@ extension FlightResultVC:AppliedFilters {
                             // Check if layover duration matches the range
                             let isMatch = layoverDurationInHours >= minTransitTimerange && layoverDurationInHours <= maxransitTimerange
                             if isMatch {
+                                
                             } else {
+                                
                             }
                             return isMatch
                         } else {
@@ -692,7 +715,8 @@ extension FlightResultVC:AppliedFilters {
                 // Combine all matching conditions
                 let transitTimeMatch = !filteredDetails.isEmpty
                 
-                return priceRangeMatch && noOfStopsMatch && refundableMatch && airlinesMatch && connectingFlightsMatch && luggageMatch && depMatch && arrMatch && ConnectingAirportsMatch && durationMatch && transitTimeMatch
+                return priceRangeMatch && noOfStopsMatch && refundableMatch && airlinesMatch && connectingFlightsMatch && luggageMatch && depMatch && arrMatch && ConnectingAirportsMatch 
+                //&& durationMatch && transitTimeMatch
                 
                 
             }
@@ -1148,7 +1172,9 @@ extension FlightResultVC {
                             layoverdurationArray.append(layoverDuration)
                         }
                         
-                        ConnectingFlightsArray.append(b.operator_name ?? "")
+                        if b.operator_code != "J9" {
+                            ConnectingFlightsArray.append(b.operator_name ?? "")
+                        }
                         ConnectingAirportsArray.append(b.destination?.airport_name ?? "")
                     }
                 })
