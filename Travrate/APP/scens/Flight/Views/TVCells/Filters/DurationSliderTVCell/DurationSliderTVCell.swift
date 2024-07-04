@@ -45,10 +45,13 @@ class DurationSliderTVCell: TableViewCell, TTRangeSliderDelegate {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        
     }
     
     override func updateUI() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(durationreset), name: Notification.Name("durationreset"), object: nil)
+        
+        
         titlelbl.text = "Duration"
         self.key = cellInfo?.key ?? ""
         expand()
@@ -59,7 +62,13 @@ class DurationSliderTVCell: TableViewCell, TTRangeSliderDelegate {
         
     }
     
+    
+    @objc func durationreset() {
+        setupUI()
+    }
+    
     func setupUI() {
+        
         holderView.backgroundColor = .WhiteColor
         lblHolderView.backgroundColor = .WhiteColor
         sliderHolderView.backgroundColor = .WhiteColor
@@ -71,8 +80,6 @@ class DurationSliderTVCell: TableViewCell, TTRangeSliderDelegate {
         rangeSlider.isHidden = true
         rangeSlider.backgroundColor = .WhiteColor
         
-        
-        setupInitivalues()
         
         
         
@@ -90,65 +97,57 @@ class DurationSliderTVCell: TableViewCell, TTRangeSliderDelegate {
         rangeSlider.delegate = self
         downBtn.isHidden = true
         
+       
         
-    }
-    
-    func setupInitivalues() {
-        if let selectedTap = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String {
-            if selectedTap == "Flight" {
-                
-                
+        DispatchQueue.main.async {[self] in
             
-                
-                
-                if let minPrice = filterModel.minPriceRange, let maxPrice = filterModel.maxPriceRange {
-                    // Both minPrice and maxPrice have values in filterModel
-                    minValue = Float(minPrice)
-                    maxValue = Float(maxPrice)
-                    
-                    
-                    rangeSlider.minValue = prices.compactMap { Float($0) }.min()!
-                    rangeSlider.maxValue = prices.compactMap { Float($0) }.max()!
-                    
-                    // Set the thumbs to the values
-                    rangeSlider.selectedMinimum = minValue
-                    rangeSlider.selectedMaximum = maxValue
-                    
-                    //  Update the slider's appearance
-                    rangeSlider.setNeedsDisplay()
-                }
-                
-                
-            } else {
-                if let minPrice = hotelfiltermodel.minPriceRange, let maxPrice = hotelfiltermodel.maxPriceRange {
-                    // Both minPrice and maxPrice have values in filterModel
-                    minValue = Float(minPrice)
-                    maxValue = Float(maxPrice)
-                    
-                    
-                    rangeSlider.minValue = hotelprices.compactMap { Float($0) }.min()!
-                    rangeSlider.maxValue = hotelprices.compactMap { Float($0) }.max()!
-                    
-                    // Set the thumbs to the values
-                    rangeSlider.selectedMinimum = minValue
-                    rangeSlider.selectedMaximum = maxValue
-                    
-                    //  Update the slider's appearance
-                    rangeSlider.setNeedsDisplay()
-                }
-                
-            }
+            // setupInitivalues()
+            setupDurationSlider()
+            
+           
         }
         
-        // Update labels and other UI elements as needed
-        minValue1 = Double(String(format: "%.2f", Double(minValue))) ?? 0.0
-        maxValue1 = Double(String(format: "%.2f", Double(maxValue))) ?? 100.0 // Update the default max value here
-        minlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "") \(minValue1)"
-        maxlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "") \(maxValue1)"
-        
-        
+
     }
     
+    
+    
+    func setupDurationSlider() {
+        // Parse the duration strings into an array of Double values representing hours
+        let parsedDurations = durationArray.map { parseDuration($0) }
+        
+        // Determine the minimum and maximum values from the parsed durations
+        let minDurationValue = parsedDurations.min() ?? 0.0
+        let maxDurationValue = parsedDurations.max() ?? 0.0
+        
+        // Check if filterModel has valid min and max duration values
+        if let minDuration = filterModel.minDuration, let maxDuration = filterModel.maxDuration {
+            
+            
+            // Both minPrice and maxPrice have values in filterModel
+            minValue = Float(minDuration)
+            maxValue = Float(maxDuration)
+            
+            
+            rangeSlider.minValue = Float(minDurationValue)
+            rangeSlider.maxValue = Float(maxDurationValue)
+            
+            // Set the thumbs to the values
+            rangeSlider.selectedMinimum = minValue
+            rangeSlider.selectedMaximum = maxValue
+            
+            //  Update the slider's appearance
+            rangeSlider.setNeedsDisplay()
+            
+            // Update the labels to reflect the min and max values
+            updateDurationLabels(minValue: minValue, maxValue: maxValue)
+        }
+        
+     
+       
+    }
+    
+   
     
     
     func setupViews(v:UIView,radius:CGFloat,color:UIColor) {
@@ -191,9 +190,10 @@ class DurationSliderTVCell: TableViewCell, TTRangeSliderDelegate {
         minValue1 = Double(String(format: "%.2f", Double(minLabelText) ?? 0.0)) ?? 0.0
         maxValue1 = Double(String(format: "%.2f", Double(maxLabelText) ?? 0.0)) ?? 0.0
         
-        minlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "") \(minValue1)"
-        maxlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "") \(maxValue1)"
+        minlbl.text = "\(minValue1)"
+        maxlbl.text = "\(maxValue1)"
         
+        updateDurationLabels(minValue: Float(minValue1), maxValue: Float(maxValue1))
         
         delegate?.didTapOnShowSliderBtn(cell: self)
     }
@@ -204,4 +204,64 @@ class DurationSliderTVCell: TableViewCell, TTRangeSliderDelegate {
     }
     
     
+    func updateDurationLabels(minValue: Float, maxValue: Float) {
+        let minLabelText = formatDuration(hours: Double(minValue))
+        let maxLabelText = formatDuration(hours: Double(maxValue))
+        
+        minlbl.text = "\(minLabelText)"
+        maxlbl.text = "\(maxLabelText)"
+    }
+    
+}
+
+
+extension DurationSliderTVCell {
+    
+    func parseDuration(_ duration: String) -> Double {
+        var totalHours = 0.0
+        
+        // Extract days, hours, and minutes
+        let dayMatches = duration.matchingStrings(regex: "(\\d+)D")
+        let hourMatches = duration.matchingStrings(regex: "(\\d+)h")
+        let minuteMatches = duration.matchingStrings(regex: "(\\d+)m")
+        
+        if let dayMatch = dayMatches.first, let days = Double(dayMatch[1]) {
+            totalHours += days * 24.0
+        }
+        
+        if let hourMatch = hourMatches.first, let hours = Double(hourMatch[1]) {
+            totalHours += hours
+        }
+        
+        if let minuteMatch = minuteMatches.first, let minutes = Double(minuteMatch[1]) {
+            totalHours += minutes / 60.0
+        }
+        
+        return totalHours
+    }
+    
+   
+    
+    func formatDuration(hours: Double) -> String {
+        if hours < 24 {
+            return String(format: "%.1f Hours", hours)
+        } else {
+            let days = Int(hours / 24)
+            let remainingHours = hours.truncatingRemainder(dividingBy: 24)
+            return "\(days)D \(String(format: "%.1f Hours", remainingHours))"
+        }
+    }
+    
+}
+
+
+extension String {
+    func matchingStrings(regex: String) -> [[String]] {
+        guard let regex = try? NSRegularExpression(pattern: regex, options: []) else { return [] }
+        let nsString = self as NSString
+        let results = regex.matches(in: self, options: [], range: NSRange(location: 0, length: nsString.length))
+        return results.map { result in
+            (0..<result.numberOfRanges).map { result.range(at: $0).location != NSNotFound ? nsString.substring(with: result.range(at: $0)) : "" }
+        }
+    }
 }

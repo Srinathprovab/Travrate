@@ -21,6 +21,10 @@ struct FlightFilterModel {
     var connectingFlights: [String] = []
     var connectingAirports: [String] = []
     var luggage: [String] = []
+    var minDuration: Double?
+    var maxDuration: Double?
+    var minTransitTimeDuration: Double?
+    var maxTransitTimeDuration: Double?
 }
 
 
@@ -85,7 +89,11 @@ protocol AppliedFilters:AnyObject {
                           airlinesFilterArray:[String],
                           luggageFilterArray:[String],
                           connectingFlightsFilterArray:[String],
-                          ConnectingAirportsFilterArray:[String])
+                          ConnectingAirportsFilterArray:[String],
+                          mindurationrange:Double,
+                          maxdurationrange:Double,
+                          minTransitTimerange:Double,
+                          maxransitTimerange:Double)
     
     
     
@@ -125,6 +133,10 @@ class FilterVC: BaseTableVC{
     var sportsdelegate: AppliedSportsFilters?
     var minpricerangefilter = Double()
     var maxpricerangefilter = Double()
+    var mindurationrangefilter = Double()
+    var maxdurationrangefilter = Double()
+    var minTransitrangefilter = Double()
+    var maxTransitrangefilter = Double()
     var starRatingFilter = String()
     var stopsArray = [String]()
     var resetHotelBool = false
@@ -189,7 +201,7 @@ class FilterVC: BaseTableVC{
         print("====== print(stopsArray) =======")
         print(stopsArray)
         
-        
+        setupUI()
         addObserver()
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("nointernet"), object: nil)
         
@@ -206,7 +218,7 @@ class FilterVC: BaseTableVC{
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        setupUI()
+        //        setupUI()
     }
     
     
@@ -1113,20 +1125,6 @@ class FilterVC: BaseTableVC{
     //    }
     
     
-    //MARK: - didTapOnShowSliderBtn
-    override func didTapOnShowSliderBtn(cell: SliderTVCell) {
-        
-        
-        print("Selected minimum value: \(cell.minValue1)")
-        print("Selected maximum value: \(cell.maxValue1)")
-        
-        minpricerangefilter = cell.minValue1
-        maxpricerangefilter = cell.maxValue1
-        
-        
-    }
-    
-    
     //MARK: - didSelectDepartureTime
     override func didSelectDepartureTime(cell: DepartureTimeCVCell) {
         if cell.filterTitle == "Departure Time" {
@@ -1241,11 +1239,15 @@ class FilterVC: BaseTableVC{
         
         if let tabselect = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String {
             let pricesFloat = prices.compactMap { Float($0) }
+            let durationFloat = durationArray.compactMap { Float($0) }
+            let transitTimeFloat = layoverdurationArray.compactMap { Float($0) }
             
             if tabselect == "Flight" {
                 
                 if filterKey == "filter" {
                     
+                    
+                    //MARK: - Price
                     if minpricerangefilter != 0.0 {
                         filterModel.minPriceRange = minpricerangefilter
                     }else {
@@ -1259,6 +1261,37 @@ class FilterVC: BaseTableVC{
                     }
                     
                     
+                    //MARK: - Duration
+                    
+                    
+                    if mindurationrangefilter != 0.0 {
+                        filterModel.minDuration = mindurationrangefilter
+                    }else {
+                        filterModel.minDuration = Double(durationFloat.min() ?? 0.0)
+                    }
+                    
+                    if maxdurationrangefilter != 0.0 {
+                        filterModel.maxDuration = maxdurationrangefilter
+                    }else {
+                        filterModel.maxDuration = Double(durationFloat.max() ?? 0.0)
+                    }
+                    
+                    
+                    //MARK: - Transit Time Duration
+                    if minTransitrangefilter != 0.0 {
+                        filterModel.minTransitTimeDuration = minTransitrangefilter
+                    }else {
+                        filterModel.minTransitTimeDuration = Double(transitTimeFloat.min() ?? 0.0)
+                    }
+                    
+                    if maxTransitrangefilter != 0.0 {
+                        filterModel.maxTransitTimeDuration = maxTransitrangefilter
+                    }else {
+                        filterModel.maxTransitTimeDuration = Double(transitTimeFloat.max() ?? 0.0)
+                    }
+                    
+                    //MARK: - noOvernightFlightFilterStr
+                    
                     if noOvernightFlightFilterStr.isEmpty == false {
                         filterModel.noOvernightFlight = noOvernightFlightFilterStr
                     }else {
@@ -1270,6 +1303,9 @@ class FilterVC: BaseTableVC{
                     }else {
                         filterModel.departureTime.removeAll()
                     }
+                    
+                    
+                    //MARK: - arrivalTimeFilter
                     
                     if arrivalTimeFilter.isEmpty == false {
                         filterModel.arrivalTime = arrivalTimeFilter
@@ -1328,7 +1364,11 @@ class FilterVC: BaseTableVC{
                                                airlinesFilterArray: filterModel.airlines,
                                                luggageFilterArray: filterModel.luggage,
                                                connectingFlightsFilterArray: filterModel.connectingFlights,
-                                               ConnectingAirportsFilterArray: filterModel.connectingAirports)
+                                               ConnectingAirportsFilterArray: filterModel.connectingAirports,
+                                               mindurationrange: filterModel.minDuration ?? 0.0,
+                                               maxdurationrange: filterModel.maxDuration ?? 0.0,
+                                               minTransitTimerange: filterModel.minTransitTimeDuration ?? 0.0,
+                                               maxransitTimerange: filterModel.maxTransitTimeDuration ?? 0.0)
                     
                     
                 }else {
@@ -1450,6 +1490,8 @@ class FilterVC: BaseTableVC{
             
         }
         
+        
+        
         dismiss(animated: true)
     }
     
@@ -1471,8 +1513,11 @@ class FilterVC: BaseTableVC{
         print(startRatingArray.joined(separator: ","))
     }
     
-    //MARK: - didTapOnShowSliderBtn
-    override func didTapOnShowSliderBtn(cell: DurationSliderTVCell) {
+    
+    //MARK: - didTapOnShowSliderBtn  SliderTVCell
+    override func didTapOnShowSliderBtn(cell: SliderTVCell) {
+        
+        
         print("Selected minimum value: \(cell.minValue1)")
         print("Selected maximum value: \(cell.maxValue1)")
         
@@ -1482,14 +1527,23 @@ class FilterVC: BaseTableVC{
         
     }
     
+    //MARK: - didTapOnShowSliderBtn  DurationSliderTVCell
+    override func didTapOnShowSliderBtn(cell: DurationSliderTVCell) {
+        print("Selected minimum value: \(cell.minValue1)")
+        print("Selected maximum value: \(cell.maxValue1)")
+        
+        mindurationrangefilter = cell.minValue1
+        maxdurationrangefilter = cell.maxValue1
+    }
+    
     
     //MARK: - didTapOnShowSliderBtn
     override func didTapOnShowSliderBtn(cell: TransitTimeSliderTVCell) {
         print("Selected minimum value: \(cell.minValue1)")
         print("Selected maximum value: \(cell.maxValue1)")
         
-        minpricerangefilter = cell.minValue1
-        maxpricerangefilter = cell.maxValue1
+        minTransitrangefilter = cell.minValue1
+        maxTransitrangefilter = cell.maxValue1
         
     }
     
@@ -1564,7 +1618,7 @@ extension FilterVC {
         // Reset all values in the FilterModel
         
         
-        
+        //MARK: - PRICE
         let pricesFloat = prices.compactMap { Float($0) }
         filterModel.minPriceRange = Double((pricesFloat.min() ?? prices.compactMap { Float($0) }.min()) ?? 0.0)
         filterModel.maxPriceRange = Double((pricesFloat.max() ?? prices.compactMap { Float($0) }.max()) ?? 0.0)
@@ -1573,6 +1627,45 @@ extension FilterVC {
         }
         minpricerangefilter = filterModel.minPriceRange ?? 0.0
         maxpricerangefilter = filterModel.maxPriceRange ?? 0.0
+        
+        
+        
+        //MARK: - Duration
+        // Parse the duration strings into an array of Double values representing hours
+        let parsedDurations = durationArray.map { parseDuration($0) }
+        // Determine the minimum and maximum values from the parsed durations
+        let minDurationValue = parsedDurations.min() ?? 0.0
+        let maxDurationValue = parsedDurations.max() ?? 0.0
+        
+        filterModel.minDuration = minDurationValue
+        filterModel.maxDuration = maxDurationValue
+        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? DurationSliderTVCell {
+            cell.setupUI()
+        }
+        mindurationrangefilter = filterModel.minDuration ?? minDurationValue
+        maxdurationrangefilter = filterModel.maxDuration ?? maxDurationValue
+        
+        
+        
+        //MARK: - Transit Time
+        // Parse the duration strings into an array of Double values representing hours
+        let parsedDurations1 = layoverdurationArray.map { parseDuration($0) }
+        // Determine the minimum and maximum values from the parsed durations
+        let minDurationValue1 = parsedDurations1.min() ?? 0.0
+        let maxDurationValue1 = parsedDurations1.max() ?? 0.0
+        
+        filterModel.minTransitTimeDuration = minDurationValue1
+        filterModel.maxTransitTimeDuration = maxDurationValue1
+        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TransitTimeSliderTVCell {
+            cell.setupUI()
+        }
+        
+        minTransitrangefilter = filterModel.minTransitTimeDuration ?? minDurationValue1
+        maxTransitrangefilter = filterModel.maxTransitTimeDuration ?? maxDurationValue1
+        
+        NotificationCenter.default.post(name: NSNotification.Name("durationreset"), object: nil)
+        
+        
         
         filterModel.noOfStops = []
         filterModel.refundableTypes = []
@@ -1736,7 +1829,7 @@ extension FilterVC {
             defaults.set(true, forKey: "flightfilteronce")
         }
         
-        
+        //MARK: - Price
         if filterModel.minPriceRange != 0.0 {
             minpricerangefilter = filterModel.minPriceRange ?? Double(prices.compactMap { Float($0) }.min()!)
         }
@@ -1745,6 +1838,32 @@ extension FilterVC {
             maxpricerangefilter = filterModel.maxPriceRange ?? Double(prices.compactMap { Float($0) }.max()!)
         }
         
+        
+        // MARK: - Duration
+        if filterModel.minDuration != 0.0 {
+            let minDuration = durationArray.compactMap { Float($0) }.min() ?? 0.0 // Provide a default value
+            mindurationrangefilter = filterModel.minDuration ?? Double(minDuration)
+        }
+        
+        if filterModel.maxDuration != 0.0 {
+            let maxDuration = durationArray.compactMap { Float($0) }.max() ?? 0.0 // Provide a default value
+            maxdurationrangefilter = filterModel.maxDuration ?? Double(maxDuration)
+        }
+        
+        // MARK: - TransitTime
+        if filterModel.minTransitTimeDuration != 0.0 {
+            let minDuration = layoverdurationArray.compactMap { Float($0) }.min() ?? 0.0 // Provide a default value
+            minTransitrangefilter = filterModel.minTransitTimeDuration ?? Double(minDuration)
+        }
+        
+        if filterModel.maxTransitTimeDuration != 0.0 {
+            let maxDuration = layoverdurationArray.compactMap { Float($0) }.max() ?? 0.0 // Provide a default value
+            maxTransitrangefilter = filterModel.maxTransitTimeDuration ?? Double(maxDuration)
+        }
+        
+        
+        
+        //MARK: -
         
         if !filterModel.noOfStops.isEmpty {
             noOfStopsFilterArray = filterModel.noOfStops
@@ -1851,5 +1970,44 @@ extension FilterVC {
         
     }
     
+    
+}
+
+
+extension FilterVC {
+    
+    func parseDuration(_ duration: String) -> Double {
+        var totalHours = 0.0
+        
+        // Extract days, hours, and minutes
+        let dayMatches = duration.matchingStrings(regex: "(\\d+)D")
+        let hourMatches = duration.matchingStrings(regex: "(\\d+)h")
+        let minuteMatches = duration.matchingStrings(regex: "(\\d+)m")
+        
+        if let dayMatch = dayMatches.first, let days = Double(dayMatch[1]) {
+            totalHours += days * 24.0
+        }
+        
+        if let hourMatch = hourMatches.first, let hours = Double(hourMatch[1]) {
+            totalHours += hours
+        }
+        
+        if let minuteMatch = minuteMatches.first, let minutes = Double(minuteMatch[1]) {
+            totalHours += minutes / 60.0
+        }
+        
+        return totalHours
+    }
+    
+    
+    func formatDuration(hours: Double) -> String {
+        if hours < 24 {
+            return String(format: "%.1f Hours", hours)
+        } else {
+            let days = Int(hours / 24)
+            let remainingHours = hours.truncatingRemainder(dividingBy: 24)
+            return "\(days)D \(String(format: "%.1f Hours", remainingHours))"
+        }
+    }
     
 }

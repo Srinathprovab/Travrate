@@ -271,7 +271,6 @@ extension FlightResultTVCell {
             let similarListCount = similarList1.count
             
             // Debugging: Print the count of similarList1
-            print("Similar List Count: \(similarListCount)")
             
             if similarListCount > 1 {
                 

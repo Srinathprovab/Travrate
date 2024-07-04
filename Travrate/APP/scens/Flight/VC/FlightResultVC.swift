@@ -87,7 +87,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
             showToast(message: "Still Under Development")
         }
         
-       
+        
     }
     
     func gotoFlightDeatilsVC(){
@@ -150,7 +150,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
                 showToast(message: "Still Under Development")
             }
             
-           
+            
         }else {
             showToast(message: "No Flights Found")
         }
@@ -204,6 +204,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
     
     //MARK: - gotoFilterVC
     func gotoFilterVC(strkey:String) {
+        NotificationCenter.default.post(name: NSNotification.Name("durationreset"), object: nil)
         guard let vc = FilterVC.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext
         vc.delegate = self
@@ -256,7 +257,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
         MySingleton.shared.shareresultaccesskey = cell.shareresultaccesskey
         MySingleton.shared.shareresultbookingsource = cell.shareresultbookingsource
         
-      
+        
         if cell.bookNowlbl.text != "Select Fare" {
             gotoShareResultVC()
         }else {
@@ -295,7 +296,6 @@ extension FlightResultVC {
                 
                 // Convert the next and previous day's dates back to a string format
                 let previousDayString = dateFormatter.string(from: previousDay!)
-                print("previousDayString ==== > \(previousDayString)")
                 defaults.set(previousDayString, forKey: UserDefaultsKeys.calDepDate)
                 //  MySingleton.shared.payload["depature"] = defaults.string(forKey:UserDefaultsKeys.calDepDate)
                 
@@ -330,7 +330,6 @@ extension FlightResultVC {
                 }else {
                     
                     
-                    print("nextDayString ==== > \(nextDayString)")
                     defaults.set(nextDayString, forKey: UserDefaultsKeys.calDepDate)
                     //   MySingleton.shared.payload["depature"] = defaults.string(forKey:UserDefaultsKeys.calDepDate)
                     MySingleton.shared.payload["depature"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
@@ -368,7 +367,6 @@ extension FlightResultVC {
                 
                 // Convert the next and previous day's dates back to a string format
                 let nextDayString = dateFormatter.string(from: nextDay!)
-                print("nextDayString ==== > \(nextDayString)")
                 defaults.set(nextDayString, forKey: UserDefaultsKeys.calDepDate)
                 //   MySingleton.shared.payload["depature"] = defaults.string(forKey:UserDefaultsKeys.calDepDate)
                 MySingleton.shared.payload["depature"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
@@ -395,7 +393,6 @@ extension FlightResultVC {
                 
                 // Convert the next and previous day's dates back to a string format
                 let nextDayString = dateFormatter.string(from: nextDay!)
-                print("nextDayString ==== > \(nextDayString)")
                 
                 if self.retDatelbl.text == nextDayString {
                     showToast(message: "Journey Dates Should Not Same")
@@ -510,6 +507,10 @@ extension Sequence where Iterator.Element: Hashable {
 //MARK: - AppliedFilters
 
 extension FlightResultVC:AppliedFilters {
+    
+    
+    
+    
     func hotelFilterByApplied(minpricerange: Double, maxpricerange: Double, starRating: String, starRatingNew: [String], refundableTypeArray: [String], nearByLocA: [String], niberhoodA: [String], aminitiesA: [String]) {
         
     }
@@ -541,7 +542,7 @@ extension FlightResultVC:AppliedFilters {
     }
     
     
-    func filtersByApplied(minpricerange: Double, maxpricerange: Double, noofStopsArray: [String], refundableTypeArray: [String], departureTime: [String], arrivalTime: [String], noOvernightFlight: [String], airlinesFilterArray: [String], luggageFilterArray: [String], connectingFlightsFilterArray: [String], ConnectingAirportsFilterArray: [String]) {
+    func filtersByApplied(minpricerange: Double, maxpricerange: Double, noofStopsArray: [String], refundableTypeArray: [String], departureTime: [String], arrivalTime: [String], noOvernightFlight: [String], airlinesFilterArray: [String], luggageFilterArray: [String], connectingFlightsFilterArray: [String], ConnectingAirportsFilterArray: [String], mindurationrange: Double, maxdurationrange: Double, minTransitTimerange: Double, maxransitTimerange: Double) {
         
         print(" ===== minpricerange ====== \n\(minpricerange)")
         print(" ===== maxpricerange ====== \n\(maxpricerange)")
@@ -556,6 +557,13 @@ extension FlightResultVC:AppliedFilters {
         print(" ===== luggageFilterArray ====== \n\(luggageFilterArray)")
         
         
+        print(" ===== mindurationrange ====== \n\(mindurationrange)")
+        print(" ===== maxdurationrange ====== \n\(maxdurationrange)")
+        
+        print(" ===== minTransitTimerange ====== \n\(minTransitTimerange)")
+        print(" ===== maxransitTimerange ====== \n\(maxransitTimerange)")
+        
+        
         
         let sortedArray = flnew.map { flight in
             flight.filter { j in
@@ -563,6 +571,14 @@ extension FlightResultVC:AppliedFilters {
                 guard let summary = j.first?.flight_details?.summary else { return false }
                 guard let price = j.first?.price?.api_total_display_fare else { return false }
                 guard let details = j.first?.flight_details?.details else { return false }
+                
+                
+                details.forEach { i in
+                    i.forEach { j in
+                        j.layover_duration
+                    }
+                }
+                
                 
                 let priceRangeMatch = ((Double(price) ) >= minpricerange && (Double(price) ) <= maxpricerange)
                 let noOfStopsMatch = noofStopsArray.isEmpty || summary.contains(where: { noofStopsArray.contains("\($0.no_of_stops ?? 0)") }) == true
@@ -639,8 +655,46 @@ extension FlightResultVC:AppliedFilters {
                 }) == true
                 
                 
+                // Duration filtering
+                let durationMatch = summary.allSatisfy { flightDetail in
+                    if let durationString = flightDetail.duration, let durationInHours = parseDuration(durationString) {
+                        return durationInHours >= mindurationrange && durationInHours <= maxdurationrange
+                    }
+                    return false
+                }
                 
-                return priceRangeMatch && noOfStopsMatch && refundableMatch && airlinesMatch && connectingFlightsMatch && luggageMatch && depMatch && arrMatch && ConnectingAirportsMatch
+               
+
+                // Iterate over details and filter flight details based on various conditions
+                let filteredDetails = details.flatMap { subDetails -> [Details] in
+                    return subDetails.filter { flightDetail -> Bool in
+                        // Match conditions for each flight detail
+                        guard let layoverDurationString = flightDetail.layover_duration, !layoverDurationString.isEmpty else {
+                            // Handle case where layover duration is nil or empty
+                            return false
+                        }
+                        
+                        // Parse the duration and compare it with the range
+                        if let layoverDurationInHours = parseDuration(layoverDurationString) {
+                           
+                            // Check if layover duration matches the range
+                            let isMatch = layoverDurationInHours >= minTransitTimerange && layoverDurationInHours <= maxransitTimerange
+                            if isMatch {
+                            } else {
+                            }
+                            return isMatch
+                        } else {
+                            return false
+                        }
+                    }
+                }
+
+                // Combine all matching conditions
+                let transitTimeMatch = !filteredDetails.isEmpty
+                
+                return priceRangeMatch && noOfStopsMatch && refundableMatch && airlinesMatch && connectingFlightsMatch && luggageMatch && depMatch && arrMatch && ConnectingAirportsMatch && durationMatch && transitTimeMatch
+                
+                
             }
         }
         
@@ -649,6 +703,42 @@ extension FlightResultVC:AppliedFilters {
         
     }
     
+    
+    // Helper function to parse duration strings into a numerical value representing hours
+    func parseDuration(_ duration: String) -> Double? {
+        var totalHours: Double = 0.0
+        
+        // Regular expressions to match hours, minutes, and days
+        let hourRegex = try! NSRegularExpression(pattern: "(\\d+)h")
+        let minuteRegex = try! NSRegularExpression(pattern: "(\\d+)m")
+        let dayRegex = try! NSRegularExpression(pattern: "(\\d+)D")
+        
+        // Find hours
+        if let hourMatch = hourRegex.firstMatch(in: duration, options: [], range: NSRange(location: 0, length: duration.utf16.count)) {
+            if let hourRange = Range(hourMatch.range(at: 1), in: duration) {
+                let hours = Double(duration[hourRange]) ?? 0.0
+                totalHours += hours
+            }
+        }
+        
+        // Find minutes
+        if let minuteMatch = minuteRegex.firstMatch(in: duration, options: [], range: NSRange(location: 0, length: duration.utf16.count)) {
+            if let minuteRange = Range(minuteMatch.range(at: 1), in: duration) {
+                let minutes = Double(duration[minuteRange]) ?? 0.0
+                totalHours += minutes / 60.0
+            }
+        }
+        
+        // Find days
+        if let dayMatch = dayRegex.firstMatch(in: duration, options: [], range: NSRange(location: 0, length: duration.utf16.count)) {
+            if let dayRange = Range(dayMatch.range(at: 1), in: duration) {
+                let days = Double(duration[dayRange]) ?? 0.0
+                totalHours += days * 24.0
+            }
+        }
+        
+        return totalHours
+    }
     
     //MARK: - SORT BY FILTER
     func filtersSortByApplied(sortBy: SortParameter) {
@@ -947,7 +1037,7 @@ extension FlightResultVC {
         
         cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tcity) ?? "")"
         
-       
+        
         
         paxlbl.text = "\(MySingleton.shared.adultsCount) Adult | \(MySingleton.shared.childCount) Child | \(MySingleton.shared.infantsCount) Infant | \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "")"
         depDatelbl.text = response.data?.search_params?.depature ?? ""
@@ -1011,6 +1101,7 @@ extension FlightResultVC {
         ConnectingAirportsArray.removeAll()
         luggageArray.removeAll()
         noofstopsArray.removeAll()
+        layoverdurationArray.removeAll()
         
         
         list.forEach { i in
@@ -1021,7 +1112,8 @@ extension FlightResultVC {
                     l.map { m in
                         
                         durationArray.append(m.duration ?? "")
-                       // durationArray.append("\(k.price?.api_total_display_fare ?? 0.0)")
+                        
+                        // durationArray.append("\(k.price?.api_total_display_fare ?? 0.0)")
                         
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "dd MMM yyyy"
@@ -1039,6 +1131,7 @@ extension FlightResultVC {
                         
                         if let convertedString = MySingleton.shared.convertToPC(input: m.weight_Allowance ?? "") {
                             luggageArray.append(convertedString)
+                            
                         } else {
                             print("Invalid input format")
                         }
@@ -1048,7 +1141,13 @@ extension FlightResultVC {
                 })
                 
                 k.flight_details?.details?.forEach({ a in
+                    
                     a.forEach { b in
+                        
+                        if let layoverDuration = b.layover_duration, !layoverDuration.isEmpty {
+                            layoverdurationArray.append(layoverDuration)
+                        }
+                        
                         ConnectingFlightsArray.append(b.operator_name ?? "")
                         ConnectingAirportsArray.append(b.destination?.airport_name ?? "")
                     }
@@ -1067,7 +1166,7 @@ extension FlightResultVC {
         luggageArray = luggageArray.unique()
         durationArray = durationArray.unique()
         noofstopsArray = noofstopsArray.unique()
-        
+        layoverdurationArray = layoverdurationArray.unique()
         
         DispatchQueue.main.async {
             self.setupTVCell(list: MySingleton.shared.flights)
@@ -1082,7 +1181,7 @@ extension FlightResultVC {
         
     }
     
-
+    
     
     
     func setupTVCell(list:[[FlightList]]) {
@@ -1092,7 +1191,7 @@ extension FlightResultVC {
         var updatedUniqueList: [[FlightList]] = []
         updatedUniqueList = getUniqueElements_oneway(inputArray: list)
         
-      
+        
         
         updatedUniqueList.forEach { array in
             array.enumerated().forEach { (itemIndex, j) in
@@ -1109,7 +1208,7 @@ extension FlightResultVC {
                                                             headerText: j.serialized_journeyKey,
                                                             data: similarFlights1,
                                                             key1: uniqueID,
-                                                            moreData: j, 
+                                                            moreData: j,
                                                             tempText: j.access_key,
                                                             tempInfo: j.farerulesref_Key,
                                                             cellType:.FlightResultTVCell,
@@ -1118,7 +1217,7 @@ extension FlightResultVC {
                                                             data2: j.farerulesref_content))
                 
                 
-                print(uniqueID)
+                
             }
             arrayIndex += 1
             
@@ -1155,7 +1254,7 @@ extension FlightResultVC {
         // Combine all parts to form the unique ID
         return "\(prefix)\(bookingSourcePart)\((Int(prefix) ?? 0) - 1)"
     }
-
+    
     
     
     
@@ -1167,8 +1266,8 @@ extension FlightResultVC {
         var updatedUniqueList: [FlightList] = []
         updatedUniqueList = getUniqueElements(inputArray: list)
         
-       // updatedUniqueList.forEach { j in
-            updatedUniqueList.enumerated().forEach { (itemIndex, j) in
+        // updatedUniqueList.forEach { j in
+        updatedUniqueList.enumerated().forEach { (itemIndex, j) in
             
             
             let uniqueID = generateUniqueID(for: arrayIndex, bookingSource: j.booking_source!, itemIndex: itemIndex)
@@ -1190,8 +1289,8 @@ extension FlightResultVC {
                                                         userCatdetails:j.journeyKey,
                                                         data1: j.flight_details?.summary,
                                                         data2: j.farerulesref_content))
-                
-               
+            
+            
             
         }
         
