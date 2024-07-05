@@ -2784,8 +2784,8 @@
 		65207A722BF4942F0076EF76 /* SliderTVCell */ = {
 			isa = PBXGroup;
 			children = (
-				65207A732BF4942F0076EF76 /* SliderTVCell.xib */,
 				65207A742BF4942F0076EF76 /* SliderTVCell.swift */,
+				65207A732BF4942F0076EF76 /* SliderTVCell.xib */,
 			);
 			path = SliderTVCell;
 			sourceTree = "<group>";

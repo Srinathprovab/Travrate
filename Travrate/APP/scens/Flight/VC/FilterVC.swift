@@ -146,7 +146,8 @@ class FilterVC: BaseTableVC{
     var filterKey = String()
     var noOverNightFlightArray = ["No"]
     var paymentTypeArray = ["Refundable","Non Refundable"]
-    
+    var selectedDepartureTime = [String]()
+    var selectedArrivalTimeFilter = [String]()
     
     
     
@@ -323,9 +324,7 @@ class FilterVC: BaseTableVC{
         tablerow.append(TableRow(title:"No. Of Stops",data: stopsArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Refundable Type",data: faretypeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Luggage",data: luggageArray,cellType:.CheckBoxTVCell))
-        tablerow.append(TableRow(cellType:.DurationSliderTVCell))
-        tablerow.append(TableRow(cellType:.TransitTimeSliderTVCell))
-        
+       
         //        tablerow.append(TableRow(title:"Departure Time",cellType:.FilterDepartureTVCell))
         //        tablerow.append(TableRow(title:"Arrival Time",cellType:.FilterDepartureTVCell))
         
@@ -344,6 +343,10 @@ class FilterVC: BaseTableVC{
         
         tablerow.append(TableRow(title:"No Overnight Flight",data: noOverNightFlightArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Airlines",data: AirlinesArray,cellType:.CheckBoxTVCell))
+        
+        tablerow.append(TableRow(cellType:.DurationSliderTVCell))
+        tablerow.append(TableRow(cellType:.TransitTimeSliderTVCell))
+        
         tablerow.append(TableRow(title:"Connecting Flights",data: ConnectingFlightsArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Connecting Airports",data: ConnectingAirportsArray,cellType:.CheckBoxTVCell))
         
@@ -764,11 +767,11 @@ class FilterVC: BaseTableVC{
                     
                     
                 case "Departurn Time":
-                    departureTimeFilter.append(cell.titlelbl.text ?? "")
+                    selectedDepartureTime.append(cell.titlelbl.text ?? "")
                     break
                     
                 case "Arrival Time":
-                    arrivalTimeFilter.append(cell.titlelbl.text ?? "")
+                    selectedArrivalTimeFilter.append(cell.titlelbl.text ?? "")
                     break
                     
                     
@@ -896,15 +899,15 @@ class FilterVC: BaseTableVC{
                 switch cell.filtertitle {
                     
                     
-                case "Departure Time":
-                    if let index = departureTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
-                        departureTimeFilter.remove(at: index)
+                case "Departurn Time":
+                    if let index = selectedDepartureTime.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedDepartureTime.remove(at: index)
                     }
                     break
                     
                 case "Arrival Time":
-                    if let index = arrivalTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
-                        arrivalTimeFilter.remove(at: index)
+                    if let index = selectedArrivalTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedArrivalTimeFilter.remove(at: index)
                     }
                     break
                     
@@ -1132,78 +1135,80 @@ class FilterVC: BaseTableVC{
     
     
     //MARK: - didSelectDepartureTime
-    override func didSelectDepartureTime(cell: DepartureTimeCVCell) {
-        if cell.filterTitle == "Departure Time" {
-            
-            
-            switch cell.titlelbl.text {
-                
-            case "from 12AM":
-                departureTimeFilter.append("12 am - 6 am")
-                break
-                
-            case "from 6AM":
-                departureTimeFilter.append("06 am - 12 pm")
-                break
-                
-            case "from 12PM":
-                departureTimeFilter.append("12 pm - 06 pm")
-                break
-                
-                
-            case "from 6PM":
-                departureTimeFilter.append("06 pm - 12 am")
-                break
-                
-            default:
-                break
-            }
-            
-            
-        }else {
-            arrivalTimeFilter.append(cell.titlelbl.text ?? "")
-            
-            
-            switch cell.titlelbl.text {
-                
-            case "from 12AM":
-                arrivalTimeFilter.append("12 am - 6 am")
-                break
-                
-            case "from 6AM":
-                arrivalTimeFilter.append("06 am - 12 pm")
-                break
-                
-            case "from 12PM":
-                arrivalTimeFilter.append("12 pm - 06 pm")
-                break
-                
-                
-            case "from 6PM":
-                arrivalTimeFilter.append("06 pm - 12 am")
-                break
-                
-            default:
-                break
-            }
-        }
-    }
+//    override func didSelectDepartureTime(cell: DepartureTimeCVCell) {
+//        if cell.filterTitle == "Departure Time" {
+//            
+//            
+//            switch cell.titlelbl.text {
+//                
+//            case "from 12AM":
+//                departureTimeFilter.append("12 am - 6 am")
+//                break
+//                
+//            case "from 6AM":
+//                departureTimeFilter.append("06 am - 12 pm")
+//                break
+//                
+//            case "from 12PM":
+//                departureTimeFilter.append("12 pm - 06 pm")
+//                break
+//                
+//                
+//            case "from 6PM":
+//                departureTimeFilter.append("06 pm - 12 am")
+//                break
+//                
+//            default:
+//                break
+//            }
+//            
+//            
+//        }else {
+//            arrivalTimeFilter.append(cell.titlelbl.text ?? "")
+//            
+//            
+//            switch cell.titlelbl.text {
+//                
+//            case "from 12AM":
+//                arrivalTimeFilter.append("12 am - 6 am")
+//                break
+//                
+//            case "from 6AM":
+//                arrivalTimeFilter.append("06 am - 12 pm")
+//                break
+//                
+//            case "from 12PM":
+//                arrivalTimeFilter.append("12 pm - 06 pm")
+//                break
+//                
+//                
+//            case "from 6PM":
+//                arrivalTimeFilter.append("06 pm - 12 am")
+//                break
+//                
+//            default:
+//                break
+//            }
+//        }
+//    }
     
     
     //MARK: - didSelectDepartureTime
-    override func didDeSelectDepartureTime(cell: DepartureTimeCVCell) {
-        
-        if cell.filterTitle == "Departure Time" {
-            if let index = departureTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
-                departureTimeFilter.remove(at: index)
-            }
-        }else {
-            if let index = arrivalTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
-                arrivalTimeFilter.remove(at: index)
-            }
-        }
-        
-    }
+//    override func didDeSelectDepartureTime(cell: DepartureTimeCVCell) {
+//        
+//        if cell.filterTitle == "Departure Time" {
+//            if let index = departureTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
+//                departureTimeFilter.remove(at: index)
+//            }
+//        }else {
+//            if let index = arrivalTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
+//                arrivalTimeFilter.remove(at: index)
+//            }
+//        }
+//        
+//    }
+    
+    
     
     //MARK: - didTapOnDropDownBtnAction
     override func didTapOnDropDownBtnAction(cell:NewDepartureTimeTVCell) {
@@ -1304,8 +1309,8 @@ class FilterVC: BaseTableVC{
                         filterModel.noOvernightFlight.removeAll()
                     }
                     
-                    if departureTimeFilter.isEmpty == false {
-                        filterModel.departureTime = departureTimeFilter
+                    if selectedDepartureTime.isEmpty == false {
+                        filterModel.departureTime = selectedDepartureTime
                     }else {
                         filterModel.departureTime.removeAll()
                     }
@@ -1313,8 +1318,8 @@ class FilterVC: BaseTableVC{
                     
                     //MARK: - arrivalTimeFilter
                     
-                    if arrivalTimeFilter.isEmpty == false {
-                        filterModel.arrivalTime = arrivalTimeFilter
+                    if selectedArrivalTimeFilter.isEmpty == false {
+                        filterModel.arrivalTime = selectedArrivalTimeFilter
                     }else {
                         filterModel.arrivalTime.removeAll()
                     }
@@ -1691,7 +1696,8 @@ extension FilterVC {
         selectedLuggageArray.removeAll()
         departureTimeFilter.removeAll()
         arrivalTimeFilter.removeAll()
-        
+        selectedDepartureTime.removeAll()
+        selectedArrivalTimeFilter.removeAll()
         
         // Deselect all cells in your checkOptionsTVCell table view
         deselectAllCheckOptionsCells()
@@ -1877,6 +1883,14 @@ extension FilterVC {
         
         if !filterModel.refundableTypes.isEmpty {
             flightRefundablerTypeFilteArray = filterModel.refundableTypes
+        }
+        
+        if !filterModel.departureTime.isEmpty {
+            selectedDepartureTime = filterModel.departureTime
+        }
+        
+        if !filterModel.arrivalTime.isEmpty {
+            selectedArrivalTimeFilter = filterModel.arrivalTime
         }
         
         if !filterModel.airlines.isEmpty {

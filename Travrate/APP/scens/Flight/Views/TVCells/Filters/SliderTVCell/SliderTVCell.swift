@@ -95,10 +95,6 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
         if let selectedTap = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String {
             if selectedTap == "Flight" {
                 
-                
-            
-                
-                
                 if let minPrice = filterModel.minPriceRange, let maxPrice = filterModel.maxPriceRange {
                     // Both minPrice and maxPrice have values in filterModel
                     minValue = Float(minPrice)
@@ -118,6 +114,7 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
                 
                 
             } else {
+                
                 if let minPrice = hotelfiltermodel.minPriceRange, let maxPrice = hotelfiltermodel.maxPriceRange {
                     // Both minPrice and maxPrice have values in filterModel
                     minValue = Float(minPrice)
@@ -134,6 +131,7 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
                     //  Update the slider's appearance
                     rangeSlider.setNeedsDisplay()
                 }
+                
                 
             }
         }

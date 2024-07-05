@@ -49,7 +49,7 @@ class DurationSliderTVCell: TableViewCell, TTRangeSliderDelegate {
     
     override func updateUI() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(durationreset), name: Notification.Name("durationreset"), object: nil)
+       
         
         
         titlelbl.text = "Duration"
@@ -59,6 +59,8 @@ class DurationSliderTVCell: TableViewCell, TTRangeSliderDelegate {
             downImg.isHidden = true
             expand()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(durationreset), name: Notification.Name("durationreset"), object: nil)
         
     }
     

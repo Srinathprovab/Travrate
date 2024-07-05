@@ -79,8 +79,7 @@ class TransitTimeSliderTVCell: TableViewCell, TTRangeSliderDelegate {
         rangeSlider.isHidden = true
         rangeSlider.backgroundColor = .WhiteColor
         
-        
-        
+
         
         // rangeSlider.step = 10
         rangeSlider.handleType = .rectangle

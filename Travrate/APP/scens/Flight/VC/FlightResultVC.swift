@@ -518,31 +518,65 @@ extension FlightResultVC:AppliedFilters {
     
     
     
+    
+    
     func isTimeInRange(time: String, range: String) -> Bool {
-        guard let departureDate = MySingleton.shared.dateFormatter.date(from: time) else {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm" // Adjusted for "HH:mm" format
+        
+        guard let timeDate = timeFormatter.date(from: time) else {
+            print("Failed to parse time:", time)
             return false
         }
         
         let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: departureDate)
+        let timeInMinutes = calendar.component(.hour, from: timeDate) * 60 + calendar.component(.minute, from: timeDate)
         
-        // Convert the 12-hour format to 24-hour format
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh a"
-        guard let startDate = dateFormatter.date(from: range.components(separatedBy: " - ")[0]),
-              let endDate = dateFormatter.date(from: range.components(separatedBy: " - ")[1]) else {
+        let rangeComponents = range.components(separatedBy: " - ")
+        guard rangeComponents.count == 2 else {
+            print("Invalid range format:", range)
             return false
         }
         
-        let startHour = calendar.component(.hour, from: startDate)
-        let endHour = calendar.component(.hour, from: endDate)
+        guard let startTime = parseTime(from: rangeComponents[0]),
+              let endTime = parseTime(from: rangeComponents[1]) else {
+            print("Failed to parse start or end time from range:", range)
+            return false
+        }
         
-        // Check if the hour falls within the range
-        return hour >= startHour && hour < endHour
+        let startMinutes = startTime.hours * 60 + startTime.minutes
+        let endMinutes = endTime.hours * 60 + endTime.minutes
+        
+        if endMinutes < startMinutes {
+            // Overnight range
+            return timeInMinutes >= startMinutes || timeInMinutes < endMinutes
+        } else {
+            // Regular range
+            return timeInMinutes >= startMinutes && timeInMinutes <= endMinutes
+        }
+    }
+    
+    func parseTime(from string: String) -> (hours: Int, minutes: Int)? {
+        let trimmedString = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "hh a" // Adjusted for "hh a" format
+        
+        guard let date = timeFormatter.date(from: trimmedString) else {
+            print("Failed to parse time from string:", string)
+            return nil
+        }
+        
+        let calendar = Calendar.current
+        let hours = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        
+        return (hours, minutes)
     }
     
     
     func filtersByApplied(minpricerange: Double, maxpricerange: Double, noofStopsArray: [String], refundableTypeArray: [String], departureTime: [String], arrivalTime: [String], noOvernightFlight: [String], airlinesFilterArray: [String], luggageFilterArray: [String], connectingFlightsFilterArray: [String], ConnectingAirportsFilterArray: [String], mindurationrange: Double, maxdurationrange: Double, minTransitTimerange: Double, maxransitTimerange: Double) {
+        
         
         print(" ===== minpricerange ====== \n\(minpricerange)")
         print(" ===== maxpricerange ====== \n\(maxpricerange)")
@@ -572,11 +606,11 @@ extension FlightResultVC:AppliedFilters {
                 guard let price = j.first?.price?.api_total_display_fare else { return false }
                 guard let details = j.first?.flight_details?.details else { return false }
                 
-               
-              //  let priceRangeMatch = (Double(price) ?? 0) >= minpricerange && (Double(price) ?? 0) <= maxpricerange
-
+                
+                //  let priceRangeMatch = (Double(price) ?? 0) >= minpricerange && (Double(price) ?? 0) <= maxpricerange
+                
                 let priceRangeMatch = ((Double(price) ) >= minpricerange && (Double(price) ) <= maxpricerange)
-//                let noOfStopsMatch = noofStopsArray.isEmpty || summary.contains(where: { noofStopsArray.contains("\($0.no_of_stops ?? 0)") }) == true
+                //                let noOfStopsMatch = noofStopsArray.isEmpty || summary.contains(where: { noofStopsArray.contains("\($0.no_of_stops ?? 0)") }) == true
                 
                 
                 guard let firstFlightDetail = summary.first else {
@@ -592,9 +626,6 @@ extension FlightResultVC:AppliedFilters {
                 let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(j.first?.fareType ?? "")
                 let airlinesMatch = airlinesFilterArray.isEmpty || summary.contains(where: { airlinesFilterArray.contains($0.operator_name ?? "") }) == true
                 
-                
-                
-               
                 
                 
                 
@@ -640,8 +671,6 @@ extension FlightResultVC:AppliedFilters {
                 
                 
                 
-                
-                
                 let depMatch = departureTime.isEmpty || summary.first?.origin?.time.flatMap { departureDateTime in
                     return departureTime.contains { departureTimeRange in
                         let timeIsInRange = isTimeInRange(time: departureDateTime, range: String(departureTimeRange))
@@ -660,17 +689,17 @@ extension FlightResultVC:AppliedFilters {
                 
                 
                 
-//                let luggageMatch = luggageFilterArray.isEmpty || summary.contains(where: {
-//                    let formattedWeight = MySingleton.shared.convertToPC(input: $0.weight_Allowance ?? "")
-//                    return luggageFilterArray.contains(formattedWeight ?? "")
-//                }) == true
+                //                let luggageMatch = luggageFilterArray.isEmpty || summary.contains(where: {
+                //                    let formattedWeight = MySingleton.shared.convertToPC(input: $0.weight_Allowance ?? "")
+                //                    return luggageFilterArray.contains(formattedWeight ?? "")
+                //                }) == true
                 
                 guard let firstFlightDetail = details.first?.first else {
                     print("No flight details found in the first element")
                     // Handle case where there are no flight details
                     return false // or handle accordingly
                 }
-
+                
                 // Now you can apply your luggage matching logic on the `firstFlightDetail`
                 let formattedWeight = MySingleton.shared.convertToPC(input: firstFlightDetail.weight_Allowance ?? "")
                 let luggageMatch = luggageFilterArray.isEmpty || formattedWeight.map { luggageFilterArray.contains($0) } ?? false
@@ -684,41 +713,25 @@ extension FlightResultVC:AppliedFilters {
                     return false
                 }
                 
-               
-
-                // Iterate over details and filter flight details based on various conditions
-                let filteredDetails = details.flatMap { subDetails -> [Details] in
-                    return subDetails.filter { flightDetail -> Bool in
-                        // Match conditions for each flight detail
-                        guard let layoverDurationString = flightDetail.layover_duration, !layoverDurationString.isEmpty else {
-                            // Handle case where layover duration is nil or empty
-                            return false
+                
+                
+                // Transit time matching
+                let transitTimeMatch: Bool
+                if let layoverDetails = details.first {
+                    transitTimeMatch = details.flatMap { $0 }.contains { flightDetail in
+                        if let layoverDurationStr = flightDetail.layover_duration, let layoverDuration = parseDuration(layoverDurationStr) {
+                            return (layoverDuration >= minTransitTimerange) && (layoverDuration <= maxransitTimerange)
                         }
-                        
-                        // Parse the duration and compare it with the range
-                        if let layoverDurationInHours = parseDuration(layoverDurationString) {
-                           
-                            // Check if layover duration matches the range
-                            let isMatch = layoverDurationInHours >= minTransitTimerange && layoverDurationInHours <= maxransitTimerange
-                            if isMatch {
-                                
-                            } else {
-                                
-                            }
-                            return isMatch
-                        } else {
-                            return false
-                        }
+                        return false
                     }
+                } else {
+                    transitTimeMatch = false
                 }
-
-                // Combine all matching conditions
-                let transitTimeMatch = !filteredDetails.isEmpty
-                
-                return priceRangeMatch && noOfStopsMatch && refundableMatch && airlinesMatch && connectingFlightsMatch && luggageMatch && depMatch && arrMatch && ConnectingAirportsMatch 
-                //&& durationMatch && transitTimeMatch
                 
                 
+                return priceRangeMatch  && noOfStopsMatch && refundableMatch && airlinesMatch && connectingFlightsMatch && luggageMatch && depMatch && arrMatch && ConnectingAirportsMatch && durationMatch
+                
+                //transitTimeMatch
             }
         }
         
@@ -1275,7 +1288,7 @@ extension FlightResultVC {
         let bookingSourcePart = bookingSource
         
         // Suffix for ID: Zero-padded item index starting from 1 within the array
-        let suffix = String(format: "%08d", itemIndex + 1)
+        _ = String(format: "%08d", itemIndex + 1)
         
         // Combine all parts to form the unique ID
         return "\(prefix)\(bookingSourcePart)\((Int(prefix) ?? 0) - 1)"
