@@ -150,14 +150,10 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
 // Implementing GMSMapViewDelegate
 extension MapViewVC: GMSMapViewDelegate {
     
-    
-    
-    
-    
     func createMarkerButton(mapModel: MapModel) -> UIButton {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 40, height: 40) // Adjust size as needed
-        button.setImage(UIImage(named: "loc9")?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor), for: .normal) // Set your marker image here
+        button.setImage(UIImage(named: "hotel")?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor), for: .normal) // Set your marker image here
         button.addTarget(self, action: #selector(markerButtonTapped(_:)), for: .touchUpInside)
         button.tag = mapModel.identifier // Assuming each mapModel has a unique identifier
         return button

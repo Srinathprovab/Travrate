@@ -43,7 +43,6 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         selectedCellStates = [:]
         addObserver()
         
-        
         if callapibool == true{
             
             holderView.isHidden = true
@@ -70,7 +69,6 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         MySingleton.shared.delegate = self
         
     }
-    
     
     
     //MARK: - setupUI

@@ -349,11 +349,7 @@ extension EditProfileVC {
             // MySingleton.shared.profilevm?.CALL_UPDATE_PROFILE_DETAILS_API(dictParam: MySingleton.shared.payload)
             callUpdateProfileAPI()
             
-            let seconds = 1.0
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                NotificationCenter.default.post(name: NSNotification.Name("logindone"), object: nil)
-                self.dismiss(animated: true)
-            }
+           
         }
     }
     
@@ -413,6 +409,11 @@ extension EditProfileVC {
                 
                 
                 
+                let seconds = 2.0
+                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                    self.gotoDashBoardTBVC()
+                }
+                
                 break
             case .failure(let error):
                 // Handle error
@@ -426,6 +427,13 @@ extension EditProfileVC {
     }
     
     
+    
+    func gotoDashBoardTBVC() {
+        guard let vc = DashBoardTBVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.selectedIndex = 0
+        present(vc, animated: true)
+    }
     
     
 }

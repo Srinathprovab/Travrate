@@ -172,6 +172,9 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         
         airlineTF.isHidden = true
         directFlightCheckImg.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal).withTintColor(.TitleColor)
+        
+        
+        advanceSearchlbl.text = "  + Advanced search options"
     }
     
     override func updateUI() {
@@ -459,18 +462,53 @@ extension FlightSearchTVCell {
     }
     
     @objc func labelTapped(gesture:UITapGestureRecognizer) {
-        if gesture.didTapAttributedString("Advanced search options", in: advanceSearchlbl) {
-            infoViewbool.toggle()
-            if infoViewbool {
-                infoView.isHidden = false
-                advanceSearchlbl.textColor = .BooknowBtnColor
-            }else {
-                infoView.isHidden = true
-                advanceSearchlbl.textColor = .TitleColor
-            }
+        if gesture.didTapAttributedString("  + Advanced search options", in: advanceSearchlbl) {
+           // infoViewbool.toggle()
+//            if infoViewbool {
+//                infoView.isHidden = false
+//                advanceSearchlbl.textColor = .BooknowBtnColor
+//                advanceSearchlbl.text = "  - less search options"
+//                
+//            }else {
+//                infoView.isHidden = true
+//                advanceSearchlbl.textColor = .TitleColor
+//                advanceSearchlbl.text = "  + Advanced search options +"
+//            }
+            
+            infoView.isHidden = false
+            advanceSearchlbl.textColor = .BooknowBtnColor
+            advanceSearchlbl.text = "  - less search options"
+            
+            delegate?.didTapOnAdvanceOption(cell: self)
+        }else {
+            infoView.isHidden = true
+            advanceSearchlbl.textColor = .TitleColor
+            advanceSearchlbl.text = "  + Advanced search options"
             
             delegate?.didTapOnAdvanceOption(cell: self)
         }
+        
+//        if gesture.didTapAttributedString("  - less search options", in: advanceSearchlbl) {
+//          //  infoViewbool.toggle()
+////            if infoViewbool {
+////                infoView.isHidden = false
+////                advanceSearchlbl.textColor = .BooknowBtnColor
+////                advanceSearchlbl.text = "  - less search options"
+////                
+////            }else {
+////                infoView.isHidden = true
+////                advanceSearchlbl.textColor = .TitleColor
+////                advanceSearchlbl.text = "  + Advanced search options +"
+////            }
+//            
+//            
+//            infoView.isHidden = true
+//            advanceSearchlbl.textColor = .TitleColor
+//            advanceSearchlbl.text = "  + Advanced search options"
+//            
+//            delegate?.didTapOnAdvanceOption(cell: self)
+//        }
+        
     }
     
     

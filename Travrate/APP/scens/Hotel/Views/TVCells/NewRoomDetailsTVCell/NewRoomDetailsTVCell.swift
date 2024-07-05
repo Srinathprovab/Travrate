@@ -16,9 +16,7 @@ class NewRoomDetailsTVCell: UITableViewCell {
     
     
     @IBOutlet weak var noofGuestlbl: UILabel!
-    @IBOutlet weak var fareTypelbl: UILabel!
     @IBOutlet weak var pricelbl: UILabel!
-    @IBOutlet weak var bablbl: UILabel!
     @IBOutlet weak var selectRoomBtnView: BorderedView!
     
     

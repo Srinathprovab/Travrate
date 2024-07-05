@@ -34,6 +34,8 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
         
         let userloggedBool = defaults.bool(forKey: UserDefaultsKeys.loggedInStatus)
         if userloggedBool == true {
+            
+            
             callShowProfileAPI()
         }
         
@@ -192,9 +194,11 @@ extension SideMenuViewController {
     
     
     func profileDetails(response: ProfileModel) {
+        
         basicloderBool = false
         MySingleton.shared.profiledata = response.data
         MySingleton.shared.username = "\(response.data?.first_name ?? "") \(response.data?.last_name ?? "")"
+        
         DispatchQueue.main.async {
             self.setupMenuTVCells()
         }

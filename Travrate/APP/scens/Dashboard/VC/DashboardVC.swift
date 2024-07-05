@@ -524,12 +524,16 @@ extension DashboardVC {
         
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("logindone"), object: nil)
         
+       
+        
         if MySingleton.shared.callboolapi == true {
             callIndexPageAPI()
         }
         
     }
     
+    
+  
     
     @objc func selectedCurrency() {
         commonTableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
