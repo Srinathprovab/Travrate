@@ -7,6 +7,7 @@
 
 import Foundation
 protocol MobileSecureBookingViewModelDelegate : BaseViewModelProtocol {
+    func getHandelResponseDetails(response:updatePaymentFlightModel)
     func mobilesecurebookingDetails(response:MobilePrePaymentModel)
 }
 
@@ -17,6 +18,30 @@ class MobileSecureBookingViewModel {
         self.view = view
     }
     
+    
+    
+    
+    //MARK:  mobile_secure_booking API
+    func CALL_GET_HANDEL_RESPONSE_API(dictParam: [String: Any],url:String){
+        let parms = NSDictionary(dictionary:dictParam)
+        print("Parameters = \(parms)")
+        
+        self.view?.showLoader()
+        
+        ServiceManager.postOrPutApiCall(endPoint: url , parameters: parms, resultType: updatePaymentFlightModel.self, p:dictParam) { sucess, result, errorMessage in
+            
+            DispatchQueue.main.async {
+                self.view?.hideLoader()
+                if sucess {
+                    guard let response = result else {return}
+                    self.view.getHandelResponseDetails(response: response)
+                } else {
+                    // Show alert
+                    self.view.showToast(message: errorMessage ?? "")
+                }
+            }
+        }
+    }
     
     
     

@@ -9,110 +9,11 @@ import UIKit
 
 
 
-extension HotelBookingDetailsVC {
-    
-    func addObserver() {
-        
-        MySingleton.shared.guestbool = false
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(addon(_:)), name: NSNotification.Name("addon"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
-        
-        
-        
-    }
-    
-    
-    @objc func reload() {
-        commonTableView.reloadData()
-    }
-    
-    //MARK: - resultnil
-    @objc func resultnil() {
-        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.key = "noresult"
-        self.present(vc, animated: true)
-    }
-    
-    
-    //MARK: - nointernet
-    @objc func nointernet() {
-        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.key = "nointernet"
-        self.present(vc, animated: true)
-    }
-    
-    //MARK: - updateTimer
-    func updateTimer() {
-        let totalTime = MySingleton.shared.totalTime
-        let minutes =  totalTime / 60
-        let seconds = totalTime % 60
-        let formattedTime = String(format: "%02d:%02d", minutes, seconds)
-        
-        
-        //        MySingleton.shared.setAttributedTextnew(str1: "\(formattedTime)",
-        //                                                str2: "",
-        //                                                lbl: sessionTimelbl,
-        //                                                str1font: .OpenSansMedium(size: 12),
-        //                                                str2font: .OpenSansMedium(size: 12),
-        //                                                str1Color: .BooknowBtnColor,
-        //                                                str2Color: .BooknowBtnColor)
-        
-        
-    }
-    
-    
-    func timerDidFinish() {
-        gotoPopupScreen()
-    }
-    
-    
-    func gotoPopupScreen() {
-        guard let vc = PopupVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: false)
-    }
-    
-    
-    @objc func addon(_ ns: NSNotification) {
-        
-        // Convert selectedAddonTotalPrice to Decimal
-        let selectedAddonTotalPriceDecimal = Decimal(MySingleton.shared.selectedAddonTotalPrice)
-        
-        // Convert grand total to Decimal
-        guard let grandTotalString = MySingleton.shared.roompaxesdetails[0].net,
-              let grandTotalDecimal = Decimal(string: grandTotalString) else {
-            return // Handle the case where grand total cannot be converted to Decimal
-        }
-        
-        // Add totalkwdvalue to grand total
-        let updatedGrandTotal = grandTotalDecimal + selectedAddonTotalPriceDecimal
-        
-        
-        updateTotalAmount(updatedGrandTotal: updatedGrandTotal)
-        
-    }
-    
-    func updateTotalAmount(updatedGrandTotal:Decimal) {
-        
-        // Update totalAmount label
-        kwdlbl.text = "\(MySingleton.shared.roompaxesdetails[0].currency ?? ""):\(updatedGrandTotal)"
-        
-        
-    }
-    
-    
-    
-}
 
 
 
-class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDelegate, HotelBookingViewModelDelegate, TimerManagerDelegate {
+class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDelegate, TimerManagerDelegate, HotelBookingViewModelDelegate {
+   
     
     
     @IBOutlet weak var kwdlbl: UILabel!
@@ -381,7 +282,25 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
     }
     
     
- 
+    func getPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
+        
+    }
+    
+    
+    
+    func hotelSendToPayMentDetails(response: HotelPaymentModel) {
+        
+    }
+    
+   
+    func prePaymentConfirmationDetails(response: PaymentModel) {
+        
+    }
+    
+    func hotelpreBookingDetails(response: HotelMBPModel) {
+        
+    }
+    
     
 }
 
@@ -516,6 +435,7 @@ extension HotelBookingDetailsVC {
         MySingleton.shared.hotelAddonServices = response.data?.addon_services ?? []
         hoteltotalprice = "\(response.data?.hotel_total_price ?? 0.0)"
         hotel_Addservices = response.data?.addon_services ?? []
+        htoken = response.data?.token ?? ""
         
         totlConvertedGrand = Double(response.data?.total_price ?? "") ?? 0.0
         
@@ -756,26 +676,25 @@ extension HotelBookingDetailsVC {
         let firstnameString = "[\"" + firstnameArray.joined(separator: "\",\"") + "\"]"
         let lastNameString = "[\"" + lastNameArray.joined(separator: "\",\"") + "\"]"
         let passengertypeString = "[\"" + passengertypeArray.joined(separator: "\",\"") + "\"]"
-        //        let laedpassengerArrayString = "[\"" + laedpassengerArray.joined(separator: "\",\"") + "\"]"
-        //        let spcialReqArrayStr = "[\"" + selectedSpecificatonArray.joined(separator: "\",\"") + "\"]"
+        let laedpassengerArrayString = "[\"" + laedpassengerArray.joined(separator: "\",\"") + "\"]"
+        let spcialReqArrayStr = "[\"" + selectedSpecificatonArray.joined(separator: "\",\"") + "\"]"
         
         
+        
+        
+        MySingleton.shared.payload["search_id"] = hsearchid
         MySingleton.shared.payload["token"] = htoken
         MySingleton.shared.payload["booking_source"] = hbookingsource
-        MySingleton.shared.payload["promo_code"] = ""
-        MySingleton.shared.payload["redeem_points_post"] = "0"
-        MySingleton.shared.payload["reward_usable"] = "0"
-        MySingleton.shared.payload["reward_earned"] = "0"
-        MySingleton.shared.payload["reducing_amount"] = "0"
+        MySingleton.shared.payload["payment_method"] = "PNHB1"
         MySingleton.shared.payload["passenger_type"] = passengertypeString
+        MySingleton.shared.payload["lead_passenger"] = laedpassengerArrayString
         MySingleton.shared.payload["name_title"] = mrtitleString
         MySingleton.shared.payload["first_name"] = firstnameString
         MySingleton.shared.payload["last_name"] = lastNameString
-        MySingleton.shared.payload["billing_country"] = MySingleton.shared.nationalityCode
         MySingleton.shared.payload["billing_email"] = MySingleton.shared.payemail
         MySingleton.shared.payload["passenger_contact"] = MySingleton.shared.paymobile
-        MySingleton.shared.payload["country_code"] = MySingleton.shared.paymobilecountrycode
-        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
+        MySingleton.shared.payload["special_req"] = spcialReqArrayStr
+        MySingleton.shared.payload["users_comments"] = ""
         
         
         
@@ -799,16 +718,11 @@ extension HotelBookingDetailsVC {
         }else if MySingleton.shared.checkTermsAndCondationStatus == false {
             showToast(message: "Please Accept T&C and Privacy Policy")
         }else {
-            //self.hdvm?.CALL_HOTEL_PRE_MOBILE_BOOKING_API(dictParam:  MySingleton.shared.payload)
             gotoSelectPaymentMethodsVC()
         }
         
     }
     
-    
-    func hotelpreBookingDetails(response: HotelMBPModel) {
-        print(response.data?.post_data?.url ?? "")
-    }
     
     
     func gotoSelectPaymentMethodsVC() {
@@ -909,4 +823,107 @@ extension HotelBookingDetailsVC {
         }
         
     }
+}
+
+
+
+extension HotelBookingDetailsVC {
+    
+    func addObserver() {
+        
+        MySingleton.shared.guestbool = false
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addon(_:)), name: NSNotification.Name("addon"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
+        
+        
+        
+    }
+    
+    
+    @objc func reload() {
+        commonTableView.reloadData()
+    }
+    
+    //MARK: - resultnil
+    @objc func resultnil() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "noresult"
+        self.present(vc, animated: true)
+    }
+    
+    
+    //MARK: - nointernet
+    @objc func nointernet() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "nointernet"
+        self.present(vc, animated: true)
+    }
+    
+    //MARK: - updateTimer
+    func updateTimer() {
+        let totalTime = MySingleton.shared.totalTime
+        let minutes =  totalTime / 60
+        let seconds = totalTime % 60
+        let formattedTime = String(format: "%02d:%02d", minutes, seconds)
+        
+        
+        //        MySingleton.shared.setAttributedTextnew(str1: "\(formattedTime)",
+        //                                                str2: "",
+        //                                                lbl: sessionTimelbl,
+        //                                                str1font: .OpenSansMedium(size: 12),
+        //                                                str2font: .OpenSansMedium(size: 12),
+        //                                                str1Color: .BooknowBtnColor,
+        //                                                str2Color: .BooknowBtnColor)
+        
+        
+    }
+    
+    
+    func timerDidFinish() {
+        gotoPopupScreen()
+    }
+    
+    
+    func gotoPopupScreen() {
+        guard let vc = PopupVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
+    }
+    
+    
+    @objc func addon(_ ns: NSNotification) {
+        
+        // Convert selectedAddonTotalPrice to Decimal
+        let selectedAddonTotalPriceDecimal = Decimal(MySingleton.shared.selectedAddonTotalPrice)
+        
+        // Convert grand total to Decimal
+        guard let grandTotalString = MySingleton.shared.roompaxesdetails[0].net,
+              let grandTotalDecimal = Decimal(string: grandTotalString) else {
+            return // Handle the case where grand total cannot be converted to Decimal
+        }
+        
+        // Add totalkwdvalue to grand total
+        let updatedGrandTotal = grandTotalDecimal + selectedAddonTotalPriceDecimal
+        
+        
+        updateTotalAmount(updatedGrandTotal: updatedGrandTotal)
+        
+    }
+    
+    func updateTotalAmount(updatedGrandTotal:Decimal) {
+        
+        // Update totalAmount label
+        kwdlbl.text = "\(MySingleton.shared.roompaxesdetails[0].currency ?? ""):\(updatedGrandTotal)"
+        
+        
+    }
+    
+    
+    
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MobileProcessPassengerDetailVMDelegate : BaseViewModelProtocol {
-    func mobileprocesspassengerDetails(response:MobilePassengerdetailsModel)
+    func mobileprocesspassengerDetails(response:MobilePreBookingModel)
 }
 
 class MobileProcessPassengerDetailVM {
@@ -27,7 +27,7 @@ class MobileProcessPassengerDetailVM {
         
         self.view?.showLoader()
         
-        ServiceManager.postOrPutApiCall(endPoint: "flight/\(ApiEndpoints.mobileprocesspassengerdetail)" , parameters: parms, resultType: MobilePassengerdetailsModel.self, p:dictParam) { sucess, result, errorMessage in
+        ServiceManager.postOrPutApiCall(endPoint: "flight/\(ApiEndpoints.mobileprocesspassengerdetail)" , parameters: parms, resultType: MobilePreBookingModel.self, p:dictParam) { sucess, result, errorMessage in
             
             DispatchQueue.main.async {
                 // self.view?.hideLoader()

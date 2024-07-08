@@ -672,9 +672,6 @@ extension SportsBookingDetailsVC {
             showToast(message: "Please Allow Terms and Condition.")
             return
         }else {
-            
-            
-           
             gotoSelectPaymentMethodsVC()
             
         }

@@ -67,7 +67,7 @@ class MealSelectionVC: BaseTableVC {
         showLoadera()
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
             loderBool = false
             hideLoadera()
             setupBookingInformationTVCell()

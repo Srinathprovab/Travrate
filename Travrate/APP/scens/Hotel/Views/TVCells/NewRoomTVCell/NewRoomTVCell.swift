@@ -25,6 +25,8 @@ class NewRoomTVCell: TableViewCell, NewRoomDetailsTVCellDelegate {
     @IBOutlet weak var topView: BorderedView!
     
     
+    
+    
     var newRoomindexPath: IndexPath?
     var room = [Rooms]()
     var delegate:NewRoomTVCellDelegate?
@@ -32,6 +34,8 @@ class NewRoomTVCell: TableViewCell, NewRoomDetailsTVCellDelegate {
         super.awakeFromNib()
         // Initialization code
         setuTV()
+        
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

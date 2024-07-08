@@ -13,6 +13,8 @@ class PaymentTypeCVCell: UICollectionViewCell {
     @IBOutlet weak var radioImg: UIImageView!
     
     
+    var titleValue = String()
+    var paymenttypeurl = String()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -150,6 +150,8 @@ class MySingleton {
     
     var enablePaymentButtonBool1 = false
     var enablePaymentButtonBool2 = false
+    var paymenttype = String()
+    var paymenttypeurl = String()
     
     var selected_meals_codeArray = [String]()
     var selected_special_assistance_codeArray = [String]()
@@ -227,6 +229,8 @@ class MySingleton {
     var sportEventList : Event_list?
     var sportTicketValue : Ticket_value?
     var participantsArray = [Participants]()
+    var PaymentSelectionArray = [Payment_selection]()
+    var SportsPaymentSelectionArray = [SportsPaymentSelection]()
     
     //View Models
     var loginvm:LoginViewModel?
@@ -265,7 +269,7 @@ class MySingleton {
     var sportsdetailsvm: SportDetailsVM?
     var sportsbookingvm:SportsBookingVM?
     var shareresultvm:ShareResultViewModel?
-    
+    var SsportsPaymentvm:SportsPaymentViewModel?
     
     
     //TIMER

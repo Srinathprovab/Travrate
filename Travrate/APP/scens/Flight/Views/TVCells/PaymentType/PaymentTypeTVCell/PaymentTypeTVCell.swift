@@ -81,26 +81,77 @@ extension PaymentTypeTVCell:UICollectionViewDelegate,UICollectionViewDataSource 
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return paymentTypeImageArray.count
+       
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Sports" {
+            return MySingleton.shared.SportsPaymentSelectionArray.count
+        }else {
+            return MySingleton.shared.PaymentSelectionArray.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var commonCell = UICollectionViewCell()
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? PaymentTypeCVCell {
             
+            cell.tag = indexPath.row
             
-            cell.payTypeImg.image = UIImage(named: paymentTypeImageArray[indexPath.row])
-            if indexPath.row == 0 {
+        
+            
+            let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+            if tabselect == "Sports" {
+                if indexPath.row == 0 {
+                    paymentTypeCV.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
+                    MySingleton.shared.paymenttype = MySingleton.shared.SportsPaymentSelectionArray[indexPath.row].value ?? ""
+                    cell.titleValue = MySingleton.shared.SportsPaymentSelectionArray[indexPath.row].value ?? ""
+                    cell.radioImg.image = UIImage(named: "radioSelected")?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
+                }
                 
-                // Select the first row initially
-                let indexPath1 = IndexPath(row: 0, section: 0)
-                paymentTypeCV.selectItem(at: indexPath1, animated: false, scrollPosition: .bottom)
+                var dict = MySingleton.shared.SportsPaymentSelectionArray[indexPath.row]
+                cell.titleValue = dict.value ?? ""
                 
-                
-                cell.radioImg.image = UIImage(named: "radioSelected")?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
+                cell.payTypeImg.sd_setImage(with: URL(string: dict.img_url ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                    if let error = error {
+                        // Handle error loading image
+                        print("Error loading image: \(error.localizedDescription)")
+                        // Check if the error is due to a 404 Not Found response
+                        if (error as NSError).code == NSURLErrorBadServerResponse {
+                            // Set placeholder image for 404 error
+                            cell.radioImg.image = UIImage(named: "noimage")
+                        } else {
+                            // Set placeholder image for other errors
+                            cell.radioImg.image = UIImage(named: "noimage")
+                        }
+                    }
+                })
             }else {
-                cell.radioImg.image = UIImage(named: "radiounselected")
+                
+                if indexPath.row == 0 {
+                    paymentTypeCV.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
+                    MySingleton.shared.paymenttype = MySingleton.shared.PaymentSelectionArray[indexPath.row].value ?? ""
+                    cell.titleValue = MySingleton.shared.PaymentSelectionArray[indexPath.row].value ?? ""
+                    cell.radioImg.image = UIImage(named: "radioSelected")?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
+                }
+                
+                var dict = MySingleton.shared.PaymentSelectionArray[indexPath.row]
+                cell.titleValue = dict.value ?? ""
+                
+                cell.payTypeImg.sd_setImage(with: URL(string: dict.img_url ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                    if let error = error {
+                        // Handle error loading image
+                        print("Error loading image: \(error.localizedDescription)")
+                        // Check if the error is due to a 404 Not Found response
+                        if (error as NSError).code == NSURLErrorBadServerResponse {
+                            // Set placeholder image for 404 error
+                            cell.radioImg.image = UIImage(named: "noimage")
+                        } else {
+                            // Set placeholder image for other errors
+                            cell.radioImg.image = UIImage(named: "noimage")
+                        }
+                    }
+                })
             }
+            
             
             commonCell = cell
         }
@@ -110,8 +161,21 @@ extension PaymentTypeTVCell:UICollectionViewDelegate,UICollectionViewDataSource 
     
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             if let cell = collectionView.cellForItem(at: indexPath) as? PaymentTypeCVCell {
+                
                 cell.radioImg.image = UIImage(named: "radioSelected")?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
+                
+              
+                let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+                if tabselect == "Sports" {
+                    MySingleton.shared.paymenttype = MySingleton.shared.SportsPaymentSelectionArray[indexPath.row].value ?? ""
+                }else {
+                    MySingleton.shared.paymenttype = MySingleton.shared.PaymentSelectionArray[indexPath.row].value ?? ""
+                }
+                print(MySingleton.shared.paymenttype)
+                
             }
+            
+            
         }
     
     

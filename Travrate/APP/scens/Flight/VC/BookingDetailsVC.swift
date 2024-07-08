@@ -961,7 +961,7 @@ extension BookingDetailsVC {
             }else {
                 MySingleton.shared.afterResultsBool = true
                 loderBool = true
-                showLoadera()
+              //  showLoadera()
                 
                 gotoSelectPaymentMethodsVC()
             }

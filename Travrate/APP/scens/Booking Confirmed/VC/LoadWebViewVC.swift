@@ -9,7 +9,8 @@ import UIKit
 import WebKit
 import SwiftyJSON
 
-class LoadWebViewVC: UIViewController, WKNavigationDelegate, MobileSecureBookingViewModelDelegate, MobilePaymentVMDelegate {
+class LoadWebViewVC: UIViewController, WKNavigationDelegate, MobileSecureBookingViewModelDelegate {
+    
     
     
     
@@ -40,8 +41,18 @@ class LoadWebViewVC: UIViewController, WKNavigationDelegate, MobileSecureBooking
         self.webview.isUserInteractionEnabled = false
         
         
-        if let url1 = URL(string: urlString) {
-            webview.load(URLRequest(url: url1))
+        //        if let url1 = URL(string: urlString) {
+        //            webview.load(URLRequest(url: url1))
+        //        }
+        
+        if let url = URL(string: urlString) {
+            var request = URLRequest(url: url)
+            
+            // Add headers, including the token
+            request.setValue(accessToken, forHTTPHeaderField: "Token")
+            
+            // Load the request into the WKWebView
+            webview.load(request)
         }
         
         
@@ -49,8 +60,6 @@ class LoadWebViewVC: UIViewController, WKNavigationDelegate, MobileSecureBooking
         let seconds = 60.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
             if  openpaymentgatewaybool == false {
-                
-                
                 showAlertOnWindow(title: "",message: "Somthing Went Wrong",titles: ["OK"]) { title in
                     self.gotoDashboard()
                 }
@@ -66,7 +75,7 @@ class LoadWebViewVC: UIViewController, WKNavigationDelegate, MobileSecureBooking
         
         setupUI()
         MySingleton.shared.viewmodel1 = MobileSecureBookingViewModel(self)
-        MySingleton.shared.mobilepaymentvm = MobilePaymentVM(self)
+        // MySingleton.shared.mobilepaymentvm = MobilePaymentVM(self)
     }
     
     
@@ -146,7 +155,8 @@ extension LoadWebViewVC {
         
         let str = webView.url?.absoluteString ?? ""
         if str.containsIgnoringCase(find: "payment_gateway/GetHandlerResponse"){
-            MySingleton.shared.mobilepaymentvm?.CALL_MOBILE_PAYMENT_API(dictParam: [:], url: str)
+            // MySingleton.shared.mobilepaymentvm?.CALL_MOBILE_PRE_PAYMENT_API(dictParam: [:], url: str)
+            GetHandlerResponse(urlstr: str)
         }
         
     }
@@ -156,13 +166,30 @@ extension LoadWebViewVC {
     }
     
     
-    
-    func mobolePaymentDetails(response: PaymentModel) {
-        MySingleton.shared.viewmodel1?.Call_mobile_secure_booking_API(dictParam: [:], url: response.data ?? "")
+    func GetHandlerResponse(urlstr:String) {
+        MySingleton.shared.viewmodel1?.CALL_GET_HANDEL_RESPONSE_API(dictParam: [:], url: urlstr)
     }
     
+    func getHandelResponseDetails(response: updatePaymentFlightModel) {
+        print(response.data)
+        callSecureBookingAPI(str: response.data ?? "")
+    }
+    
+    
+    
+    
+    func callSecureBookingAPI(str:String) {
+        print(str)
+        MySingleton.shared.viewmodel1?.Call_mobile_secure_booking_API(dictParam: [:], url: str)
+        
+    }
+    
+    
+    
     func mobilesecurebookingDetails(response: MobilePrePaymentModel) {
-        gotoBookingConfirmedVC(str: response.url ?? "")
+        //gotoBookingConfirmedVC(str: response.url ?? "")
+        print(" ======= Voucher URL =======")
+        print(response.url)
     }
     
     
@@ -173,6 +200,10 @@ extension LoadWebViewVC {
         present(vc, animated: true)
     }
     
+    
+    func mobolePaymentDetails(response: PaymentModel) {
+        //
+    }
     
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegate, MobilePaymentVMDelegate {
+class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegate, MobilePaymentVMDelegate, HotelBookingViewModelDelegate, SportsPaymentViewModelDelegate {
     
     
     
@@ -19,6 +19,29 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     }
     
     
+    var responseConfirmationModel : SportsPrePaymentConfirmationModel?
+    var responseHotelBookingDetials: HotelMBPModel?
+    var hdvm:HotelBookingVM?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Flight" {
+            DispatchQueue.main.async {
+                self.CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
+            }
+            
+        }else if tabselect == "Sports"{
+            DispatchQueue.main.async {
+                self.CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API()
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.CALL_HOTEL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
+            }
+        }
+        
+    }
     
     
     override func viewDidLoad() {
@@ -28,6 +51,9 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         setupUI()
         MySingleton.shared.passengerDetailsVM = MobileProcessPassengerDetailVM(self)
         MySingleton.shared.mobilepaymentvm = MobilePaymentVM(self)
+        self.hdvm = HotelBookingVM(self)
+        MySingleton.shared.SsportsPaymentvm = SportsPaymentViewModel(self)
+        
         
     }
     
@@ -45,30 +71,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
                                          "EmptyTVCell"])
         
         
-        MySingleton.shared.loderString = "fdetails"
-        MySingleton.shared.afterResultsBool = true
-        loderBool = true
-        showLoadera()
         
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
-           // loderBool = false
-            hideLoadera()
-            
-            
-            let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
-            if tabselect == "Flight" {
-                setupTVCells()
-            }else if tabselect == "Hotel" {
-                setupHotelTVCells()
-            }else if tabselect == "Sports" {
-                setupSportsTVCells()
-            }else{
-                setupTransfersTVCells()
-            }
-            
-            
-        }
         
     }
     
@@ -94,12 +97,11 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
-            showToast(message: "Still Under Development")
+            callSendToPaymentAPI()
         }else if tabselect == "Hotel" {
-            showToast(message: "Still Under Development")
+            hotelSendToPayment()
         }else if tabselect == "Sports" {
-            print(MySingleton.shared.payload)
-            showToast(message: "Still Under Development")
+            callSportsSendToPayment()
         }else{
             
         }
@@ -175,26 +177,24 @@ extension SelectPaymentMethodsVC {
     }
     
     
-    
+   
     func CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API() {
         
-        MySingleton.shared.loderString = "payment"
-        MySingleton.shared.afterResultsBool = true
-        loderBool = true
-        showLoadera()
-        
-        
-        showToast(message: "Still Under Development")
-        
-        //  MySingleton.shared.passengerDetailsVM?.CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API(dictParam:MySingleton.shared.payload)
+        MySingleton.shared.passengerDetailsVM?.CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API(dictParam:MySingleton.shared.payload)
     }
     
     //MARK: mobile process passenger Details
-    func mobileprocesspassengerDetails(response: MobilePassengerdetailsModel) {
+    func mobileprocesspassengerDetails(response: MobilePreBookingModel) {
+        
         
         DispatchQueue.main.async {
-            BASE_URL = ""
-            //   MySingleton.shared.mobilepaymentvm?.CALL_MOBILE_PAYMENT_API(dictParam: [:], url: response.url ?? "")
+            
+            MySingleton.shared.payload.removeAll()
+            MySingleton.shared.payload["app_reference"] =  response.data?.app_reference ?? MySingleton.shared.tmpFlightPreBookingId
+            MySingleton.shared.payload["search_id"] = response.data?.search_id ?? MySingleton.shared.searchid
+            MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
+            
+            MySingleton.shared.mobilepaymentvm?.CALL_MOBILE_PRE_PAYMENT_API(dictParam: MySingleton.shared.payload, url: response.data?.form_url ?? "")
             
         }
         
@@ -203,23 +203,31 @@ extension SelectPaymentMethodsVC {
     
     
     func mobolePaymentDetails(response: PaymentModel) {
-        self.gotoLoadWebViewVC(urlStr1: response.data ?? "")
-    }
-    
-    
-    func gotoLoadWebViewVC(urlStr1:String) {
         
-        //        holderView.isHidden = false
         loderBool = false
-        hideLoadera()
+        //  hideLoadera()
         
+        MySingleton.shared.PaymentSelectionArray = response.data?.payment_selection ?? []
         
+        DispatchQueue.main.async {[self] in
+            let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+            if tabselect == "Flight" {
+                setupTVCells()
+            }else if tabselect == "Hotel" {
+                setupHotelTVCells()
+            }else if tabselect == "Sports" {
+                setupSportsTVCells()
+            }else{
+                setupTransfersTVCells()
+            }
+        }
         
-        guard let vc = LoadWebViewVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        vc.urlString = urlStr1
-        present(vc, animated: true)
     }
+    
+    
+    
+    
+    
 }
 
 
@@ -526,4 +534,172 @@ extension SelectPaymentMethodsVC {
 }
 
 
+extension SelectPaymentMethodsVC {
+    
+    //MARK: - FLIGHT
+    func callSendToPaymentAPI() {
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["app_reference"] =  MySingleton.shared.tmpFlightPreBookingId
+        MySingleton.shared.payload["search_id"] = MySingleton.shared.searchid
+        MySingleton.shared.payload["pg_type"] = MySingleton.shared.paymenttype
+        
+        MySingleton.shared.mobilepaymentvm?.CALL_SEND_TO_PAYMENT_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    
+    func mibileSendToPaymentDetails(response: MobilePassengerdetailsModel) {
+        DispatchQueue.main.async {
+            MySingleton.shared.mobilepaymentvm?.CALL_FLIGHT_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.url ?? "")
+        }
+    }
+    
+    
+    func flightgetPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
+        print("====== response.data  ======")
+        print(response.data)
+        gotoLoadWebViewVC(urlStr1: response.data ?? "")
+    }
+    
 
+    
+    func gotoLoadWebViewVC(urlStr1:String) {
+        guard let vc = LoadWebViewVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.urlString = urlStr1
+        present(vc, animated: true)
+    }
+    
+    
+    
+}
+
+
+
+
+extension SelectPaymentMethodsVC {
+    
+    //Hotel
+    func CALL_HOTEL_MOBILE_PROCESS_PASSENGER_DETAIL_API() {
+        self.hdvm?.CALL_HOTEL_PRE_MOBILE_BOOKING_API(dictParam:  MySingleton.shared.payload)
+    }
+    
+    func hotelBookingDetails(response: HotelBookingModel) {
+    
+    }
+    
+    func hotelpreBookingDetails(response: HotelMBPModel) {
+        
+     //   htoken = response.t
+        
+        responseHotelBookingDetials = response
+        
+        DispatchQueue.main.async {
+            MySingleton.shared.payload.removeAll()
+            MySingleton.shared.payload["search_id"] = response.data?.search_id
+            MySingleton.shared.payload["app_reference"] = response.data?.app_reference
+            MySingleton.shared.payload["booking_source"] = response.data?.booking_source
+            MySingleton.shared.payload["booking_status"] = response.data?.booking_source
+            
+            self.hdvm?.CALL_HOTEL_PRE_PAYMENT_CONFIRMATION_API(dictParam:  MySingleton.shared.payload)
+        }
+    }
+    
+    func prePaymentConfirmationDetails(response: PaymentModel) {
+        
+       
+        MySingleton.shared.PaymentSelectionArray = response.data?.payment_selection ?? []
+        DispatchQueue.main.async {
+            self.setupHotelTVCells()
+        }
+    }
+    
+    
+    func hotelSendToPayment() {
+
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["search_id"] = responseHotelBookingDetials?.data?.search_id
+        MySingleton.shared.payload["app_reference"] = responseHotelBookingDetials?.data?.app_reference
+        MySingleton.shared.payload["booking_source"] = responseHotelBookingDetials?.data?.booking_source
+        MySingleton.shared.payload["booking_status"] = responseHotelBookingDetials?.data?.booking_status
+        MySingleton.shared.payload["post_token"] = htoken
+        MySingleton.shared.payload["pg_type"] = MySingleton.shared.paymenttype
+        
+        self.hdvm?.CALL_HOTEL_SEND_TO_PAYMENNT_API(dictParam:  MySingleton.shared.payload)
+        
+    }
+    
+    
+    func hotelSendToPayMentDetails(response: HotelPaymentModel) {
+        DispatchQueue.main.async {
+            self.hdvm?.CALL_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
+        }
+    }
+    
+    
+    func getPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
+        print("====== response.data  ======")
+        print(response.data)
+        gotoLoadWebViewVC(urlStr1: response.data ?? "")
+    }
+    
+    
+
+}
+
+
+
+
+//MARK: - Sport CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API
+extension SelectPaymentMethodsVC {
+    
+    func CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API() {
+        MySingleton.shared.SsportsPaymentvm?.CALL_SPORTS_PRE_BOOKING_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    
+    func sportsPreBookingDetails(response: SportsPreBookingModel) {
+        DispatchQueue.main.async {
+            MySingleton.shared.SsportsPaymentvm?.CALL_SPORTS_PAYMENT_CONFIRMATION_API(dictParam: [:], url: response.data ?? "")
+        }
+    }
+    
+    
+    func sportsprepaymentDetails(response: SportsPrePaymentConfirmationModel) {
+        responseConfirmationModel = response
+        MySingleton.shared.SportsPaymentSelectionArray = response.payment_selection ?? []
+        
+        DispatchQueue.main.async {
+            self.setupSportsTVCells()
+        }
+    }
+ 
+    
+    func callSportsSendToPayment() {
+
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["book_id"] = responseConfirmationModel?.book_id
+        MySingleton.shared.payload["search_id"] = responseConfirmationModel?.search_id
+        MySingleton.shared.payload["pg_type"] = MySingleton.shared.paymenttype
+     
+
+        MySingleton.shared.SsportsPaymentvm?.CALL_SEND_TO_PAYMENT_API(dictParam: MySingleton.shared.payload)
+        
+    }
+    
+
+    
+    func sendtopaymentDetails(response: SportsSndtopaymentModel) {
+        print("====== response.data  ======")
+        print(response.data?.url)
+        
+        
+        DispatchQueue.main.async {
+            MySingleton.shared.SsportsPaymentvm?.CALL_GET_SPORT_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
+        }
+    }
+    
+    
+    
+    
+    
+}

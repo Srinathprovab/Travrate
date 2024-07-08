@@ -251,6 +251,10 @@ struct ApiEndpoints {
     static let management_promocode = "management/promocode"
     static let ajax_share_itinerary = "ajax/share_itinerary"
     static let ajax_share_itinerary_hotel = "ajax/share_itinerary_hotel"
+    static let flight_mobile_pre_payment_confirmation = "flight/mobile_pre_payment_confirmation/"
+    static let flight_mobile_send_to_payment = "flight/mobile_send_to_payment"
+    
+    
     
     //LOGIN
     static let auth_mobile_login = "auth/mobile_login"
@@ -271,6 +275,8 @@ struct ApiEndpoints {
     static let hotelmobiledetails = "mobile_details"
     static let hotel_mobile_booking = "hotel/mobile_booking"
     static let hotel_mobile_hotel_pre_booking = "hotel/mobile_hotel_pre_booking"
+    static let hotel_mobile_pre_payment_confirmation = "hotel/mobile_pre_payment_confirmation"
+    static let hotel_mobile_send_to_payment = "hotel/mobile_send_to_payment"
     
     
     
@@ -294,7 +300,8 @@ struct ApiEndpoints {
     static let general_pre_sports_search = "general/pre_sports_search"
     static let sport_pre_sport_tickets = "sport/pre_sport_tickets"
     static let sport_pre_booking = "sport/pre_booking"
-    
+    static let sport_sent_to_payment_pre = "sport/sent_to_payment_pre"
+    static let sport_send_to_payment = "sport/send_to_payment"
     
 }
 
