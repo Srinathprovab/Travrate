@@ -29,6 +29,10 @@ class BookingSucessVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        print("Booking Sucess =====>>>>")
+        print(MySingleton.shared.voucherurlsting)
+        
         // Do any additional setup after loading the view.
         if let gifPath = Bundle.main.path(forResource: "sucessful", ofType: "gif") {
             if let gifData = try? Data(contentsOf: URL(fileURLWithPath: gifPath)) {
@@ -39,7 +43,7 @@ class BookingSucessVC: UIViewController {
             }
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             self.gotoBookingConfirmedVC()
         }
        

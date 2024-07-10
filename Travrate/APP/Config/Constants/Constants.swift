@@ -306,6 +306,9 @@ struct ApiEndpoints {
     
     //CAR RENTAL
     static let ajax_get_car_rental_city_list = "ajax/get_car_rental_city_list"
+    static let general_pre_car_search = "general/pre_car_search"
+    static let car_car_list = "car/car_list"
+    
 }
 
 /*App messages*/

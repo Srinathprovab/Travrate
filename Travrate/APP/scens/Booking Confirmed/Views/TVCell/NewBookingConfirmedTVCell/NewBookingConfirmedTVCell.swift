@@ -19,6 +19,8 @@ class NewBookingConfirmedTVCell: TableViewCell {
     @IBOutlet weak var bookingIdlbl: UILabel!
     @IBOutlet weak var referencelbl: UILabel!
     @IBOutlet weak var datelbl: UILabel!
+    @IBOutlet weak var referencelbltitlelbl: UILabel!
+    @IBOutlet weak var bgimage: UIImageView!
     
     
     var delegate:NewBookingConfirmedTVCellDelegate?
@@ -38,6 +40,18 @@ class NewBookingConfirmedTVCell: TableViewCell {
         bookingIdlbl.text = cellInfo?.title ?? ""
         referencelbl.text = cellInfo?.subTitle ?? ""
         datelbl.text = cellInfo?.buttonTitle ?? ""
+        
+        
+       
+        if cellInfo?.key == "flight" {
+            bgimage.image = UIImage(named: "bookingconfbg")
+        }
+        
+        if cellInfo?.key == "sports" {
+            referencelbltitlelbl.text = "Booking Reference:"
+        }
+        
+        
     }
     
     

@@ -84,6 +84,7 @@ class MySingleton {
     var infoArray = [String]()
     var countrylist = [Country_list]()
     var flights = [[FlightList]]()
+    var carlist = [Raw_hotel_list]()
     var callboolapi = false
     var flighttoken = String()
     var shareresultrandomid = String()
@@ -125,6 +126,7 @@ class MySingleton {
     var totalselectedDepfareprice = Double()
     var totalselectedRetfareprice = Double()
     var totalselectedfareprice = Double()
+    var voucherurlsting = String()
     
     var guestbool = false
     var nationalityCode = String()
@@ -228,11 +230,13 @@ class MySingleton {
     var seatingArrangementList = [Seating_arrangement]()
     var sportBookingData : SportsBookingData?
     var sportEventList : Event_list?
+    var sportvoucherEventList : Event_list_data?
     var sportTicketValue : Ticket_value?
     var sportsBookingData:SportsBookingData?
     var participantsArray = [Participants]()
     var PaymentSelectionArray = [Payment_selection]()
     var SportsPaymentSelectionArray = [SportsPaymentSelection]()
+    var sports_passengers = [Sports_passengers]()
     
     //View Models
     var loginvm:LoginViewModel?
@@ -272,6 +276,8 @@ class MySingleton {
     var sportsbookingvm:SportsBookingVM?
     var shareresultvm:ShareResultViewModel?
     var SsportsPaymentvm:SportsPaymentViewModel?
+    var carpresearchVM:CarrentalSearchVM?
+    var sportsVoucherVM:SportsViewVoucherVM?
     
     
     //TIMER

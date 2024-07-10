@@ -56,6 +56,15 @@ class BookedTravelDetailsTVCell: TableViewCell {
                 tvHeight.constant = CGFloat(travelerArray.count * 48)
             }
             
+        }else if keystr == "sports" {
+            passengerTypelbl.text = "Name"
+            travellerNamelbl.text = "Passport No"
+            emaillbl.text = "City"
+            mobilelbl.isHidden = true
+          
+            if MySingleton.shared.sports_passengers.count > 0 {
+                tvHeight.constant = CGFloat(MySingleton.shared.sports_passengers.count * 48)
+            }
         }else {
             passengerTypelbl.text = "Passenger"
             travellerNamelbl.text = "Name"
@@ -100,6 +109,7 @@ class BookedTravelDetailsTVCell: TableViewCell {
     func setupTV() {
         adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "cell")
         adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "cell1")
+        adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "sports")
         
         adultDetailsTV.delegate = self
         adultDetailsTV.dataSource = self
@@ -125,7 +135,9 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if keystr == "BC" {
             return Customerdetails.count
-        }else {
+        }else if keystr == "sports" {
+            return MySingleton.shared.sports_passengers.count
+        }else{
             return travelerArray.count
         }
        
@@ -150,7 +162,20 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 
                 c = cell
             }
-        }else {
+        }else if keystr == "sports" {
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "sports") as? BookedAdultDetailsTVCell {
+                cell.selectionStyle = .none
+                
+                let data = MySingleton.shared.sports_passengers[indexPath.row]
+                cell.passengerTypelbl.text = "\(data.first_name ?? "") \(data.last_name ?? "")"
+                cell.travellerNamelbl.text = data.passportNumber
+                cell.emaillbl.text = data.city_of_birth
+                cell.mobileLbl.isHidden = true
+                
+                c = cell
+            }
+        }else{
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? BookedAdultDetailsTVCell {
                 cell.selectionStyle = .none

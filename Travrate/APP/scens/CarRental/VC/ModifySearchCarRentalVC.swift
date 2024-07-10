@@ -1,19 +1,19 @@
 //
-//  SearchCarRentalVC.swift
+//  ModifySearchCarRentalVC.swift
 //  Travrate
 //
-//  Created by FCI on 10/06/24.
+//  Created by Admin on 10/07/24.
 //
 
 import UIKit
 
-class SearchCarRentalVC: BaseTableVC {
+class ModifySearchCarRentalVC: BaseTableVC {
     
     
-    static var newInstance: SearchCarRentalVC? {
+    static var newInstance: ModifySearchCarRentalVC? {
         let storyboard = UIStoryboard(name: Storyboard.CarRental.name,
                                       bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? SearchCarRentalVC
+        let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? ModifySearchCarRentalVC
         return vc
     }
     
@@ -45,15 +45,9 @@ class SearchCarRentalVC: BaseTableVC {
     
     //MARK: - didTapOnBackBtnAction
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        MySingleton.shared.callboolapi = true
-        guard let vc = DashBoardTBVC.newInstance.self else {return}
-        vc.selectedIndex = 0
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false)
+        MySingleton.shared.callboolapi = false
+        dismiss(animated: true)
     }
-    
-    
-    
     
     
     override func didTapOnPickupLocationBtnAction(cell: SearchCarRentalTVCell) {
@@ -144,7 +138,7 @@ class SearchCarRentalVC: BaseTableVC {
 
 
 
-extension SearchCarRentalVC {
+extension ModifySearchCarRentalVC {
     
     
     func setupUI(){

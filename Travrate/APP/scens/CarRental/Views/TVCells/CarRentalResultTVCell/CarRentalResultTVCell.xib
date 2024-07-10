@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -32,7 +32,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXe-4v-zfs" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                         <rect key="frame" x="15" y="0.0" width="500" height="213"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fiat Fiorino or similar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMs-u8-Et7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fiat Fiorino or similar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMs-u8-Et7">
                                 <rect key="frame" x="15" y="10" width="470" height="22"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -113,7 +113,7 @@
                             <constraint firstAttribute="trailing" secondItem="MMs-u8-Et7" secondAttribute="trailing" constant="15" id="aSH-cl-BqA"/>
                             <constraint firstItem="MMs-u8-Et7" firstAttribute="leading" secondItem="xXe-4v-zfs" secondAttribute="leading" constant="15" id="bBf-q2-7bF"/>
                             <constraint firstItem="JPP-e1-mYP" firstAttribute="top" secondItem="9fT-Qq-Xf9" secondAttribute="bottom" constant="5" id="cEr-5o-nOY"/>
-                            <constraint firstAttribute="height" constant="213" id="dYG-uu-ZM6"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="213" id="dYG-uu-ZM6"/>
                             <constraint firstItem="UuK-BO-aeW" firstAttribute="top" secondItem="q6b-Vt-PFL" secondAttribute="bottom" constant="20" id="dsT-co-atF"/>
                             <constraint firstItem="9fT-Qq-Xf9" firstAttribute="leading" secondItem="q6b-Vt-PFL" secondAttribute="trailing" constant="10" id="jDz-fv-Bdv"/>
                             <constraint firstAttribute="trailing" secondItem="Otc-GP-R5s" secondAttribute="trailing" constant="10" id="jSt-h9-AWR"/>
@@ -143,6 +143,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="carimg" destination="q6b-Vt-PFL" id="pl4-dS-u74"/>
                 <outlet property="depositeAmountlbl" destination="2Rd-7h-79v" id="fBn-rm-g3D"/>
                 <outlet property="itemscv" destination="9fT-Qq-Xf9" id="HD7-d9-D6S"/>
                 <outlet property="kwdlbl" destination="JPP-e1-mYP" id="fSv-Z2-zdm"/>

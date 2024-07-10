@@ -257,7 +257,6 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
     
     //MARK: - didTapOnContinueBtnAction
     @objc func didTapOnContinueBtnAction(_ sender :UIButton) {
-        
         ContinueToPaymentBtnTap()
     }
 }

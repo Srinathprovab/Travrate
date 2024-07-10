@@ -48,16 +48,17 @@ class SelectSportsListVC: BaseTableVC, SportListVMDelegate, AppliedSportsFilters
     }
     
     @IBAction func didTapOnSortBtnAction(_ sender: Any) {
-       // gotoFilterVC(strkey: "sportfilter")
+        // gotoFilterVC(strkey: "sportfilter")
     }
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        callapibool = false
-       // dismiss(animated: true)
+        callapibool = true
         gotoSportsSearchVC()
+        
     }
     
     func gotoSportsSearchVC() {
+        
         guard let vc = SportsSearchVC.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: false)
@@ -119,9 +120,9 @@ extension SelectSportsListVC {
     func callAPI() {
         
         MySingleton.shared.loderString = "fdetails"
-        MySingleton.shared.afterResultsBool = true
         loderBool = true
         showLoadera()
+      
         
         
         MySingleton.shared.sportListVM?.CALL_GET_PRE_SPORTS_SEARCH_API(dictParam: MySingleton.shared.payload)
@@ -140,7 +141,7 @@ extension SelectSportsListVC {
         
         teamlbl.text = MySingleton.shared.sportscityName
         venulbl.text = MySingleton.shared.sportsVenuName
-        dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "MMM dd"))"
+        dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
         
         MySingleton.shared.sportslistArray = response.data ?? []
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
@@ -177,7 +178,7 @@ extension SelectSportsListVC {
                                                             currency: "\(i.minTicketPrice?.currency ?? "")",
                                                             
                                                             searchid: i.search_id,
-                                                            tokenid: i.token, 
+                                                            tokenid: i.token,
                                                             key: "list",
                                                             headerText: i.venue?.name,
                                                             moreData: i.participants,
@@ -253,7 +254,7 @@ extension SelectSportsListVC {
         print(" ===== eventsA ====== \n\(eventsA.joined(separator: ","))")
         print(" ===== sportsCityA ====== \n\(sportsCityA.joined(separator: ","))")
         print(" ===== sportsCountryA ====== \n\(sportsCountryA.joined(separator: ","))")
-
+        
         // Filter the sports list array based on the input arrays
         let filteredSportsList = MySingleton.shared.sportslistArray.filter { event in
             let isTournamentMatch = tournamentA.isEmpty || (event.tournament?.name != nil && tournamentA.contains(event.tournament!.name!))
@@ -264,11 +265,11 @@ extension SelectSportsListVC {
             
             return isTournamentMatch && isEventMatch && isCityMatch && isCountryMatch
         }
-
+        
         setupTVCells(list: filteredSportsList)
         
     }
-
+    
     
     
     

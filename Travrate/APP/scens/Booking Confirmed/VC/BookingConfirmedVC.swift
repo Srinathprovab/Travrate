@@ -10,8 +10,6 @@ import UIKit
 
 class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     
-    
-    
     static var newInstance: BookingConfirmedVC? {
         let storyboard = UIStoryboard(name: Storyboard.Calender.name,
                                       bundle: nil)
@@ -21,18 +19,34 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
+     
         addObserver()
-        
-        if callapibool == true {
-            callAPI()
-        }
-        
     }
     
     
     func callAPI() {
         BASE_URL = ""
-        callGetFlightVoucherAPI()
+        MySingleton.shared.loderString = "payment"
+        loderBool = true
+        showLoadera()
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Flight" {
+            callGetFlightVoucherAPI()
+        }else if tabselect == "transfers" {
+            
+        }else if tabselect == "Sports" {
+            
+            callGetSportsVoucherAPI()
+        }else if tabselect == "CarRental" {
+            
+        }else {
+            
+            
+        }
+        
+        
+        
     }
     
     
@@ -43,6 +57,7 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
         // Do any additional setup after loading the view.
         setupUI()
         viewModel = VocherDetailsViewModel(self)
+        
     }
     
     func setupUI() {
@@ -54,6 +69,7 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
                                          "EmptyTVCell",
                                          "LabelTVCell",
                                          "ButtonTVCell",
+                                         "SportInfoTVCell",
                                          "BCFlightDetailsTVCell",
                                          "BookedTravelDetailsTVCell"])
         
@@ -72,10 +88,11 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     //MARK: - didTapOnBackBtnAction
     override func didTapOnBackBtnAction(cell: NewBookingConfirmedTVCell) {
         BASE_URL = BASE_URL1
+        callapibool = true
+        MySingleton.shared.callboolapi = true
         guard let vc = DashBoardTBVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.selectedIndex = 0
-        callapibool = true
         present(vc, animated: true)
     }
     
@@ -90,7 +107,7 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     }
     
     
-   //MARK: - HeaderTableViewCell Delegate Methodes
+    //MARK: - HeaderTableViewCell Delegate Methodes
     override func didTapOnFacebookLinkBtnAction(cell: HeaderTableViewCell) {
         gotoLoadWebViewVC(str: social_linksArray[0].url_link ?? "", keystr: "link")
     }
@@ -108,6 +125,18 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     }
     
     
+    
+    //MARK: -didTapOnViewStadiumBtnAction
+    override func didTapOnViewStadiumBtnAction(cell:SportInfoTVCell) {
+        gotoViewStadiumVC(keystr: "stadium")
+    }
+    
+    func gotoViewStadiumVC(keystr:String) {
+        guard let vc = ViewStadiumVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.keystr = keystr
+        self.present(vc, animated: false)
+    }
     
     
 }
@@ -194,11 +223,119 @@ extension BookingConfirmedVC {
 
 
 
+
+
+//MARK: - Sports Voucher Details
+extension BookingConfirmedVC {
+    
+    func callGetSportsVoucherAPI() {
+        viewModel?.CALL_GET_SPORTS_VOUCHER_DETAILS_API(dictParam: [:], url: MySingleton.shared.voucherurlsting)
+    }
+    
+    func sportsvoucherDetails(response: SportsVoucherModel) {
+        
+        hideLoadera()
+        loderBool = false
+        
+        MySingleton.shared.sportvoucherEventList = response.data?.event_list_data
+        MySingleton.shared.sports_passengers = response.sports_passengers ?? []
+        bookingId = response.data?.app_reference ?? ""
+        bookingRefrence =  response.data?.book_id ?? ""
+        bookedDate = response.data?.dateOfEvent ?? ""
+        MySingleton.shared.sport_mapUrl = response.data?.event_list_data?.venue?.mapUrl ?? ""
+        
+        
+        pnrNo = ""
+        
+        //        MySingleton.shared.sportsBookingData = response.data
+        //        MySingleton.shared.sportEventList = response.data?.event_list_data
+        //        MySingleton.shared.sportTicketValue = response.data?.ticket_value
+        
+        DispatchQueue.main.async {
+            self.setupSportsTVCells()
+        }
+    }
+    
+    
+    func setupSportsTVCells() {
+        tablerow.removeAll()
+        
+        tablerow.append(TableRow(title:bookingId,
+                                 subTitle: bookingRefrence,
+                                 key: "sports",
+                                 buttonTitle: bookedDate,
+                                 tempText: pnrNo,
+                                 cellType:.NewBookingConfirmedTVCell))
+        
+        tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        
+        tablerow.append(TableRow(key:"bc",
+                                 cellType:.SportInfoTVCell))
+        
+        tablerow.append(TableRow(title:"",key:"sports",cellType:.BookedTravelDetailsTVCell))
+        
+        
+        
+        commonTVData = tablerow
+        commonTableView.reloadData()
+        
+        
+    }
+    
+    
+    
+}
+
+
+//MARK: - addObserver
+extension BookingConfirmedVC {
+    
+    func addObserver() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
+        
+        
+        
+        if callapibool == true {
+            callAPI()
+        }
+        
+        
+    }
+    
+    @objc func reload() {
+        DispatchQueue.main.async {[self] in
+            callAPI()
+        }
+    }
+    
+    //MARK: - resultnil
+    @objc func resultnil() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "noresult"
+        self.present(vc, animated: true)
+    }
+    
+    
+    //MARK: - nointernet
+    @objc func nointernet() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "nointernet"
+        self.present(vc, animated: true)
+    }
+    
+    
+}
+
+
+//MARK: - Function to download and save the PDF
 extension BookingConfirmedVC {
     
     
-    
-    // Function to download and save the PDF
     func downloadAndSavePDF(showpdfurl:String) {
         let urlString = showpdfurl
         
@@ -239,44 +376,6 @@ extension BookingConfirmedVC {
         }
     }
     
-    
-    
-}
-
-
-
-extension BookingConfirmedVC {
-    
-    func addObserver() {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
-        
-    }
-    
-    @objc func reload() {
-        DispatchQueue.main.async {[self] in
-            callAPI()
-        }
-    }
-    
-    //MARK: - resultnil
-    @objc func resultnil() {
-        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.key = "noresult"
-        self.present(vc, animated: true)
-    }
-    
-    
-    //MARK: - nointernet
-    @objc func nointernet() {
-        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.key = "nointernet"
-        self.present(vc, animated: true)
-    }
     
     
 }

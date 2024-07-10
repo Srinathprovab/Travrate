@@ -12,6 +12,7 @@ protocol SportsPaymentViewModelDelegate : BaseViewModelProtocol {
     func sportsprepaymentDetails(response : SportsPrePaymentConfirmationModel)
     func sendtopaymentDetails(response : SportsSndtopaymentModel)
     func getPaymentgatewayUrlDetails(response : getPaymentgatewayUrlModel)
+    func secureBookingDetails(response : sportssecureBooingModel)
 }
 
 class SportsPaymentViewModel {
@@ -91,7 +92,7 @@ class SportsPaymentViewModel {
     
     
     
- //   sport/send_to_payment
+ //   CALL_GET_SPORT_PAYMENT_GATEWAY_URL_API
     func CALL_GET_SPORT_PAYMENT_GATEWAY_URL_API(dictParam: [String: Any],url:String){
         let parms = NSDictionary(dictionary:dictParam)
         print("Parameters = \(parms)")
@@ -114,5 +115,33 @@ class SportsPaymentViewModel {
             }
         }
     }
+    
+    
+    
+    func CALL_SECURE_BOOKING_API(dictParam: [String: Any],url:String){
+        let parms = NSDictionary(dictionary:dictParam)
+        print("Parameters = \(parms)")
+        BASE_URL = ""
+        self.view?.showLoader()
+        
+        ServiceManager.postOrPutApiCall(endPoint: url,parameters: parms as NSDictionary, resultType: sportssecureBooingModel.self, p:dictParam) { sucess, result, errorMessage in
+            
+            DispatchQueue.main.async {
+                self.view?.hideLoader()
+                if sucess {
+                    guard let response = result else {return}
+                    BASE_URL = BASE_URL1
+                    self.view.secureBookingDetails(response: response)
+                } else {
+                    // Show alert
+                    print("error = \(errorMessage ?? "")")
+                    self.view.showToast(message: errorMessage ?? "")
+                }
+            }
+        }
+    }
+    
+    
+    
     
 }

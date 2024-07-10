@@ -78,45 +78,35 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     
     override func didTapOnSearchSportsBtnAction(cell: SportsSearchTVCell) {
         
-        print("sportscityName : \(MySingleton.shared.sportscityName)")
-        print("sportscityId : \(MySingleton.shared.sportscityId)")
-        
-        print("sportsTeamName : \(MySingleton.shared.sportsTeamName)")
-        print("sportsTeamId : \(MySingleton.shared.sportsTeamId)")
-        
-        print("sportsVenuName : \(MySingleton.shared.sportsVenuName)")
-        print("sportsVenuId : \(MySingleton.shared.sportsVenuId)")
-        
-        print("sportFromDate : \(MySingleton.shared.sportFromDate)")
-        print("sportToDate : \(MySingleton.shared.sportToDate)")
-        
-        MySingleton.shared.payload.removeAll()
-        MySingleton.shared.payload["from"] = ""
-        MySingleton.shared.payload["destination_id"] = ""
-        MySingleton.shared.payload["from_type"] = ""
-        MySingleton.shared.payload["to"] = ""
-        MySingleton.shared.payload["event_id"] = ""
-        MySingleton.shared.payload["venue_type"] = ""
-        MySingleton.shared.payload["form_date"] = MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
-        MySingleton.shared.payload["to_date"] = MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
-        MySingleton.shared.payload["special_events_id"] = MySingleton.shared.sportscityId
-        
-        
-        if MySingleton.shared.sportFromDate.isEmpty == true {
-            
+        if MySingleton.shared.sportscityName.isEmpty == true || MySingleton.shared.sportscityName == "Please Select Service"{
+            showToast(message: "Please Select Service")
+        }else if MySingleton.shared.sportsTeamName.isEmpty == true {
+            showToast(message: "Please Select Team Or Match")
+        }else if MySingleton.shared.sportsVenuName.isEmpty == true {
+            showToast(message: "Please Select Venu Or Country")
+        } else if MySingleton.shared.sportFromDate.isEmpty == true {
+            showToast(message: "Select Date")
         }else if MySingleton.shared.sportToDate.isEmpty == true {
-            
-        }else if MySingleton.shared.sportscityId.isEmpty == true {
-            
+            showToast(message: "Select Date")
         }else {
+            
+            MySingleton.shared.payload.removeAll()
+            MySingleton.shared.payload["from"] = ""
+            MySingleton.shared.payload["destination_id"] = ""
+            MySingleton.shared.payload["from_type"] = ""
+            MySingleton.shared.payload["to"] = ""
+            MySingleton.shared.payload["event_id"] = ""
+            MySingleton.shared.payload["venue_type"] = ""
+            MySingleton.shared.payload["form_date"] = MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
+            MySingleton.shared.payload["to_date"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
+            MySingleton.shared.payload["special_events_id"] = MySingleton.shared.sportscityId
+            
             gotoSelectSportsListVC()
+            
         }
         
         
     }
-    
-    
-    
     
     func gotoSelectSportsListVC() {
         callapibool = true

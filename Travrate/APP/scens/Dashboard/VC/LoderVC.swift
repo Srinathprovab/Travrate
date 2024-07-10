@@ -33,6 +33,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     @IBOutlet weak var carrentalView: UIView!
     @IBOutlet weak var carRentalNamelbl: UILabel!
     @IBOutlet weak var carRentalDateslbl: UILabel!
+    
     @IBOutlet weak var flightEconomylbl: UILabel!
     @IBOutlet weak var waitView: UIView!
     
@@ -124,7 +125,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             
         }else if tabselect == "Sports" {
             
-            
+            sportsView.isHidden = false
             
         }else if tabselect == "CarRental" {
             
@@ -252,16 +253,22 @@ extension LoderVC {
         }else if tabselect == "Sports" {
             
             sportsView.isHidden = false
-            MySingleton.shared.loderString = "fdetails"
             sporteventlbl.text = MySingleton.shared.sportsTeamName
             sportvenulbl.text = MySingleton.shared.sportsVenuName
             sportdateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")) To \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy"))"
            
         }else if tabselect == "CarRental" {
             
+            
+            guard let pickuplocationname =  defaults.string(forKey: UserDefaultsKeys.pickuplocationname) else {return}
+            guard let pickuplocDate =  defaults.string(forKey: UserDefaultsKeys.pickuplocDate) else {return}
+            guard let dropuplocDate =  defaults.string(forKey: UserDefaultsKeys.dropuplocDate) else {return}
+            guard let pickuplocTime =  defaults.string(forKey: UserDefaultsKeys.pickuplocTime) else {return}
+            guard let dropuplocTime =  defaults.string(forKey: UserDefaultsKeys.dropuplocTime) else {return}
+            
             carrentalView.isHidden = false
-            carRentalNamelbl.text = "Istanbul Airport"
-            carRentalDateslbl.text = "22-8-2024 to 31-08-2024"
+            carRentalNamelbl.text = pickuplocationname
+            carRentalDateslbl.text = "\(pickuplocDate) to \(dropuplocDate)"
             
         }else {
            // MySingleton.shared.hotellodervm?.CALL_HOTEL_LODER_DETAILS_API(dictParam: MySingleton.shared.payload)

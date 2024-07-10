@@ -32,7 +32,7 @@ struct updatePaymentFlightModel : Codable {
 
 
 struct secureBooingModel : Codable {
-    let status : Int?
+    let status : Bool?
     let message : String?
     let url : String?
     
@@ -45,7 +45,7 @@ struct secureBooingModel : Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        status = try values.decodeIfPresent(Int.self, forKey: .status)
+        status = try values.decodeIfPresent(Bool.self, forKey: .status)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         url = try values.decodeIfPresent(String.self, forKey: .url)
     }
@@ -73,6 +73,30 @@ struct updateInsurenceModel : Codable {
         status = try values.decodeIfPresent(Bool.self, forKey: .status)
         msg = try values.decodeIfPresent(String.self, forKey: .msg)
         url = try values.decodeIfPresent(String.self, forKey: .url)
+    }
+    
+}
+
+
+
+struct sportssecureBooingModel : Codable {
+    
+    let status : Bool?
+    let message : String?
+    let hit_url : String?
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case status = "status"
+        case message = "message"
+        case hit_url = "hit_url"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        status = try values.decodeIfPresent(Bool.self, forKey: .status)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
+        hit_url = try values.decodeIfPresent(String.self, forKey: .hit_url)
     }
     
 }

@@ -43,10 +43,7 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             self.gotodashBoardScreen()
-           //  self.gotoBookingConfirmedVC()
-            //self.gotoOttuPaymentGatewayVC()
-            
-           
+            // self.gotoBookingConfirmedVC()
             
         })
     }
@@ -67,9 +64,14 @@ class ViewController: UIViewController {
     
     func gotoBookingConfirmedVC() {
         
+        
+        defaults.setValue("Sports", forKey: UserDefaultsKeys.tabselect)
+        
         guard let vc = BookingConfirmedVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
-        urlString = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/voucher/flight/BAS-F-TP-0305-1709641808/212"
+        MySingleton.shared.voucherurlsting = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/sport/voucher/TR-SE-20240710040022/voucher_view"
+        
+        urlString = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/sport/voucher/TR-SE-20240710125733/voucher_view"
         callapibool = true
         present(vc, animated: true)
     }

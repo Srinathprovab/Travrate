@@ -78,6 +78,20 @@ class SportInfoTVCell: TableViewCell {
             participantsA = MySingleton.shared.sportEventList?.participants ?? []
         }
         
+        
+        
+        if cellInfo?.key == "bc" {
+            kwdlbl.isHidden = true
+            viewTicketBtn.setTitle("View Stadium", for: .normal)
+            
+            titlelbl.text = MySingleton.shared.sportvoucherEventList?.eventType?.name
+            subtitlelbl.text = MySingleton.shared.sportvoucherEventList?.name
+            sportcitylbl.text = MySingleton.shared.sportvoucherEventList?.venue?.name
+            datelbl.text = "\(MySingleton.shared.sportvoucherEventList?.dateOfEvent ?? "")-\(MySingleton.shared.sportvoucherEventList?.timeOfEvent ?? "")"
+            
+            participantsA = MySingleton.shared.sportvoucherEventList?.participants ?? []
+        }
+        
         if cellInfo?.key == "sports" {
             kwdlbl.isHidden = false
             viewTicketBtn.setTitle("View Stadium", for: .normal)

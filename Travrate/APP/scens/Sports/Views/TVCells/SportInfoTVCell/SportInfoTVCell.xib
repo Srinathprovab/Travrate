@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -83,7 +83,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp2" translatesAutoresizingMaskIntoConstraints="NO" id="Gxj-mM-QOL">
-                                <rect key="frame" x="356" y="10" width="40" height="40"/>
+                                <rect key="frame" x="336" y="10" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="41I-Ja-7dM"/>
                                     <constraint firstAttribute="width" constant="40" id="hta-mh-Ku0"/>
@@ -95,18 +95,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V/S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPs-qL-0qT">
+                                <rect key="frame" x="376" y="23" width="30" height="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sWe-9b-lVw" firstAttribute="top" secondItem="ZH8-7M-EGq" secondAttribute="bottom" constant="8" id="1CA-8x-zz4"/>
+                            <constraint firstItem="GPs-qL-0qT" firstAttribute="centerY" secondItem="Gxj-mM-QOL" secondAttribute="centerY" id="7wP-Er-cqM"/>
                             <constraint firstItem="WHr-nc-M73" firstAttribute="top" secondItem="ZdL-a7-IFE" secondAttribute="top" constant="10" id="EKe-nC-doG"/>
+                            <constraint firstItem="WHr-nc-M73" firstAttribute="leading" secondItem="GPs-qL-0qT" secondAttribute="trailing" id="H3F-bh-JaO"/>
                             <constraint firstItem="SfH-xq-9KV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KiY-gl-fvC" secondAttribute="trailing" constant="10" id="K3R-Ty-dKH"/>
                             <constraint firstItem="KiY-gl-fvC" firstAttribute="top" secondItem="sWe-9b-lVw" secondAttribute="bottom" constant="8" id="MOJ-nH-jag"/>
-                            <constraint firstItem="WHr-nc-M73" firstAttribute="leading" secondItem="Gxj-mM-QOL" secondAttribute="trailing" constant="10" id="SZi-gr-uLc"/>
+                            <constraint firstItem="WHr-nc-M73" firstAttribute="leading" secondItem="Gxj-mM-QOL" secondAttribute="trailing" constant="30" id="SZi-gr-uLc"/>
                             <constraint firstItem="SfH-xq-9KV" firstAttribute="top" secondItem="00i-X1-Gpn" secondAttribute="bottom" constant="10" id="V5C-Er-slr"/>
                             <constraint firstItem="sWe-9b-lVw" firstAttribute="leading" secondItem="ZdL-a7-IFE" secondAttribute="leading" constant="10" id="W99-Ib-YxU"/>
                             <constraint firstAttribute="trailing" secondItem="00i-X1-Gpn" secondAttribute="trailing" constant="10" id="WEK-xP-9PH"/>
                             <constraint firstItem="AZM-2Y-FQ9" firstAttribute="leading" secondItem="ZdL-a7-IFE" secondAttribute="leading" constant="10" id="ZlY-1v-uIX"/>
+                            <constraint firstItem="GPs-qL-0qT" firstAttribute="leading" secondItem="Gxj-mM-QOL" secondAttribute="trailing" id="fGO-Kq-AxA"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sWe-9b-lVw" secondAttribute="trailing" constant="80" id="fXH-vS-wOz"/>
                             <constraint firstAttribute="trailing" secondItem="SfH-xq-9KV" secondAttribute="trailing" constant="10" id="feY-VR-ftr"/>
                             <constraint firstItem="Gxj-mM-QOL" firstAttribute="centerY" secondItem="WHr-nc-M73" secondAttribute="centerY" id="h98-rP-VtZ"/>

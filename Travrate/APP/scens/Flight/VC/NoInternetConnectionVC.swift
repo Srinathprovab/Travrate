@@ -105,6 +105,10 @@ class NoInternetConnectionVC: UIViewController {
                 vc.modalPresentationStyle = .fullScreen
                 vc.selectedIndex = 0
                 self.present(vc, animated: true)
+            }else if tabselect == "CarRental" {
+                guard let vc = SearchCarRentalVC.newInstance.self else {return}
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
             }else{
                 guard let vc = SearchHotelVC.newInstance.self else {return}
                 vc.modalPresentationStyle = .fullScreen

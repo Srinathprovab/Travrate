@@ -18,6 +18,8 @@ class SelectedSportInfoTVCell: TableViewCell {
     @IBOutlet weak var sportcitylbl: UILabel!
     @IBOutlet weak var tournamentnamelbl: UILabel!
     
+    
+    var participantsA = [Participants]()
     var delegate:SportInfoTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +40,17 @@ class SelectedSportInfoTVCell: TableViewCell {
         sportcitylbl.text = MySingleton.shared.sportListData?.venue?.name
         datelbl.text = "\(MySingleton.shared.sportListData?.dateOfEvent ?? "")-\(MySingleton.shared.sportListData?.timeOfEvent ?? "")"
         tournamentnamelbl.text = MySingleton.shared.sportListData?.tournament?.name
+        
+        participantsA = MySingleton.shared.participantsArray
+        
+        if participantsA.isEmpty == false {
+            
+            self.sportimg1.sd_setImage(with: URL(string: participantsA[0].participants_img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            
+            self.sportimg2.sd_setImage(with: URL(string: participantsA[1].participants_img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            
+            
+        }
     }
     
     

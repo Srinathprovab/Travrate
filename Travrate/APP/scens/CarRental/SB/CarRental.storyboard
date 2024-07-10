@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -294,8 +295,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="carCountlbl" destination="pHI-Pc-oIX" id="cEr-H3-jzj"/>
                         <outlet property="commonTableView" destination="Elw-04-0cs" id="jzu-dD-gIg"/>
                         <outlet property="dateslbl" destination="2t1-eN-S82" id="Iht-Mo-nNB"/>
+                        <outlet property="holderView" destination="S1D-Co-bAi" id="yOg-Sy-ZNe"/>
                         <outlet property="titlelbl" destination="ZFP-nm-KSV" id="udr-wR-dsl"/>
                     </connections>
                 </viewController>
@@ -608,10 +611,88 @@
             </objects>
             <point key="canvasLocation" x="3109" y="-2"/>
         </scene>
+        <!--Modify Search Car RentalVC-->
+        <scene sceneID="gij-Rd-uPc">
+            <objects>
+                <viewController storyboardIdentifier="ModifySearchCarRentalVC" id="LXG-9L-aEM" customClass="ModifySearchCarRentalVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hWz-6f-wlR">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5D-hv-6CW">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K15-h2-lfo">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="260"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modify Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mi6-2j-54l">
+                                                <rect key="frame" x="125.66666666666667" y="72" width="141.66666666666663" height="24"/>
+                                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="20"/>
+                                                <color key="textColor" name="TitleColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bY1-8L-kgi">
+                                                <rect key="frame" x="349" y="67" width="34" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="34" id="BrE-m8-JMu"/>
+                                                    <constraint firstAttribute="height" constant="34" id="tTM-Cy-m7R"/>
+                                                </constraints>
+                                                <color key="tintColor" name="TitleColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="close"/>
+                                                <connections>
+                                                    <action selector="didTapOnBackBtnAction:" destination="LXG-9L-aEM" eventType="touchUpInside" id="8rh-Aj-7pk"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="260" id="9Zw-rU-KRg"/>
+                                            <constraint firstAttribute="trailing" secondItem="bY1-8L-kgi" secondAttribute="trailing" constant="10" id="C5N-uF-8Fh"/>
+                                            <constraint firstItem="Mi6-2j-54l" firstAttribute="top" secondItem="K15-h2-lfo" secondAttribute="top" constant="72" id="ufK-y3-BRH"/>
+                                            <constraint firstItem="Mi6-2j-54l" firstAttribute="centerX" secondItem="K15-h2-lfo" secondAttribute="centerX" id="vTW-MO-mIY"/>
+                                            <constraint firstItem="bY1-8L-kgi" firstAttribute="centerY" secondItem="Mi6-2j-54l" secondAttribute="centerY" id="xc4-eA-B94"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NNr-rJ-cgw">
+                                        <rect key="frame" x="0.0" y="130" width="393" height="722"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="NNr-rJ-cgw" secondAttribute="bottom" id="4rF-OM-ebv"/>
+                                    <constraint firstItem="K15-h2-lfo" firstAttribute="leading" secondItem="c5D-hv-6CW" secondAttribute="leading" id="6tQ-LX-OD7"/>
+                                    <constraint firstItem="NNr-rJ-cgw" firstAttribute="leading" secondItem="c5D-hv-6CW" secondAttribute="leading" id="85s-vD-w3K"/>
+                                    <constraint firstAttribute="trailing" secondItem="K15-h2-lfo" secondAttribute="trailing" id="TIM-PO-Qfz"/>
+                                    <constraint firstItem="NNr-rJ-cgw" firstAttribute="top" secondItem="K15-h2-lfo" secondAttribute="bottom" constant="-130" id="fMS-Uw-2lf"/>
+                                    <constraint firstItem="K15-h2-lfo" firstAttribute="top" secondItem="c5D-hv-6CW" secondAttribute="top" id="olV-22-HAK"/>
+                                    <constraint firstAttribute="trailing" secondItem="NNr-rJ-cgw" secondAttribute="trailing" id="w7Q-G4-d8h"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EQ7-1X-u8o"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="c5D-hv-6CW" secondAttribute="bottom" id="L0M-7f-SJ0"/>
+                            <constraint firstItem="c5D-hv-6CW" firstAttribute="top" secondItem="hWz-6f-wlR" secondAttribute="top" id="m3L-RD-FMH"/>
+                            <constraint firstItem="c5D-hv-6CW" firstAttribute="leading" secondItem="EQ7-1X-u8o" secondAttribute="leading" id="qJI-3L-xVw"/>
+                            <constraint firstItem="EQ7-1X-u8o" firstAttribute="trailing" secondItem="c5D-hv-6CW" secondAttribute="trailing" id="zsR-cP-nfH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commonTableView" destination="NNr-rJ-cgw" id="djw-BP-uLm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S3e-4n-0Sj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-589" y="-2"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="20" height="20"/>
         <image name="back1" width="20" height="20"/>
+        <image name="close" width="26" height="26"/>
         <image name="filter" width="22" height="22"/>
         <image name="modify" width="79" height="30"/>
         <image name="sportsbg" width="428" height="266"/>
@@ -626,6 +707,9 @@
         </namedColor>
         <namedColor name="LayoverColor">
             <color red="0.96100002527236938" green="0.98400002717971802" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TitleColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

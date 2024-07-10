@@ -12,9 +12,10 @@ protocol CarRentalResultTVCellDelegate {
 }
 
 class CarRentalResultTVCell: TableViewCell {
-
+    
     
     @IBOutlet weak var titlelbl: UILabel!
+    @IBOutlet weak var carimg: UIImageView!
     @IBOutlet weak var depositeAmountlbl: UILabel!
     @IBOutlet weak var perdaylbl: UILabel!
     @IBOutlet weak var viewDetailsBtn: UIButton!
@@ -30,23 +31,48 @@ class CarRentalResultTVCell: TableViewCell {
         
         setupCV()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     
     override func updateUI() {
+        
+        
+        titlelbl.text = cellInfo?.title ?? ""
+        
+        
+        carimg.sd_setImage(with: URL(string: cellInfo?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+            if let error = error {
+                // Handle error loading image
+                print("Error loading image: \(error.localizedDescription)")
+                // Check if the error is due to a 404 Not Found response
+                if (error as NSError).code == NSURLErrorBadServerResponse {
+                    // Set placeholder image for 404 error
+                    self.carimg.image = UIImage(named: "noimage")
+                } else {
+                    // Set placeholder image for other errors
+                    self.carimg.image = UIImage(named: "noimage")
+                }
+            }
+        })
+        
         viewDetailsBtn.layer.cornerRadius = 4
-        MySingleton.shared.setAttributedTextnew(str1: "KWD:",
-                                                str2: "250.00",
+        MySingleton.shared.setAttributedTextnew(str1: cellInfo?.currency ?? "",
+                                                str2: cellInfo?.price ?? "",
                                                 lbl: kwdlbl,
                                                 str1font: .InterSemiBold(size: 12),
                                                 str2font: .InterSemiBold(size: 22),
                                                 str1Color: .TitleColor,
                                                 str2Color: .TitleColor)
+        
+        
+        
+        depositeAmountlbl.text = "Deposit Amount: \(cellInfo?.currency ?? "") \(cellInfo?.text ?? "")"
+       
     }
     
     

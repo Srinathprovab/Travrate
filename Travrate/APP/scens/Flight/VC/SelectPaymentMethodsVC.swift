@@ -25,6 +25,10 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         
+        MySingleton.shared.loderString = "fdetails"
+        loderBool = true
+        showLoadera()
+        
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
             DispatchQueue.main.async {
@@ -179,13 +183,12 @@ extension SelectPaymentMethodsVC {
     
    
     func CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API() {
-        
         MySingleton.shared.passengerDetailsVM?.CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API(dictParam:MySingleton.shared.payload)
     }
     
     //MARK: mobile process passenger Details
     func mobileprocesspassengerDetails(response: MobilePreBookingModel) {
-        
+       
         
         DispatchQueue.main.async {
             
@@ -202,12 +205,13 @@ extension SelectPaymentMethodsVC {
     
     
     
-    func mobolePaymentDetails(response: PaymentModel) {
+    func mobolePrePaymentDetails(response: PaymentModel) {
         
-        loderBool = false
-        //  hideLoadera()
         
         MySingleton.shared.PaymentSelectionArray = response.data?.payment_selection ?? []
+        
+        hideLoadera()
+        loderBool = false
         
         DispatchQueue.main.async {[self] in
             let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
@@ -223,10 +227,6 @@ extension SelectPaymentMethodsVC {
         }
         
     }
-    
-    
-    
-    
     
 }
 
@@ -305,7 +305,7 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.tablerow.append(TableRow(key:"bookingdetails",
                                                     cellType:.SportInfoTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Lead",
-                                                    key:"sports",
+                                                    key:"sportspay",
                                                     cellType:.BookedTravelDetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.SportsFareSummeryTVCell))
         MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
@@ -334,8 +334,12 @@ extension SelectPaymentMethodsVC {
     
     
     func mibileSendToPaymentDetails(response: MobilePassengerdetailsModel) {
+//        DispatchQueue.main.async {
+//            MySingleton.shared.mobilepaymentvm?.CALL_FLIGHT_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.url ?? "")
+//        }
+        
         DispatchQueue.main.async {
-            MySingleton.shared.mobilepaymentvm?.CALL_FLIGHT_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.url ?? "")
+            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
         }
     }
     
@@ -343,7 +347,10 @@ extension SelectPaymentMethodsVC {
     func flightgetPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
         print("====== response.data  ======")
         print(response.data)
-        //gotoLoadWebViewVC(urlStr1: response.data ?? "")
+       
+        DispatchQueue.main.async {
+            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
+        }
     }
     
 
@@ -380,6 +387,7 @@ extension SelectPaymentMethodsVC {
     }
     
     func hotelpreBookingDetails(response: HotelMBPModel) {
+       
         
      //   htoken = response.t
         
@@ -398,7 +406,9 @@ extension SelectPaymentMethodsVC {
     
     func prePaymentConfirmationDetails(response: PaymentModel) {
         
-       
+        hideLoadera()
+        loderBool = false
+        
         MySingleton.shared.PaymentSelectionArray = response.data?.payment_selection ?? []
         DispatchQueue.main.async {
             self.setupHotelTVCells()
@@ -422,8 +432,12 @@ extension SelectPaymentMethodsVC {
     
     
     func hotelSendToPayMentDetails(response: HotelPaymentModel) {
+//        DispatchQueue.main.async {
+//            self.hdvm?.CALL_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
+//        }
+        
         DispatchQueue.main.async {
-            self.hdvm?.CALL_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
+            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data?.url ?? "")
         }
     }
     
@@ -431,7 +445,11 @@ extension SelectPaymentMethodsVC {
     func getPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
         print("====== response.data  ======")
         print(response.data)
-        //gotoLoadWebViewVC(urlStr1: response.data ?? "")
+        
+        
+        DispatchQueue.main.async {
+            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
+        }
     }
     
     
@@ -450,6 +468,7 @@ extension SelectPaymentMethodsVC {
     
     
     func sportsPreBookingDetails(response: SportsPreBookingModel) {
+       
         DispatchQueue.main.async {
             MySingleton.shared.SsportsPaymentvm?.CALL_SPORTS_PAYMENT_CONFIRMATION_API(dictParam: [:], url: response.data ?? "")
         }
@@ -457,6 +476,11 @@ extension SelectPaymentMethodsVC {
     
     
     func sportsprepaymentDetails(response: SportsPrePaymentConfirmationModel) {
+        
+        hideLoadera()
+        loderBool = false
+        
+        
         responseConfirmationModel = response
         MySingleton.shared.SportsPaymentSelectionArray = response.payment_selection ?? []
         
@@ -486,10 +510,26 @@ extension SelectPaymentMethodsVC {
         
         
         DispatchQueue.main.async {
-            MySingleton.shared.SsportsPaymentvm?.CALL_GET_SPORT_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
+            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data?.url ?? "")
         }
     }
     
+    
+    func secureBookingDetails(response: sportssecureBooingModel) {
+        MySingleton.shared.voucherurlsting = response.hit_url ?? ""
+      
+        DispatchQueue.main.async {
+            self.gotoBookingSucessVC()
+        }
+    }
+    
+    
+    func gotoBookingSucessVC() {
+        MySingleton.shared.callboolapi = true
+        guard let vc = BookingSucessVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
     
     
     

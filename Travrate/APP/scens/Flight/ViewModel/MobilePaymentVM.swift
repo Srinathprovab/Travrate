@@ -7,7 +7,7 @@
 
 import Foundation
 protocol MobilePaymentVMDelegate : BaseViewModelProtocol {
-    func mobolePaymentDetails(response:PaymentModel)
+    func mobolePrePaymentDetails(response:PaymentModel)
     func mibileSendToPaymentDetails(response:MobilePassengerdetailsModel)
     func flightgetPaymentgatewayUrlDetails(response:getPaymentgatewayUrlModel)
 }
@@ -34,7 +34,7 @@ class MobilePaymentVM {
                 
                 if sucess {
                     guard let response = result else {return}
-                    self.view.mobolePaymentDetails(response: response)
+                    self.view.mobolePrePaymentDetails(response: response)
                 } else {
                     // Show alert
                     self.view.showToast(message: errorMessage ?? "")

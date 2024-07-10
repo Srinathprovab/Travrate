@@ -191,6 +191,10 @@ extension SportsSearchTVCell {
             MySingleton.shared.sportscityName = self?.sportCityNameArray[index] ?? ""
             MySingleton.shared.sportscityId = self?.sportCityIdArray[index] ?? ""
             
+            if item == "Please Select Service" {
+                self?.selectServicelbl.textColor = .subtitleNewcolor
+            }
+            
             self?.delegate?.didTapOnSelectServiceBtn(cell: self!)
             
         }

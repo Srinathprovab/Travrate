@@ -122,6 +122,8 @@ extension ViewTicketInfoVC {
         MySingleton.shared.seatingArrangementList = response.seating_arrangement ?? []
         MySingleton.shared.sport_mapUrl = response.event_list?.venue?.mapUrl ?? ""
         
+        MySingleton.shared.participantsArray = response.event_list?.participants ?? []
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
             loderBool = false
             hideLoadera()
