@@ -53,8 +53,80 @@ class SearchCarRentalVC: BaseTableVC {
     }
     
     
+    
+    
+    
+    override func didTapOnPickupLocationBtnAction(cell: SearchCarRentalTVCell) {
+        commonTableView.reloadData()
+    }
+    
+    
+    override func donedatePicker(cell:SearchCarRentalTVCell) {
+        
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        
+        if cell.pickupDateTF.isFirstResponder == true {
+            defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.pickuplocDate)
+            defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.dropuplocDate)
+            cell.dropupDatePicker.date = cell.pickupDatePicker.date
+            
+        }else {
+            
+            
+            
+            defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.pickuplocDate)
+            defaults.set(formatter.string(from: cell.dropupDatePicker.date), forKey: UserDefaultsKeys.dropuplocDate)
+            print(defaults.string(forKey: UserDefaultsKeys.pickuplocDate))
+            
+        }
+        
+        commonTableView.reloadData()
+        self.view.endEditing(true)
+    }
+    override func cancelDatePicker(cell:SearchCarRentalTVCell) {
+        view.endEditing(true)
+    }
+    
+    override func doneTimePicker(cell:SearchCarRentalTVCell) {
+        commonTableView.reloadData()
+    }
+    
+    
+//car_from:Istanbul Airport
+//from_loc_id:59007
+//from_country_code:
+//car_to:
+//to_loc_id:
+//to_country_code:
+//departure_date:27-07-2024
+//depart_time:12:05
+//drop_date:28-07-2024
+//drop_time:12:05
+//age_1:20
+//depature_time:00:00
+//return_time:00:00
+    
+    
+//    "label": "Abbeville City, Louisiana",
+//           "value": "Abbeville City",
+//           "id": "61338",
+//           "category": "Search Results",
+//           "type": "Search Results",
+    //       "count": 0
+    
     override func didTapOnSearchBtnAction(cell:SearchCarRentalTVCell) {
-        gotoCarRentalResultsVC()
+        
+        print(defaults.string(forKey: UserDefaultsKeys.pickuplocationname))
+        print(defaults.string(forKey: UserDefaultsKeys.pickuplocationcode))
+        print(defaults.string(forKey: UserDefaultsKeys.pickuplocDate))
+        print(defaults.string(forKey: UserDefaultsKeys.dropuplocDate))
+        print(defaults.string(forKey: UserDefaultsKeys.pickuplocTime))
+        print(defaults.string(forKey: UserDefaultsKeys.dropuplocTime))
+        print(MySingleton.shared.carRentalDriverAge)
+        
+       // gotoCarRentalResultsVC()
     }
     
     func gotoCarRentalResultsVC() {

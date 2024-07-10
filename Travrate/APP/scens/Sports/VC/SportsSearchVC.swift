@@ -45,31 +45,32 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     }
     
     
-    
-    override func donedatePicker(cell: SportsSearchTVCell) {
+    //MARK: - donedatePicker cancelDatePicker
+    override func donedatePicker(cell:SportsSearchTVCell){
+        
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         
-        
-        if cell.depDateTF.isFirstResponder {
+        if cell.depDateTF.isFirstResponder == true {
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
             cell.retDatePicker.date = cell.depDatePicker.date
             
             MySingleton.shared.sportFromDate = cell.depDatelbl.text ?? ""
             MySingleton.shared.sportToDate = cell.retDatelbl.text ?? ""
-        } else if cell.retDateTF.isFirstResponder {
+        }else {
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
             defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
+            
             MySingleton.shared.sportFromDate = cell.depDatelbl.text ?? ""
             MySingleton.shared.sportToDate = cell.retDatelbl.text ?? ""
         }
         
-        
         commonTableView.reloadData()
         self.view.endEditing(true)
     }
+    
     
     override func cancelDatePicker(cell: SportsSearchTVCell) {
         self.view.endEditing(true)

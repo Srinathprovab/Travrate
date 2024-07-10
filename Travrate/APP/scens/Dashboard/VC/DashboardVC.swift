@@ -285,6 +285,14 @@ extension DashboardVC {
     
     func gotoSearchCarRentalVC() {
         callapibool = true
+        
+        defaults.set("Select Location", forKey: UserDefaultsKeys.pickuplocationname)
+        defaults.set("", forKey: UserDefaultsKeys.pickuplocationcode)
+        defaults.set("Select Date", forKey: UserDefaultsKeys.pickuplocDate)
+        defaults.set("Select Date", forKey: UserDefaultsKeys.dropuplocDate)
+        defaults.set("Select Time", forKey: UserDefaultsKeys.pickuplocTime)
+        defaults.set("Select Time", forKey: UserDefaultsKeys.dropuplocTime)
+        
         guard let vc = SearchCarRentalVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)

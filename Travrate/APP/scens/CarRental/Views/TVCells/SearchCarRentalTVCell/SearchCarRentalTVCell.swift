@@ -9,15 +9,20 @@ import UIKit
 import DropDown
 
 protocol SearchCarRentalTVCellDelegate {
+    func didTapOnPickupLocationBtnAction(cell:SearchCarRentalTVCell)
     func didTapOnSearchBtnAction(cell:SearchCarRentalTVCell)
     func tfeditingChanged(tf: UITextField)
+    func donedatePicker(cell:SearchCarRentalTVCell)
+    func cancelDatePicker(cell:SearchCarRentalTVCell)
+    func doneTimePicker(cell:SearchCarRentalTVCell)
 }
 
-class SearchCarRentalTVCell: TableViewCell {
+class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     
     
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var pickuplocTF: UITextField!
+    @IBOutlet weak var pickuplocTV: UITableView!
     @IBOutlet weak var dropuplocTF: UITextField!
     @IBOutlet weak var dropuplocView: BorderedView!
     @IBOutlet weak var pickupDatelbl: UILabel!
@@ -32,20 +37,36 @@ class SearchCarRentalTVCell: TableViewCell {
     @IBOutlet weak var driverAgelbl: UILabel!
     @IBOutlet weak var dropofSameCheckImage: UIImageView!
     @IBOutlet weak var dropofDiffCheckImage: UIImageView!
+    @IBOutlet weak var tvheight: NSLayoutConstraint!
     
     
-    var samelocbool = false
+    
+    var samelocbool = true
     var difflocbool = false
     let pickupTimePicker = UIDatePicker()
     let dropupTimePicker = UIDatePicker()
     let pickupDatePicker = UIDatePicker()
     let dropupDatePicker = UIDatePicker()
     let dropDown = DropDown()
+    
+    var filterdcountrylist = [AirlineDate]()
+    var countryNames = [String]()
+    var countrycodesArray = [String]()
+    var originArray = [String]()
+    var isocountrycodeArray = [String]()
+    var isSearchBool = Bool()
+    var searchText = String()
+    
+    var locaionList = [PickuplocationListModel]()
+    var Pickupvvm :PickuplocationListVM?
     var delegate:SearchCarRentalTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         setupUI()
+        
+        
+        Pickupvvm = PickuplocationListVM(self)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -57,18 +78,61 @@ class SearchCarRentalTVCell: TableViewCell {
     
     
     func setupUI() {
-       
+        
+        
+        pickuplocTF.textColor = .SubTitleColor
+        pickuplocTF.font = .OpenSansMedium(size: 16)
+        pickuplocTF.delegate = self
+        pickuplocTF.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
+        dropofSameCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
+        
+        if pickuplocTF.text?.isEmpty == false {
+            pickuplocTF.textColor = .TitleColor
+        }
+        
+        pickuplocTV.layer.borderWidth = 1
+        pickuplocTV.layer.borderColor = UIColor.AppBorderColor.cgColor
+        
+        
+        
     }
     
     
     override func updateUI() {
+        
+        
+        pickuplocTF.text = defaults.string(forKey: UserDefaultsKeys.pickuplocationname) ?? ""
+        pickupDatelbl.text = defaults.string(forKey: UserDefaultsKeys.pickuplocDate) ?? "Select Date"
+        dropupDatelbl.text = defaults.string(forKey: UserDefaultsKeys.dropuplocDate) ?? "Select Date"
+        pickupTimelbl.text = defaults.string(forKey: UserDefaultsKeys.pickuplocTime) ?? "Select Time"
+        dropupTimelbl.text = defaults.string(forKey: UserDefaultsKeys.dropuplocTime) ?? "Select Time"
+        
+        
+        if pickupDatelbl.text == "Select Date" {
+            pickupDatelbl.textColor = .subtitleNewcolor
+        }
+        if dropupDatelbl.text == "Select Date" {
+            dropupDatelbl.textColor = .subtitleNewcolor
+        }
+        
+        if pickupTimelbl.text == "Select Time" {
+            pickupTimelbl.textColor = .subtitleNewcolor
+        }
+        if dropupTimelbl.text == "Select Time" {
+            dropupTimelbl.textColor = .subtitleNewcolor
+        }
+        
+        
+        setupTV()
+        tvheight.constant = 0
+        
         searchBtn.layer.cornerRadius = 4
         pickuplocTF.addTarget(self, action: #selector(tfeditingChanged(_:)), for: .editingChanged)
         dropuplocTF.addTarget(self, action: #selector(tfeditingChanged(_:)), for: .editingChanged)
         setupDropDown()
         
-        showPickupDatePicker()
-        showDropupDatePicker()
+       showpickupDatePicker()
+        showdropupDatePicker()
         
         showPickupTimePicker()
         showDepartTimePicker()
@@ -86,6 +150,7 @@ class SearchCarRentalTVCell: TableViewCell {
     
     
     @IBAction func didTapOnClearPickuplocTFbtnAction(_ sender: Any) {
+        tvheight.constant = 0
         pickuplocTF.text = ""
         pickuplocTF.becomeFirstResponder()
     }
@@ -105,8 +170,8 @@ class SearchCarRentalTVCell: TableViewCell {
     
     @IBAction func didTapOnDropOfSameLocBtnAction(_ sender: Any) {
         dropuplocView.isHidden = true
-       
-        dropofDiffCheckImage.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
+        
+     
         NotificationCenter.default.post(name: NSNotification.Name("reloadTV"), object: nil)
         samelocbool.toggle()
         if samelocbool {
@@ -164,146 +229,96 @@ extension SearchCarRentalTVCell {
 
 
 
-extension SearchCarRentalTVCell {
+
+
+
+
+
+
+
+extension SearchCarRentalTVCell:UITableViewDelegate, UITableViewDataSource  {
+    
+    //MARK: - Text Filed Editing Changed
     
     
-    //MARK: - showPickupDatePicker showDropupDatePicker
-    func showPickupDatePicker(){
-        //Formate Date
-        pickupDatePicker.datePickerMode = .date
-        pickupDatePicker.minimumDate = Date()
-        pickupDatePicker.preferredDatePickerStyle = .wheels
-        
-        let formter = DateFormatter()
-        formter.dateFormat = "dd-MM-yyyy"
-        
-        
-        if let calDepDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "") {
-            pickupDatePicker.date = calDepDate
-            
-            if self.dropupDatelbl.text == "Select Date" {
-                dropupDatePicker.date = calDepDate
-            }
-            
-            
-            // Check if returnDate date is smaller than calDepDate date
-            if let returnDate = formter.date(from: self.dropupDatelbl.text ?? ""),
-               returnDate < calDepDate {
-                dropupDatePicker.date = calDepDate
-                
-                // Also update the label to reflect the change
-                self.dropupDatelbl.text = formter.string(from: calDepDate)
-            }
-            
-            
+    @objc func textFiledEditingChanged(_ textField:UITextField) {
+        if textField.text?.isEmpty == true {
+        }else {
+            CallLocationListAPI(str: textField.text ?? "")
         }
-        
-        
-        
-        //ToolBar
-        let toolbar = UIToolbar();
-        toolbar.sizeToFit()
-        
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        
-        
-        
-        
-        self.pickupDateTF.inputAccessoryView = toolbar
-        self.pickupDateTF.inputView = pickupDatePicker
-        
-    }
-    
-    
-    
-    
-    
-    //MARK: - showDropupDatePicker
-    func showDropupDatePicker(){
-        //Formate Date
-        dropupDatePicker.datePickerMode = .date
-        //        retDatePicker.minimumDate = Date()
-        
-        // Set minimumDate for retDatePicker based on depDatePicker
-        let selectedDate = pickupDatePicker.date
-        dropupDatePicker.minimumDate = selectedDate
-        
-        dropupDatePicker.preferredDatePickerStyle = .wheels
-        
-        
-        let formter = DateFormatter()
-        formter.dateFormat = "dd-MM-yyyy"
-        
-        
-        if let calRetDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "") {
-            dropupDatePicker.date = calRetDate
-            
-            // Check if returnDate date is smaller than calDepDate date
-            if let returnDate = formter.date(from: self.dropupDatelbl.text ?? ""),
-               returnDate < calRetDate {
-                dropupDatePicker.date = calRetDate
-                
-                // Also update the label to reflect the change
-                self.dropupDatelbl.text = formter.string(from: calRetDate)
-            }
-            
-            
-        } else {
-            dropupDatePicker.date = selectedDate
-        }
-        
-        //ToolBar
-        let toolbar = UIToolbar();
-        toolbar.sizeToFit()
-        
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        
-        
-        self.dropupDateTF.inputAccessoryView = toolbar
-        self.dropupDateTF.inputView = dropupDatePicker
         
         
     }
     
     
-        @objc func donedatePicker(){
-            
-            let formater = DateFormatter()
-            formater.dateFormat = "dd-MMM-yyyy"
-            
-            if pickupDateTF.isFirstResponder {
-                pickupDatelbl.text = formater.string(from: pickupDatePicker.date)
-                dropupDatePicker.date = pickupDatePicker.date
-                dropupDatelbl.text = formater.string(from: dropupDatePicker.date)
-            }else {
-                pickupDatelbl.text = formater.string(from: pickupDatePicker.date)
-                dropupDatelbl.text = formater.string(from: dropupDatePicker.date)
-            }
-            
-            pickupDatelbl.textColor = .TitleColor
-            dropupDatelbl.textColor = .TitleColor
-            
-            pickupDateTF.resignFirstResponder()
-            dropupDateTF.resignFirstResponder()
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        pickuplocTF.text = ""
+        pickuplocTF.placeholder = "Pick Up Location"
+        CallLocationListAPI(str: textField.text ?? "")
+    }
+    
+    
+    func locationListResponse(response: [PickuplocationListModel]) {
+        locaionList = response
+        
+        tvheight.constant = CGFloat(locaionList.count * 50)
+        DispatchQueue.main.async {[self] in
+            pickuplocTV.reloadData()
         }
+    }
     
     
-        @objc func cancelDatePicker(){
-            pickupDateTF.resignFirstResponder()
-            dropupDateTF.resignFirstResponder()
+    func CallLocationListAPI(str:String) {
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["term"] = str
+        Pickupvvm?.CALL_PICKUP_LOCATION_LIST_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    func setupTV() {
+        pickuplocTV.delegate = self
+        pickuplocTV.dataSource = self
+        pickuplocTV.register(UINib(nibName: "TitleLblTVCell", bundle: nil), forCellReuseIdentifier: "cell")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return locaionList.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var ccell = UITableViewCell()
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? TitleLblTVCell {
+            cell.selectionStyle = .none
+            cell.titlelbl.text = locaionList[indexPath.row].label
+            cell.titlelbl.textColor = .TitleColor
+            
+            ccell = cell
         }
+        
+        return ccell
+    }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? TitleLblTVCell {
+            
+            self.pickuplocTF.text = locaionList[indexPath.row].value
+            defaults.set(locaionList[indexPath.row].value, forKey: UserDefaultsKeys.pickuplocationname)
+            defaults.set(locaionList[indexPath.row].id, forKey: UserDefaultsKeys.pickuplocationcode)
+            pickuplocTF.textColor = .TitleColor
+            pickuplocTF.resignFirstResponder()
+            tvheight.constant = 0
+            
+            
+            print(self.pickuplocTF.text)
+            print(locaionList[indexPath.row].id)
+            
+            delegate?.didTapOnPickupLocationBtnAction(cell: self)
+            
+            
+        }
+    }
     
 }
 
@@ -387,11 +402,15 @@ extension SearchCarRentalTVCell {
         
         self.pickupTimelbl.textColor = .TitleColor
         self.dropupTimelbl.textColor = .TitleColor
-       
+        
         self.pickupTimeTF.resignFirstResponder()
         self.dropupTimeTF.resignFirstResponder()
         
-       // delegate?.doneTimePicker(cell: self)
+        
+        defaults.set( self.pickupTimelbl.text, forKey: UserDefaultsKeys.pickuplocTime)
+        defaults.set(self.dropupTimelbl.text, forKey: UserDefaultsKeys.dropuplocTime)
+        
+         delegate?.doneTimePicker(cell: self)
     }
     
     @objc func cancelTimePicker() {
@@ -399,6 +418,119 @@ extension SearchCarRentalTVCell {
         self.pickupTimeTF.resignFirstResponder()
         self.dropupTimeTF.resignFirstResponder()
         
-       // delegate?.cancelTimePicker(cell: self)
+        // delegate?.cancelTimePicker(cell: self)
     }
+}
+
+
+extension SearchCarRentalTVCell {
+    
+    
+    //MARK: - showpickupDatePicker
+    func showpickupDatePicker(){
+        //Formate Date
+        pickupDatePicker.datePickerMode = .date
+        pickupDatePicker.minimumDate = Date()
+        pickupDatePicker.preferredDatePickerStyle = .wheels
+        
+        let formter = DateFormatter()
+        formter.dateFormat = "dd-MM-yyyy"
+        
+        
+        if let sportcalDepDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.pickuplocDate) ?? "") {
+            pickupDatePicker.date = sportcalDepDate
+            
+            if self.pickupDatelbl.text == "Select Date" {
+                dropupDatePicker.date = sportcalDepDate
+            }
+            
+            // Check if checkout date is smaller than checkin date
+            if let sportcalRetDate = formter.date(from: self.pickupDatelbl.text ?? ""),
+               sportcalRetDate < sportcalDepDate {
+                dropupDatePicker.date = sportcalDepDate
+                
+                // Also update the label to reflect the change
+                self.pickupDatelbl.text = formter.string(from: sportcalDepDate)
+            }
+        }
+        
+        
+        
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        self.pickupDateTF.inputAccessoryView = toolbar
+        self.pickupDateTF.inputView = pickupDatePicker
+        
+    }
+    
+    
+    
+    
+    
+    
+    //MARK: - showdropupDatePicker
+    func showdropupDatePicker(){
+        //Formate Date
+        dropupDatePicker.datePickerMode = .date
+        //        dropupDatePicker.minimumDate = Date()
+        // Set minimumDate for dropupDatePicker based on pickupDatePicker or retpickupDatePicker
+        let selectedDate = self.pickupDateTF.isFirstResponder ? pickupDatePicker.date : dropupDatePicker.date
+        dropupDatePicker.minimumDate = selectedDate
+        
+        dropupDatePicker.preferredDatePickerStyle = .wheels
+        
+        
+        let formter = DateFormatter()
+        formter.dateFormat = "dd-MM-yyyy"
+        
+        
+        if let sportcalDepDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.pickuplocDate) ?? "") {
+            
+            if self.pickupDatelbl.text == "Select Date" {
+                dropupDatePicker.date = sportcalDepDate
+                
+            }else {
+                if let sportcalRetDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.dropuplocDate) ?? "") {
+                    dropupDatePicker.date = sportcalRetDate
+                }
+            }
+        }
+        
+        
+        
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        self.dropupDateTF.inputAccessoryView = toolbar
+        self.dropupDateTF.inputView = dropupDatePicker
+        
+        
+    }
+    
+    
+    @objc func donedatePicker(){
+        pickupDatelbl.textColor = .TitleColor
+        dropupDatelbl.textColor = .TitleColor
+        
+        delegate?.donedatePicker(cell:self)
+    }
+    
+    
+    @objc func cancelDatePicker(){
+        delegate?.cancelDatePicker(cell:self)
+    }
+    
 }

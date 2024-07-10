@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -405,7 +405,15 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="convinceFeelbl" destination="9dR-CI-VyK" id="xJQ-1E-jfE"/>
+                <outlet property="costlbl" destination="kFs-Nk-pRc" id="75q-jY-GJn"/>
+                <outlet property="grossFarelbl" destination="pxM-do-O1J" id="K3y-eM-6KE"/>
+                <outlet property="personCountlbl" destination="gPO-W2-u3D" id="xEU-Rk-6gD"/>
+                <outlet property="serviceFarelbl" destination="Cd9-b1-SnB" id="Sgd-We-sBd"/>
+                <outlet property="shippingFeeslbl" destination="K0W-nm-UBN" id="qTw-uZ-fBs"/>
                 <outlet property="topview" destination="8Dj-c8-30z" id="jic-Of-R5z"/>
+                <outlet property="totalFarelbl" destination="LCl-Pa-VDL" id="97I-GZ-QRt"/>
+                <outlet property="totalgrossFarelbl" destination="5fM-Fn-mnp" id="t3K-Eg-Ref"/>
             </connections>
             <point key="canvasLocation" x="250.38167938931298" y="203.16901408450704"/>
         </tableViewCell>

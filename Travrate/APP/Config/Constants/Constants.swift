@@ -51,7 +51,7 @@ var promocodeValue = Double()
 var whatsAppCheck = false
 var priceCheck = false
 var flexibleCheck = false
-var notificationCheck = false
+var notificationCheck = true
 var addonCheck = false
 var totlConvertedGrand = Double()
 var whatsAppAmount = Int()
@@ -303,6 +303,9 @@ struct ApiEndpoints {
     static let sport_sent_to_payment_pre = "sport/sent_to_payment_pre"
     static let sport_send_to_payment = "sport/send_to_payment"
     
+    
+    //CAR RENTAL
+    static let ajax_get_car_rental_city_list = "ajax/get_car_rental_city_list"
 }
 
 /*App messages*/
@@ -435,6 +438,10 @@ struct UserDefaultsKeys {
     //sportds
     static var sportcalDepDate = "sportcalDepDate"
     static var sportcalRetDate = "sportcalRetDate"
+    static var pickuplocDate = "pickuplocDate"
+    static var dropuplocDate = "dropuplocDate"
+    static var pickuplocTime = "pickuplocTime"
+    static var dropuplocTime = "dropuplocTime"
     
     
     //Holiday
@@ -444,6 +451,9 @@ struct UserDefaultsKeys {
     static var holidaychildCount = "holidaychildCount"
     static var holidayinfantsCount = "holidayinfantsCount"
     static var holidaytotalpassengercount = "holidaytotalpassengercount"
+    static var pickuplocationname = "pickuplocationname"
+    static var pickuplocationcode = "pickuplocationcode"
+    static var cardriverage = "cardriverage"
 }
 
 

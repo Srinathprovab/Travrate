@@ -910,9 +910,6 @@ extension BookingDetailsVC {
         MySingleton.shared.payload["insurance_baseprice"] = ""
         MySingleton.shared.payload["hidseatprice"] = ""
         MySingleton.shared.payload["device_source"] = "MOBILE(A)"
-        
-        
-        
         MySingleton.shared.payload["addon_services"] = origin_arrayString
         
         
@@ -955,14 +952,10 @@ extension BookingDetailsVC {
             
             
             if MySingleton.shared.infoArray.count > 0 {
-                
                 gotoMealSelectionVC()
-                
             }else {
                 MySingleton.shared.afterResultsBool = true
                 loderBool = true
-              //  showLoadera()
-                
                 gotoSelectPaymentMethodsVC()
             }
             

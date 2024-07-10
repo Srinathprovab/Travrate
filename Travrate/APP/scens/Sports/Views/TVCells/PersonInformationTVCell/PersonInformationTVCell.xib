@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -116,7 +116,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qB-SC-MN4">
-                                                <rect key="frame" x="0.0" y="0.0" width="501" height="14"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="501" height="45"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                                 <connections>
@@ -128,11 +128,12 @@
                                         <constraints>
                                             <constraint firstItem="QYl-Ib-LZR" firstAttribute="centerY" secondItem="OBf-cs-Mg0" secondAttribute="centerY" id="1c3-bM-FRd"/>
                                             <constraint firstAttribute="height" constant="45" id="9JV-HL-L35"/>
-                                            <constraint firstAttribute="trailing" secondItem="3qB-SC-MN4" secondAttribute="trailing" id="CmP-ji-Sl3"/>
-                                            <constraint firstItem="3qB-SC-MN4" firstAttribute="leading" secondItem="OBf-cs-Mg0" secondAttribute="leading" id="dZ9-sd-sfY"/>
+                                            <constraint firstAttribute="bottom" secondItem="3qB-SC-MN4" secondAttribute="bottom" id="C50-Tv-YmJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="3qB-SC-MN4" secondAttribute="trailing" id="DPe-3A-ARI"/>
+                                            <constraint firstItem="3qB-SC-MN4" firstAttribute="leading" secondItem="OBf-cs-Mg0" secondAttribute="leading" id="HVz-bP-z7i"/>
                                             <constraint firstItem="QYl-Ib-LZR" firstAttribute="leading" secondItem="OBf-cs-Mg0" secondAttribute="leading" constant="15" id="ddo-5s-ugf"/>
                                             <constraint firstAttribute="trailing" secondItem="QYl-Ib-LZR" secondAttribute="trailing" constant="15" id="guh-BE-5XP"/>
-                                            <constraint firstItem="3qB-SC-MN4" firstAttribute="top" secondItem="OBf-cs-Mg0" secondAttribute="top" id="zn7-xp-Kih"/>
+                                            <constraint firstItem="3qB-SC-MN4" firstAttribute="top" secondItem="OBf-cs-Mg0" secondAttribute="top" id="s0Y-Qe-fDl"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -200,7 +201,7 @@
                 <outlet property="tickettypeView" destination="OBf-cs-Mg0" id="GLX-OB-Of4"/>
                 <outlet property="tickettypelbl" destination="QYl-Ib-LZR" id="8fS-DO-ydJ"/>
             </connections>
-            <point key="canvasLocation" x="321.37404580152668" y="244.36619718309859"/>
+            <point key="canvasLocation" x="319.84732824427482" y="244.36619718309859"/>
         </tableViewCell>
     </objects>
     <resources>

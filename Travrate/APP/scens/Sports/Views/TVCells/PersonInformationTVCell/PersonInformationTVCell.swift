@@ -63,7 +63,13 @@ extension PersonInformationTVCell {
     
     func setuppersonsDropdown() {
         
-        personsDropdown.dataSource = ["1","2","3","4","5"]
+        
+        var noofpersonsArray = [String]()
+        for i in 1 ... (MySingleton.shared.sportsBookingData?.event_list?.availableCategoriesQuantity ?? 0) {
+            noofpersonsArray.append("\(i)")
+        }
+        
+        personsDropdown.dataSource = noofpersonsArray
         personsDropdown.direction = .bottom
         personsDropdown.backgroundColor = .WhiteColor
         personsDropdown.anchorView = self.personsView
@@ -71,6 +77,7 @@ extension PersonInformationTVCell {
         personsDropdown.selectionAction = { [weak self] (index: Int, item: String) in
             
             self?.personslbl.text = item
+            self?.personslbl.textColor = .TitleColor
             self?.delegate?.didTapOnSelectPersonsBtnAction(cell: self!)
             
         }
@@ -80,7 +87,18 @@ extension PersonInformationTVCell {
     
     func setuptickettypeDropdown() {
         
-        tickettypeDropdown.dataSource = ["shuttle to the stadium trom the customer's hotel Free Delivery"]
+        var shippingnameArray = [String]()
+        var shippingCostArray = [Int]()
+        shippingnameArray.removeAll()
+        shippingCostArray.removeAll()
+        shippingnameArray.append("Select Shipping")
+        shippingCostArray.append(0)
+        MySingleton.shared.sportsBookingData?.ticket_value?.deliveryMethods?.forEach({ i in
+            shippingnameArray.append("\(i.name ?? "") Delivery Charges \(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "") \(i.price ?? 0)")
+            shippingCostArray.append(i.price ?? 0)
+        })
+        
+        tickettypeDropdown.dataSource = shippingnameArray
         tickettypeDropdown.direction = .bottom
         tickettypeDropdown.backgroundColor = .WhiteColor
         tickettypeDropdown.anchorView = self.tickettypeView
@@ -88,6 +106,8 @@ extension PersonInformationTVCell {
         tickettypeDropdown.selectionAction = { [weak self] (index: Int, item: String) in
             
             self?.tickettypelbl.text = item
+            self?.tickettypelbl.textColor = .TitleColor
+            MySingleton.shared.sportsShippingFees = shippingCostArray[index]
             self?.delegate?.didTapOnSelectTicketTypeBtnAction(cell: self!)
             
         }

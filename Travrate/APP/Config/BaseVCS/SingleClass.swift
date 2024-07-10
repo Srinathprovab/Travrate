@@ -75,6 +75,7 @@ class MySingleton {
     var filterApplyedBool = false
     var adultsCount = 1
     var sportsPersonCount = 0
+    var sportsShippingFees = 0
     var childCount = 0
     var infantsCount = 0
     var acount = 0
@@ -228,6 +229,7 @@ class MySingleton {
     var sportBookingData : SportsBookingData?
     var sportEventList : Event_list?
     var sportTicketValue : Ticket_value?
+    var sportsBookingData:SportsBookingData?
     var participantsArray = [Participants]()
     var PaymentSelectionArray = [Payment_selection]()
     var SportsPaymentSelectionArray = [SportsPaymentSelection]()

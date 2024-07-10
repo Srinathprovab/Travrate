@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -533,6 +533,13 @@
                                     <constraint firstItem="IDM-sB-do2" firstAttribute="leading" secondItem="BwV-2O-cmD" secondAttribute="leading" id="yAF-EC-p9p"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Toc-rJ-6Yy">
+                                <rect key="frame" x="10" y="80" width="471" height="0.0"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="11h-97-qE9"/>
+                                </constraints>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.87450980392156863" green="1" blue="0.81199997663497925" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -553,10 +560,13 @@
                             <constraint firstItem="PJP-3q-M5e" firstAttribute="top" secondItem="BwV-2O-cmD" secondAttribute="bottom" constant="104" id="fO6-VI-q1S"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="604" id="jxn-7W-2zh"/>
                             <constraint firstItem="m9w-LA-Iv5" firstAttribute="leading" secondItem="RYp-Z0-x55" secondAttribute="leading" constant="10" id="mpU-Y8-P8e"/>
+                            <constraint firstItem="Toc-rJ-6Yy" firstAttribute="top" secondItem="m9w-LA-Iv5" secondAttribute="bottom" id="pyV-7u-3Dc"/>
+                            <constraint firstAttribute="trailing" secondItem="Toc-rJ-6Yy" secondAttribute="trailing" constant="10" id="rir-nZ-IEL"/>
                             <constraint firstAttribute="trailing" secondItem="8Wp-Xc-HBw" secondAttribute="trailing" constant="10" id="rls-TX-m7s"/>
                             <constraint firstItem="BwV-2O-cmD" firstAttribute="top" secondItem="Sa0-qz-0YW" secondAttribute="bottom" constant="5" id="rtk-M5-08O"/>
                             <constraint firstItem="PJP-3q-M5e" firstAttribute="leading" secondItem="RYp-Z0-x55" secondAttribute="leading" constant="20" id="sUu-kx-D5L"/>
                             <constraint firstItem="m9w-LA-Iv5" firstAttribute="top" secondItem="RYp-Z0-x55" secondAttribute="top" constant="10" id="vHt-1E-meD"/>
+                            <constraint firstItem="Toc-rJ-6Yy" firstAttribute="leading" secondItem="RYp-Z0-x55" secondAttribute="leading" constant="10" id="vom-Fd-8Ww"/>
                             <constraint firstAttribute="trailing" secondItem="Tzs-Fj-QvQ" secondAttribute="trailing" constant="10" id="wjl-iZ-OiE"/>
                             <constraint firstItem="Sa0-qz-0YW" firstAttribute="top" secondItem="8Wp-Xc-HBw" secondAttribute="bottom" constant="20" id="ygk-LE-Hjj"/>
                         </constraints>
@@ -591,7 +601,9 @@
                 <outlet property="pickupTimeTF" destination="ItA-DO-k5f" id="zuo-NY-lWD"/>
                 <outlet property="pickupTimelbl" destination="x0M-J7-9DZ" id="AUX-6W-YGO"/>
                 <outlet property="pickuplocTF" destination="jop-w0-dO6" id="Pwo-EM-V3y"/>
+                <outlet property="pickuplocTV" destination="Toc-rJ-6Yy" id="2BN-az-VFQ"/>
                 <outlet property="searchBtn" destination="PJP-3q-M5e" id="cke-iS-if4"/>
+                <outlet property="tvheight" destination="11h-97-qE9" id="WGi-Yp-XE3"/>
             </connections>
             <point key="canvasLocation" x="270.99236641221376" y="121.12676056338029"/>
         </tableViewCell>
@@ -612,7 +624,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

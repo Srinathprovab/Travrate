@@ -233,6 +233,272 @@ extension SelectPaymentMethodsVC {
 
 
 
+
+
+extension SelectPaymentMethodsVC {
+    
+    func setupTransfersTVCells() {
+        
+        MySingleton.shared.tablerow.removeAll()
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.BDTransfersInf0TVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        
+        
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+        
+    }
+    
+    
+    func setupHotelTVCells() {
+        MySingleton.shared.tablerow.removeAll()
+        
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.BookingHotelDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
+                                                    key:"hotel",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        
+        
+        
+        tablerow.append(TableRow(title:hbookingDetails?.name,
+                                 subTitle: hbookingDetails?.address,
+                                 covetedAmnt: totlConvertedGrand, price: hoteltotalprice,
+                                 text: MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
+                                 headerText: "\(MySingleton.shared.roompaxesdetails[0].no_of_rooms ?? 0) \(MySingleton.shared.roompaxesdetails[0].room_name ?? "")",
+                                 buttonTitle:MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
+                                 tempText: "\(MySingleton.shared.totalnights )",
+                                 TotalQuestions: "\(MySingleton.shared.roompaxesdetails[0].no_of_adults ?? "0")",
+                                 cellType: .NewHotelPriceSummeryTVCell,
+                                 questionBase: "\(MySingleton.shared.roompaxesdetails[0].no_of_children ?? "0")"))
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
+        
+        
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+    }
+    
+    
+    func setupSportsTVCells() {
+        MySingleton.shared.tablerow.removeAll()
+        
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(key:"bookingdetails",
+                                                    cellType:.SportInfoTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead",
+                                                    key:"sports",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.SportsFareSummeryTVCell))
+        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
+        
+        
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+    }
+    
+    
+}
+
+
+extension SelectPaymentMethodsVC {
+    
+    //MARK: - FLIGHT
+    func callSendToPaymentAPI() {
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["app_reference"] =  MySingleton.shared.tmpFlightPreBookingId
+        MySingleton.shared.payload["search_id"] = MySingleton.shared.searchid
+        MySingleton.shared.payload["pg_type"] = MySingleton.shared.paymenttype
+        
+        MySingleton.shared.mobilepaymentvm?.CALL_SEND_TO_PAYMENT_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    
+    func mibileSendToPaymentDetails(response: MobilePassengerdetailsModel) {
+        DispatchQueue.main.async {
+            MySingleton.shared.mobilepaymentvm?.CALL_FLIGHT_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.url ?? "")
+        }
+    }
+    
+    
+    func flightgetPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
+        print("====== response.data  ======")
+        print(response.data)
+        //gotoLoadWebViewVC(urlStr1: response.data ?? "")
+    }
+    
+
+    
+    func gotoLoadWebViewVC(urlStr1:String) {
+        guard let vc = LoadWebViewVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.urlString = urlStr1
+        present(vc, animated: true)
+    }
+    
+    
+    func gotoBookingConfirmedVC() {
+        guard let vc = BookingConfirmedVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
+    
+    
+}
+
+
+
+
+extension SelectPaymentMethodsVC {
+    
+    //Hotel
+    func CALL_HOTEL_MOBILE_PROCESS_PASSENGER_DETAIL_API() {
+        self.hdvm?.CALL_HOTEL_PRE_MOBILE_BOOKING_API(dictParam:  MySingleton.shared.payload)
+    }
+    
+    func hotelBookingDetails(response: HotelBookingModel) {
+    
+    }
+    
+    func hotelpreBookingDetails(response: HotelMBPModel) {
+        
+     //   htoken = response.t
+        
+        responseHotelBookingDetials = response
+        
+        DispatchQueue.main.async {
+            MySingleton.shared.payload.removeAll()
+            MySingleton.shared.payload["search_id"] = response.data?.search_id
+            MySingleton.shared.payload["app_reference"] = response.data?.app_reference
+            MySingleton.shared.payload["booking_source"] = response.data?.booking_source
+            MySingleton.shared.payload["booking_status"] = response.data?.booking_source
+            
+            self.hdvm?.CALL_HOTEL_PRE_PAYMENT_CONFIRMATION_API(dictParam:  MySingleton.shared.payload)
+        }
+    }
+    
+    func prePaymentConfirmationDetails(response: PaymentModel) {
+        
+       
+        MySingleton.shared.PaymentSelectionArray = response.data?.payment_selection ?? []
+        DispatchQueue.main.async {
+            self.setupHotelTVCells()
+        }
+    }
+    
+    
+    func hotelSendToPayment() {
+
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["search_id"] = responseHotelBookingDetials?.data?.search_id
+        MySingleton.shared.payload["app_reference"] = responseHotelBookingDetials?.data?.app_reference
+        MySingleton.shared.payload["booking_source"] = responseHotelBookingDetials?.data?.booking_source
+        MySingleton.shared.payload["booking_status"] = responseHotelBookingDetials?.data?.booking_status
+        MySingleton.shared.payload["post_token"] = htoken
+        MySingleton.shared.payload["pg_type"] = MySingleton.shared.paymenttype
+        
+        self.hdvm?.CALL_HOTEL_SEND_TO_PAYMENNT_API(dictParam:  MySingleton.shared.payload)
+        
+    }
+    
+    
+    func hotelSendToPayMentDetails(response: HotelPaymentModel) {
+        DispatchQueue.main.async {
+            self.hdvm?.CALL_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
+        }
+    }
+    
+    
+    func getPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
+        print("====== response.data  ======")
+        print(response.data)
+        //gotoLoadWebViewVC(urlStr1: response.data ?? "")
+    }
+    
+    
+
+}
+
+
+
+
+//MARK: - Sport CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API
+extension SelectPaymentMethodsVC {
+    
+    func CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API() {
+        MySingleton.shared.SsportsPaymentvm?.CALL_SPORTS_PRE_BOOKING_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    
+    func sportsPreBookingDetails(response: SportsPreBookingModel) {
+        DispatchQueue.main.async {
+            MySingleton.shared.SsportsPaymentvm?.CALL_SPORTS_PAYMENT_CONFIRMATION_API(dictParam: [:], url: response.data ?? "")
+        }
+    }
+    
+    
+    func sportsprepaymentDetails(response: SportsPrePaymentConfirmationModel) {
+        responseConfirmationModel = response
+        MySingleton.shared.SportsPaymentSelectionArray = response.payment_selection ?? []
+        
+        DispatchQueue.main.async {
+            self.setupSportsTVCells()
+        }
+    }
+ 
+    
+    func callSportsSendToPayment() {
+
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["book_id"] = responseConfirmationModel?.book_id
+        MySingleton.shared.payload["search_id"] = responseConfirmationModel?.search_id
+        MySingleton.shared.payload["pg_type"] = MySingleton.shared.paymenttype
+     
+
+        MySingleton.shared.SsportsPaymentvm?.CALL_SEND_TO_PAYMENT_API(dictParam: MySingleton.shared.payload)
+        
+    }
+    
+
+    
+    func sendtopaymentDetails(response: SportsSndtopaymentModel) {
+        print("====== response.data  ======")
+        print(response.data?.url)
+        
+        
+        DispatchQueue.main.async {
+            MySingleton.shared.SsportsPaymentvm?.CALL_GET_SPORT_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
+        }
+    }
+    
+    
+    
+    
+    
+}
+
+
+
+
 //MARK: - sameInputs_Again_CallSaerchAPI
 extension SelectPaymentMethodsVC {
     
@@ -443,263 +709,6 @@ extension SelectPaymentMethodsVC {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
-    
-    
-}
-
-
-
-extension SelectPaymentMethodsVC {
-    
-    func setupTransfersTVCells() {
-        
-        MySingleton.shared.tablerow.removeAll()
-        
-        
-        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.BDTransfersInf0TVCell))
-        
-        MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
-        
-        
-        
-        commonTVData = MySingleton.shared.tablerow
-        commonTableView.reloadData()
-        
-    }
-    
-    
-    func setupHotelTVCells() {
-        MySingleton.shared.tablerow.removeAll()
-        
-        
-        
-        
-        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        
-        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.BookingHotelDetailsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
-                                                    key:"hotel",
-                                                    cellType:.BookedTravelDetailsTVCell))
-        
-        
-        
-        tablerow.append(TableRow(title:hbookingDetails?.name,
-                                 subTitle: hbookingDetails?.address,
-                                 covetedAmnt: totlConvertedGrand, price: hoteltotalprice,
-                                 text: MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
-                                 headerText: "\(MySingleton.shared.roompaxesdetails[0].no_of_rooms ?? 0) \(MySingleton.shared.roompaxesdetails[0].room_name ?? "")",
-                                 buttonTitle:MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
-                                 tempText: "\(MySingleton.shared.totalnights )",
-                                 TotalQuestions: "\(MySingleton.shared.roompaxesdetails[0].no_of_adults ?? "0")",
-                                 cellType: .NewHotelPriceSummeryTVCell,
-                                 questionBase: "\(MySingleton.shared.roompaxesdetails[0].no_of_children ?? "0")"))
-        
-        
-        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
-        
-        
-        
-        commonTVData = MySingleton.shared.tablerow
-        commonTableView.reloadData()
-    }
-    
-    
-    func setupSportsTVCells() {
-        MySingleton.shared.tablerow.removeAll()
-        
-        
-        
-        
-        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        
-        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
-        MySingleton.shared.tablerow.append(TableRow(key:"bookingdetails",
-                                                    cellType:.SportInfoTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Lead",
-                                                    key:"sports",
-                                                    cellType:.BookedTravelDetailsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.SportsFareSummeryTVCell))
-        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
-        
-        
-        
-        commonTVData = MySingleton.shared.tablerow
-        commonTableView.reloadData()
-    }
-    
-    
-}
-
-
-extension SelectPaymentMethodsVC {
-    
-    //MARK: - FLIGHT
-    func callSendToPaymentAPI() {
-        MySingleton.shared.payload.removeAll()
-        MySingleton.shared.payload["app_reference"] =  MySingleton.shared.tmpFlightPreBookingId
-        MySingleton.shared.payload["search_id"] = MySingleton.shared.searchid
-        MySingleton.shared.payload["pg_type"] = MySingleton.shared.paymenttype
-        
-        MySingleton.shared.mobilepaymentvm?.CALL_SEND_TO_PAYMENT_API(dictParam: MySingleton.shared.payload)
-    }
-    
-    
-    func mibileSendToPaymentDetails(response: MobilePassengerdetailsModel) {
-        DispatchQueue.main.async {
-            MySingleton.shared.mobilepaymentvm?.CALL_FLIGHT_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.url ?? "")
-        }
-    }
-    
-    
-    func flightgetPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
-        print("====== response.data  ======")
-        print(response.data)
-        gotoLoadWebViewVC(urlStr1: response.data ?? "")
-    }
-    
-
-    
-    func gotoLoadWebViewVC(urlStr1:String) {
-        guard let vc = LoadWebViewVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        vc.urlString = urlStr1
-        present(vc, animated: true)
-    }
-    
-    
-    
-}
-
-
-
-
-extension SelectPaymentMethodsVC {
-    
-    //Hotel
-    func CALL_HOTEL_MOBILE_PROCESS_PASSENGER_DETAIL_API() {
-        self.hdvm?.CALL_HOTEL_PRE_MOBILE_BOOKING_API(dictParam:  MySingleton.shared.payload)
-    }
-    
-    func hotelBookingDetails(response: HotelBookingModel) {
-    
-    }
-    
-    func hotelpreBookingDetails(response: HotelMBPModel) {
-        
-     //   htoken = response.t
-        
-        responseHotelBookingDetials = response
-        
-        DispatchQueue.main.async {
-            MySingleton.shared.payload.removeAll()
-            MySingleton.shared.payload["search_id"] = response.data?.search_id
-            MySingleton.shared.payload["app_reference"] = response.data?.app_reference
-            MySingleton.shared.payload["booking_source"] = response.data?.booking_source
-            MySingleton.shared.payload["booking_status"] = response.data?.booking_source
-            
-            self.hdvm?.CALL_HOTEL_PRE_PAYMENT_CONFIRMATION_API(dictParam:  MySingleton.shared.payload)
-        }
-    }
-    
-    func prePaymentConfirmationDetails(response: PaymentModel) {
-        
-       
-        MySingleton.shared.PaymentSelectionArray = response.data?.payment_selection ?? []
-        DispatchQueue.main.async {
-            self.setupHotelTVCells()
-        }
-    }
-    
-    
-    func hotelSendToPayment() {
-
-        MySingleton.shared.payload.removeAll()
-        MySingleton.shared.payload["search_id"] = responseHotelBookingDetials?.data?.search_id
-        MySingleton.shared.payload["app_reference"] = responseHotelBookingDetials?.data?.app_reference
-        MySingleton.shared.payload["booking_source"] = responseHotelBookingDetials?.data?.booking_source
-        MySingleton.shared.payload["booking_status"] = responseHotelBookingDetials?.data?.booking_status
-        MySingleton.shared.payload["post_token"] = htoken
-        MySingleton.shared.payload["pg_type"] = MySingleton.shared.paymenttype
-        
-        self.hdvm?.CALL_HOTEL_SEND_TO_PAYMENNT_API(dictParam:  MySingleton.shared.payload)
-        
-    }
-    
-    
-    func hotelSendToPayMentDetails(response: HotelPaymentModel) {
-        DispatchQueue.main.async {
-            self.hdvm?.CALL_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
-        }
-    }
-    
-    
-    func getPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
-        print("====== response.data  ======")
-        print(response.data)
-        gotoLoadWebViewVC(urlStr1: response.data ?? "")
-    }
-    
-    
-
-}
-
-
-
-
-//MARK: - Sport CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API
-extension SelectPaymentMethodsVC {
-    
-    func CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API() {
-        MySingleton.shared.SsportsPaymentvm?.CALL_SPORTS_PRE_BOOKING_API(dictParam: MySingleton.shared.payload)
-    }
-    
-    
-    func sportsPreBookingDetails(response: SportsPreBookingModel) {
-        DispatchQueue.main.async {
-            MySingleton.shared.SsportsPaymentvm?.CALL_SPORTS_PAYMENT_CONFIRMATION_API(dictParam: [:], url: response.data ?? "")
-        }
-    }
-    
-    
-    func sportsprepaymentDetails(response: SportsPrePaymentConfirmationModel) {
-        responseConfirmationModel = response
-        MySingleton.shared.SportsPaymentSelectionArray = response.payment_selection ?? []
-        
-        DispatchQueue.main.async {
-            self.setupSportsTVCells()
-        }
-    }
- 
-    
-    func callSportsSendToPayment() {
-
-        MySingleton.shared.payload.removeAll()
-        MySingleton.shared.payload["book_id"] = responseConfirmationModel?.book_id
-        MySingleton.shared.payload["search_id"] = responseConfirmationModel?.search_id
-        MySingleton.shared.payload["pg_type"] = MySingleton.shared.paymenttype
-     
-
-        MySingleton.shared.SsportsPaymentvm?.CALL_SEND_TO_PAYMENT_API(dictParam: MySingleton.shared.payload)
-        
-    }
-    
-
-    
-    func sendtopaymentDetails(response: SportsSndtopaymentModel) {
-        print("====== response.data  ======")
-        print(response.data?.url)
-        
-        
-        DispatchQueue.main.async {
-            MySingleton.shared.SsportsPaymentvm?.CALL_GET_SPORT_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
-        }
-    }
-    
-    
-    
     
     
 }

@@ -151,8 +151,6 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
     override func didTapOnSelectPersonsBtnAction(cell: PersonInformationTVCell) {
         MySingleton.shared.sportsPersonCount = Int(cell.personslbl.text ?? "0") ?? 0
         setupTVCell()
-        
-        
     }
     
     override func didTapOnSelectTicketTypeBtnAction(cell: PersonInformationTVCell) {
@@ -304,6 +302,7 @@ extension SportsBookingDetailsVC {
     
     func sportBookingDetails(response: SportsBookingModel) {
         
+        MySingleton.shared.sportsBookingData = response.data
         MySingleton.shared.sportEventList = response.data?.event_list
         MySingleton.shared.sportTicketValue = response.data?.ticket_value
         

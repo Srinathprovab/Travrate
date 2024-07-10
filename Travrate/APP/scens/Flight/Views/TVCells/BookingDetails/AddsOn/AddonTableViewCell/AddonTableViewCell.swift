@@ -22,8 +22,8 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
     var secondHalfAddonServices: [Addon_services] = []
     
     var selectedFirstHalfIndexPathArray = [IndexPath]()
+    var selectedSecondIndexPathArray = [IndexPath(item: 1, section: 0)]
     var hotelselectedIndexPathArray = [IndexPath]()
-    var selectedSecondIndexPathArray = [IndexPath]()
     
     var selectedAddonPrices: [Double] = [] // Track selected prices
     var totalPrice: Double = 0.0 {
@@ -195,7 +195,7 @@ extension AddonTableViewCell {
                 selectedSecondIndexPathArray.append(indexPath)
                 updateFlightTotal(for: secondHalfAddonServices[indexPath.row], isSelected: true)
                 
-                delegate?.didSelectAddon(index: indexPath.row, origen: "second", price: firstHalfAddonServices[indexPath.row].price ?? "")
+                delegate?.didSelectAddon(index: indexPath.row, origen: "second", price: secondHalfAddonServices[indexPath.row].price ?? "")
             }
         }else {
             

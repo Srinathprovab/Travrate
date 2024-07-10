@@ -53,7 +53,14 @@ class SelectSportsListVC: BaseTableVC, SportListVMDelegate, AppliedSportsFilters
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
         callapibool = false
-        dismiss(animated: true)
+       // dismiss(animated: true)
+        gotoSportsSearchVC()
+    }
+    
+    func gotoSportsSearchVC() {
+        guard let vc = SportsSearchVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: false)
     }
     
     
