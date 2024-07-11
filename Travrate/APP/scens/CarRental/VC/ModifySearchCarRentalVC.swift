@@ -128,7 +128,7 @@ class ModifySearchCarRentalVC: BaseTableVC {
     }
     
     func gotoCarRentalResultsVC() {
-        callapibool = true
+        MySingleton.shared.callboolapi = true
         defaults.set(false, forKey: "carrentalfilteronce")
         guard let vc = CarRentalResultsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen

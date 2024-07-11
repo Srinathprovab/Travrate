@@ -159,7 +159,7 @@ class MySingleton {
     var selected_meals_codeArray = [String]()
     var selected_special_assistance_codeArray = [String]()
     var addon_servicesArray = [String]()
-    
+    var addOptions =  [AddOptions]()
     
     var visaNationalityCode = String()
     var visaResidencyCode = String()
@@ -203,6 +203,15 @@ class MySingleton {
     var sport_ticket_value = String()
     var sport_eventlist = String()
     var carRentalDriverAge = String()
+    var carproductcode = String()
+    var carextraoptionPrice = String()
+    var carproductarray = [Product]()
+    var carresulttoken = String()
+    var carresultindex = String()
+    var driverbool = false
+    var childbool = false
+    
+    
     
     var confpassword = String()
     var recentData:[Recent_searches]?
@@ -237,6 +246,7 @@ class MySingleton {
     var PaymentSelectionArray = [Payment_selection]()
     var SportsPaymentSelectionArray = [SportsPaymentSelection]()
     var sports_passengers = [Sports_passengers]()
+    var extraOption = [Extra_option]()
     
     //View Models
     var loginvm:LoginViewModel?
@@ -278,6 +288,8 @@ class MySingleton {
     var SsportsPaymentvm:SportsPaymentViewModel?
     var carpresearchVM:CarrentalSearchVM?
     var sportsVoucherVM:SportsViewVoucherVM?
+    var carDetailsVM:CarDetailsVM?
+    var carPreBookingVM:CarPreBookingVM?
     
     
     //TIMER

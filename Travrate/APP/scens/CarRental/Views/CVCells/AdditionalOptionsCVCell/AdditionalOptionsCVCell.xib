@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AdditionalOptionsCVCell" customModule="Travrate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="265" height="81"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="265" height="81"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p08-hM-eua" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="265" height="81"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newuncheck" translatesAutoresizingMaskIntoConstraints="NO" id="EEs-Dr-L1d">
+                                <rect key="frame" x="10" y="28.666666666666671" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="K9k-KP-VCy"/>
+                                    <constraint firstAttribute="width" constant="24" id="jzY-Bh-c2N"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="driver1" translatesAutoresizingMaskIntoConstraints="NO" id="B8c-Iq-pRD">
+                                <rect key="frame" x="39" y="20.666666666666671" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2JO-VR-cRI"/>
+                                    <constraint firstAttribute="width" constant="40" id="W3r-Bd-SmI"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OOA-EC-wGE">
+                                <rect key="frame" x="79" y="24" width="176" height="33"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional Driver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lG3-el-rSK">
+                                        <rect key="frame" x="0.0" y="0.0" width="176" height="13.666666666666666"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
+                                        <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD 25.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlP-kz-AzN">
+                                        <rect key="frame" x="0.0" y="18.666666666666664" width="176" height="14.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OOA-EC-wGE" firstAttribute="centerY" secondItem="B8c-Iq-pRD" secondAttribute="centerY" id="6hL-ck-wHK"/>
+                            <constraint firstAttribute="trailing" secondItem="OOA-EC-wGE" secondAttribute="trailing" constant="10" id="BRa-Qd-Hcp"/>
+                            <constraint firstItem="OOA-EC-wGE" firstAttribute="leading" secondItem="B8c-Iq-pRD" secondAttribute="trailing" id="CZZ-1z-f5Z"/>
+                            <constraint firstItem="B8c-Iq-pRD" firstAttribute="leading" secondItem="EEs-Dr-L1d" secondAttribute="trailing" constant="5" id="GHE-Rr-WbG"/>
+                            <constraint firstItem="EEs-Dr-L1d" firstAttribute="leading" secondItem="p08-hM-eua" secondAttribute="leading" constant="10" id="dx2-Xf-gty"/>
+                            <constraint firstItem="B8c-Iq-pRD" firstAttribute="centerY" secondItem="EEs-Dr-L1d" secondAttribute="centerY" id="oHg-lO-Jwc"/>
+                            <constraint firstItem="EEs-Dr-L1d" firstAttribute="centerY" secondItem="p08-hM-eua" secondAttribute="centerY" id="qeC-6Z-eES"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="BorderColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="p08-hM-eua" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4ka-vU-sQJ"/>
+                <constraint firstAttribute="bottom" secondItem="p08-hM-eua" secondAttribute="bottom" id="RM2-TZ-4nS"/>
+                <constraint firstAttribute="trailing" secondItem="p08-hM-eua" secondAttribute="trailing" id="sqZ-hK-wke"/>
+                <constraint firstItem="p08-hM-eua" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yUk-Bk-eC3"/>
+            </constraints>
+            <size key="customSize" width="265" height="81"/>
+            <connections>
+                <outlet property="checkimg" destination="EEs-Dr-L1d" id="Fov-c0-PhI"/>
+                <outlet property="namelbl" destination="lG3-el-rSK" id="BS7-wY-FSK"/>
+                <outlet property="optionlogo" destination="B8c-Iq-pRD" id="O6N-LO-nND"/>
+                <outlet property="pricelbl" destination="PlP-kz-AzN" id="IH0-Bk-89s"/>
+            </connections>
+            <point key="canvasLocation" x="145.80152671755724" y="30.633802816901412"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="driver1" width="40" height="40"/>
+        <image name="newuncheck" width="24" height="24"/>
+        <namedColor name="BorderColor">
+            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

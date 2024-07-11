@@ -222,6 +222,7 @@ var multitripscodeArray = [String]()
 
 var zonetitleArray = [String]()
 var zonecodeArray = [String]()
+var optionsIndexpathArray: [IndexPath] = []
 
 
 /* URL endpoints */
@@ -308,6 +309,10 @@ struct ApiEndpoints {
     static let ajax_get_car_rental_city_list = "ajax/get_car_rental_city_list"
     static let general_pre_car_search = "general/pre_car_search"
     static let car_car_list = "car/car_list"
+    static let car_detials = "car/detials"
+    static let car_pre_booking = "car/pre_booking"
+    
+    
     
 }
 

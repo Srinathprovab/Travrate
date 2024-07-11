@@ -365,9 +365,8 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func donedatePicker(cell:SearchCarRentalTVCell) {}
     func cancelDatePicker(cell:SearchCarRentalTVCell) {}
     func doneTimePicker(cell:SearchCarRentalTVCell) {}
-   
-   
-    
+    func didTapOnTitleSelectBtnAction(cell:DriverDetailsTVCell) {}
+    func didTapOnCountryCodeBtn(cell:DriverDetailsTVCell) {}
     
     
     

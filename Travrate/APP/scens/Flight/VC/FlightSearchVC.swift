@@ -132,9 +132,12 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
             if cell.depTF.isFirstResponder == true {
                 defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
                 defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.calRetDate)
+                
+                cell.retDatePicker.date = cell.depDatePicker.date
             }else {
-                defaults.set(formatter.string(from: cell.retdepDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
+                defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
                 defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.calRetDate)
+                
             }
         }
         

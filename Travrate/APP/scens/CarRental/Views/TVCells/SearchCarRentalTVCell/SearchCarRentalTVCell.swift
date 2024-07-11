@@ -108,18 +108,32 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         dropupTimelbl.text = defaults.string(forKey: UserDefaultsKeys.dropuplocTime) ?? "Select Time"
         
         
+        
+        if pickuplocTF.text != "Select Location" {
+            pickuplocTF.textColor = .TitleColor
+        }
+        
         if pickupDatelbl.text == "Select Date" {
             pickupDatelbl.textColor = .subtitleNewcolor
+        }else {
+            pickupDatelbl.textColor = .TitleColor
         }
         if dropupDatelbl.text == "Select Date" {
             dropupDatelbl.textColor = .subtitleNewcolor
+        }else {
+            dropupDatelbl.textColor = .TitleColor
         }
         
         if pickupTimelbl.text == "Select Time" {
             pickupTimelbl.textColor = .subtitleNewcolor
+        }else {
+            pickupTimelbl.textColor = .TitleColor
         }
+        
         if dropupTimelbl.text == "Select Time" {
             dropupTimelbl.textColor = .subtitleNewcolor
+        }else {
+            dropupTimelbl.textColor = .TitleColor
         }
         
         

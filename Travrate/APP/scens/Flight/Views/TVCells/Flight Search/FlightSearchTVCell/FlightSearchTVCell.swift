@@ -93,7 +93,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     var txtbool = Bool()
     
     let depDatePicker = UIDatePicker()
-    let retdepDatePicker = UIDatePicker()
+  //  let retDatePicker = UIDatePicker()
     let retDatePicker = UIDatePicker()
     
     var filterdcountrylist = [AirlineDate]()
@@ -232,7 +232,8 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             self.depTF.isHidden = false
             self.retTF.isHidden = false
            
-            showreturndepDatePicker()
+            showdepDatePicker()
+         //   showreturndepDatePicker()
             showretDatePicker()
             
             
@@ -827,14 +828,14 @@ extension FlightSearchTVCell {
             depDatePicker.date = calDepDate
             
             if self.retlbl.text == "Add Date" {
-                retdepDatePicker.date = calDepDate
+                retDatePicker.date = calDepDate
             }
             
             
             // Check if returnDate date is smaller than calDepDate date
             if let returnDate = formter.date(from: self.retlbl.text ?? ""),
                returnDate < calDepDate {
-                retdepDatePicker.date = calDepDate
+                retDatePicker.date = calDepDate
                 
                 // Also update the label to reflect the change
                 self.retlbl.text = formter.string(from: calDepDate)
@@ -878,67 +879,67 @@ extension FlightSearchTVCell {
     
     
     //MARK: - showreturndepDatePicker
-    func showreturndepDatePicker(){
-        //Formate Date
-        retdepDatePicker.datePickerMode = .date
-        retdepDatePicker.minimumDate = Date()
-        retdepDatePicker.preferredDatePickerStyle = .wheels
-        
-        let formter = DateFormatter()
-        formter.dateFormat = "dd-MM-yyyy"
-        
-        
-        
-        if let rcalDepDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "")  {
-            retdepDatePicker.date = rcalDepDate
-            
-            
-            if defaults.string(forKey: UserDefaultsKeys.calRetDate) == nil || self.retlbl.text == "Add Date" {
-                retdepDatePicker.date = rcalDepDate
-            }
-            
-            
-            // Check if returnDate date is smaller than calDepDate date
-            if let returnDate = formter.date(from: self.retlbl.text ?? ""),
-               returnDate < rcalDepDate {
-                retdepDatePicker.date = rcalDepDate
-                
-                // Also update the label to reflect the change
-                self.retlbl.text = formter.string(from: rcalDepDate)
-            }
-            
-            
-        }
-        
-        
-        //ToolBar
-        let toolbar = UIToolbar();
-        toolbar.sizeToFit()
-        
-        
-//        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+//    func showreturndepDatePicker(){
+//        //Formate Date
+//        retDatePicker.datePickerMode = .date
+//        retDatePicker.minimumDate = Date()
+//        retDatePicker.preferredDatePickerStyle = .wheels
 //        
-//        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        
-        let label = UILabel()
-        label.text = "Departure Date" // Initial text, can be changed dynamically
-        label.sizeToFit()
-        label.font = .OpenSansMedium(size: 16)
-        let labelButton = UIBarButtonItem(customView: label)
-
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
-        
-        
-        
-        self.depTF.inputAccessoryView = toolbar
-        self.depTF.inputView = retdepDatePicker
-        
-    }
+//        let formter = DateFormatter()
+//        formter.dateFormat = "dd-MM-yyyy"
+//        
+//        
+//        
+//        if let rcalDepDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "")  {
+//            retDatePicker.date = rcalDepDate
+//            
+//            
+//            if defaults.string(forKey: UserDefaultsKeys.calRetDate) == nil || self.retlbl.text == "Add Date" {
+//                retDatePicker.date = rcalDepDate
+//            }
+//            
+//            
+//            // Check if returnDate date is smaller than calDepDate date
+//            if let returnDate = formter.date(from: self.retlbl.text ?? ""),
+//               returnDate < rcalDepDate {
+//                retDatePicker.date = rcalDepDate
+//                
+//                // Also update the label to reflect the change
+//                self.retlbl.text = formter.string(from: rcalDepDate)
+//            }
+//            
+//            
+//        }
+//        
+//        
+//        //ToolBar
+//        let toolbar = UIToolbar();
+//        toolbar.sizeToFit()
+//        
+//        
+////        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+////        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+////        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+////        
+////        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+//        
+//        let label = UILabel()
+//        label.text = "Departure Date" // Initial text, can be changed dynamically
+//        label.sizeToFit()
+//        label.font = .OpenSansMedium(size: 16)
+//        let labelButton = UIBarButtonItem(customView: label)
+//
+//        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+//        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+//        toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
+//        
+//        
+//        
+//        self.depTF.inputAccessoryView = toolbar
+//        self.depTF.inputView = retDatePicker
+//        
+//    }
     
     
     
@@ -947,8 +948,8 @@ extension FlightSearchTVCell {
         //Formate Date
         retDatePicker.datePickerMode = .date
         //        retDatePicker.minimumDate = Date()
-        // Set minimumDate for retDatePicker based on depDatePicker or retdepDatePicker
-        let selectedDate = self.depTF.isFirstResponder ? depDatePicker.date : retdepDatePicker.date
+        // Set minimumDate for retDatePicker based on depDatePicker or retDatePicker
+        let selectedDate = self.depTF.isFirstResponder ? depDatePicker.date : retDatePicker.date
         retDatePicker.minimumDate = selectedDate
         
         retDatePicker.preferredDatePickerStyle = .wheels

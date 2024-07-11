@@ -21,31 +21,42 @@ class CarRentalResultTVCell: TableViewCell {
     @IBOutlet weak var viewDetailsBtn: UIButton!
     @IBOutlet weak var kwdlbl: UILabel!
     @IBOutlet weak var itemscv: UICollectionView!
+    @IBOutlet weak var seatslbl: UILabel!
+    @IBOutlet weak var caroption2: UILabel!
+    @IBOutlet weak var caroption3: UILabel!
+    @IBOutlet weak var caroption4: UILabel!
+    @IBOutlet weak var caroption5: UILabel!
+    @IBOutlet weak var caroption6: UILabel!
+    @IBOutlet weak var caroption7: UILabel!
+    @IBOutlet weak var markuplbl: UILabel!
     
-    var itemsArray = ["4 Seats","0 Medium Bags","Manual","1 Large bags","Istanbul Airport","500","1 Small Bags"]
+    
+    var product_code = String()
+    var result_token = String()
+    var result_index = String()
+    var carlist:Raw_hotel_list?
+    
     var delegate:CarRentalResultTVCellDelegate?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        setupCV()
+       // setupCV()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
+        // Configure the view for the selected state   10.265 : 0 : 0
     }
     
     
     override func updateUI() {
         
+        carlist = cellInfo?.moreData as? Raw_hotel_list
         
-        titlelbl.text = cellInfo?.title ?? ""
         
-        
-        carimg.sd_setImage(with: URL(string: cellInfo?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+        carimg.sd_setImage(with: URL(string: carlist?.car_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
             if let error = error {
                 // Handle error loading image
                 print("Error loading image: \(error.localizedDescription)")
@@ -60,19 +71,37 @@ class CarRentalResultTVCell: TableViewCell {
             }
         })
         
+        
+        
+        product_code = carlist?.product?[0].product_type ?? ""
+        result_token = carlist?.result_token ?? ""
+        result_index = carlist?.result_index ?? ""
+    
+       
+        titlelbl.text = carlist?.car_name ?? ""
+        seatslbl.text = "\(carlist?.adults ?? "") Seats"
+        caroption2.text = "\(carlist?.luggageMed ?? "") Medium Bags"
+        caroption3.text = carlist?.transmission ?? ""
+        caroption4.text = "\(carlist?.luggageLarge ?? "") Large Bags"
+        caroption5.text = carlist?.from_loc ?? ""
+        caroption6.text = carlist?.product?[0].mileage ?? ""
+        caroption7.text = "\(carlist?.luggageSmall ?? "") Small Bags"
+        
+        depositeAmountlbl.text = "Excluded Security Deposit: \(carlist?.product?[0].currency ?? "") \(carlist?.product?[0].deposit ?? "")"
+        
+        
+        markuplbl.text = "Total or markup and discount : \(carlist?.product?[0].currency ?? "") \(carlist?.markup?.value ?? 0)"
+        
+        
         viewDetailsBtn.layer.cornerRadius = 4
-        MySingleton.shared.setAttributedTextnew(str1: cellInfo?.currency ?? "",
-                                                str2: cellInfo?.price ?? "",
+        MySingleton.shared.setAttributedTextnew(str1: carlist?.product?[0].currency ?? "",
+                                                str2: carlist?.product?[0].total ?? "",
                                                 lbl: kwdlbl,
                                                 str1font: .InterSemiBold(size: 12),
                                                 str2font: .InterSemiBold(size: 22),
                                                 str1Color: .TitleColor,
                                                 str2Color: .TitleColor)
         
-        
-        
-        depositeAmountlbl.text = "Deposit Amount: \(cellInfo?.currency ?? "") \(cellInfo?.text ?? "")"
-       
     }
     
     
@@ -85,50 +114,50 @@ class CarRentalResultTVCell: TableViewCell {
 
 
 
-extension CarRentalResultTVCell:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    
-    func setupCV() {
-        
-        let nib = UINib(nibName: "CarRentalTSeatsCVCell", bundle: nil)
-        itemscv.register(nib, forCellWithReuseIdentifier: "cell")
-        itemscv.delegate = self
-        itemscv.dataSource = self
-        let layout = UICollectionViewFlowLayout()
-        // layout.itemSize = CGSize(width: 90, height: 30)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        itemscv.collectionViewLayout = layout
-        itemscv.bounces = false
-        
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemsArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var commonCell = UICollectionViewCell()
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CarRentalTSeatsCVCell {
-            
-            cell.titlelbl.text = itemsArray[indexPath.row]
-            
-            commonCell = cell
-        }
-        return commonCell
-    }
-    
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let label = UILabel(frame: CGRect.zero)
-        label.text = itemsArray[indexPath.item]
-        label.sizeToFit()
-        return CGSize(width: label.frame.width, height: 16)
-    }
-    
-    
-}
+//extension CarRentalResultTVCell:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+//    
+//    func setupCV() {
+//        
+//        let nib = UINib(nibName: "CarRentalTSeatsCVCell", bundle: nil)
+//        itemscv.register(nib, forCellWithReuseIdentifier: "cell")
+//        itemscv.delegate = self
+//        itemscv.dataSource = self
+//        let layout = UICollectionViewFlowLayout()
+//        // layout.itemSize = CGSize(width: 90, height: 30)
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        layout.scrollDirection = .vertical
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 0
+//        itemscv.collectionViewLayout = layout
+//        itemscv.bounces = false
+//        
+//    }
+//    
+//    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return itemsArray.count
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        var commonCell = UICollectionViewCell()
+//        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CarRentalTSeatsCVCell {
+//            
+//            cell.titlelbl.text = itemsArray[indexPath.row]
+//            
+//            commonCell = cell
+//        }
+//        return commonCell
+//    }
+//    
+//    
+//    
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let label = UILabel(frame: CGRect.zero)
+//        label.text = itemsArray[indexPath.item]
+//        label.sizeToFit()
+//        return CGSize(width: label.frame.width, height: 16)
+//    }
+//    
+//    
+//}

@@ -7,9 +7,8 @@
 
 import UIKit
 
-class CarRentalChoosePackageVC: BaseTableVC {
-    
-
+class CarRentalChoosePackageVC: BaseTableVC, CarDetailsVMDelegate {
+   
     
     static var newInstance: CarRentalChoosePackageVC? {
         let storyboard = UIStoryboard(name: Storyboard.CarRental.name,
@@ -18,6 +17,8 @@ class CarRentalChoosePackageVC: BaseTableVC {
         return vc
     }
     
+    
+   
     var packageTitleStr = String()
     override func viewWillAppear(_ animated: Bool) {
         if callapibool == true {
@@ -33,6 +34,7 @@ class CarRentalChoosePackageVC: BaseTableVC {
         // Do any additional setup after loading the view.
         setupUI()
         
+        MySingleton.shared.carDetailsVM = CarDetailsVM(self)
     }
     
     
@@ -40,14 +42,18 @@ class CarRentalChoosePackageVC: BaseTableVC {
     
     //MARK: - didTapOnBackBtnAction
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        callapibool = false
+        MySingleton.shared.callboolapi = false
         dismiss(animated: true)
     }
     
     
     //MARK: - didTapOnSelectPackageBtnAction  ChoosePackageTVCell
     override func didTapOnSelectPackageBtnAction(cell: ChoosePackageTVCell) {
-        packageTitleStr = cell.titlelbl.text ?? ""
+        
+        
+        MySingleton.shared.carproductcode = cell.carproductcode
+        MySingleton.shared.carextraoptionPrice = cell.carproductcode
+      
         gotoCRProceedToBookVC()
     }
     
@@ -78,42 +84,47 @@ extension CarRentalChoosePackageVC {
         commonTableView.registerTVCells(["ChoosePackageTVCell",
                                          "EmptyTVCell"])
         
-        
-      
-        
     }
     
     func callAPI() {
+        
         MySingleton.shared.loderString = "fdetails"
         MySingleton.shared.afterResultsBool = true
         loderBool = true
         showLoadera()
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
-            loderBool = false
-            hideLoadera()
-            
-            setupTVCells()
-        }
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["product_code"] = MySingleton.shared.carproductcode
+        MySingleton.shared.payload["result_index"] = MySingleton.shared.carresultindex
+        MySingleton.shared.payload["result_token"] = MySingleton.shared.carresulttoken
+        
+        MySingleton.shared.carDetailsVM?.CALL_SELECT_YOUR_PACKAGE_API(dictParam: MySingleton.shared.payload)
+        
     }
     
     
+    func cardeatils(response: CarDetailsModel) {
+        loderBool = false
+        hideLoadera()
+        
+       
+        MySingleton.shared.extraOption = response.result_token?.extra_option ?? []
+        MySingleton.shared.carproductarray = response.result_token?.product ?? []
+        
+        
+        DispatchQueue.main.async {
+            self.setupTVCells()
+        }
+    }
     
     
     func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
-       
-        MySingleton.shared.tablerow.append(TableRow(title:"Basic",
-                                                    cellType:.ChoosePackageTVCell))
-        
-        MySingleton.shared.tablerow.append(TableRow(title:"Plus+",
-                                                    cellType:.ChoosePackageTVCell))
-        
-        MySingleton.shared.tablerow.append(TableRow(title:"Premium plus+",
-                                                    cellType:.ChoosePackageTVCell))
-
+        MySingleton.shared.carproductarray.forEach { i in
+            MySingleton.shared.tablerow.append(TableRow(moreData: i,cellType:.ChoosePackageTVCell))
+        }
         
         
         commonTVData = MySingleton.shared.tablerow

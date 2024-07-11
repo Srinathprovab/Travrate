@@ -78,7 +78,6 @@ class SearchCarRentalVC: BaseTableVC {
             
             defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.pickuplocDate)
             defaults.set(formatter.string(from: cell.dropupDatePicker.date), forKey: UserDefaultsKeys.dropuplocDate)
-            print(defaults.string(forKey: UserDefaultsKeys.pickuplocDate))
             
         }
         

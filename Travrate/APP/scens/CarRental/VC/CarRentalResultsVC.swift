@@ -26,6 +26,8 @@ class CarRentalResultsVC: BaseTableVC, CarrentalSearchVMDelegate {
     var activeBookingArray = [CarActivebookingsource]()
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
         addObserver()
     }
     
@@ -68,7 +70,13 @@ class CarRentalResultsVC: BaseTableVC, CarrentalSearchVMDelegate {
     
     //MARK: - didTapOnViewDetailsBtnAction CarRentalResultTVCell
     override func didTapOnViewDetailsBtnAction(cell: CarRentalResultTVCell) {
+        
+        MySingleton.shared.carproductcode = cell.product_code
+        MySingleton.shared.carresultindex = cell.result_index
+        MySingleton.shared.carresulttoken = cell.result_token
+        
         gotoCarRentalChoosePackageVCC()
+        
     }
     
     func gotoCarRentalChoosePackageVCC() {
@@ -103,10 +111,11 @@ extension CarRentalResultsVC {
     
     func callAPI() {
         
-        MySingleton.shared.loderString = "loder"
+        holderView.isHidden = true
+        MySingleton.shared.loderString = "fdetails"
         loderBool = true
         showLoadera()
-        holderView.isHidden = true
+        
         
         
         MySingleton.shared.carpresearchVM?.CALL_PRE_CAR_SEARCH_API(dictParam: MySingleton.shared.payload)
@@ -128,6 +137,7 @@ extension CarRentalResultsVC {
     
     func carrentalserachRespons(response: CarSearchModel) {
         
+    
         activeBookingArray = response.active_booking_source ?? []
         bookingSourceDataArrayCount = activeBookingArray.count
         titlelbl.text = response.car_search_params?.from_loc
@@ -159,6 +169,7 @@ extension CarRentalResultsVC {
     
     func carListRespons(response: CarListModel) {
         
+       
         bookingSourceDataArrayCount -= 1
         
         if let newResults = response.data?.raw_hotel_list, !newResults.isEmpty {
@@ -182,7 +193,7 @@ extension CarRentalResultsVC {
         
         
     }
-
+    
     
     
     func appendPriceAndDate(list:[Raw_hotel_list]) {
@@ -191,8 +202,8 @@ extension CarRentalResultsVC {
         hideLoadera()
         loderBool = false
         holderView.isHidden = false
-         
-      
+        
+        
         MySingleton.shared.setAttributedTextnew(str1: "\(list.count)", str2: " car are Available", lbl: carCountlbl, str1font: .OpenSansBold(size: 16), str2font: .OpenSansRegular(size: 14), str1Color: .TitleColor, str2Color: .TitleColor)
         
         
@@ -208,11 +219,8 @@ extension CarRentalResultsVC {
         
         
         list.forEach { i in
-            MySingleton.shared.tablerow.append(TableRow(title:i.car_name,
-                                                        price: i.product?[0].total,
-                                                        currency: i.product?[0].currency,
-                                                        text: i.product?[0].deposit,
-                                                        image: i.car_image,
+    
+            MySingleton.shared.tablerow.append(TableRow( moreData: i,
                                                         cellType:.CarRentalResultTVCell))
         }
         

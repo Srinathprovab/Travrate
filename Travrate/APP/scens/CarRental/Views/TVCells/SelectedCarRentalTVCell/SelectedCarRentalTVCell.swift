@@ -10,16 +10,28 @@ import UIKit
 class SelectedCarRentalTVCell: TableViewCell {
     
     @IBOutlet weak var titlelbl: UILabel!
-    @IBOutlet weak var itemscv: UICollectionView!
+    @IBOutlet weak var carimg: UIImageView!
+    @IBOutlet weak var caroption1: UILabel!
+    @IBOutlet weak var caroption2: UILabel!
+    @IBOutlet weak var caroption3: UILabel!
+    @IBOutlet weak var caroption4: UILabel!
+    @IBOutlet weak var caroption5: UILabel!
+    @IBOutlet weak var caroption6: UILabel!
+    @IBOutlet weak var caroption7: UILabel!
     
-    var itemsArray = ["4 Seats","0 Medium Bags","Manual","1 Large bags","Istanbul Airport","500","1 Small Bags"]
+    
+    
+    var product_code = String()
+    var result_token = String()
+    var result_index = String()
+    var carlist:Result_token?
     var delegate:CarRentalResultTVCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        setupCV()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,6 +43,34 @@ class SelectedCarRentalTVCell: TableViewCell {
     
     override func updateUI() {
         
+        carlist = cellInfo?.moreData as? Result_token
+        
+        
+        carimg.sd_setImage(with: URL(string: carlist?.car_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+            if let error = error {
+                // Handle error loading image
+                print("Error loading image: \(error.localizedDescription)")
+                // Check if the error is due to a 404 Not Found response
+                if (error as NSError).code == NSURLErrorBadServerResponse {
+                    // Set placeholder image for 404 error
+                    self.carimg.image = UIImage(named: "noimage")
+                } else {
+                    // Set placeholder image for other errors
+                    self.carimg.image = UIImage(named: "noimage")
+                }
+            }
+        })
+        
+        
+        
+        titlelbl.text = carlist?.car_name ?? ""
+        caroption2.text = "\(carlist?.luggageMed ?? "") Medium Bags"
+        caroption3.text = carlist?.transmission ?? ""
+        caroption4.text = "\(carlist?.luggageLarge ?? "") Large Bags"
+        caroption5.text = carlist?.from_loc ?? ""
+        caroption6.text = carlist?.product?[0].mileage ?? ""
+        caroption7.text = "\(carlist?.luggageSmall ?? "") Small Bags"
+        
     }
     
     
@@ -39,51 +79,4 @@ class SelectedCarRentalTVCell: TableViewCell {
 
 
 
-extension SelectedCarRentalTVCell:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    
-    func setupCV() {
-        
-        let nib = UINib(nibName: "CarRentalTSeatsCVCell", bundle: nil)
-        itemscv.register(nib, forCellWithReuseIdentifier: "cell")
-        itemscv.delegate = self
-        itemscv.dataSource = self
-        let layout = UICollectionViewFlowLayout()
-        // layout.itemSize = CGSize(width: 90, height: 30)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        itemscv.collectionViewLayout = layout
-        itemscv.bounces = false
-        
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemsArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var commonCell = UICollectionViewCell()
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CarRentalTSeatsCVCell {
-            
-            cell.titlelbl.text = itemsArray[indexPath.row]
-            
-            commonCell = cell
-        }
-        return commonCell
-    }
-    
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let label = UILabel(frame: CGRect.zero)
-        label.text = itemsArray[indexPath.item]
-        label.sizeToFit()
-        return CGSize(width: label.frame.width, height: 16)
-    }
-    
-    
-}
 

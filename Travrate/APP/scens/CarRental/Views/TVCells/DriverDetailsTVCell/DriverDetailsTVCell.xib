@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -221,7 +222,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9IX-D6-yM7" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="422" height="45"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H8h-fS-rwX">
+                                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H8h-fS-rwX">
                                                         <rect key="frame" x="0.0" y="0.0" width="422" height="45"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" textContentType="email"/>
@@ -640,14 +641,15 @@
                 <outlet property="cityTF" destination="NN4-fc-QJx" id="qfW-Hz-J87"/>
                 <outlet property="countrycodeTF" destination="007-Uh-ccR" id="lZb-NN-Ahl"/>
                 <outlet property="countrycodeView" destination="iL3-fY-tSH" id="Q1r-La-VUH"/>
-                <outlet property="emailidTF" destination="H8h-fS-rwX" id="O5r-Lh-2A5"/>
+                <outlet property="emailidTF" destination="H8h-fS-rwX" id="34s-Ky-XsS"/>
                 <outlet property="fnameTF" destination="C1T-g7-kGN" id="ti0-wg-vsa"/>
                 <outlet property="lnameTF" destination="fRv-Ju-L4d" id="m0c-W7-zgi"/>
                 <outlet property="mobileTF" destination="NU6-up-LlI" id="zII-xk-gUC"/>
+                <outlet property="mobileholderView" destination="rgM-G6-y7j" id="8GA-dG-YYM"/>
                 <outlet property="nationaslityTF" destination="SZ6-9p-MGX" id="AC8-xM-lnu"/>
                 <outlet property="postalcodeTF" destination="4qF-ik-QfB" id="Ydx-4j-pJm"/>
                 <outlet property="titleTF" destination="MzM-Ps-mpB" id="TWC-I6-YYm"/>
-                <outlet property="titleView" destination="Lji-dq-4w2" id="XSL-wE-BKp"/>
+                <outlet property="titleView" destination="WoG-2f-eVv" id="YWc-Cc-X3f"/>
             </connections>
             <point key="canvasLocation" x="141.98473282442748" y="78.16901408450704"/>
         </tableViewCell>

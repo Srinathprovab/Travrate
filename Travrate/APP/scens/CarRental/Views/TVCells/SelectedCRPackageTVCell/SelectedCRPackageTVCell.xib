@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -207,10 +208,15 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="depositelbl" destination="hyJ-l7-Xf6" id="b1W-uz-PZy"/>
+                <outlet property="holderView" destination="UBS-0s-6hP" id="tX8-bP-QCe"/>
                 <outlet property="kwdlbl" destination="8JV-LJ-FrW" id="u4V-uU-tW8"/>
+                <outlet property="liabililtylbl" destination="YeS-DJ-1vR" id="DVX-3i-AqA"/>
+                <outlet property="milagelbl" destination="4Mi-vB-8na" id="ywm-qz-g9V"/>
                 <outlet property="selectBtn" destination="x9q-Hw-Bm4" id="o8L-Dg-iBw"/>
                 <outlet property="titleView" destination="NGY-wi-hez" id="Egg-cw-3qY"/>
                 <outlet property="titlelbl" destination="vSN-ai-bPp" id="Rwd-gc-pHg"/>
+                <outlet property="topview" destination="H4P-Jb-57B" id="lWx-gJ-32Z"/>
             </connections>
             <point key="canvasLocation" x="139" y="20"/>
         </tableViewCell>

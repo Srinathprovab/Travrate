@@ -241,7 +241,6 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
             hotelnotificationPrice = price
             hotelnotificationCheck = true
             
-            
             updateTotalAndReload()
         } else  {
             hotelwhatsAppPrice = price

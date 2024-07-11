@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -208,7 +209,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="depositelbl" destination="yk8-io-r4q" id="prs-mN-s1F"/>
                 <outlet property="kwdlbl" destination="6df-oh-Sbi" id="8PP-hV-bVj"/>
+                <outlet property="liabililtylbl" destination="geX-1K-GTq" id="ecY-Dm-G0R"/>
+                <outlet property="milagelbl" destination="rBc-ma-VAn" id="e8e-il-std"/>
                 <outlet property="selectBtn" destination="hT0-EK-osy" id="eig-ot-bed"/>
                 <outlet property="titleView" destination="ArE-ef-2Dl" id="HXt-R6-SkF"/>
                 <outlet property="titlelbl" destination="DF6-9t-GKV" id="Esq-Qq-hfS"/>
