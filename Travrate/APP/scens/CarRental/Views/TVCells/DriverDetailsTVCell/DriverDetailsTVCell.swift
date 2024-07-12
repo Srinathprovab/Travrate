@@ -22,10 +22,10 @@ class DriverDetailsTVCell: TableViewCell,UITextViewDelegate {
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var fnameTF: UITextField!
     @IBOutlet weak var lnameTF: UITextField!
-    @IBOutlet weak var nationaslityTF: UITextField!
-    @IBOutlet weak var cityTF: UITextField!
-    @IBOutlet weak var postalcodeTF: UITextField!
-    @IBOutlet weak var addressTextView: UITextView!
+    //    @IBOutlet weak var nationaslityTF: UITextField!
+    //    @IBOutlet weak var cityTF: UITextField!
+    //    @IBOutlet weak var postalcodeTF: UITextField!
+    //    @IBOutlet weak var addressTextView: UITextView!
     @IBOutlet weak var emailidTF: UITextField!
     @IBOutlet weak var countrycodeView: UIView!
     @IBOutlet weak var countrycodeTF: UITextField!
@@ -56,7 +56,7 @@ class DriverDetailsTVCell: TableViewCell,UITextViewDelegate {
     var delegate:DriverDetailsTVCellDelegate?
     var agedropDown = DropDown()
     let datePicker = UIDatePicker()
-   
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -76,12 +76,12 @@ class DriverDetailsTVCell: TableViewCell,UITextViewDelegate {
         setupTF(tf: lnameTF, tag: 2)
         setupTF(tf: emailidTF, tag: 3)
         setupTF(tf: mobileTF, tag: 4)
-        setupTF(tf: nationaslityTF, tag: 5)
-        setupTF(tf: cityTF, tag: 6)
-        setupTF(tf: postalcodeTF, tag: 7)
+        //        setupTF(tf: nationaslityTF, tag: 5)
+        //        setupTF(tf: cityTF, tag: 6)
+        //        setupTF(tf: postalcodeTF, tag: 7)
         
         setupTitleDropDown()
-        setupAddressTextView()
+        // setupAddressTextView()
         
         setupDropDown()
         countrycodeTF.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
@@ -95,18 +95,18 @@ class DriverDetailsTVCell: TableViewCell,UITextViewDelegate {
         tf.addTarget(self, action: #selector(editingTextFieldChanged(_:)), for: .editingChanged)
     }
     
-    func setupAddressTextView() {
-        
-        addressTextView.layer.cornerRadius = 6
-        addressTextView.clipsToBounds = true
-        addressTextView.layer.borderWidth = 1
-        addressTextView.layer.borderColor = UIColor.AppBorderColor.cgColor
-        
-        addressTextView.text = ""
-        addressTextView.delegate = self
-        addressTextView.addCornerRadiusWithShadow(color: .clear, borderColor: .AppBorderColor, cornerRadius: 4)
-        addressTextView.setPlaceholder(ph: placeHolder)
-    }
+    //    func setupAddressTextView() {
+    //
+    //        addressTextView.layer.cornerRadius = 6
+    //        addressTextView.clipsToBounds = true
+    //        addressTextView.layer.borderWidth = 1
+    //        addressTextView.layer.borderColor = UIColor.AppBorderColor.cgColor
+    //
+    //        addressTextView.text = ""
+    //        addressTextView.delegate = self
+    //        addressTextView.addCornerRadiusWithShadow(color: .clear, borderColor: .AppBorderColor, cornerRadius: 4)
+    //        addressTextView.setPlaceholder(ph: placeHolder)
+    //    }
     
     @objc func textViewDidChange(_ textView: UITextView) {
         textView.checkPlaceholder()
@@ -149,6 +149,8 @@ extension DriverDetailsTVCell {
                 self?.mrtitle = "3"
             }
             
+            self?.fnameTF.becomeFirstResponder()
+            
             self?.delegate?.didTapOnTitleSelectBtnAction(cell: self!)
             
         }
@@ -158,7 +160,7 @@ extension DriverDetailsTVCell {
     
     
     
-   
+    
 }
 
 
@@ -173,12 +175,12 @@ extension DriverDetailsTVCell {
         dropDown.bottomOffset = CGPoint(x: 0, y: mobileholderView.frame.size.height + 10)
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
             
-           
+            
             self?.countrycodeTF.text = self?.countrycodesArray[index]
             self?.isoCountryCode = self?.isocountrycodeArray[index] ?? ""
             self?.billingCountryName = self?.countryNames[index] ?? ""
             self?.nationalityCode = self?.originArray[index] ?? ""
-           
+            
             
             self?.countrycodeTF.text = self?.countrycodesArray[index] ?? ""
             MySingleton.shared.paymobilecountrycode = self?.countrycodesArray[index] ?? ""

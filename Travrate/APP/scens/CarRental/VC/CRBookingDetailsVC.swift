@@ -7,7 +7,10 @@
 
 import UIKit
 
-class CRBookingDetailsVC: BaseTableVC {
+class CRBookingDetailsVC: BaseTableVC, CarBookingVMDelegate {
+    
+    
+    
     
     @IBOutlet weak var continuebtn: UIButton!
     
@@ -18,7 +21,7 @@ class CRBookingDetailsVC: BaseTableVC {
         return vc
     }
     
-    var countryode = String()
+    var countrycode = String()
     var mrtitlecode = String()
     var fname = String()
     var lname = String()
@@ -29,7 +32,7 @@ class CRBookingDetailsVC: BaseTableVC {
     var postal = String()
     var address = String()
     var cardetails : Result_token?
-    
+    var appref = String()
     
     override func viewWillAppear(_ animated: Bool) {
         if callapibool == true {
@@ -43,6 +46,7 @@ class CRBookingDetailsVC: BaseTableVC {
         
         // Do any additional setup after loading the view.
         setupUI()
+        MySingleton.shared.carBookingVM = CarBookingVM(self)
         
     }
     
@@ -83,6 +87,11 @@ class CRBookingDetailsVC: BaseTableVC {
     }
     
     
+    //MARK: - Address Text View
+    override func textViewDidChange(textView:UITextView) {
+        address = textView.text
+    }
+    
     
     
     //MARK: - Addon didSelectAddon  didDeselectAddon
@@ -92,7 +101,7 @@ class CRBookingDetailsVC: BaseTableVC {
             hotelnotificationCheck = false
             updateTotalAndReload()
         } else  {
-            hotelwhatsAppCheck = false
+            hotelpriceCheck = false
             updateTotalAndReload()
         }
         
@@ -109,8 +118,8 @@ class CRBookingDetailsVC: BaseTableVC {
             
             updateTotalAndReload()
         } else  {
-            hotelwhatsAppPrice = price
-            hotelwhatsAppCheck = true
+            hotelpriceChange = price
+            hotelpriceCheck = true
             updateTotalAndReload()
             
         }
@@ -124,13 +133,6 @@ class CRBookingDetailsVC: BaseTableVC {
         
         reloadPriceSummaryTVCell()
         
-//        MySingleton.shared.setAttributedTextnew(str1: defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "",
-//                                                str2: String(format: "%.2f", totlConvertedGrand) ,
-//                                                lbl: kwdlbl,
-//                                                str1font: .LatoBold(size: 12),
-//                                                str2font: .LatoBold(size: 18),
-//                                                str1Color: .WhiteColor,
-//                                                str2Color: .WhiteColor)
     }
     
     func reloadPriceSummaryTVCell() {
@@ -149,7 +151,7 @@ class CRBookingDetailsVC: BaseTableVC {
     
     //MARK: - editingTextFieldChanged DriverDetailsTVCell Delegate Methods
     override func editingTextFieldChanged(tf: UITextField) {
-
+        
         print(tf.tag)
         switch tf.tag {
         case 1:
@@ -168,18 +170,6 @@ class CRBookingDetailsVC: BaseTableVC {
             mobile = tf.text ?? ""
             break
             
-        case 5:
-            nationality = tf.text ?? ""
-            break
-            
-        case 6:
-            city = tf.text ?? ""
-            break
-            
-        case 7:
-            postal = tf.text ?? ""
-            break
-            
             
         default:
             break
@@ -194,7 +184,7 @@ class CRBookingDetailsVC: BaseTableVC {
     }
     
     override func didTapOnCountryCodeBtn(cell:DriverDetailsTVCell) {
-        countryode = cell.isoCountryCode
+        countrycode = cell.isoCountryCode
     }
     
     
@@ -224,26 +214,17 @@ class CRBookingDetailsVC: BaseTableVC {
         }else if email.isValidEmail() == false {
             showToast(message: "Enter Valid Email Address")
             return
-        }else if countryode.isEmpty == true {
+        }else if countrycode.isEmpty == true {
             showToast(message: "Please Select Country Code")
             return
         }else if mobile.isEmpty == true {
             showToast(message: "Enter Mobile Number")
             return
-        }else if nationality.isEmpty == true {
-            showToast(message: "Please select Nationality")
-            return
-        }else if city.isEmpty == true {
-            showToast(message: "Enter City")
-            return
-        }else if postal.isEmpty == true {
-            showToast(message: "Enter Postal Code")
-            return
         }else if MySingleton.shared.checkTermsAndCondationStatus == false {
             showToast(message: "Please select option to continue")
             return
         }else {
-            showToast(message: "Go to Voucher page......")
+            callcarBookingAPI()
         }
         
     }
@@ -255,7 +236,7 @@ class CRBookingDetailsVC: BaseTableVC {
 
 
 extension CRBookingDetailsVC {
-
+    
     
     func callAPI() {
         MySingleton.shared.loderString = "fdetails"
@@ -276,15 +257,7 @@ extension CRBookingDetailsVC {
     
     func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
-        
-        
-        //        MySingleton.shared.tablerow.append(TableRow(cellType:.SelectedCarRentalTVCell))
-        //        MySingleton.shared.tablerow.append(TableRow(cellType:.SelectedServiceTVCell))
-        //        MySingleton.shared.tablerow.append(TableRow(cellType:.SelectedAdditionalOptionsTVCell))
-        //        MySingleton.shared.tablerow.append(TableRow(cellType:.DriverDetailsTVCell))
-        //        MySingleton.shared.tablerow.append(TableRow(cellType:.CRFareSummaryTVCell))
-        
-        
+     
         
         MySingleton.shared.tablerow.append(TableRow(title:"",moreData: cardetails,cellType:.SelectedCarRentalTVCell))
         
@@ -302,7 +275,7 @@ extension CRBookingDetailsVC {
         
         MySingleton.shared.tablerow.append(TableRow(cellType:.DriverDetailsTVCell))
         
-        MySingleton.shared.tablerow.append(TableRow(key: "hotel", moreData: services, cellType:.AddonTableViewCell))
+        MySingleton.shared.tablerow.append(TableRow(key: "car", moreData: services, cellType:.AddonTableViewCell))
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         
@@ -330,3 +303,90 @@ extension CRBookingDetailsVC {
 }
 
 
+
+
+extension CRBookingDetailsVC {
+    
+    func callcarBookingAPI() {
+        
+        MySingleton.shared.loderString = "payment"
+        MySingleton.shared.afterResultsBool = true
+        loderBool = true
+        showLoadera()
+        
+        MySingleton.shared.payload.removeAll()
+        
+        
+        MySingleton.shared.payload["selected_option"] = "\(["2","3"])"
+        MySingleton.shared.payload["first_name"] = fname
+        MySingleton.shared.payload["last_name"] = lname
+        MySingleton.shared.payload["email"] = email
+        MySingleton.shared.payload["phone_code"] = mobile
+        MySingleton.shared.payload["phone_number"] = countrycode
+        MySingleton.shared.payload["tc"] = "no"
+        MySingleton.shared.payload["product_code"] = MySingleton.shared.carproductcode
+        MySingleton.shared.payload["result_token"] = MySingleton.shared.carresulttoken
+        MySingleton.shared.payload["result_index"] = MySingleton.shared.carresultindex
+        MySingleton.shared.payload["extra_option_price"] = MySingleton.shared.car_extra_option_price
+        MySingleton.shared.payload["total_amount"] = MySingleton.shared.car_total_amount
+        MySingleton.shared.payload["total_amount_origin"] = MySingleton.shared.car_total_amount_origin
+        MySingleton.shared.payload["markup_value"] = MySingleton.shared.car_markup_value
+        MySingleton.shared.payload["discount_value"] = MySingleton.shared.car_discount_value
+        MySingleton.shared.payload["currency"] = MySingleton.shared.carcurrency
+        MySingleton.shared.payload["search_id"] = MySingleton.shared.carsearchid
+        
+        
+        MySingleton.shared.carBookingVM?.CALL_CAR_BOOKING_API(dictParam: MySingleton.shared.payload)
+        
+    }
+    
+    
+    func carBookingdetails(response: CarSearchModel) {
+        
+        DispatchQueue.main.async {
+            MySingleton.shared.carBookingVM?.CALL_CAR_PRE_PAYMENT_BOOKING_API(dictParam: [:], urlstr: response.hit_url ?? "")
+        }
+    }
+    
+    
+    func carPrePaymentDetails(response: carPrePaymrntConfirmationModel) {
+        
+        appref = response.data?.app_reference ?? ""
+        var hiturl = "\(BASE_URL)car/send_to_payment/\(response.data?.app_reference ?? "")/\(response.data?.search_id ?? "")"
+        
+        DispatchQueue.main.async {
+            MySingleton.shared.carBookingVM?.CALL_CAR_SEND_TO_PAYMENT_API(dictParam: [:], urlstr: hiturl)
+        }
+        
+        
+    }
+    
+    
+    func carSendtoPaymentDetails(response: CarSearchModel) {
+        var hit_url = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/secure_booking/\(appref)"
+        DispatchQueue.main.async {
+            MySingleton.shared.carBookingVM?.CALL_CAR_SECURE_BOOKING_API(dictParam: [:], urlstr: hit_url)
+        }
+    }
+    
+    
+    func carSecureBookingDetails(response: CarSearchModel) {
+        hideLoadera()
+        loderBool = false
+        print(response.hit_url)
+        
+        MySingleton.shared.voucherurlsting = response.hit_url ?? ""
+        gotoBookingSucessVC()
+    }
+    
+    
+    
+    func gotoBookingSucessVC() {
+        guard let vc = BookingSucessVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
+    
+    
+    
+}

@@ -111,7 +111,11 @@ extension CarRentalChoosePackageVC {
        
         MySingleton.shared.extraOption = response.result_token?.extra_option ?? []
         MySingleton.shared.carproductarray = response.result_token?.product ?? []
+        MySingleton.shared.car_total_amount = response.result_token?.product?[0].total ?? ""
+        MySingleton.shared.car_total_amount_origin = response.result_token?.product?[0].org_total ?? ""
         
+        
+        totlConvertedGrand = Double(response.result_token?.product?[0].total ?? "") ?? 0.0
         
         DispatchQueue.main.async {
             self.setupTVCells()

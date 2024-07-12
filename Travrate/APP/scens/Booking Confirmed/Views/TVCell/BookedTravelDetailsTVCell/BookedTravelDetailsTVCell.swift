@@ -65,6 +65,15 @@ class BookedTravelDetailsTVCell: TableViewCell {
             if MySingleton.shared.sports_passengers.count > 0 {
                 tvHeight.constant = CGFloat(MySingleton.shared.sports_passengers.count * 48)
             }
+        }else if keystr == "car" {
+            passengerTypelbl.text = "Name"
+            travellerNamelbl.text = "Email Id"
+            emaillbl.text = "Mobile"
+            mobilelbl.isHidden = true
+          
+            if MySingleton.shared.carpassengerDetails.count > 0 {
+                tvHeight.constant = CGFloat(MySingleton.shared.carpassengerDetails.count * 48)
+            }
         }else {
             passengerTypelbl.text = "Passenger"
             travellerNamelbl.text = "Name"
@@ -137,6 +146,8 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
             return Customerdetails.count
         }else if keystr == "sports" {
             return MySingleton.shared.sports_passengers.count
+        }else if keystr == "car" {
+            return MySingleton.shared.carpassengerDetails.count
         }else{
             return travelerArray.count
         }
@@ -175,6 +186,19 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 
                 c = cell
             }
+        }else if keystr == "car" {
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "sports") as? BookedAdultDetailsTVCell {
+                cell.selectionStyle = .none
+                
+                let data = MySingleton.shared.carpassengerDetails[indexPath.row]
+                cell.passengerTypelbl.text = "\(data.first_name ?? "") \(data.last_name ?? "")"
+                cell.travellerNamelbl.text = data.email
+                cell.emaillbl.text = "\(data.phone_code ?? "")"
+                cell.mobileLbl.isHidden = true
+                
+                c = cell
+            }
         }else{
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? BookedAdultDetailsTVCell {
@@ -206,9 +230,6 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
             
             
         }
-        
-        
-        
         
         return c
     }

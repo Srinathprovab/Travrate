@@ -24,7 +24,7 @@ protocol TabSelectTVCellDelegate {
     func didTapOnTransfersbtnAction(cell:TabSelectTVCell)
     func didTapOnSportsbtnAction(cell:TabSelectTVCell)
     func didTapOnCruisebtnAction(cell:TabSelectTVCell)
-    func didTapOnAutopaybtnAction(cell:TabSelectTVCell)
+    func didTapOnActivitiesbtnAction(cell:TabSelectTVCell)
     func didTapOnInsurencebtnAction(cell:TabSelectTVCell)
     func didTapOnCarRentalBtnAction(cell:TabSelectTVCell)
 }
@@ -42,11 +42,11 @@ class TabSelectTVCell: TableViewCell {
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var moreServicelbl: UILabel!
     
-//    var serviceArray1 = ["Visa","Holidays","Transfers","Sports","Cruise","Auto pay","Insurence"]
-//    var serviceImgsArray1 = ["s1","s2","s3","sports","s5","s6","s7"]
-
-    var serviceArray = ["Insurence","Transfers","Sports","Car rental","Holidays","Cruise","Visa","Auto pay"]
-    var serviceImgsArray = ["s7","transfer","sports","s3","s2","s5","s1","s6"]
+    //    var serviceArray1 = ["Visa","Holidays","Transfers","Sports","Cruise","Auto pay","Insurence"]
+    //    var serviceImgsArray1 = ["s1","s2","s3","sports","s5","s6","s7"]
+    
+    var serviceArray = ["Insurence","Transfers","Sports","Car rental","Holidays","Cruise","Activities"]
+    var serviceImgsArray = ["s7","transfer","sports","s3","s2","s5","activitiestrip"]
     var delegate:TabSelectTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -85,10 +85,10 @@ class TabSelectTVCell: TableViewCell {
             break
         }
         
-//        MySingleton.shared.setupTipView(arrowPosition: .top)
-//        let tipView =  EasyTipView(text: "Select Flight", preferences: MySingleton.shared.preferences)
-//        tipView.show(forView: self.flightView, withinSuperview: self.contentView)
-//        
+        //        MySingleton.shared.setupTipView(arrowPosition: .top)
+        //        let tipView =  EasyTipView(text: "Select Flight", preferences: MySingleton.shared.preferences)
+        //        tipView.show(forView: self.flightView, withinSuperview: self.contentView)
+        //
         
         
     }
@@ -149,7 +149,7 @@ class TabSelectTVCell: TableViewCell {
     func taponflightView(){
         
         MySingleton.shared.tabselect = "flight"
-       
+        
         //        flightView.layer.borderColor = UIColor.Buttoncolor.cgColor
         //        hotelView.layer.borderColor = UIColor.BorderColor.cgColor
         //        moreView.layer.borderColor = UIColor.BorderColor.cgColor
@@ -194,9 +194,9 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
             
             switch cell.titlelbl.text {
                 
-           
+                
             case "Car rental":
-                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
+                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
                 break
                 
             case "Transfers":
@@ -204,11 +204,11 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
                 break
                 
             case "Sports":
-                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
+                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
                 break
                 
-           
-            case "Auto pay":
+                
+            case "Activities":
                 cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
                 break
                 
@@ -263,8 +263,8 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
                 delegate?.didTapOnCruisebtnAction(cell: self)
                 break
                 
-            case "Auto pay":
-                delegate?.didTapOnAutopaybtnAction(cell: self)
+            case "Activities":
+                delegate?.didTapOnActivitiesbtnAction(cell: self)
                 break
                 
                 

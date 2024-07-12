@@ -14,7 +14,11 @@ class CRFareSummaryTVCell: TableViewCell {
     @IBOutlet weak var carrentalPrice: UILabel!
     @IBOutlet weak var subtotalprice: UILabel!
     @IBOutlet weak var totalprice: UILabel!
-    @IBOutlet weak var optionsView: UIView!
+    @IBOutlet weak var notificationView: UIView!
+    @IBOutlet weak var priceView: UIView!
+    @IBOutlet weak var notificationkwdlbl: UILabel!
+    @IBOutlet weak var priceChangekwdlbl: UILabel!
+    
     
     
     
@@ -32,6 +36,34 @@ class CRFareSummaryTVCell: TableViewCell {
     
     
     override func updateUI() {
+        
+        notificationView.isHidden = true
+        priceView.isHidden = true
+        
+       
+        
+        if  hotelpriceCheck == true {
+            priceView.isHidden = false
+        } else {
+            priceView.isHidden = true
+        }
+        
+        if  hotelnotificationCheck == true {
+            notificationView.isHidden = false
+        } else {
+            notificationView.isHidden = true
+        }
+        
+        
+//        if hotelpriceCheck  == false && hotelnotificationCheck == false  {
+//            priceView.isHidden = true
+//            notificationView.isHidden = true
+//        } else {
+//            priceView.isHidden = false
+//            notificationView.isHidden = false
+//        }
+        
+        
         carproductDetails = cellInfo?.moreData as? Product
         topview.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         topview.layer.cornerRadius = 8
@@ -63,6 +95,10 @@ class CRFareSummaryTVCell: TableViewCell {
         
         
         
+        
+        
+        notificationkwdlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelnotificationPrice)"
+        priceChangekwdlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelpriceChange)"
         
     }
     

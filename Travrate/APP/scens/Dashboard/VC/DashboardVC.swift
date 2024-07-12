@@ -129,7 +129,7 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     
     override func didTapOnVisabtnAction(cell: TabSelectTVCell) {
         defaults.set("Visa", forKey: UserDefaultsKeys.tabselect)
-        gotoVisaVC()
+        // gotoVisaVC()
     }
     
     override func didTapOnHolidaysbtnAction(cell: TabSelectTVCell) {
@@ -139,7 +139,8 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     
     override func didTapOnTransfersbtnAction(cell: TabSelectTVCell) {
         defaults.set("transfers", forKey: UserDefaultsKeys.tabselect)
-        gotoBookTransfersVC()
+        //  gotoBookTransfersVC()
+        showToast(message: "Still Under Development")
     }
     
     override func didTapOnSportsbtnAction(cell: TabSelectTVCell) {
@@ -152,14 +153,16 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         gotoCruiseVC()
     }
     
-    override func didTapOnAutopaybtnAction(cell: TabSelectTVCell) {
-        defaults.set("Autopay", forKey: UserDefaultsKeys.tabselect)
-        gotoAutoPaymentVC()
+    override func didTapOnActivitiesbtnAction(cell: TabSelectTVCell) {
+        defaults.set("Activities", forKey: UserDefaultsKeys.tabselect)
+        // gotoAutoPaymentVC()
+        showToast(message: "Still Under Development")
     }
     
     override func didTapOnInsurencebtnAction(cell:TabSelectTVCell) {
         defaults.set("Insurence", forKey: UserDefaultsKeys.tabselect)
-        gotoInsuranceVC()
+        //  gotoInsuranceVC()
+        showToast(message: "Still Under Development")
     }
     
     
@@ -174,7 +177,7 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         gotoFlightSearchVC()
     }
     
-   
+    
     
 }
 
@@ -532,7 +535,7 @@ extension DashboardVC {
         
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("logindone"), object: nil)
         
-       
+        
         
         if MySingleton.shared.callboolapi == true {
             callIndexPageAPI()
@@ -541,7 +544,7 @@ extension DashboardVC {
     }
     
     
-  
+    
     
     @objc func selectedCurrency() {
         commonTableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)

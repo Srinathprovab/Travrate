@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="182" id="KGk-i7-Jjw" customClass="PickupTVCell" customModule="Travrate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="516" height="182"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="516" height="182"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWh-Jg-Tmp" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                        <rect key="frame" x="15" y="10" width="486" height="162"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGt-g2-tj0">
+                                <rect key="frame" x="10" y="9.9999999999999982" width="466" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="jh1-DC-tce">
+                                <rect key="frame" x="10" y="49.333333333333336" width="177.66666666666666" height="17.000000000000007"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmW-r2-nQn">
+                                        <rect key="frame" x="0.0" y="0.0" width="34.333333333333336" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="34.329999999999998" id="3bO-Ms-bHv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22-10-2024" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xt-NP-3rj">
+                                        <rect key="frame" x="104.33333333333334" y="0.0" width="73.333333333333343" height="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" name="subtitleNewcolor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Was-QQ-l62">
+                                <rect key="frame" x="10" y="76.333333333333329" width="205.33333333333334" height="17"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOF-uB-CKE">
+                                        <rect key="frame" x="0.0" y="0.0" width="55.666666666666664" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55.670000000000002" id="mBL-r7-ZQd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Istanbul Airport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9J-UY-rvE">
+                                        <rect key="frame" x="105.66666666666666" y="0.0" width="99.666666666666657" height="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" name="subtitleNewcolor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="YBg-zI-ymL">
+                                <rect key="frame" x="10" y="103.33333333333333" width="372" height="33.666666666666671"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W71-gK-GzY">
+                                        <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="33.666666666666664"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="57.329999999999998" id="jc5-H4-Opf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEq-2X-3RH">
+                                        <rect key="frame" x="105.33333333333334" y="0.0" width="266.66666666666663" height="33.666666666666664"/>
+                                        <string key="text">Istanbul Airport istanbul Havalimani, 
+Gelen yolcu Salonu, Tayakadin Mahallesi,</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" name="subtitleNewcolor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YBg-zI-ymL" secondAttribute="trailing" constant="10" id="4Y9-Hy-0LS"/>
+                            <constraint firstAttribute="trailing" secondItem="EGt-g2-tj0" secondAttribute="trailing" constant="10" id="7wA-rL-4HU"/>
+                            <constraint firstItem="YBg-zI-ymL" firstAttribute="leading" secondItem="HWh-Jg-Tmp" secondAttribute="leading" constant="10" id="Dza-RZ-SxW"/>
+                            <constraint firstItem="EGt-g2-tj0" firstAttribute="top" secondItem="HWh-Jg-Tmp" secondAttribute="top" constant="10" id="ECd-eJ-1Lt"/>
+                            <constraint firstItem="EGt-g2-tj0" firstAttribute="leading" secondItem="HWh-Jg-Tmp" secondAttribute="leading" constant="10" id="FcA-zL-Kes"/>
+                            <constraint firstItem="Was-QQ-l62" firstAttribute="top" secondItem="jh1-DC-tce" secondAttribute="bottom" constant="10" id="HZk-oC-Km3"/>
+                            <constraint firstAttribute="bottom" secondItem="YBg-zI-ymL" secondAttribute="bottom" constant="25" id="LBQ-uC-bZ5"/>
+                            <constraint firstItem="jh1-DC-tce" firstAttribute="leading" secondItem="HWh-Jg-Tmp" secondAttribute="leading" constant="10" id="LVf-jB-Yf4"/>
+                            <constraint firstItem="Was-QQ-l62" firstAttribute="leading" secondItem="HWh-Jg-Tmp" secondAttribute="leading" constant="10" id="LpV-Dn-dr0"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="162" id="qpx-wB-Xnz"/>
+                            <constraint firstItem="jh1-DC-tce" firstAttribute="top" secondItem="EGt-g2-tj0" secondAttribute="bottom" constant="20" id="sMa-HP-c1g"/>
+                            <constraint firstItem="YBg-zI-ymL" firstAttribute="top" secondItem="Was-QQ-l62" secondAttribute="bottom" constant="10" id="yHY-G4-YFw"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="BorderColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="HWh-Jg-Tmp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="E1A-aB-FBB"/>
+                    <constraint firstAttribute="bottom" secondItem="HWh-Jg-Tmp" secondAttribute="bottom" constant="10" id="JOv-R4-1V8"/>
+                    <constraint firstAttribute="trailing" secondItem="HWh-Jg-Tmp" secondAttribute="trailing" constant="15" id="JST-J4-Zs6"/>
+                    <constraint firstItem="HWh-Jg-Tmp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="PXc-Vj-a84"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addresslbl" destination="bEq-2X-3RH" id="vNX-D8-fEx"/>
+                <outlet property="datelbl" destination="4xt-NP-3rj" id="smX-ML-aJa"/>
+                <outlet property="locationlbl" destination="M9J-UY-rvE" id="912-Yb-UYl"/>
+                <outlet property="titlelbl" destination="EGt-g2-tj0" id="tQb-EE-l2M"/>
+            </connections>
+            <point key="canvasLocation" x="287.02290076335879" y="189.43661971830986"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="BorderColor">
+            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subtitleNewcolor">
+            <color red="0.3449999988079071" green="0.3449999988079071" blue="0.3449999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

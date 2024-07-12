@@ -40,7 +40,6 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     @IBOutlet weak var tvheight: NSLayoutConstraint!
     
     
-    
     var samelocbool = true
     var difflocbool = false
     let pickupTimePicker = UIDatePicker()
@@ -48,12 +47,11 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     let pickupDatePicker = UIDatePicker()
     let dropupDatePicker = UIDatePicker()
     let dropDown = DropDown()
+    let dropofdropdown = DropDown()
     
-    var filterdcountrylist = [AirlineDate]()
-    var countryNames = [String]()
-    var countrycodesArray = [String]()
-    var originArray = [String]()
-    var isocountrycodeArray = [String]()
+    var filterdcountrylist = [PickuplocationListModel]()
+    var dropofLocationNamesArray = [String]()
+    var dropofLocCodeArray = [String]()
     var isSearchBool = Bool()
     var searchText = String()
     
@@ -76,7 +74,6 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     }
     
     
-    
     func setupUI() {
         
         
@@ -93,8 +90,6 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         pickuplocTV.layer.borderWidth = 1
         pickuplocTV.layer.borderColor = UIColor.AppBorderColor.cgColor
         
-        
-        
     }
     
     
@@ -106,7 +101,6 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         dropupDatelbl.text = defaults.string(forKey: UserDefaultsKeys.dropuplocDate) ?? "Select Date"
         pickupTimelbl.text = defaults.string(forKey: UserDefaultsKeys.pickuplocTime) ?? "Select Time"
         dropupTimelbl.text = defaults.string(forKey: UserDefaultsKeys.dropuplocTime) ?? "Select Time"
-        
         
         
         if pickuplocTF.text != "Select Location" {
@@ -144,12 +138,17 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         pickuplocTF.addTarget(self, action: #selector(tfeditingChanged(_:)), for: .editingChanged)
         dropuplocTF.addTarget(self, action: #selector(tfeditingChanged(_:)), for: .editingChanged)
         setupDropDown()
-        
-       showpickupDatePicker()
+        setupDropofDropDown()
+        showpickupDatePicker()
         showdropupDatePicker()
         
         showPickupTimePicker()
         showDepartTimePicker()
+        
+        
+        
+        dropuplocTF.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
+        dropuplocTF.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
     }
     
     @objc func tfeditingChanged(_ tf: UITextField) {
@@ -175,8 +174,6 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         dropuplocTF.becomeFirstResponder()
     }
     
-    
-    
     @IBAction func didTapOnSelectAgeBtnAction(_ sender: Any) {
         dropDown.show()
     }
@@ -185,7 +182,7 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     @IBAction func didTapOnDropOfSameLocBtnAction(_ sender: Any) {
         dropuplocView.isHidden = true
         
-     
+        
         NotificationCenter.default.post(name: NSNotification.Name("reloadTV"), object: nil)
         samelocbool.toggle()
         if samelocbool {
@@ -211,9 +208,7 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         }
     }
     
-    
 }
-
 
 
 extension SearchCarRentalTVCell {
@@ -242,14 +237,6 @@ extension SearchCarRentalTVCell {
 }
 
 
-
-
-
-
-
-
-
-
 extension SearchCarRentalTVCell:UITableViewDelegate, UITableViewDataSource  {
     
     //MARK: - Text Filed Editing Changed
@@ -272,20 +259,29 @@ extension SearchCarRentalTVCell:UITableViewDelegate, UITableViewDataSource  {
     }
     
     
-    func locationListResponse(response: [PickuplocationListModel]) {
-        locaionList = response
-        
-        tvheight.constant = CGFloat(locaionList.count * 50)
-        DispatchQueue.main.async {[self] in
-            pickuplocTV.reloadData()
-        }
-    }
+    
     
     
     func CallLocationListAPI(str:String) {
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["term"] = str
         Pickupvvm?.CALL_PICKUP_LOCATION_LIST_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    
+    func locationListResponse(response: [PickuplocationListModel]) {
+        locaionList = response
+        filterdcountrylist = locaionList
+        
+        if pickuplocTF.isFirstResponder == true {
+            tvheight.constant = CGFloat(locaionList.count * 50)
+            DispatchQueue.main.async {[self] in
+                pickuplocTV.reloadData()
+            }
+        }else {
+            loadCountryNamesAndCode()
+        }
+        
     }
     
     func setupTV() {
@@ -424,7 +420,7 @@ extension SearchCarRentalTVCell {
         defaults.set( self.pickupTimelbl.text, forKey: UserDefaultsKeys.pickuplocTime)
         defaults.set(self.dropupTimelbl.text, forKey: UserDefaultsKeys.dropuplocTime)
         
-         delegate?.doneTimePicker(cell: self)
+        delegate?.doneTimePicker(cell: self)
     }
     
     @objc func cancelTimePicker() {
@@ -546,5 +542,82 @@ extension SearchCarRentalTVCell {
     @objc func cancelDatePicker(){
         delegate?.cancelDatePicker(cell:self)
     }
+    
+}
+
+
+
+extension SearchCarRentalTVCell {
+    
+    
+    func setupDropofDropDown() {
+        
+        dropofdropdown.dataSource = dropofLocationNamesArray
+        dropofdropdown.direction = .bottom
+        dropofdropdown.backgroundColor = .WhiteColor
+        dropofdropdown.anchorView = self.dropuplocView
+        dropofdropdown.bottomOffset = CGPoint(x: 0, y: dropuplocView.frame.size.height + 10)
+        dropofdropdown.selectionAction = { [weak self] (index: Int, item: String) in
+            
+            self?.dropupTimeTF.text = ""
+            self?.dropupTimelbl.text = item
+            self?.dropupTimelbl.textColor = .TitleColor
+            
+            defaults.set(item, forKey: UserDefaultsKeys.dropuplocationname)
+            defaults.set(self?.dropofLocCodeArray[index], forKey: UserDefaultsKeys.dropuplocationcode)
+            
+        }
+    }
+    
+    
+    
+    @objc func searchTextBegin(textField: UITextField) {
+        textField.text = ""
+        CallLocationListAPI(str: "")
+        dropofdropdown.show()
+    }
+    
+    
+    @objc func searchTextChanged(textField: UITextField) {
+        searchText = textField.text ?? ""
+        if searchText == "" {
+            isSearchBool = false
+            filterContentForSearchText(searchText)
+        }else {
+            isSearchBool = true
+            filterContentForSearchText(searchText)
+        }
+        
+    }
+    
+    
+    func filterContentForSearchText(_ searchText: String) {
+        print("Filterin with:", searchText)
+        
+        filterdcountrylist.removeAll()
+        filterdcountrylist =  locaionList.filter { thing in
+            return "\(thing.label?.lowercased() ?? "")".contains(searchText.lowercased())
+        }
+        
+        loadCountryNamesAndCode()
+        dropofdropdown.show()
+        
+    }
+    
+    
+    func loadCountryNamesAndCode(){
+        dropofLocationNamesArray.removeAll()
+        dropofLocCodeArray.removeAll()
+        
+        filterdcountrylist.forEach { i in
+            dropofLocationNamesArray.append(i.label ?? "")
+            dropofLocCodeArray.append(i.id ?? "")
+        }
+        
+        DispatchQueue.main.async {[self] in
+            dropofdropdown.dataSource = dropofLocationNamesArray
+        }
+    }
+    
     
 }

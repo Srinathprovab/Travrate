@@ -311,6 +311,7 @@ struct ApiEndpoints {
     static let car_car_list = "car/car_list"
     static let car_detials = "car/detials"
     static let car_pre_booking = "car/pre_booking"
+    static let car_booking = "car/booking"
     
     
     
@@ -461,6 +462,8 @@ struct UserDefaultsKeys {
     static var holidaytotalpassengercount = "holidaytotalpassengercount"
     static var pickuplocationname = "pickuplocationname"
     static var pickuplocationcode = "pickuplocationcode"
+    static var dropuplocationname = "dropuplocationname"
+    static var dropuplocationcode = "dropuplocationcode"
     static var cardriverage = "cardriverage"
 }
 

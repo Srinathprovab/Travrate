@@ -111,7 +111,7 @@ extension CarRentalResultsVC {
     
     func callAPI() {
         
-        holderView.isHidden = true
+        
         MySingleton.shared.loderString = "fdetails"
         loderBool = true
         showLoadera()
@@ -220,7 +220,7 @@ extension CarRentalResultsVC {
         
         list.forEach { i in
     
-            MySingleton.shared.tablerow.append(TableRow( moreData: i,
+            MySingleton.shared.tablerow.append(TableRow( key:"results", moreData: i,
                                                         cellType:.CarRentalResultTVCell))
         }
         
@@ -252,9 +252,9 @@ extension CarRentalResultsVC {
         
         if MySingleton.shared.callboolapi == true {
             MySingleton.shared.carlist.removeAll()
+            holderView.isHidden = true
             
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
                 callAPI()
             }
             

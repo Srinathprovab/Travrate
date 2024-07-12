@@ -107,6 +107,7 @@ class MySingleton {
     var mpbFlightData : MPBFlightDetails?
     var frequent_flyersArray = [Frequent_flyers]()
     var addonServices = [Addon_services]()
+    var carAddonServices = [Addon_services]()
     var firstHalf_addonServices: [Addon_services] = []
        var secondHalf_addonServices: [Addon_services] = []
     var ageCategory: AgeCategory = .adult
@@ -204,13 +205,24 @@ class MySingleton {
     var sport_eventlist = String()
     var carRentalDriverAge = String()
     var carproductcode = String()
+    var carcurrency = String()
     var carextraoptionPrice = String()
     var carproductarray = [Product]()
     var carresulttoken = String()
     var carresultindex = String()
+   
+    var car_extra_option_price = String()
+    var car_total_amount = String()
+    var car_total_amount_origin = String()
+    var car_markup_value = String()
+    var car_discount_value = String()
+    
+    var carsearchid = String()
     var driverbool = false
     var childbool = false
-    
+    var carvoucherdetail : Api_token_data?
+    var carpassengerDetails = [Car_passengers]()
+    var carVoucherData : CarVoucherData?
     
     
     var confpassword = String()
@@ -290,6 +302,7 @@ class MySingleton {
     var sportsVoucherVM:SportsViewVoucherVM?
     var carDetailsVM:CarDetailsVM?
     var carPreBookingVM:CarPreBookingVM?
+    var carBookingVM:CarBookingVM?
     
     
     //TIMER

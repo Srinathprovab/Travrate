@@ -32,9 +32,11 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    
+    var caraddon = [Addon_services]()
     var firstHalfSelectionState: [Bool] = []
     var secondHalfSelectionState: [Bool] = []
-   // var hotelSelectionState: [Bool] = []
+    // var hotelSelectionState: [Bool] = []
     
     
     //MARK - for hotel
@@ -52,12 +54,20 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
     
     override func updateUI() {
         
+        caraddon = MySingleton.shared.carAddonServices
         
-        if cellInfo?.key1 == "first" {
-            displayFirstHalf = true
-        } else {
-            displayFirstHalf = false
+        if cellInfo?.key == "flight" {
+            if cellInfo?.key1 == "first" {
+                displayFirstHalf = true
+            } else {
+                displayFirstHalf = false
+            }
+        } else if cellInfo?.key == "car" {
+            
+        } else{
+            
         }
+        
         
         setupTV()
         addonTV.reloadData()
@@ -110,7 +120,9 @@ extension AddonTableViewCell {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if cellInfo?.key == "flight" {
             return displayFirstHalf ? firstHalfAddonServices.count : secondHalfAddonServices.count
-        } else {
+        } else if cellInfo?.key == "car" {
+            return caraddon.count
+        } else{
             return hotel_Addservices.count
         }
     }
@@ -163,7 +175,15 @@ extension AddonTableViewCell {
             
             
             
-        } else {
+        } else if cellInfo?.key == "car"{
+            let data = caraddon[indexPath.row]
+            // Display data in the cell
+            cell.leftICon.sd_setImage(with: URL(string: data.images ?? ""))
+            cell.titleLabel.text = data.title
+            cell.subTitleLabel.text = data.details
+            cell.originValue = data.origin ?? ""
+            cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
+        }else {
             let data = hotel_Addservices[indexPath.row]
             // Display data in the cell
             cell.leftICon.sd_setImage(with: URL(string: data.image ?? ""))
@@ -197,10 +217,15 @@ extension AddonTableViewCell {
                 
                 delegate?.didSelectAddon(index: indexPath.row, origen: "second", price: secondHalfAddonServices[indexPath.row].price ?? "")
             }
+        }else if cellInfo?.key == "car" {
+            let carService = caraddon[indexPath.row] as Addon_services
+            hotelselectedIndexPathArray.append(indexPath)
+            updateCarTotal(for: carService, isSelected: true)
+            
+            delegate?.didSelectAddon(index: indexPath.row, origen: "", price: carService.price ?? "")
         }else {
             
             let hotelService = hotel_Addservices[indexPath.row] as HotelAddonModel
-//            hotelSelectionState[indexPath.row] = true
             hotelselectedIndexPathArray.append(indexPath)
             updateHotelTotal(for: hotelService, isSelected: true)
             
@@ -228,9 +253,16 @@ extension AddonTableViewCell {
                 
                 delegate?.didDeselectAddon(index: indexPath.row, origen: "second")
             }
+        }else if cellInfo?.key == "car" {
+            
+            let carService = caraddon[indexPath.row] as Addon_services
+            removeIndexPath(&hotelselectedIndexPathArray, indexPath: indexPath)
+            updateCarTotal(for: carService, isSelected: false)
+            
+            delegate?.didDeselectAddon(index: indexPath.row, origen: "")
+            
         }else {
             let hotelService = hotel_Addservices[indexPath.row] as HotelAddonModel
-        //    hotelSelectionState[indexPath.row] = false
             removeIndexPath(&hotelselectedIndexPathArray, indexPath: indexPath)
             updateHotelTotal(for: hotelService, isSelected: false)
             
@@ -253,7 +285,7 @@ extension AddonTableViewCell {
         // Optionally update your UI with the new total
         // updateTotalLabel()
         
-       
+        
     }
     
     private func removeIndexPath(_ array: inout [IndexPath], indexPath: IndexPath) {
@@ -266,6 +298,25 @@ extension AddonTableViewCell {
     //MARK: - updateHotelTotal
     
     private func updateHotelTotal(for service: HotelAddonModel, isSelected: Bool) {
+        let amount = Double(service.price ?? "0") ?? 0
+        if isSelected {
+            totlConvertedGrand += amount
+        } else {
+            totlConvertedGrand -= amount
+        }
+        
+        // Optionally update your UI with the new total
+        // updateTotalLabel()
+        
+        print("Updated Hotel Total: \(totlConvertedGrand)")
+    }
+    
+    
+    
+    
+    //MARK: - updateCarTotal
+    
+    private func updateCarTotal(for service: Addon_services, isSelected: Bool) {
         let amount = Double(service.price ?? "0") ?? 0
         if isSelected {
             totlConvertedGrand += amount

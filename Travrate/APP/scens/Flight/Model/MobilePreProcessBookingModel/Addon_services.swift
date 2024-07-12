@@ -10,6 +10,7 @@ struct Addon_services : Codable {
 	let price : String?
 	let stype : String?
 	let image : String?
+    let images : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -21,6 +22,7 @@ struct Addon_services : Codable {
 		case price = "price"
 		case stype = "stype"
 		case image = "image"
+        case images = "images"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -33,6 +35,7 @@ struct Addon_services : Codable {
 		price = try values.decodeIfPresent(String.self, forKey: .price)
 		stype = try values.decodeIfPresent(String.self, forKey: .stype)
 		image = try values.decodeIfPresent(String.self, forKey: .image)
+        images = try values.decodeIfPresent(String.self, forKey: .images)
 	}
 
 }

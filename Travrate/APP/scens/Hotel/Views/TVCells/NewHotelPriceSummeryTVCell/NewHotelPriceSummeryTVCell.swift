@@ -129,6 +129,8 @@ class NewHotelPriceSummeryTVCell: TableViewCell {
         notificationLabel.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelnotificationPrice)"
         priceChangeLabel.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelpriceChange)"
         
+        
+        
     }
     
 }

@@ -126,10 +126,24 @@ extension CRProceedToBookVC {
         titlelbl.text = response.car_search_params?.from_loc ?? ""
         dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: response.car_search_params?.pickup_date ?? "", f1: "yyyy-MM-dd", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: response.car_search_params?.drop_date ?? "", f1: "yyyy-MM-dd", f2: "MMM dd"))"
         
-        MySingleton.shared.addonServices = response.addon_services ?? []
+        MySingleton.shared.carAddonServices = response.addon_services ?? []
         
         MySingleton.shared.carproductarray = response.result_token?.product ?? []
         MySingleton.shared.extraOption = response.result_token?.extra_option ?? []
+        MySingleton.shared.carsearchid = "\(response.result_token?.search_id ?? 0)"
+        MySingleton.shared.carcurrency = response.result_token?.product?[0].currency ?? ""
+        MySingleton.shared.carproductcode = response.product_code ?? ""
+        MySingleton.shared.carresultindex = "\(response.post_data?.result_index ?? "")"
+        MySingleton.shared.carresulttoken = "\(response.post_data?.result_token ?? "")"
+        
+        
+        MySingleton.shared.car_extra_option_price = response.extra_option_price ?? ""
+        MySingleton.shared.car_markup_value = "\(response.result_token?.markup?.value ?? 0)"
+        MySingleton.shared.car_discount_value = "\(response.result_token?.discount?.value ?? 0)"
+        
+        
+        
+        
         
         DispatchQueue.main.async {
             self.setupTVCells(res: response)

@@ -48,9 +48,8 @@ class TitleLblTVCell: TableViewCell {
         editImg.image = UIImage(named: "edit1")
         editBtn.setTitle("", for: .normal)
         
-        
+
     }
-    
     
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -78,6 +77,11 @@ class TitleLblTVCell: TableViewCell {
             holderViewLeading.constant = 15
             holderViewTraling.constant = 15
         }
+        
+        if cellInfo?.key == "carbc" {
+            titlelbl.font = .OpenSansBold(size: 16)
+        }
+        
     }
     
     

@@ -160,6 +160,7 @@ enum TVCellType {
     case SeatingArrangementTVCell
     
     
+    
     //Insurence CarRental
     case InsurenceSearchTVCell
     case InsurancePlaneTVCell
@@ -176,6 +177,7 @@ enum TVCellType {
     case SelectedServiceTVCell
     case SelectedAdditionalOptionsTVCell
     case UpgradeServiceTVCell
+    case PickupTVCell
     
     
     

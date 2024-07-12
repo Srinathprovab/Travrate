@@ -10,6 +10,7 @@ import UIKit
 
 class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     
+    
     static var newInstance: BookingConfirmedVC? {
         let storyboard = UIStoryboard(name: Storyboard.Calender.name,
                                       bundle: nil)
@@ -19,7 +20,7 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
-     
+        
         addObserver()
     }
     
@@ -36,10 +37,9 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
         }else if tabselect == "transfers" {
             
         }else if tabselect == "Sports" {
-            
             callGetSportsVoucherAPI()
         }else if tabselect == "CarRental" {
-            
+            callGetCarRentalVoucherAPI()
         }else {
             
             
@@ -71,6 +71,9 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
                                          "ButtonTVCell",
                                          "SportInfoTVCell",
                                          "BCFlightDetailsTVCell",
+                                         "CarRentalResultTVCell",
+                                         "PickupTVCell",
+                                         "TitleLblTVCell",
                                          "BookedTravelDetailsTVCell"])
         
     }
@@ -377,5 +380,90 @@ extension BookingConfirmedVC {
     }
     
     
+    
+}
+
+
+
+//MARK: - Car rental Voucher
+extension BookingConfirmedVC {
+    
+    func callGetCarRentalVoucherAPI() {
+        viewModel?.CALL_CAR_RENTAL_VOUCHER_API(dictParam: [:], url: MySingleton.shared.voucherurlsting)
+    }
+    
+    func carrentalVoucherDetails(response: CarVoucherModel) {
+        
+        hideLoadera()
+        loderBool = false
+        
+        
+        bookingId = response.data?.car_id ?? ""
+        bookingRefrence = response.app_reference ?? ""
+        
+        
+        MySingleton.shared.carVoucherData =  response.data
+        MySingleton.shared.carvoucherdetail =  response.data?.api_token_data
+        MySingleton.shared.carpassengerDetails = response.car_passengers ?? []
+        
+        let originalDateString = response.data?.creation_date ?? ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if let date = dateFormatter.date(from: originalDateString) {
+            dateFormatter.dateFormat = "MMMM dd yyyy"
+            let desiredDateString = dateFormatter.string(from: date)
+            bookedDate = desiredDateString
+        }
+        
+        DispatchQueue.main.async {
+            self.setupCarRentalVoucherTVCells()
+        }
+        
+        
+    }
+    
+    
+    func setupCarRentalVoucherTVCells() {
+        tablerow.removeAll()
+        
+        tablerow.append(TableRow(title:bookingId,
+                                 subTitle: bookingRefrence,
+                                 key: "sports",
+                                 buttonTitle: bookedDate,
+                                 tempText: pnrNo,
+                                 cellType:.NewBookingConfirmedTVCell))
+        
+        tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        tablerow.append(TableRow( key:"bc",cellType:.CarRentalResultTVCell))
+        
+        tablerow.append(TableRow(title:MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.carVoucherData?.pickup_date ?? "", f1: "yyyy-MM-dd", f2: "dd MMM, yyyy"),
+                                 subTitle: MySingleton.shared.carVoucherData?.from_loc ?? "",
+                                 text: "\(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_1 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_2 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_3 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_city ?? "") , \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_county ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_postcode ?? "")", 
+                                 buttonTitle: "Pick Up",
+                                 cellType:.PickupTVCell))
+        
+        
+//        tablerow.append(TableRow(title:MySingleton.shared.carVoucherData?.drop_date ?? "",
+//                                 subTitle: MySingleton.shared.carVoucherData?.from_loc ?? "",
+//                                 text: "\(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_1 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_2 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_3 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_city ?? "") , \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_county ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_postcode ?? "")",
+//                                 buttonTitle: "Drop Off",
+//                                 cellType:.PickupTVCell))
+        
+        
+        
+        
+        
+        tablerow.append(TableRow(title:"Driver Details",key: "carbc",cellType:.TitleLblTVCell))
+        tablerow.append(TableRow(key:"car",cellType:.BookedTravelDetailsTVCell))
+        
+        
+        
+        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        
+        commonTVData = tablerow
+        commonTableView.reloadData()
+        
+        
+    }
     
 }

@@ -108,7 +108,7 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func didTapOnTransfersbtnAction(cell: TabSelectTVCell) {}
     func didTapOnSportsbtnAction(cell: TabSelectTVCell) {}
     func didTapOnCruisebtnAction(cell: TabSelectTVCell) {}
-    func didTapOnAutopaybtnAction(cell: TabSelectTVCell) {}
+    func didTapOnActivitiesbtnAction(cell: TabSelectTVCell) {}
     func didTapOnInsurencebtnAction(cell:TabSelectTVCell) {}
     
     func didTapOnAdvanceOption(cell: FlightSearchTVCell) {}
@@ -1206,6 +1206,12 @@ extension BaseTableVC: UITableViewDataSource {
             case .TransitTimeSliderTVCell :
                 let cell: TransitTimeSliderTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 cell.delegate = self
+                commonCell = cell
+                
+                
+                
+            case .PickupTVCell :
+                let cell: PickupTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
                 
                 
