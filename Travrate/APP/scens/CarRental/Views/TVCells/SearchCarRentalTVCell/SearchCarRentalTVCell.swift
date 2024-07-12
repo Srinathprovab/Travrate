@@ -101,6 +101,7 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         dropupDatelbl.text = defaults.string(forKey: UserDefaultsKeys.dropuplocDate) ?? "Select Date"
         pickupTimelbl.text = defaults.string(forKey: UserDefaultsKeys.pickuplocTime) ?? "Select Time"
         dropupTimelbl.text = defaults.string(forKey: UserDefaultsKeys.dropuplocTime) ?? "Select Time"
+        driverAgelbl.text = defaults.string(forKey: UserDefaultsKeys.driverage) ?? "Select Driver's Age"
         
         
         if pickuplocTF.text != "Select Location" {
@@ -128,6 +129,13 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
             dropupTimelbl.textColor = .subtitleNewcolor
         }else {
             dropupTimelbl.textColor = .TitleColor
+        }
+        
+        
+        if driverAgelbl.text == "Select Driver's Age" {
+            driverAgelbl.textColor = .subtitleNewcolor
+        }else {
+            driverAgelbl.textColor = .TitleColor
         }
         
         
@@ -231,6 +239,7 @@ extension SearchCarRentalTVCell {
             self?.driverAgelbl.text = item
             self?.driverAgelbl.textColor = .TitleColor
             MySingleton.shared.carRentalDriverAge = item
+            defaults.set(item, forKey: UserDefaultsKeys.driverage)
             
         }
     }

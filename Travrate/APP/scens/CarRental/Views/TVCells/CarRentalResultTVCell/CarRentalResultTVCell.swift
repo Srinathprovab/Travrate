@@ -17,10 +17,9 @@ class CarRentalResultTVCell: TableViewCell {
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var carimg: UIImageView!
     @IBOutlet weak var depositeAmountlbl: UILabel!
-    @IBOutlet weak var perdaylbl: UILabel!
+    @IBOutlet weak var markupView: UIStackView!
     @IBOutlet weak var viewDetailsBtn: UIButton!
     @IBOutlet weak var kwdlbl: UILabel!
-    @IBOutlet weak var itemscv: UICollectionView!
     @IBOutlet weak var seatslbl: UILabel!
     @IBOutlet weak var caroption2: UILabel!
     @IBOutlet weak var caroption3: UILabel!
@@ -105,6 +104,13 @@ class CarRentalResultTVCell: TableViewCell {
                                                     str1Color: .TitleColor,
                                                     str2Color: .TitleColor)
             
+            
+            if carlist?.markup?.value == 0 {
+                markupView.isHidden = true
+            }else {
+                markupView.isHidden = false
+            }
+            
         }else {
             
             
@@ -140,7 +146,17 @@ class CarRentalResultTVCell: TableViewCell {
             self.viewDetailsBtn.isHidden = true
             self.kwdlbl.isHidden = true
             
+            
+            if carlist1?.markup?.value == 0 {
+                markupView.isHidden = true
+            }else {
+                markupView.isHidden = false
+            }
         }
+        
+        
+        
+       
         
     }
     
@@ -153,51 +169,3 @@ class CarRentalResultTVCell: TableViewCell {
 }
 
 
-
-//extension CarRentalResultTVCell:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-//    
-//    func setupCV() {
-//        
-//        let nib = UINib(nibName: "CarRentalTSeatsCVCell", bundle: nil)
-//        itemscv.register(nib, forCellWithReuseIdentifier: "cell")
-//        itemscv.delegate = self
-//        itemscv.dataSource = self
-//        let layout = UICollectionViewFlowLayout()
-//        // layout.itemSize = CGSize(width: 90, height: 30)
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        layout.scrollDirection = .vertical
-//        layout.minimumInteritemSpacing = 0
-//        layout.minimumLineSpacing = 0
-//        itemscv.collectionViewLayout = layout
-//        itemscv.bounces = false
-//        
-//    }
-//    
-//    
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return itemsArray.count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        var commonCell = UICollectionViewCell()
-//        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CarRentalTSeatsCVCell {
-//            
-//            cell.titlelbl.text = itemsArray[indexPath.row]
-//            
-//            commonCell = cell
-//        }
-//        return commonCell
-//    }
-//    
-//    
-//    
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let label = UILabel(frame: CGRect.zero)
-//        label.text = itemsArray[indexPath.item]
-//        label.sizeToFit()
-//        return CGSize(width: label.frame.width, height: 16)
-//    }
-//    
-//    
-//}

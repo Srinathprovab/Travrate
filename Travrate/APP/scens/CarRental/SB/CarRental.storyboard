@@ -556,25 +556,56 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRm-7C-KdR">
                                         <rect key="frame" x="0.0" y="772" width="393" height="80"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXZ-bH-8o3">
-                                                <rect key="frame" x="76.666666666666686" y="15" width="240" height="50"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHD-F3-A2s" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                                                <rect key="frame" x="50" y="7.6666666666666288" width="293" height="65"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KVa-Ir-Ua2">
+                                                        <rect key="frame" x="25.000000000000014" y="12.333333333333371" width="243.33333333333337" height="40"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue To Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeq-Ak-IRc">
+                                                                <rect key="frame" x="0.0" y="0.0" width="193.33333333333334" height="40"/>
+                                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                                                <color key="textColor" name="WhiteColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pny-yM-Fx0">
+                                                                <rect key="frame" x="203.33333333333331" y="0.0" width="40" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="3pC-SN-l3I"/>
+                                                                    <constraint firstAttribute="width" constant="40" id="qZ1-uI-rWK"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hg4-pe-vE3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="293" height="65"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                    </button>
+                                                </subviews>
                                                 <color key="backgroundColor" name="Buttoncolor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="240" id="7b9-xa-FIZ"/>
-                                                    <constraint firstAttribute="height" constant="50" id="leJ-v7-wLk"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Hg4-pe-vE3" secondAttribute="bottom" id="98A-IN-ppz"/>
+                                                    <constraint firstItem="Hg4-pe-vE3" firstAttribute="top" secondItem="IHD-F3-A2s" secondAttribute="top" id="9Mb-Xk-x78"/>
+                                                    <constraint firstItem="KVa-Ir-Ua2" firstAttribute="centerY" secondItem="IHD-F3-A2s" secondAttribute="centerY" id="PMJ-or-31A"/>
+                                                    <constraint firstAttribute="height" constant="65" id="S6h-K6-vFd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Hg4-pe-vE3" secondAttribute="trailing" id="hCF-S3-WIz"/>
+                                                    <constraint firstItem="KVa-Ir-Ua2" firstAttribute="centerX" secondItem="IHD-F3-A2s" secondAttribute="centerX" id="kYL-HR-2tW"/>
+                                                    <constraint firstItem="Hg4-pe-vE3" firstAttribute="leading" secondItem="IHD-F3-A2s" secondAttribute="leading" id="nPF-xQ-Vbg"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Continue To Payment">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="A0h-II-Yds"/>
-                                            <constraint firstItem="tXZ-bH-8o3" firstAttribute="centerX" secondItem="lRm-7C-KdR" secondAttribute="centerX" id="nvw-WL-a2g"/>
-                                            <constraint firstItem="tXZ-bH-8o3" firstAttribute="centerY" secondItem="lRm-7C-KdR" secondAttribute="centerY" id="x5l-XJ-PJU"/>
+                                            <constraint firstItem="IHD-F3-A2s" firstAttribute="centerY" secondItem="lRm-7C-KdR" secondAttribute="centerY" id="U7Y-qT-mff"/>
+                                            <constraint firstItem="IHD-F3-A2s" firstAttribute="leading" secondItem="lRm-7C-KdR" secondAttribute="leading" constant="50" id="jCg-4H-88d"/>
+                                            <constraint firstItem="IHD-F3-A2s" firstAttribute="centerX" secondItem="lRm-7C-KdR" secondAttribute="centerX" id="l0T-Dh-iaf"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -604,7 +635,10 @@
                     </view>
                     <connections>
                         <outlet property="commonTableView" destination="0fx-8t-pQt" id="xaK-wx-BPI"/>
-                        <outlet property="continuebtn" destination="tXZ-bH-8o3" id="P4l-WM-2eq"/>
+                        <outlet property="continuebtn" destination="Hg4-pe-vE3" id="Mmh-vn-UgJ"/>
+                        <outlet property="continuetoPaymentBtnView" destination="IHD-F3-A2s" id="1Gy-2A-mX9"/>
+                        <outlet property="continuetoPaymentBtnlbl" destination="qeq-Ak-IRc" id="436-DG-9bD"/>
+                        <outlet property="gifimg" destination="Pny-yM-Fx0" id="qBZ-RR-AJq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9eG-dL-dIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -710,6 +744,9 @@
         </namedColor>
         <namedColor name="TitleColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WhiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

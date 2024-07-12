@@ -11,7 +11,9 @@ class CRBookingDetailsVC: BaseTableVC, CarBookingVMDelegate {
     
     
     
-    
+    @IBOutlet weak var gifimg: UIImageView!
+    @IBOutlet weak var continuetoPaymentBtnView: UIView!
+    @IBOutlet weak var continuetoPaymentBtnlbl: UILabel!
     @IBOutlet weak var continuebtn: UIButton!
     
     static var newInstance: CRBookingDetailsVC? {
@@ -49,13 +51,22 @@ class CRBookingDetailsVC: BaseTableVC, CarBookingVMDelegate {
         MySingleton.shared.carBookingVM = CarBookingVM(self)
         
     }
-    
-    
+ 
     func setupUI(){
         
+        continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+        continuetoPaymentBtnView.isUserInteractionEnabled = true
+        continuetoPaymentBtnlbl.text = "Continue To Next"
+        
+        guard let gifURL = Bundle.main.url(forResource: "pay", withExtension: "gif") else { return }
+        guard let imageData = try? Data(contentsOf: gifURL) else { return }
+        guard let image = UIImage.gifImageWithData(imageData) else { return }
+        gifimg.image = image
+        gifimg.isHidden = true
         
         continuebtn.layer.cornerRadius = 4
         continuebtn.addTarget(self, action: #selector(didTapOnContinueBtnAction), for: .touchUpInside)
+        
         commonTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // Top left corner, Top right corner respectively
         commonTableView.layer.cornerRadius = 12
         commonTableView.clipsToBounds = true
@@ -224,11 +235,34 @@ class CRBookingDetailsVC: BaseTableVC, CarBookingVMDelegate {
             showToast(message: "Please select option to continue")
             return
         }else {
-            callcarBookingAPI()
+             callcarBookingAPI()
+            
+           
         }
         
     }
     
+    
+    func gotoSelectPaymentMethodsVC() {
+        
+        callapibool = true
+        guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.cardetails = self.cardetails
+        self.present(vc, animated: true)
+        
+    }
+    
+    
+    override func didTapOnCheckBoxBtnAction(cell:TermsAgreeTVCell) {
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+    }
     
     
 }
@@ -257,7 +291,7 @@ extension CRBookingDetailsVC {
     
     func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
-     
+        
         
         MySingleton.shared.tablerow.append(TableRow(title:"",moreData: cardetails,cellType:.SelectedCarRentalTVCell))
         
@@ -336,8 +370,8 @@ extension CRBookingDetailsVC {
         MySingleton.shared.payload["search_id"] = MySingleton.shared.carsearchid
         
         
-        MySingleton.shared.carBookingVM?.CALL_CAR_BOOKING_API(dictParam: MySingleton.shared.payload)
-        
+       // MySingleton.shared.carBookingVM?.CALL_CAR_BOOKING_API(dictParam: MySingleton.shared.payload)
+        gotoSelectPaymentMethodsVC()
     }
     
     

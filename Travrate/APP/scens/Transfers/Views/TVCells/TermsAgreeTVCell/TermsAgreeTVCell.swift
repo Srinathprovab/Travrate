@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol TermsAgreeTVCellDelegate {
+    func didTapOnCheckBoxBtnAction(cell:TermsAgreeTVCell)
+}
+
 class TermsAgreeTVCell: TableViewCell {
     
     @IBOutlet weak var checkboximg: UIImageView!
     @IBOutlet weak var titlelbl: UILabel!
     
     
+    
+    var delegate:TermsAgreeTVCellDelegate?
     var checkBool = false
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,6 +49,9 @@ class TermsAgreeTVCell: TableViewCell {
             checkboximg.image = UIImage(named: "uncheck")
             MySingleton.shared.checkTermsAndCondationStatus = false
         }
+        
+        
+        delegate?.didTapOnCheckBoxBtnAction(cell: self)
     }
     
 }

@@ -295,6 +295,7 @@ extension DashboardVC {
         defaults.set("Select Date", forKey: UserDefaultsKeys.dropuplocDate)
         defaults.set("Select Time", forKey: UserDefaultsKeys.pickuplocTime)
         defaults.set("Select Time", forKey: UserDefaultsKeys.dropuplocTime)
+        defaults.set("Select Driver's Age", forKey: UserDefaultsKeys.driverage)
         
         guard let vc = SearchCarRentalVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen

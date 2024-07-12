@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CarRentalResultsVC: BaseTableVC, CarrentalSearchVMDelegate {
+class CarRentalResultsVC: BaseTableVC, CarrentalSearchVMDelegate, AppliedCarrentalFilters {
     
     
     @IBOutlet weak var holderView: UIView!
@@ -64,7 +64,16 @@ class CarRentalResultsVC: BaseTableVC, CarrentalSearchVMDelegate {
     
     //MARK: - didTapOnBackBtnAction
     @IBAction func didTapOnFilterBtnAction(_ sender: Any) {
-        print("didTapOnFilterBtnAction")
+        gotoFilterVC(strkey: "carfilter")
+    }
+    
+    //MARK: - gotoFilterVC
+    func gotoFilterVC(strkey:String) {
+        guard let vc = FilterVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.carrentaldelegate = self
+        vc.filterKey = strkey
+        present(vc, animated: true)
     }
     
     
@@ -203,8 +212,23 @@ extension CarRentalResultsVC {
         loderBool = false
         holderView.isHidden = false
         
+        carprices.removeAll()
+        fuleArray.removeAll()
+        carmanualArray.removeAll()
+        doorcountArray.removeAll()
         
-        MySingleton.shared.setAttributedTextnew(str1: "\(list.count)", str2: " car are Available", lbl: carCountlbl, str1font: .OpenSansBold(size: 16), str2font: .OpenSansRegular(size: 14), str1Color: .TitleColor, str2Color: .TitleColor)
+        list.forEach { i in
+            carprices.append(i.product?[0].total ?? "")
+            fuleArray.append(i.fuel ?? "")
+            carmanualArray.append(i.transmission ?? "")
+            doorcountArray.append("\(i.adults ?? "") Seat")
+            
+        }
+        
+        carprices = carprices.unique()
+        fuleArray = fuleArray.unique()
+        carmanualArray = carmanualArray.unique()
+        doorcountArray = doorcountArray.unique()
         
         
         DispatchQueue.main.async {
@@ -216,6 +240,8 @@ extension CarRentalResultsVC {
     
     func setupTVCells(list:[Raw_hotel_list]) {
         MySingleton.shared.tablerow.removeAll()
+        
+        MySingleton.shared.setAttributedTextnew(str1: "\(list.count)", str2: " car are Available", lbl: carCountlbl, str1font: .OpenSansBold(size: 16), str2font: .OpenSansRegular(size: 14), str1Color: .TitleColor, str2Color: .TitleColor)
         
         
         list.forEach { i in
@@ -303,5 +329,28 @@ extension CarRentalResultsVC {
         self.present(vc, animated: true)
     }
     
+    
+}
+
+
+
+extension CarRentalResultsVC {
+    
+   
+    func sportFilterByApplied(minpricerange: Double, maxpricerange: Double, fuleArray: [String], carmanualArray: [String], doorcountArray: [String]) {
+        
+        print("minpricerange : \(minpricerange)")
+        print("maxpricerange : \(maxpricerange)")
+        print("fuleArray : \(fuleArray.joined(separator: ","))")
+        print("carmanualArray : \(carmanualArray.joined(separator: ","))")
+        print("doorcountArray : \(doorcountArray.joined(separator: ","))")
+        
+        
+        
+       
+        
+    }
+    
+   
     
 }

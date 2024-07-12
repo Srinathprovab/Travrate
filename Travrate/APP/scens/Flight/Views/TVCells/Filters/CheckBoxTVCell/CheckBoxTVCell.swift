@@ -180,7 +180,9 @@ extension CheckBoxTVCell: UITableViewDataSource, UITableViewDelegate {
                 showSelectedFlightsFilterValues(cell: cell, indexPath: indexPath)
             } else if tabselect == "Sports" {
                 showSelectedSportFilterValues(cell: cell, indexPath: indexPath)
-            } else {
+            }else if tabselect == "CarRental" {
+                showSelectedCarrentalFilterValues(cell: cell, indexPath: indexPath)
+            } else  {
                 showSelectedHotelFilterValues(cell: cell, indexPath: indexPath)
             }
         }
@@ -739,3 +741,106 @@ extension CheckBoxTVCell {
 }
 
 
+
+
+//MARK: - CAR RENTAL
+
+extension CheckBoxTVCell {
+    
+    
+    
+    
+    func showSelectedCarrentalFilterValues(cell:checkOptionsTVCell,indexPath:IndexPath) {
+        
+        
+        //
+        // Check the section title to determine which filter to apply
+        switch titlelbl.text {
+            
+        case "Care Fule":
+            if !carfilterModel.fuleA.isEmpty {
+                // Check if the cell's title matches any value in the luggage array
+                
+                
+                if carfilterModel.fuleA.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.sele()
+                        self.selectedIndices.append(indexPath)
+                        self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    }
+                    print("Selected: \(cell.titlelbl.text ?? "")")
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.unselected() // Deselect the cell
+                    }
+                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    cell.unselected() // Deselect the cell
+                }
+            }
+            
+            
+            
+        case "Menual/Auto":
+            if !carfilterModel.carmanualA.isEmpty {
+                // Check if the cell's title matches any value in the luggage array
+                
+                
+                if carfilterModel.carmanualA.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.sele()
+                        self.selectedIndices.append(indexPath)
+                        self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    }
+                    print("Selected: \(cell.titlelbl.text ?? "")")
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.unselected() // Deselect the cell
+                    }
+                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    cell.unselected() // Deselect the cell
+                }
+            }
+            
+            
+        case "Door Count":
+            if !carfilterModel.doorcountA.isEmpty {
+                // Check if the cell's title matches any value in the luggage array
+                
+                
+                if carfilterModel.doorcountA.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.sele()
+                        self.selectedIndices.append(indexPath)
+                        self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    }
+                    print("Selected: \(cell.titlelbl.text ?? "")")
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.unselected() // Deselect the cell
+                    }
+                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    cell.unselected() // Deselect the cell
+                }
+            }
+            
+            
+        default:
+            break
+        }
+    }
+}

@@ -108,6 +108,7 @@ var travelerArray: [Traveler] = []
 var filterTap = String()
 var filterPrice = String()
 var prices = [String]()
+var carprices = [String]()
 var durationArray = [String]()
 var hotelprices = [String]()
 
@@ -115,6 +116,7 @@ var filterModel = FlightFilterModel()
 var sortBy: SortParameter = .nothing
 var hotelfiltermodel = HotelFilterModel()
 var sportsfilterModel = SportsFilterModel()
+var carfilterModel = CarRentalFilterModel()
 var tournamentArray = [String]()
 var eventsArray = [String]()
 var sportsCityArray = [String]()
@@ -223,6 +225,11 @@ var multitripscodeArray = [String]()
 var zonetitleArray = [String]()
 var zonecodeArray = [String]()
 var optionsIndexpathArray: [IndexPath] = []
+
+//CAR RENTAL
+var fuleArray = [String]()
+var carmanualArray = [String]()
+var doorcountArray = [String]()
 
 
 /* URL endpoints */
@@ -451,6 +458,7 @@ struct UserDefaultsKeys {
     static var dropuplocDate = "dropuplocDate"
     static var pickuplocTime = "pickuplocTime"
     static var dropuplocTime = "dropuplocTime"
+    static var driverage = "driverage"
     
     
     //Holiday

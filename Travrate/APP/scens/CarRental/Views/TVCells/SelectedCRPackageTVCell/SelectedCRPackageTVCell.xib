@@ -152,6 +152,13 @@
                                 <color key="textColor" red="0.35686274509803922" green="0.35686274509803922" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caropt6" translatesAutoresizingMaskIntoConstraints="NO" id="PnL-ee-bKY">
+                                <rect key="frame" x="102.66666666666667" y="134.66666666666666" width="16" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="11" id="5KN-ls-ADt"/>
+                                    <constraint firstAttribute="width" constant="16" id="Wh5-yL-Zhp"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -166,6 +173,7 @@
                             <constraint firstItem="XO7-JQ-3qj" firstAttribute="top" secondItem="UvQ-ou-7i7" secondAttribute="bottom" constant="10" id="9aZ-Cg-EwV"/>
                             <constraint firstAttribute="trailing" secondItem="8JV-LJ-FrW" secondAttribute="trailing" constant="10" id="9tS-O1-IHE"/>
                             <constraint firstAttribute="trailing" secondItem="H4P-Jb-57B" secondAttribute="trailing" id="ARU-dX-YhX"/>
+                            <constraint firstItem="PnL-ee-bKY" firstAttribute="leading" secondItem="4Mi-vB-8na" secondAttribute="trailing" constant="10" id="BCn-yb-fLr"/>
                             <constraint firstItem="hyJ-l7-Xf6" firstAttribute="centerY" secondItem="Ze6-aC-ZHv" secondAttribute="centerY" id="FMi-iW-mKN"/>
                             <constraint firstItem="VJJ-NU-QNe" firstAttribute="centerY" secondItem="Ocf-rC-HG4" secondAttribute="centerY" id="Fvf-ZB-tDw"/>
                             <constraint firstItem="Ze6-aC-ZHv" firstAttribute="leading" secondItem="UBS-0s-6hP" secondAttribute="leading" constant="10" id="LiL-h4-XDD"/>
@@ -185,6 +193,7 @@
                             <constraint firstItem="Ze6-aC-ZHv" firstAttribute="top" secondItem="AQL-rq-xvM" secondAttribute="bottom" constant="10" id="jTu-2l-72f"/>
                             <constraint firstItem="hyJ-l7-Xf6" firstAttribute="leading" secondItem="Ze6-aC-ZHv" secondAttribute="trailing" constant="10" id="tmD-Gg-CeT"/>
                             <constraint firstItem="AQL-rq-xvM" firstAttribute="leading" secondItem="UBS-0s-6hP" secondAttribute="leading" constant="10" id="uJs-nr-Q0m"/>
+                            <constraint firstItem="PnL-ee-bKY" firstAttribute="centerY" secondItem="4Mi-vB-8na" secondAttribute="centerY" id="v91-lE-N7A"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -223,6 +232,7 @@
     </objects>
     <resources>
         <image name="cancelcircle" width="24" height="24"/>
+        <image name="caropt6" width="16.333333969116211" height="12.333333015441895"/>
         <image name="chkcircle" width="24" height="24"/>
         <namedColor name="BorderColor">
             <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>

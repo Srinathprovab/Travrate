@@ -51,6 +51,18 @@ struct SportsFilterModel {
 
 
 
+struct CarRentalFilterModel {
+    
+    var minPriceRange: Double?
+    var maxPriceRange: Double?
+    var fuleA: [String] = []
+    var carmanualA: [String] = []
+    var doorcountA: [String] = []
+    
+}
+
+
+
 enum SortParameter {
     case PriceHigh
     case PriceLow
@@ -66,6 +78,19 @@ enum SortParameter {
     case airlinessortatoz
     case airlinessortztoa
 }
+
+
+
+protocol AppliedCarrentalFilters {
+    
+    func sportFilterByApplied(minpricerange:Double,
+                              maxpricerange:Double,
+                              fuleArray:[String],
+                              carmanualArray:[String],
+                              doorcountArray:[String])
+    
+}
+
 
 
 protocol AppliedSportsFilters {
@@ -131,6 +156,7 @@ class FilterVC: BaseTableVC{
     //MARK: - Flights
     weak var delegate: AppliedFilters?
     var sportsdelegate: AppliedSportsFilters?
+    var carrentaldelegate: AppliedCarrentalFilters?
     var minpricerangefilter = Double()
     var maxpricerangefilter = Double()
     var mindurationrangefilter = Double()
@@ -166,6 +192,15 @@ class FilterVC: BaseTableVC{
     var connectingFlightsFilterArray = [String]()
     var ConnectingAirportsFilterArray = [String]()
     var flightRefundablerTypeFilteArray = [String]()
+    
+    
+    
+    //CAR RENTAL
+    var selectedFuleArray = [String]()
+    var selectedCarManual = [String]()
+    var selectedDoorCountArray = [String]()
+   
+    
     
     //MARK: - Hotels
     var selectedNeighbourwoodArray = [String]()
@@ -257,6 +292,12 @@ class FilterVC: BaseTableVC{
             setupFilterTVCells()
             break
             
+            
+        case "carfilter":
+            sortBylbl.text = "Filter"
+            setupCarRentalSortByTVCells()
+            break
+            
         case "sort":
             sortBylbl.text = "Sort"
             setupSortByTVCells()
@@ -297,6 +338,7 @@ class FilterVC: BaseTableVC{
                                          "DurationSliderTVCell",
                                          "NewDepartureTimeTVCell",
                                          "DepartureTimeTVCell",
+                                         "CarrentalPriceSliderTVCell",
                                          "TransitTimeSliderTVCell",
                                          "FilterDepartureTVCell"])
         
@@ -417,6 +459,32 @@ class FilterVC: BaseTableVC{
         tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
         tablerow.append(TableRow(title:"Done",key: "btn",cellType:.ButtonTVCell))
         tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        
+        commonTVData = tablerow
+        commonTableView.reloadData()
+    }
+    
+    
+    
+    
+    //MARK: - setupHotelsSortByTVCells
+    func setupCarRentalSortByTVCells() {
+        
+        commonTableView.isScrollEnabled = true
+        tablerow.removeAll()
+        
+        
+        tablerow.append(TableRow(title:"Price",cellType:.CarrentalPriceSliderTVCell))
+      //  tablerow.append(TableRow(title:"AC / Non AC",data: fuleArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Care Fule",data: fuleArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Menual/Auto",data: carmanualArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Door Count",data: doorcountArray,cellType:.CheckBoxTVCell))
+        
+        
+        tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))
+        tablerow.append(TableRow(title:"Apply",key: "btn",cellType:.ButtonTVCell))
+        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        
         
         commonTVData = tablerow
         commonTableView.reloadData()
@@ -712,6 +780,12 @@ class FilterVC: BaseTableVC{
                         sportsResetFilter()
                     }
                 }
+            }else if tabselect == "CarRental" {
+                if filterKey == "carfilter" {
+                    DispatchQueue.main.async {[self] in
+                        carResetFilter()
+                    }
+                }
             }else {
                 
                 resetHotelFilter()
@@ -824,6 +898,7 @@ class FilterVC: BaseTableVC{
                 }
             }else  if tabselect == "Sports"  {
                 
+                
                 switch cell.filtertitle {
                     
                 case "Tournament":
@@ -841,6 +916,30 @@ class FilterVC: BaseTableVC{
                 case "Country":
                     selectedSportsCountryArray.append(cell.titlelbl.text ?? "")
                     break
+                    
+                    
+                default:
+                    break
+                }
+                
+                
+            }else  if tabselect == "CarRental"  {
+                
+                switch cell.filtertitle {
+                    
+                case "Care Fule":
+                    selectedFuleArray.append(cell.titlelbl.text ?? "")
+                    break
+                    
+                case "Menual/Auto":
+                    selectedCarManual.append(cell.titlelbl.text ?? "")
+                    break
+                    
+                case "Door Count":
+                    selectedDoorCountArray.append(cell.titlelbl.text ?? "")
+                    break
+                    
+               
                     
                     
                 default:
@@ -1017,6 +1116,36 @@ class FilterVC: BaseTableVC{
                         selectedSportsCountryArray.remove(at: index)
                     }
                     break
+                    
+                    
+                default:
+                    break
+                }
+                
+                
+            }else  if tabselect == "CarRental"  {
+                
+                switch cell.filtertitle {
+                    
+                case "Care Fule":
+                    if let index = selectedFuleArray.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedFuleArray.remove(at: index)
+                    }
+                    break
+                    
+                case "Menual/Auto":
+                    if let index = selectedCarManual.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedCarManual.remove(at: index)
+                    }
+                    break
+                    
+                case "Door Count":
+                    if let index = selectedDoorCountArray.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedDoorCountArray.remove(at: index)
+                    }
+                    break
+                    
+               
                     
                     
                 default:
@@ -1235,6 +1364,8 @@ class FilterVC: BaseTableVC{
         if let tabSelected = defaults.string(forKey: UserDefaultsKeys.tabselect) {
             if tabSelected == "Flight" {
                 setupFilterTVCells()
+            }else if tabSelected == "CarRental" {
+                setupCarRentalSortByTVCells()
             }else if tabSelected == "Sports" {
                 setupSportsFilterTVCells()
             }else {
@@ -1420,6 +1551,38 @@ class FilterVC: BaseTableVC{
                                                          sportsCityA: selectedSportsCityArray,
                                                          sportsCountryA: selectedSportsCountryArray)
                 }
+            }else if tabselect == "CarRental" {
+                
+                if filterKey == "carfilter" {
+                    
+                    if selectedFuleArray.isEmpty == false {
+                        carfilterModel.fuleA = selectedFuleArray
+                    }else {
+                        carfilterModel.fuleA .removeAll()
+                    }
+                    
+                    if selectedCarManual.isEmpty == false {
+                        carfilterModel.carmanualA = selectedCarManual
+                    }else {
+                        carfilterModel.carmanualA .removeAll()
+                    }
+                    
+                    
+                    if selectedDoorCountArray.isEmpty == false {
+                        carfilterModel.doorcountA = selectedDoorCountArray
+                    }else {
+                        carfilterModel.doorcountA .removeAll()
+                    }
+                    
+                
+                    carrentaldelegate?.sportFilterByApplied(minpricerange: carfilterModel.minPriceRange ?? 0.0,
+                                                            maxpricerange: carfilterModel.maxPriceRange ?? 0.0,
+                                                            fuleArray: carfilterModel.fuleA,
+                                                            carmanualArray: carfilterModel.carmanualA,
+                                                            doorcountArray: carfilterModel.doorcountA)
+                    
+                   
+                }
             }else {
                 
                 if resetHotelBool == true {
@@ -1501,8 +1664,6 @@ class FilterVC: BaseTableVC{
             
         }
         
-        
-        
         dismiss(animated: true)
     }
     
@@ -1559,6 +1720,14 @@ class FilterVC: BaseTableVC{
     }
     
     
+    //MARK: - didTapOnShowSliderBtn CarrentalPriceSliderTVCell
+    override func didTapOnShowSliderBtn(cell: CarrentalPriceSliderTVCell) {
+        print("Selected minimum value: \(cell.minValue1)")
+        print("Selected maximum value: \(cell.maxValue1)")
+        
+        minpricerangefilter = cell.minValue1
+        maxpricerangefilter = cell.maxValue1
+    }
     
 }
 
@@ -1589,6 +1758,13 @@ extension FilterVC {
                 cell.showbool = true
             }
         }else if let cell = tableView.cellForRow(at: indexPath) as? DurationSliderTVCell {
+            cell.showbool.toggle()
+            if cell.showbool{
+                cell.expand()
+            }else {
+                cell.hide()
+            }
+        }else if let cell = tableView.cellForRow(at: indexPath) as? CarrentalPriceSliderTVCell {
             cell.showbool.toggle()
             if cell.showbool{
                 cell.expand()
@@ -1777,6 +1953,39 @@ extension FilterVC {
     
     
     
+    
+    //MARK: - For Sports
+    func carResetFilter() {
+        // Reset all values in the FilterModel
+        
+        
+        
+        let pricesFloat = carprices.compactMap { Float($0) }
+        carfilterModel.minPriceRange = Double((pricesFloat.min() ?? carprices.compactMap { Float($0) }.min()) ?? 0.0)
+        carfilterModel.maxPriceRange = Double((pricesFloat.max() ?? carprices.compactMap { Float($0) }.max()) ?? 0.0)
+        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CarrentalPriceSliderTVCell {
+            cell.setupUI()
+        }
+        minpricerangefilter = carfilterModel.minPriceRange ?? 0.0
+        maxpricerangefilter = carfilterModel.maxPriceRange ?? 0.0
+        
+        carfilterModel.fuleA = []
+        carfilterModel.carmanualA = []
+        carfilterModel.doorcountA = []
+       
+        selectedFuleArray.removeAll()
+        selectedCarManual.removeAll()
+        selectedDoorCountArray.removeAll()
+        
+        
+        // Deselect all cells in your checkOptionsTVCell table view
+        deselectAllCheckOptionsCells()
+        
+        // Reload the table view to reflect the changes
+        commonTableView.reloadData()
+    }
+    
+    
     //MARK: - Reset Hotel Filter
     func resetHotelFilter() {
         // Reset all values in the FilterModel
@@ -1826,6 +2035,8 @@ extension FilterVC {
                 loadinitiallFlightFilterValues()
             }else if tabSelected == "Sports" {
                 loadinitiallSportsFilterValues()
+            }else if tabSelected == "CarRental" {
+                loadinitialCarRentalFilterValues()
             }else {
                 loadinitiallHotelFilterValues()
             }
@@ -1987,6 +2198,42 @@ extension FilterVC {
         }
         
         
+        
+    }
+    
+    
+    
+    
+    func loadinitialCarRentalFilterValues(){
+        
+        if !UserDefaults.standard.bool(forKey: "carfilteronce") {
+            sportsResetFilter()
+            defaults.set(true, forKey: "carfilteronce")
+        }
+        
+        
+        //MARK: - Price
+        if carfilterModel.minPriceRange != 0.0 {
+            minpricerangefilter = carfilterModel.minPriceRange ?? Double(carprices.compactMap { Float($0) }.min()!)
+        }
+        
+        if carfilterModel.maxPriceRange != 0.0 {
+            maxpricerangefilter = carfilterModel.maxPriceRange ?? Double(carprices.compactMap { Float($0) }.max()!)
+        }
+        
+        
+        if !carfilterModel.fuleA.isEmpty {
+            selectedFuleArray = carfilterModel.fuleA
+        }
+        
+        if !carfilterModel.carmanualA.isEmpty {
+            selectedCarManual = carfilterModel.carmanualA
+        }
+        
+        if !carfilterModel.doorcountA.isEmpty {
+            selectedDoorCountArray = carfilterModel.doorcountA
+        }
+
         
     }
     

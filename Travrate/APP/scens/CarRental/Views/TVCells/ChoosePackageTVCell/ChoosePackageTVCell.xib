@@ -153,6 +153,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caropt6" translatesAutoresizingMaskIntoConstraints="NO" id="nzk-lY-clt">
+                                <rect key="frame" x="102.66666666666667" y="134.66666666666666" width="16" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="11" id="9g5-Bz-2xM"/>
+                                    <constraint firstAttribute="width" constant="16" id="YI5-0w-tnc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -161,6 +168,7 @@
                             <constraint firstItem="iS9-Tv-FxE" firstAttribute="leading" secondItem="tOy-eW-wC4" secondAttribute="leading" id="7HH-Lr-jfz"/>
                             <constraint firstItem="geX-1K-GTq" firstAttribute="centerY" secondItem="pOJ-nr-ING" secondAttribute="centerY" id="AbJ-os-s8s"/>
                             <constraint firstItem="pDg-AZ-mjr" firstAttribute="top" secondItem="jmT-D3-F6o" secondAttribute="bottom" constant="10" id="B8K-vz-8Q2"/>
+                            <constraint firstItem="nzk-lY-clt" firstAttribute="leading" secondItem="rBc-ma-VAn" secondAttribute="trailing" constant="10" id="CzM-IP-Xdr"/>
                             <constraint firstItem="eys-PA-xQf" firstAttribute="leading" secondItem="ciU-yR-gVP" secondAttribute="trailing" constant="10" id="HLV-GH-v9W"/>
                             <constraint firstItem="rBc-ma-VAn" firstAttribute="leading" secondItem="pDg-AZ-mjr" secondAttribute="trailing" constant="10" id="Hge-dB-zVI"/>
                             <constraint firstItem="eys-PA-xQf" firstAttribute="centerY" secondItem="ciU-yR-gVP" secondAttribute="centerY" id="KSs-fh-Nzj"/>
@@ -175,6 +183,7 @@
                             <constraint firstItem="Onw-Zp-vjs" firstAttribute="centerY" secondItem="ZEv-A1-Cmh" secondAttribute="centerY" id="cXZ-N0-hqF"/>
                             <constraint firstAttribute="height" constant="241" id="dSt-cd-nB4"/>
                             <constraint firstItem="ZEv-A1-Cmh" firstAttribute="leading" secondItem="tOy-eW-wC4" secondAttribute="leading" constant="10" id="gLU-Eh-BYp"/>
+                            <constraint firstItem="nzk-lY-clt" firstAttribute="centerY" secondItem="rBc-ma-VAn" secondAttribute="centerY" id="hHe-Yl-hM2"/>
                             <constraint firstItem="hT0-EK-osy" firstAttribute="top" secondItem="6df-oh-Sbi" secondAttribute="bottom" constant="10" id="knq-A3-QAF"/>
                             <constraint firstItem="ZEv-A1-Cmh" firstAttribute="top" secondItem="ciU-yR-gVP" secondAttribute="bottom" constant="10" id="mTz-ph-ktl"/>
                             <constraint firstItem="pOJ-nr-ING" firstAttribute="top" secondItem="iS9-Tv-FxE" secondAttribute="bottom" constant="20" id="s6l-zt-rAb"/>
@@ -222,6 +231,7 @@
     </objects>
     <resources>
         <image name="cancelcircle" width="24" height="24"/>
+        <image name="caropt6" width="16.333333969116211" height="12.333333015441895"/>
         <image name="chkcircle" width="24" height="24"/>
         <namedColor name="BooknowBtnColor">
             <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

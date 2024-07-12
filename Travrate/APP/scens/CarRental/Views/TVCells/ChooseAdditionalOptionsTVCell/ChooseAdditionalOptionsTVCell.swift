@@ -115,7 +115,9 @@ extension ChooseAdditionalOptionsTVCell:UICollectionViewDelegate,UICollectionVie
         if let cell = collectionView.cellForItem(at: indexPath) as? AdditionalOptionsCVCell {
             cell.checkimg.image = UIImage(named: "newuncheck")
             
-            optionsIndexpathArray.remove(at: indexPath.row)
+            if let index = optionsIndexpathArray.firstIndex(of: indexPath) {
+                optionsIndexpathArray.remove(at: index)
+            }
             
         }
     }

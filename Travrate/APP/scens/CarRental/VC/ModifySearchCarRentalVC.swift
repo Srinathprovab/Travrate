@@ -129,7 +129,7 @@ class ModifySearchCarRentalVC: BaseTableVC {
     
     func gotoCarRentalResultsVC() {
         MySingleton.shared.callboolapi = true
-        defaults.set(false, forKey: "carrentalfilteronce")
+        defaults.set(false, forKey: "carfilteronce")
         guard let vc = CarRentalResultsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)

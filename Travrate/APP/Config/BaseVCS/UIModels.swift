@@ -178,6 +178,7 @@ enum TVCellType {
     case SelectedAdditionalOptionsTVCell
     case UpgradeServiceTVCell
     case PickupTVCell
+    case CarrentalPriceSliderTVCell
     
     
     

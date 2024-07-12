@@ -438,16 +438,16 @@ extension BookingConfirmedVC {
         
         tablerow.append(TableRow(title:MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.carVoucherData?.pickup_date ?? "", f1: "yyyy-MM-dd", f2: "dd MMM, yyyy"),
                                  subTitle: MySingleton.shared.carVoucherData?.from_loc ?? "",
-                                 text: "\(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_1 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_2 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_3 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_city ?? "") , \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_county ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_postcode ?? "")", 
+                                 text: "\(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_1 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_2 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_3 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_city ?? "") , \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_county ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_postcode ?? "")",
                                  buttonTitle: "Pick Up",
                                  cellType:.PickupTVCell))
         
         
-//        tablerow.append(TableRow(title:MySingleton.shared.carVoucherData?.drop_date ?? "",
-//                                 subTitle: MySingleton.shared.carVoucherData?.from_loc ?? "",
-//                                 text: "\(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_1 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_2 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_3 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_city ?? "") , \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_county ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_postcode ?? "")",
-//                                 buttonTitle: "Drop Off",
-//                                 cellType:.PickupTVCell))
+        //        tablerow.append(TableRow(title:MySingleton.shared.carVoucherData?.drop_date ?? "",
+        //                                 subTitle: MySingleton.shared.carVoucherData?.from_loc ?? "",
+        //                                 text: "\(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_1 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_2 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_3 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_city ?? "") , \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_county ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_postcode ?? "")",
+        //                                 buttonTitle: "Drop Off",
+        //                                 cellType:.PickupTVCell))
         
         
         
