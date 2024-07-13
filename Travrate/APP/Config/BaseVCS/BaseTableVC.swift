@@ -13,7 +13,6 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     
     
     
-    
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
     @IBOutlet weak var commonTVTopConstraint: NSLayoutConstraint!
@@ -370,6 +369,9 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func didTapOnCountryCodeBtn(cell:DriverDetailsTVCell) {}
     func didTapOnShowSliderBtn(cell: CarrentalPriceSliderTVCell) {}
     func didTapOnCheckBoxBtnAction(cell:TermsAgreeTVCell) {}
+    func didTapOnTransferCityBtnAction(cell: BookTransfersTVCell) {}
+    
+   
     
     
     

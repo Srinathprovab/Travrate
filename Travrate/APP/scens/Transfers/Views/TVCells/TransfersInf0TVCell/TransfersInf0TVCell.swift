@@ -12,17 +12,63 @@ protocol TransfersInf0TVCellDelegate {
 
 class TransfersInf0TVCell: TableViewCell {
     
-
+    
+    @IBOutlet weak var carimg: UIImageView!
+    @IBOutlet weak var carmodellbl: UILabel!
+    @IBOutlet weak var titlelbl: UILabel!
+    @IBOutlet weak var kwdlbl: UILabel!
+    @IBOutlet weak var passengerslbl: UILabel!
+    
+    
+    
+    var token = String()
+    var transferlist: Raw_transfer_list?
     var delegate:TransfersInf0TVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
+    }
+    
+    
+    
+    
+    override func updateUI() {
+        transferlist = cellInfo?.moreData as? Raw_transfer_list
+        token = transferlist?.token ?? ""
+        
+        passengerslbl.text = "Up to Passengers \(transferlist?.car_detail?.luggage_capacity ?? 0)"
+        carmodellbl.text = transferlist?.car_detail?.models?[0]
+        titlelbl.text = transferlist?.car_detail?.title ?? ""
+        carimg.sd_setImage(with: URL(string: transferlist?.car_detail?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+            if let error = error {
+                // Handle error loading image
+                print("Error loading image: \(error.localizedDescription)")
+                // Check if the error is due to a 404 Not Found response
+                if (error as NSError).code == NSURLErrorBadServerResponse {
+                    // Set placeholder image for 404 error
+                    self.carimg.image = UIImage(named: "noimage")
+                } else {
+                    // Set placeholder image for other errors
+                    self.carimg.image = UIImage(named: "noimage")
+                }
+            }
+        })
+        
+        
+        MySingleton.shared.setAttributedTextnew(str1: transferlist?.currency ?? "",
+                                                str2: String(format: "%.2f", transferlist?.price ?? ""),
+                                                lbl: kwdlbl,
+                                                str1font: .InterSemiBold(size: 12),
+                                                str2font: .InterSemiBold(size: 22),
+                                                str1Color: .TitleColor,
+                                                str2Color: .TitleColor)
+        
     }
     
     

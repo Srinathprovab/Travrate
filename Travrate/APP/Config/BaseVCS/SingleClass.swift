@@ -85,6 +85,7 @@ class MySingleton {
     var countrylist = [Country_list]()
     var flights = [[FlightList]]()
     var carlist = [Raw_hotel_list]()
+    var transferlist = [Raw_transfer_list]()
     var callboolapi = false
     var flighttoken = String()
     var shareresultrandomid = String()
@@ -223,6 +224,8 @@ class MySingleton {
     var carvoucherdetail : Api_token_data?
     var carpassengerDetails = [Car_passengers]()
     var carVoucherData : CarVoucherData?
+    var transfer_token = String()
+    var transfer_searchid = String()
     
     
     var confpassword = String()
@@ -303,6 +306,9 @@ class MySingleton {
     var carDetailsVM:CarDetailsVM?
     var carPreBookingVM:CarPreBookingVM?
     var carBookingVM:CarBookingVM?
+    var transferCityVM:GetTransferCityVM?
+    var preTransfersearchVM:PreTransfersearchVM?
+    var transferPreBookingVM:TransferPreBookingVM?
     
     
     //TIMER

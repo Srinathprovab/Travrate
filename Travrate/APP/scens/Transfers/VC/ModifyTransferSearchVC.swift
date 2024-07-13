@@ -1,22 +1,22 @@
 //
-//  BookTransfersVC.swift
-//  Travgate
+//  ModifyTransferSearchVC.swift
+//  Travrate
 //
-//  Created by FCI on 08/05/24.
+//  Created by Admin on 13/07/24.
 //
 
 import UIKit
 
-class BookTransfersVC: BaseTableVC {
+class ModifyTransferSearchVC: BaseTableVC {
     
     @IBOutlet weak var onewaybtn: UIButton!
     @IBOutlet weak var roundtripBtn: UIButton!
     
     
-    static var newInstance: BookTransfersVC? {
+    static var newInstance: ModifyTransferSearchVC? {
         let storyboard = UIStoryboard(name: Storyboard.Transfers.name,
                                       bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? BookTransfersVC
+        let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? ModifyTransferSearchVC
         return vc
     }
     
@@ -111,7 +111,7 @@ class BookTransfersVC: BaseTableVC {
 
 
 
-extension BookTransfersVC {
+extension ModifyTransferSearchVC {
     
     
     func setupUI(){
@@ -127,7 +127,10 @@ extension BookTransfersVC {
                                          "EmptyTVCell"])
         
         
-        taponOnewayBtn()
+      
+        defaults.string(forKey: UserDefaultsKeys.transferjournytype) == "oneway" ? taponOnewayBtn() : taponRoundtripBtnAction()
+
+        
     }
     
     
@@ -218,10 +221,10 @@ extension BookTransfersVC {
         
         
 //        if journytype == "oneway" {
-//            
+//
 //            MySingleton.shared.payload["return_date"] = ""
 //            MySingleton.shared.payload["return_time"] = ""
-//            
+//
 //            if fromcity == "From Airport" {
 //                showToast(message: "Select From Airtport")
 //            }else if tocity == "To Airport" {
@@ -234,11 +237,11 @@ extension BookTransfersVC {
 //                gotoTransfersListVC()
 //            }
 //        }else {
-//            
+//
 //            MySingleton.shared.payload["return_date"] = todate
 //            MySingleton.shared.payload["return_time"] = totime
-//            
-//            
+//
+//
 //            if fromcity == "From Airport" {
 //                showToast(message: "Select From Airtport")
 //            }else if tocity == "To Airport" {
@@ -255,21 +258,12 @@ extension BookTransfersVC {
 //                gotoTransfersListVC()
 //            }
         
-        
-        
         }
-        
-        
-
-        
-        
-        
-    
     
     
     func gotoTransfersListVC() {
-        defaults.set(false, forKey: "transferfilteronce")
         callapibool = true
+        defaults.set(false, forKey: "transferfilteronce")
         guard let vc = TransfersListVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)

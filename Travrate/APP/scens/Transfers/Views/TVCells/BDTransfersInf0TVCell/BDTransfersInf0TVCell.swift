@@ -9,6 +9,15 @@ import UIKit
 
 class BDTransfersInf0TVCell: TableViewCell {
 
+    @IBOutlet weak var carimage: UIImageView!
+    @IBOutlet weak var carmodellbl: UILabel!
+    @IBOutlet weak var titlelbl: UILabel!
+    @IBOutlet weak var passangerslbl: UILabel!
+    
+    
+    
+    var transferdata : Transfer_data?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,6 +27,28 @@ class BDTransfersInf0TVCell: TableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func updateUI() {
+        transferdata = cellInfo?.moreData as? Transfer_data
+        carmodellbl.text = transferdata?.car_detail?.models?[0]
+        titlelbl.text = transferdata?.car_detail?.title ?? ""
+        passangerslbl.text = "Up to Passengers \(transferdata?.car_detail?.luggage_capacity ?? 0)"
+        carimage.sd_setImage(with: URL(string: transferdata?.car_detail?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+            if let error = error {
+                // Handle error loading image
+                print("Error loading image: \(error.localizedDescription)")
+                // Check if the error is due to a 404 Not Found response
+                if (error as NSError).code == NSURLErrorBadServerResponse {
+                    // Set placeholder image for 404 error
+                    self.carimage.image = UIImage(named: "noimage")
+                } else {
+                    // Set placeholder image for other errors
+                    self.carimage.image = UIImage(named: "noimage")
+                }
+            }
+        })
+        
     }
     
 }

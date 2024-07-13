@@ -10,7 +10,9 @@ import UIKit
 class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
     
     
-    
+    @IBOutlet weak var gifimg: UIImageView!
+    @IBOutlet weak var continuetoPaymentBtnView: UIView!
+    @IBOutlet weak var continuetoPaymentBtnlbl: UILabel!
     @IBOutlet weak var continueBtn: UIButton!
     
     static var newInstance: SportsBookingDetailsVC? {
@@ -183,6 +185,18 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
     }
     
     
+    //MARK: - didTapOnCheckBoxBtnAction TermsAgreeTVCell
+    override func didTapOnCheckBoxBtnAction(cell:TermsAgreeTVCell) {
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+    }
+    
+    
     
     override func didTapOnCountryCodeBtn(cell: ContactInformationTVCell) {
         MySingleton.shared.paymobilecountrycode = cell.countrycodeTF.text ?? ""
@@ -265,6 +279,17 @@ extension SportsBookingDetailsVC {
     
     
     func setupUI(){
+        
+        
+        continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+        continuetoPaymentBtnView.isUserInteractionEnabled = true
+        continuetoPaymentBtnlbl.text = "Continue To Next"
+        
+        guard let gifURL = Bundle.main.url(forResource: "pay", withExtension: "gif") else { return }
+        guard let imageData = try? Data(contentsOf: gifURL) else { return }
+        guard let image = UIImage.gifImageWithData(imageData) else { return }
+        gifimg.image = image
+        gifimg.isHidden = true
         
         continueBtn.addTarget(self, action: #selector(didTapOnContinueBtnAction(_:)), for: .touchUpInside)
         commonTableView.registerTVCells(["SportInfoTVCell",

@@ -180,6 +180,7 @@ class CarrentalPriceSliderTVCell: TableViewCell, TTRangeSliderDelegate {
         maxlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "") \(maxValue1)"
         
         
+        
         delegate?.didTapOnShowSliderBtn(cell: self)
     }
     

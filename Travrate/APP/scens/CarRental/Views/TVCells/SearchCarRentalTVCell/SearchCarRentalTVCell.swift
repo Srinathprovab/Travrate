@@ -103,41 +103,21 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         dropupTimelbl.text = defaults.string(forKey: UserDefaultsKeys.dropuplocTime) ?? "Select Time"
         driverAgelbl.text = defaults.string(forKey: UserDefaultsKeys.driverage) ?? "Select Driver's Age"
         
-        
-        if pickuplocTF.text != "Select Location" {
-            pickuplocTF.textColor = .TitleColor
+        func updateLabelColor(label: UILabel, defaultText: String, defaultColor: UIColor, selectedColor: UIColor) {
+            label.textColor = label.text == defaultText ? defaultColor : selectedColor
         }
-        
-        if pickupDatelbl.text == "Select Date" {
-            pickupDatelbl.textColor = .subtitleNewcolor
-        }else {
-            pickupDatelbl.textColor = .TitleColor
-        }
-        if dropupDatelbl.text == "Select Date" {
-            dropupDatelbl.textColor = .subtitleNewcolor
-        }else {
-            dropupDatelbl.textColor = .TitleColor
-        }
-        
-        if pickupTimelbl.text == "Select Time" {
-            pickupTimelbl.textColor = .subtitleNewcolor
-        }else {
-            pickupTimelbl.textColor = .TitleColor
-        }
-        
-        if dropupTimelbl.text == "Select Time" {
-            dropupTimelbl.textColor = .subtitleNewcolor
-        }else {
-            dropupTimelbl.textColor = .TitleColor
-        }
+
+        updateLabelColor(label: pickupDatelbl, defaultText: "Select Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: dropupDatelbl, defaultText: "Select Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: pickupTimelbl, defaultText: "Select Time", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: dropupTimelbl, defaultText: "Select Time", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: driverAgelbl, defaultText: "Select Driver's Age", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+
         
         
-        if driverAgelbl.text == "Select Driver's Age" {
-            driverAgelbl.textColor = .subtitleNewcolor
-        }else {
-            driverAgelbl.textColor = .TitleColor
-        }
+        pickuplocTF.textColor = pickuplocTF.text != "Select Location" ? .TitleColor : .subtitleNewcolor
         
+
         
         setupTV()
         tvheight.constant = 0
@@ -263,6 +243,7 @@ extension SearchCarRentalTVCell:UITableViewDelegate, UITableViewDataSource  {
     
     override func textFieldDidBeginEditing(_ textField: UITextField) {
         pickuplocTF.text = ""
+        pickuplocTF.textColor = .TitleColor
         pickuplocTF.placeholder = "Pick Up Location"
         CallLocationListAPI(str: textField.text ?? "")
     }
@@ -342,10 +323,10 @@ extension SearchCarRentalTVCell:UITableViewDelegate, UITableViewDataSource  {
 }
 
 
-
+//MARK: - showTimePicker
 extension SearchCarRentalTVCell {
     
-    //MARK: - showTimePicker
+    
     func showPickupTimePicker() {
         // Format Time
         

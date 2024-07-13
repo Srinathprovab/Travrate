@@ -740,4 +740,14 @@ extension String{
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
     }
+    
+    func formatToTwoDecimalPlaces(_ number: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter.string(from: NSNumber(value: number)) ?? "\(number)"
+    }
+    
+    
 }

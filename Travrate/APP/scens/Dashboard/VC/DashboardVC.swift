@@ -139,8 +139,24 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     
     override func didTapOnTransfersbtnAction(cell: TabSelectTVCell) {
         defaults.set("transfers", forKey: UserDefaultsKeys.tabselect)
-        //  gotoBookTransfersVC()
-        showToast(message: "Still Under Development")
+        defaults.set("From Airport", forKey: UserDefaultsKeys.transferfromcityname)
+        defaults.set("", forKey: UserDefaultsKeys.transferfromcityid)
+        defaults.set("To Airport", forKey: UserDefaultsKeys.transfertocityname)
+        defaults.set("", forKey: UserDefaultsKeys.transfertocityname)
+        defaults.set("Select Date", forKey: UserDefaultsKeys.transfercalDepDate)
+        defaults.set("Select Time", forKey: UserDefaultsKeys.transfercalDepTime)
+        defaults.set("Select Date", forKey: UserDefaultsKeys.transfercalRetDate)
+        defaults.set("Select Time", forKey: UserDefaultsKeys.transfercalRetTime)
+        defaults.set("", forKey: UserDefaultsKeys.transferfromlat)
+        defaults.set("", forKey: UserDefaultsKeys.transferfromlang)
+        defaults.set("", forKey: UserDefaultsKeys.transfertolat)
+        defaults.set("", forKey: UserDefaultsKeys.transfertolang)
+        
+        
+        
+       
+        gotoBookTransfersVC()
+        //showToast(message: "Still Under Development")
     }
     
     override func didTapOnSportsbtnAction(cell: TabSelectTVCell) {

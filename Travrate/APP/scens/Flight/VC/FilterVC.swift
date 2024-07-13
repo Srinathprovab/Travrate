@@ -62,6 +62,15 @@ struct CarRentalFilterModel {
 }
 
 
+struct TransferFilterModel {
+    
+    var minPriceRange: Double?
+    var maxPriceRange: Double?
+    var carTypeA: [String] = []
+    
+}
+
+
 
 enum SortParameter {
     case PriceHigh
@@ -79,6 +88,15 @@ enum SortParameter {
     case airlinessortztoa
 }
 
+
+
+protocol AppliedTransferFilters {
+    
+    func sportFilterByApplied(minpricerange:Double,
+                              maxpricerange:Double,
+                              cartypeArray:[String])
+    
+}
 
 
 protocol AppliedCarrentalFilters {
@@ -157,8 +175,13 @@ class FilterVC: BaseTableVC{
     weak var delegate: AppliedFilters?
     var sportsdelegate: AppliedSportsFilters?
     var carrentaldelegate: AppliedCarrentalFilters?
+    var transferfilterDelegate: AppliedTransferFilters?
     var minpricerangefilter = Double()
     var maxpricerangefilter = Double()
+    
+    
+    
+    
     var mindurationrangefilter = Double()
     var maxdurationrangefilter = Double()
     var minTransitrangefilter = Double()
@@ -199,7 +222,7 @@ class FilterVC: BaseTableVC{
     var selectedFuleArray = [String]()
     var selectedCarManual = [String]()
     var selectedDoorCountArray = [String]()
-   
+    var selectedCarTypeArray = [String]()
     
     
     //MARK: - Hotels
@@ -290,6 +313,12 @@ class FilterVC: BaseTableVC{
         case "filter":
             sortBylbl.text = "Filter"
             setupFilterTVCells()
+            break
+            
+            
+        case "transferfilter":
+            sortBylbl.text = "Filter"
+            setupTransfersTVCells()
             break
             
             
@@ -465,6 +494,22 @@ class FilterVC: BaseTableVC{
     }
     
     
+    
+    
+    func setupTransfersTVCells() {
+        commonTableView.isScrollEnabled = false
+        tablerow.removeAll()
+        
+        tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
+        tablerow.append(TableRow(title:"Car Type",data: cartype,cellType:.CheckBoxTVCell))
+        
+        tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
+        tablerow.append(TableRow(title:"Done",key: "btn",cellType:.ButtonTVCell))
+        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        
+        commonTVData = tablerow
+        commonTableView.reloadData()
+    }
     
     
     //MARK: - setupHotelsSortByTVCells
@@ -786,6 +831,12 @@ class FilterVC: BaseTableVC{
                         carResetFilter()
                     }
                 }
+            }else if tabselect == "transfers" {
+                if filterKey == "transferfilter" {
+                    DispatchQueue.main.async {[self] in
+                        transferResetFilter()
+                    }
+                }
             }else {
                 
                 resetHotelFilter()
@@ -941,6 +992,21 @@ class FilterVC: BaseTableVC{
                     
                
                     
+                    
+                default:
+                    break
+                }
+                
+                
+            }else  if tabselect == "transfers"  {
+                
+                switch cell.filtertitle {
+                    
+                case "Car Type":
+                    selectedCarTypeArray.append(cell.titlelbl.text ?? "")
+                    break
+                    
+               
                     
                 default:
                     break
@@ -1147,6 +1213,24 @@ class FilterVC: BaseTableVC{
                     
                
                     
+                    
+                default:
+                    break
+                }
+                
+                
+            }else  if tabselect == "transfers"  {
+                
+                switch cell.filtertitle {
+                    
+                case "Car Type":
+                    if let index = selectedCarTypeArray.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedCarTypeArray.remove(at: index)
+                    }
+               
+                    break
+                    
+                   
                     
                 default:
                     break
@@ -1381,6 +1465,7 @@ class FilterVC: BaseTableVC{
         
         if let tabselect = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String {
             let pricesFloat = prices.compactMap { Float($0) }
+            let carpricesFloat = carprices.compactMap { Float($0) }
             let durationFloat = durationArray.compactMap { Float($0) }
             let transitTimeFloat = layoverdurationArray.compactMap { Float($0) }
             
@@ -1554,6 +1639,20 @@ class FilterVC: BaseTableVC{
             }else if tabselect == "CarRental" {
                 
                 if filterKey == "carfilter" {
+                
+                    
+                    if minpricerangefilter != 0.0 {
+                        carfilterModel.minPriceRange = minpricerangefilter
+                    }else {
+                        carfilterModel.minPriceRange = Double(carpricesFloat.min() ?? 0.0)
+                    }
+                    
+                    if maxpricerangefilter != 0.0 {
+                        carfilterModel.maxPriceRange = maxpricerangefilter
+                    }else {
+                        carfilterModel.maxPriceRange = Double(carpricesFloat.max() ?? 0.0)
+                    }
+                    
                     
                     if selectedFuleArray.isEmpty == false {
                         carfilterModel.fuleA = selectedFuleArray
@@ -1580,6 +1679,37 @@ class FilterVC: BaseTableVC{
                                                             fuleArray: carfilterModel.fuleA,
                                                             carmanualArray: carfilterModel.carmanualA,
                                                             doorcountArray: carfilterModel.doorcountA)
+                    
+                   
+                }
+            }else if tabselect == "transfers" {
+                
+                if filterKey == "transferfilter" {
+                
+                    
+                    if minpricerangefilter != 0.0 {
+                        transferfilterModel.minPriceRange = minpricerangefilter
+                    }else {
+                        transferfilterModel.minPriceRange = Double(pricesFloat.min() ?? 0.0)
+                    }
+                    
+                    if maxpricerangefilter != 0.0 {
+                        transferfilterModel.maxPriceRange = maxpricerangefilter
+                    }else {
+                        transferfilterModel.maxPriceRange = Double(pricesFloat.max() ?? 0.0)
+                    }
+                    
+                    
+                    if selectedCarTypeArray.isEmpty == false {
+                        transferfilterModel.carTypeA = selectedCarTypeArray
+                    }else {
+                        transferfilterModel.carTypeA .removeAll()
+                    }
+                    
+                
+                    transferfilterDelegate?.sportFilterByApplied(minpricerange: Double(String(format: "%.2f", transferfilterModel.minPriceRange ?? 0.0)) ?? 0.0,
+                                                            maxpricerange: Double(String(format: "%.2f", transferfilterModel.maxPriceRange ?? 0.0)) ?? 0.0,
+                                                                 cartypeArray: transferfilterModel.carTypeA)
                     
                    
                 }
@@ -1722,11 +1852,13 @@ class FilterVC: BaseTableVC{
     
     //MARK: - didTapOnShowSliderBtn CarrentalPriceSliderTVCell
     override func didTapOnShowSliderBtn(cell: CarrentalPriceSliderTVCell) {
-        print("Selected minimum value: \(cell.minValue1)")
-        print("Selected maximum value: \(cell.maxValue1)")
+        
         
         minpricerangefilter = cell.minValue1
         maxpricerangefilter = cell.maxValue1
+        
+        print("Selected minimum value: \(minpricerangefilter)")
+        print("Selected maximum value: \(maxpricerangefilter)")
     }
     
 }
@@ -1954,15 +2086,15 @@ extension FilterVC {
     
     
     
-    //MARK: - For Sports
+    //MARK: - For CarRental
     func carResetFilter() {
         // Reset all values in the FilterModel
         
         
         
-        let pricesFloat = carprices.compactMap { Float($0) }
-        carfilterModel.minPriceRange = Double((pricesFloat.min() ?? carprices.compactMap { Float($0) }.min()) ?? 0.0)
-        carfilterModel.maxPriceRange = Double((pricesFloat.max() ?? carprices.compactMap { Float($0) }.max()) ?? 0.0)
+        let pricesFloatnew = carprices.compactMap { Float($0) }
+        carfilterModel.minPriceRange = Double((pricesFloatnew.min() ?? carprices.compactMap { Float($0) }.min()) ?? 0.0)
+        carfilterModel.maxPriceRange = Double((pricesFloatnew.max() ?? carprices.compactMap { Float($0) }.max()) ?? 0.0)
         if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CarrentalPriceSliderTVCell {
             cell.setupUI()
         }
@@ -1976,6 +2108,35 @@ extension FilterVC {
         selectedFuleArray.removeAll()
         selectedCarManual.removeAll()
         selectedDoorCountArray.removeAll()
+        
+        
+        // Deselect all cells in your checkOptionsTVCell table view
+        deselectAllCheckOptionsCells()
+        
+        // Reload the table view to reflect the changes
+        commonTableView.reloadData()
+    }
+    
+    
+    
+    
+    //MARK: - For Transfers
+    func transferResetFilter() {
+        // Reset all values in the FilterModel
+        
+        
+        
+        let pricesFloat = prices.compactMap { Float($0) }
+        transferfilterModel.minPriceRange = Double((pricesFloat.min() ?? prices.compactMap { Float($0) }.min()) ?? 0.0)
+        transferfilterModel.maxPriceRange = Double((pricesFloat.max() ?? prices.compactMap { Float($0) }.max()) ?? 0.0)
+        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SliderTVCell {
+            cell.setupUI()
+        }
+        minpricerangefilter = transferfilterModel.minPriceRange ?? 0.0
+        maxpricerangefilter = transferfilterModel.maxPriceRange ?? 0.0
+        
+        transferfilterModel.carTypeA = []
+        selectedCarTypeArray.removeAll()
         
         
         // Deselect all cells in your checkOptionsTVCell table view
@@ -2037,6 +2198,8 @@ extension FilterVC {
                 loadinitiallSportsFilterValues()
             }else if tabSelected == "CarRental" {
                 loadinitialCarRentalFilterValues()
+            }else if tabSelected == "transfers" {
+                loadinitialTransfersFilterValues()
             }else {
                 loadinitiallHotelFilterValues()
             }
@@ -2207,7 +2370,7 @@ extension FilterVC {
     func loadinitialCarRentalFilterValues(){
         
         if !UserDefaults.standard.bool(forKey: "carfilteronce") {
-            sportsResetFilter()
+            carResetFilter()
             defaults.set(true, forKey: "carfilteronce")
         }
         
@@ -2237,6 +2400,34 @@ extension FilterVC {
         
     }
     
+    
+    
+    func loadinitialTransfersFilterValues(){
+        
+        
+        
+        if !UserDefaults.standard.bool(forKey: "transferfilteronce") {
+            transferResetFilter()
+            defaults.set(true, forKey: "transferfilteronce")
+        }
+        
+        
+        //MARK: - Price
+        if transferfilterModel.minPriceRange != 0.0 {
+            minpricerangefilter = transferfilterModel.minPriceRange ?? Double(prices.compactMap { Float($0) }.min()!)
+        }
+        
+        if transferfilterModel.maxPriceRange != 0.0 {
+            maxpricerangefilter = transferfilterModel.maxPriceRange ?? Double(prices.compactMap { Float($0) }.max()!)
+        }
+        
+        
+        if !transferfilterModel.carTypeA.isEmpty {
+            selectedCarTypeArray = transferfilterModel.carTypeA
+        }
+        
+        
+    }
     
 }
 

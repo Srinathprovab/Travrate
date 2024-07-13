@@ -182,6 +182,8 @@ extension CheckBoxTVCell: UITableViewDataSource, UITableViewDelegate {
                 showSelectedSportFilterValues(cell: cell, indexPath: indexPath)
             }else if tabselect == "CarRental" {
                 showSelectedCarrentalFilterValues(cell: cell, indexPath: indexPath)
+            }else if tabselect == "transfers" {
+                showSelectedTransfersFilterValues(cell: cell, indexPath: indexPath)
             } else  {
                 showSelectedHotelFilterValues(cell: cell, indexPath: indexPath)
             }
@@ -839,6 +841,49 @@ extension CheckBoxTVCell {
             }
             
             
+        default:
+            break
+        }
+    }
+    
+    
+    
+    func showSelectedTransfersFilterValues(cell:checkOptionsTVCell,indexPath:IndexPath) {
+        
+        
+        //
+        // Check the section title to determine which filter to apply
+        switch titlelbl.text {
+            
+        case "Car Type":
+            if !transferfilterModel.carTypeA.isEmpty {
+                // Check if the cell's title matches any value in the luggage array
+                
+                
+                if transferfilterModel.carTypeA.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.sele()
+                        self.selectedIndices.append(indexPath)
+                        self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    }
+                    print("Selected: \(cell.titlelbl.text ?? "")")
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.unselected() // Deselect the cell
+                    }
+                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    cell.unselected() // Deselect the cell
+                }
+            }
+            
+            
+            
+       
         default:
             break
         }

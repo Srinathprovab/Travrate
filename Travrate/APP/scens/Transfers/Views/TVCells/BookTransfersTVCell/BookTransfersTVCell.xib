@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="549" id="KGk-i7-Jjw" customClass="BookTransfersTVCell" customModule="Travgate" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="549" id="KGk-i7-Jjw" customClass="BookTransfersTVCell" customModule="Travrate" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="493" height="549"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -29,7 +30,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBt-D5-cAr">
                         <rect key="frame" x="0.0" y="0.0" width="493" height="549"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUA-sv-Yu2" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUA-sv-Yu2" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="473" height="70"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From Airport: Hotel,City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z4F-Tf-QnC">
@@ -82,7 +83,7 @@
                                     <action selector="didTapOnSearchBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Me5-rM-i3t"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfw-95-Rt4" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfw-95-Rt4" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                 <rect key="frame" x="10" y="95" width="473" height="70"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tloc" translatesAutoresizingMaskIntoConstraints="NO" id="4Qx-gC-Kqs">
@@ -123,7 +124,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jkp-52-Xr0">
                                 <rect key="frame" x="10" y="180" width="473" height="155"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1O-ko-g6g" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1O-ko-g6g" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="473" height="70"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="V8o-ge-gta">
@@ -218,7 +219,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtL-1N-Zqg" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtL-1N-Zqg" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="85" width="473" height="70"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="s23-xb-OSt">
@@ -315,6 +316,20 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="n9L-gV-Ven">
+                                <rect key="frame" x="10" y="80" width="473" height="0.0"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="hud-Gd-QTy"/>
+                                </constraints>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1dI-cH-tKP">
+                                <rect key="frame" x="10" y="165" width="473" height="0.0"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="pLZ-Q4-839"/>
+                                </constraints>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" name="LayoverColor"/>
                         <constraints>
@@ -325,12 +340,18 @@
                             <constraint firstItem="IUA-sv-Yu2" firstAttribute="leading" secondItem="yBt-D5-cAr" secondAttribute="leading" constant="10" id="GES-XX-FRZ"/>
                             <constraint firstItem="wR7-Y4-oug" firstAttribute="leading" secondItem="yBt-D5-cAr" secondAttribute="leading" constant="30" id="KwZ-Fm-6aw"/>
                             <constraint firstItem="wR7-Y4-oug" firstAttribute="top" secondItem="jkp-52-Xr0" secondAttribute="bottom" constant="124" id="Lcr-xP-Vps"/>
+                            <constraint firstItem="n9L-gV-Ven" firstAttribute="leading" secondItem="IUA-sv-Yu2" secondAttribute="leading" id="RG2-AP-QpJ"/>
+                            <constraint firstItem="1dI-cH-tKP" firstAttribute="top" secondItem="tfw-95-Rt4" secondAttribute="bottom" id="WMG-tx-oub"/>
                             <constraint firstAttribute="trailing" secondItem="IUA-sv-Yu2" secondAttribute="trailing" constant="10" id="Wfp-xf-M2F"/>
                             <constraint firstItem="IUA-sv-Yu2" firstAttribute="top" secondItem="yBt-D5-cAr" secondAttribute="top" constant="10" id="Ynp-tY-BNi"/>
                             <constraint firstAttribute="trailing" secondItem="tfw-95-Rt4" secondAttribute="trailing" constant="10" id="eAG-6R-b8T"/>
                             <constraint firstAttribute="trailing" secondItem="wR7-Y4-oug" secondAttribute="trailing" constant="30" id="fi7-om-T35"/>
+                            <constraint firstItem="1dI-cH-tKP" firstAttribute="trailing" secondItem="tfw-95-Rt4" secondAttribute="trailing" id="hy3-OZ-QMk"/>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="549" id="ikB-MJ-Lqr"/>
                             <constraint firstItem="tfw-95-Rt4" firstAttribute="top" secondItem="IUA-sv-Yu2" secondAttribute="bottom" constant="15" id="iub-al-mud"/>
+                            <constraint firstItem="1dI-cH-tKP" firstAttribute="leading" secondItem="tfw-95-Rt4" secondAttribute="leading" id="tP8-oG-aOR"/>
+                            <constraint firstItem="n9L-gV-Ven" firstAttribute="top" secondItem="IUA-sv-Yu2" secondAttribute="bottom" id="vkk-LQ-74h"/>
+                            <constraint firstItem="n9L-gV-Ven" firstAttribute="trailing" secondItem="IUA-sv-Yu2" secondAttribute="trailing" id="zO0-5W-nAh"/>
                             <constraint firstAttribute="bottom" secondItem="wR7-Y4-oug" secondAttribute="bottom" constant="30" id="zTN-Fj-AlB"/>
                         </constraints>
                     </view>
@@ -348,12 +369,16 @@
                 <outlet property="depTimeTF" destination="xiC-jR-OXy" id="fam-d3-4Gk"/>
                 <outlet property="fromTF" destination="z4F-Tf-QnC" id="o3O-Kk-WET"/>
                 <outlet property="fromView" destination="IUA-sv-Yu2" id="b1q-cE-rt2"/>
+                <outlet property="fromtv" destination="n9L-gV-Ven" id="4Oz-kf-KP3"/>
+                <outlet property="fromtvheiht" destination="hud-Gd-QTy" id="3wD-TI-DXm"/>
                 <outlet property="retDateTF" destination="FqT-T0-hkV" id="9bP-4G-YDv"/>
                 <outlet property="retTimeTF" destination="iAV-E2-o9n" id="e9D-i4-XSm"/>
                 <outlet property="returnView" destination="HtL-1N-Zqg" id="DKx-rL-VFL"/>
                 <outlet property="searchBtn" destination="wR7-Y4-oug" id="AX8-j6-c5x"/>
                 <outlet property="toTF" destination="INu-6p-uP1" id="lgx-yw-Pg4"/>
                 <outlet property="toView" destination="tfw-95-Rt4" id="tpA-2K-UzZ"/>
+                <outlet property="totv" destination="1dI-cH-tKP" id="SkV-bq-CSU"/>
+                <outlet property="totvheiht" destination="pLZ-Q4-839" id="KF4-C0-5PV"/>
             </connections>
             <point key="canvasLocation" x="270.99236641221376" y="244.01408450704227"/>
         </tableViewCell>
@@ -363,7 +388,7 @@
         <image name="time" width="24" height="24"/>
         <image name="tloc" width="20" height="20"/>
         <namedColor name="BorderColor">
-            <color red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Buttoncolor">
             <color red="0.2669999897480011" green="0.70999997854232788" blue="0.046999998390674591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

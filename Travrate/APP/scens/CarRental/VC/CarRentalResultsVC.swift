@@ -10,6 +10,8 @@ import UIKit
 class CarRentalResultsVC: BaseTableVC, CarrentalSearchVMDelegate, AppliedCarrentalFilters {
     
     
+    
+    
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var dateslbl: UILabel!
@@ -149,8 +151,12 @@ extension CarRentalResultsVC {
     
         activeBookingArray = response.active_booking_source ?? []
         bookingSourceDataArrayCount = activeBookingArray.count
+        
         titlelbl.text = response.car_search_params?.from_loc
         dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: response.car_search_params?.pickup_date ?? "", f1: "yyyy-MM-dd", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: response.car_search_params?.drop_date ?? "", f1: "yyyy-MM-dd", f2: "MMM dd"))"
+        
+        MySingleton.shared.carlist.removeAll()
+        
         
         activeBookingArray.forEach { i in
             
@@ -253,6 +259,10 @@ extension CarRentalResultsVC {
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType: .EmptyTVCell))
         
+        if list.count == 0 {
+            TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)
+        }
+        
         
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -346,10 +356,41 @@ extension CarRentalResultsVC {
         print("doorcountArray : \(doorcountArray.joined(separator: ","))")
         
         
+       
+            
+            // Filter the car rentals based on the specified criteria
+            let filteredArray = MySingleton.shared.carlist.filter { car in
+                guard let product = car.product?.first,
+                      let totalString = product.total,
+                      let total = Double(totalString) else { return false }
+
+            // Check if the car's fuel type matches any selected fuel types or the array is empty
+            let fuelMatches = fuleArray.isEmpty || fuleArray.contains(car.fuel ?? "")
+            
+            // Check if the car's transmission type matches any selected transmission types or the array is empty
+            let transmissionMatches = carmanualArray.isEmpty || carmanualArray.contains(car.transmission ?? "")
+            
+            // Check if the car's door count matches any selected door counts or the array is empty
+            let doorCountMatches = doorcountArray.isEmpty || doorcountArray.contains("\(car.adults ?? "0") Seat")
+
+            // Check if the car's price falls within the specified range
+            let priceInRange = total >= minpricerange && total <= maxpricerange
+
+            return fuelMatches && transmissionMatches && doorCountMatches && priceInRange
+        }
+
+        setupTVCells(list: filteredArray)
+
+        // Reload the table view with the filtered results
+        commonTableView.reloadData()
         
        
         
     }
+    
+    
+   
+
     
    
     

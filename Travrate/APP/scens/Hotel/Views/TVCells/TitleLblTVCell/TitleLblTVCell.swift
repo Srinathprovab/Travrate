@@ -25,6 +25,9 @@ class TitleLblTVCell: TableViewCell {
     @IBOutlet weak var holderViewTraling: NSLayoutConstraint!
     
     
+    var cityid = String()
+    var lat = String()
+    var lang = String()
     var airlinecode = String()
     var nationalitycode = String()
     var travellerId = String()

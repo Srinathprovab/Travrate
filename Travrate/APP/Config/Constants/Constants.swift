@@ -109,6 +109,7 @@ var filterTap = String()
 var filterPrice = String()
 var prices = [String]()
 var carprices = [String]()
+var cartype = [String]()
 var durationArray = [String]()
 var hotelprices = [String]()
 
@@ -117,6 +118,7 @@ var sortBy: SortParameter = .nothing
 var hotelfiltermodel = HotelFilterModel()
 var sportsfilterModel = SportsFilterModel()
 var carfilterModel = CarRentalFilterModel()
+var transferfilterModel = TransferFilterModel()
 var tournamentArray = [String]()
 var eventsArray = [String]()
 var sportsCityArray = [String]()
@@ -320,6 +322,12 @@ struct ApiEndpoints {
     static let car_pre_booking = "car/pre_booking"
     static let car_booking = "car/booking"
     
+    //TRANSFERS
+    static let transfers_get_location_list = "transfers/get_location_list"
+    static let general_pre_transfer_search = "general/pre_transfer_search"
+    static let transfers_transfer_list = "transfers/transfer_list"
+    static let transfers_pre_booking = "transfers/pre_booking"
+   
     
     
 }
@@ -449,6 +457,16 @@ struct UserDefaultsKeys {
     static var transfercalRetDate = "transfercalRetDate"
     static var transfercalDepTime = "transfercalDepTime"
     static var transfercalRetTime = "transfercalRetTime"
+    static var transferfromcityname = "transferfromcityname"
+    static var transferfromcityid = "transferfromcityid"
+    static var transfertocityname = "transfertocityname"
+    static var transfertocityid = "transfertocityid"
+    static var transferjournytype = "transferjournytype"
+    
+    static var transferfromlat = "transferfromlat"
+    static var transferfromlang = "transferfromlang"
+    static var transfertolat = "transfertolat"
+    static var transfertolang = "transfertolang"
     
     
     //sportds
