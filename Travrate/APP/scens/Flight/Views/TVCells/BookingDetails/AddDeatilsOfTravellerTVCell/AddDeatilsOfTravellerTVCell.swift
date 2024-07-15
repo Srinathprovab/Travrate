@@ -31,6 +31,9 @@ struct Traveler {
     var day: String?
     var month: String?
     var year: String?
+    var mobilecountrycode:String?
+    var email:String?
+    var mobile:String?
     
 }
 

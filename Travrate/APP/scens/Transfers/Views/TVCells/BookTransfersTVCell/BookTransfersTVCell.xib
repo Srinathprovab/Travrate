@@ -34,7 +34,7 @@
                                 <rect key="frame" x="10" y="10" width="473" height="70"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From Airport: Hotel,City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z4F-Tf-QnC">
-                                        <rect key="frame" x="0.0" y="0.0" width="473" height="70"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="70"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -45,14 +45,29 @@
                                             <constraint firstAttribute="width" constant="20" id="RZB-z4-rB5"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRg-Ya-Z38">
+                                        <rect key="frame" x="428" y="15" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Cdf-un-J8I"/>
+                                            <constraint firstAttribute="width" constant="40" id="XCs-Nx-PCe"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.7926029542676446" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="close"/>
+                                        <connections>
+                                            <action selector="clearFromTextFieldBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4WS-c4-hd8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="3zy-od-pxQ" firstAttribute="centerY" secondItem="IUA-sv-Yu2" secondAttribute="centerY" id="5NW-MC-lIc"/>
                                     <constraint firstAttribute="bottom" secondItem="z4F-Tf-QnC" secondAttribute="bottom" id="DxU-i5-MkP"/>
+                                    <constraint firstAttribute="trailing" secondItem="uRg-Ya-Z38" secondAttribute="trailing" constant="5" id="Lx4-nH-bRG"/>
+                                    <constraint firstItem="uRg-Ya-Z38" firstAttribute="centerY" secondItem="IUA-sv-Yu2" secondAttribute="centerY" id="MJS-7d-Fgy"/>
                                     <constraint firstItem="z4F-Tf-QnC" firstAttribute="top" secondItem="IUA-sv-Yu2" secondAttribute="top" id="RzP-kR-Pid"/>
-                                    <constraint firstAttribute="trailing" secondItem="z4F-Tf-QnC" secondAttribute="trailing" id="f73-9Z-zgn"/>
                                     <constraint firstItem="z4F-Tf-QnC" firstAttribute="leading" secondItem="IUA-sv-Yu2" secondAttribute="leading" id="krO-oz-dhd"/>
+                                    <constraint firstItem="uRg-Ya-Z38" firstAttribute="leading" secondItem="z4F-Tf-QnC" secondAttribute="trailing" id="rxA-8r-Gb5"/>
                                     <constraint firstAttribute="height" constant="70" id="s0W-uQ-DmB"/>
                                     <constraint firstItem="3zy-od-pxQ" firstAttribute="leading" secondItem="IUA-sv-Yu2" secondAttribute="leading" constant="10" id="scw-v8-qyB"/>
                                 </constraints>
@@ -94,19 +109,34 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To Airport: Hotel,City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="INu-6p-uP1">
-                                        <rect key="frame" x="0.0" y="0.0" width="473" height="70"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="70"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFj-Br-PSw">
+                                        <rect key="frame" x="428" y="15" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Gbv-MX-ePs"/>
+                                            <constraint firstAttribute="width" constant="40" id="TfJ-t5-bNe"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.79219844065555922" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="close"/>
+                                        <connections>
+                                            <action selector="didTapOnClearToTFBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xNt-Fz-Deb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="INu-6p-uP1" secondAttribute="trailing" id="15u-Av-kz6"/>
                                     <constraint firstAttribute="bottom" secondItem="INu-6p-uP1" secondAttribute="bottom" id="5gr-2H-HmD"/>
                                     <constraint firstItem="4Qx-gC-Kqs" firstAttribute="centerY" secondItem="tfw-95-Rt4" secondAttribute="centerY" id="cZ2-gR-AAv"/>
+                                    <constraint firstAttribute="trailing" secondItem="NFj-Br-PSw" secondAttribute="trailing" constant="5" id="ew5-Hf-ELa"/>
                                     <constraint firstItem="4Qx-gC-Kqs" firstAttribute="leading" secondItem="tfw-95-Rt4" secondAttribute="leading" constant="10" id="gXT-tY-4Fo"/>
                                     <constraint firstItem="INu-6p-uP1" firstAttribute="top" secondItem="tfw-95-Rt4" secondAttribute="top" id="iYI-45-El6"/>
+                                    <constraint firstItem="NFj-Br-PSw" firstAttribute="leading" secondItem="INu-6p-uP1" secondAttribute="trailing" id="mNu-uc-fFH"/>
                                     <constraint firstAttribute="height" constant="70" id="o3c-91-6b9"/>
+                                    <constraint firstItem="NFj-Br-PSw" firstAttribute="centerY" secondItem="tfw-95-Rt4" secondAttribute="centerY" id="rcb-s3-DWu"/>
                                     <constraint firstItem="INu-6p-uP1" firstAttribute="leading" secondItem="tfw-95-Rt4" secondAttribute="leading" id="yEX-Ue-k3U"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -384,6 +414,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="close" width="26" height="26"/>
         <image name="tcal" width="24" height="20.666666030883789"/>
         <image name="time" width="24" height="24"/>
         <image name="tloc" width="20" height="20"/>

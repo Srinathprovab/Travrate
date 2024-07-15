@@ -42,7 +42,7 @@ class PaymentTypeTVCell: TableViewCell {
     
     override func updateUI() {
         MySingleton.shared.setAttributedTextnew(str1: "You will Pay: ",
-                                                str2: " \(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""):\(totlConvertedGrand)",
+                                                str2: " \(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""):\(String(format: "%.2f", totlConvertedGrand))",
                                                 lbl: kwdlbl,
                                                 str1font: .OpenSansMedium(size: 16),
                                                 str2font: .OpenSansBold(size: 16),

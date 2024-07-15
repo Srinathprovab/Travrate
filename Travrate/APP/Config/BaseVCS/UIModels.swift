@@ -146,6 +146,9 @@ enum TVCellType {
     case TFlighDetailsTVCell
     case TContactDetailsTVCell
     case TermsAgreeTVCell
+    case AddDeatilsOfPassengerTVCell
+    case AddPassengerButtonTVCell
+    case TransferfareSummeryTVCell
     
     //Sports
     case SportsSearchTVCell

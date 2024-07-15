@@ -9,9 +9,10 @@ import UIKit
 
 protocol TFlighDetailsTVCellDelegate {
     
+    func editingTextField(tf:UITextField)
     func doneTimePicker(cell:TFlighDetailsTVCell)
     func cancelTimePicker(cell:TFlighDetailsTVCell)
-    
+    func donedatePicker1(cell:TFlighDetailsTVCell)
 }
 
 class TFlighDetailsTVCell: TableViewCell {
@@ -25,6 +26,7 @@ class TFlighDetailsTVCell: TableViewCell {
     @IBOutlet weak var departureTerminalTF: UITextField!
     @IBOutlet weak var departureDateTF: UITextField!
     @IBOutlet weak var departurelTimeTF: UITextField!
+    @IBOutlet weak var detview: UIStackView!
     
     
     let arrivalDatePicker = UIDatePicker()
@@ -62,6 +64,16 @@ class TFlighDetailsTVCell: TableViewCell {
         showArrivalTimePicker()
         showDepartTimePicker()
         
+        
+        detview.isHidden = defaults.string(forKey: UserDefaultsKeys.transferjournytype) == "circle" ? false : true
+        
+        arrivalDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepDate)
+        arrivalTimeTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepTime)
+        
+        departureDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalRetDate)
+        departurelTimeTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalRetTime)
+        
+        
     }
     
     override func updateUI() {
@@ -77,7 +89,7 @@ class TFlighDetailsTVCell: TableViewCell {
     }
     
     @objc func editingTextField(_ tf:UITextField) {
-        print(tf.text ?? "")
+        delegate?.editingTextField(tf: tf)
     }
     
 }
@@ -89,7 +101,11 @@ extension TFlighDetailsTVCell {
     //MARK: - showTimePicker
     func showArrivalTimePicker() {
         // Format Time
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
         
+        
+        arrivalTimePicker.minimumDate = formatter.date(from: defaults.string(forKey: UserDefaultsKeys.transfercalDepTime) ?? "")
         arrivalTimePicker.datePickerMode = .time
         arrivalTimePicker.preferredDatePickerStyle = .wheels
         
@@ -97,8 +113,7 @@ extension TFlighDetailsTVCell {
         arrivalTimePicker.locale = Locale(identifier: "en_GB")
         
         if let selectedTime = arrivalTimeTF.text {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
+            
             if let selectedDate = formatter.date(from: selectedTime) {
                 arrivalTimePicker.date = selectedDate
             }
@@ -118,13 +133,14 @@ extension TFlighDetailsTVCell {
         self.arrivalTimeTF.inputView = arrivalTimePicker
     }
     
-    
-    
-    
+ 
     //MARK: - showTimePicker
     func showDepartTimePicker() {
         // Format Time
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
         
+        departTimePicker.minimumDate = formatter.date(from: defaults.string(forKey: UserDefaultsKeys.transfercalRetTime) ?? "")
         departTimePicker.datePickerMode = .time
         departTimePicker.preferredDatePickerStyle = .wheels
         
@@ -132,8 +148,7 @@ extension TFlighDetailsTVCell {
         departTimePicker.locale = Locale(identifier: "en_GB")
         
         if let selectedTime = departurelTimeTF.text {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
+            
             if let selectedDate = formatter.date(from: selectedTime) {
                 departTimePicker.date = selectedDate
             }
@@ -185,18 +200,19 @@ extension TFlighDetailsTVCell {
 
 extension TFlighDetailsTVCell {
     
-    
+
     //MARK: - showarrivalDatePicker
     func showarrivalDatePicker(){
-        //Formate Date
-        arrivalDatePicker.datePickerMode = .date
-        arrivalDatePicker.minimumDate = Date()
-        arrivalDatePicker.preferredDatePickerStyle = .wheels
         
         let formter = DateFormatter()
         formter.dateFormat = "dd-MM-yyyy"
         
+        //Formate Date
+        arrivalDatePicker.datePickerMode = .date
+        arrivalDatePicker.minimumDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? "")
+        arrivalDatePicker.preferredDatePickerStyle = .wheels
         
+       
         if let calDepDate = formter.date(from: arrivalDateTF.text ?? "") {
             arrivalDatePicker.date = calDepDate
             
@@ -238,15 +254,15 @@ extension TFlighDetailsTVCell {
     
     //MARK: - showdepartDatePicker
     func showdepartDatePicker(){
-        //Formate Date
-        departDatePicker.datePickerMode = .date
-        let selectedDate = self.arrivalDateTF.isFirstResponder ? arrivalDatePicker.date : departDatePicker.date
-        departDatePicker.minimumDate = selectedDate
-        departDatePicker.preferredDatePickerStyle = .wheels
-        
         
         let formter = DateFormatter()
         formter.dateFormat = "dd-MM-yyyy"
+        
+        //Formate Date
+        departDatePicker.datePickerMode = .date
+       // let selectedDate = self.arrivalDateTF.isFirstResponder ? arrivalDatePicker.date : departDatePicker.date
+        departDatePicker.minimumDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.transfercalRetDate) ?? "")
+        departDatePicker.preferredDatePickerStyle = .wheels
         
         
         if let calDepDate = formter.date(from: arrivalDateTF.text ?? "") {
@@ -285,22 +301,32 @@ extension TFlighDetailsTVCell {
     @objc func donedatePicker1(){
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = "dd-MM-yyyy"
         
-        self.arrivalDateTF.text = formatter.string(from: arrivalDatePicker.date)
-        self.departureDateTF.text = formatter.string(from: departDatePicker.date)
+        
+        if arrivalDateTF.isFirstResponder == true {
+            self.arrivalDateTF.text = formatter.string(from: arrivalDatePicker.date)
+            self.departureDateTF.text = formatter.string(from: arrivalDatePicker.date)
+            
+            departDatePicker.date = arrivalDatePicker.date
+            
+        }else {
+            self.arrivalDateTF.text = formatter.string(from: arrivalDatePicker.date)
+            self.departureDateTF.text = formatter.string(from: departDatePicker.date)
+        }
+       
        
         self.arrivalDateTF.resignFirstResponder()
         self.departureDateTF.resignFirstResponder()
         
-       // delegate?.doneTimePicker(cell:self)
+        delegate?.donedatePicker1(cell:self)
     }
     
     
     @objc func cancelDatePicker1(){
         self.arrivalDateTF.resignFirstResponder()
         self.departureDateTF.resignFirstResponder()
-      //  delegate?.cancelTimePicker(cell:self)
+       delegate?.cancelTimePicker(cell:self)
     }
     
 }

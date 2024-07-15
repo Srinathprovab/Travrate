@@ -7,8 +7,7 @@
 
 import UIKit
 
-class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegate, MobilePaymentVMDelegate, HotelBookingViewModelDelegate, SportsPaymentViewModelDelegate {
-    
+class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegate, MobilePaymentVMDelegate, HotelBookingViewModelDelegate, SportsPaymentViewModelDelegate, TransferBookingVMDelegate {
     
     
     static var newInstance:  SelectPaymentMethodsVC? {
@@ -18,7 +17,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         return vc
     }
     
-    
+    var transfersendtopaymenturl = String()
     var cardetails : Result_token?
     var appref = String()
     var responseConfirmationModel : SportsPrePaymentConfirmationModel?
@@ -42,7 +41,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
                 self.CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API()
             }
         }else if tabselect == "CarRental"{
-           
+            
             let seconds = 2.0
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
                 hideLoadera()
@@ -50,6 +49,19 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
                 
                 DispatchQueue.main.async {
                     self.setupCarRentalTVCells()
+                }
+            }
+            
+            
+        }else if tabselect == "transfers"{
+            
+            let seconds = 2.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
+                hideLoadera()
+                loderBool = false
+                
+                DispatchQueue.main.async {
+                    self.calltransferBookingAPI()
                 }
             }
             
@@ -72,7 +84,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         MySingleton.shared.mobilepaymentvm = MobilePaymentVM(self)
         self.hdvm = HotelBookingVM(self)
         MySingleton.shared.SsportsPaymentvm = SportsPaymentViewModel(self)
-        
+        MySingleton.shared.transferBookingVM = TransferBookingVM(self)
         
     }
     
@@ -90,6 +102,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
                                          "SelectedCarRentalTVCell",
                                          "SelectedCRPackageTVCell",
                                          "CRFareSummaryTVCell",
+                                         "TransferfareSummeryTVCell",
                                          "EmptyTVCell"])
         
         
@@ -111,6 +124,8 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
             Same_Saerch_InPut_Sports()
         }else if tabselect == "CarRental" {
             Same_Saerch_InPut_CarRental()
+        }else if tabselect == "transfers" {
+            Same_Saerch_InPut_Transfers()
         }else{
             
         }
@@ -126,6 +141,8 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
             hotelSendToPayment()
         }else if tabselect == "Sports" {
             callSportsSendToPayment()
+        }else if tabselect == "transfers" {
+            callTransferSendToPaymentAPI()
         }else{
             callcarBookingAPI()
         }
@@ -807,6 +824,99 @@ extension SelectPaymentMethodsVC {
     }
     
     
+    
+    //MARK: - Same_Saerch_InPut_Transfers
+    func Same_Saerch_InPut_Transfers() {
+        
+        
+        
+        let journytype =  defaults.string(forKey: UserDefaultsKeys.transferjournytype)
+        let fromcity =  defaults.string(forKey: UserDefaultsKeys.transferfromcityname)
+        let fromcityid =  defaults.string(forKey: UserDefaultsKeys.transferfromcityid)
+        let tocity =  defaults.string(forKey: UserDefaultsKeys.transfertocityname)
+        let tocityid =  defaults.string(forKey: UserDefaultsKeys.transfertocityid)
+        let fromdate =  defaults.string(forKey: UserDefaultsKeys.transfercalDepDate)
+        let fromtime =  defaults.string(forKey: UserDefaultsKeys.transfercalDepTime)
+        let todate =  defaults.string(forKey: UserDefaultsKeys.transfercalRetDate)
+        let totime =  defaults.string(forKey: UserDefaultsKeys.transfercalRetTime)
+        let fromlatitude =  defaults.string(forKey: UserDefaultsKeys.transferfromlat)
+        let fromlongitude =  defaults.string(forKey: UserDefaultsKeys.transferfromlang)
+        let tolatitude =  defaults.string(forKey: UserDefaultsKeys.transfertolat)
+        let tolongitude =  defaults.string(forKey: UserDefaultsKeys.transfertolang)
+        
+        
+        
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["transfer_type"] = journytype
+        MySingleton.shared.payload["transfer_from"] = fromcity
+        MySingleton.shared.payload["from_loc_id"] = fromcityid
+        MySingleton.shared.payload["from_lat"] = fromlatitude
+        MySingleton.shared.payload["from_lng"] = fromlongitude
+        MySingleton.shared.payload["transfer_to"] = tocity
+        MySingleton.shared.payload["to_loc_id"] = tocityid
+        MySingleton.shared.payload["to_lat"] = tolatitude
+        MySingleton.shared.payload["to_lng"] = tolongitude
+        MySingleton.shared.payload["departure_date"] = fromdate
+        MySingleton.shared.payload["depart_time"] = fromtime
+        
+        
+        if journytype == "oneway" {
+            
+            MySingleton.shared.payload["return_date"] = ""
+            MySingleton.shared.payload["return_time"] = ""
+            
+            if fromcity == "From Airport" {
+                showToast(message: "Select From Airtport")
+            }else if tocity == "To Airport" {
+                showToast(message: "Select To Airtport")
+            }else if fromdate == "Select Date" {
+                showToast(message: "Select Date")
+            }else if fromtime == "Select Time" {
+                showToast(message: "Select Time")
+            }else {
+                gotoTransfersListVC()
+            }
+        }else {
+            
+            MySingleton.shared.payload["return_date"] = todate
+            MySingleton.shared.payload["return_time"] = totime
+            
+            
+            if fromcity == "From Airport" {
+                showToast(message: "Select From Airtport")
+            }else if tocity == "To Airport" {
+                showToast(message: "Select To Airtport")
+            }else if fromdate == "Select Date" {
+                showToast(message: "Select Date")
+            }else if fromtime == "Select Time" {
+                showToast(message: "Select Time")
+            }else if todate == "Select Date" {
+                showToast(message: "Select Date")
+            }else if totime == "Select Time" {
+                showToast(message: "Select Time")
+            }else {
+                gotoTransfersListVC()
+            }
+            
+            
+        }
+        
+    }
+    
+    
+    
+    
+    
+    func gotoTransfersListVC() {
+        defaults.set(false, forKey: "transferfilteronce")
+        callapibool = true
+        guard let vc = TransfersListVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
+    
+    
+    
 }
 
 
@@ -814,13 +924,13 @@ extension SelectPaymentMethodsVC {
 
 extension SelectPaymentMethodsVC {
     
-   
-   
+    
+    
     
     
     func setupCarRentalTVCells() {
         MySingleton.shared.tablerow.removeAll()
-     
+        
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"",moreData: cardetails,cellType:.SelectedCarRentalTVCell))
@@ -841,7 +951,7 @@ extension SelectPaymentMethodsVC {
         
         
         
-    
+        
         MySingleton.shared.tablerow.append(TableRow(height:30,cellType:.EmptyTVCell))
         
         
@@ -901,6 +1011,100 @@ extension SelectPaymentMethodsVC {
         
         MySingleton.shared.voucherurlsting = response.hit_url ?? ""
         gotoBookingSucessVC()
+    }
+    
+    
+}
+
+
+
+
+extension SelectPaymentMethodsVC {
+    
+    
+    func setupTransferTVCells() {
+        MySingleton.shared.tablerow.removeAll()
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(moreData:transfer_data,cellType:.BDTransfersInf0TVCell))
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead",
+                                                    key:"transfer",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.TransferfareSummeryTVCell))
+        MySingleton.shared.tablerow.append(TableRow(height:5,cellType:.EmptyTVCell))
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height:30,cellType:.EmptyTVCell))
+        
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+        
+    }
+    
+    
+    
+    
+    func calltransferBookingAPI() {
+        
+        MySingleton.shared.loderString = "fdetails"
+        MySingleton.shared.afterResultsBool = true
+        loderBool = true
+        showLoadera()
+        
+        DispatchQueue.main.async {
+            MySingleton.shared.transferBookingVM?.CALL_BOOKING_API(dictParam: MySingleton.shared.payload)
+        }
+        
+        
+        
+    }
+    
+    
+    
+    func bookingResponse(response: TransferBookingModel) {
+        DispatchQueue.main.async {
+            MySingleton.shared.transferBookingVM?.CALL_PRE_PAYMENT_CONFORMATION_API(dictParam: [:], urlstr: response.hit_url ?? "")
+        }
+    }
+    
+    
+    func prePaymentConformationResponse(response: TransferPrePaymentConfModel) {
+        
+        hideLoadera()
+        loderBool = false
+        
+        MySingleton.shared.PaymentSelectionArray = response.payment_selection ?? []
+        transfersendtopaymenturl = response.hit_url ?? ""
+        
+        DispatchQueue.main.async {
+            self.setupTransferTVCells()
+        }
+        
+    }
+    
+    
+    func callTransferSendToPaymentAPI() {
+        MySingleton.shared.loderString = "payment"
+        MySingleton.shared.afterResultsBool = true
+        loderBool = true
+        showLoadera()
+        DispatchQueue.main.async {[self] in
+            MySingleton.shared.transferBookingVM?.CALL_PRE_SENDTO_PAYMENT__API(dictParam: [:], urlstr: transfersendtopaymenturl ?? "")
+        }
+    }
+    
+    
+    func preSendtoPaymentResponse(response: TransferPrePaymentConfModel) {
+        
     }
     
     

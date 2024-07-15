@@ -333,7 +333,7 @@ extension HotelBookingDetailsVC {
         }
         
         
-        
+       
         
         MySingleton.shared.tablerow.append(TableRow(title:"Guest Details",
                                                     cellType:.TotalNoofTravellerTVCell))

@@ -45,7 +45,7 @@ class TransfersInf0TVCell: TableViewCell {
         passengerslbl.text = "Up to Passengers \(transferlist?.car_detail?.luggage_capacity ?? 0)"
         carmodellbl.text = transferlist?.car_detail?.models?[0]
         titlelbl.text = transferlist?.car_detail?.title ?? ""
-        carimg.sd_setImage(with: URL(string: transferlist?.car_detail?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+        carimg.sd_setImage(with: URL(string: transferlist?.car_detail?.images ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
             if let error = error {
                 // Handle error loading image
                 print("Error loading image: \(error.localizedDescription)")

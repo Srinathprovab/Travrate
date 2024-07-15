@@ -36,15 +36,15 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdG-JR-2uQ" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                         <rect key="frame" x="15" y="5" width="531" height="165"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="1Yu-al-O8L">
-                                <rect key="frame" x="15" y="15" width="140" height="80"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="1Yu-al-O8L">
+                                <rect key="frame" x="15" y="15" width="150" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="AT5-3C-v3q"/>
-                                    <constraint firstAttribute="width" constant="140" id="aP0-zO-HoL"/>
+                                    <constraint firstAttribute="height" constant="100" id="AT5-3C-v3q"/>
+                                    <constraint firstAttribute="width" constant="150" id="aP0-zO-HoL"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skoda Octavia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xk6-mF-S8O">
-                                <rect key="frame" x="396.33333333333331" y="15" width="109.66666666666669" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skoda Octavia" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xk6-mF-S8O">
+                                <rect key="frame" x="175" y="15" width="331" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -97,13 +97,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F01-bt-UaV">
-                                <rect key="frame" x="48.333333333333336" y="100" width="73.333333333333314" height="22"/>
+                                <rect key="frame" x="53.333333333333336" y="118.33333333333331" width="73.333333333333314" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                 <color key="textColor" name="Buttoncolor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free Cancellation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2j5-B6-g1z">
-                                <rect key="frame" x="36.666666666666664" y="122.00000000000001" width="96.666666666666686" height="16.666666666666671"/>
+                                <rect key="frame" x="41.666666666666664" y="140.33333333333334" width="96.666666666666686" height="16.666666666666657"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                 <color key="textColor" name="Buttoncolor"/>
                                 <nil key="highlightedColor"/>
@@ -115,14 +115,16 @@
                             <constraint firstAttribute="trailing" secondItem="7ii-PU-Qnl" secondAttribute="trailing" constant="25" id="6su-6n-Emo"/>
                             <constraint firstItem="F01-bt-UaV" firstAttribute="centerX" secondItem="1Yu-al-O8L" secondAttribute="centerX" id="7tb-gu-wlQ"/>
                             <constraint firstItem="7ii-PU-Qnl" firstAttribute="top" secondItem="5mD-JI-8xI" secondAttribute="bottom" constant="15" id="80j-zD-g0O"/>
+                            <constraint firstItem="xk6-mF-S8O" firstAttribute="leading" secondItem="1Yu-al-O8L" secondAttribute="trailing" constant="10" id="CAN-cr-kY4"/>
                             <constraint firstAttribute="bottom" secondItem="O1G-MN-B4B" secondAttribute="bottom" constant="8" id="E1H-a0-N8C"/>
                             <constraint firstItem="1Yu-al-O8L" firstAttribute="top" secondItem="wdG-JR-2uQ" secondAttribute="top" constant="15" id="HWC-KB-nLr"/>
                             <constraint firstAttribute="trailing" secondItem="5mD-JI-8xI" secondAttribute="trailing" constant="25" id="JlD-2p-OXs"/>
                             <constraint firstItem="1Yu-al-O8L" firstAttribute="leading" secondItem="wdG-JR-2uQ" secondAttribute="leading" constant="15" id="MRE-cZ-a63"/>
-                            <constraint firstItem="F01-bt-UaV" firstAttribute="top" secondItem="1Yu-al-O8L" secondAttribute="bottom" constant="5" id="S7h-cd-IBI"/>
+                            <constraint firstItem="2j5-B6-g1z" firstAttribute="bottom" secondItem="tSl-PI-qfu" secondAttribute="bottom" id="XKI-Xn-JAp"/>
                             <constraint firstItem="xk6-mF-S8O" firstAttribute="top" secondItem="wdG-JR-2uQ" secondAttribute="top" constant="15" id="YJN-1V-ggz"/>
                             <constraint firstItem="2j5-B6-g1z" firstAttribute="centerX" secondItem="F01-bt-UaV" secondAttribute="centerX" id="ZMI-1E-Lsi"/>
-                            <constraint firstAttribute="height" constant="165" id="en8-XN-hKO"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="165" id="en8-XN-hKO"/>
+                            <constraint firstItem="O1G-MN-B4B" firstAttribute="top" secondItem="7ii-PU-Qnl" secondAttribute="bottom" constant="21" id="fBH-qz-0GP"/>
                             <constraint firstAttribute="trailing" secondItem="xk6-mF-S8O" secondAttribute="trailing" constant="25" id="gkR-fd-3HU"/>
                             <constraint firstAttribute="trailing" secondItem="O1G-MN-B4B" secondAttribute="trailing" constant="25" id="vvr-q9-98u"/>
                             <constraint firstItem="2j5-B6-g1z" firstAttribute="top" secondItem="F01-bt-UaV" secondAttribute="bottom" id="yNB-vo-M11"/>

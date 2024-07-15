@@ -497,7 +497,7 @@ class FilterVC: BaseTableVC{
     
     
     func setupTransfersTVCells() {
-        commonTableView.isScrollEnabled = false
+        commonTableView.isScrollEnabled = true
         tablerow.removeAll()
         
         tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))

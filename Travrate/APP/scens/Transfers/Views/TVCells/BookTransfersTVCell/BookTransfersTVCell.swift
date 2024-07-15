@@ -117,7 +117,7 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
             
             
             
-            fromTF.text = defaults.string(forKey: UserDefaultsKeys.transfertocityname) ?? "From Airport"
+            fromTF.text = defaults.string(forKey: UserDefaultsKeys.transferfromcityname) ?? "From Airport"
             toTF.text = defaults.string(forKey: UserDefaultsKeys.transfertocityname) ?? "To Airport"
             
             returnView.isHidden = true
@@ -174,6 +174,18 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
         delegate?.didTapOnSearchBtnAction(cell: self)
     }
     
+    
+    @IBAction func clearFromTextFieldBtnAction(_ sender: Any) {
+        fromTF.text = ""
+        fromTF.becomeFirstResponder()
+        callGetCityListAPI(text: "")
+    }
+    
+    @IBAction func didTapOnClearToTFBtnAction(_ sender: Any) {
+        toTF.text = ""
+        toTF.becomeFirstResponder()
+        callGetCityListAPI(text: "")
+    }
     
 }
 
@@ -310,15 +322,18 @@ extension BookTransfersTVCell {
     
     override func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == fromTF {
-            
+            txtbool = true
+            fromTF.text = ""
             fromTF.textColor = .TitleColor
             fromTF.placeholder = "From Airport"
-            callGetCityListAPI(text: textField.text ?? "")
+           // callGetCityListAPI(text: textField.text ?? "")
             
         }else {
+            txtbool = false
+            toTF.text = ""
             toTF.textColor = .TitleColor
             toTF.placeholder = "To AirPort"
-            callGetCityListAPI(text: textField.text ?? "")
+           // callGetCityListAPI(text: textField.text ?? "")
             
         }
     }

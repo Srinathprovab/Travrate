@@ -114,15 +114,6 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             }
             
             
-        }else if tabselect == "transfers" {
-            
-            flightinfo.isHidden = true
-            hotelinfoView.isHidden = true
-            transfersInfoView.isHidden = false
-           
-            MySingleton.shared.loderString = "fdetails"
-           
-            
         }else if tabselect == "Sports" {
             
             sportsView.isHidden = false
@@ -130,6 +121,10 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
         }else if tabselect == "CarRental" {
             
             carrentalView.isHidden = false
+            
+        }else if tabselect == "transfers" {
+            
+            sportsView.isHidden = false
             
         }else {
             
@@ -240,16 +235,6 @@ extension LoderVC {
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
             MySingleton.shared.lodervm?.CALL_FLIGHT_LODER_DETAILS_API(dictParam: MySingleton.shared.payload)
-        }else if tabselect == "transfers" {
-            
-            DispatchQueue.main.async {[self] in
-                flightinfo.isHidden = true
-                hotelinfoView.isHidden = true
-                transfersInfoView.isHidden = false
-               
-                MySingleton.shared.loderString = "fdetails"
-            }
-            
         }else if tabselect == "Sports" {
             
             sportsView.isHidden = false
@@ -263,12 +248,28 @@ extension LoderVC {
             guard let pickuplocationname =  defaults.string(forKey: UserDefaultsKeys.pickuplocationname) else {return}
             guard let pickuplocDate =  defaults.string(forKey: UserDefaultsKeys.pickuplocDate) else {return}
             guard let dropuplocDate =  defaults.string(forKey: UserDefaultsKeys.dropuplocDate) else {return}
-            guard let pickuplocTime =  defaults.string(forKey: UserDefaultsKeys.pickuplocTime) else {return}
-            guard let dropuplocTime =  defaults.string(forKey: UserDefaultsKeys.dropuplocTime) else {return}
+           
             
             carrentalView.isHidden = false
             carRentalNamelbl.text = pickuplocationname
             carRentalDateslbl.text = "\(pickuplocDate) to \(dropuplocDate)"
+            
+        }else if tabselect == "transfers" {
+            
+            
+            let journytype =  defaults.string(forKey: UserDefaultsKeys.transferjournytype)
+            let fromcity =  defaults.string(forKey: UserDefaultsKeys.transferfromcityname)
+            let tocity =  defaults.string(forKey: UserDefaultsKeys.transfertocityname)
+            let fromdate =  defaults.string(forKey: UserDefaultsKeys.transfercalDepDate)
+            let todate =  defaults.string(forKey: UserDefaultsKeys.transfercalRetDate)
+            
+            
+            sportsView.isHidden = false
+            sporteventlbl.text = fromcity
+            sportvenulbl.text = tocity
+            sportdateslbl.text = journytype == "oneway" ? "\(fromdate ?? "")": "\(fromdate ?? "") to \(todate ?? "")"
+           
+           
             
         }else {
            // MySingleton.shared.hotellodervm?.CALL_HOTEL_LODER_DETAILS_API(dictParam: MySingleton.shared.payload)

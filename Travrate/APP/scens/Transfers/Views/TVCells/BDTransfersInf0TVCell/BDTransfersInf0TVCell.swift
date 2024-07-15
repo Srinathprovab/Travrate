@@ -34,7 +34,7 @@ class BDTransfersInf0TVCell: TableViewCell {
         carmodellbl.text = transferdata?.car_detail?.models?[0]
         titlelbl.text = transferdata?.car_detail?.title ?? ""
         passangerslbl.text = "Up to Passengers \(transferdata?.car_detail?.luggage_capacity ?? 0)"
-        carimage.sd_setImage(with: URL(string: transferdata?.car_detail?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+        carimage.sd_setImage(with: URL(string: transferdata?.car_detail?.images ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
             if let error = error {
                 // Handle error loading image
                 print("Error loading image: \(error.localizedDescription)")

@@ -108,7 +108,9 @@ class MySingleton {
     var mpbFlightData : MPBFlightDetails?
     var frequent_flyersArray = [Frequent_flyers]()
     var addonServices = [Addon_services]()
+    var addonServicesOrigenArray = [String]()
     var carAddonServices = [Addon_services]()
+    var transferAddonServices = [Addon_services]()
     var firstHalf_addonServices: [Addon_services] = []
        var secondHalf_addonServices: [Addon_services] = []
     var ageCategory: AgeCategory = .adult
@@ -117,6 +119,7 @@ class MySingleton {
     var positionsCount = 0
     var searchTextArray = [String]()
     var payemail = String()
+    var paycontactname = String()
     var payusername = String()
     var regpassword = String()
     var paymobile = String()
@@ -226,6 +229,7 @@ class MySingleton {
     var carVoucherData : CarVoucherData?
     var transfer_token = String()
     var transfer_searchid = String()
+    var transferpassengercount = 1
     
     
     var confpassword = String()
@@ -309,6 +313,7 @@ class MySingleton {
     var transferCityVM:GetTransferCityVM?
     var preTransfersearchVM:PreTransfersearchVM?
     var transferPreBookingVM:TransferPreBookingVM?
+    var transferBookingVM:TransferBookingVM?
     
     
     //TIMER

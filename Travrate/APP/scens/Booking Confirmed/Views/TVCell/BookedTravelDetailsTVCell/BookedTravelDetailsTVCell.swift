@@ -74,6 +74,15 @@ class BookedTravelDetailsTVCell: TableViewCell {
             if MySingleton.shared.carpassengerDetails.count > 0 {
                 tvHeight.constant = CGFloat(MySingleton.shared.carpassengerDetails.count * 48)
             }
+        }else if keystr == "transfer" {
+            passengerTypelbl.text = "Type"
+            travellerNamelbl.text = "Name"
+            emaillbl.text = "Email Id"
+            mobilelbl.text = "Mobile"
+          
+            if travelerArray.count > 0 {
+                tvHeight.constant = CGFloat(travelerArray.count * 48)
+            }
         }else {
             passengerTypelbl.text = "Passenger"
             travellerNamelbl.text = "Name"
@@ -119,6 +128,7 @@ class BookedTravelDetailsTVCell: TableViewCell {
         adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "cell")
         adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "cell1")
         adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "sports")
+        adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "transfer")
         
         adultDetailsTV.delegate = self
         adultDetailsTV.dataSource = self
@@ -148,6 +158,8 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
             return MySingleton.shared.sports_passengers.count
         }else if keystr == "car" {
             return MySingleton.shared.carpassengerDetails.count
+        }else if keystr == "transfer" {
+            return travelerArray.count
         }else{
             return travelerArray.count
         }
@@ -199,6 +211,29 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 
                 c = cell
             }
+        }else if keystr == "transfer" {
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "transfer") as? BookedAdultDetailsTVCell {
+                cell.selectionStyle = .none
+                
+                let data = travelerArray[indexPath.row]
+                
+                cell.setAttributedText(str1: "\(cellInfo?.title ?? "")", str2: "")
+                cell.passengerTypelbl.text = ""
+                cell.travellerNamelbl.text = "\(data.firstName ?? "") \(data.lastName ?? "")"
+                cell.emaillbl.text = data.email
+                cell.mobileLbl.text = "\(data.mobilecountrycode ?? "") \(data.mobile ?? "")"
+                
+                
+                if indexPath.row == 0{
+                    cell.passengerTypelbl.text = "Lead"
+                }
+                
+                
+                c = cell
+            }
+            
+            
         }else{
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? BookedAdultDetailsTVCell {
@@ -216,7 +251,7 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 
                 if indexPath.row == 0{
                     cell.setAttributedText(str1: "\(cellInfo?.title ?? "")", str2: "")
-                    //cell.passengerTypelbl.text = "Lead Passenger"
+                    cell.passengerTypelbl.text = "Lead Passenger"
                     cell.travellerNamelbl.text = data.firstName
                     cell.emaillbl.text = MySingleton.shared.payemail
                     cell.mobileLbl.text = MySingleton.shared.paymobile

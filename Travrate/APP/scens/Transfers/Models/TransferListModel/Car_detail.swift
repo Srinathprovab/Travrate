@@ -16,6 +16,7 @@ struct Car_detail : Codable {
 	let title : String?
 	let models : [String]?
 	let image : String?
+    let images : String?
 	let passenger_capacity : Int?
 	let luggage_capacity : Int?
 
@@ -24,6 +25,7 @@ struct Car_detail : Codable {
 		case title = "title"
 		case models = "models"
 		case image = "image"
+        case images = "images"
 		case passenger_capacity = "passenger_capacity"
 		case luggage_capacity = "luggage_capacity"
 	}
@@ -33,6 +35,7 @@ struct Car_detail : Codable {
 		title = try values.decodeIfPresent(String.self, forKey: .title)
 		models = try values.decodeIfPresent([String].self, forKey: .models)
 		image = try values.decodeIfPresent(String.self, forKey: .image)
+        images = try values.decodeIfPresent(String.self, forKey: .images)
 		passenger_capacity = try values.decodeIfPresent(Int.self, forKey: .passenger_capacity)
 		luggage_capacity = try values.decodeIfPresent(Int.self, forKey: .luggage_capacity)
 	}

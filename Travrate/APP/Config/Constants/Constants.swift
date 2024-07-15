@@ -123,6 +123,7 @@ var tournamentArray = [String]()
 var eventsArray = [String]()
 var sportsCityArray = [String]()
 var sportsCountryArray = [String]()
+var transfer_data : Transfer_data?
 
 
 var mapModelArray: [MapModel] = []
@@ -327,6 +328,7 @@ struct ApiEndpoints {
     static let general_pre_transfer_search = "general/pre_transfer_search"
     static let transfers_transfer_list = "transfers/transfer_list"
     static let transfers_pre_booking = "transfers/pre_booking"
+    static let transfers_booking = "transfers/booking"
    
     
     

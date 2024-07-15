@@ -8,8 +8,10 @@
 import UIKit
 import MaterialComponents
 
-class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCellDelegate, FlightResultTVCellDelegate, SideMenuTitleTVCellDelegate, MenuBGTVCellDelegate, SliderTVCellDelegate, CheckBoxTVCellDelegate, FilterDepartureTVCellDelegate, LabelTVCellDelegate,DepartureTimeTVCellDelegate, ButtonTVCellDelegate, SortbyTVCellDelegate, BookingDetailsFlightDataTVCellDelegate, TDetailsLoginTVCellDelegate, AddDeatilsOfTravellerTVCellDelegate, ContactInformationTVCellDelegate, UsePromoCodesTVCellDelegate, LoginTVCellDelegate, ResetPasswordTVCellDelegate, SignupTVCellDelegate, EditProfileTVCellDelegate, HotelSearchTVCellDelegate, AddRoomsGuestsTVCellDelegate, NewDepartureTimeTVCellDelegate, VisaTVCellDelegate, AutoPaymentTVCellDelegate, TripsTVCellDelegate, YourRecentSearchesTVCellDelegate, RoomsTVcellDelegate, RegisterSelectionLoginTableViewCellDelegate, AddonTVCellDelegate, TravellerEconomyTVCellDelegate, HolidayPackagesTVCellDelegate, CruisePackegesTVCellDelegate, CruiseContactdetailsTVCellDelegate, HolidayContactdetailsTVCellDelegate, BCFlightDetailsTVCellDelegate, NewBookingConfirmedTVCellDelegate, HeaderTableViewCellDelegate, QuickLinkTableViewCellDelegate, FlightUpcomingTVCellDelegate, LoginDetailsTableViewCellDelegate, GuestTVCellDelegate, ContactUsTVCellDelegate, HotelImagesTVCellDelegate, AddDeatilsOfGuestTVCellDelegate, FareRulesTVCellDelegate, PrimaryContactInfoTVCellDelegate, OperatorsCheckBoxTVCellDelegate, AddonTableViewCellDelegate, PriceSummaryTVCellDelegate, AcceptCookiesTVCellDelegate, SelectMealTVCellDelegate, NewSpecialAssistanceTVCellDelegate, SelectFareTVCellDelegate, PaymentTypeTVCellDelegate, SelectFareInfoTVCellDelegate, BookTransfersTVCellDelegate, TransfersInf0TVCellDelegate, StarRatingTVCellDelegate, TFlighDetailsTVCellDelegate, TContactDetailsTVCellDelegate, SportsSearchTVCellDelegate, SportInfoTVCellDelegate, InsurenceSearchTVCellDelegate, InsurancePlaneTVCellDelegate, ViewStadiumBtnsTVCellDelegate, SportsBookNowTVCellDelegate, HotelFareSummaryTVCellDelegate, AddFareRulesTVCellDelegate, AddDeatilsOfPersonTVCellDelegate, PersonInformationTVCellDelegate, CruiseItineraryTVCellDelegate, HolidayItineraryTVCellDelegate, SearchCarRentalTVCellDelegate, CarRentalResultTVCellDelegate, ChoosePackageTVCellDelergate, SelectedServiceTVCellDelegate, DriverDetailsTVCellDelegate, SelectedAdditionalOptionsTVCellDelegate, UpgradeServiceTVCellDelegate, ShareResultTVCellDelegate, PopularDestinationsTVCellDelegate, SelectOptionsTVCellDeegate, DurationSliderTVCellDelegate, TransitTimeSliderTVCellDelegate, CarrentalPriceSliderTVCellDelegate, TermsAgreeTVCellDelegate {
-   
+class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCellDelegate, FlightResultTVCellDelegate, SideMenuTitleTVCellDelegate, MenuBGTVCellDelegate, SliderTVCellDelegate, CheckBoxTVCellDelegate, FilterDepartureTVCellDelegate, LabelTVCellDelegate,DepartureTimeTVCellDelegate, ButtonTVCellDelegate, SortbyTVCellDelegate, BookingDetailsFlightDataTVCellDelegate, TDetailsLoginTVCellDelegate, AddDeatilsOfTravellerTVCellDelegate, ContactInformationTVCellDelegate, UsePromoCodesTVCellDelegate, LoginTVCellDelegate, ResetPasswordTVCellDelegate, SignupTVCellDelegate, EditProfileTVCellDelegate, HotelSearchTVCellDelegate, AddRoomsGuestsTVCellDelegate, NewDepartureTimeTVCellDelegate, VisaTVCellDelegate, AutoPaymentTVCellDelegate, TripsTVCellDelegate, YourRecentSearchesTVCellDelegate, RoomsTVcellDelegate, RegisterSelectionLoginTableViewCellDelegate, AddonTVCellDelegate, TravellerEconomyTVCellDelegate, HolidayPackagesTVCellDelegate, CruisePackegesTVCellDelegate, CruiseContactdetailsTVCellDelegate, HolidayContactdetailsTVCellDelegate, BCFlightDetailsTVCellDelegate, NewBookingConfirmedTVCellDelegate, HeaderTableViewCellDelegate, QuickLinkTableViewCellDelegate, FlightUpcomingTVCellDelegate, LoginDetailsTableViewCellDelegate, GuestTVCellDelegate, ContactUsTVCellDelegate, HotelImagesTVCellDelegate, AddDeatilsOfGuestTVCellDelegate, FareRulesTVCellDelegate, PrimaryContactInfoTVCellDelegate, OperatorsCheckBoxTVCellDelegate, AddonTableViewCellDelegate, PriceSummaryTVCellDelegate, AcceptCookiesTVCellDelegate, SelectMealTVCellDelegate, NewSpecialAssistanceTVCellDelegate, SelectFareTVCellDelegate, PaymentTypeTVCellDelegate, SelectFareInfoTVCellDelegate, BookTransfersTVCellDelegate, TransfersInf0TVCellDelegate, StarRatingTVCellDelegate, TFlighDetailsTVCellDelegate, TContactDetailsTVCellDelegate, SportsSearchTVCellDelegate, SportInfoTVCellDelegate, InsurenceSearchTVCellDelegate, InsurancePlaneTVCellDelegate, ViewStadiumBtnsTVCellDelegate, SportsBookNowTVCellDelegate, HotelFareSummaryTVCellDelegate, AddFareRulesTVCellDelegate, AddDeatilsOfPersonTVCellDelegate, PersonInformationTVCellDelegate, CruiseItineraryTVCellDelegate, HolidayItineraryTVCellDelegate, SearchCarRentalTVCellDelegate, CarRentalResultTVCellDelegate, ChoosePackageTVCellDelergate, SelectedServiceTVCellDelegate, DriverDetailsTVCellDelegate, SelectedAdditionalOptionsTVCellDelegate, UpgradeServiceTVCellDelegate, ShareResultTVCellDelegate, PopularDestinationsTVCellDelegate, SelectOptionsTVCellDeegate, DurationSliderTVCellDelegate, TransitTimeSliderTVCellDelegate, CarrentalPriceSliderTVCellDelegate, TermsAgreeTVCellDelegate, AddDeatilsOfPassengerTVCellDelegate, AddPassengerButtonTVCellDelegate {
+    
+    
+    
     
     
     
@@ -371,7 +373,12 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func didTapOnCheckBoxBtnAction(cell:TermsAgreeTVCell) {}
     func didTapOnTransferCityBtnAction(cell: BookTransfersTVCell) {}
     
-   
+    func didTapOnExpandAdultViewbtnAction(cell: AddDeatilsOfPassengerTVCell) {}
+    func didTapOnTitleBtnAction(cell: AddDeatilsOfPassengerTVCell) {}
+    func didTapOnMrBtnAction(cell: AddDeatilsOfPassengerTVCell) {}
+    func didTapOnMrsBtnAction(cell: AddDeatilsOfPassengerTVCell) {}
+    func didTapOnAddPassengerBtnAction(cell: AddPassengerButtonTVCell) {}
+    func donedatePicker1(cell:TFlighDetailsTVCell) {}
     
     
     
@@ -1224,6 +1231,27 @@ extension BaseTableVC: UITableViewDataSource {
                 let cell: CarrentalPriceSliderTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 cell.delegate = self
                 commonCell = cell
+                
+                
+            case .AddDeatilsOfPassengerTVCell :
+                let cell: AddDeatilsOfPassengerTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+                
+            case .AddPassengerButtonTVCell :
+                let cell: AddPassengerButtonTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+                
+            case .TransferfareSummeryTVCell :
+                let cell: TransferfareSummeryTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+                
+                
                 
             default:
                 print("handle this case in getCurrentCellAt")

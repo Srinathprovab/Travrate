@@ -126,12 +126,18 @@ extension TransfersListVC {
 extension TransfersListVC {
     
     func callAPI() {
-        MySingleton.shared.loderString = "fdetails"
-        loderBool = true
-        showLoadera()
         
         
-        MySingleton.shared.preTransfersearchVM?.CALL_PRE_TRANSFER_SERACH_API(dictParam: MySingleton.shared.payload)
+        DispatchQueue.main.async {[self] in
+            
+            MySingleton.shared.loderString = "fdetails"
+            loderBool = true
+            showLoadera()
+            
+            MySingleton.shared.preTransfersearchVM?.CALL_PRE_TRANSFER_SERACH_API(dictParam: MySingleton.shared.payload)
+        }
+        
+        
         
     }
     
@@ -147,6 +153,8 @@ extension TransfersListVC {
         
         activeBookingArray = response.data?.active_booking_source ?? []
         bookingSourceDataArrayCount = activeBookingArray .count
+        
+        
         MySingleton.shared.transfer_searchid = "\(response.data?.sight_seen_search_params?.search_id ?? 0)"
         
         fromcitylbl.text = response.data?.sight_seen_search_params?.arrival
@@ -189,9 +197,12 @@ extension TransfersListVC {
     
     func transferslistDetails(response: TransferListModel) {
         
+        
         bookingSourceDataArrayCount -= 1
         
+        
         if let newResults = response.data?.raw_transfer_list, !newResults.isEmpty {
+            
             // Append the new data to the existing data
             MySingleton.shared.transferlist.append(contentsOf: newResults)
             
@@ -204,6 +215,8 @@ extension TransfersListVC {
         
         if bookingSourceDataArrayCount == 0 {
             if MySingleton.shared.transferlist.count <= 0 {
+                
+                
                 gotoNoInternetScreen(keystr: "noresult")
             }else {
                 appendPriceAndDate(list: MySingleton.shared.transferlist)
