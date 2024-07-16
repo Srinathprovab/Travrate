@@ -10,30 +10,33 @@ import Foundation
 
 
 struct carPrePaymrntConfirmationModel : Codable {
-    let data : carPrePaymrntData?
     let car_passengers : [Car_passengers]?
-    let addon_result : String?
+    let payment_selection : [Payment_selection]?
     let book_id : String?
     let search_id : String?
-    
+    let addon_result : String?
+    let data : carPrePaymrntData?
+
     enum CodingKeys: String, CodingKey {
-        
-        case data = "data"
+
         case car_passengers = "car_passengers"
-        case addon_result = "addon_result"
+        case payment_selection = "payment_selection"
         case book_id = "book_id"
         case search_id = "search_id"
+        case addon_result = "addon_result"
+        case data = "data"
     }
-    
+
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        data = try values.decodeIfPresent(carPrePaymrntData.self, forKey: .data)
         car_passengers = try values.decodeIfPresent([Car_passengers].self, forKey: .car_passengers)
-        addon_result = try values.decodeIfPresent(String.self, forKey: .addon_result)
+        payment_selection = try values.decodeIfPresent([Payment_selection].self, forKey: .payment_selection)
         book_id = try values.decodeIfPresent(String.self, forKey: .book_id)
         search_id = try values.decodeIfPresent(String.self, forKey: .search_id)
+        addon_result = try values.decodeIfPresent(String.self, forKey: .addon_result)
+        data = try values.decodeIfPresent(carPrePaymrntData.self, forKey: .data)
     }
-    
+
 }
 
 

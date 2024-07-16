@@ -17,6 +17,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         return vc
     }
     
+    var carRentalsendToPaymenthiturl  = String()
     var transfersendtopaymenturl = String()
     var cardetails : Result_token?
     var appref = String()
@@ -25,53 +26,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     var hdvm:HotelBookingVM?
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        MySingleton.shared.loderString = "fdetails"
-        loderBool = true
-        showLoadera()
-        
-        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
-        if tabselect == "Flight" {
-            DispatchQueue.main.async {
-                self.CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
-            }
-            
-        }else if tabselect == "Sports"{
-            DispatchQueue.main.async {
-                self.CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API()
-            }
-        }else if tabselect == "CarRental"{
-            
-            let seconds = 2.0
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
-                hideLoadera()
-                loderBool = false
-                
-                DispatchQueue.main.async {
-                    self.setupCarRentalTVCells()
-                }
-            }
-            
-            
-        }else if tabselect == "transfers"{
-            
-            let seconds = 2.0
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
-                hideLoadera()
-                loderBool = false
-                
-                DispatchQueue.main.async {
-                    self.calltransferBookingAPI()
-                }
-            }
-            
-            
-        }else {
-            DispatchQueue.main.async {
-                self.CALL_HOTEL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
-            }
-        }
-        
+        addObserver()
     }
     
     
@@ -143,8 +98,10 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
             callSportsSendToPayment()
         }else if tabselect == "transfers" {
             callTransferSendToPaymentAPI()
+        }else if tabselect == "CarRental" {
+            callCarrentalSendToPaymentAPI()
         }else{
-            callcarBookingAPI()
+            
         }
     }
     
@@ -177,6 +134,29 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         vc.keystr = keystr
         self.present(vc, animated: false)
     }
+    
+    
+    
+    func reloadPriceSummaryTVCell() {
+        if let indexPath = indexPathForPriceSummaryTVCell() {
+            commonTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func indexPathForPriceSummaryTVCell() -> IndexPath? {
+        if let row = MySingleton.shared.tablerow.firstIndex(where: { $0.cellType == .CRFareSummaryTVCell }) {
+            return IndexPath(row: row, section: 0)
+        }
+        return nil
+    }
+    
+    
+    
+    //MARK: - didTapOnDeleteOptionsBtnAction  CRFareSummaryTVCell
+    override func didTapOnDeleteOptionsBtnAction(cell: CRFareSummaryTVCell) {
+        reloadPriceSummaryTVCell()
+    }
+    
 }
 
 
@@ -296,9 +276,6 @@ extension SelectPaymentMethodsVC {
     func setupHotelTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
-        
-        
-        
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         
         MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
@@ -323,18 +300,14 @@ extension SelectPaymentMethodsVC {
         
         MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
         
-        
-        
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()
     }
     
     
     func setupSportsTVCells() {
+        
         MySingleton.shared.tablerow.removeAll()
-        
-        
-        
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         
@@ -400,11 +373,7 @@ extension SelectPaymentMethodsVC {
     }
     
     
-    func gotoBookingConfirmedVC() {
-        guard let vc = BookingConfirmedVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
-    }
+    
     
     
 }
@@ -561,12 +530,7 @@ extension SelectPaymentMethodsVC {
     }
     
     
-    func gotoBookingSucessVC() {
-        MySingleton.shared.callboolapi = true
-        guard let vc = BookingSucessVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
-    }
+    
     
     
     
@@ -925,7 +889,37 @@ extension SelectPaymentMethodsVC {
 extension SelectPaymentMethodsVC {
     
     
+    func callcarBookingAPI() {
+        MySingleton.shared.carBookingVM?.CALL_CAR_BOOKING_API(dictParam: MySingleton.shared.payload)
+    }
     
+    
+    func carBookingdetails(response: CarSecureBookingMode) {
+        
+        
+        DispatchQueue.main.async {
+            MySingleton.shared.carBookingVM?.CALL_CAR_PRE_PAYMENT_BOOKING_API(dictParam: [:], urlstr: response.hit_url ?? "")
+        }
+    }
+    
+    
+    func carPrePaymentDetails(response: carPrePaymrntConfirmationModel) {
+        
+       
+        loderBool = false
+        
+        
+        MySingleton.shared.PaymentSelectionArray = response.payment_selection ?? []
+        appref = response.data?.app_reference ?? ""
+        carRentalsendToPaymenthiturl = "\(BASE_URL)car/send_to_payment/\(response.data?.app_reference ?? "")/\(response.data?.search_id ?? "")"
+        
+        
+        DispatchQueue.main.async {
+            self.hideLoadera()
+            self.setupCarRentalTVCells()
+        }
+        
+    }
     
     
     func setupCarRentalTVCells() {
@@ -944,12 +938,8 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         
         MySingleton.shared.carproductarray.forEach { i in
-            MySingleton.shared.tablerow.append(TableRow(moreData: i,cellType:.CRFareSummaryTVCell))
-            
+            MySingleton.shared.tablerow.append(TableRow(key:"selectpayment",moreData: i,cellType:.CRFareSummaryTVCell))
         }
-        
-        
-        
         
         
         MySingleton.shared.tablerow.append(TableRow(height:30,cellType:.EmptyTVCell))
@@ -963,54 +953,78 @@ extension SelectPaymentMethodsVC {
     
     
     
-    func callcarBookingAPI() {
+    func callCarrentalSendToPaymentAPI() {
         
         MySingleton.shared.loderString = "payment"
-        MySingleton.shared.afterResultsBool = true
         loderBool = true
         showLoadera()
         
-        MySingleton.shared.carBookingVM?.CALL_CAR_BOOKING_API(dictParam: MySingleton.shared.payload)
         
-    }
-    
-    
-    func carBookingdetails(response: CarSearchModel) {
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["knet_pg"] = MySingleton.shared.paymenttype
+        MySingleton.shared.payload["selected_option"] = MySingleton.shared.carselectedoption
+        MySingleton.shared.payload["extra_option_price"] = MySingleton.shared.car_extra_option_price
         
-        DispatchQueue.main.async {
-            MySingleton.shared.carBookingVM?.CALL_CAR_PRE_PAYMENT_BOOKING_API(dictParam: [:], urlstr: response.hit_url ?? "")
-        }
-    }
-    
-    
-    func carPrePaymentDetails(response: carPrePaymrntConfirmationModel) {
-        
-        appref = response.data?.app_reference ?? ""
-        var hiturl = "\(BASE_URL)car/send_to_payment/\(response.data?.app_reference ?? "")/\(response.data?.search_id ?? "")"
         
         DispatchQueue.main.async {
-            MySingleton.shared.carBookingVM?.CALL_CAR_SEND_TO_PAYMENT_API(dictParam: [:], urlstr: hiturl)
+            MySingleton.shared.carBookingVM?.CALL_CAR_SEND_TO_PAYMENT_API(dictParam: MySingleton.shared.payload, urlstr: self.carRentalsendToPaymenthiturl)
         }
-        
         
     }
     
     
     func carSendtoPaymentDetails(response: CarSearchModel) {
-        var hit_url = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/secure_booking/\(appref)"
+        
+        
+        
+        let hit_url = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/secure_booking/\(appref)"
+        
         DispatchQueue.main.async {
             MySingleton.shared.carBookingVM?.CALL_CAR_SECURE_BOOKING_API(dictParam: [:], urlstr: hit_url)
         }
+        
+        
     }
     
     
-    func carSecureBookingDetails(response: CarSearchModel) {
-        hideLoadera()
-        loderBool = false
-        print(response.hit_url)
+    func carSecureBookingDetails(response: CarSecureBookingMode) {
+        
+        
+        print(response.hit_url ?? "")
         
         MySingleton.shared.voucherurlsting = response.hit_url ?? ""
-        gotoBookingSucessVC()
+        
+        DispatchQueue.main.async {
+            
+            
+            self.gotoBookingConfirmedVC()
+        }
+        
+        
+    }
+    
+    
+    
+    //MARK: - gotoBookingSucessVC
+    func gotoBookingSucessVC() {
+        
+        hideLoadera()
+        loderBool = false
+        
+        MySingleton.shared.callboolapi = true
+        guard let vc = BookingSucessVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
+    
+    
+    func gotoBookingConfirmedVC() {
+        
+        
+        callapibool = true
+        guard let vc = BookingConfirmedVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     
@@ -1054,23 +1068,15 @@ extension SelectPaymentMethodsVC {
     
     
     func calltransferBookingAPI() {
-        
-        MySingleton.shared.loderString = "fdetails"
-        MySingleton.shared.afterResultsBool = true
-        loderBool = true
-        showLoadera()
-        
         DispatchQueue.main.async {
             MySingleton.shared.transferBookingVM?.CALL_BOOKING_API(dictParam: MySingleton.shared.payload)
         }
-        
-        
-        
     }
     
     
     
     func bookingResponse(response: TransferBookingModel) {
+        
         DispatchQueue.main.async {
             MySingleton.shared.transferBookingVM?.CALL_PRE_PAYMENT_CONFORMATION_API(dictParam: [:], urlstr: response.hit_url ?? "")
         }
@@ -1093,18 +1099,117 @@ extension SelectPaymentMethodsVC {
     
     
     func callTransferSendToPaymentAPI() {
+        
         MySingleton.shared.loderString = "payment"
         MySingleton.shared.afterResultsBool = true
         loderBool = true
         showLoadera()
+        
+        
+        
         DispatchQueue.main.async {[self] in
-            MySingleton.shared.transferBookingVM?.CALL_PRE_SENDTO_PAYMENT__API(dictParam: [:], urlstr: transfersendtopaymenturl ?? "")
+            MySingleton.shared.transferBookingVM?.CALL_PRE_SENDTO_PAYMENT__API(dictParam: [:], urlstr: transfersendtopaymenturl)
         }
     }
     
     
     func preSendtoPaymentResponse(response: TransferPrePaymentConfModel) {
+        print("=== response.hit_url  ====")
+        print(response.hit_url ?? "")
+    }
+    
+    
+}
+
+
+
+
+
+//MARK: - addObserver
+extension SelectPaymentMethodsVC {
+    
+    func addObserver() {
         
+        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
+        
+    //    showLoadera()
+        MySingleton.shared.loderString = "fdetails"
+        loderBool = true
+        
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Flight" {
+            DispatchQueue.main.async {
+                self.CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
+            }
+            
+        }else if tabselect == "Sports"{
+            DispatchQueue.main.async {
+                self.CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API()
+            }
+        }else if tabselect == "CarRental"{
+            
+            DispatchQueue.main.async {[self] in
+                showLoadera()
+                self.callcarBookingAPI()
+            }
+            
+            
+        }else if tabselect == "transfers"{
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[self] in
+                self.calltransferBookingAPI()
+            }
+            
+        }else {
+            DispatchQueue.main.async {
+                self.CALL_HOTEL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
+            }
+        }
+    }
+    
+    
+    
+    @objc func reload() {
+        DispatchQueue.main.async {[self] in
+            commonTableView.reloadData()
+        }
+    }
+    
+    @objc func nointrnetreload() {
+        
+        DispatchQueue.main.async {[self] in
+            commonTableView.reloadData()
+        }
+    }
+    
+    //MARK: - resultnil
+    @objc func resultnil() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "noresult"
+        self.present(vc, animated: true)
+    }
+    
+    
+    func gotoNoInternetScreen(keystr:String) {
+        callapibool = true
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.key = keystr
+        self.present(vc, animated: false)
+    }
+    
+    //MARK: - nointernet
+    @objc func nointernet() {
+        
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "nointernet"
+        self.present(vc, animated: true)
     }
     
     

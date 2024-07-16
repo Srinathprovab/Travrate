@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate {
+class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVMDelegate {
+    
     
     
     
@@ -37,6 +38,7 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate {
         setupUI()
         
         MySingleton.shared.transferPreBookingVM = TransferPreBookingVM(self)
+        MySingleton.shared.transferBookingVM = TransferBookingVM(self)
     }
     
     
@@ -620,17 +622,54 @@ extension BDTransferVC {
         }else if MySingleton.shared.checkTermsAndCondationStatus == false {
             showToast(message: "Please Accept T&C and Privacy Policy")
         }else {
-            gotoSelectPaymentMethodsVC()
+            // gotoSelectPaymentMethodsVC()
+            
+            
+            MySingleton.shared.loderString = "fdetails"
+            loderBool = true
+            showLoadera()
+            
+            DispatchQueue.main.async {
+                MySingleton.shared.transferBookingVM?.CALL_BOOKING_API(dictParam: MySingleton.shared.payload)
+            }
         }
         
     }
     
     
-    func gotoSelectPaymentMethodsVC() {
+    func bookingResponse(response: TransferBookingModel) {
+        DispatchQueue.main.async {
+            MySingleton.shared.transferBookingVM?.CALL_PRE_PAYMENT_CONFORMATION_API(dictParam: [:], urlstr: response.hit_url ?? "")
+        }
+    }
+    
+    func prePaymentConformationResponse(response: TransferPrePaymentConfModel) {
+        hideLoadera()
+        loderBool = false
+        
+        MySingleton.shared.PaymentSelectionArray = response.payment_selection ?? []
+        
+        
+        
+        DispatchQueue.main.async {
+            self.gotoSelectPaymentMethodsVC(str: response.hit_url ?? "")
+        }
+    }
+    
+    
+    
+    
+    func gotoSelectPaymentMethodsVC(str:String) {
         callapibool = true
         guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        vc.transfersendtopaymenturl = str
+        self.present(vc, animated: false)
+    }
+    
+    
+    func preSendtoPaymentResponse(response: TransferPrePaymentConfModel) {
+        
     }
     
     

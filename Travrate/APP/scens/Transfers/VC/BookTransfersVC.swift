@@ -99,6 +99,7 @@ class BookTransfersVC: BaseTableVC {
     }
     
     override func doneTimePicker(cell:BookTransfersTVCell) {
+        commonTableView.reloadData()
         self.view.endEditing(true)
     }
     

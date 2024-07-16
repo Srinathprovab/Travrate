@@ -7,10 +7,15 @@
 
 import UIKit
 
-struct AddOptions {
+struct AdditionalOption {
     var title: String?
     var price: String?
-    var isSelected: Bool = false // Add this property to track selection
+    var currency:String?
+}
+
+
+protocol ChooseAdditionalOptionsTVCellDelegate {
+    func didTapOnAdditionalOptionasBtnAction(cell:ChooseAdditionalOptionsTVCell)
 }
 
 
@@ -22,7 +27,7 @@ class ChooseAdditionalOptionsTVCell: TableViewCell {
     
     
     
-    
+    var delegate:ChooseAdditionalOptionsTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -106,6 +111,15 @@ extension ChooseAdditionalOptionsTVCell:UICollectionViewDelegate,UICollectionVie
             cell.checkimg.image = UIImage(named: "newcheck")
             
             optionsIndexpathArray.append(indexPath)
+            
+            let option = MySingleton.shared.extraOption[indexPath.row]
+            let selectedOption = AdditionalOption(title: option.option_name,price: option.option_price,currency: option.option_currency)
+            selectedOptions.append(selectedOption)
+            
+            totlConvertedGrand += (Double(selectedOption.price ?? "") ?? 0.0)
+            
+            
+            delegate?.didTapOnAdditionalOptionasBtnAction(cell: self)
         }
     }
     
@@ -119,6 +133,16 @@ extension ChooseAdditionalOptionsTVCell:UICollectionViewDelegate,UICollectionVie
                 optionsIndexpathArray.remove(at: index)
             }
             
+            
+            let option = MySingleton.shared.extraOption[indexPath.row]
+            let deselectedOption = AdditionalOption(title: option.option_name, price: option.option_price,currency: option.option_currency)
+            if let index = selectedOptions.firstIndex(where: { $0.title == deselectedOption.title && $0.price == deselectedOption.price && $0.currency == deselectedOption.currency }) {
+                selectedOptions.remove(at: index)
+            }
+            
+            totlConvertedGrand -= (Double(deselectedOption.price ?? "") ?? 0.0)
+          
+            delegate?.didTapOnAdditionalOptionasBtnAction(cell: self)
         }
     }
     

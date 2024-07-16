@@ -51,7 +51,12 @@ class TransferBookingVM {
         BASE_URL = ""
         self.view?.showLoader()
         
-        ServiceManager.postOrPutApiCall(endPoint: urlString,parameters: parms, resultType: TransferPrePaymentConfModel.self, p:dictParam) { sucess, result, errorMessage in
+        print(urlstr)
+        
+        
+        ServiceManager.getApiCall(endPoint: urlstr,urlParams: parms as? Dictionary<String, String> ,parameters: parms as NSDictionary, resultType: TransferPrePaymentConfModel.self, p:dictParam){ sucess, result, errorMessage in
+        
+      //  ServiceManager.getApiCallForJson(endPoint: urlString,parameters: parms, resultType: TransferPrePaymentConfModel.self, p:dictParam) { sucess, result, errorMessage in
             
             DispatchQueue.main.async {
                 self.view?.hideLoader()
@@ -76,11 +81,12 @@ class TransferBookingVM {
         BASE_URL = ""
         self.view?.showLoader()
         
-        ServiceManager.postOrPutApiCall(endPoint: urlString,parameters: parms, resultType: TransferPrePaymentConfModel.self, p:dictParam) { sucess, result, errorMessage in
+        ServiceManager.getApiCall(endPoint: urlstr,urlParams: parms as? Dictionary<String, String> ,parameters: parms as NSDictionary, resultType: TransferPrePaymentConfModel.self, p:dictParam) { sucess, result, errorMessage in
             
             DispatchQueue.main.async {
                 self.view?.hideLoader()
                 if sucess {
+                    
                     guard let response = result else {return}
                     BASE_URL = BASE_URL1
                     self.view.preSendtoPaymentResponse(response: response)

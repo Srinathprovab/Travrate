@@ -9,10 +9,10 @@ import Foundation
 
 
 protocol CarBookingVMDelegate : BaseViewModelProtocol {
-    func carBookingdetails(response : CarSearchModel)
+    func carBookingdetails(response : CarSecureBookingMode)
     func carPrePaymentDetails(response : carPrePaymrntConfirmationModel)
     func carSendtoPaymentDetails(response : CarSearchModel)
-    func carSecureBookingDetails(response : CarSearchModel)
+    func carSecureBookingDetails(response : CarSecureBookingMode)
 }
 
 class CarBookingVM {
@@ -29,7 +29,9 @@ class CarBookingVM {
         
         self.view?.showLoader()
         
-        ServiceManager.postOrPutApiCall(endPoint: ApiEndpoints.car_booking,parameters: parms, resultType: CarSearchModel.self, p:dictParam) { sucess, result, errorMessage in
+        
+        
+        ServiceManager.postOrPutApiCall(endPoint: ApiEndpoints.car_booking,parameters: parms, resultType: CarSecureBookingMode.self, p:dictParam) { sucess, result, errorMessage in
             
             DispatchQueue.main.async {
                 self.view?.hideLoader()
@@ -51,7 +53,7 @@ class CarBookingVM {
         BASE_URL = ""
         self.view?.showLoader()
         
-        ServiceManager.postOrPutApiCall(endPoint: urlstr, resultType: carPrePaymrntConfirmationModel.self, p:dictParam) { sucess, result, errorMessage in
+        ServiceManager.postOrPutApiCall(endPoint: urlstr, urlParams: parms as? Dictionary<String, String>,resultType: carPrePaymrntConfirmationModel.self, p:dictParam) { sucess, result, errorMessage in
             
             DispatchQueue.main.async {
                 self.view?.hideLoader()
@@ -96,7 +98,9 @@ class CarBookingVM {
         BASE_URL = ""
         self.view?.showLoader()
         
-        ServiceManager.postOrPutApiCall(endPoint: urlstr, resultType: CarSearchModel.self, p:dictParam) { sucess, result, errorMessage in
+        //        ServiceManager.postOrPutApiCall(endPoint: urlstr,urlParams: parms as? Dictionary<String, String>, resultType: CarSecureBookingMode.self, p:dictParam) { sucess, result, errorMessage in
+        //
+        ServiceManager.postOrPutApiCall(endPoint: urlstr,urlParams: parms as? Dictionary<String, String> ,parameters: parms as NSDictionary, resultType: CarSecureBookingMode.self, p:dictParam){ sucess, result, errorMessage in
             
             DispatchQueue.main.async {
                 self.view?.hideLoader()

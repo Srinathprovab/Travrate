@@ -164,7 +164,7 @@ class MySingleton {
     var selected_meals_codeArray = [String]()
     var selected_special_assistance_codeArray = [String]()
     var addon_servicesArray = [String]()
-    var addOptions =  [AddOptions]()
+   // var addOptions =  [AddOptions]()
     
     var visaNationalityCode = String()
     var visaResidencyCode = String()
@@ -266,6 +266,8 @@ class MySingleton {
     var SportsPaymentSelectionArray = [SportsPaymentSelection]()
     var sports_passengers = [Sports_passengers]()
     var extraOption = [Extra_option]()
+    var extraOptionPrice = String()
+    var carselectedoption = String()
     
     //View Models
     var loginvm:LoginViewModel?

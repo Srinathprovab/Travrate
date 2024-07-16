@@ -129,6 +129,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cancelcircle" translatesAutoresizingMaskIntoConstraints="NO" id="ciU-yR-gVP">
                                 <rect key="frame" x="10" y="162" width="24" height="24"/>
+                                <color key="tintColor" name="BooknowBtnColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="MkM-U5-roK"/>
                                     <constraint firstAttribute="width" constant="24" id="wLU-bE-iTj"/>
@@ -142,6 +143,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cancelcircle" translatesAutoresizingMaskIntoConstraints="NO" id="ZEv-A1-Cmh">
                                 <rect key="frame" x="10" y="196" width="24" height="24"/>
+                                <color key="tintColor" name="BooknowBtnColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="c2l-SQ-pXc"/>
                                     <constraint firstAttribute="height" constant="24" id="cFX-lI-Jkc"/>

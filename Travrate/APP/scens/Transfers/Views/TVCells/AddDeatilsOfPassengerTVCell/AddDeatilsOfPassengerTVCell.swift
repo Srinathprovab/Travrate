@@ -120,12 +120,14 @@ class AddDeatilsOfPassengerTVCell: TableViewCell {
         
         
         if cellInfo?.title == "Passenger 1" {
-            closeBtn.isHidden = true
             passengerView.isHidden = false
             setAttributedText(str1: "Passenger 1", str2: "  Lead Passanger")
             travelerArray[self.indexposition ].laedpassenger = "1"
             expandViewBool = false
         }
+        
+        print("indexposition indexposition indexposition === \(indexposition)")
+        closeBtn.isHidden = self.indexposition == 0 ?  true : false
     }
     
     
@@ -143,7 +145,7 @@ class AddDeatilsOfPassengerTVCell: TableViewCell {
         setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name*", placeholder: "Last Name*")
         setupTextField(txtField: emailTF, tag1: 2, label: "Email Id*", placeholder: "Email Address*")
         setupTextField(txtField: mobileTF, tag1: 2, label: "Mobile", placeholder: "Mobile Number")
-        setupTextField(txtField: mobileTF, tag1: 2, label: "+965", placeholder: "Code")
+        setupTextField(txtField: countrycodeTF, tag1: 2, label: "+965", placeholder: "Code")
         
         
         setupTitleDropDown()

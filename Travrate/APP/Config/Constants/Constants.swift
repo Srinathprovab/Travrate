@@ -228,6 +228,7 @@ var multitripscodeArray = [String]()
 var zonetitleArray = [String]()
 var zonecodeArray = [String]()
 var optionsIndexpathArray: [IndexPath] = []
+var selectedOptions: [AdditionalOption] = []
 
 //CAR RENTAL
 var fuleArray = [String]()

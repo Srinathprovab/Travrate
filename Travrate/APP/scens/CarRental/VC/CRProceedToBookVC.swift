@@ -72,6 +72,26 @@ class CRProceedToBookVC: BaseTableVC, CarPreBookingVMDelegate {
         commonTableView.reloadData()
     }
     
+    
+    //MARK: - didTapOnAdditionalOptionasBtnAction
+    override func didTapOnAdditionalOptionasBtnAction(cell: ChooseAdditionalOptionsTVCell) {
+        reloadPriceSummaryTVCell()
+    }
+    
+    func reloadPriceSummaryTVCell() {
+        if let indexPath = indexPathForPriceSummaryTVCell() {
+            commonTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func indexPathForPriceSummaryTVCell() -> IndexPath? {
+        if let row = MySingleton.shared.tablerow.firstIndex(where: { $0.cellType == .CRFareSummaryTVCell }) {
+            return IndexPath(row: row, section: 0)
+        }
+        return nil
+    }
+    
+    
 }
 
 
@@ -136,7 +156,7 @@ extension CRProceedToBookVC {
         MySingleton.shared.carresultindex = "\(response.post_data?.result_index ?? "")"
         MySingleton.shared.carresulttoken = "\(response.post_data?.result_token ?? "")"
         
-        
+        totlConvertedGrand = Double(response.result_token?.product?[0].total ?? "") ?? 0.0
         MySingleton.shared.car_extra_option_price = response.extra_option_price ?? ""
         MySingleton.shared.car_markup_value = "\(response.result_token?.markup?.value ?? 0)"
         MySingleton.shared.car_discount_value = "\(response.result_token?.discount?.value ?? 0)"
@@ -172,7 +192,7 @@ extension CRProceedToBookVC {
         
         
         MySingleton.shared.carproductarray.forEach { i in
-            MySingleton.shared.tablerow.append(TableRow(moreData: i,cellType:.CRFareSummaryTVCell))
+            MySingleton.shared.tablerow.append(TableRow(key:"proceedbooking",moreData: i,cellType:.CRFareSummaryTVCell))
         }
         
         

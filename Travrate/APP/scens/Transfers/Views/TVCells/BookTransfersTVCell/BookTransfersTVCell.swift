@@ -277,6 +277,9 @@ extension BookTransfersTVCell {
             self.depTimeTF.resignFirstResponder()
             self.retTimeTF.resignFirstResponder()
             
+            self.depTimeTF.textColor = .TitleColor
+            self.retTimeTF.textColor = .TitleColor
+            
         }
         
         delegate?.doneTimePicker(cell: self)
@@ -284,18 +287,21 @@ extension BookTransfersTVCell {
     
     @objc func cancelTimePicker() {
         
-        if cellInfo?.key == "oneway" {
-            self.depTimeTF.textColor = .TitleColor
-            self.depTimeTF.resignFirstResponder()
-            
-        }else {
-            
-            self.depTimeTF.textColor = .TitleColor
-            self.retTimeTF.textColor = .TitleColor
-            
-            self.depTimeTF.resignFirstResponder()
-            self.retTimeTF.resignFirstResponder()
-        }
+//        if cellInfo?.key == "oneway" {
+//            self.depTimeTF.textColor = .TitleColor
+//            self.depTimeTF.resignFirstResponder()
+//            
+//        }else {
+//            
+//            self.depTimeTF.textColor = .TitleColor
+//            self.retTimeTF.textColor = .TitleColor
+//            
+//            self.depTimeTF.resignFirstResponder()
+//            self.retTimeTF.resignFirstResponder()
+//        }
+        self.depTimeTF.resignFirstResponder()
+        self.retTimeTF.resignFirstResponder()
+        
         delegate?.cancelTimePicker(cell: self)
     }
 }

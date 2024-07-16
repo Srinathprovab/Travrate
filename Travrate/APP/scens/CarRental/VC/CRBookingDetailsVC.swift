@@ -8,7 +8,7 @@
 import UIKit
 
 class CRBookingDetailsVC: BaseTableVC, CarBookingVMDelegate {
-    
+   
     
     
     @IBOutlet weak var gifimg: UIImageView!
@@ -37,9 +37,7 @@ class CRBookingDetailsVC: BaseTableVC, CarBookingVMDelegate {
     var appref = String()
     
     override func viewWillAppear(_ animated: Bool) {
-        if callapibool == true {
-            callAPI()
-        }
+        addObserver()
     }
     
     
@@ -243,16 +241,7 @@ class CRBookingDetailsVC: BaseTableVC, CarBookingVMDelegate {
     }
     
     
-    func gotoSelectPaymentMethodsVC() {
-        
-        callapibool = true
-        guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        vc.cardetails = self.cardetails
-        self.present(vc, animated: true)
-        
-    }
-    
+   
     
     override func didTapOnCheckBoxBtnAction(cell:TermsAgreeTVCell) {
         if cell.checkBool {
@@ -314,7 +303,7 @@ extension CRBookingDetailsVC {
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         
         MySingleton.shared.carproductarray.forEach { i in
-            MySingleton.shared.tablerow.append(TableRow(moreData: i,cellType:.CRFareSummaryTVCell))
+            MySingleton.shared.tablerow.append(TableRow(key:"bookingdetails",moreData: i,cellType:.CRFareSummaryTVCell))
             
         }
         
@@ -343,7 +332,7 @@ extension CRBookingDetailsVC {
     
     func callcarBookingAPI() {
         
-        MySingleton.shared.loderString = "payment"
+        MySingleton.shared.loderString = "fdetails"
         MySingleton.shared.afterResultsBool = true
         loderBool = true
         showLoadera()
@@ -370,12 +359,14 @@ extension CRBookingDetailsVC {
         MySingleton.shared.payload["search_id"] = MySingleton.shared.carsearchid
         
         
+        gotoSelectPaymentMethodsVC(hiturl: "")
+        
        // MySingleton.shared.carBookingVM?.CALL_CAR_BOOKING_API(dictParam: MySingleton.shared.payload)
-        gotoSelectPaymentMethodsVC()
+       
     }
     
     
-    func carBookingdetails(response: CarSearchModel) {
+    func carBookingdetails(response: CarSecureBookingMode) {
         
         DispatchQueue.main.async {
             MySingleton.shared.carBookingVM?.CALL_CAR_PRE_PAYMENT_BOOKING_API(dictParam: [:], urlstr: response.hit_url ?? "")
@@ -385,13 +376,30 @@ extension CRBookingDetailsVC {
     
     func carPrePaymentDetails(response: carPrePaymrntConfirmationModel) {
         
+        hideLoadera()
+        loderBool = false
+        
+        MySingleton.shared.extraOptionPrice = response.data?.extra_option_price ?? ""
+        MySingleton.shared.carselectedoption = response.data?.selected_option ?? ""
+        
+        
+        
         appref = response.data?.app_reference ?? ""
-        var hiturl = "\(BASE_URL)car/send_to_payment/\(response.data?.app_reference ?? "")/\(response.data?.search_id ?? "")"
+        let hiturlstr = "\(BASE_URL)car/send_to_payment/\(response.data?.app_reference ?? "")/\(response.data?.search_id ?? "")"
+        MySingleton.shared.PaymentSelectionArray = response.payment_selection ?? []
+
         
-        DispatchQueue.main.async {
-            MySingleton.shared.carBookingVM?.CALL_CAR_SEND_TO_PAYMENT_API(dictParam: [:], urlstr: hiturl)
-        }
+        gotoSelectPaymentMethodsVC(hiturl: hiturlstr)
         
+    }
+    
+    func gotoSelectPaymentMethodsVC(hiturl:String) {
+        
+        callapibool = true
+        guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.cardetails = self.cardetails
+        self.present(vc, animated: false)
         
     }
     
@@ -404,7 +412,7 @@ extension CRBookingDetailsVC {
     }
     
     
-    func carSecureBookingDetails(response: CarSearchModel) {
+    func carSecureBookingDetails(response: CarSecureBookingMode) {
         hideLoadera()
         loderBool = false
         print(response.hit_url)
@@ -421,6 +429,72 @@ extension CRBookingDetailsVC {
         self.present(vc, animated: true)
     }
     
+    
+    
+}
+
+
+
+//MARK: - addObserver
+extension CRBookingDetailsVC {
+    
+    func addObserver() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
+        
+        
+        if MySingleton.shared.callboolapi == true {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
+                callAPI()
+            }
+            
+            
+        }
+    }
+    
+    
+    
+    @objc func reload() {
+        DispatchQueue.main.async {[self] in
+            commonTableView.reloadData()
+        }
+    }
+    
+    @objc func nointrnetreload() {
+        
+        DispatchQueue.main.async {[self] in
+            commonTableView.reloadData()
+        }
+    }
+    
+    //MARK: - resultnil
+    @objc func resultnil() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "noresult"
+        self.present(vc, animated: true)
+    }
+    
+    
+    func gotoNoInternetScreen(keystr:String) {
+        callapibool = true
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.key = keystr
+        self.present(vc, animated: false)
+    }
+    
+    //MARK: - nointernet
+    @objc func nointernet() {
+        
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "nointernet"
+        self.present(vc, animated: true)
+    }
     
     
 }
