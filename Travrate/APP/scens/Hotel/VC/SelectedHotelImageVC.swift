@@ -10,6 +10,7 @@ import UIKit
 class SelectedHotelImageVC: UIViewController {
 
     
+    
     @IBOutlet weak var img: UIImageView!
     
     
@@ -45,6 +46,8 @@ class SelectedHotelImageVC: UIViewController {
     
 
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {callapibool = false
+        callapibool = false
+        MySingleton.shared.callboolapi = false
         dismiss(animated: false)
     }
 

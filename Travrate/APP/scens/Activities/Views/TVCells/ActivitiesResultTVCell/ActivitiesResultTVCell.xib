@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="179" id="KGk-i7-Jjw" customClass="ActivitiesResultTVCell" customModule="Travrate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="445" height="380"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="445" height="380"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NK6-Iy-fbx" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                        <rect key="frame" x="15" y="10" width="415" height="370"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-vu-9eV">
+                                <rect key="frame" x="0.0" y="0.0" width="415" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="IE5-15-FEL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oG3-9Q-bjv">
+                                <rect key="frame" x="15" y="230" width="385" height="19.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="loc" translatesAutoresizingMaskIntoConstraints="NO" id="foz-fn-F2M">
+                                <rect key="frame" x="15" y="259.33333333333331" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="iZn-Of-I1d"/>
+                                    <constraint firstAttribute="width" constant="16" id="yyH-mf-vtF"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpK-CB-FhV">
+                                <rect key="frame" x="36" y="259.33333333333337" width="40.666666666666657" height="19.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" name="FareColor2"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3E-kJ-FlX">
+                                <rect key="frame" x="359.33333333333331" y="285.66666666666669" width="40.666666666666686" height="19.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ff-ii-kkG">
+                                <rect key="frame" x="300" y="315" width="100" height="35"/>
+                                <color key="backgroundColor" name="BooknowBtnColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Rlg-i5-zrV"/>
+                                    <constraint firstAttribute="height" constant="35" id="pmo-Fn-2ec"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Details">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oG3-9Q-bjv" firstAttribute="leading" secondItem="NK6-Iy-fbx" secondAttribute="leading" constant="15" id="1W6-gd-4v4"/>
+                            <constraint firstAttribute="bottom" secondItem="8Ff-ii-kkG" secondAttribute="bottom" constant="20" id="2Rq-5D-HCe"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="370" id="7cF-MO-yN8"/>
+                            <constraint firstItem="rDr-vu-9eV" firstAttribute="top" secondItem="NK6-Iy-fbx" secondAttribute="top" id="8FB-Tz-vp5"/>
+                            <constraint firstAttribute="bottom" secondItem="bpK-CB-FhV" secondAttribute="bottom" constant="91.329999999999998" id="CGf-nd-Jti"/>
+                            <constraint firstItem="oG3-9Q-bjv" firstAttribute="top" secondItem="rDr-vu-9eV" secondAttribute="bottom" constant="10" id="Fg7-Ou-ENG"/>
+                            <constraint firstAttribute="trailing" secondItem="E3E-kJ-FlX" secondAttribute="trailing" constant="15" id="Fo2-VV-83q"/>
+                            <constraint firstItem="bpK-CB-FhV" firstAttribute="leading" secondItem="foz-fn-F2M" secondAttribute="trailing" constant="5" id="GPh-o6-spv"/>
+                            <constraint firstItem="foz-fn-F2M" firstAttribute="top" secondItem="oG3-9Q-bjv" secondAttribute="bottom" constant="10" id="Ldx-Bh-xVd"/>
+                            <constraint firstAttribute="trailing" secondItem="rDr-vu-9eV" secondAttribute="trailing" id="S8t-Mf-VKE"/>
+                            <constraint firstItem="bpK-CB-FhV" firstAttribute="top" secondItem="foz-fn-F2M" secondAttribute="top" id="cB1-e1-Vpc"/>
+                            <constraint firstAttribute="trailing" secondItem="oG3-9Q-bjv" secondAttribute="trailing" constant="15" id="hcg-tO-r7b"/>
+                            <constraint firstAttribute="trailing" secondItem="8Ff-ii-kkG" secondAttribute="trailing" constant="15" id="iYa-Vn-ct4"/>
+                            <constraint firstItem="foz-fn-F2M" firstAttribute="leading" secondItem="NK6-Iy-fbx" secondAttribute="leading" constant="15" id="lde-Hg-wmd"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bpK-CB-FhV" secondAttribute="trailing" constant="60" id="mLM-Om-IjP"/>
+                            <constraint firstItem="rDr-vu-9eV" firstAttribute="leading" secondItem="NK6-Iy-fbx" secondAttribute="leading" id="xAe-fz-RYN"/>
+                            <constraint firstItem="8Ff-ii-kkG" firstAttribute="top" secondItem="E3E-kJ-FlX" secondAttribute="bottom" constant="10" id="zgu-Ln-i2W"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="BorderColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="NK6-Iy-fbx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="FJ0-0t-XGB"/>
+                    <constraint firstItem="NK6-Iy-fbx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="WTp-yR-8Wm"/>
+                    <constraint firstAttribute="bottom" secondItem="NK6-Iy-fbx" secondAttribute="bottom" id="b7m-LE-5uq"/>
+                    <constraint firstAttribute="trailing" secondItem="NK6-Iy-fbx" secondAttribute="trailing" constant="15" id="rxJ-j5-qTQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="activityNamelbl" destination="oG3-9Q-bjv" id="U33-Es-hNk"/>
+                <outlet property="activityimg" destination="rDr-vu-9eV" id="zIw-Hc-YOE"/>
+                <outlet property="activityloclbl" destination="bpK-CB-FhV" id="MXJ-Ad-yni"/>
+                <outlet property="detailsBtn" destination="8Ff-ii-kkG" id="Ok3-9f-8F8"/>
+                <outlet property="kwdlbl" destination="E3E-kJ-FlX" id="Mhp-nI-AMg"/>
+            </connections>
+            <point key="canvasLocation" x="141.22137404580153" y="66.901408450704224"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="loc" width="20" height="20"/>
+        <namedColor name="BooknowBtnColor">
+            <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BorderColor">
+            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FareColor2">
+            <color red="0.15299999713897705" green="0.62000000476837158" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

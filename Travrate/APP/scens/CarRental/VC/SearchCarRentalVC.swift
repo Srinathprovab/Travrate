@@ -66,15 +66,16 @@ class SearchCarRentalVC: BaseTableVC {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
+
         
         if cell.pickupDateTF.isFirstResponder == true {
             defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.pickuplocDate)
             defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.dropuplocDate)
-            cell.dropupDatePicker.date = cell.pickupDatePicker.date
+
+            cell.dropupDatePicker.minimumDate = cell.pickupDatePicker.date
+            
             
         }else {
-            
-            
             
             defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.pickuplocDate)
             defaults.set(formatter.string(from: cell.dropupDatePicker.date), forKey: UserDefaultsKeys.dropuplocDate)

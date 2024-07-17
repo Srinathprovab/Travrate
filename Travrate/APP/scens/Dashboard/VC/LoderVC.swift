@@ -8,7 +8,7 @@
 import UIKit
 
 class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoderViewModelDelegate {
-   
+    
     
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var gifimg: UIImageView!
@@ -54,23 +54,23 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
         }else {
             flightinfo.isHidden = true
             hotelinfoView.isHidden = true
-           img.image = UIImage(named: "travlogo")
+            img.image = UIImage(named: "travlogo")
             waitView.isHidden = false
-           // img.sd_setImage(with: URL(string: "MySingleton.shared.loderimgurl" ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            // img.sd_setImage(with: URL(string: "MySingleton.shared.loderimgurl" ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
         }
         
         
     }
     
     
-   
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-       
+        
         img.layer.cornerRadius = 40
         loadGifFrames()
         startGifAnimation()
@@ -88,13 +88,13 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             
             flightinfo.isHidden = false
             hotelinfoView.isHidden = true
-           
-           
+            
+            
             img.sd_setImage(with: URL(string: searchdata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
-           
             
-    
+            
+            
             let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
             if journyType == "oneway" {
                 
@@ -126,6 +126,10 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             
             sportsView.isHidden = false
             
+        }else if tabselect == "Activities" {
+            
+            sportsView.isHidden = false
+            
         }else {
             
             flightinfo.isHidden = true
@@ -137,12 +141,12 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             checkinlbl.text = searchHoteldata?.check_in ?? ""
             checkoutlbl.text = searchHoteldata?.check_out ?? ""
             guestlbl.text = searchHoteldata?.adult?[0] ?? ""
-           
+            
             // Example usage:
             let checkInDate = defaults.string(forKey: UserDefaultsKeys.checkin) ?? ""
             let checkOutDate = defaults.string(forKey: UserDefaultsKeys.checkout) ?? ""
             let nights = numberOfNights(checkInDate: checkInDate, checkOutDate: checkOutDate)
-           
+            
             MySingleton.shared.totalnights = "\(nights)"
             if MySingleton.shared.totalnights == "0" || MySingleton.shared.totalnights == "1" {
                 self.nightslbl.text = "\(nights) Night"
@@ -151,7 +155,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             }
             
             roomslbl.text = searchHoteldata?.rooms ?? ""
-           
+            
             
         }
     }
@@ -190,7 +194,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
         timer?.invalidate()
     }
     
-
+    
     
     func numberOfNights(checkInDate: String, checkOutDate: String) -> Int {
         // Create date formatter
@@ -241,14 +245,14 @@ extension LoderVC {
             sporteventlbl.text = MySingleton.shared.sportsTeamName
             sportvenulbl.text = MySingleton.shared.sportsVenuName
             sportdateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")) To \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy"))"
-           
+            
         }else if tabselect == "CarRental" {
             
             
             guard let pickuplocationname =  defaults.string(forKey: UserDefaultsKeys.pickuplocationname) else {return}
             guard let pickuplocDate =  defaults.string(forKey: UserDefaultsKeys.pickuplocDate) else {return}
             guard let dropuplocDate =  defaults.string(forKey: UserDefaultsKeys.dropuplocDate) else {return}
-           
+            
             
             carrentalView.isHidden = false
             carRentalNamelbl.text = pickuplocationname
@@ -268,11 +272,38 @@ extension LoderVC {
             sporteventlbl.text = fromcity
             sportvenulbl.text = tocity
             sportdateslbl.text = journytype == "oneway" ? "\(fromdate ?? "")": "\(fromdate ?? "") to \(todate ?? "")"
-           
-           
+            
+            
+            
+        }else if tabselect == "Activities" {
+            
+            
+            let cityname = defaults.string(forKey: UserDefaultsKeys.activitescityname)
+            let fromdate = defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate)
+            let todate = defaults.string(forKey: UserDefaultsKeys.calActivitesRetDate)
+            let adultcount = defaults.integer(forKey: UserDefaultsKeys.activitesadultCount)
+            let childcount = defaults.integer(forKey: UserDefaultsKeys.activiteschildCount)
+            let infantcount = defaults.integer(forKey: UserDefaultsKeys.activitesinfantsCount)
+            
+            
+            
+            sportsView.isHidden = false
+            sporteventlbl.text = cityname
+            sportvenulbl.text = "\(fromdate ?? "") To \(todate ?? "")"
+            var labelText = adultcount > 1 ? "Adults: \(adultcount)" : "Adult: \(adultcount)"
+            if childcount > 0 {
+                labelText += ", Child: \(childcount)"
+            }
+            if infantcount > 0 {
+                labelText += ", Infant: \(infantcount)"
+            }
+            sportdateslbl.text = labelText
+            
+            
+            
             
         }else {
-           // MySingleton.shared.hotellodervm?.CALL_HOTEL_LODER_DETAILS_API(dictParam: MySingleton.shared.payload)
+            // MySingleton.shared.hotellodervm?.CALL_HOTEL_LODER_DETAILS_API(dictParam: MySingleton.shared.payload)
             
             
             do {

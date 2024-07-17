@@ -121,6 +121,19 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
         roomcountlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectPersons) ?? "")"
         nationalitylbl.text = "\(defaults.string(forKey: UserDefaultsKeys.hnationality) ?? "Select Nationality")"
         
+        
+        
+        
+        
+        fromcityTF.textColor = fromcityTF.text == "City/Location" ? .subtitleNewcolor : .TitleColor
+        updateLabelColor(label: checkinlbl, defaultText: "Add Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: checkoutlbl, defaultText: "Add Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: nationalitylbl, defaultText: "Select Nationality", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        
+        func updateLabelColor(label: UILabel, defaultText: String, defaultColor: UIColor, selectedColor: UIColor) {
+            label.textColor = label.text == defaultText ? defaultColor : selectedColor
+        }
+        
         fromcityTV.delegate = self
         fromcityTV.dataSource = self
         fromcityTV.register(UINib(nibName: "FromCityTVCell", bundle: nil), forCellReuseIdentifier: "cell")
@@ -128,7 +141,6 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
         
         showCheckInDatePicker()
         showCheckoutDatePicker()
-        
         setupnationalityDropDown()
         
     }

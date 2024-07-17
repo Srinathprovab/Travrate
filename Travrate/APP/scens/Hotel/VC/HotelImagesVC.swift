@@ -9,7 +9,7 @@ import UIKit
 
 class HotelImagesVC: UIViewController {
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var imagesCV: UICollectionView!
     
     
@@ -20,6 +20,11 @@ class HotelImagesVC: UIViewController {
         return vc
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect) ?? ""
+    }
+    
+    var tabselect = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +33,9 @@ class HotelImagesVC: UIViewController {
     }
     
     
-    @IBAction func didTapOnBackBtnAction(_ sender: Any) {callapibool = false
+    @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
+        MySingleton.shared.callboolapi = false
         dismiss(animated: true)
     }
     
@@ -39,9 +46,16 @@ extension HotelImagesVC :UICollectionViewDelegate, UICollectionViewDataSource{
     
     
     func setupCV() {
+        
+        
+        if tabselect == "Hotel" {
+            titlelbl.text = "Hotel Images"
+        }else {
+            titlelbl.text = "Activities Images"
+        }
+        
         let nib = UINib(nibName: "HotelImagesCVCell", bundle: nil)
         imagesCV.register(nib, forCellWithReuseIdentifier: "cell")
-        
         
         imagesCV.delegate = self
         imagesCV.dataSource = self
@@ -68,27 +82,49 @@ extension HotelImagesVC :UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return imagesArray.count
+        if tabselect == "Hotel" {
+            return imagesArray.count
+        }else {
+            return MySingleton.shared.activitiesImagesArray.count
+        }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var commonCell = UICollectionViewCell()
         
-        
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HotelImagesCVCell {
-            cell.hotelImg.sd_setImage(with: URL(string: imagesArray[indexPath.row].img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
-            
-            commonCell = cell
+        if tabselect == "Hotel" {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HotelImagesCVCell {
+                cell.hotelImg.sd_setImage(with: URL(string: imagesArray[indexPath.row].img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+                
+                commonCell = cell
+            }
+        }else {
+           
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HotelImagesCVCell {
+                cell.hotelImg.sd_setImage(with: URL(string: MySingleton.shared.activitiesImagesArray[indexPath.row].image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+                
+                commonCell = cell
+            }
         }
+        
+        
         
         return commonCell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? HotelImagesCVCell {
-            gotoSelectedHotelImageVC(imgString: imagesArray[indexPath.row].img ?? "")
+       
+        
+        if tabselect == "Hotel" {
+            if let cell = collectionView.cellForItem(at: indexPath) as? HotelImagesCVCell {
+                gotoSelectedHotelImageVC(imgString: imagesArray[indexPath.row].img ?? "")
+            }
+        }else {
+            if let cell = collectionView.cellForItem(at: indexPath) as? HotelImagesCVCell {
+                gotoSelectedHotelImageVC(imgString: MySingleton.shared.activitiesImagesArray[indexPath.row].image ?? "")
+            }
         }
     }
  

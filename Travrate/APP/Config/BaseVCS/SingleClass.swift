@@ -268,6 +268,14 @@ class MySingleton {
     var extraOption = [Extra_option]()
     var extraOptionPrice = String()
     var carselectedoption = String()
+    var activityList = [Activity]()
+    var activites_booking_source = String()
+    var activites_searchid = String()
+    var activites_currency = String()
+    var activity_code = String()
+    var activitiesImagesArray = [Activity_images]()
+    var activity_details :Activity_details?
+    
     
     //View Models
     var loginvm:LoginViewModel?
@@ -316,6 +324,9 @@ class MySingleton {
     var preTransfersearchVM:PreTransfersearchVM?
     var transferPreBookingVM:TransferPreBookingVM?
     var transferBookingVM:TransferBookingVM?
+    var getActivitesDestinationListVM:GetActivitesDestinationListVM?
+    var preactivitysearchVM:MobilepreactivitysearchVM?
+    var activityDetailsVM:ActivityDetailsVM?
     
     
     //TIMER

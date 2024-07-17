@@ -184,6 +184,16 @@ enum TVCellType {
     case CarrentalPriceSliderTVCell
     
     
+    //ACTIVITES
+    case ActivitiesSearchTVCell
+    case ActivitiesResultTVCell
+    case ActivitiesImagesTVCell
+    case ActivitiesDetailsTVCell
+    
+    
+    
+    
+    
     
     
 }

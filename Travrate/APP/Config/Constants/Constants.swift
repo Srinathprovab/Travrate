@@ -332,6 +332,11 @@ struct ApiEndpoints {
     static let transfers_booking = "transfers/booking"
    
     
+    //Activites
+    static let ajax_get_activity_destination_list = "ajax/get_activity_destination_list"
+    static let general_mobile_pre_activity_search = "general/mobile_pre_activity_search"
+    static let activity_search = "activity/search"
+    static let activity_activity_detail = "activity/activity_detail"
     
 }
 
@@ -494,6 +499,19 @@ struct UserDefaultsKeys {
     static var dropuplocationname = "dropuplocationname"
     static var dropuplocationcode = "dropuplocationcode"
     static var cardriverage = "cardriverage"
+    
+    
+    
+    //ACTIVITES
+    static var calActivitesDepDate = "calActivitesDepDate"
+    static var calActivitesRetDate = "calActivitesRetDate"
+    static var activitescityname = "activitescityname"
+    static var activitescityid = "activitescityid"
+    static var activitesadultCount = "ativitesadultCount"
+    static var activiteschildCount = "activiteschildCount"
+    static var activitesinfantsCount = "activitesinfantsCount"
+    
+    
 }
 
 
@@ -503,6 +521,8 @@ struct sessionMgrDefaults {
     static var loggedInStatus = "email"
     static var globalAT = "mobile_no"
     static var Base_url = "accesstoken"
+   
+    
 }
 
 

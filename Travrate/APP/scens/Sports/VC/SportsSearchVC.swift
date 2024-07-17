@@ -55,7 +55,7 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
         if cell.depDateTF.isFirstResponder == true {
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
-            cell.retDatePicker.date = cell.depDatePicker.date
+            cell.retDatePicker.minimumDate = cell.depDatePicker.date
             
             MySingleton.shared.sportFromDate = cell.depDatelbl.text ?? ""
             MySingleton.shared.sportToDate = cell.retDatelbl.text ?? ""

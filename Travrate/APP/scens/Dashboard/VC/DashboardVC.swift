@@ -115,6 +115,12 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     
     override func didTapOnHotelTabSelect(cell: TabSelectTVCell) {
         defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
+        
+        defaults.set("City/Location", forKey: UserDefaultsKeys.locationcity)
+        defaults.set("Add Date", forKey: UserDefaultsKeys.checkin)
+        defaults.set("Add Date", forKey: UserDefaultsKeys.checkout)
+        defaults.set("Select Nationality", forKey: UserDefaultsKeys.hnationality)
+        
         gotoSearchHotelVC()
     }
     
@@ -171,8 +177,12 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     
     override func didTapOnActivitiesbtnAction(cell: TabSelectTVCell) {
         defaults.set("Activities", forKey: UserDefaultsKeys.tabselect)
-        // gotoAutoPaymentVC()
-        showToast(message: "Still Under Development")
+        defaults.set("Select Destination City", forKey: UserDefaultsKeys.activitescityname)
+        defaults.set("Select Date", forKey: UserDefaultsKeys.calActivitesDepDate)
+        defaults.set("Select Date", forKey: UserDefaultsKeys.calActivitesRetDate)
+        
+        gotoActivitiesSearchVC()
+       
     }
     
     override func didTapOnInsurencebtnAction(cell:TabSelectTVCell) {
@@ -270,9 +280,9 @@ extension DashboardVC {
     
     
     
-    func gotoAutoPaymentVC() {
+    func gotoActivitiesSearchVC() {
         callapibool = true
-        guard let vc = AutoPaymentVC.newInstance.self else {return}
+        guard let vc = ActivitiesSearchVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }

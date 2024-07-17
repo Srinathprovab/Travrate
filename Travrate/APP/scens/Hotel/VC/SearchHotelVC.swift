@@ -74,7 +74,7 @@ class SearchHotelVC: BaseTableVC {
         if cell.checkinTF.isFirstResponder == true {
             defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
             defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkout)
-            cell.checkoutDatePicker.date = cell.checkinDatePicker.date
+            cell.checkoutDatePicker.minimumDate = cell.checkinDatePicker.date
         }else {
             defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
             defaults.set(formatter.string(from: cell.checkoutDatePicker.date), forKey: UserDefaultsKeys.checkout)

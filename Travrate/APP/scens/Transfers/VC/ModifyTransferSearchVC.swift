@@ -79,7 +79,7 @@ class ModifyTransferSearchVC: BaseTableVC {
         if cell.depDateTF.isFirstResponder == true {
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.transfercalDepDate)
             defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.transfercalRetDate)
-            cell.retDatePicker.date = cell.depDatePicker.date
+            cell.retDatePicker.minimumDate = cell.depDatePicker.date
             
         }else {
             
