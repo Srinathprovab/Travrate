@@ -66,6 +66,10 @@ class ActivitiesDetailsVC: BaseTableVC, ActivityDetailsVMDelagate {
     }
     
     
+    //MARK: - didTapOnActivitiesBtnsAction  ActivitiesDetailsTVCell
+    override func didTapOnActivitiesBtnsAction(cell: ActivitiesDetailsTVCell) {
+        //commonTableView.reloadData()
+    }
     
     
     
@@ -106,9 +110,9 @@ extension ActivitiesDetailsVC {
             destinationcitylbl.text = response.data?.activity_search_params?.activity_destination
             dateslbl.text = "\(response.data?.activity_search_params?.from_date ?? "") To \(response.data?.activity_search_params?.to_date ?? "")"
             
-            var adultcount = Int(response.data?.activity_search_params?.adult ?? "") ?? 0
-            var childcount = Int(response.data?.activity_search_params?.child ?? "") ?? 0
-            var infantcount = Int(response.data?.activity_search_params?.infant ?? "") ?? 0
+            let adultcount = Int(response.data?.activity_search_params?.adult ?? "") ?? 0
+            let childcount = Int(response.data?.activity_search_params?.child ?? "") ?? 0
+            let infantcount = Int(response.data?.activity_search_params?.infant ?? "") ?? 0
             var labelText = adultcount > 1 ? "Adults: \(adultcount)" : "Adult: \(adultcount)"
             if childcount > 0 {
                 labelText += ", Child: \(childcount)"
