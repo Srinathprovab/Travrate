@@ -88,6 +88,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     
     //MARK: - PaymentTypeTVCell
     override func didTapOnPayNowBtnAction(cell: PaymentTypeTVCell) {
+    
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
@@ -923,6 +924,7 @@ extension SelectPaymentMethodsVC {
     
     
     func setupCarRentalTVCells() {
+       
         MySingleton.shared.tablerow.removeAll()
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
@@ -976,7 +978,6 @@ extension SelectPaymentMethodsVC {
     func carSendtoPaymentDetails(response: CarSearchModel) {
         
         
-        
         let hit_url = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/secure_booking/\(appref)"
         
         DispatchQueue.main.async {
@@ -1019,7 +1020,6 @@ extension SelectPaymentMethodsVC {
     
     
     func gotoBookingConfirmedVC() {
-        
         
         callapibool = true
         guard let vc = BookingConfirmedVC.newInstance.self else {return}
@@ -1116,6 +1116,14 @@ extension SelectPaymentMethodsVC {
     func preSendtoPaymentResponse(response: TransferPrePaymentConfModel) {
         print("=== response.hit_url  ====")
         print(response.hit_url ?? "")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {[self] in
+            loderBool = false
+            hideLoadera()
+            
+            showToast(message: "Booking closed")
+        }
+
     }
     
     
@@ -1135,10 +1143,10 @@ extension SelectPaymentMethodsVC {
         NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
-    //    showLoadera()
+   
         MySingleton.shared.loderString = "fdetails"
         loderBool = true
-        
+        showLoadera()
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
@@ -1152,9 +1160,10 @@ extension SelectPaymentMethodsVC {
             }
         }else if tabselect == "CarRental"{
             
+            loderBool = false
+            hideLoadera()
             DispatchQueue.main.async {[self] in
-                showLoadera()
-                self.callcarBookingAPI()
+                self.setupCarRentalTVCells()
             }
             
             

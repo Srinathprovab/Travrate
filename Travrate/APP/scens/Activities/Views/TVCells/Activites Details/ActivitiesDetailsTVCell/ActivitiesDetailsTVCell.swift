@@ -122,6 +122,7 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
     func setupTV() {
         detailsTV.delegate = self
         detailsTV.dataSource = self
+        detailsTV.register(UINib(nibName: "ActivitiesTypeTVCell", bundle: nil), forCellReuseIdentifier: "type")
         detailsTV.register(UINib(nibName: "ActivitiesDecreptionTVCell", bundle: nil), forCellReuseIdentifier: "desc")
         detailsTV.register(UINib(nibName: "ActivitiesHighlightsTVCell", bundle: nil), forCellReuseIdentifier: "highlightes")
         detailsTV.isScrollEnabled = false
@@ -133,23 +134,16 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
     func updateHeight() {
         
         
-//        switch tapkey {
-//        case "activities":
-//            tvheight.constant = 100
-//            break
-//        case "highlights":
-//            tvheight.constant = 50
-//            break
-//        case "details":
-//            tvheight.constant = 1000
-//            break
-//        default:
-//            
-//            break
-//        }
+        if tapkey == "activities" {
+            tvheight.constant = ((10 * 146 ) + 100)
+        }else if tapkey == "highlights" {
+            tvheight.constant = 500
+        }else {
+            tvheight.constant = 600
+        }
         
         
-        tvheight.constant = 1000
+        
         detailsTV.reloadData()
         self.layoutIfNeeded() // Ensure the layout is updated
     }
@@ -177,13 +171,20 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
         
         if tapkey == "activities" {
             
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "type") as? ActivitiesTypeTVCell {
+                cell.selectionStyle = .none
+                
+                cell.updateHeight()
+                ccell = cell
+            }
+            
         }else if tapkey == "highlights" {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "highlightes") as? ActivitiesHighlightsTVCell {
                 cell.selectionStyle = .none
                 
                 
                 
-               
+                
                 MySingleton.shared.setAttributedTextnew(str1: "Duration : ",
                                                         str2: "\(MySingleton.shared.activity_details?.modalities?[0].duration?.value ?? 0) \((MySingleton.shared.activity_details?.modalities?[0].duration?.metric ?? ""))",
                                                         lbl: cell.durationlbl,
@@ -201,8 +202,8 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
                                                         str1Color: .TitleColor,
                                                         str2Color: .subtitleNewcolor)
                 
-             //   MySingleton.shared.activity_details?.cit
-               
+                //   MySingleton.shared.activity_details?.cit
+                
                 
                 MySingleton.shared.setAttributedTextnew(str1: " Type : ",
                                                         str2: "\(MySingleton.shared.activity_details?.type ?? "")",
@@ -221,7 +222,7 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
                                                         str1Color: .TitleColor,
                                                         str2Color: .subtitleNewcolor)
                 
-    
+                
                 
                 MySingleton.shared.setAttributedTextnew(str1: "Features : ",
                                                         str2: "\(MySingleton.shared.activity_details?.feature ?? "")",

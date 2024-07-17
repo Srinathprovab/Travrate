@@ -427,6 +427,40 @@ class MySingleton {
     
     
     
+    //MARK: - getPaymentList
+    func getPaymentList() {
+        
+        
+        // Get the path to the clist.json file in the Xcode project
+        if let jsonFilePath = Bundle.main.path(forResource: "paymentes", ofType: "json") {
+            do {
+                // Read the data from the file
+                let jsonData = try Data(contentsOf: URL(fileURLWithPath: jsonFilePath))
+                
+                // Decode the JSON data into a dictionary
+                let jsonDictionary = try JSONDecoder().decode([String: [Payment_selection]].self, from: jsonData)
+                
+                // Access the array of countries using the "country_list" key
+                if let payments = jsonDictionary["payment_selection"] {
+                    self.PaymentSelectionArray = payments
+                    
+                } else {
+                    print("Unable to find 'country_list' key in the JSON dictionary.")
+                }
+                
+                
+            } catch let error {
+                print("Error decoding JSON: \(error)")
+            }
+        } else {
+            print("Unable to find clist.json in the Xcode project.")
+        }
+        
+        
+    }
+    
+    
+    
     //MARK: - convertToDesiredFormat
     
     func convertToDesiredFormat(_ inputString: String) -> String {

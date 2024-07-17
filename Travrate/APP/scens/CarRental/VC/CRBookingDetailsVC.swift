@@ -358,7 +358,7 @@ extension CRBookingDetailsVC {
         MySingleton.shared.payload["currency"] = MySingleton.shared.carcurrency
         MySingleton.shared.payload["search_id"] = MySingleton.shared.carsearchid
         
-        
+        MySingleton.shared.getPaymentList()
         gotoSelectPaymentMethodsVC(hiturl: "")
         
        // MySingleton.shared.carBookingVM?.CALL_CAR_BOOKING_API(dictParam: MySingleton.shared.payload)

@@ -794,6 +794,11 @@
 		84A1700A2C452128002C7F83 /* TransferPrePaymentConfModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A170092C452128002C7F83 /* TransferPrePaymentConfModel.swift */; };
 		84A1700E2C452ECA002C7F83 /* TransferfareSummeryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1700C2C452ECA002C7F83 /* TransferfareSummeryTVCell.swift */; };
 		84A1700F2C452ECA002C7F83 /* TransferfareSummeryTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A1700D2C452ECA002C7F83 /* TransferfareSummeryTVCell.xib */; };
+		84B82D0A2C48179900A160D6 /* paymentes.json in Resources */ = {isa = PBXBuildFile; fileRef = 84B82D092C48179900A160D6 /* paymentes.json */; };
+		84B82D0E2C481BE600A160D6 /* ActivitiesTypeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B82D0C2C481BE600A160D6 /* ActivitiesTypeTVCell.swift */; };
+		84B82D0F2C481BE600A160D6 /* ActivitiesTypeTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B82D0D2C481BE600A160D6 /* ActivitiesTypeTVCell.xib */; };
+		84B82D132C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B82D112C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.swift */; };
+		84B82D142C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B82D122C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.xib */; };
 		84C4FF182C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C4FF172C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib */; };
 		84C4FF192C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FF162C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift */; };
 		84EA31B82C4769270031C482 /* Activities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EA31B72C4769270031C482 /* Activities.storyboard */; };
@@ -1648,6 +1653,11 @@
 		84A170092C452128002C7F83 /* TransferPrePaymentConfModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPrePaymentConfModel.swift; sourceTree = "<group>"; };
 		84A1700C2C452ECA002C7F83 /* TransferfareSummeryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferfareSummeryTVCell.swift; sourceTree = "<group>"; };
 		84A1700D2C452ECA002C7F83 /* TransferfareSummeryTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransferfareSummeryTVCell.xib; sourceTree = "<group>"; };
+		84B82D092C48179900A160D6 /* paymentes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = paymentes.json; sourceTree = "<group>"; };
+		84B82D0C2C481BE600A160D6 /* ActivitiesTypeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTypeTVCell.swift; sourceTree = "<group>"; };
+		84B82D0D2C481BE600A160D6 /* ActivitiesTypeTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTypeTVCell.xib; sourceTree = "<group>"; };
+		84B82D112C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTypeInfoTVCell.swift; sourceTree = "<group>"; };
+		84B82D122C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTypeInfoTVCell.xib; sourceTree = "<group>"; };
 		84C4FF162C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreRulesBtnTVCell.swift; sourceTree = "<group>"; };
 		84C4FF172C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeeMoreRulesBtnTVCell.xib; sourceTree = "<group>"; };
 		84EA31B72C4769270031C482 /* Activities.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Activities.storyboard; sourceTree = "<group>"; };
@@ -2139,6 +2149,7 @@
 			children = (
 				652079572BF4942E0076EF76 /* clist.json */,
 				652079582BF4942E0076EF76 /* currencylist.json */,
+				84B82D092C48179900A160D6 /* paymentes.json */,
 			);
 			path = CurrencyListJson;
 			sourceTree = "<group>";
@@ -5510,6 +5521,24 @@
 			path = TransferfareSummeryTVCell;
 			sourceTree = "<group>";
 		};
+		84B82D0B2C481BD000A160D6 /* ActivitiesTypeTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				84B82D0C2C481BE600A160D6 /* ActivitiesTypeTVCell.swift */,
+				84B82D0D2C481BE600A160D6 /* ActivitiesTypeTVCell.xib */,
+			);
+			path = ActivitiesTypeTVCell;
+			sourceTree = "<group>";
+		};
+		84B82D102C481D2300A160D6 /* ActivitiesTypeInfoTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				84B82D112C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.swift */,
+				84B82D122C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.xib */,
+			);
+			path = ActivitiesTypeInfoTVCell;
+			sourceTree = "<group>";
+		};
 		84C4FF1A2C2EB50D00E31A39 /* SeeMoreRulesBtnTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -5569,6 +5598,8 @@
 		84EA31B42C4768FE0031C482 /* TVCells */ = {
 			isa = PBXGroup;
 			children = (
+				84B82D102C481D2300A160D6 /* ActivitiesTypeInfoTVCell */,
+				84B82D0B2C481BD000A160D6 /* ActivitiesTypeTVCell */,
 				84EA31FD2C47FA100031C482 /* Activites Details */,
 				84EA31D72C47A8E10031C482 /* ActivitiesResultTVCell */,
 				84EA31BB2C476B5A0031C482 /* ActivitiesSearchTVCell */,
@@ -5845,6 +5876,7 @@
 				65207DF42BF494310076EF76 /* PaymentTypeTVCell.xib in Resources */,
 				65207E142BF494320076EF76 /* BDTransfersInf0TVCell.xib in Resources */,
 				65207CCC2BF494310076EF76 /* Fare.storyboard in Resources */,
+				84B82D142C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.xib in Resources */,
 				65207E0C2BF494320076EF76 /* BookTransfersTVCell.xib in Resources */,
 				65207EB72BF494320076EF76 /* MainTravelPersonTVCell.xib in Resources */,
 				651B93A82BFF2906005BC158 /* CancellationStringTVCell.xib in Resources */,
@@ -5932,11 +5964,13 @@
 				65207E122BF494320076EF76 /* TContactDetailsTVCell.xib in Resources */,
 				65684C962C1C40BC002A96BE /* SelectedCarRentalTVCell.xib in Resources */,
 				65207D292BF494310076EF76 /* HotelSearchTVCell.xib in Resources */,
+				84B82D0F2C481BE600A160D6 /* ActivitiesTypeTVCell.xib in Resources */,
 				65207E522BF494320076EF76 /* TopcityGuidesTVCell.xib in Resources */,
 				65207E0E2BF494320076EF76 /* TransfersInf0TVCell.xib in Resources */,
 				65207DFE2BF494310076EF76 /* InfoCVCell.xib in Resources */,
 				65207DB82BF494310076EF76 /* UsePromoCodesTVCell.xib in Resources */,
 				65207D2C2BF494310076EF76 /* HotelImagesCVCell.xib in Resources */,
+				84B82D0A2C48179900A160D6 /* paymentes.json in Resources */,
 				84EA31B82C4769270031C482 /* Activities.storyboard in Resources */,
 				65324F972C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.xib in Resources */,
 				65207E7B2BF494320076EF76 /* CruiseAddItineraryTVCell.xib in Resources */,
@@ -6437,6 +6471,7 @@
 				65207D7C2BF494310076EF76 /* MPBSearchData.swift in Sources */,
 				841EE19A2C4640F400F604D6 /* Booking_transction_details.swift in Sources */,
 				65207D562BF494310076EF76 /* FlightResultVC.swift in Sources */,
+				84B82D0E2C481BE600A160D6 /* ActivitiesTypeTVCell.swift in Sources */,
 				65207EC52BF494320076EF76 /* ProfileViewModel.swift in Sources */,
 				65207DEC2BF494310076EF76 /* FlightResultSummeryTVCell.swift in Sources */,
 				65207D682BF494310076EF76 /* FlightClass.swift in Sources */,
@@ -6478,6 +6513,7 @@
 				65207E902BF494320076EF76 /* Customer_details.swift in Sources */,
 				65207ECE2BF494320076EF76 /* EditProfileVC.swift in Sources */,
 				65207E262BF494320076EF76 /* ViewTicketInfoVC.swift in Sources */,
+				84B82D132C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.swift in Sources */,
 				65207CD92BF494310076EF76 /* SearchHotelsResultVC.swift in Sources */,
 				65207E442BF494320076EF76 /* BookingsVC.swift in Sources */,
 				84022ED72C34156500E72017 /* SelectOptionsTVCell.swift in Sources */,
