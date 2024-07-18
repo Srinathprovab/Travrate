@@ -40,6 +40,14 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
             callGetSportsVoucherAPI()
         }else if tabselect == "CarRental" {
             callGetCarRentalVoucherAPI()
+        }else if tabselect == "Activities" {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {[self] in
+                loderBool = false
+                hideLoadera()
+                setupActivitiesVoucherTVCells()
+            }
+            
         }else {
             
             
@@ -74,6 +82,8 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
                                          "CarRentalResultTVCell",
                                          "PickupTVCell",
                                          "TitleLblTVCell",
+                                         "ActivityInformationTVCell",
+                                         "ActivitiesBookingDetailsTVCell",
                                          "BookedTravelDetailsTVCell"])
         
     }
@@ -455,6 +465,39 @@ extension BookingConfirmedVC {
         
         tablerow.append(TableRow(title:"Driver Details",key: "carbc",cellType:.TitleLblTVCell))
         tablerow.append(TableRow(key:"car",cellType:.BookedTravelDetailsTVCell))
+        
+        
+        
+        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        
+        commonTVData = tablerow
+        commonTableView.reloadData()
+        
+        
+    }
+    
+}
+
+
+
+
+//MARK: - ACTIVITIES
+extension BookingConfirmedVC {
+    
+    func setupActivitiesVoucherTVCells() {
+        tablerow.removeAll()
+        
+        tablerow.append(TableRow(title:bookingId,
+                                 subTitle: "TR-64522-8457",
+                                 key: "activites",
+                                 buttonTitle: "25-06-2023",
+                                 tempText: "BW-54F4G4",
+                                 cellType:.NewBookingConfirmedTVCell))
+        
+        tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        tablerow.append(TableRow(cellType:.ActivitiesBookingDetailsTVCell))
+        tablerow.append(TableRow(cellType:.ActivityInformationTVCell))
+        
         
         
         

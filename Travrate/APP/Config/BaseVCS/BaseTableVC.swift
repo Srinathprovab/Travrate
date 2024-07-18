@@ -388,20 +388,7 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func didTapOnActivitesDetailsBtnAction(cell: ActivitiesResultTVCell) {}
     func didTapOnMoreBtnAction(cell: ActivitiesImagesTVCell) {}
     func didTapOnActivitiesBtnsAction(cell: ActivitiesDetailsTVCell) {}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    func didTapOnBookNowBtnAction(cell: ActivitiesTypeInfoTVCell) {}
     
     
     
@@ -1293,6 +1280,21 @@ extension BaseTableVC: UITableViewDataSource {
             case .ActivitiesDetailsTVCell :
                 let cell: ActivitiesDetailsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 cell.delegate = self
+                commonCell = cell
+                
+                
+            case .ActivitiesBookingDetailsTVCell :
+                let cell: ActivitiesBookingDetailsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+            case .ActivitiesFareSummeryTVCell :
+                let cell: ActivitiesFareSummeryTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+            case .ActivityInformationTVCell :
+                let cell: ActivityInformationTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
                 
                 

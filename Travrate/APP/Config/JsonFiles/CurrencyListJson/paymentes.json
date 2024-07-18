@@ -1,24 +1,16 @@
-//
-//  paymentes.json
-//  Travrate
-//
-//  Created by Admin on 17/07/24.
-//
-
-import Foundation
 
 {
-    "payment_selection": [
+    "data": [
         {
-          "img_url" : "https:\/\/provab.net\/travrate\/extras\/system\/template_list\/template_v1\/images\/kent_payment_way.png",
+          "img_url" : "https://provab.net/travrate/extras/system/template_list/template_v1/images/kent_payment_way.png",
           "value" : "knet-test"
         },
         {
-          "img_url" : "https:\/\/provab.net\/travrate\/extras\/system\/template_list\/template_v1\/images\/visa_payment_way.png",
+          "img_url" : "https://provab.net/travrate/extras/system/template_list/template_v1/images/visa_payment_way.png",
           "value" : "credit-card-test"
         },
         {
-          "img_url" : "https:\/\/provab.net\/travrate\/extras\/system\/template_list\/template_v1\/images\/master_payment_way.png",
+          "img_url" : "https://provab.net/travrate/extras/system/template_list/template_v1/images/master_payment_way.png",
           "value" : "credit-card-test"
         }
     ]

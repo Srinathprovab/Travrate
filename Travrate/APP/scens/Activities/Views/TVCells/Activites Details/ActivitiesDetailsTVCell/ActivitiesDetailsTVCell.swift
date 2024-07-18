@@ -9,9 +9,10 @@ import UIKit
 
 protocol ActivitiesDetailsTVCellDelegate {
     func didTapOnActivitiesBtnsAction(cell:ActivitiesDetailsTVCell)
+    func didTapOnBookNowBtnAction(cell:ActivitiesTypeInfoTVCell)
 }
 
-class ActivitiesDetailsTVCell: TableViewCell {
+class ActivitiesDetailsTVCell: TableViewCell, ActivitiesTypeTVCellDelegate {
     
     
     @IBOutlet weak var activitieslbl: UILabel!
@@ -112,6 +113,13 @@ class ActivitiesDetailsTVCell: TableViewCell {
         
     }
     
+    
+    //MARK: - didTapOnBookNowBtnAction  ActivitiesTypeInfoTVCell
+    func didTapOnBookNowBtnAction(cell: ActivitiesTypeInfoTVCell) {
+        delegate?.didTapOnBookNowBtnAction(cell: cell)
+    }
+    
+    
 }
 
 
@@ -173,6 +181,8 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "type") as? ActivitiesTypeTVCell {
                 cell.selectionStyle = .none
+                cell.delegate = self
+                
                 
                 cell.updateHeight()
                 ccell = cell

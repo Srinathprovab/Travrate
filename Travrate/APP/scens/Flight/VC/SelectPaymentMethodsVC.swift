@@ -57,7 +57,9 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
                                          "SelectedCarRentalTVCell",
                                          "SelectedCRPackageTVCell",
                                          "CRFareSummaryTVCell",
+                                         "ActivitiesBookingDetailsTVCell",
                                          "TransferfareSummeryTVCell",
+                                         "ActivitiesFareSummeryTVCell",
                                          "EmptyTVCell"])
         
         
@@ -82,8 +84,15 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         }else if tabselect == "transfers" {
             Same_Saerch_InPut_Transfers()
         }else{
-            
+            gotoActivitiesSearchVC()
         }
+    }
+    
+    
+    func gotoActivitiesSearchVC() {
+        guard let vc = ActivitiesSearchVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     //MARK: - PaymentTypeTVCell
@@ -102,10 +111,11 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         }else if tabselect == "CarRental" {
             callCarrentalSendToPaymentAPI()
         }else{
-            
+            gotoBookingConfirmedVC()
         }
     }
     
+   
     
     
     //MARK: - MPBDetails MobilePreProcessBookingModel
@@ -1131,6 +1141,34 @@ extension SelectPaymentMethodsVC {
 
 
 
+//MARK: - ACTIVITIES
+extension SelectPaymentMethodsVC {
+    
+    func setupActivitiesTVCells() {
+        MySingleton.shared.tablerow.removeAll()
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(key:"activites",cellType:.PaymentTypeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesBookingDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+       
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead",
+                                                    key:"activites",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesFareSummeryTVCell))
+        MySingleton.shared.tablerow.append(TableRow(height:30,cellType:.EmptyTVCell))
+        
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+        
+    }
+}
 
 
 //MARK: - addObserver
@@ -1164,6 +1202,16 @@ extension SelectPaymentMethodsVC {
             hideLoadera()
             DispatchQueue.main.async {[self] in
                 self.setupCarRentalTVCells()
+            }
+            
+            
+        }else if tabselect == "Activities"{
+            
+            loderBool = false
+            hideLoadera()
+            
+            DispatchQueue.main.async {[self] in
+                self.setupActivitiesTVCells()
             }
             
             

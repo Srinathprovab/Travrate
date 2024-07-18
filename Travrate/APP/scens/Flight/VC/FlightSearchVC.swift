@@ -27,7 +27,7 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? FlightSearchVC
         return vc
     }
-     
+    
     
     override func viewWillAppear(_ animated: Bool) {
         basicloderBool = false
@@ -62,7 +62,7 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
     }
     
     func onewayTap() {
-      //  logoimg.image = UIImage(named: "onewayimg")
+        //  logoimg.image = UIImage(named: "onewayimg")
         onewayView.backgroundColor = .Buttoncolor
         roundtripView.backgroundColor = .WhiteColor
         multicityView.backgroundColor = .WhiteColor
@@ -75,7 +75,7 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
     }
     
     func roundtripTap() {
-      //  logoimg.image = UIImage(named: "circleimg")
+        //  logoimg.image = UIImage(named: "circleimg")
         onewayView.backgroundColor = .WhiteColor
         roundtripView.backgroundColor = .Buttoncolor
         multicityView.backgroundColor = .WhiteColor
@@ -83,7 +83,7 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
         roundtriplbl.textColor = .WhiteColor
         multicitylbl.textColor = .TitleColor
         
-       
+        
         defaults.set("circle", forKey: UserDefaultsKeys.journeyType)
         setupRoundTripTVCells()
     }
@@ -122,7 +122,7 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
             let formatter = DateFormatter()
             formatter.dateFormat = "dd-MM-yyyy"
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
-          
+            
         }else {
             
             let formatter = DateFormatter()
@@ -173,7 +173,7 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: false)
         }
-       
+        
     }
     
     
@@ -188,7 +188,7 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
         
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["id"] = cell.origin
-       callGetRemoveRecentSearchAPI()
+        callGetRemoveRecentSearchAPI()
     }
     
     override func didTapOnSearchRecentFlightsBtnAction(cell: YourRecentSearchesCVCell) {
@@ -300,7 +300,7 @@ extension FlightSearchVC {
             
         }
         
-//        roundtripTap()
+        //        roundtripTap()
         
         commonTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // Top left corner, Top right corner respectively
         commonTableView.layer.cornerRadius = 12
@@ -446,7 +446,7 @@ extension FlightSearchVC {
     func flightRecentSearchDate(response: SearchDataModel) {
         MySingleton.shared.recentData = response.recent_searches ?? []
         
-      
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.getAirlinesAPI()
@@ -482,7 +482,7 @@ extension FlightSearchVC {
     
     
     func callGetRemoveRecentSearchAPI() {
-       
+        
         MySingleton.shared.recentsearchvm?.CALL_GET_REMOVE_FLIGHT_SEARCH_RECENT_DATA_API(dictParam: MySingleton.shared.payload)
         
     }
@@ -533,9 +533,9 @@ extension FlightSearchVC {
     
     func addObserver() {
         
-       
+        
         DispatchQueue.main.async {
-          //  self.callGetRecentSearchAPI()
+            //  self.callGetRecentSearchAPI()
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
@@ -543,7 +543,7 @@ extension FlightSearchVC {
         NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         
-
+        
     }
     
     

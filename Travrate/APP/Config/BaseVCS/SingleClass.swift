@@ -277,6 +277,7 @@ class MySingleton {
     var activity_details :Activity_details?
     
     
+    
     //View Models
     var loginvm:LoginViewModel?
     var vm:FlightListViewModel?
@@ -441,11 +442,11 @@ class MySingleton {
                 let jsonDictionary = try JSONDecoder().decode([String: [Payment_selection]].self, from: jsonData)
                 
                 // Access the array of countries using the "country_list" key
-                if let payments = jsonDictionary["payment_selection"] {
+                if let payments = jsonDictionary["data"] {
                     self.PaymentSelectionArray = payments
                     
                 } else {
-                    print("Unable to find 'country_list' key in the JSON dictionary.")
+                    print("Unable to find 'data' key in the JSON dictionary.")
                 }
                 
                 

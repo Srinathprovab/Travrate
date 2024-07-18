@@ -21,10 +21,15 @@ class HotelImagesVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect) ?? ""
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect) ?? ""
+        if tabselect == "Hotel" {
+            titlelbl.text = "Hotel Images"
+        }else {
+            titlelbl.text = "Activities Images"
+        }
     }
     
-    var tabselect = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,18 +53,13 @@ extension HotelImagesVC :UICollectionViewDelegate, UICollectionViewDataSource{
     func setupCV() {
         
         
-        if tabselect == "Hotel" {
-            titlelbl.text = "Hotel Images"
-        }else {
-            titlelbl.text = "Activities Images"
-        }
         
         let nib = UINib(nibName: "HotelImagesCVCell", bundle: nil)
         imagesCV.register(nib, forCellWithReuseIdentifier: "cell")
         
         imagesCV.delegate = self
         imagesCV.dataSource = self
-
+        
         let layout = UICollectionViewFlowLayout()
         let numberOfItemsPerRow: CGFloat = 2 // Adjust this value as needed
         let spacing: CGFloat = 6 // Adjust the spacing between items as needed
@@ -71,7 +71,7 @@ extension HotelImagesVC :UICollectionViewDelegate, UICollectionViewDataSource{
         layout.minimumLineSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
         imagesCV.collectionViewLayout = layout
-
+        
         
         imagesCV.backgroundColor = .clear
         imagesCV.showsVerticalScrollIndicator = false
@@ -81,7 +81,7 @@ extension HotelImagesVC :UICollectionViewDelegate, UICollectionViewDataSource{
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect) ?? ""
         if tabselect == "Hotel" {
             return imagesArray.count
         }else {
@@ -92,7 +92,7 @@ extension HotelImagesVC :UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var commonCell = UICollectionViewCell()
-        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect) ?? ""
         if tabselect == "Hotel" {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HotelImagesCVCell {
                 cell.hotelImg.sd_setImage(with: URL(string: imagesArray[indexPath.row].img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
@@ -100,7 +100,7 @@ extension HotelImagesVC :UICollectionViewDelegate, UICollectionViewDataSource{
                 commonCell = cell
             }
         }else {
-           
+            
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HotelImagesCVCell {
                 cell.hotelImg.sd_setImage(with: URL(string: MySingleton.shared.activitiesImagesArray[indexPath.row].image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
                 
@@ -115,8 +115,8 @@ extension HotelImagesVC :UICollectionViewDelegate, UICollectionViewDataSource{
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
         
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect) ?? ""
         if tabselect == "Hotel" {
             if let cell = collectionView.cellForItem(at: indexPath) as? HotelImagesCVCell {
                 gotoSelectedHotelImageVC(imgString: imagesArray[indexPath.row].img ?? "")
@@ -127,7 +127,7 @@ extension HotelImagesVC :UICollectionViewDelegate, UICollectionViewDataSource{
             }
         }
     }
- 
+    
     
     func gotoSelectedHotelImageVC(imgString:String) {
         guard let vc = SelectedHotelImageVC.newInstance.self else {return}

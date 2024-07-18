@@ -60,7 +60,11 @@ class BookTransfersVC: BaseTableVC {
     
     //MARK: - didTapOnBackBtnAction
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        dismiss(animated: true)
+        MySingleton.shared.callboolapi = true
+        guard let vc = DashBoardTBVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.selectedIndex = 0
+        self.present(vc, animated: false)
     }
     
     
@@ -231,14 +235,10 @@ extension BookTransfersVC {
         }
         
     }
-    
-    
-    
-    
-    
-    
+
     
     func gotoTransfersListVC() {
+        MySingleton.shared.afterResultsBool = false
         defaults.set(false, forKey: "transferfilteronce")
         callapibool = true
         guard let vc = TransfersListVC.newInstance.self else {return}

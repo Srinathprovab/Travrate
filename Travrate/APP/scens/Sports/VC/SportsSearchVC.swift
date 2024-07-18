@@ -109,6 +109,7 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     }
     
     func gotoSelectSportsListVC() {
+        MySingleton.shared.afterResultsBool = false
         callapibool = true
         defaults.set(false, forKey: "sportfilteronce")
         guard let vc = SelectSportsListVC.newInstance.self else {return}

@@ -65,7 +65,7 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate 
     }
     
     @objc func didTapOnFilterBtnAction(_ sender:UIButton) {
-        print("didTapOnFilterBtnAction")
+        showToast(message: "Still Under Development")
     }
     
     
@@ -110,6 +110,15 @@ extension ActivitiesSearchResultsVC {
         hideLoadera()
         holderView.isHidden = false
         
+        MySingleton.shared.payemail = ""
+        MySingleton.shared.paymobile = ""
+        MySingleton.shared.paymobilecountrycode = ""
+        let userloggedBool = defaults.bool(forKey: UserDefaultsKeys.loggedInStatus)
+        if userloggedBool == false {
+            MySingleton.shared.guestbool = true
+        }else {
+            MySingleton.shared.guestbool = false
+        }
         
         MySingleton.shared.activityList = response.data?.raw_activity_list?.activitySearchResult?.activity ?? []
         MySingleton.shared.activites_booking_source = response.data?.booking_source ?? ""

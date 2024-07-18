@@ -95,6 +95,7 @@ class ModifySearchCarRentalVC: BaseTableVC {
         guard let dropuplocDate =  defaults.string(forKey: UserDefaultsKeys.dropuplocDate) else {return}
         guard let pickuplocTime =  defaults.string(forKey: UserDefaultsKeys.pickuplocTime) else {return}
         guard let dropuplocTime =  defaults.string(forKey: UserDefaultsKeys.dropuplocTime) else {return}
+        guard let driverage =  defaults.string(forKey: UserDefaultsKeys.driverage) else {return}
         
         if pickuplocationname == "Select Location" {
             showToast(message: "Select Location")
@@ -119,7 +120,7 @@ class ModifySearchCarRentalVC: BaseTableVC {
             MySingleton.shared.payload["depart_time"] = pickuplocTime
             MySingleton.shared.payload["drop_date"] = dropuplocDate
             MySingleton.shared.payload["drop_time"] = dropuplocTime
-            MySingleton.shared.payload["age_1"] = MySingleton.shared.carRentalDriverAge
+            MySingleton.shared.payload["age_1"] = driverage
             
             gotoCarRentalResultsVC()
         }
@@ -127,6 +128,7 @@ class ModifySearchCarRentalVC: BaseTableVC {
     }
     
     func gotoCarRentalResultsVC() {
+        MySingleton.shared.afterResultsBool = false
         MySingleton.shared.callboolapi = true
         defaults.set(false, forKey: "carfilteronce")
         guard let vc = CarRentalResultsVC.newInstance.self else {return}

@@ -503,6 +503,7 @@ struct UserDefaultsKeys {
     
     
     //ACTIVITES
+    static var activitesname = "activitesname"
     static var calActivitesDepDate = "calActivitesDepDate"
     static var calActivitesRetDate = "calActivitesRetDate"
     static var activitescityname = "activitescityname"

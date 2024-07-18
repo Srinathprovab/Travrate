@@ -19,6 +19,7 @@ class ActivitiesResultTVCell: TableViewCell {
     @IBOutlet weak var activityloclbl: UILabel!
     @IBOutlet weak var kwdlbl: UILabel!
     @IBOutlet weak var detailsBtn: UIButton!
+    @IBOutlet weak var namebtn: UIButton!
     
 
     var bookingsource = String()
@@ -42,6 +43,10 @@ class ActivitiesResultTVCell: TableViewCell {
         activityimg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         activityimg.layer.cornerRadius = 12
         detailsBtn.layer.cornerRadius = 4
+        namebtn.layer.cornerRadius = 15
+        namebtn.layer.borderWidth = 1
+        namebtn.layer.borderColor = UIColor.BorderColor.cgColor
+        
         detailsBtn.addTarget(self, action: #selector(didTapOnActivitesDetailsBtnAction(_:)), for: .touchUpInside)
     }
     

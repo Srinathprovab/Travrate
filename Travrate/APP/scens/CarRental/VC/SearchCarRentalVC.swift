@@ -135,6 +135,7 @@ class SearchCarRentalVC: BaseTableVC {
     }
     
     func gotoCarRentalResultsVC() {
+        MySingleton.shared.afterResultsBool = false
         MySingleton.shared.callboolapi = true
         defaults.set(false, forKey: "carfilteronce")
         guard let vc = CarRentalResultsVC.newInstance.self else {return}

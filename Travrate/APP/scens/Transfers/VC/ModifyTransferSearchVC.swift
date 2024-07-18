@@ -228,9 +228,10 @@ extension ModifyTransferSearchVC {
         }
         
     }
-    
+
     
     func gotoTransfersListVC() {
+        MySingleton.shared.afterResultsBool = false
         defaults.set(false, forKey: "transferfilteronce")
         callapibool = true
         guard let vc = TransfersListVC.newInstance.self else {return}

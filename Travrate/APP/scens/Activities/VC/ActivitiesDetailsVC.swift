@@ -72,6 +72,18 @@ class ActivitiesDetailsVC: BaseTableVC, ActivityDetailsVMDelagate {
     }
     
     
+    //MARK: - didTapOnBookNowBtnAction ActivitiesTypeInfoTVCell
+    override func didTapOnBookNowBtnAction(cell: ActivitiesTypeInfoTVCell) {
+        gotoActivitiesBookingDetailsVC()
+    }
+    
+    
+    func gotoActivitiesBookingDetailsVC() {
+        guard let vc = ActivitiesBookingDetailsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
+    
     
 }
 
@@ -84,6 +96,7 @@ extension ActivitiesDetailsVC {
         holderView.isHidden = true
         MySingleton.shared.loderString = "fdetails"
         MySingleton.shared.afterResultsBool = true
+        
         loderBool = true
         showLoadera()
         
@@ -110,6 +123,7 @@ extension ActivitiesDetailsVC {
             destinationcitylbl.text = response.data?.activity_search_params?.activity_destination
             dateslbl.text = "\(response.data?.activity_search_params?.from_date ?? "") To \(response.data?.activity_search_params?.to_date ?? "")"
             
+            defaults.set(response.data?.activity_details?.activity_name ?? "", forKey: UserDefaultsKeys.activitesname)
             let adultcount = Int(response.data?.activity_search_params?.adult ?? "") ?? 0
             let childcount = Int(response.data?.activity_search_params?.child ?? "") ?? 0
             let infantcount = Int(response.data?.activity_search_params?.infant ?? "") ?? 0

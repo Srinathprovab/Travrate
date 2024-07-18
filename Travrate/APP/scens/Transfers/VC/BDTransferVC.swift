@@ -68,7 +68,7 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVM
     
     override func editingTextField(tf:UITextField) {
         switch tf.tag {
-        case 1:
+        case 111:
             MySingleton.shared.paycontactname = tf.text ?? ""
             break
             

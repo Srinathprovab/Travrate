@@ -189,6 +189,9 @@ enum TVCellType {
     case ActivitiesResultTVCell
     case ActivitiesImagesTVCell
     case ActivitiesDetailsTVCell
+    case ActivitiesBookingDetailsTVCell
+    case ActivitiesFareSummeryTVCell
+    case ActivityInformationTVCell
     
     
     

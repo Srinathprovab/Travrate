@@ -88,8 +88,7 @@ class ActivitiesSearchVC: BaseTableVC {
     
     
     override func didTapOnActivitesSearchBtnAction(cell: ActivitiesSearchTVCell) {
-        print("didTapOnActivitesSearchBtnAction")
-        
+       
         
         let cityid = defaults.string(forKey: UserDefaultsKeys.activitescityid)
         let cityname = defaults.string(forKey: UserDefaultsKeys.activitescityname)
@@ -148,6 +147,14 @@ class ActivitiesSearchVC: BaseTableVC {
 extension ActivitiesSearchVC {
     
     func addObserver() {
+        MySingleton.shared.getPaymentList()
+        
+        
+        print(" =====  PaymentSelectionArray  ====== ")
+       MySingleton.shared.PaymentSelectionArray.forEach({ i in
+            print(i.value)
+        })
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)

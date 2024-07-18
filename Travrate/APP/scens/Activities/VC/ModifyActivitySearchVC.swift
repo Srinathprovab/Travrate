@@ -86,9 +86,7 @@ class ModifyActivitySearchVC: BaseTableVC {
     
     
     override func didTapOnActivitesSearchBtnAction(cell: ActivitiesSearchTVCell) {
-        print("didTapOnActivitesSearchBtnAction")
-        
-        
+       
         let cityid = defaults.string(forKey: UserDefaultsKeys.activitescityid)
         let cityname = defaults.string(forKey: UserDefaultsKeys.activitescityname)
         let fromdate = defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate)
@@ -127,13 +125,13 @@ class ModifyActivitySearchVC: BaseTableVC {
     
     
     func gotoActivitiesSearchResultsVC() {
+        MySingleton.shared.afterResultsBool = false
         MySingleton.shared.callboolapi = true
         defaults.set(false, forKey: "activitesfilteronce")
         guard let vc = ActivitiesSearchResultsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
-    
     
 }
 

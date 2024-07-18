@@ -171,7 +171,7 @@ extension ModifyHotelSearchVC {
         
         MySingleton.shared.payload["city"] = defaults.string(forKey: UserDefaultsKeys.locationcity)
         MySingleton.shared.payload["hotel_destination"] = defaults.string(forKey: UserDefaultsKeys.locationid)
-
+        
         MySingleton.shared.payload["hotel_checkin"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
         MySingleton.shared.payload["hotel_checkout"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
         
@@ -211,10 +211,10 @@ extension ModifyHotelSearchVC {
         MySingleton.shared.payload["nationality"] = defaults.string(forKey: UserDefaultsKeys.hnationalitycode)
         
         
-//        MySingleton.shared.payload["language"] = "english"
-//        MySingleton.shared.payload["search_source"] = "Mobile_IOS"
-//        MySingleton.shared.payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"
-//        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
+        //        MySingleton.shared.payload["language"] = "english"
+        //        MySingleton.shared.payload["search_source"] = "Mobile_IOS"
+        //        MySingleton.shared.payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"
+        //        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         
         if defaults.string(forKey: UserDefaultsKeys.locationcity) == "Add City" || defaults.string(forKey: UserDefaultsKeys.locationcity) == nil{
             showToast(message: "Enter Hotel or City ")
@@ -222,9 +222,19 @@ extension ModifyHotelSearchVC {
             showToast(message: "Enter Checkin Date")
         }else if defaults.string(forKey: UserDefaultsKeys.checkout) == "Add Check Out Date" || defaults.string(forKey: UserDefaultsKeys.checkout) == nil{
             showToast(message: "Enter Checkout Date")
-        }else if defaults.string(forKey: UserDefaultsKeys.checkout) == defaults.string(forKey: UserDefaultsKeys.checkin) {
+        }
+        else if defaults.string(forKey: UserDefaultsKeys.checkout) == defaults.string(forKey: UserDefaultsKeys.checkin) {
             showToast(message: "Enter Different Dates")
-        }else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
+        }
+//        else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.checkin),
+//                  let checkoutDate = defaults.string(forKey: UserDefaultsKeys.checkout),
+//                  let checkin = formatter.date(from: checkinDate),
+//                  let checkout = formatter.date(from: checkoutDate),
+//                  checkin > checkout {
+//            showToast(message: "Invalid Date")
+//        }
+        
+        else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
             showToast(message: "Add Rooms For Booking")
         }else if defaults.string(forKey: UserDefaultsKeys.hnationalitycode) == nil {
             showToast(message: "Please Select Nationality.")
@@ -251,20 +261,17 @@ extension ModifyHotelSearchVC {
     
     func gotoHotelResultVC() {
         
+        MySingleton.shared.loderString = "loder"
         MySingleton.shared.afterResultsBool = false
         hotelSearchResult.removeAll()
         loderBool = true
         callapibool = true
         defaults.set(false, forKey: "hoteltfilteronce")
-        
         guard let vc = SearchHotelsResultVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
-        vc.countrycode = self.countrycode
         vc.payload =  MySingleton.shared.payload
         present(vc, animated: true)
-        
     }
-    
     
     
 }

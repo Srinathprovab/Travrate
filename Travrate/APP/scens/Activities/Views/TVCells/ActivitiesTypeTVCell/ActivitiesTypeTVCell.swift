@@ -7,11 +7,18 @@
 
 import UIKit
 
-class ActivitiesTypeTVCell: UITableViewCell {
+protocol ActivitiesTypeTVCellDelegate {
+    func didTapOnBookNowBtnAction(cell:ActivitiesTypeInfoTVCell)
+}
+
+class ActivitiesTypeTVCell: UITableViewCell, ActivitiesTypeInfoTVCellDelegate {
+    
     
     @IBOutlet weak var typeTV: UITableView!
     @IBOutlet weak var tvheight: NSLayoutConstraint!
 
+    
+    var delegate:ActivitiesTypeTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +30,12 @@ class ActivitiesTypeTVCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
+    func didTapOnBookNowBtnAction(cell: ActivitiesTypeInfoTVCell) {
+        delegate?.didTapOnBookNowBtnAction(cell: cell)
+    }
+    
     
 }
 
@@ -60,7 +73,7 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
         var c = UITableViewCell()
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ActivitiesTypeInfoTVCell {
             
-            
+            cell.delegate = self
             
             cell.activitiesTypeNamelbl.text = "Private Transfer"
             
