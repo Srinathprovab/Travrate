@@ -35,11 +35,16 @@ class ActivitiesFareSummeryTVCell: TableViewCell {
     
     func setupui(){
         
+        
+        
+    }
+    
+    
+    override func updateUI() {
         topview.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         topview.layer.cornerRadius = 8
         
         activitynamelbl.text = defaults.string(forKey: UserDefaultsKeys.activitesname)
-        datelbl.text = defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate)
         let adultcount = defaults.integer(forKey: UserDefaultsKeys.activitesadultCount)
         let childcount = defaults.integer(forKey: UserDefaultsKeys.activiteschildCount)
         let infantcount = defaults.integer(forKey: UserDefaultsKeys.activitesinfantsCount)
@@ -50,7 +55,7 @@ class ActivitiesFareSummeryTVCell: TableViewCell {
         infantlbl.text = "\(infantcount)"
         
         
-        totlConvertedGrand = 250.00
+//        totlConvertedGrand = 250.00
         MySingleton.shared.setAttributedTextnew(str1: "\(MySingleton.shared.activites_currency) ",
                                                 str2: String(format: "%.2f", totlConvertedGrand),
                                                 lbl: totalamountlbl,
@@ -62,13 +67,12 @@ class ActivitiesFareSummeryTVCell: TableViewCell {
         
         
         MySingleton.shared.setAttributedTextnew(str1: "",
-                                                str2:  MySingleton.shared.convertDateFormat(inputDate: "\(defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate) ?? "")", f1: "dd-MM-yyyy", f2: "dd MMM yyyy"),
+                                                str2:  MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.activity_selecteddate, f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
                                                 lbl: datelbl,
                                                 str1font: .InterSemiBold(size: 16),
                                                 str2font: .InterSemiBold(size: 16),
                                                 str1Color: .TitleColor,
                                                 str2Color: .TitleColor)
-        
     }
     
     

@@ -147,23 +147,6 @@ extension ModifyHotelSearchVC {
 extension ModifyHotelSearchVC {
     
     
-    //    func setInitalValues() {
-    //
-    //        adtArray.removeAll()
-    //        chArray.removeAll()
-    //
-    //        adtArray.append("2")
-    //        chArray.append("0")
-    //
-    //        defaults.set("1", forKey: UserDefaultsKeys.roomcount)
-    //        defaults.set("2", forKey: UserDefaultsKeys.hoteladultscount)
-    //        defaults.set("0", forKey: UserDefaultsKeys.hotelchildcount)
-    //
-    //        defaults.set("Rooms \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? ""),Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "")", forKey: UserDefaultsKeys.selectPersons)
-    //
-    //    }
-    
-    
     func didTapOnHotelSearchBtnAction() {
         
         NotificationCenter.default.post(name: NSNotification.Name("resetallFilters"), object: nil)
@@ -210,36 +193,25 @@ extension ModifyHotelSearchVC {
         
         MySingleton.shared.payload["nationality"] = defaults.string(forKey: UserDefaultsKeys.hnationalitycode)
         
+      
         
         //        MySingleton.shared.payload["language"] = "english"
         //        MySingleton.shared.payload["search_source"] = "Mobile_IOS"
         //        MySingleton.shared.payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"
         //        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         
-        if defaults.string(forKey: UserDefaultsKeys.locationcity) == "Add City" || defaults.string(forKey: UserDefaultsKeys.locationcity) == nil{
+        if defaults.string(forKey: UserDefaultsKeys.locationcity) == "City/Location" || defaults.string(forKey: UserDefaultsKeys.locationcity) == nil{
             showToast(message: "Enter Hotel or City ")
-        }else if defaults.string(forKey: UserDefaultsKeys.checkin) == "Add Check In Date" || defaults.string(forKey: UserDefaultsKeys.checkin) == nil{
+        }else if defaults.string(forKey: UserDefaultsKeys.checkin) == "Add Date" || defaults.string(forKey: UserDefaultsKeys.checkin) == nil{
             showToast(message: "Enter Checkin Date")
-        }else if defaults.string(forKey: UserDefaultsKeys.checkout) == "Add Check Out Date" || defaults.string(forKey: UserDefaultsKeys.checkout) == nil{
+        }else if defaults.string(forKey: UserDefaultsKeys.checkout) == "Add Date" || defaults.string(forKey: UserDefaultsKeys.checkout) == nil{
             showToast(message: "Enter Checkout Date")
         }
         else if defaults.string(forKey: UserDefaultsKeys.checkout) == defaults.string(forKey: UserDefaultsKeys.checkin) {
             showToast(message: "Enter Different Dates")
-        }
-//        else if  let checkinDate = defaults.string(forKey: UserDefaultsKeys.checkin),
-//                  let checkoutDate = defaults.string(forKey: UserDefaultsKeys.checkout),
-//                  let checkin = formatter.date(from: checkinDate),
-//                  let checkout = formatter.date(from: checkoutDate),
-//                  checkin > checkout {
-//            showToast(message: "Invalid Date")
-//        }
-        
-        else if defaults.string(forKey: UserDefaultsKeys.roomcount) == "" {
-            showToast(message: "Add Rooms For Booking")
-        }else if defaults.string(forKey: UserDefaultsKeys.hnationalitycode) == nil {
+        }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == "Select Nationality" {
             showToast(message: "Please Select Nationality.")
         }else {
-            
             
             do{
                 

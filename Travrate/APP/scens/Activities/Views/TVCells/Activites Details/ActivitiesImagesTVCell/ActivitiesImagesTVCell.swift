@@ -47,7 +47,7 @@ class ActivitiesImagesTVCell: TableViewCell {
         
         activityNamelbl.text = MySingleton.shared.activity_details?.activity_name
         locNamelbl.text = MySingleton.shared.activity_details?.location?.address
-        
+        MySingleton.shared.activity_loc = MySingleton.shared.activity_details?.location?.address ?? ""
        
        
         if MySingleton.shared.activitiesImagesArray.count > 0 {

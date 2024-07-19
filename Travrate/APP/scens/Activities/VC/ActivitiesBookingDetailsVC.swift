@@ -10,6 +10,7 @@ import UIKit
 class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDelegate {
     
     
+    
     @IBOutlet weak var gifimg: UIImageView!
     @IBOutlet weak var continuetoPaymentBtnView: UIView!
     @IBOutlet weak var continuetoPaymentBtnlbl: UILabel!
@@ -23,6 +24,8 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
         return vc
     }
     
+    
+    var response: ActivitiesBookingModel?
     
     override func viewWillAppear(_ animated: Bool) {
         addObserver()
@@ -203,17 +206,41 @@ extension ActivitiesBookingDetailsVC {
         MySingleton.shared.activitiesPreProcessBookingVM?.CALL_PRE_PROCESS_BOOKING_API(dictParam: MySingleton.shared.payload)
     }
     
+
     
     func preBookingResponse(response: ActivitiesPreProcessBookingModel) {
         
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["token"] = response.form_params?.token ?? ""
+        MySingleton.shared.payload["booking_source"] = MySingleton.shared.activites_booking_source
+        MySingleton.shared.payload["app_reference"] = response.form_params?.app_reference ?? ""
+        MySingleton.shared.payload["resultToken"] = MySingleton.shared.resultToken
+        MySingleton.shared.payload["rateKey"] = MySingleton.shared.rateKeySring
+        MySingleton.shared.payload["activity_selecteddate"] = MySingleton.shared.activity_selecteddate
+        
+        MySingleton.shared.activitiesPreProcessBookingVM?.CALL_BOOKING_API(dictParam: MySingleton.shared.payload, urlstr: response.hit_url ?? "")
+    }
+    
+    
+    
+    func bookingResponse(response: ActivitiesBookingModel) {
         loderBool = false
         hideLoadera()
+        
+       
+        MySingleton.shared.activity_details = response.data?.activity_details
+        MySingleton.shared.activitiesPostData =  response.post
+        self.response = response
+        
+       
+        
         
         DispatchQueue.main.async {
             self.setupTVCells()
         }
         
     }
+    
     
     
     
@@ -500,25 +527,59 @@ extension ActivitiesBookingDetailsVC {
         let lastNameString = "[\"" + lastNameArray.joined(separator: "\",\"") + "\"]"
         let passengertypeString = "[\"" + passengertypeArray.joined(separator: "\",\"") + "\"]"
         let laedpassengerArrayString = "[\"" + laedpassengerArray.joined(separator: "\",\"") + "\"]"
-        let spcialReqArrayStr = "[\"" + selectedSpecificatonArray.joined(separator: "\",\"") + "\"]"
+        
+
+        
+        let contract_remark = "Meeting point: Marktstraße 6d, 40213 Düsseldorf, Germany // Meeting point instructions: In front of the tourist office. Please ensure you arrive at the meeting point at least 15 minutes prior to the tour start time //  End point: Old Town // Duration: 1,5 hours // Inclusions: Private Local Guide // Exclusions: Gratuities. Entrances // Mandatory instructions: Printed voucher will be accepted as well, but e-voucher preferred // Supplier name: Travmonde // Supplier emergency phone: +49 802 137 39 008. +49 802 137 390 003. +49 802 137 390 005 (9am-6pm) // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity // \t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n"
+        
+        let alocation = MySingleton.shared.activity_loc
+        let agent_payable = MySingleton.shared.agentpayable
+        let total_markupamt = MySingleton.shared.agentpayable
+        let acity = response?.data?.activity_search_params?.city_name
+        let acountry = response?.data?.activity_search_params?.country_name
+        let selectedData = response?.post?.activity_selecteddate   //01-08-2024
+        let booking_source = response?.post?.booking_source
+        let payment_method = "PNHB1"
+        let rateKey = response?.post?.rateKey
+        let noOfDays = "1"
+        let search_id = MySingleton.shared.activites_searchid
+        let activity_from = response?.data?.activity_search_params?.from_date
+        let pn_country_code = MySingleton.shared.paymobilecountrycode
+        let passenger_contact = MySingleton.shared.paymobile
+        let billing_email = MySingleton.shared.payemail
+        let confirm = "0"
+        let continuee = "Continue"
+        let passenger_type = passengertypeString
+        let lead_passenger = laedpassengerArrayString
+        let name_title = mrtitleString
+        let first_name = firstnameString
+        let last_name = lastNameString
         
         
-        
-        
-        MySingleton.shared.payload["search_id"] = hsearchid
-        MySingleton.shared.payload["token"] = htoken
-        MySingleton.shared.payload["booking_source"] = hbookingsource
-        MySingleton.shared.payload["payment_method"] = "PNHB1"
-        MySingleton.shared.payload["passenger_type"] = passengertypeString
-        MySingleton.shared.payload["lead_passenger"] = laedpassengerArrayString
-        MySingleton.shared.payload["name_title"] = mrtitleString
-        MySingleton.shared.payload["first_name"] = firstnameString
-        MySingleton.shared.payload["last_name"] = lastNameString
-        MySingleton.shared.payload["billing_email"] = MySingleton.shared.payemail
-        MySingleton.shared.payload["passenger_contact"] = MySingleton.shared.paymobile
-        MySingleton.shared.payload["special_req"] = spcialReqArrayStr
-        MySingleton.shared.payload["users_comments"] = ""
-        
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["contract_remark"] = contract_remark
+        MySingleton.shared.payload["alocation"] = alocation
+        MySingleton.shared.payload["agent_payable"] = agent_payable
+        MySingleton.shared.payload["total_markupamt"] = total_markupamt
+        MySingleton.shared.payload["acity"] = acity
+        MySingleton.shared.payload["acountry"] = acountry
+        MySingleton.shared.payload["selectedData"] = MySingleton.shared.convertDateFormat(inputDate: selectedData ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy")
+        MySingleton.shared.payload["booking_source"] = booking_source
+        MySingleton.shared.payload["payment_method"] = payment_method
+        MySingleton.shared.payload["rateKey"] = rateKey
+        MySingleton.shared.payload["noOfDays"] = noOfDays
+        MySingleton.shared.payload["search_id"] = search_id
+        MySingleton.shared.payload["activity_from"] = activity_from
+        MySingleton.shared.payload["pn_country_code"] = pn_country_code
+        MySingleton.shared.payload["passenger_contact"] = passenger_contact
+        MySingleton.shared.payload["billing_email"] = billing_email
+        MySingleton.shared.payload["confirm"] = confirm
+        MySingleton.shared.payload["continue"] = continuee
+        MySingleton.shared.payload["passenger_type"] = passenger_type
+        MySingleton.shared.payload["lead_passenger"] = lead_passenger
+        MySingleton.shared.payload["name_title"] = name_title
+        MySingleton.shared.payload["first_name"] = first_name
+        MySingleton.shared.payload["last_name"] = last_name
         
         
         // Check additional conditions
@@ -552,8 +613,10 @@ extension ActivitiesBookingDetailsVC {
     
     func gotoSelectPaymentMethodsVC() {
         MySingleton.shared.getPaymentList()
+        MySingleton.shared.callboolapi = true
         guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
+        vc.activitiesProcessPangerUrl = response?.hit_url ?? ""
         self.present(vc, animated: false)
     }
     

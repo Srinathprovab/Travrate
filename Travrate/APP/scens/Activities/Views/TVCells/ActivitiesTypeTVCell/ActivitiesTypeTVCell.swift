@@ -18,6 +18,7 @@ class ActivitiesTypeTVCell: UITableViewCell, ActivitiesTypeInfoTVCellDelegate {
     @IBOutlet weak var tvheight: NSLayoutConstraint!
     
     
+    var cancelPolicy = [Cancelpolicy]()
     var delegate:ActivitiesTypeTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -83,6 +84,7 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
                                                     str1Color: .TitleColor,
                                                     str2Color: .TitleColor)
             
+            sampleCell.setupDropDown()
             
             sampleCell.img.image = UIImage(named: "car")
         }
@@ -121,7 +123,7 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
             cell.activitiesTypeNamelbl.text = data?.name
             cell.rateKeySring = data?.rates?[0].rateDetails?[0].rateKey ?? ""
             cell.agentpayable = String(format: "%.2f",  data?.amountsFrom?[0].amount?.default_value ?? 0.0)
-            
+            cell.setupDropDown()
             MySingleton.shared.setAttributedTextnew(str1: "\(MySingleton.shared.activites_currency) ",
                                                     str2: String(format: "%.2f",  data?.amountsFrom?[0].amount?.default_value ?? 0.0),
                                                     lbl: cell.kedlbl,
@@ -130,6 +132,15 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
                                                     str1Color: .TitleColor,
                                                     str2Color: .TitleColor)
             
+            
+            
+//            cell.chooselbl.text = cancelPolicy[indexPath.row].data_text ?? ""
+            
+            
+            if tableView.isLast(for: indexPath) {
+                cell.holderView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+                cell.holderView.layer.cornerRadius = 8
+            }
            
             
             c = cell

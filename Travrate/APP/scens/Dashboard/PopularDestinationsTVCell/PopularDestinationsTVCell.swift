@@ -83,7 +83,7 @@ class PopularDestinationsTVCell: TableViewCell {
                 }
                 return false
             }.map { flight in
-               // TopFlightListModel(airport_city: flight.airport_city ?? "", image: flight.image)
+                // TopFlightListModel(airport_city: flight.airport_city ?? "", image: flight.image)
                 TopFlightListModel(airport_city: flight.airport_city ?? "",
                                    image: flight.image ?? "",
                                    traveldate: flight.travel_date ?? "",
@@ -98,7 +98,7 @@ class PopularDestinationsTVCell: TableViewCell {
                                    to_loc: flight.to_loc ?? "",
                                    airline_class: flight.airline_class ?? "")
             }
-           
+            
         }
         
         // startAutoScroll()
@@ -176,7 +176,7 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 
                 cell.titlelbl.text = countryArray[indexPath.row]
                 
-               
+                
                 
                 if indexPath == selectedIndex {
                     cell.titlelbl.textColor = .WhiteColor
@@ -189,7 +189,7 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                     cell.holderView.backgroundColor = .WhiteColor
                 }
                 
-               
+                
                 
                 commonCell = cell
             }
@@ -261,9 +261,9 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
         }else {
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectDestCVCell {
                 let flight = filteredFlights[indexPath.row]
-               
                 
-               
+                
+                
                 
                 defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.traveldate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calDepDate)
                 defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.returndate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calRetDate)
@@ -274,8 +274,8 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 defaults.setValue("1", forKey: UserDefaultsKeys.totalTravellerCount)
                 defaults.setValue(flight.triptype, forKey: UserDefaultsKeys.journeyType)
                 defaults.setValue("ALL", forKey: UserDefaultsKeys.fcariercode)
-        
-             
+                
+                
                 defaults.set(flight.from_loc, forKey: UserDefaultsKeys.fromCity)
                 defaults.set(flight.from_city, forKey: UserDefaultsKeys.fromlocid)
                 defaults.set(flight.to_loc, forKey: UserDefaultsKeys.toCity)
@@ -288,12 +288,12 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 defaults.set(flight.from_city, forKey: UserDefaultsKeys.tcity)
                 
                 
-              // delegate?.didTapOnPopulardestination(cell: self)
+                // delegate?.didTapOnPopulardestination(cell: self)
             }
         }
     }
     
-
+    
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView == citySelectCV {
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectCityCVCell {

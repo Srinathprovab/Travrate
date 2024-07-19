@@ -437,8 +437,9 @@ extension ActivitiesSearchTVCell {
         
         let totalTravelers = MySingleton.shared.adultsCount + MySingleton.shared.childCount + MySingleton.shared.infantsCount
         print("Total Count === \(totalTravelers)")
+        totalPax = "\(totalTravelers)"
         
-        defaults.set(totalTravelers, forKey: UserDefaultsKeys.totalTravellerCount)
+        //defaults.set(totalTravelers, forKey: UserDefaultsKeys.totalTravellerCount)
         defaults.set(MySingleton.shared.adultsCount, forKey: UserDefaultsKeys.activitesadultCount)
         defaults.set(MySingleton.shared.childCount, forKey: UserDefaultsKeys.activiteschildCount)
         defaults.set(MySingleton.shared.infantsCount, forKey: UserDefaultsKeys.activitesinfantsCount)

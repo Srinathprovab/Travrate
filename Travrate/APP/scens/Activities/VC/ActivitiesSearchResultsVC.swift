@@ -70,8 +70,11 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate 
     
     
     override func didTapOnActivitesDetailsBtnAction(cell: ActivitiesResultTVCell) {
+        
         MySingleton.shared.activity_code = cell.activitycode
         MySingleton.shared.resultToken = cell.resultToken
+        MySingleton.shared.activity_image = cell.selectedImage
+        
         gotoActivitiesDetailsVC()
     }
     
@@ -114,13 +117,13 @@ extension ActivitiesSearchResultsVC {
         MySingleton.shared.payemail = ""
         MySingleton.shared.paymobile = ""
         MySingleton.shared.paymobilecountrycode = ""
-        let userloggedBool = defaults.bool(forKey: UserDefaultsKeys.loggedInStatus)
-        if userloggedBool == false {
-            MySingleton.shared.guestbool = true
-        }else {
-            MySingleton.shared.guestbool = false
-        }
-        
+//        let userloggedBool = defaults.bool(forKey: UserDefaultsKeys.loggedInStatus)
+//        if userloggedBool == false {
+//            MySingleton.shared.guestbool = true
+//        }else {
+//            MySingleton.shared.guestbool = false
+//        }
+//        
         MySingleton.shared.activityList = response.data?.raw_activity_list?.activitySearchResult?.activity ?? []
         MySingleton.shared.activites_booking_source = response.data?.booking_source ?? ""
         MySingleton.shared.activites_currency = response.data?.currency_obj?.to_currency ?? ""
@@ -159,10 +162,9 @@ extension ActivitiesSearchResultsVC {
     func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
-   
+        
         
         for  (index,value) in MySingleton.shared.activityList.enumerated() {
-            print(index + 1)
             MySingleton.shared.tablerow.append(TableRow(title:"\(index + 1)",moreData: value,cellType:.ActivitiesResultTVCell))
         }
         

@@ -253,15 +253,24 @@ extension FlightDeatilsVC {
         MySingleton.shared.tablerow.removeAll()
         
         
-        for (index,element) in fd.enumerated() {
-            MySingleton.shared.tablerow.append(TableRow(title: "\(index)",
-                                                        moreData: element,
-                                                        cellType: .ItineraryTVCell))
+        
+        
+        if fd.count > 0 {
+            for (index,element) in fd.enumerated() {
+                MySingleton.shared.tablerow.append(TableRow(title: "\(index)",
+                                                            moreData: element,
+                                                            cellType: .ItineraryTVCell))
+                
+                
+                MySingleton.shared.tablerow.append(TableRow(cellType:.TicketIssuingTimeTVCell))
+                MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+            }
+        }else {
+            TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)
         }
         
         
-        MySingleton.shared.tablerow.append(TableRow(cellType:.TicketIssuingTimeTVCell))
-        MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+       
         
         
         commonTVData = MySingleton.shared.tablerow

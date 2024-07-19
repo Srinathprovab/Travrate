@@ -80,7 +80,7 @@ class ActivitiesSearchVC: BaseTableVC {
         commonTableView.reloadData()
         self.view.endEditing(true)
     }
-
+    
     
     override func cancelDatePicker(cell: ActivitiesSearchTVCell) {
         self.view.endEditing(true)
@@ -88,7 +88,7 @@ class ActivitiesSearchVC: BaseTableVC {
     
     
     override func didTapOnActivitesSearchBtnAction(cell: ActivitiesSearchTVCell) {
-       
+        
         
         let cityid = defaults.string(forKey: UserDefaultsKeys.activitescityid)
         let cityname = defaults.string(forKey: UserDefaultsKeys.activitescityname)
@@ -152,7 +152,7 @@ extension ActivitiesSearchVC {
         
         
         print(" =====  PaymentSelectionArray  ====== ")
-       MySingleton.shared.PaymentSelectionArray.forEach({ i in
+        MySingleton.shared.PaymentSelectionArray.forEach({ i in
             print(i.value)
         })
         

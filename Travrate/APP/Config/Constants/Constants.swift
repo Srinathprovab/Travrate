@@ -182,6 +182,7 @@ var bookingId = String()
 var flightSelectedIndex = Int()
 var userspecification = [String]()
 
+var isfilterApplied = false
 var hotelimg = ""
 var hotel_check_in = ""
 var hotel_check_out = ""
@@ -225,6 +226,8 @@ var withwhomcodeArray = [String]()
 var multitripstittleArray = [String]()
 var multitripscodeArray = [String]()
 
+var isSearchBool = false
+var hoterresetApplied = false
 var zonetitleArray = [String]()
 var zonecodeArray = [String]()
 var optionsIndexpathArray: [IndexPath] = []
@@ -337,6 +340,7 @@ struct ApiEndpoints {
     static let general_mobile_pre_activity_search = "general/mobile_pre_activity_search"
     static let activity_search = "activity/search"
     static let activity_activity_detail = "activity/activity_detail"
+    static let activity_pre_process_booking = "activity/pre_process_booking"
     
 }
 

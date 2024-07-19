@@ -13,7 +13,7 @@ struct ActivityDetailsModalities : Codable {
     let name : String?
     let duration : Duration?
     //    let questions : [String]?
-    //    let comments : [Comments]?
+    let comments : [Comments]?
     //    let supplierInformation : SupplierInformation?
     //    let providerInformation : ProviderInformation?
     //    let destinationCode : String?
@@ -31,7 +31,7 @@ struct ActivityDetailsModalities : Codable {
         case name = "name"
         case duration = "duration"
         //        case questions = "questions"
-        //        case comments = "comments"
+        case comments = "comments"
         //        case supplierInformation = "supplierInformation"
         //        case providerInformation = "providerInformation"
         //        case destinationCode = "destinationCode"
@@ -50,7 +50,7 @@ struct ActivityDetailsModalities : Codable {
         name = try values.decodeIfPresent(String.self, forKey: .name)
         duration = try values.decodeIfPresent(Duration.self, forKey: .duration)
         //        questions = try values.decodeIfPresent([String].self, forKey: .questions)
-        //        comments = try values.decodeIfPresent([Comments].self, forKey: .comments)
+        comments = try values.decodeIfPresent([Comments].self, forKey: .comments)
         //        supplierInformation = try values.decodeIfPresent(SupplierInformation.self, forKey: .supplierInformation)
         //        providerInformation = try values.decodeIfPresent(ProviderInformation.self, forKey: .providerInformation)
         //        destinationCode = try values.decodeIfPresent(String.self, forKey: .destinationCode)

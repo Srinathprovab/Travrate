@@ -81,6 +81,7 @@ class ActivitiesDetailsVC: BaseTableVC, ActivityDetailsVMDelagate {
         
         
         MySingleton.shared.payload.removeAll()
+       
         MySingleton.shared.payload["booking_source"] =  MySingleton.shared.activites_booking_source
         MySingleton.shared.payload["rateKey"] = MySingleton.shared.rateKeySring
         MySingleton.shared.payload["mark_amt"] = "0"
@@ -95,14 +96,24 @@ class ActivitiesDetailsVC: BaseTableVC, ActivityDetailsVMDelagate {
         MySingleton.shared.payload["currency"] = MySingleton.shared.activites_currency
         MySingleton.shared.payload["activity_type"] = MySingleton.shared.activity_type
         MySingleton.shared.payload["resultToken"] = MySingleton.shared.resultToken
-        MySingleton.shared.payload["activity_selecteddate"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate) ?? "", f1: "dd-MM-yyyy", f2: "yyyy-MM-dd")
+        MySingleton.shared.payload["activity_selecteddate"] = MySingleton.shared.activity_selecteddate
         
         
-        gotoActivitiesBookingDetailsVC()
+        if  cell.datelbl.text == "Choose Date" {
+            cell.errorlbl.isHidden = false
+            cell.chooselbl.isHidden = true
+        }else {
+            cell.errorlbl.isHidden = true
+            cell.chooselbl.isHidden = true
+            totlConvertedGrand = Double(cell.agentpayable) ?? 0.0
+            gotoActivitiesBookingDetailsVC()
+        }
+        
     }
     
     
     func gotoActivitiesBookingDetailsVC() {
+        MySingleton.shared.callboolapi = true
         guard let vc = ActivitiesBookingDetailsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)

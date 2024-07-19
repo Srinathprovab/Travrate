@@ -805,7 +805,7 @@ class FilterVC: BaseTableVC{
     @IBAction func didTapOnResetBtn(_ sender: Any) {
         sortBy = .nothing
         
-        
+        isSearchBool = false
         resetHotelBool = true
         
         if let tabselect = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String  {
@@ -839,7 +839,12 @@ class FilterVC: BaseTableVC{
                 }
             }else {
                 
-                resetHotelFilter()
+                if filterKey == "hotelfilter" {
+                    DispatchQueue.main.async {[self] in
+                        resetHotelFilter()
+                    }
+                }
+                
             }
         }
         
@@ -1715,13 +1720,8 @@ class FilterVC: BaseTableVC{
                 }
             }else {
                 
-                if resetHotelBool == true {
-                    MySingleton.shared.filterApplyedBool = false
-                }else {
-                    MySingleton.shared.filterApplyedBool = true
-                }
-                
-                
+               
+                isSearchBool = true
                 
                 if minpricerangefilter != 0.0 {
                     hotelfiltermodel.minPriceRange = minpricerangefilter
@@ -2151,9 +2151,9 @@ extension FilterVC {
     func resetHotelFilter() {
         // Reset all values in the FilterModel
         
-        let pricesFloat = hotelprices.compactMap { Float($0) }
-        hotelfiltermodel.minPriceRange = Double((pricesFloat.min() ?? hotelprices.compactMap { Float($0) }.min()) ?? 0.0)
-        hotelfiltermodel.maxPriceRange = Double((pricesFloat.max() ?? hotelprices.compactMap { Float($0) }.max()) ?? 0.0)
+        let pricesFloat = prices.compactMap { Float($0) }
+        hotelfiltermodel.minPriceRange = Double((pricesFloat.min() ?? prices.compactMap { Float($0) }.min()) ?? 0.0)
+        hotelfiltermodel.maxPriceRange = Double((pricesFloat.max() ?? prices.compactMap { Float($0) }.max()) ?? 0.0)
         if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SliderTVCell {
             cell.setupUI()
         }
@@ -2301,11 +2301,11 @@ extension FilterVC {
         
         
         if hotelfiltermodel.minPriceRange != 0.0 {
-            minpricerangefilter = hotelfiltermodel.minPriceRange ?? Double(hotelprices.compactMap { Float($0) }.min()!)
+            minpricerangefilter = hotelfiltermodel.minPriceRange ?? Double(prices.compactMap { Float($0) }.min()!)
         }
         
         if hotelfiltermodel.maxPriceRange != 0.0 {
-            maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? Double(hotelprices.compactMap { Float($0) }.max()!)
+            maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? Double(prices.compactMap { Float($0) }.max()!)
         }
         
         

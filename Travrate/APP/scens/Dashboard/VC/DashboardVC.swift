@@ -8,9 +8,7 @@
 import UIKit
 
 class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataViewModelDelegate {
-    
-    
-    
+
     
     //MARK: - side menu initial setup
     private var sideMenuViewController: SideMenuViewController!
@@ -109,13 +107,25 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     
     override func didTapOnFlightTabSelectBtnAction(cell: TabSelectTVCell) {
         defaults.set("Flight", forKey: UserDefaultsKeys.tabselect)
+        defaults.set("Origin", forKey: UserDefaultsKeys.fromcityname)
+        defaults.set("Destination", forKey: UserDefaultsKeys.tocityname)
+        defaults.set("Economy", forKey: UserDefaultsKeys.selectClass)
+        defaults.set("Economy", forKey: UserDefaultsKeys.rselectClass)
+        defaults.set("Add Date", forKey: UserDefaultsKeys.calDepDate)
+        defaults.set("Add Date", forKey: UserDefaultsKeys.calRetDate)
+        defaults.set("1", forKey: UserDefaultsKeys.adultCount)
+        defaults.set("0", forKey: UserDefaultsKeys.childCount)
+        defaults.set("0", forKey: UserDefaultsKeys.infantsCount)
+        defaults.set("ALL", forKey: UserDefaultsKeys.fcariercode)
+        defaults.set("ALL AIRLINES", forKey: UserDefaultsKeys.fcariername)
+       
+        
         gotoFlightSearchVC()
     }
     
     
     override func didTapOnHotelTabSelect(cell: TabSelectTVCell) {
         defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
-        
         defaults.set("City/Location", forKey: UserDefaultsKeys.locationcity)
         defaults.set("Add Date", forKey: UserDefaultsKeys.checkin)
         defaults.set("Add Date", forKey: UserDefaultsKeys.checkout)
@@ -183,7 +193,7 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         defaults.set("1", forKey: UserDefaultsKeys.activitesadultCount)
         defaults.set("0", forKey: UserDefaultsKeys.activiteschildCount)
         defaults.set("0", forKey: UserDefaultsKeys.activitesinfantsCount)
-        
+        totalPax = "1"
         gotoActivitiesSearchVC()
        
     }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,7 +18,7 @@
         <!--VisaVC-->
         <scene sceneID="zeA-In-2RE">
             <objects>
-                <viewController storyboardIdentifier="VisaVC" id="xDe-QT-lK9" customClass="VisaVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VisaVC" id="xDe-QT-lK9" customClass="VisaVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NAt-Dh-Z33">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +65,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="k7j-hI-DOh" secondAttribute="trailing" id="i5o-83-22C"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yp-4G-ivN" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yp-4G-ivN" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                 <rect key="frame" x="161.66666666666666" y="62" width="70" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-hX-GDG">
@@ -141,7 +142,7 @@
         <!--Auto PaymentVC-->
         <scene sceneID="WiL-SP-B68">
             <objects>
-                <viewController storyboardIdentifier="AutoPaymentVC" id="qPB-5F-Po7" customClass="AutoPaymentVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AutoPaymentVC" id="qPB-5F-Po7" customClass="AutoPaymentVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tU1-MJ-LdN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -152,7 +153,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFT-Ws-3k4">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="260"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="autobg" translatesAutoresizingMaskIntoConstraints="NO" id="D68-lp-nwW">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="auto pay" translatesAutoresizingMaskIntoConstraints="NO" id="D68-lp-nwW">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="260"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efs-7M-ZUR">
@@ -187,7 +188,7 @@
                                                     <constraint firstItem="Iad-mI-Wy5" firstAttribute="centerX" secondItem="Efs-7M-ZUR" secondAttribute="centerX" id="x9P-Wr-O9x"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwM-ZF-lUb" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwM-ZF-lUb" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                 <rect key="frame" x="139" y="62" width="115" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Payment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ljp-8N-JEV">
@@ -264,7 +265,7 @@
         <!--Visa Passenger SelectVC-->
         <scene sceneID="0nc-Vw-HQY">
             <objects>
-                <viewController storyboardIdentifier="VisaPassengerSelectVC" id="ygo-yF-cFT" customClass="VisaPassengerSelectVC" customModule="Travgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VisaPassengerSelectVC" id="ygo-yF-cFT" customClass="VisaPassengerSelectVC" customModule="Travrate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EVo-C8-h09">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -321,7 +322,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="autobg" width="428" height="266"/>
+        <image name="auto pay" width="428" height="268"/>
         <image name="back" width="20" height="20"/>
         <image name="close" width="26" height="26"/>
         <image name="visabg" width="428" height="266"/>

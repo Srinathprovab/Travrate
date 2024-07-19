@@ -14,12 +14,10 @@ protocol QuickLinkTableViewCellDelegate {
 
 class QuickLinkTableViewCell: TableViewCell, UITableViewDataSource, UITableViewDelegate, SideMenuTitleTVCellDelegate {
     
-    
-    
-    
 
+    
     @IBOutlet weak var holderViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var linkstv: UITableView!
     @IBOutlet weak var holderView: UIView!
     
     
@@ -28,25 +26,26 @@ class QuickLinkTableViewCell: TableViewCell, UITableViewDataSource, UITableViewD
     var links = ["Flight", "Hotel", "Visa", "Auto Payment"]
     var bookings = ["My Bookings", "Free Cancellation", "Customer Support"]
     var tabNamesImages = ["flightIcon","hotelIcon","visaIcon", "payIcon"]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         holderView.layer.cornerRadius = 12
         holderView.layer.borderColor = HexColor("#DADCDB").cgColor
         holderView.layer.borderWidth = 1
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "SideMenuTitleTVCell", bundle: nil), forCellReuseIdentifier: "cell")
-        tableView.register(UINib(nibName: "SideMenuTitleTVCell", bundle: nil), forCellReuseIdentifier: "cell1")
-        tableView.register(UINib(nibName: "SideMenuTitleTVCell", bundle: nil), forCellReuseIdentifier: "cell2")
-        tableView.register(UINib(nibName: "SideMenuTitleTVCell", bundle: nil), forCellReuseIdentifier: "cell3")
-
-        tableView.register(UINib(nibName: "EmptyTVCell", bundle: nil), forCellReuseIdentifier: "cell3")
+        linkstv.delegate = self
+        linkstv.dataSource = self
+        linkstv.register(UINib(nibName: "SideMenuTitleTVCell", bundle: nil), forCellReuseIdentifier: "cell")
+        linkstv.register(UINib(nibName: "SideMenuTitleTVCell", bundle: nil), forCellReuseIdentifier: "cell1")
+        linkstv.register(UINib(nibName: "SideMenuTitleTVCell", bundle: nil), forCellReuseIdentifier: "cell2")
+        linkstv.register(UINib(nibName: "SideMenuTitleTVCell", bundle: nil), forCellReuseIdentifier: "cell3")
+        
+        linkstv.register(UINib(nibName: "EmptyTVCell", bundle: nil), forCellReuseIdentifier: "cell3")
     }
     
     override func updateUI() {
         
         if cellInfo?.key == "links" {
-            updateHeight(height: 5)
+            updateHeight(height: 9)
         } else {
             updateHeight(height: 3)
         }
@@ -55,8 +54,8 @@ class QuickLinkTableViewCell: TableViewCell, UITableViewDataSource, UITableViewD
     
     
     func updateHeight(height:Int) {
-        holderViewHeight.constant = CGFloat(height) * 46
-        tableView.reloadData()
+        holderViewHeight.constant = CGFloat(9) * 46
+        linkstv.reloadData()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -72,13 +71,17 @@ class QuickLinkTableViewCell: TableViewCell, UITableViewDataSource, UITableViewD
 }
 
 extension QuickLinkTableViewCell {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if cellInfo?.key == "links" {
-            return 5
+            return 9
         } else {
             return 3
         }
     }
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -105,20 +108,44 @@ extension QuickLinkTableViewCell {
                 return cell
             } else if indexPath.row == 3 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Visa"
-                cell.menuOptionImg.image = UIImage(named: "s1")
+                cell.menuTitlelbl.text = "Transfers"
+                cell.menuOptionImg.image = UIImage(named: "transfer")
+                cell.delegate = self
+                return cell
+            }else if indexPath.row == 4 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
+                cell.menuTitlelbl.text = "Sports"
+                cell.menuOptionImg.image = UIImage(named: "sports")
+                cell.delegate = self
+                return cell
+            }else if indexPath.row == 5 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
+                cell.menuTitlelbl.text = "Car Rental"
+                cell.menuOptionImg.image = UIImage(named: "s3")
+                cell.delegate = self
+                return cell
+            }else if indexPath.row == 6 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
+                cell.menuTitlelbl.text = "Activities"
+                cell.menuOptionImg.image = UIImage(named: "activitiestrip")
+                cell.delegate = self
+                return cell
+            }else if indexPath.row == 7 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
+                cell.menuTitlelbl.text = "Holidays"
+                cell.menuOptionImg.image = UIImage(named: "s2")
                 cell.delegate = self
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Auto Payment"
-                cell.menuOptionImg.image = UIImage(named: "s6")
+                cell.menuTitlelbl.text = "Cruise"
+                cell.menuOptionImg.image = UIImage(named: "s5")
                 cell.delegate = self
                 return cell
             }
         } else {
             if indexPath.row == 0 {
-
+                
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! SideMenuTitleTVCell
                 cell.menuTitlelbl.text = "My Bookings"
                 cell.menuOptionImg.isHidden = true

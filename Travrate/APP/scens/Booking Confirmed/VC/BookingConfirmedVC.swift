@@ -45,7 +45,9 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {[self] in
                 loderBool = false
                 hideLoadera()
-                setupActivitiesVoucherTVCells()
+                
+                callGetActivitesVoucherAPI()
+               
             }
             
         }else {
@@ -483,6 +485,22 @@ extension BookingConfirmedVC {
 
 //MARK: - ACTIVITIES
 extension BookingConfirmedVC {
+    
+    
+    func callGetActivitesVoucherAPI() {
+        viewModel?.CALL_ACTIVITIES_VOUCHER_API(dictParam: [:], url: MySingleton.shared.voucherurlsting)
+    }
+    
+    
+    func activitiesVoucherDetails(response: ActivitiesVoucherModel) {
+        print(response.data?.agent_details)
+        
+        DispatchQueue.main.async {
+            self.setupActivitiesVoucherTVCells()
+        }
+    }
+    
+    
     
     func setupActivitiesVoucherTVCells() {
         tablerow.removeAll()

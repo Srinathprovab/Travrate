@@ -703,6 +703,7 @@ extension SportsBookingDetailsVC {
     
     
     func gotoSelectPaymentMethodsVC() {
+        MySingleton.shared.callboolapi = true
         guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: false)

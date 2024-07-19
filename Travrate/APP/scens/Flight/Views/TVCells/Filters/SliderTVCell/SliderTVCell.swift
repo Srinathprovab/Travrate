@@ -143,8 +143,8 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
                     maxValue = Float(maxPrice)
                     
                     
-                    rangeSlider.minValue = hotelprices.compactMap { Float($0) }.min()!
-                    rangeSlider.maxValue = hotelprices.compactMap { Float($0) }.max()!
+                    rangeSlider.minValue = prices.compactMap { Float($0) }.min()!
+                    rangeSlider.maxValue = prices.compactMap { Float($0) }.max()!
                     
                     // Set the thumbs to the values
                     rangeSlider.selectedMinimum = minValue

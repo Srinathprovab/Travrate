@@ -51,6 +51,7 @@ class ViewFlightDetailsVC: BaseTableVC,FlightDetailsViewModelDelegate {
     }
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         MySingleton.shared.callboolapi = false
         dismiss(animated: true)
     }

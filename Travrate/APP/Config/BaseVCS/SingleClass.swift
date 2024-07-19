@@ -277,10 +277,15 @@ class MySingleton {
     var activity_type = String()
     var rateKeySring = String()
     var agentpayable = String()
+    var activity_selecteddate = String()
+    var activity_cancellation_string = String()
     var activitiesImagesArray = [Activity_images]()
     var activity_details :Activity_details?
     var modalitiesdetails = [ActivityDetailsModalities]()
-    
+    var activitiesPostData : Post?
+    var activity_name = String()
+    var activity_loc = String()
+    var activity_image = String()
   
     
     //View Models
@@ -334,6 +339,7 @@ class MySingleton {
     var preactivitysearchVM:MobilepreactivitysearchVM?
     var activityDetailsVM:ActivityDetailsVM?
     var activitiesPreProcessBookingVM:ActivitiesPreProcessBookingVM?
+    var activitiesProcessPassengerVM:ActivitiesProcessPassengerVM?
     
     
     //TIMER

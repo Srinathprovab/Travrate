@@ -233,7 +233,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             self.retTF.isHidden = false
            
             showdepDatePicker()
-         //   showreturndepDatePicker()
             showretDatePicker()
             
             
@@ -249,6 +248,17 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             directFlightCheckImg.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
         }else {
             directFlightCheckImg.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal).withTintColor(.TitleColor)
+        }
+        
+        
+        
+        updateLabelColor(label: fromlbl, defaultText: "Origin", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: tolbl, defaultText: "Destination", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: depDatelbl, defaultText: "Add Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: retlbl, defaultText: "Add Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        
+        func updateLabelColor(label: UILabel, defaultText: String, defaultColor: UIColor, selectedColor: UIColor) {
+            label.textColor = label.text == defaultText ? defaultColor : selectedColor
         }
         
         
@@ -464,17 +474,6 @@ extension FlightSearchTVCell {
     
     @objc func labelTapped(gesture:UITapGestureRecognizer) {
         if gesture.didTapAttributedString("  + Advanced search options", in: advanceSearchlbl) {
-           // infoViewbool.toggle()
-//            if infoViewbool {
-//                infoView.isHidden = false
-//                advanceSearchlbl.textColor = .BooknowBtnColor
-//                advanceSearchlbl.text = "  - less search options"
-//                
-//            }else {
-//                infoView.isHidden = true
-//                advanceSearchlbl.textColor = .TitleColor
-//                advanceSearchlbl.text = "  + Advanced search options +"
-//            }
             
             infoView.isHidden = false
             advanceSearchlbl.textColor = .BooknowBtnColor
@@ -488,27 +487,7 @@ extension FlightSearchTVCell {
             
             delegate?.didTapOnAdvanceOption(cell: self)
         }
-        
-//        if gesture.didTapAttributedString("  - less search options", in: advanceSearchlbl) {
-//          //  infoViewbool.toggle()
-////            if infoViewbool {
-////                infoView.isHidden = false
-////                advanceSearchlbl.textColor = .BooknowBtnColor
-////                advanceSearchlbl.text = "  - less search options"
-////                
-////            }else {
-////                infoView.isHidden = true
-////                advanceSearchlbl.textColor = .TitleColor
-////                advanceSearchlbl.text = "  + Advanced search options +"
-////            }
-//            
-//            
-//            infoView.isHidden = true
-//            advanceSearchlbl.textColor = .TitleColor
-//            advanceSearchlbl.text = "  + Advanced search options"
-//            
-//            delegate?.didTapOnAdvanceOption(cell: self)
-//        }
+    
         
     }
     
@@ -752,10 +731,7 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? FromCityTVCell {
-            print(cell.id)
-            print(cell.citycode)
-            print(cell.cityname)
-            
+           
             if tableView == fromtv {
                 fromlbl.text = "\(cityList[indexPath.row].city ?? "") (\(cityList[indexPath.row].code ?? ""))"
                 fromlbl.textColor = .TitleColor
@@ -849,14 +825,7 @@ extension FlightSearchTVCell {
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        
-        
-//        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-//        
-//        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        
+  
         
         let label = UILabel()
         label.text = "Departure Date" // Initial text, can be changed dynamically
@@ -876,70 +845,6 @@ extension FlightSearchTVCell {
         
     }
     
-    
-    
-    //MARK: - showreturndepDatePicker
-//    func showreturndepDatePicker(){
-//        //Formate Date
-//        retDatePicker.datePickerMode = .date
-//        retDatePicker.minimumDate = Date()
-//        retDatePicker.preferredDatePickerStyle = .wheels
-//        
-//        let formter = DateFormatter()
-//        formter.dateFormat = "dd-MM-yyyy"
-//        
-//        
-//        
-//        if let rcalDepDate = formter.date(from: defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "")  {
-//            retDatePicker.date = rcalDepDate
-//            
-//            
-//            if defaults.string(forKey: UserDefaultsKeys.calRetDate) == nil || self.retlbl.text == "Add Date" {
-//                retDatePicker.date = rcalDepDate
-//            }
-//            
-//            
-//            // Check if returnDate date is smaller than calDepDate date
-//            if let returnDate = formter.date(from: self.retlbl.text ?? ""),
-//               returnDate < rcalDepDate {
-//                retDatePicker.date = rcalDepDate
-//                
-//                // Also update the label to reflect the change
-//                self.retlbl.text = formter.string(from: rcalDepDate)
-//            }
-//            
-//            
-//        }
-//        
-//        
-//        //ToolBar
-//        let toolbar = UIToolbar();
-//        toolbar.sizeToFit()
-//        
-//        
-////        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-////        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-////        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-////        
-////        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-//        
-//        let label = UILabel()
-//        label.text = "Departure Date" // Initial text, can be changed dynamically
-//        label.sizeToFit()
-//        label.font = .OpenSansMedium(size: 16)
-//        let labelButton = UIBarButtonItem(customView: label)
-//
-//        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-//        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-//        toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
-//        
-//        
-//        
-//        self.depTF.inputAccessoryView = toolbar
-//        self.depTF.inputView = retDatePicker
-//        
-//    }
     
     
     
@@ -982,13 +887,6 @@ extension FlightSearchTVCell {
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        
-        
-//        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-//        
-//        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         
         let label = UILabel()
         label.text = "Return Date" // Initial text, can be changed dynamically

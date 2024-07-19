@@ -375,6 +375,7 @@ extension FlightSearchVC {
         MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         
         
+        
         if defaults.string(forKey: UserDefaultsKeys.journeyType) == "oneway" {
             
             
@@ -385,9 +386,9 @@ extension FlightSearchVC {
             }
             MySingleton.shared.payload["return"] = ""
             
-            if defaults.string(forKey: UserDefaultsKeys.fromCity) == nil {
+            if defaults.string(forKey: UserDefaultsKeys.fromcityname) == "Origin" {
                 showToast(message: "Enter From City")
-            }else if defaults.string(forKey: UserDefaultsKeys.toCity) == nil {
+            }else if defaults.string(forKey: UserDefaultsKeys.tocityname) == "Destination" {
                 showToast(message: "Enter To City")
             }else if defaults.string(forKey: UserDefaultsKeys.calDepDate) == "Add Date" || defaults.string(forKey: UserDefaultsKeys.calDepDate) == nil {
                 showToast(message: "Add Departure Date")
@@ -404,9 +405,9 @@ extension FlightSearchVC {
             // MySingleton.shared.payload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
             MySingleton.shared.payload["return"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
             
-            if defaults.string(forKey: UserDefaultsKeys.fromCity) == nil {
+            if defaults.string(forKey: UserDefaultsKeys.fromcityname) == "Origin" {
                 showToast(message: "Enter From City")
-            }else if defaults.string(forKey: UserDefaultsKeys.toCity) == nil {
+            }else if defaults.string(forKey: UserDefaultsKeys.tocityname) == "Destination" {
                 showToast(message: "Enter To City")
             }else if defaults.string(forKey: UserDefaultsKeys.calDepDate) == "Add Date" || defaults.string(forKey: UserDefaultsKeys.calDepDate) == nil {
                 showToast(message: "Add Departure Date")

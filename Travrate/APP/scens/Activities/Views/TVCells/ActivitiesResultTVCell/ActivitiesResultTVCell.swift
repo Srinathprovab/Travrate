@@ -22,6 +22,7 @@ class ActivitiesResultTVCell: TableViewCell {
     @IBOutlet weak var namebtn: UIButton!
     
 
+    var selectedImage = String()
     var resultToken = String()
     var bookingsource = String()
     var activitycode = String()
@@ -69,7 +70,7 @@ class ActivitiesResultTVCell: TableViewCell {
                                                 str2Color: .TitleColor)
         
         
-        
+        selectedImage = activitylist?.image ?? ""
         activityimg.sd_setImage(with: URL(string: activitylist?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
             if let error = error {
                 // Handle error loading image
@@ -84,6 +85,11 @@ class ActivitiesResultTVCell: TableViewCell {
                 }
             }
         })
+        
+        
+        MySingleton.shared.activity_name = activitylist?.name ?? ""
+        MySingleton.shared.activity_loc = "P.O Box 30531, Al Jaddaf-1 Bur Dubai (Near Al Jadaf Metro Station - Dubai)"
+        
     }
     
     

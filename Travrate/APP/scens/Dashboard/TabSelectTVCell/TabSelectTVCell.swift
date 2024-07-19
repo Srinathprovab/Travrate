@@ -44,7 +44,7 @@ class TabSelectTVCell: TableViewCell {
     //    var serviceImgsArray1 = ["s1","s2","s3","sports","s5","s6","s7"]
     
     
-    var indexxPathArray = [IndexPath]()
+    var moreTabNameArray = [String]()
     var serviceArray = ["Transfers","Sports","Car rental","Activities","Holidays","Cruise"]
     var serviceImgsArray = ["transfer","sports","s3","activitiestrip","s2","s5",]
     var delegate:TabSelectTVCellDelegate?
@@ -208,18 +208,20 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
             
             
             
-            if indexxPathArray.contains(indexPath) {
+            if moreTabNameArray.contains(cell.titlelbl.text ?? "") {
                 print("=== select ===")
                 print(indexPath.row)
                 cell.holderView.backgroundColor = .LayoverColor
                 cell.holderView.layer.borderWidth = 1
                 cell.holderView.layer.borderColor = UIColor.Buttoncolor.cgColor
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
             }else {
                 print("=== Deselect ===")
                 print(indexPath.row)
                 cell.holderView.backgroundColor = .WhiteColor
                 cell.holderView.layer.borderWidth = 1
                 cell.holderView.layer.borderColor = UIColor.BorderColor.cgColor
+                collectionView.deselectItem(at: indexPath, animated: false)
             }
             
             
@@ -235,7 +237,7 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
             cell.holderView.backgroundColor = .LayoverColor
             cell.holderView.layer.borderWidth = 1
             cell.holderView.layer.borderColor = UIColor.Buttoncolor.cgColor
-            indexxPathArray.append(indexPath)
+            moreTabNameArray.append(titlelbl.text ?? "")
             
             switch cell.titlelbl.text {
                 
@@ -285,8 +287,8 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
             cell.holderView.layer.borderColor = UIColor.BorderColor.cgColor
             
             
-            if let index = indexxPathArray.firstIndex(of: indexPath) {
-                indexxPathArray.remove(at: index)
+            if let index = moreTabNameArray.firstIndex(of: cell.titlelbl.text ?? "") {
+                moreTabNameArray.remove(at: index)
             }
             
         }

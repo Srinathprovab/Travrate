@@ -200,6 +200,7 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 cell.delegate = self
                 
+                cell.cancelPolicy = MySingleton.shared.activity_details?.cancelpolicy?[indexPath.row] ?? []
                 
                 cell.updateHeight()
                 ccell = cell

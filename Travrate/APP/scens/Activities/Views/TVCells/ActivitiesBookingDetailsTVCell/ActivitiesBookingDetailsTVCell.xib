@@ -180,7 +180,9 @@ burj nahar intersection</string>
                 <outlet property="activityNamelbl" destination="8to-jF-f28" id="CtO-Gu-JjX"/>
                 <outlet property="activityimg" destination="Zt5-4Z-MNQ" id="1OJ-0h-6O1"/>
                 <outlet property="activityloclbl" destination="5G6-0r-gT9" id="DFZ-ED-enu"/>
+                <outlet property="cancellationPolicylbl" destination="oXM-y2-Dju" id="CKd-TE-nMX"/>
                 <outlet property="namebtn" destination="Us8-1q-Lbd" id="382-Ky-Vgx"/>
+                <outlet property="passengerslbl" destination="W8I-oA-SHZ" id="mHs-Dm-rf4"/>
             </connections>
             <point key="canvasLocation" x="105.34351145038167" y="108.09859154929578"/>
         </tableViewCell>

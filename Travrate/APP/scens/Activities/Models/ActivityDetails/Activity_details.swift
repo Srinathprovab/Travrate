@@ -16,7 +16,8 @@ struct Activity_details : Codable {
     let segmentationGroups : String?
     let feature : String?
     let cONTRACT_REMARKS : String?
-    //	let cancelpolicy : [[Cancelpolicy]]?
+    let cancelpolicy : [[Cancelpolicy]]?
+  //  let token_mob : Token_mob?
     
     enum CodingKeys: String, CodingKey {
         
@@ -34,7 +35,8 @@ struct Activity_details : Codable {
         case segmentationGroups = "segmentationGroups"
         case feature = "feature"
         case cONTRACT_REMARKS = "CONTRACT_REMARKS"
-        //	case cancelpolicy = "cancelpolicy"
+        case cancelpolicy = "cancelpolicy"
+      //  case token_mob = "token_mob"
     }
     
     init(from decoder: Decoder) throws {
@@ -53,7 +55,9 @@ struct Activity_details : Codable {
         segmentationGroups = try values.decodeIfPresent(String.self, forKey: .segmentationGroups)
         feature = try values.decodeIfPresent(String.self, forKey: .feature)
         cONTRACT_REMARKS = try values.decodeIfPresent(String.self, forKey: .cONTRACT_REMARKS)
-        //	cancelpolicy = try values.decodeIfPresent([[Cancelpolicy]].self, forKey: .cancelpolicy)
+        cancelpolicy = try values.decodeIfPresent([[Cancelpolicy]].self, forKey: .cancelpolicy)
+     //   token_mob = try values.decodeIfPresent(Token_mob.self, forKey: .token_mob)
+
     }
     
 }

@@ -33,7 +33,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     var lastContentOffset: CGFloat = 0
     var tablerow = [TableRow]()
     var filtered = [HotelSearchResult]()
-    var isSearchBool = false
+   
     var searchText = String()
     var isvcfrom = String()
     var payload = [String:Any]()
@@ -404,6 +404,7 @@ extension SearchHotelsResultVC {
         cvHolderView.isHidden = false
         loderBool = false
         holderView.isHidden = false
+        isfilterApplied = false
         
         hsearchid = response.search_id ?? ""
         
@@ -448,8 +449,9 @@ extension SearchHotelsResultVC {
         hideLoadera()
         loderBool = false
         
+        filtered = list
         holderView.isHidden = false
-        hotelprices.removeAll()
+        prices.removeAll()
         nearBylocationsArray.removeAll()
         faretypeArray .removeAll()
         amenitiesArray.removeAll()
@@ -461,7 +463,7 @@ extension SearchHotelsResultVC {
         
         list.forEach { i in
             
-            hotelprices.append(i.price ?? "0")
+            prices.append(i.price ?? "0")
             hotelstarratingArray.append("\(i.star_rating ?? 0)")
             
             if let refund = i.refund, !refund.isEmpty {
@@ -475,7 +477,7 @@ extension SearchHotelsResultVC {
             }
         }
         
-        hotelprices = Array(Set(hotelprices))
+        prices = Array(Set(prices))
         nearBylocationsArray = Array(Set(nearBylocationsArray))
         faretypeArray = Array(Set(faretypeArray))
         amenitiesArray = Array(Set(amenitiesArray))
@@ -573,6 +575,9 @@ extension SearchHotelsResultVC {
                 ccell = cell
             }else{
                 let dict = hotelSearchResult[indexPath.row]
+                
+                
+                hotelsCountlbl.text = "\(hotelSearchResult.count)"
                 
                 cell.hotelNamelbl.text = dict.name
                 cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
@@ -726,21 +731,13 @@ extension SearchHotelsResultVC:AppliedFilters{
     
     
     
-    
-    
-    
     //MARK: - hotelFilterByApplied
     
     func hotelFilterByApplied(minpricerange: Double, maxpricerange: Double, starRating: String, starRatingNew: [String], refundableTypeArray: [String], nearByLocA: [String], niberhoodA: [String], aminitiesA: [String]) {
         
         // Set the filter flag to true
         isSearchBool = true
-        
-        if MySingleton.shared.filterApplyedBool == true {
-            isLoadingData = true
-        }else {
-            isLoadingData = false
-        }
+       
         
         // Print filter parameters for debugging
         print("Min Price Range: \(minpricerange)")
@@ -754,23 +751,21 @@ extension SearchHotelsResultVC:AppliedFilters{
         
         // Filter the hotels based on the specified criteria
         let filteredArray = hotelSearchResult.filter { hotel in
-            guard let netPrice = Double(hotel.price ?? "0.0") else { return false }
+            guard let totalString = Double(hotel.price ?? "0.0") else { return false }
             
-            // Check if the hotel's star rating matches the selected star rating or is empty
+            let priceInRange = totalString >= minpricerange && totalString <= maxpricerange
             //  let ratingMatches = starRating.isEmpty || String(hotel.star_rating ?? 0) == starRating
             let ratingMatches = starRatingNew.isEmpty || starRatingNew.contains("\(hotel.star_rating ?? 0)")
             // Check if the hotel's refund type matches any selected refundable types or the array is empty
             let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(hotel.refund ?? "")
             
-            // Check if the hotel's price falls within the specified range
-            let priceInRange = netPrice >= minpricerange && netPrice <= maxpricerange
             
-            return ratingMatches && refundableMatch && priceInRange
+            return priceInRange && ratingMatches && refundableMatch
         }
         
         // Update the filtered results
         filtered = filteredArray
-        
+        hotelsCountlbl.text = "\(filtered.count)"
         // Display a message if no hotels match the criteria
         if filtered.count == 0 {
             TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)
@@ -778,9 +773,6 @@ extension SearchHotelsResultVC:AppliedFilters{
             TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
         }
         
-        if sortBy == .nothing {
-            isSearchBool = false
-        }
         
         // Reload the table view with the filtered results
         commonTableView.reloadData()
@@ -863,6 +855,8 @@ extension SearchHotelsResultVC:AppliedFilters{
         if sortBy == .nothing {
             isSearchBool = false
         }
+        
+        
         
     }
     

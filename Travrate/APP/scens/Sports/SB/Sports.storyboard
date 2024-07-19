@@ -38,7 +38,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUp-1s-BlO">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="260"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportsbg" translatesAutoresizingMaskIntoConstraints="NO" id="ZuP-g9-tFn">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportsbg1" translatesAutoresizingMaskIntoConstraints="NO" id="ZuP-g9-tFn">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="260"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckb-F3-tZJ">
@@ -806,7 +806,7 @@
         <image name="filter" width="22" height="22"/>
         <image name="modify" width="79" height="30"/>
         <image name="sort" width="26" height="26"/>
-        <image name="sportsbg" width="428" height="266"/>
+        <image name="sportsbg1" width="428" height="268"/>
         <image name="stadium" width="372" height="311"/>
         <namedColor name="Buttoncolor">
             <color red="0.2669999897480011" green="0.70999997854232788" blue="0.046999998390674591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
