@@ -22,6 +22,7 @@ class ActivitiesResultTVCell: TableViewCell {
     @IBOutlet weak var namebtn: UIButton!
     
 
+    var resultToken = String()
     var bookingsource = String()
     var activitycode = String()
     var activitylist :Activity?
@@ -53,6 +54,7 @@ class ActivitiesResultTVCell: TableViewCell {
     
     override func updateUI() {
         
+        resultToken = cellInfo?.title ?? ""
         activitylist = cellInfo?.moreData as? Activity
         activitycode = activitylist?.code ?? ""
         

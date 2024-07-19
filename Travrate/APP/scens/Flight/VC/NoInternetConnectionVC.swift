@@ -87,7 +87,7 @@ class NoInternetConnectionVC: UIViewController {
     }
     
     @IBAction func didTapOnTryAgainBtn(_ sender: Any) {
-        
+        MySingleton.shared.afterResultsBool = false
         BASE_URL = BASE_URL1
         
         if key == "noresult" || key == "noseat"{

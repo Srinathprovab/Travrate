@@ -551,7 +551,6 @@ extension BookTransfersTVCell {
         // Set minimumDate for retDatePicker based on depDatePicker or retdepDatePicker
         let selectedDate = self.depDateTF.isFirstResponder ? depDatePicker.date : retDatePicker.date
         retDatePicker.minimumDate = selectedDate
-        
         retDatePicker.preferredDatePickerStyle = .wheels
         
         

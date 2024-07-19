@@ -767,6 +767,27 @@
 		844B87EE2C48D3470068CC93 /* ActivitiesFareSummeryTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844B87EC2C48D3470068CC93 /* ActivitiesFareSummeryTVCell.xib */; };
 		844B87F22C48E3460068CC93 /* ActivityInformationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B87F02C48E3460068CC93 /* ActivityInformationTVCell.swift */; };
 		844B87F32C48E3460068CC93 /* ActivityInformationTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844B87F12C48E3460068CC93 /* ActivityInformationTVCell.xib */; };
+		844B87F52C49106D0068CC93 /* ProviderInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B87F42C49106D0068CC93 /* ProviderInformation.swift */; };
+		844B87F72C4910830068CC93 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B87F62C4910830068CC93 /* Comments.swift */; };
+		844B87F92C49109C0068CC93 /* AmountsFrom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B87F82C49109C0068CC93 /* AmountsFrom.swift */; };
+		844B87FB2C4910B40068CC93 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B87FA2C4910B30068CC93 /* Amount.swift */; };
+		844B87FD2C4910BC0068CC93 /* BoxOfficeAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B87FC2C4910BC0068CC93 /* BoxOfficeAmount.swift */; };
+		844B87FF2C4910D50068CC93 /* Rates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B87FE2C4910D50068CC93 /* Rates.swift */; };
+		844B88012C4910EA0068CC93 /* RateDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B88002C4910EA0068CC93 /* RateDetails.swift */; };
+		844B88032C49110C0068CC93 /* MinimumDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B88022C49110B0068CC93 /* MinimumDuration.swift */; };
+		844B88052C4911140068CC93 /* AgencyCommission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B88042C4911140068CC93 /* AgencyCommission.swift */; };
+		844B88072C49111E0068CC93 /* PaxAmounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B88062C49111E0068CC93 /* PaxAmounts.swift */; };
+		844B88092C4911280068CC93 /* TotalAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B88082C4911280068CC93 /* TotalAmount.swift */; };
+		844B880B2C4911330068CC93 /* OperationDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B880A2C4911320068CC93 /* OperationDates.swift */; };
+		844B880F2C4911830068CC93 /* MaximumDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B880E2C4911830068CC93 /* MaximumDuration.swift */; };
+		844B88112C4911950068CC93 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B88102C4911940068CC93 /* Languages.swift */; };
+		844B88132C4911B00068CC93 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B88122C4911B00068CC93 /* Questions.swift */; };
+		844B88152C4911C30068CC93 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B88142C4911C30068CC93 /* Contract.swift */; };
+		844B88172C4911EE0068CC93 /* MarkupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B88162C4911EE0068CC93 /* MarkupList.swift */; };
+		844B88192C4912000068CC93 /* SupplierInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B88182C4912000068CC93 /* SupplierInformation.swift */; };
+		844B881B2C49545D0068CC93 /* ActivitiesPreProcessBookingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B881A2C49545D0068CC93 /* ActivitiesPreProcessBookingModel.swift */; };
+		844B881D2C4954780068CC93 /* Form_params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B881C2C4954780068CC93 /* Form_params.swift */; };
+		844B881F2C4954A00068CC93 /* ActivitiesPreProcessBookingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B881E2C4954A00068CC93 /* ActivitiesPreProcessBookingVM.swift */; };
 		8456D8FC2C3FA31F007D51A4 /* CarDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456D8FB2C3FA31F007D51A4 /* CarDetailsModel.swift */; };
 		8456D8FE2C3FA340007D51A4 /* Result_token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456D8FD2C3FA340007D51A4 /* Result_token.swift */; };
 		8456D9002C3FA34B007D51A4 /* Post_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456D8FF2C3FA34B007D51A4 /* Post_data.swift */; };
@@ -821,7 +842,6 @@
 		84EA31D02C479C920031C482 /* Raw_activity_list.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA31CF2C479C920031C482 /* Raw_activity_list.swift */; };
 		84EA31D22C479CAF0031C482 /* ActivitySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA31D12C479CAF0031C482 /* ActivitySearchResult.swift */; };
 		84EA31D42C479CC30031C482 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA31D32C479CC30031C482 /* Activity.swift */; };
-		84EA31D62C479D020031C482 /* Modalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA31D52C479D020031C482 /* Modalities.swift */; };
 		84EA31DA2C47A9010031C482 /* ActivitiesResultTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EA31D92C47A9010031C482 /* ActivitiesResultTVCell.xib */; };
 		84EA31DB2C47A9010031C482 /* ActivitiesResultTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA31D82C47A9010031C482 /* ActivitiesResultTVCell.swift */; };
 		84EA31DD2C47BE880031C482 /* ModifyActivitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA31DC2C47BE880031C482 /* ModifyActivitySearchVC.swift */; };
@@ -1633,6 +1653,27 @@
 		844B87EC2C48D3470068CC93 /* ActivitiesFareSummeryTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesFareSummeryTVCell.xib; sourceTree = "<group>"; };
 		844B87F02C48E3460068CC93 /* ActivityInformationTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityInformationTVCell.swift; sourceTree = "<group>"; };
 		844B87F12C48E3460068CC93 /* ActivityInformationTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityInformationTVCell.xib; sourceTree = "<group>"; };
+		844B87F42C49106D0068CC93 /* ProviderInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInformation.swift; sourceTree = "<group>"; };
+		844B87F62C4910830068CC93 /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		844B87F82C49109C0068CC93 /* AmountsFrom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountsFrom.swift; sourceTree = "<group>"; };
+		844B87FA2C4910B30068CC93 /* Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
+		844B87FC2C4910BC0068CC93 /* BoxOfficeAmount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxOfficeAmount.swift; sourceTree = "<group>"; };
+		844B87FE2C4910D50068CC93 /* Rates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rates.swift; sourceTree = "<group>"; };
+		844B88002C4910EA0068CC93 /* RateDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateDetails.swift; sourceTree = "<group>"; };
+		844B88022C49110B0068CC93 /* MinimumDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimumDuration.swift; sourceTree = "<group>"; };
+		844B88042C4911140068CC93 /* AgencyCommission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgencyCommission.swift; sourceTree = "<group>"; };
+		844B88062C49111E0068CC93 /* PaxAmounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaxAmounts.swift; sourceTree = "<group>"; };
+		844B88082C4911280068CC93 /* TotalAmount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalAmount.swift; sourceTree = "<group>"; };
+		844B880A2C4911320068CC93 /* OperationDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationDates.swift; sourceTree = "<group>"; };
+		844B880E2C4911830068CC93 /* MaximumDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaximumDuration.swift; sourceTree = "<group>"; };
+		844B88102C4911940068CC93 /* Languages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
+		844B88122C4911B00068CC93 /* Questions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		844B88142C4911C30068CC93 /* Contract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
+		844B88162C4911EE0068CC93 /* MarkupList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupList.swift; sourceTree = "<group>"; };
+		844B88182C4912000068CC93 /* SupplierInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierInformation.swift; sourceTree = "<group>"; };
+		844B881A2C49545D0068CC93 /* ActivitiesPreProcessBookingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesPreProcessBookingModel.swift; sourceTree = "<group>"; };
+		844B881C2C4954780068CC93 /* Form_params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form_params.swift; sourceTree = "<group>"; };
+		844B881E2C4954A00068CC93 /* ActivitiesPreProcessBookingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesPreProcessBookingVM.swift; sourceTree = "<group>"; };
 		8456D8FB2C3FA31F007D51A4 /* CarDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsModel.swift; sourceTree = "<group>"; };
 		8456D8FD2C3FA340007D51A4 /* Result_token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result_token.swift; sourceTree = "<group>"; };
 		8456D8FF2C3FA34B007D51A4 /* Post_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post_data.swift; sourceTree = "<group>"; };
@@ -1687,7 +1728,6 @@
 		84EA31CF2C479C920031C482 /* Raw_activity_list.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Raw_activity_list.swift; sourceTree = "<group>"; };
 		84EA31D12C479CAF0031C482 /* ActivitySearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySearchResult.swift; sourceTree = "<group>"; };
 		84EA31D32C479CC30031C482 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		84EA31D52C479D020031C482 /* Modalities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modalities.swift; sourceTree = "<group>"; };
 		84EA31D82C47A9010031C482 /* ActivitiesResultTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesResultTVCell.swift; sourceTree = "<group>"; };
 		84EA31D92C47A9010031C482 /* ActivitiesResultTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesResultTVCell.xib; sourceTree = "<group>"; };
 		84EA31DC2C47BE880031C482 /* ModifyActivitySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyActivitySearchVC.swift; sourceTree = "<group>"; };
@@ -5667,6 +5707,7 @@
 				84EA31C32C477D290031C482 /* GetActivitesDestinationListVM.swift */,
 				84EA31CB2C47935D0031C482 /* MobilepreactivitysearchVM.swift */,
 				84EA31E92C47C49B0031C482 /* ActivityDetailsVM.swift */,
+				844B881E2C4954A00068CC93 /* ActivitiesPreProcessBookingVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -5689,7 +5730,8 @@
 				84EA31CF2C479C920031C482 /* Raw_activity_list.swift */,
 				84EA31D12C479CAF0031C482 /* ActivitySearchResult.swift */,
 				84EA31D32C479CC30031C482 /* Activity.swift */,
-				84EA31D52C479D020031C482 /* Modalities.swift */,
+				844B881A2C49545D0068CC93 /* ActivitiesPreProcessBookingModel.swift */,
+				844B881C2C4954780068CC93 /* Form_params.swift */,
 			);
 			path = ActivitesSearch;
 			sourceTree = "<group>";
@@ -5714,6 +5756,24 @@
 				84EA31FB2C47EAFB0031C482 /* Content.swift */,
 				84EA32082C4803720031C482 /* ActivityDetailsModalities.swift */,
 				84EA320A2C4803AE0031C482 /* Duration.swift */,
+				844B87F42C49106D0068CC93 /* ProviderInformation.swift */,
+				844B87F62C4910830068CC93 /* Comments.swift */,
+				844B87F82C49109C0068CC93 /* AmountsFrom.swift */,
+				844B87FA2C4910B30068CC93 /* Amount.swift */,
+				844B87FC2C4910BC0068CC93 /* BoxOfficeAmount.swift */,
+				844B87FE2C4910D50068CC93 /* Rates.swift */,
+				844B88002C4910EA0068CC93 /* RateDetails.swift */,
+				844B88022C49110B0068CC93 /* MinimumDuration.swift */,
+				844B88042C4911140068CC93 /* AgencyCommission.swift */,
+				844B88062C49111E0068CC93 /* PaxAmounts.swift */,
+				844B88082C4911280068CC93 /* TotalAmount.swift */,
+				844B880A2C4911320068CC93 /* OperationDates.swift */,
+				844B880E2C4911830068CC93 /* MaximumDuration.swift */,
+				844B88102C4911940068CC93 /* Languages.swift */,
+				844B88122C4911B00068CC93 /* Questions.swift */,
+				844B88142C4911C30068CC93 /* Contract.swift */,
+				844B88162C4911EE0068CC93 /* MarkupList.swift */,
+				844B88182C4912000068CC93 /* SupplierInformation.swift */,
 			);
 			path = ActivityDetails;
 			sourceTree = "<group>";
@@ -6343,12 +6403,14 @@
 				65207E002BF494310076EF76 /* YourRecentSearchesCVCell.swift in Sources */,
 				6545D8282BFC769100FBCB60 /* HomeTeam.swift in Sources */,
 				65207CF32BF494310076EF76 /* Airline_list.swift in Sources */,
+				844B87FD2C4910BC0068CC93 /* BoxOfficeAmount.swift in Sources */,
 				65207E8A2BF494320076EF76 /* ViewController+CollectionViewDelegateAndDatSource.swift in Sources */,
 				65207D792BF494310076EF76 /* Addon_services.swift in Sources */,
 				84A1700E2C452ECA002C7F83 /* TransferfareSummeryTVCell.swift in Sources */,
 				843D490B2C4257EF00C0F127 /* Additional_services_revert.swift in Sources */,
 				84EA31C22C477D110031C482 /* GetActivitesDestinationListModel.swift in Sources */,
 				8459E3A82C2AC418007CED6C /* ShareResultViewModel.swift in Sources */,
+				844B87F52C49106D0068CC93 /* ProviderInformation.swift in Sources */,
 				65207E632BF494320076EF76 /* SelectCityCVCell.swift in Sources */,
 				65207DD72BF494310076EF76 /* SpecialAssistanceTVCell.swift in Sources */,
 				65207DC02BF494310076EF76 /* AddsOnInfoTVCell.swift in Sources */,
@@ -6361,6 +6423,7 @@
 				65207DA82BF494310076EF76 /* checkOptionsTVCell.swift in Sources */,
 				846D24CB2C40BC690030C539 /* Car_passengers.swift in Sources */,
 				8439A1D42C3BCC3C00CA3672 /* PaymentSelection.swift in Sources */,
+				844B881D2C4954780068CC93 /* Form_params.swift in Sources */,
 				65D3273D2BF72B0E00FE879D /* HolidaySelectedModel.swift in Sources */,
 				65207D712BF494310076EF76 /* FareFamily.swift in Sources */,
 				657BF3182C05FC6A000E636A /* SportsBookingVM.swift in Sources */,
@@ -6378,6 +6441,7 @@
 				65207D302BF494310076EF76 /* ButtonCollectionViewCell.swift in Sources */,
 				65207E1D2BF494320076EF76 /* VisaTVCell.swift in Sources */,
 				65207CC82BF494310076EF76 /* ProgressHUD.swift in Sources */,
+				844B88072C49111E0068CC93 /* PaxAmounts.swift in Sources */,
 				843D48FD2C4254FA00C0F127 /* Sight_seen_search_params.swift in Sources */,
 				65207D3F2BF494310076EF76 /* HolidayItineraryTVCell.swift in Sources */,
 				65207C9A2BF494310076EF76 /* SessionManager.swift in Sources */,
@@ -6445,6 +6509,7 @@
 				843D48FB2C4254E000C0F127 /* Active_booking_source.swift in Sources */,
 				65C894CF2BFDFE3F007ADD77 /* ViewStadiumVC.swift in Sources */,
 				84EA31CE2C479BF90031C482 /* ActivitesListModel.swift in Sources */,
+				844B88112C4911950068CC93 /* Languages.swift in Sources */,
 				657BF3112C05EF1A000E636A /* SportDetailsVM.swift in Sources */,
 				843D48F02C420D1100C0F127 /* GetTransferCityModel.swift in Sources */,
 				65207EC42BF494320076EF76 /* ResetPasswordViewModel.swift in Sources */,
@@ -6459,9 +6524,12 @@
 				65207CC62BF494310076EF76 /* Loader.swift in Sources */,
 				65207D582BF494310076EF76 /* FlightItinarryPopupVC.swift in Sources */,
 				65207DB72BF494310076EF76 /* OperatorsCheckBoxTVCell.swift in Sources */,
+				844B88032C49110C0068CC93 /* MinimumDuration.swift in Sources */,
 				8404DA1E2C3E4E3B000A648A /* CarAttr.swift in Sources */,
 				65207E752BF494320076EF76 /* CruiseEnquireySucessVC.swift in Sources */,
 				650A1A1F2BFB383700F439CC /* SportServiceVM.swift in Sources */,
+				844B881F2C4954A00068CC93 /* ActivitiesPreProcessBookingVM.swift in Sources */,
+				844B88172C4911EE0068CC93 /* MarkupList.swift in Sources */,
 				65207E962BF494320076EF76 /* Social_links.swift in Sources */,
 				8456D90F2C3FE2A3007D51A4 /* CarPreBookingVM.swift in Sources */,
 				65207DEF2BF494310076EF76 /* FlightResultTVCell.swift in Sources */,
@@ -6612,7 +6680,9 @@
 				65207D262BF494310076EF76 /* TitleLblTVCell.swift in Sources */,
 				8439A1DB2C3C118700CA3672 /* SportsPreBookingModel.swift in Sources */,
 				653467C02C0475730059A0E1 /* SportsFareSummeryTVCell.swift in Sources */,
+				844B88132C4911B00068CC93 /* Questions.swift in Sources */,
 				65207E1B2BF494320076EF76 /* VisaVC.swift in Sources */,
+				844B87F92C49109C0068CC93 /* AmountsFrom.swift in Sources */,
 				8404DA2D2C3E8ACB000A648A /* Event_list_data.swift in Sources */,
 				65207E492BF494320076EF76 /* DashboardVC.swift in Sources */,
 				65684C952C1C40BC002A96BE /* SelectedCarRentalTVCell.swift in Sources */,
@@ -6623,6 +6693,7 @@
 				65207ED12BF494320076EF76 /* MenuBGTVCell.swift in Sources */,
 				65207DD32BF494310076EF76 /* LoginDetailsTableViewCell.swift in Sources */,
 				65207CD62BF494310076EF76 /* AirlineListViewModel.swift in Sources */,
+				844B88192C4912000068CC93 /* SupplierInformation.swift in Sources */,
 				653467BC2C044B420059A0E1 /* SportsBookingDetailsVC.swift in Sources */,
 				65207E712BF494320076EF76 /* CruiseDetailsViewModel.swift in Sources */,
 				65207CDD2BF494310076EF76 /* ModifyHotelSearchVC.swift in Sources */,
@@ -6661,12 +6732,14 @@
 				6512C7672C16EFEB0077EA68 /* CarRentalResultTVCell.swift in Sources */,
 				84EA32022C47FA530031C482 /* ActivitiesDecreptionTVCell.swift in Sources */,
 				65207D902BF494310076EF76 /* MobilePrePaymentModel.swift in Sources */,
+				844B880F2C4911830068CC93 /* MaximumDuration.swift in Sources */,
 				65207D8D2BF494310076EF76 /* MobilePreBookingModel.swift in Sources */,
 				8456D9022C3FA356007D51A4 /* Car_search_params.swift in Sources */,
 				65207CE52BF494310076EF76 /* HFacility.swift in Sources */,
 				65207CC22BF494310076EF76 /* ColorManager.swift in Sources */,
 				65207D702BF494310076EF76 /* SFAttr.swift in Sources */,
 				65207D742BF494310076EF76 /* SFAirlinersapi.swift in Sources */,
+				844B881B2C49545D0068CC93 /* ActivitiesPreProcessBookingModel.swift in Sources */,
 				65684C9F2C1C44FE002A96BE /* ChooseAdditionalOptionsTVCell.swift in Sources */,
 				65207E592BF494320076EF76 /* Deail_code_list.swift in Sources */,
 				65207D732BF494310076EF76 /* SFSearch_params.swift in Sources */,
@@ -6687,6 +6760,7 @@
 				65207D082BF494310076EF76 /* AmenitiesTVCell.swift in Sources */,
 				65207E222BF494320076EF76 /* AutoPaymentTVCell.swift in Sources */,
 				846D24DF2C40E2AA0030C539 /* PickupTVCell.swift in Sources */,
+				844B87F72C4910830068CC93 /* Comments.swift in Sources */,
 				65207E272BF494320076EF76 /* SportsSearchVC.swift in Sources */,
 				65207D822BF494310076EF76 /* Arr_data.swift in Sources */,
 				65207E402BF494320076EF76 /* ProfileVC.swift in Sources */,
@@ -6706,6 +6780,7 @@
 				65207D992BF494310076EF76 /* ButtonTVCell.swift in Sources */,
 				65207D1A2BF494310076EF76 /* AddDeatilsOfGuestTVCell.swift in Sources */,
 				65207CCD2BF494310076EF76 /* SelectFareListVC.swift in Sources */,
+				844B880B2C4911330068CC93 /* OperationDates.swift in Sources */,
 				65207CC72BF494310076EF76 /* BaseViewModelProtocol.swift in Sources */,
 				843D48F22C420D2900C0F127 /* GetTransferCityVM.swift in Sources */,
 				845BB4E02C297C4300571339 /* ShareResultTVCell.swift in Sources */,
@@ -6776,6 +6851,7 @@
 				65207E242BF494320076EF76 /* AutopayTabCVCell.swift in Sources */,
 				84EA31EA2C47C49B0031C482 /* ActivityDetailsVM.swift in Sources */,
 				65207D522BF494310076EF76 /* MealSelectionVC.swift in Sources */,
+				844B88152C4911C30068CC93 /* Contract.swift in Sources */,
 				65207D882BF494310076EF76 /* Baggage_details.swift in Sources */,
 				657BF31A2C0601ED000E636A /* Event_list.swift in Sources */,
 				65207E622BF494320076EF76 /* MoreServiceCVCell.swift in Sources */,
@@ -6791,7 +6867,7 @@
 				65207E422BF494320076EF76 /* ViewController.swift in Sources */,
 				65207D802BF494310076EF76 /* SearchDataModel.swift in Sources */,
 				65207E1A2BF494320076EF76 /* VisaPassengerSelectVC.swift in Sources */,
-				84EA31D62C479D020031C482 /* Modalities.swift in Sources */,
+				844B87FB2C4910B40068CC93 /* Amount.swift in Sources */,
 				65207DF92BF494310076EF76 /* FlightSearchTVCell.swift in Sources */,
 				65324F922C1FFBBA00BA1E5A /* SelectedServiceTVCell.swift in Sources */,
 				653467B72C0207C90059A0E1 /* AddFareRulesTVCell.swift in Sources */,
@@ -6850,6 +6926,7 @@
 				65207DF02BF494310076EF76 /* SelectMealTVCell.swift in Sources */,
 				8404DA292C3E8A6B000A648A /* SportsVoucherModel.swift in Sources */,
 				843D48F42C4244BE00C0F127 /* PreTransfersearchModel.swift in Sources */,
+				844B88052C4911140068CC93 /* AgencyCommission.swift in Sources */,
 				65207EAF2BF494320076EF76 /* GetInsuranceItemsVM.swift in Sources */,
 				65207D772BF494310076EF76 /* SelectCityModel.swift in Sources */,
 				65207EB12BF494320076EF76 /* PlaneDetailsVC.swift in Sources */,
@@ -6859,12 +6936,14 @@
 				65207CF02BF494310076EF76 /* HotelSearchNewModel.swift in Sources */,
 				8456D9172C3FF93C007D51A4 /* AdditionalOptionsCVCell.swift in Sources */,
 				65207D032BF494310076EF76 /* HotelAddonModel.swift in Sources */,
+				844B87FF2C4910D50068CC93 /* Rates.swift in Sources */,
 				65207D3C2BF494310076EF76 /* HolidayContactdetailsTVCell.swift in Sources */,
 				65207D352BF494310076EF76 /* SelectedHolidayPackageVC.swift in Sources */,
 				65207E472BF494320076EF76 /* MyAccountVC.swift in Sources */,
 				8403F40D2C357C6000E8819A /* DurationSliderTVCell.swift in Sources */,
 				65207D012BF494310076EF76 /* User_specification.swift in Sources */,
 				84EA31FA2C47DDD90031C482 /* ActivitiesDetailsTVCell.swift in Sources */,
+				844B88012C4910EA0068CC93 /* RateDetails.swift in Sources */,
 				65207CC92BF494310076EF76 /* StoryboardExtension.swift in Sources */,
 				65207D2A2BF494310076EF76 /* HotelSearchTVCell.swift in Sources */,
 				84EA32092C4803730031C482 /* ActivityDetailsModalities.swift in Sources */,
@@ -6889,6 +6968,7 @@
 				65207E7D2BF494320076EF76 /* CruiseItineraryTVCell.swift in Sources */,
 				65207DC72BF494310076EF76 /* TravellerAdultTVCell.swift in Sources */,
 				65684C8D2C1C31A4002A96BE /* CRProceedToBookVC.swift in Sources */,
+				844B88092C4911280068CC93 /* TotalAmount.swift in Sources */,
 				65207E762BF494320076EF76 /* CruisePassengerSelectVC.swift in Sources */,
 				65207E412BF494320076EF76 /* ContactUsVC.swift in Sources */,
 			);

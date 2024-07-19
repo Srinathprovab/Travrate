@@ -134,7 +134,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vbh-9Z-fHK">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Istanbul Airport" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILD-dk-91j">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Istanbul Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILD-dk-91j">
                                                 <rect key="frame" x="100" y="60.000000000000007" width="193" height="19.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="HeadingColor"/>
@@ -411,7 +411,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Istanbul Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGq-jc-I1L">
-                                                <rect key="frame" x="100" y="60.000000000000007" width="193" height="19.333333333333336"/>
+                                                <rect key="frame" x="40" y="60.000000000000007" width="313" height="19.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="HeadingColor"/>
                                                 <nil key="highlightedColor"/>
@@ -448,7 +448,7 @@
                                             <constraint firstItem="VmH-bt-BLt" firstAttribute="centerX" secondItem="EGq-jc-I1L" secondAttribute="centerX" id="Mdh-79-sKp"/>
                                             <constraint firstItem="EGq-jc-I1L" firstAttribute="centerX" secondItem="qUR-l5-b92" secondAttribute="centerX" id="Odc-ea-ah9"/>
                                             <constraint firstItem="EGq-jc-I1L" firstAttribute="top" secondItem="qUR-l5-b92" secondAttribute="top" constant="60" id="Rzd-bS-rTC"/>
-                                            <constraint firstAttribute="trailing" secondItem="EGq-jc-I1L" secondAttribute="trailing" constant="100" id="Zvn-cD-eM2"/>
+                                            <constraint firstAttribute="trailing" secondItem="EGq-jc-I1L" secondAttribute="trailing" constant="40" id="Zvn-cD-eM2"/>
                                             <constraint firstItem="a3k-4Q-WOU" firstAttribute="top" secondItem="VmH-bt-BLt" secondAttribute="bottom" constant="5" id="bD5-6q-iIh"/>
                                             <constraint firstItem="VmH-bt-BLt" firstAttribute="leading" secondItem="qUR-l5-b92" secondAttribute="leading" constant="10" id="hbx-nk-Ras"/>
                                             <constraint firstAttribute="trailing" secondItem="VmH-bt-BLt" secondAttribute="trailing" constant="10" id="pvH-jJ-tQ2"/>

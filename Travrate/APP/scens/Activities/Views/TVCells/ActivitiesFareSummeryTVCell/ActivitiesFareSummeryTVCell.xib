@@ -45,13 +45,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9a-1G-5B7">
                                         <rect key="frame" x="0.0" y="50" width="459" height="70"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBk-oS-LMT">
-                                                <rect key="frame" x="10" y="9.9999999999999982" width="439" height="20.333333333333329"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBk-oS-LMT">
+                                                <rect key="frame" x="10" y="10" width="439" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Dete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yax-Ur-MR5">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Selected Dete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yax-Ur-MR5">
                                                 <rect key="frame" x="10" y="45.333333333333329" width="107.66666666666667" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="FareSubTitleColor"/>
@@ -64,7 +64,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="kzb-Js-heF"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oZ-TM-hWe">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oZ-TM-hWe">
                                                 <rect key="frame" x="402.66666666666669" y="46" width="41.333333333333314" height="19.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                 <nil key="textColor"/>
@@ -80,10 +80,11 @@
                                             <constraint firstAttribute="trailing" secondItem="YBk-oS-LMT" secondAttribute="trailing" constant="10" id="KhY-0n-JMv"/>
                                             <constraint firstItem="YBk-oS-LMT" firstAttribute="top" secondItem="X9a-1G-5B7" secondAttribute="top" constant="10" id="VF1-Ca-kqN"/>
                                             <constraint firstItem="yax-Ur-MR5" firstAttribute="top" secondItem="YBk-oS-LMT" secondAttribute="bottom" constant="15" id="Wqy-3h-17d"/>
-                                            <constraint firstAttribute="height" constant="70" id="fjW-fF-ixR"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="fjW-fF-ixR"/>
                                             <constraint firstItem="6oZ-TM-hWe" firstAttribute="centerY" secondItem="yax-Ur-MR5" secondAttribute="centerY" id="jGf-24-RRm"/>
                                             <constraint firstAttribute="trailing" secondItem="bAb-yM-5th" secondAttribute="trailing" id="lrf-V7-4Ma"/>
                                             <constraint firstItem="bAb-yM-5th" firstAttribute="leading" secondItem="X9a-1G-5B7" secondAttribute="leading" id="lzc-ob-Hyy"/>
+                                            <constraint firstItem="bAb-yM-5th" firstAttribute="top" secondItem="yax-Ur-MR5" secondAttribute="bottom" constant="3.3300000000000001" id="nth-hQ-XDB"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9T-QK-hb2">

@@ -9,8 +9,6 @@ import UIKit
 import EasyTipView
 
 
-
-
 protocol TabSelectTVCellDelegate {
     
     func didTapOnMenuBtnAction(cell:TabSelectTVCell)
@@ -45,8 +43,10 @@ class TabSelectTVCell: TableViewCell {
     //    var serviceArray1 = ["Visa","Holidays","Transfers","Sports","Cruise","Auto pay","Insurence"]
     //    var serviceImgsArray1 = ["s1","s2","s3","sports","s5","s6","s7"]
     
-    var serviceArray = ["Insurence","Transfers","Sports","Car rental","Holidays","Cruise","Activities"]
-    var serviceImgsArray = ["s7","transfer","sports","s3","s2","s5","activitiestrip"]
+    
+    var indexxPathArray = [IndexPath]()
+    var serviceArray = ["Transfers","Sports","Car rental","Activities","Holidays","Cruise"]
+    var serviceImgsArray = ["transfer","sports","s3","activitiestrip","s2","s5",]
     var delegate:TabSelectTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -66,29 +66,71 @@ class TabSelectTVCell: TableViewCell {
         switch MySingleton.shared.tabselect {
             
         case "flight":
-            taponflightView()
+            
             flightView.layer.borderColor = UIColor.AppBtnColor.cgColor
+            flightView.backgroundColor = .LayoverColor
+            
+            hotelView.layer.borderColor = UIColor.BorderColor.cgColor
+            hotelView.backgroundColor = .WhiteColor
+            
+            moreView.layer.borderColor = UIColor.BorderColor.cgColor
+            moreView.backgroundColor = .WhiteColor
+            
             break
             
         case "hotel":
-            taponflightView()
+            
             hotelView.layer.borderColor = UIColor.AppBtnColor.cgColor
+            hotelView.backgroundColor = .LayoverColor
+            
+            
+            moreView.layer.borderColor = UIColor.BorderColor.cgColor
+            moreView.backgroundColor = .WhiteColor
+            
+            flightView.layer.borderColor = UIColor.BorderColor.cgColor
+            flightView.backgroundColor = .WhiteColor
             break
             
         case "more":
-            taponflightView()
             moreView.layer.borderColor = UIColor.AppBtnColor.cgColor
+            moreView.backgroundColor = .LayoverColor
+            
+            hotelView.layer.borderColor = UIColor.BorderColor.cgColor
+            hotelView.backgroundColor = .WhiteColor
+            
+            flightView.layer.borderColor = UIColor.BorderColor.cgColor
+            flightView.backgroundColor = .WhiteColor
+            
+            moreserviceView.isHidden = false
+            break
+            
+            
+        case "close":
+            
+            flightView.layer.borderColor = UIColor.BorderColor.cgColor
+            flightView.backgroundColor = .WhiteColor
+            
+            hotelView.layer.borderColor = UIColor.BorderColor.cgColor
+            hotelView.backgroundColor = .WhiteColor
+            
+            moreView.layer.borderColor = UIColor.BorderColor.cgColor
+            moreView.backgroundColor = .WhiteColor
+            
             break
             
             
         default:
+            flightView.layer.borderColor = UIColor.BorderColor.cgColor
+            flightView.backgroundColor = .WhiteColor
+            
+            hotelView.layer.borderColor = UIColor.BorderColor.cgColor
+            hotelView.backgroundColor = .WhiteColor
+            
+            moreView.layer.borderColor = UIColor.BorderColor.cgColor
+            moreView.backgroundColor = .WhiteColor
             break
         }
         
-        //        MySingleton.shared.setupTipView(arrowPosition: .top)
-        //        let tipView =  EasyTipView(text: "Select Flight", preferences: MySingleton.shared.preferences)
-        //        tipView.show(forView: self.flightView, withinSuperview: self.contentView)
-        //
         
         
     }
@@ -97,7 +139,7 @@ class TabSelectTVCell: TableViewCell {
     
     func setupmoreServiceCV() {
         
-        moreServicelbl.text = "More Service"
+        moreServicelbl.text = "More Services"
         let nib = UINib(nibName: "MoreServiceCVCell", bundle: nil)
         moreServiceCV.register(nib, forCellWithReuseIdentifier: "cell1")
         moreServiceCV.delegate = self
@@ -114,6 +156,7 @@ class TabSelectTVCell: TableViewCell {
     }
     
     @IBAction func didTapOnClosebtnAction(_ sender: Any) {
+        MySingleton.shared.tabselect = "close"
         moreserviceView.isHidden = true
         delegate?.didTapOnClosebtnAction(cell: self)
     }
@@ -123,12 +166,12 @@ class TabSelectTVCell: TableViewCell {
     }
     
     @IBAction func didTapOnFlightTabSelectBtnAction(_ sender: Any) {
-        taponflightView()
+        MySingleton.shared.tabselect = "flight"
         delegate?.didTapOnFlightTabSelectBtnAction(cell: self)
     }
     
     @IBAction func didTapOnHotelTabSelect(_ sender: Any) {
-        taponhotelView()
+        MySingleton.shared.tabselect = "hotel"
         delegate?.didTapOnHotelTabSelect(cell: self)
     }
     
@@ -138,39 +181,11 @@ class TabSelectTVCell: TableViewCell {
     }
     
     @IBAction func didTapOnMoreServiceBtnAction(_ sender: Any) {
-        // NotificationCenter.default.post(name: NSNotification.Name("moreservice"), object: nil)
+        MySingleton.shared.tabselect = "more"
         moreserviceView.isHidden = false
-        moreView.layer.borderWidth = 1
-        moreView.layer.borderColor = UIColor.AppBtnColor.cgColor
-        taponmoreView()
         delegate?.didTapOnMoreServiceBtnAction(cell: self)
     }
     
-    func taponflightView(){
-        
-        MySingleton.shared.tabselect = "flight"
-        
-        //        flightView.layer.borderColor = UIColor.Buttoncolor.cgColor
-        //        hotelView.layer.borderColor = UIColor.BorderColor.cgColor
-        //        moreView.layer.borderColor = UIColor.BorderColor.cgColor
-    }
-    
-    func taponhotelView(){
-        MySingleton.shared.tabselect = "hotel"
-        
-        
-        //        flightView.layer.borderColor = UIColor.BorderColor.cgColor
-        //        hotelView.layer.borderColor = UIColor.Buttoncolor.cgColor
-        //        moreView.layer.borderColor = UIColor.BorderColor.cgColor
-    }
-    
-    func taponmoreView(){
-        MySingleton.shared.tabselect = "more"
-        moreView.layer.borderColor = UIColor.AppBtnColor.cgColor
-        //        flightView.layer.borderColor = UIColor.BorderColor.cgColor
-        //        hotelView.layer.borderColor = UIColor.BorderColor.cgColor
-        //        moreView.layer.borderColor = UIColor.Buttoncolor.cgColor
-    }
     
 }
 
@@ -189,45 +204,22 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as? MoreServiceCVCell {
             cell.titlelbl.text = serviceArray[indexPath.row]
             cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal)
+          
             
             
             
-            switch cell.titlelbl.text {
-                
-                
-            case "Car rental":
-                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
-                break
-                
-            case "Transfers":
-                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
-                break
-                
-            case "Sports":
-                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
-                break
-                
-                
-            case "Activities":
-                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
-                break
-                
-                
-            case "Insurence":
-                cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.BooknowBtnColor)
-                break
-                
-                
-            default:
-                break
-            }
-            
-            
-            // Check if the cell is selected and set its border color accordingly
-            if collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false {
-                cell.layer.borderColor = UIColor.BooknowBtnColor.cgColor
-            } else {
-                cell.layer.borderColor = UIColor.BorderColor.cgColor // or any other normal border color
+            if indexxPathArray.contains(indexPath) {
+                print("=== select ===")
+                print(indexPath.row)
+                cell.holderView.backgroundColor = .LayoverColor
+                cell.holderView.layer.borderWidth = 1
+                cell.holderView.layer.borderColor = UIColor.Buttoncolor.cgColor
+            }else {
+                print("=== Deselect ===")
+                print(indexPath.row)
+                cell.holderView.backgroundColor = .WhiteColor
+                cell.holderView.layer.borderWidth = 1
+                cell.holderView.layer.borderColor = UIColor.BorderColor.cgColor
             }
             
             
@@ -239,7 +231,11 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? MoreServiceCVCell {
+            
+            cell.holderView.backgroundColor = .LayoverColor
+            cell.holderView.layer.borderWidth = 1
             cell.holderView.layer.borderColor = UIColor.Buttoncolor.cgColor
+            indexxPathArray.append(indexPath)
             
             switch cell.titlelbl.text {
                 
@@ -268,11 +264,6 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
                 break
                 
                 
-            case "Insurence":
-                delegate?.didTapOnInsurencebtnAction(cell: self)
-                break
-                
-                
             case "Car rental":
                 delegate?.didTapOnCarRentalBtnAction(cell: self)
                 break
@@ -289,7 +280,15 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
         if let cell = collectionView.cellForItem(at: indexPath) as? MoreServiceCVCell {
+            cell.holderView.backgroundColor = .WhiteColor
+            cell.holderView.layer.borderWidth = 1
             cell.holderView.layer.borderColor = UIColor.BorderColor.cgColor
+            
+            
+            if let index = indexxPathArray.firstIndex(of: indexPath) {
+                indexxPathArray.remove(at: index)
+            }
+            
         }
         
     }

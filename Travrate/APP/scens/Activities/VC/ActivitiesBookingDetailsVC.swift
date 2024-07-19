@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ActivitiesBookingDetailsVC: BaseTableVC {
+class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDelegate {
     
     
     @IBOutlet weak var gifimg: UIImageView!
@@ -35,6 +35,7 @@ class ActivitiesBookingDetailsVC: BaseTableVC {
         // Do any additional setup after loading the view.
         setupUI()
         
+        MySingleton.shared.activitiesPreProcessBookingVM = ActivitiesPreProcessBookingVM(self)
     }
     
     
@@ -61,7 +62,7 @@ class ActivitiesBookingDetailsVC: BaseTableVC {
                                          "ActivitiesBookingDetailsTVCell",
                                          "ActivitiesFareSummeryTVCell",
                                          "TermsAgreeTVCell",])
-        setupTVCells()
+        
         
     }
     
@@ -199,9 +200,22 @@ extension ActivitiesBookingDetailsVC {
     
     
     func callAPI() {
+        MySingleton.shared.activitiesPreProcessBookingVM?.CALL_PRE_PROCESS_BOOKING_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    
+    func preBookingResponse(response: ActivitiesPreProcessBookingModel) {
         
+        loderBool = false
+        hideLoadera()
+        
+        DispatchQueue.main.async {
+            self.setupTVCells()
+        }
         
     }
+    
+    
     
     
     //MARK: - setuptv
@@ -280,7 +294,7 @@ extension ActivitiesBookingDetailsVC {
         MySingleton.shared.tablerow.append(TableRow(title:"By Booking This item, You agree to pay the total amount shown, with includes service fees. you also agree to the terms ans conditions and privacy policy .",cellType:.TermsAgreeTVCell))
         
         
-      
+        
         
         
         
@@ -561,6 +575,12 @@ extension ActivitiesBookingDetailsVC {
         
         
         if MySingleton.shared.callboolapi == true {
+            
+            MySingleton.shared.loderString = "fdetails"
+            MySingleton.shared.afterResultsBool = true
+            loderBool = true
+            showLoadera()
+            
             callAPI()
         }
     }

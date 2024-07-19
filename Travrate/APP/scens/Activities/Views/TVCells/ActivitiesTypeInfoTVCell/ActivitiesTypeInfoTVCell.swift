@@ -20,7 +20,8 @@ class ActivitiesTypeInfoTVCell: UITableViewCell {
     @IBOutlet weak var img: UIImageView!
 
     
-    
+    var agentpayable = String()
+    var rateKeySring = String()
     var delegate:ActivitiesTypeInfoTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()

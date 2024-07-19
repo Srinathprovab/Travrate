@@ -71,6 +71,7 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate 
     
     override func didTapOnActivitesDetailsBtnAction(cell: ActivitiesResultTVCell) {
         MySingleton.shared.activity_code = cell.activitycode
+        MySingleton.shared.resultToken = cell.resultToken
         gotoActivitiesDetailsVC()
     }
     
@@ -134,8 +135,9 @@ extension ActivitiesSearchResultsVC {
         let infantcount = defaults.integer(forKey: UserDefaultsKeys.activitesinfantsCount)
         
         
+        
         destinationcitylbl.text = cityname
-        dateslbl.text = "\(fromdate ?? "") To \(todate ?? "")"
+        dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: fromdate ?? "", f1: "dd-MM-yyyy", f2: "dd MMM yy")) To \(MySingleton.shared.convertDateFormat(inputDate: todate ?? "", f1: "dd-MM-yyyy", f2: "dd MMM yy"))"
         
         var labelText = adultcount > 1 ? "Adults: \(adultcount)" : "Adult: \(adultcount)"
         if childcount > 0 {
@@ -157,12 +159,11 @@ extension ActivitiesSearchResultsVC {
     func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
+   
         
-        
-        
-        
-        MySingleton.shared.activityList.forEach { i in
-            MySingleton.shared.tablerow.append(TableRow(moreData: i,cellType:.ActivitiesResultTVCell))
+        for  (index,value) in MySingleton.shared.activityList.enumerated() {
+            print(index + 1)
+            MySingleton.shared.tablerow.append(TableRow(title:"\(index + 1)",moreData: value,cellType:.ActivitiesResultTVCell))
         }
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType: .EmptyTVCell))

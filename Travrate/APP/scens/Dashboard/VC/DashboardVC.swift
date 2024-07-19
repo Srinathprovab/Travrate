@@ -148,7 +148,7 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         defaults.set("From Airport", forKey: UserDefaultsKeys.transferfromcityname)
         defaults.set("", forKey: UserDefaultsKeys.transferfromcityid)
         defaults.set("To Airport", forKey: UserDefaultsKeys.transfertocityname)
-        defaults.set("", forKey: UserDefaultsKeys.transfertocityname)
+        defaults.set("", forKey: UserDefaultsKeys.transfertocityid)
         defaults.set("Select Date", forKey: UserDefaultsKeys.transfercalDepDate)
         defaults.set("Select Time", forKey: UserDefaultsKeys.transfercalDepTime)
         defaults.set("Select Date", forKey: UserDefaultsKeys.transfercalRetDate)
@@ -180,6 +180,9 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         defaults.set("Select Destination City", forKey: UserDefaultsKeys.activitescityname)
         defaults.set("Select Date", forKey: UserDefaultsKeys.calActivitesDepDate)
         defaults.set("Select Date", forKey: UserDefaultsKeys.calActivitesRetDate)
+        defaults.set("1", forKey: UserDefaultsKeys.activitesadultCount)
+        defaults.set("0", forKey: UserDefaultsKeys.activiteschildCount)
+        defaults.set("0", forKey: UserDefaultsKeys.activitesinfantsCount)
         
         gotoActivitiesSearchVC()
        

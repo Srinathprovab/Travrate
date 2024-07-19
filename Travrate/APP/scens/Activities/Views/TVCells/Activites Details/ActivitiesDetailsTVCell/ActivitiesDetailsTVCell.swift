@@ -137,38 +137,55 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
         detailsTV.separatorStyle = .none
     }
     
-    
-    
     func updateHeight() {
-        
-        
-        if tapkey == "activities" {
-            tvheight.constant = ((10 * 146 ) + 100)
-        }else if tapkey == "highlights" {
-            tvheight.constant = 500
-        }else {
-            tvheight.constant = 600
-        }
-        
-        
-        
+        tvheight.constant = (calculateTableViewHeight())
         detailsTV.reloadData()
         self.layoutIfNeeded() // Ensure the layout is updated
     }
     
-    
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func calculateTableViewHeight() -> CGFloat {
+        var totalHeight: CGFloat = 0
+        
         if tapkey == "activities" {
-            return 1
-        }else if tapkey == "highlights" {
-            return 1
-        }else {
-            return 1
+            // Assume one row of ActivitiesTypeTVCell
+            if let sampleCell = detailsTV.dequeueReusableCell(withIdentifier: "type") as? ActivitiesTypeTVCell {
+                sampleCell.updateHeight()
+                let sampleIndexPath = IndexPath(row: 0, section: 0)
+                sampleCell.setNeedsLayout()
+                sampleCell.layoutIfNeeded()
+                let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+                totalHeight = height
+            }
+        } else if tapkey == "highlights" {
+            // Assume one row of ActivitiesHighlightsTVCell
+            if let sampleCell = detailsTV.dequeueReusableCell(withIdentifier: "highlightes") as? ActivitiesHighlightsTVCell {
+                let sampleIndexPath = IndexPath(row: 0, section: 0)
+                sampleCell.setNeedsLayout()
+                sampleCell.layoutIfNeeded()
+                let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+                totalHeight = height
+            }
+        } else {
+            // Assume one row of ActivitiesDecreptionTVCell
+            if let sampleCell = detailsTV.dequeueReusableCell(withIdentifier: "desc") as? ActivitiesDecreptionTVCell {
+                let sampleIndexPath = IndexPath(row: 0, section: 0)
+                sampleCell.setNeedsLayout()
+                sampleCell.layoutIfNeeded()
+                let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+                totalHeight = height + 500
+            }
         }
         
+        // Add a small padding to avoid cutting off the cell
+        let padding: CGFloat = 0
+        totalHeight += padding
         
+        return totalHeight
+    }
+
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -262,9 +279,9 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
     
     
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return UITableView.automaticDimension
+    //    }
     
     
 }

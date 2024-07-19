@@ -45,7 +45,7 @@ class MySingleton {
     var usermobile = String()
     var useremail = String()
     var userimage = String()
-    var tabselect = String()
+    var tabselect = "close"
     var indexpagevm:IndexPageViewModel?
     var topFlightDetails = [TopFlightDetails]()
     var topHotelDetails = [City_guides]()
@@ -273,10 +273,15 @@ class MySingleton {
     var activites_searchid = String()
     var activites_currency = String()
     var activity_code = String()
+    var resultToken = String()
+    var activity_type = String()
+    var rateKeySring = String()
+    var agentpayable = String()
     var activitiesImagesArray = [Activity_images]()
     var activity_details :Activity_details?
+    var modalitiesdetails = [ActivityDetailsModalities]()
     
-    
+  
     
     //View Models
     var loginvm:LoginViewModel?
@@ -328,6 +333,7 @@ class MySingleton {
     var getActivitesDestinationListVM:GetActivitesDestinationListVM?
     var preactivitysearchVM:MobilepreactivitysearchVM?
     var activityDetailsVM:ActivityDetailsVM?
+    var activitiesPreProcessBookingVM:ActivitiesPreProcessBookingVM?
     
     
     //TIMER

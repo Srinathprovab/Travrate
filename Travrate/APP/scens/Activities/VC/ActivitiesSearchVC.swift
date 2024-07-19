@@ -94,9 +94,9 @@ class ActivitiesSearchVC: BaseTableVC {
         let cityname = defaults.string(forKey: UserDefaultsKeys.activitescityname)
         let fromdate = defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate)
         let todate = defaults.string(forKey: UserDefaultsKeys.calActivitesRetDate)
-        let adultcount = defaults.string(forKey: UserDefaultsKeys.activitesadultCount)
-        let childcount = defaults.string(forKey: UserDefaultsKeys.activiteschildCount)
-        let infantcount = defaults.string(forKey: UserDefaultsKeys.activitesinfantsCount)
+        let adultcount = defaults.string(forKey: UserDefaultsKeys.activitesadultCount) ?? "1"
+        let childcount = defaults.string(forKey: UserDefaultsKeys.activiteschildCount) ?? "0"
+        let infantcount = defaults.string(forKey: UserDefaultsKeys.activitesinfantsCount) ?? "0"
         
         
         let citynamebool =  cityname == "Select Destination City" ? false : true
@@ -128,6 +128,7 @@ class ActivitiesSearchVC: BaseTableVC {
     
     
     func gotoActivitiesSearchResultsVC() {
+        MySingleton.shared.afterResultsBool = false
         MySingleton.shared.callboolapi = true
         defaults.set(false, forKey: "activitesfilteronce")
         guard let vc = ActivitiesSearchResultsVC.newInstance.self else {return}

@@ -38,12 +38,12 @@ class TripsVC: BaseTableVC {
         
         MySingleton.shared.tablerow.append(TableRow(title:"Flight",image: "flighttrip",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Hotel",image: "hoteltrip",cellType:.TripsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Visa",image: "visatrip",cellType:.TripsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Insurance",image: "insurancetrip",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Transfers",image: "transferstrip",cellType:.TripsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Sports",image: "transferstrip",cellType:.TripsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Car Rentals",image: "transferstrip",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Activities",image: "activitiestrip",cellType:.TripsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Holidays",image: "cruisetrip",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Cruise",image: "cruisetrip",cellType:.TripsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Auto Pay",image: "autopaytrip",cellType:.TripsTVCell))
         
         
         commonTVData =  MySingleton.shared.tablerow
