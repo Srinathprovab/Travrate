@@ -1076,7 +1076,21 @@ extension FlightResultVC {
         
         
         
-        paxlbl.text = "\(MySingleton.shared.adultsCount) Adult | \(MySingleton.shared.childCount) Child | \(MySingleton.shared.infantsCount) Infant | \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "")"
+       
+        let adultcount = defaults.integer(forKey: UserDefaultsKeys.adultCount)
+        let childcount = defaults.integer(forKey: UserDefaultsKeys.childCount)
+        let infantcount = defaults.integer(forKey: UserDefaultsKeys.infantsCount)
+        let classname = defaults.string(forKey: UserDefaultsKeys.selectClass)
+        var labelText = adultcount > 1 ? "Adults: \(adultcount)" : "Adult: \(adultcount)"
+        if childcount > 0 {
+            labelText += ", Child: \(childcount)"
+        }
+        if infantcount > 0 {
+            labelText += ", Infant: \(infantcount)"
+        }
+        paxlbl.text = "\(labelText) | \(classname ?? "")"
+     //   paxlbl.text = "\(MySingleton.shared.adultsCount) Adult | \(MySingleton.shared.childCount) Child | \(MySingleton.shared.infantsCount) Infant | \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "")"
+        
         depDatelbl.text = response.data?.search_params?.depature ?? ""
         retDatelbl.text = response.data?.search_params?.searchreturn ?? ""
         citycodeslbl.text = "(\(response.data?.search_params?.from_loc ?? "") - \(response.data?.search_params?.to_loc ?? ""))"

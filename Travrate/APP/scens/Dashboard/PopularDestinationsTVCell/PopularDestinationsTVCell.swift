@@ -260,10 +260,8 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
             }
         }else {
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectDestCVCell {
+                
                 let flight = filteredFlights[indexPath.row]
-                
-                
-                
                 
                 defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.traveldate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calDepDate)
                 defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.returndate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calRetDate)
@@ -285,7 +283,7 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 defaults.set("Kuwait", forKey: UserDefaultsKeys.fromcityname)
                 defaults.set(flight.airport_city, forKey: UserDefaultsKeys.tocityname)
                 defaults.set("Kuwait", forKey: UserDefaultsKeys.fcity)
-                defaults.set(flight.from_city, forKey: UserDefaultsKeys.tcity)
+                defaults.set(flight.airport_city, forKey: UserDefaultsKeys.tcity)
                 
                 
                 // delegate?.didTapOnPopulardestination(cell: self)

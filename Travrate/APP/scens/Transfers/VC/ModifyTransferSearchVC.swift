@@ -191,13 +191,13 @@ extension ModifyTransferSearchVC {
             MySingleton.shared.payload["return_date"] = ""
             MySingleton.shared.payload["return_time"] = ""
             
-            if fromcity == "From Airport" {
+            if fromcity == "From Airport*" {
                 showToast(message: "Select From Airtport")
-            }else if tocity == "To Airport" {
+            }else if tocity == "To Airport*" {
                 showToast(message: "Select To Airtport")
-            }else if fromdate == "Select Date" {
+            }else if fromdate == "Select Date*" {
                 showToast(message: "Select Date")
-            }else if fromtime == "Select Time" {
+            }else if fromtime == "Select Time*" {
                 showToast(message: "Select Time")
             }else {
                 gotoTransfersListVC()
@@ -208,17 +208,17 @@ extension ModifyTransferSearchVC {
             MySingleton.shared.payload["return_time"] = totime
             
             
-            if fromcity == "From Airport" {
+            if fromcity == "From Airport*" {
                 showToast(message: "Select From Airtport")
-            }else if tocity == "To Airport" {
+            }else if tocity == "To Airport*" {
                 showToast(message: "Select To Airtport")
-            }else if fromdate == "Select Date" {
+            }else if fromdate == "Select Date*" {
                 showToast(message: "Select Date")
-            }else if fromtime == "Select Time" {
+            }else if fromtime == "Select Time*" {
                 showToast(message: "Select Time")
-            }else if todate == "Select Date" {
+            }else if todate == "Select Date*" {
                 showToast(message: "Select Date")
-            }else if totime == "Select Time" {
+            }else if totime == "Select Time*" {
                 showToast(message: "Select Time")
             }else {
                 gotoTransfersListVC()

@@ -240,7 +240,7 @@ extension SearchHotelVC {
         //        MySingleton.shared.payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"
         //        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         
-        if defaults.string(forKey: UserDefaultsKeys.locationcity) == "City/Location" || defaults.string(forKey: UserDefaultsKeys.locationcity) == nil{
+        if defaults.string(forKey: UserDefaultsKeys.locationcity) == "City/Location*" || defaults.string(forKey: UserDefaultsKeys.locationcity) == nil{
             showToast(message: "Enter Hotel or City ")
         }else if defaults.string(forKey: UserDefaultsKeys.checkin) == "Add Date" || defaults.string(forKey: UserDefaultsKeys.checkin) == nil{
             showToast(message: "Enter Checkin Date")
@@ -249,7 +249,7 @@ extension SearchHotelVC {
         }
         else if defaults.string(forKey: UserDefaultsKeys.checkout) == defaults.string(forKey: UserDefaultsKeys.checkin) {
             showToast(message: "Enter Different Dates")
-        }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == "Select Nationality" {
+        }else if defaults.string(forKey: UserDefaultsKeys.hnationality) == "Select Nationality*" {
             showToast(message: "Please Select Nationality.")
         }else {
             

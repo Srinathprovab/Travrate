@@ -23,7 +23,6 @@ class QuickLinkTableViewCell: TableViewCell, UITableViewDataSource, UITableViewD
     
     
     var delegate:QuickLinkTableViewCellDelegate?
-    var links = ["Flight", "Hotel", "Visa", "Auto Payment"]
     var bookings = ["My Bookings", "Free Cancellation", "Customer Support"]
     var tabNamesImages = ["flightIcon","hotelIcon","visaIcon", "payIcon"]
     
@@ -45,7 +44,7 @@ class QuickLinkTableViewCell: TableViewCell, UITableViewDataSource, UITableViewD
     override func updateUI() {
         
         if cellInfo?.key == "links" {
-            updateHeight(height: 9)
+            updateHeight(height: 5)
         } else {
             updateHeight(height: 3)
         }
@@ -54,7 +53,7 @@ class QuickLinkTableViewCell: TableViewCell, UITableViewDataSource, UITableViewD
     
     
     func updateHeight(height:Int) {
-        holderViewHeight.constant = CGFloat(9) * 46
+        holderViewHeight.constant = CGFloat(height * 46)
         linkstv.reloadData()
     }
     
@@ -75,7 +74,7 @@ extension QuickLinkTableViewCell {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if cellInfo?.key == "links" {
-            return 9
+            return 5
         } else {
             return 3
         }
@@ -112,34 +111,10 @@ extension QuickLinkTableViewCell {
                 cell.menuOptionImg.image = UIImage(named: "transfer")
                 cell.delegate = self
                 return cell
-            }else if indexPath.row == 4 {
+            }else  {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
                 cell.menuTitlelbl.text = "Sports"
                 cell.menuOptionImg.image = UIImage(named: "sports")
-                cell.delegate = self
-                return cell
-            }else if indexPath.row == 5 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Car Rental"
-                cell.menuOptionImg.image = UIImage(named: "s3")
-                cell.delegate = self
-                return cell
-            }else if indexPath.row == 6 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Activities"
-                cell.menuOptionImg.image = UIImage(named: "activitiestrip")
-                cell.delegate = self
-                return cell
-            }else if indexPath.row == 7 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Holidays"
-                cell.menuOptionImg.image = UIImage(named: "s2")
-                cell.delegate = self
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Cruise"
-                cell.menuOptionImg.image = UIImage(named: "s5")
                 cell.delegate = self
                 return cell
             }

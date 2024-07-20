@@ -133,15 +133,15 @@ extension ActivitiesSearchResultsVC {
         let cityname = defaults.string(forKey: UserDefaultsKeys.activitescityname)
         let fromdate = defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate)
         let todate = defaults.string(forKey: UserDefaultsKeys.calActivitesRetDate)
-        let adultcount = defaults.integer(forKey: UserDefaultsKeys.activitesadultCount)
-        let childcount = defaults.integer(forKey: UserDefaultsKeys.activiteschildCount)
-        let infantcount = defaults.integer(forKey: UserDefaultsKeys.activitesinfantsCount)
-        
-        
+       
         
         destinationcitylbl.text = cityname
         dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: fromdate ?? "", f1: "dd-MM-yyyy", f2: "dd MMM yy")) To \(MySingleton.shared.convertDateFormat(inputDate: todate ?? "", f1: "dd-MM-yyyy", f2: "dd MMM yy"))"
         
+        
+        let adultcount = defaults.integer(forKey: UserDefaultsKeys.activitesadultCount)
+        let childcount = defaults.integer(forKey: UserDefaultsKeys.activiteschildCount)
+        let infantcount = defaults.integer(forKey: UserDefaultsKeys.activitesinfantsCount)
         var labelText = adultcount > 1 ? "Adults: \(adultcount)" : "Adult: \(adultcount)"
         if childcount > 0 {
             labelText += ", Child: \(childcount)"

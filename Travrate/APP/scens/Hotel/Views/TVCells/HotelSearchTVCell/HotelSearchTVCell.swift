@@ -115,20 +115,20 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
     override func updateUI() {
         
         
-        fromcityTF.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? "City/Location"
+        fromcityTF.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? "City/Location*"
         checkinlbl.text = defaults.string(forKey: UserDefaultsKeys.checkin) ?? "Add Date"
         checkoutlbl.text = defaults.string(forKey: UserDefaultsKeys.checkout) ?? "Add Date"
         roomcountlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectPersons) ?? "")"
-        nationalitylbl.text = "\(defaults.string(forKey: UserDefaultsKeys.hnationality) ?? "Select Nationality")"
+        nationalitylbl.text = "\(defaults.string(forKey: UserDefaultsKeys.hnationality) ?? "Select Nationality*")"
         
         
         
         
         
-        fromcityTF.textColor = fromcityTF.text == "City/Location" ? .subtitleNewcolor : .TitleColor
+        fromcityTF.textColor = fromcityTF.text == "City/Location*" ? .subtitleNewcolor : .TitleColor
         updateLabelColor(label: checkinlbl, defaultText: "Add Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
         updateLabelColor(label: checkoutlbl, defaultText: "Add Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
-        updateLabelColor(label: nationalitylbl, defaultText: "Select Nationality", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: nationalitylbl, defaultText: "Select Nationality*", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
         
         func updateLabelColor(label: UILabel, defaultText: String, defaultColor: UIColor, selectedColor: UIColor) {
             label.textColor = label.text == defaultText ? defaultColor : selectedColor
@@ -200,6 +200,50 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
 
 extension HotelSearchTVCell:UITableViewDelegate, UITableViewDataSource {
     
+    
+    //MARK: - Text Filed Editing Changed
+    
+    @objc func textFiledEditingChanged(_ textField:UITextField) {
+        
+        
+        if textField.text?.isEmpty == true {
+            
+        }else {
+            
+            CallShowCityListAPI(str: textField.text ?? "")
+            
+        }
+        
+        
+    }
+    
+    
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        fromcityTF.text = ""
+        CallShowCityListAPI(str: textField.text ?? "")
+    }
+    
+    func CallShowCityListAPI(str:String) {
+        payload["term"] = str
+        cityViewModel?.CallHotelCitySearchAPI(dictParam: payload)
+    }
+    
+    
+    func hotelCitySearchResult(response: [HotelCityListModel]) {
+        
+        hotelList = response
+        print(hotelList)
+        
+        
+        fromcityTVHeight.constant = CGFloat(hotelList.count * 80)
+        
+        DispatchQueue.main.async {[self] in
+            fromcityTV.reloadData()
+        }
+        
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         hotelList.count
     }
@@ -222,6 +266,7 @@ extension HotelSearchTVCell:UITableViewDelegate, UITableViewDataSource {
             
             fromcityTF.text = hotelList[indexPath.row].value ?? ""
             fromcityTF.textColor = .AppLabelColor
+            fromcityTF.resignFirstResponder()
             
             defaults.set(hotelList[indexPath.row].value ?? "", forKey: UserDefaultsKeys.locationcity)
             defaults.set(hotelList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.locationid)
@@ -355,47 +400,6 @@ extension HotelSearchTVCell {
 extension HotelSearchTVCell {
     
     
-    //MARK: - Text Filed Editing Changed
-    
-    @objc func textFiledEditingChanged(_ textField:UITextField) {
-        
-        
-        if textField.text?.isEmpty == true {
-            
-        }else {
-            
-            CallShowCityListAPI(str: textField.text ?? "")
-            
-        }
-        
-        
-    }
-    
-    
-    override func textFieldDidBeginEditing(_ textField: UITextField) {
-        fromcityTF.text = ""
-        CallShowCityListAPI(str: textField.text ?? "")
-    }
-    
-    func CallShowCityListAPI(str:String) {
-        payload["term"] = str
-        cityViewModel?.CallHotelCitySearchAPI(dictParam: payload)
-    }
-    
-    
-    func hotelCitySearchResult(response: [HotelCityListModel]) {
-        
-        hotelList = response
-        print(hotelList)
-        
-        
-        fromcityTVHeight.constant = CGFloat(hotelList.count * 80)
-        
-        DispatchQueue.main.async {[self] in
-            fromcityTV.reloadData()
-        }
-        
-    }
     
     
 }
