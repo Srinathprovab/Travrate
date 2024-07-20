@@ -1274,6 +1274,8 @@ extension FlightResultVC {
         
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        
+        
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()
         

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegate, MobilePaymentVMDelegate, HotelBookingViewModelDelegate, SportsPaymentViewModelDelegate, TransferBookingVMDelegate, ActivitiesProcessPassengerVMDelegate {
-   
-   
+class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegate, MobilePaymentVMDelegate, HotelBookingViewModelDelegate, SportsPaymentViewModelDelegate, TransferBookingVMDelegate, ActivitiesProcessPassengerVMDelegate, CarBookingVMDelegate {
+    
+    
     
     
     static var newInstance:  SelectPaymentMethodsVC? {
@@ -45,6 +45,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         MySingleton.shared.SsportsPaymentvm = SportsPaymentViewModel(self)
         MySingleton.shared.transferBookingVM = TransferBookingVM(self)
         MySingleton.shared.activitiesProcessPassengerVM = ActivitiesProcessPassengerVM(self)
+        MySingleton.shared.carBookingVM = CarBookingVM(self)
         
     }
     
@@ -102,7 +103,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     
     //MARK: - PaymentTypeTVCell
     override func didTapOnPayNowBtnAction(cell: PaymentTypeTVCell) {
-    
+        
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
@@ -122,7 +123,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         }
     }
     
-   
+    
     
     
     //MARK: - MPBDetails MobilePreProcessBookingModel
@@ -913,8 +914,6 @@ extension SelectPaymentMethodsVC {
     
     
     func carBookingdetails(response: CarSecureBookingMode) {
-        
-        
         DispatchQueue.main.async {
             MySingleton.shared.carBookingVM?.CALL_CAR_PRE_PAYMENT_BOOKING_API(dictParam: [:], urlstr: response.hit_url ?? "")
         }
@@ -923,17 +922,15 @@ extension SelectPaymentMethodsVC {
     
     func carPrePaymentDetails(response: carPrePaymrntConfirmationModel) {
         
-       
         loderBool = false
-        
-        
+        hideLoadera()
+    
         MySingleton.shared.PaymentSelectionArray = response.payment_selection ?? []
         appref = response.data?.app_reference ?? ""
         carRentalsendToPaymenthiturl = "\(BASE_URL)car/send_to_payment/\(response.data?.app_reference ?? "")/\(response.data?.search_id ?? "")"
         totlConvertedGrand = Double(response.data?.total_amount ?? "") ?? 0.0
         
         DispatchQueue.main.async {
-            self.hideLoadera()
             self.setupCarRentalTVCells()
         }
         
@@ -941,7 +938,7 @@ extension SelectPaymentMethodsVC {
     
     
     func setupCarRentalTVCells() {
-       
+        
         MySingleton.shared.tablerow.removeAll()
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
@@ -985,20 +982,19 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.payload["extra_option_price"] = MySingleton.shared.car_extra_option_price
         
         
-        DispatchQueue.main.async {
             MySingleton.shared.carBookingVM?.CALL_CAR_SEND_TO_PAYMENT_API(dictParam: MySingleton.shared.payload, urlstr: self.carRentalsendToPaymenthiturl)
-        }
+
         
     }
     
     
-    func carSendtoPaymentDetails(response: CarSearchModel) {
+    func carSendtoPaymentDetails(response: CarSecureBookingMode) {
         
         
-        let hit_url = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/secure_booking/\(appref)"
+      //  let hit_url = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/secure_booking/\(appref)"
         
         DispatchQueue.main.async {
-            MySingleton.shared.carBookingVM?.CALL_CAR_SECURE_BOOKING_API(dictParam: [:], urlstr: hit_url)
+            MySingleton.shared.carBookingVM?.CALL_CAR_SECURE_BOOKING_API(dictParam: [:], urlstr: response.hit_url ?? "")
         }
         
         
@@ -1006,18 +1002,16 @@ extension SelectPaymentMethodsVC {
     
     
     func carSecureBookingDetails(response: CarSecureBookingMode) {
-        
-        
+        print("=== response.hit_url  ====")
         print(response.hit_url ?? "")
         
-        MySingleton.shared.voucherurlsting = response.hit_url ?? ""
-        
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {[self] in
+            loderBool = false
+            hideLoadera()
             
-            
-            self.gotoBookingConfirmedVC()
+            MySingleton.shared.voucherurlsting = response.hit_url ?? ""
+            response.status == true ?  gotoBookingConfirmedVC() : showToast(message: response.message ?? "")
         }
-        
         
     }
     
@@ -1130,6 +1124,10 @@ extension SelectPaymentMethodsVC {
     
     
     func preSendtoPaymentResponse(response: TransferPrePaymentConfModel) {
+        MySingleton.shared.transferBookingVM?.CALL_TRANSFERS_SECURE_BOOKING_API(dictParam: [:], urlstr: response.hit_url ?? "")
+    }
+    
+    func transfersSecurebookingDetails(response: SendToPaymentModel) {
         print("=== response.hit_url  ====")
         print(response.hit_url ?? "")
         
@@ -1137,9 +1135,10 @@ extension SelectPaymentMethodsVC {
             loderBool = false
             hideLoadera()
             
-            showToast(message: "Booking closed")
+            MySingleton.shared.voucherurlsting = response.hit_url ?? ""
+            response.status == true ?  gotoBookingConfirmedVC() : showToast(message: response.msg ?? "")
         }
-
+        
     }
     
     
@@ -1178,7 +1177,7 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.tablerow.append(TableRow(key:"activites",cellType:.PaymentTypeTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesBookingDetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-       
+        
         
         
         
@@ -1211,23 +1210,21 @@ extension SelectPaymentMethodsVC {
     
     
     
-    func activitieSendToPaymeentDetailsResponse(response: sportssecureBooingModel) {
+    func activitieSendToPaymeentDetailsResponse(response: SendToPaymentModel) {
         DispatchQueue.main.async {
             MySingleton.shared.activitiesProcessPassengerVM?.CALL_SEND_TO_PAYMENT_API(dictParam: [:], urlstr: response.hit_url ?? "")
         }
     }
     
-    func activitiesSecureBookingDetails(response: sportssecureBooingModel) {
-        MySingleton.shared.voucherurlsting = response.hit_url ?? ""
-       
+    func activitiesSecureBookingDetails(response: SendToPaymentModel) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {[self] in
-            loderBool = false
-            hideLoadera()
-            
-            gotoBookingConfirmedVC()
-        }
+        loderBool = false
+        hideLoadera()
+        
+        MySingleton.shared.voucherurlsting = response.hit_url ?? ""
+        response.status == true ?  gotoBookingConfirmedVC() : showToast(message: response.msg ?? "")
     }
+    
     
 }
 
@@ -1246,7 +1243,7 @@ extension SelectPaymentMethodsVC {
         if callapibool == true || MySingleton.shared.callboolapi == true {
             callAPI()
         }
-   
+        
         
     }
     
@@ -1254,48 +1251,48 @@ extension SelectPaymentMethodsVC {
     
     func callAPI() {
         
-       
-            MySingleton.shared.loderString = "fdetails"
-            loderBool = true
-            showLoadera()
-            
-            let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
-            if tabselect == "Flight" {
-                DispatchQueue.main.async {
-                    self.CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
-                }
-                
-            }else if tabselect == "Sports"{
-                DispatchQueue.main.async {
-                    self.CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API()
-                }
-            }else if tabselect == "CarRental"{
-                
-                loderBool = false
-                hideLoadera()
-                DispatchQueue.main.async {[self] in
-                    self.setupCarRentalTVCells()
-                }
-                
-                
-            }else if tabselect == "Activities"{
-                
-                DispatchQueue.main.async {[self] in
-                    self.CALL_ACTIVITIES_PROCESS_PASSENGER_DETAILS_API()
-                }
-                
-                
-            }else if tabselect == "transfers"{
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[self] in
-                    self.calltransferBookingAPI()
-                }
-                
-            }else {
-                DispatchQueue.main.async {
-                    self.CALL_HOTEL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
-                }
+        
+        MySingleton.shared.loderString = "fdetails"
+        loderBool = true
+        showLoadera()
+        
+        let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
+        if tabselect == "Flight" {
+            DispatchQueue.main.async {
+                self.CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
             }
+            
+        }else if tabselect == "Sports"{
+            DispatchQueue.main.async {
+                self.CALL_SPORTS_MOBILE_PROCESS_PASSENGER_DETAIL_API()
+            }
+        }else if tabselect == "CarRental"{
+            
+            
+            DispatchQueue.main.async {[self] in
+               // self.setupCarRentalTVCells()
+                self.callcarBookingAPI()
+            }
+            
+            
+        }else if tabselect == "Activities"{
+            
+            DispatchQueue.main.async {[self] in
+                self.CALL_ACTIVITIES_PROCESS_PASSENGER_DETAILS_API()
+            }
+            
+            
+        }else if tabselect == "transfers"{
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[self] in
+                self.calltransferBookingAPI()
+            }
+            
+        }else {
+            DispatchQueue.main.async {
+                self.CALL_HOTEL_MOBILE_PROCESS_PASSENGER_DETAIL_API()
+            }
+        }
         
         
     }

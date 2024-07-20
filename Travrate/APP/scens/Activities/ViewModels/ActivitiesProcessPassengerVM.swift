@@ -9,8 +9,8 @@ import Foundation
 
 protocol ActivitiesProcessPassengerVMDelegate : BaseViewModelProtocol {
     func processPassengerDetailsResponse(response : sportssecureBooingModel)
-    func activitieSendToPaymeentDetailsResponse(response : sportssecureBooingModel)
-    func activitiesSecureBookingDetails(response : sportssecureBooingModel)
+    func activitieSendToPaymeentDetailsResponse(response : SendToPaymentModel)
+    func activitiesSecureBookingDetails(response : SendToPaymentModel)
 }
 
 class ActivitiesProcessPassengerVM {
@@ -54,7 +54,7 @@ class ActivitiesProcessPassengerVM {
         BASE_URL = ""
        self.view?.showLoader()
         
-        ServiceManager.postOrPutApiCall(endPoint: urlstr , parameters: parms, resultType: sportssecureBooingModel.self, p:dictParam) { sucess, result, errorMessage in
+        ServiceManager.postOrPutApiCall(endPoint: urlstr , parameters: parms, resultType: SendToPaymentModel.self, p:dictParam) { sucess, result, errorMessage in
             
             DispatchQueue.main.async {
                 self.view?.hideLoader()
@@ -79,7 +79,7 @@ class ActivitiesProcessPassengerVM {
         BASE_URL = ""
        self.view?.showLoader()
         
-        ServiceManager.postOrPutApiCall(endPoint: urlstr , parameters: parms, resultType: sportssecureBooingModel.self, p:dictParam) { sucess, result, errorMessage in
+        ServiceManager.postOrPutApiCall(endPoint: urlstr , parameters: parms, resultType: SendToPaymentModel.self, p:dictParam) { sucess, result, errorMessage in
             
             DispatchQueue.main.async {
                 self.view?.hideLoader()

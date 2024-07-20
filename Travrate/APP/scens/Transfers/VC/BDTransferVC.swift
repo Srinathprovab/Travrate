@@ -8,6 +8,11 @@
 import UIKit
 
 class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVMDelegate {
+    func transfersSecurebookingDetails(response: SendToPaymentModel) {
+        
+    }
+    
+    
     
     
     
@@ -72,11 +77,11 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVM
             MySingleton.shared.paycontactname = tf.text ?? ""
             break
             
-        case 2:
+        case 1:
             MySingleton.shared.payemail = tf.text ?? ""
             break
             
-        case 3:
+        case 2:
             MySingleton.shared.paymobile = tf.text ?? ""
             break
             
@@ -622,16 +627,16 @@ extension BDTransferVC {
         }else if MySingleton.shared.checkTermsAndCondationStatus == false {
             showToast(message: "Please Accept T&C and Privacy Policy")
         }else {
-            // gotoSelectPaymentMethodsVC()
+            gotoSelectPaymentMethodsVC()
             
             
-            MySingleton.shared.loderString = "fdetails"
-            loderBool = true
-            showLoadera()
-            
-            DispatchQueue.main.async {
-                MySingleton.shared.transferBookingVM?.CALL_BOOKING_API(dictParam: MySingleton.shared.payload)
-            }
+//            MySingleton.shared.loderString = "fdetails"
+//            loderBool = true
+//            showLoadera()
+//            
+//            DispatchQueue.main.async {
+//                MySingleton.shared.transferBookingVM?.CALL_BOOKING_API(dictParam: MySingleton.shared.payload)
+//            }
         }
         
     }
@@ -652,18 +657,17 @@ extension BDTransferVC {
         
         
         DispatchQueue.main.async {
-            self.gotoSelectPaymentMethodsVC(str: response.hit_url ?? "")
+           // self.gotoSelectPaymentMethodsVC(str: response.hit_url ?? "")
         }
     }
     
     
     
     
-    func gotoSelectPaymentMethodsVC(str:String) {
+    func gotoSelectPaymentMethodsVC() {
         callapibool = true
         guard let vc = SelectPaymentMethodsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
-        vc.transfersendtopaymenturl = str
         self.present(vc, animated: false)
     }
     

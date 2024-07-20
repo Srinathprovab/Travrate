@@ -11,7 +11,7 @@ import Foundation
 protocol CarBookingVMDelegate : BaseViewModelProtocol {
     func carBookingdetails(response : CarSecureBookingMode)
     func carPrePaymentDetails(response : carPrePaymrntConfirmationModel)
-    func carSendtoPaymentDetails(response : CarSearchModel)
+    func carSendtoPaymentDetails(response : CarSecureBookingMode)
     func carSecureBookingDetails(response : CarSecureBookingMode)
 }
 
@@ -69,13 +69,16 @@ class CarBookingVM {
         }
     }
     
+    
+    
+    
     func CALL_CAR_SEND_TO_PAYMENT_API(dictParam: [String: Any],urlstr:String){
         let parms = NSDictionary(dictionary:dictParam)
         print("Parameters = \(parms)")
         BASE_URL = ""
         self.view?.showLoader()
         
-        ServiceManager.postOrPutApiCall(endPoint: urlstr, resultType: CarSearchModel.self, p:dictParam) { sucess, result, errorMessage in
+        ServiceManager.postOrPutApiCall(endPoint: urlstr, resultType: CarSecureBookingMode.self, p:dictParam) { sucess, result, errorMessage in
             
             DispatchQueue.main.async {
                 self.view?.hideLoader()

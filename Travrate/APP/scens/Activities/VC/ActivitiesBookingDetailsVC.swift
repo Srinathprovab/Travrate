@@ -605,8 +605,6 @@ extension ActivitiesBookingDetailsVC {
             gotoSelectPaymentMethodsVC()
         }
         
-        
-        
     }
     
     

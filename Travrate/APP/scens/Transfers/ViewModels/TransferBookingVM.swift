@@ -11,6 +11,7 @@ protocol TransferBookingVMDelegate : BaseViewModelProtocol {
     func bookingResponse(response : TransferBookingModel)
     func prePaymentConformationResponse(response : TransferPrePaymentConfModel)
     func preSendtoPaymentResponse(response : TransferPrePaymentConfModel)
+    func transfersSecurebookingDetails(response : SendToPaymentModel)
 }
 
 class TransferBookingVM {
@@ -90,6 +91,31 @@ class TransferBookingVM {
                     guard let response = result else {return}
                     BASE_URL = BASE_URL1
                     self.view.preSendtoPaymentResponse(response: response)
+                } else {
+                    
+                    self.view.showToast(message: errorMessage ?? "")
+                }
+            }
+        }
+    }
+    
+    
+    
+    func CALL_TRANSFERS_SECURE_BOOKING_API(dictParam: [String: Any],urlstr:String){
+        let parms = NSDictionary(dictionary:dictParam)
+        print("Parameters = \(parms)")
+        BASE_URL = ""
+        self.view?.showLoader()
+        
+        ServiceManager.postOrPutApiCall(endPoint: urlstr,parameters: parms as NSDictionary, resultType: SendToPaymentModel.self, p:dictParam) { sucess, result, errorMessage in
+            
+            DispatchQueue.main.async {
+                self.view?.hideLoader()
+                if sucess {
+                    
+                    guard let response = result else {return}
+                    BASE_URL = BASE_URL1
+                    self.view.transfersSecurebookingDetails(response: response)
                 } else {
                     
                     self.view.showToast(message: errorMessage ?? "")

@@ -839,6 +839,7 @@
 		84B82D142C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B82D122C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.xib */; };
 		84C4FF182C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C4FF172C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib */; };
 		84C4FF192C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FF162C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift */; };
+		84C895832C4B5085002241D3 /* SendToPaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C895822C4B5085002241D3 /* SendToPaymentModel.swift */; };
 		84EA31B82C4769270031C482 /* Activities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EA31B72C4769270031C482 /* Activities.storyboard */; };
 		84EA31BA2C47696C0031C482 /* ActivitiesSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA31B92C47696C0031C482 /* ActivitiesSearchVC.swift */; };
 		84EA31BE2C476B800031C482 /* ActivitiesSearchTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EA31BD2C476B800031C482 /* ActivitiesSearchTVCell.xib */; };
@@ -1735,6 +1736,7 @@
 		84B82D122C481D3C00A160D6 /* ActivitiesTypeInfoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTypeInfoTVCell.xib; sourceTree = "<group>"; };
 		84C4FF162C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreRulesBtnTVCell.swift; sourceTree = "<group>"; };
 		84C4FF172C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeeMoreRulesBtnTVCell.xib; sourceTree = "<group>"; };
+		84C895822C4B5085002241D3 /* SendToPaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendToPaymentModel.swift; sourceTree = "<group>"; };
 		84EA31B72C4769270031C482 /* Activities.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Activities.storyboard; sourceTree = "<group>"; };
 		84EA31B92C47696C0031C482 /* ActivitiesSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesSearchVC.swift; sourceTree = "<group>"; };
 		84EA31BC2C476B800031C482 /* ActivitiesSearchTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesSearchTVCell.swift; sourceTree = "<group>"; };
@@ -5600,6 +5602,7 @@
 			children = (
 				849240342C4A2AF800D87EEA /* ActivitiesBookingModel.swift */,
 				849240362C4A2B4500D87EEA /* Post.swift */,
+				84C895822C4B5085002241D3 /* SendToPaymentModel.swift */,
 			);
 			path = ActivityBookingModel;
 			sourceTree = "<group>";
@@ -6543,6 +6546,7 @@
 				65207D652BF494310076EF76 /* FlightSearchParams.swift in Sources */,
 				843D48F92C4254B000C0F127 /* TransferSearchMode.swift in Sources */,
 				657FA8A72C086E2F0098C16E /* SeatingArrangementTVCell.swift in Sources */,
+				84C895832C4B5085002241D3 /* SendToPaymentModel.swift in Sources */,
 				65207E392BF494320076EF76 /* IndexPageViewmodel.swift in Sources */,
 				65207E792BF494320076EF76 /* CruisePackegesTVCell.swift in Sources */,
 				65207CC42BF494310076EF76 /* NSObject+Helper.swift in Sources */,
