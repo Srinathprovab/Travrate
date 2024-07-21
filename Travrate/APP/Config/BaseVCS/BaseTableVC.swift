@@ -1298,6 +1298,27 @@ extension BaseTableVC: UITableViewDataSource {
                 commonCell = cell
                 
                 
+            case .HotelTripsTVCell :
+                let cell: HotelTripsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .ActivitiesTripsTVCell :
+                let cell: ActivitiesTripsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .SportsTripsTVCell :
+                let cell: SportsTripsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .CarRentalTripsTVCell :
+                let cell: CarRentalTripsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .TransferTripsTVCell :
+                let cell: TransferTripsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
                 
                 
             default:

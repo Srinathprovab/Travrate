@@ -194,7 +194,12 @@ enum TVCellType {
     case ActivityInformationTVCell
     
     
-    
+    //TRIPS
+    case ActivitiesTripsTVCell
+    case CarRentalTripsTVCell
+    case SportsTripsTVCell
+    case TransferTripsTVCell
+    case HotelTripsTVCell
     
     
     

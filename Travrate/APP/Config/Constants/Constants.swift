@@ -358,6 +358,7 @@ struct UserDefaultsKeys {
     static var mobilecountrycode = "mobilecountrycode"
     static var mobilecountryname = "mobilecountryname"
     static var tabselect = "tabselect"
+    static var tripsselect = "tripsselect"
     static var nationality = "nationality"
     static var airlinescode = "airlinescode"
     static var userLoggedIn = "userLoggedIn"

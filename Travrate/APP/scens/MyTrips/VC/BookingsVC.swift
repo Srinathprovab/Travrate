@@ -20,14 +20,23 @@ class BookingsVC: BaseTableVC {
     
     
     static var newInstance: BookingsVC? {
-        let storyboard = UIStoryboard(name: Storyboard.Main.name,
+        let storyboard = UIStoryboard(name: Storyboard.MyTrips.name,
                                       bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? BookingsVC
         return vc
     }
     
-    
+    var tabselect = String()
     var titletext = String()
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tabselect = defaults.string(forKey: UserDefaultsKeys.tripsselect) ?? "Flight"
+        DispatchQueue.main.async {
+            self.tapOnUpcomingBtn()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,13 +46,15 @@ class BookingsVC: BaseTableVC {
     
     
     func setupUI() {
-        
         commonTableView.registerTVCells(["FlightUpcomingTVCell",
+                                         "HotelTripsTVCell",
+                                         "TransferTripsTVCell",
+                                         "SportsTripsTVCell",
+                                         "CarRentalTripsTVCell",
+                                         "ActivitiesTripsTVCell",
                                          "EmptyTVCell"])
         
-        DispatchQueue.main.async {
-            self.tapOnUpcomingBtn()
-        }
+        
     }
     
     
@@ -113,29 +124,57 @@ extension BookingsVC {
     
     
     func setupUpcomingTVCells() {
-        MySingleton.shared.tablerow.removeAll()
-        
-        MySingleton.shared.tablerow.append(TableRow(cellType:.FlightUpcomingTVCell))
-        
-        commonTVData =  MySingleton.shared.tablerow
-        commonTableView.reloadData()
+        if tabselect == "Flight" {
+            self.callFlightUpcomingAPI()
+        }else if tabselect == "Transfers" {
+            callTransferstUpcomingAPI()
+        }else if tabselect == "Sports" {
+            callSportstUpcomingAPI()
+        }else if tabselect == "Car Rentals" {
+            callCarRentaltUpcomingAPI()
+        }else if tabselect == "Activities" {
+            callActivitiestUpcomingAPI()
+        }else{
+            self.callHoteltUpcomingAPI()
+        }
     }
     
     func setupCompletedTVCells() {
-        MySingleton.shared.tablerow.removeAll()
         
-        
-        commonTVData =  MySingleton.shared.tablerow
-        commonTableView.reloadData()
+        if tabselect == "Flight" {
+            callFlightCompletedTVCells()
+        }else if tabselect == "Transfers" {
+            callTransferstCompletedTVCells()
+        }else if tabselect == "Sports" {
+            callSportstCompletedTVCells()
+        }else if tabselect == "Car Rentals" {
+            callCarRentaltCompletedTVCells()
+        }else if tabselect == "Activities" {
+            callActivitiestCompletedTVCells()
+        }else{
+            callHoteltCompletedTVCells()
+        }
     }
     
     
     func setupCancelledTVCells() {
-        MySingleton.shared.tablerow.removeAll()
         
-        
-        commonTVData =  MySingleton.shared.tablerow
-        commonTableView.reloadData()
+        if tabselect == "Flight" {
+            callFlightCancelledTVCells()
+        }else if tabselect == "Transfers" {
+            callTransferstCancelledTVCells()
+        }else if tabselect == "Sports" {
+            callSportstCancelledTVCells()
+        }else if tabselect == "Car Rentals" {
+            callCarRentaltCancelledTVCells()
+        }else if tabselect == "Activities" {
+            callActivitiestCancelledTVCells()
+        }else {
+            callHoteltCancelledTVCells()
+        }
     }
     
 }
+
+
+
