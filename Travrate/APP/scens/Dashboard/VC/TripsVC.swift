@@ -44,8 +44,8 @@ class TripsVC: BaseTableVC {
         MySingleton.shared.tablerow.append(TableRow(title:"Sports",image: "sports",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Car Rentals",image: "s3",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Activities",image: "activitiestrip",cellType:.TripsTVCell))
-//        MySingleton.shared.tablerow.append(TableRow(title:"Holidays",image: "cruisetrip",cellType:.TripsTVCell))
-//        MySingleton.shared.tablerow.append(TableRow(title:"Cruise",image: "cruisetrip",cellType:.TripsTVCell))
+        //        MySingleton.shared.tablerow.append(TableRow(title:"Holidays",image: "cruisetrip",cellType:.TripsTVCell))
+        //        MySingleton.shared.tablerow.append(TableRow(title:"Cruise",image: "cruisetrip",cellType:.TripsTVCell))
         
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -55,7 +55,7 @@ class TripsVC: BaseTableVC {
     override func didTapOnTripsBtnAction(cell: TripsTVCell) {
         defaults.setValue(cell.titlelbl.text, forKey: UserDefaultsKeys.tripsselect)
         gotoBookingsVC()
-
+        
     }
     
     func gotoBookingsVC() {
@@ -81,12 +81,12 @@ extension TripsVC {
             setupTVCells()
         }else {
             
-            loginlbl.isHidden = true
-            commonTableView.isHidden = false
-            setupTVCells()
+            //            loginlbl.isHidden = true
+            //            commonTableView.isHidden = false
+            //            setupTVCells()
             
-//            loginlbl.isHidden = false
-//            commonTableView.isHidden = true
+            loginlbl.isHidden = false
+            commonTableView.isHidden = true
         }
     }
     

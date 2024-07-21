@@ -119,6 +119,7 @@ var hotelfiltermodel = HotelFilterModel()
 var sportsfilterModel = SportsFilterModel()
 var carfilterModel = CarRentalFilterModel()
 var transferfilterModel = TransferFilterModel()
+var activitiesfiltermodel = ActivitiesFilterModel()
 var tournamentArray = [String]()
 var eventsArray = [String]()
 var sportsCityArray = [String]()
@@ -237,6 +238,9 @@ var selectedOptions: [AdditionalOption] = []
 var fuleArray = [String]()
 var carmanualArray = [String]()
 var doorcountArray = [String]()
+//Activities
+var durationTypeArray = [String]()
+var activitiesTypeArray = [String]()
 
 
 /* URL endpoints */

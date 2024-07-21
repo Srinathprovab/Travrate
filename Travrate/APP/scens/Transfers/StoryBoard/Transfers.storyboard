@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -251,7 +250,7 @@
                                         <rect key="frame" x="15" y="145" width="363" height="45"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="J8l-bT-bBo">
-                                                <rect key="frame" x="146.66666666666666" y="7.6666666666666572" width="70" height="30"/>
+                                                <rect key="frame" x="20" y="7.6666666666666572" width="70" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csb-35-ubR" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
@@ -346,8 +345,8 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="J8l-bT-bBo" firstAttribute="leading" secondItem="X6V-EM-zGV" secondAttribute="leading" constant="20" id="XXB-Ay-Cpt"/>
                                             <constraint firstAttribute="height" constant="45" id="eFE-19-B7M"/>
-                                            <constraint firstItem="J8l-bT-bBo" firstAttribute="centerX" secondItem="X6V-EM-zGV" secondAttribute="centerX" id="kvc-T4-lgo"/>
                                             <constraint firstItem="J8l-bT-bBo" firstAttribute="centerY" secondItem="X6V-EM-zGV" secondAttribute="centerY" id="y8X-QL-5A6"/>
                                         </constraints>
                                     </view>

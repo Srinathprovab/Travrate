@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -214,7 +213,7 @@
                                         <rect key="frame" x="15" y="145" width="363" height="45"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="7Dh-kG-WvO">
-                                                <rect key="frame" x="146.66666666666666" y="7.6666666666666572" width="70" height="30"/>
+                                                <rect key="frame" x="20" y="7.6666666666666572" width="70" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8g-1g-TOK" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
@@ -309,7 +308,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="7Dh-kG-WvO" firstAttribute="centerX" secondItem="maB-nE-RaQ" secondAttribute="centerX" id="BbT-cd-EOk"/>
+                                            <constraint firstItem="7Dh-kG-WvO" firstAttribute="leading" secondItem="maB-nE-RaQ" secondAttribute="leading" constant="20" id="DO8-d9-gL3"/>
                                             <constraint firstItem="7Dh-kG-WvO" firstAttribute="centerY" secondItem="maB-nE-RaQ" secondAttribute="centerY" id="GSg-A5-QtD"/>
                                             <constraint firstAttribute="height" constant="45" id="d7F-RW-QVS"/>
                                         </constraints>

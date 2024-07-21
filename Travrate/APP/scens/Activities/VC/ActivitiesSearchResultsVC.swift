@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate {
+class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate, AppliedActivitiesFilters {
+   
     
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var destinationcitylbl: UILabel!
@@ -64,8 +65,19 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate 
         self.present(vc, animated: false)
     }
     
+    
+    //MARK: - gotoFilterVC
     @objc func didTapOnFilterBtnAction(_ sender:UIButton) {
-        showToast(message: "Still Under Development")
+        gotoFilterVC(strkey: "activitiesfilter")
+    }
+    
+    
+    func gotoFilterVC(strkey:String) {
+        guard let vc = FilterVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.activitiesfilterDelegate = self
+        vc.filterKey = strkey
+        present(vc, animated: true)
     }
     
     
@@ -117,13 +129,7 @@ extension ActivitiesSearchResultsVC {
         MySingleton.shared.payemail = ""
         MySingleton.shared.paymobile = ""
         MySingleton.shared.paymobilecountrycode = ""
-//        let userloggedBool = defaults.bool(forKey: UserDefaultsKeys.loggedInStatus)
-//        if userloggedBool == false {
-//            MySingleton.shared.guestbool = true
-//        }else {
-//            MySingleton.shared.guestbool = false
-//        }
-//        
+
         MySingleton.shared.activityList = response.data?.raw_activity_list?.activitySearchResult?.activity ?? []
         MySingleton.shared.activites_booking_source = response.data?.booking_source ?? ""
         MySingleton.shared.activites_currency = response.data?.currency_obj?.to_currency ?? ""
@@ -154,17 +160,40 @@ extension ActivitiesSearchResultsVC {
         MySingleton.shared.setAttributedTextnew(str1: "\(MySingleton.shared.activityList.count)", str2: " Activities  Available", lbl: totalcountlbl, str1font: .InterBold(size: 16), str2font: .InterRegular(size: 14), str1Color: .TitleColor, str2Color: .TitleColor)
         
         DispatchQueue.main.async {
-            self.setupTVCells()
+            self.appendResults(list: response.data?.raw_activity_list?.activitySearchResult?.activity ?? [])
         }
     }
     
     
-    func setupTVCells() {
+    func appendResults(list:[Activity]) {
+        
+        prices.removeAll()
+        durationTypeArray.removeAll()
+        activitiesTypeArray.removeAll()
+        
+        list.forEach { i in
+            durationTypeArray.append(i.activityDuration ?? "")
+            activitiesTypeArray.append(i.type ?? "")
+            prices.append(i.amountStarts ?? "")
+        }
+        
+        durationTypeArray = durationTypeArray.unique()
+        activitiesTypeArray = activitiesTypeArray.unique()
+        prices = prices.unique()
+        
+        
+        DispatchQueue.main.async {
+            self.setupTVCells(list: list)
+        }
+    }
+    
+    
+    func setupTVCells(list:[Activity]) {
         MySingleton.shared.tablerow.removeAll()
         
         
         
-        for  (index,value) in MySingleton.shared.activityList.enumerated() {
+        for  (index,value) in list.enumerated() {
             MySingleton.shared.tablerow.append(TableRow(title:"\(index + 1)",moreData: value,cellType:.ActivitiesResultTVCell))
         }
         
@@ -175,6 +204,42 @@ extension ActivitiesSearchResultsVC {
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()
     }
+}
+
+
+
+extension ActivitiesSearchResultsVC {
+    
+    func activitiesFilterByApplied(minpricerange: Double, maxpricerange: Double, durationTypeArray: [String], activitiesTypeArray: [String]) {
+        
+        
+        print("minpricerange : \(minpricerange)")
+        print("maxpricerange : \(maxpricerange)")
+        print("durationTypeArray : \(durationTypeArray.joined(separator: ","))")
+        print("activitiesTypeArray : \(activitiesTypeArray.joined(separator: ","))")
+        
+       
+            
+            // Filter the car rentals based on the specified criteria
+            let filteredArray = MySingleton.shared.activityList.filter { activity in
+                guard let totalString = activity.amountStarts else { return false }
+                
+                let priceInRange = (Double(totalString) ?? 0.0) >= minpricerange && (Double(totalString) ?? 0.0) <= maxpricerange
+                let durationTypeMatch = durationTypeArray.isEmpty || durationTypeArray.contains(activity.activityDuration ?? "")
+                let activitiesTypeMatch = activitiesTypeArray.isEmpty || activitiesTypeArray.contains(activity.type ?? "")
+                
+                return priceInRange && durationTypeMatch && activitiesTypeMatch
+                
+                
+            }
+            
+            setupTVCells(list: filteredArray)
+            
+            // Reload the table view with the filtered results
+            commonTableView.reloadData()
+            
+    }
+    
 }
 
 

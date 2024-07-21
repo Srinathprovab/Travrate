@@ -71,6 +71,16 @@ struct TransferFilterModel {
 }
 
 
+struct ActivitiesFilterModel {
+    
+    var minPriceRange: Double?
+    var maxPriceRange: Double?
+    var durationTypeA: [String] = []
+    var activitiesTypeA: [String] = []
+    
+}
+
+
 
 enum SortParameter {
     case PriceHigh
@@ -88,6 +98,16 @@ enum SortParameter {
     case airlinessortztoa
 }
 
+
+
+protocol AppliedActivitiesFilters {
+    
+    func activitiesFilterByApplied(minpricerange:Double,
+                              maxpricerange:Double,
+                              durationTypeArray:[String],
+                              activitiesTypeArray:[String])
+    
+}
 
 
 protocol AppliedTransferFilters {
@@ -176,11 +196,11 @@ class FilterVC: BaseTableVC{
     var sportsdelegate: AppliedSportsFilters?
     var carrentaldelegate: AppliedCarrentalFilters?
     var transferfilterDelegate: AppliedTransferFilters?
+    var activitiesfilterDelegate: AppliedActivitiesFilters?
+    
     var minpricerangefilter = Double()
     var maxpricerangefilter = Double()
-    
-    
-    
+
     
     var mindurationrangefilter = Double()
     var maxdurationrangefilter = Double()
@@ -198,13 +218,10 @@ class FilterVC: BaseTableVC{
     var selectedDepartureTime = [String]()
     var selectedArrivalTimeFilter = [String]()
     
-    
-    
     var selectedTournamentArray = [String]()
     var selectedEventsArray = [String]()
     var selectedSportsCityArray = [String]()
     var selectedSportsCountryArray = [String]()
-    
     
     var noOvernightFlightFilterStr = [String]()
     var noOfStopsFilterArray = [String]()
@@ -223,6 +240,10 @@ class FilterVC: BaseTableVC{
     var selectedCarManual = [String]()
     var selectedDoorCountArray = [String]()
     var selectedCarTypeArray = [String]()
+    
+    //Activities
+    var selectedDurationTypeArray = [String]()
+    var selectedActivitiesTypeArray = [String]()
     
     
     //MARK: - Hotels
@@ -313,6 +334,12 @@ class FilterVC: BaseTableVC{
         case "filter":
             sortBylbl.text = "Filter"
             setupFilterTVCells()
+            break
+            
+            
+        case "activitiesfilter":
+            sortBylbl.text = "Filter"
+            setupActivitiesFilterTVCells()
             break
             
             
@@ -484,6 +511,24 @@ class FilterVC: BaseTableVC{
         
         tablerow.append(TableRow(title:"Price",key: "",cellType:.SortbyTVCell))
         tablerow.append(TableRow(title:"Star",key: "no",cellType:.SortbyTVCell))
+        
+        tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
+        tablerow.append(TableRow(title:"Done",key: "btn",cellType:.ButtonTVCell))
+        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        
+        commonTVData = tablerow
+        commonTableView.reloadData()
+    }
+    
+    
+    func setupActivitiesFilterTVCells() {
+        commonTableView.isScrollEnabled = true
+        tablerow.removeAll()
+        
+        tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
+        tablerow.append(TableRow(title:"Duration Type",data: durationTypeArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Activities Type",data: activitiesTypeArray,cellType:.CheckBoxTVCell))
+
         
         tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
         tablerow.append(TableRow(title:"Done",key: "btn",cellType:.ButtonTVCell))
@@ -837,6 +882,12 @@ class FilterVC: BaseTableVC{
                         transferResetFilter()
                     }
                 }
+            }else if tabselect == "Activities" {
+                if filterKey == "activitiesfilter" {
+                    DispatchQueue.main.async {[self] in
+                        activitiesResetFilter()
+                    }
+                }
             }else {
                 
                 if filterKey == "hotelfilter" {
@@ -1012,6 +1063,23 @@ class FilterVC: BaseTableVC{
                     break
                     
                
+                    
+                default:
+                    break
+                }
+                
+                
+            }else  if tabselect == "Activities"  {
+                
+                switch cell.filtertitle {
+                    
+                case "Duration Type":
+                    selectedDurationTypeArray.append(cell.titlelbl.text ?? "")
+                    break
+                    
+                case "Activities Type":
+                    selectedActivitiesTypeArray.append(cell.titlelbl.text ?? "")
+                    break
                     
                 default:
                     break
@@ -1236,6 +1304,32 @@ class FilterVC: BaseTableVC{
                     break
                     
                    
+                    
+                default:
+                    break
+                }
+                
+                
+            }else  if tabselect == "Activities"  {
+                
+                switch cell.filtertitle {
+                    
+                    
+                case "Duration Type":
+                    if let index = selectedDurationTypeArray.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedDurationTypeArray.remove(at: index)
+                    }
+               
+                    break
+                    
+                case "Activities Type":
+                    if let index = selectedActivitiesTypeArray.firstIndex(of: cell.titlelbl.text ?? "") {
+                        selectedActivitiesTypeArray.remove(at: index)
+                    }
+               
+                    break
+                    
+                
                     
                 default:
                     break
@@ -1684,6 +1778,45 @@ class FilterVC: BaseTableVC{
                                                             fuleArray: carfilterModel.fuleA,
                                                             carmanualArray: carfilterModel.carmanualA,
                                                             doorcountArray: carfilterModel.doorcountA)
+                    
+                   
+                }
+            }else if tabselect == "Activities" {
+                
+                if filterKey == "activitiesfilter" {
+                
+                    
+                    if minpricerangefilter != 0.0 {
+                        activitiesfiltermodel.minPriceRange = minpricerangefilter
+                    }else {
+                        activitiesfiltermodel.minPriceRange = Double(pricesFloat.min() ?? 0.0)
+                    }
+                    
+                    if maxpricerangefilter != 0.0 {
+                        activitiesfiltermodel.maxPriceRange = maxpricerangefilter
+                    }else {
+                        activitiesfiltermodel.maxPriceRange = Double(pricesFloat.max() ?? 0.0)
+                    }
+                    
+                    
+                    if selectedDurationTypeArray.isEmpty == false {
+                        activitiesfiltermodel.durationTypeA = selectedDurationTypeArray
+                    }else {
+                        activitiesfiltermodel.durationTypeA .removeAll()
+                    }
+                    
+                    if selectedActivitiesTypeArray.isEmpty == false {
+                        activitiesfiltermodel.activitiesTypeA = selectedActivitiesTypeArray
+                    }else {
+                        activitiesfiltermodel.activitiesTypeA .removeAll()
+                    }
+                    
+                
+                    activitiesfilterDelegate?.activitiesFilterByApplied(minpricerange: activitiesfiltermodel.minPriceRange ?? 0.0,
+                                                                        maxpricerange: activitiesfiltermodel.maxPriceRange ?? 0.0,
+                                                                        durationTypeArray: activitiesfiltermodel.durationTypeA,
+                                                                        activitiesTypeArray: activitiesfiltermodel.activitiesTypeA)
+                   
                     
                    
                 }
@@ -2147,6 +2280,37 @@ extension FilterVC {
     }
     
     
+    
+    
+    //MARK: - For activities ResetFilter
+    func activitiesResetFilter() {
+        // Reset all values in the FilterModel
+        
+        
+        
+        let pricesFloat = prices.compactMap { Float($0) }
+        activitiesfiltermodel.minPriceRange = Double((pricesFloat.min() ?? prices.compactMap { Float($0) }.min()) ?? 0.0)
+        activitiesfiltermodel.maxPriceRange = Double((pricesFloat.max() ?? prices.compactMap { Float($0) }.max()) ?? 0.0)
+        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SliderTVCell {
+            cell.setupUI()
+        }
+        minpricerangefilter = activitiesfiltermodel.minPriceRange ?? 0.0
+        maxpricerangefilter = activitiesfiltermodel.maxPriceRange ?? 0.0
+        activitiesfiltermodel.durationTypeA = []
+        activitiesfiltermodel.activitiesTypeA = []
+        
+        selectedDurationTypeArray.removeAll()
+        selectedActivitiesTypeArray.removeAll()
+        
+        
+        // Deselect all cells in your checkOptionsTVCell table view
+        deselectAllCheckOptionsCells()
+        
+        // Reload the table view to reflect the changes
+        commonTableView.reloadData()
+    }
+    
+    
     //MARK: - Reset Hotel Filter
     func resetHotelFilter() {
         // Reset all values in the FilterModel
@@ -2200,6 +2364,8 @@ extension FilterVC {
                 loadinitialCarRentalFilterValues()
             }else if tabSelected == "transfers" {
                 loadinitialTransfersFilterValues()
+            }else if tabSelected == "Activities" {
+                loadinitialActivitiesFilterValues()
             }else {
                 loadinitiallHotelFilterValues()
             }
@@ -2424,6 +2590,39 @@ extension FilterVC {
         
         if !transferfilterModel.carTypeA.isEmpty {
             selectedCarTypeArray = transferfilterModel.carTypeA
+        }
+        
+        
+    }
+    
+    
+    
+    
+    func loadinitialActivitiesFilterValues(){
+        
+        
+        
+        if !UserDefaults.standard.bool(forKey: "activitesfilteronce") {
+            activitiesResetFilter()
+            defaults.set(true, forKey: "activitesfilteronce")
+        }
+        
+        
+        //MARK: - Price
+        if activitiesfiltermodel.minPriceRange != 0.0 {
+            minpricerangefilter = activitiesfiltermodel.minPriceRange ?? Double(prices.compactMap { Float($0) }.min()!)
+        }
+        
+        if activitiesfiltermodel.maxPriceRange != 0.0 {
+            maxpricerangefilter = activitiesfiltermodel.maxPriceRange ?? Double(prices.compactMap { Float($0) }.max()!)
+        }
+        
+        
+        if !activitiesfiltermodel.durationTypeA.isEmpty {
+            selectedDurationTypeArray = activitiesfiltermodel.durationTypeA
+        }
+        if !activitiesfiltermodel.activitiesTypeA.isEmpty {
+            selectedActivitiesTypeArray = activitiesfiltermodel.activitiesTypeA
         }
         
         

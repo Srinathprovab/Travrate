@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -77,8 +76,9 @@
                                     <color key="titleColor" name="subtitleNewcolor"/>
                                 </state>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="depcal" translatesAutoresizingMaskIntoConstraints="NO" id="Coi-3V-lyd">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cal" translatesAutoresizingMaskIntoConstraints="NO" id="Coi-3V-lyd">
                                 <rect key="frame" x="90" y="325" width="20" height="20"/>
+                                <color key="tintColor" name="Buttoncolor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="aLm-ZT-Ayb"/>
                                     <constraint firstAttribute="height" constant="20" id="pZL-e7-tWF"/>
@@ -142,7 +142,9 @@
                 <outlet property="activityNamelbl" destination="oG3-9Q-bjv" id="U33-Es-hNk"/>
                 <outlet property="activityimg" destination="rDr-vu-9eV" id="zIw-Hc-YOE"/>
                 <outlet property="activityloclbl" destination="bpK-CB-FhV" id="MXJ-Ad-yni"/>
+                <outlet property="calimg" destination="Coi-3V-lyd" id="8Ea-Gj-9Fd"/>
                 <outlet property="detailsBtn" destination="8Ff-ii-kkG" id="Ok3-9f-8F8"/>
+                <outlet property="durationTypelbl" destination="i2z-TW-c7Y" id="5qI-zQ-zVh"/>
                 <outlet property="kwdlbl" destination="E3E-kJ-FlX" id="Mhp-nI-AMg"/>
                 <outlet property="namebtn" destination="YH8-fA-orr" id="6kw-MP-EGX"/>
             </connections>
@@ -150,13 +152,16 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="depcal" width="24" height="24"/>
+        <image name="cal" width="18" height="20"/>
         <image name="loc" width="20" height="20"/>
         <namedColor name="BooknowBtnColor">
             <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BorderColor">
             <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Buttoncolor">
+            <color red="0.2669999897480011" green="0.70999997854232788" blue="0.046999998390674591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="FareColor2">
             <color red="0.15299999713897705" green="0.62000000476837158" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

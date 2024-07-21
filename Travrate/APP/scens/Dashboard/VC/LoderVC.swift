@@ -138,8 +138,8 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             img.sd_setImage(with: URL(string: searchHoteldata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
             locationslbl.text = searchHoteldata?.city_name ?? ""
-            checkinlbl.text = searchHoteldata?.check_in ?? ""
-            checkoutlbl.text = searchHoteldata?.check_out ?? ""
+            checkinlbl.text = MySingleton.shared.convertDateFormat(inputDate: searchHoteldata?.check_in ?? "", f1: "dd/MM/yyyy", f2: "dd-MMM-yyyy")
+            checkoutlbl.text = MySingleton.shared.convertDateFormat(inputDate: searchHoteldata?.check_out ?? "", f1: "dd/MM/yyyy", f2: "dd-MMM-yyyy")
             guestlbl.text = searchHoteldata?.adult?[0] ?? ""
             
             // Example usage:
@@ -244,7 +244,7 @@ extension LoderVC {
             sportsView.isHidden = false
             sporteventlbl.text = MySingleton.shared.sportsTeamName
             sportvenulbl.text = MySingleton.shared.sportsVenuName
-            sportdateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")) To \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy"))"
+            sportdateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")) To \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy"))"
             
         }else if tabselect == "CarRental" {
             
@@ -264,14 +264,14 @@ extension LoderVC {
             let journytype =  defaults.string(forKey: UserDefaultsKeys.transferjournytype)
             let fromcity =  defaults.string(forKey: UserDefaultsKeys.transferfromcityname)
             let tocity =  defaults.string(forKey: UserDefaultsKeys.transfertocityname)
-            let fromdate =  defaults.string(forKey: UserDefaultsKeys.transfercalDepDate)
-            let todate =  defaults.string(forKey: UserDefaultsKeys.transfercalRetDate)
-            
+           
+            let fromdate = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")
+            let todate = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.transfercalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")
             
             sportsView.isHidden = false
             sporteventlbl.text = fromcity
             sportvenulbl.text = tocity
-            sportdateslbl.text = journytype == "oneway" ? "\(fromdate ?? "")": "\(fromdate ?? "") to \(todate ?? "")"
+            sportdateslbl.text = journytype == "oneway" ? "\(fromdate)": "\(fromdate) to \(todate)"
             
             
             
@@ -279,8 +279,8 @@ extension LoderVC {
             
             
             let cityname = defaults.string(forKey: UserDefaultsKeys.activitescityname)
-            let fromdate = defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate)
-            let todate = defaults.string(forKey: UserDefaultsKeys.calActivitesRetDate)
+            let fromdate = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")
+            let todate = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calActivitesRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")
             let adultcount = defaults.integer(forKey: UserDefaultsKeys.activitesadultCount)
             let childcount = defaults.integer(forKey: UserDefaultsKeys.activiteschildCount)
             let infantcount = defaults.integer(forKey: UserDefaultsKeys.activitesinfantsCount)
@@ -289,7 +289,7 @@ extension LoderVC {
             
             sportsView.isHidden = false
             sporteventlbl.text = cityname
-            sportvenulbl.text = "\(fromdate ?? "") To \(todate ?? "")"
+            sportvenulbl.text = "\(fromdate) To \(todate)"
             var labelText = adultcount > 1 ? "Adults: \(adultcount)" : "Adult: \(adultcount)"
             if childcount > 0 {
                 labelText += ", Child: \(childcount)"

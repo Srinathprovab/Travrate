@@ -20,6 +20,8 @@ class ActivitiesResultTVCell: TableViewCell {
     @IBOutlet weak var kwdlbl: UILabel!
     @IBOutlet weak var detailsBtn: UIButton!
     @IBOutlet weak var namebtn: UIButton!
+    @IBOutlet weak var durationTypelbl: UILabel!
+    @IBOutlet weak var calimg: UIImageView!
     
 
     var selectedImage = String()
@@ -89,6 +91,9 @@ class ActivitiesResultTVCell: TableViewCell {
         
         MySingleton.shared.activity_name = activitylist?.name ?? ""
         MySingleton.shared.activity_loc = "P.O Box 30531, Al Jaddaf-1 Bur Dubai (Near Al Jadaf Metro Station - Dubai)"
+        durationTypelbl.text = activitylist?.activityDuration ?? ""
+        durationTypelbl.isHidden = activitylist?.activityDuration == "" || activitylist?.activityDuration == nil ? true : false
+        calimg.isHidden = activitylist?.activityDuration == "" || activitylist?.activityDuration == nil ? true : false
         
     }
     

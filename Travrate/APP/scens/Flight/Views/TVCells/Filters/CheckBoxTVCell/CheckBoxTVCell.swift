@@ -184,6 +184,8 @@ extension CheckBoxTVCell: UITableViewDataSource, UITableViewDelegate {
                 showSelectedCarrentalFilterValues(cell: cell, indexPath: indexPath)
             }else if tabselect == "transfers" {
                 showSelectedTransfersFilterValues(cell: cell, indexPath: indexPath)
+            }else if tabselect == "Activities" {
+                showSelectedActivitiesFilterValues(cell: cell, indexPath: indexPath)
             } else  {
                 showSelectedHotelFilterValues(cell: cell, indexPath: indexPath)
             }
@@ -883,7 +885,79 @@ extension CheckBoxTVCell {
             
             
             
-       
+            
+        default:
+            break
+        }
+    }
+    
+    
+    
+    
+    func showSelectedActivitiesFilterValues(cell:checkOptionsTVCell,indexPath:IndexPath) {
+        
+        
+        //
+        // Check the section title to determine which filter to apply
+        switch titlelbl.text {
+            
+            
+        case "Duration Type":
+            if !activitiesfiltermodel.durationTypeA.isEmpty {
+                // Check if the cell's title matches any value in the luggage array
+                
+                
+                if activitiesfiltermodel.durationTypeA.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.sele()
+                        self.selectedIndices.append(indexPath)
+                        self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    }
+                    print("Selected: \(cell.titlelbl.text ?? "")")
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.unselected() // Deselect the cell
+                    }
+                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    cell.unselected() // Deselect the cell
+                }
+            }
+            
+            
+        case "Activities Type":
+            if !activitiesfiltermodel.activitiesTypeA.isEmpty {
+                // Check if the cell's title matches any value in the luggage array
+                
+                
+                if activitiesfiltermodel.activitiesTypeA.contains(cell.titlelbl.text ?? "") {
+                    
+                    DispatchQueue.main.async {
+                        cell.sele()
+                        self.selectedIndices.append(indexPath)
+                        self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    }
+                    print("Selected: \(cell.titlelbl.text ?? "")")
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        cell.unselected() // Deselect the cell
+                    }
+                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                }
+            }else {
+                DispatchQueue.main.async {
+                    cell.unselected() // Deselect the cell
+                }
+            }
+            
+            
+            
+            
         default:
             break
         }
