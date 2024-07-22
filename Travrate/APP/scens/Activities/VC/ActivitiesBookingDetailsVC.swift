@@ -24,7 +24,7 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
         return vc
     }
     
-    
+    var contract_remark = String()
     var response: ActivitiesBookingModel?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +64,9 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
                                          "EmptyTVCell",
                                          "ActivitiesBookingDetailsTVCell",
                                          "ActivitiesFareSummeryTVCell",
+                                         "AddonTableViewCell",
+                                         "ContractRemarkTVCell",
+                                         "BDPickupLocationTVCell",
                                          "TermsAgreeTVCell",])
         
         
@@ -182,11 +185,87 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
         case 2:
             MySingleton.shared.paymobile = tf.text ?? ""
             break
+            
+            
+        case 333:
+            print(tf.text)
+            break
+            
+            
         default:
             break
         }
     }
     
+    
+    
+    //MARK: - Addon didSelectAddon  didDeselectAddon
+    override func didDeselectAddon(index: Int, origen: String) {
+        
+        if index == 0 {
+            hotelnotificationCheck = false
+            updateTotalAndReload()
+        } else  {
+            hotelpriceCheck = false
+            updateTotalAndReload()
+        }
+        
+        
+    }
+    
+    
+    override  func didSelectAddon(index: Int, origen: String,price:String) {
+        
+        if index == 0 {
+            
+            hotelnotificationPrice = price
+            hotelnotificationCheck = true
+            
+            updateTotalAndReload()
+        } else  {
+            hotelpriceChange = price
+            hotelpriceCheck = true
+            updateTotalAndReload()
+            
+        }
+        
+    }
+    
+    
+    func updateTotalAndReload() {
+        // Update total price or any related data
+        // totlConvertedGrand = newTotal
+        
+        reloadPriceSummaryTVCell()
+        
+    }
+    
+    func reloadPriceSummaryTVCell() {
+        if let indexPath = indexPathForPriceSummaryTVCell() {
+            commonTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func indexPathForPriceSummaryTVCell() -> IndexPath? {
+        if let row = MySingleton.shared.tablerow.firstIndex(where: { $0.cellType == .ActivitiesFareSummeryTVCell }) {
+            return IndexPath(row: row, section: 0)
+        }
+        return nil
+    }
+    
+    
+    
+    override func didTapOnDeleteAddonBtnAction(cell: ActivitiesFareSummeryTVCell) {
+        reloadPriceSummaryTVCell()
+    }
+    
+   
+   
+    
+    //MARK: - didTapOnDropupBtnAction
+    override func didTapOnDropupBtnAction(cell: ContractRemarkTVCell) {
+        commonTableView.reloadData()
+    }
     
     
     
@@ -206,7 +285,7 @@ extension ActivitiesBookingDetailsVC {
         MySingleton.shared.activitiesPreProcessBookingVM?.CALL_PRE_PROCESS_BOOKING_API(dictParam: MySingleton.shared.payload)
     }
     
-
+    
     
     func preBookingResponse(response: ActivitiesPreProcessBookingModel) {
         
@@ -227,12 +306,13 @@ extension ActivitiesBookingDetailsVC {
         loderBool = false
         hideLoadera()
         
-       
-        MySingleton.shared.activity_details = response.data?.activity_details
+        MySingleton.shared.activitiesAddonServices = response.addon_services ?? []
+        MySingleton.shared.bookingactivitydetails = response.data?.activity_details
         MySingleton.shared.activitiesPostData =  response.post
         self.response = response
+        contract_remark =  response.data?.activity_details?.token_mob?.content?.description ?? ""
         
-       
+        print(contract_remark)
         
         
         DispatchQueue.main.async {
@@ -299,31 +379,31 @@ extension ActivitiesBookingDetailsVC {
         }
         
         
-        if infantcount != 0 {
-            for i in 1...infantcount {
-                MySingleton.shared.positionsCount += 1
-                MySingleton.shared.tablerow.append(TableRow(title:"Infant \(i)"
-                                                            ,key:"infant",
-                                                            characterLimit:MySingleton.shared.positionsCount,
-                                                            cellType:.AddDeatilsOfGuestTVCell))
-                
-            }
-        }
+        //        if infantcount != 0 {
+        //            for i in 1...infantcount {
+        //                MySingleton.shared.positionsCount += 1
+        //                MySingleton.shared.tablerow.append(TableRow(title:"Infant \(i)"
+        //                                                            ,key:"infant",
+        //                                                            characterLimit:MySingleton.shared.positionsCount,
+        //                                                            cellType:.AddDeatilsOfGuestTVCell))
+        //
+        //            }
+        //        }
         
         
+        
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(cellType:.BDPickupLocationTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.TContactDetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        
-        
+        MySingleton.shared.tablerow.append(TableRow(key: "activities", moreData: services, cellType:.AddonTableViewCell))
+        MySingleton.shared.tablerow.append(TableRow(title:contract_remark,cellType:.ContractRemarkTVCell))
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesFareSummeryTVCell))
-        
         MySingleton.shared.tablerow.append(TableRow(title:"By Booking This item, You agree to pay the total amount shown, with includes service fees. you also agree to the terms ans conditions and privacy policy .",cellType:.TermsAgreeTVCell))
-        
-        
-        
-        
-        
         
         MySingleton.shared.tablerow.append(TableRow(height:20,cellType:.EmptyTVCell))
         
@@ -528,9 +608,9 @@ extension ActivitiesBookingDetailsVC {
         let passengertypeString = "[\"" + passengertypeArray.joined(separator: "\",\"") + "\"]"
         let laedpassengerArrayString = "[\"" + laedpassengerArray.joined(separator: "\",\"") + "\"]"
         
-
         
-        let contract_remark = "Meeting point: Marktstraße 6d, 40213 Düsseldorf, Germany // Meeting point instructions: In front of the tourist office. Please ensure you arrive at the meeting point at least 15 minutes prior to the tour start time //  End point: Old Town // Duration: 1,5 hours // Inclusions: Private Local Guide // Exclusions: Gratuities. Entrances // Mandatory instructions: Printed voucher will be accepted as well, but e-voucher preferred // Supplier name: Travmonde // Supplier emergency phone: +49 802 137 39 008. +49 802 137 390 003. +49 802 137 390 005 (9am-6pm) // Voucher type: Printed voucher or E-voucher. Print and bring the voucher or show the voucher on your mobile device to enjoy the activity // \t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n"
+        
+        
         
         let alocation = MySingleton.shared.activity_loc
         let agent_payable = MySingleton.shared.agentpayable
@@ -620,6 +700,8 @@ extension ActivitiesBookingDetailsVC {
     
     
 }
+
+
 
 
 

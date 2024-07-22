@@ -893,6 +893,11 @@
 		84EA32072C47FCB30031C482 /* ActivitiesHighlightsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA32042C47FCB30031C482 /* ActivitiesHighlightsTVCell.swift */; };
 		84EA32092C4803730031C482 /* ActivityDetailsModalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA32082C4803720031C482 /* ActivityDetailsModalities.swift */; };
 		84EA320B2C4803AE0031C482 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA320A2C4803AE0031C482 /* Duration.swift */; };
+		84F2477A2C4E3E6C003526A0 /* Booking_Activity_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F247792C4E3E6C003526A0 /* Booking_Activity_details.swift */; };
+		84F2477E2C4E6E1E003526A0 /* ContractRemarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2477C2C4E6E1E003526A0 /* ContractRemarkTVCell.swift */; };
+		84F2477F2C4E6E1E003526A0 /* ContractRemarkTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F2477D2C4E6E1E003526A0 /* ContractRemarkTVCell.xib */; };
+		84F247832C4E8DCE003526A0 /* BDPickupLocationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F247812C4E8DCE003526A0 /* BDPickupLocationTVCell.swift */; };
+		84F247842C4E8DCE003526A0 /* BDPickupLocationTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F247822C4E8DCE003526A0 /* BDPickupLocationTVCell.xib */; };
 		8D990CD965677534C9B33A1A /* Pods_Travrate_TravrateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352E76BB6C18FFBDFA9E4BAC /* Pods_Travrate_TravrateUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -1809,6 +1814,11 @@
 		84EA32052C47FCB30031C482 /* ActivitiesHighlightsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesHighlightsTVCell.xib; sourceTree = "<group>"; };
 		84EA32082C4803720031C482 /* ActivityDetailsModalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailsModalities.swift; sourceTree = "<group>"; };
 		84EA320A2C4803AE0031C482 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		84F247792C4E3E6C003526A0 /* Booking_Activity_details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking_Activity_details.swift; sourceTree = "<group>"; };
+		84F2477C2C4E6E1E003526A0 /* ContractRemarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractRemarkTVCell.swift; sourceTree = "<group>"; };
+		84F2477D2C4E6E1E003526A0 /* ContractRemarkTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractRemarkTVCell.xib; sourceTree = "<group>"; };
+		84F247812C4E8DCE003526A0 /* BDPickupLocationTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDPickupLocationTVCell.swift; sourceTree = "<group>"; };
+		84F247822C4E8DCE003526A0 /* BDPickupLocationTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BDPickupLocationTVCell.xib; sourceTree = "<group>"; };
 		8DD1499C19BCF668666470A0 /* Pods_TravrateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravrateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D6270A6B84A65A4EA1F77F2 /* Pods_Travrate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travrate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72FB7CD8ACAF005CA724D93 /* Pods-Travrate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate.debug.xcconfig"; path = "Target Support Files/Pods-Travrate/Pods-Travrate.debug.xcconfig"; sourceTree = "<group>"; };
@@ -5641,6 +5651,7 @@
 				849240342C4A2AF800D87EEA /* ActivitiesBookingModel.swift */,
 				849240362C4A2B4500D87EEA /* Post.swift */,
 				84C895822C4B5085002241D3 /* SendToPaymentModel.swift */,
+				84F247792C4E3E6C003526A0 /* Booking_Activity_details.swift */,
 			);
 			path = ActivityBookingModel;
 			sourceTree = "<group>";
@@ -5893,6 +5904,8 @@
 		84EA31B42C4768FE0031C482 /* TVCells */ = {
 			isa = PBXGroup;
 			children = (
+				84F247802C4E8DB3003526A0 /* BDPickupLocationTVCell */,
+				84F2477B2C4E6E04003526A0 /* ContractRemarkTVCell */,
 				844B87EF2C48E3300068CC93 /* ActivityInformationTVCell */,
 				844B87EA2C48D3290068CC93 /* ActivitiesFareSummeryTVCell */,
 				844B87E12C48C8FB0068CC93 /* ActivitiesBookingDetailsTVCell */,
@@ -6041,6 +6054,24 @@
 				84EA32052C47FCB30031C482 /* ActivitiesHighlightsTVCell.xib */,
 			);
 			path = ActivitiesHighlightsTVCell;
+			sourceTree = "<group>";
+		};
+		84F2477B2C4E6E04003526A0 /* ContractRemarkTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				84F2477C2C4E6E1E003526A0 /* ContractRemarkTVCell.swift */,
+				84F2477D2C4E6E1E003526A0 /* ContractRemarkTVCell.xib */,
+			);
+			path = ContractRemarkTVCell;
+			sourceTree = "<group>";
+		};
+		84F247802C4E8DB3003526A0 /* BDPickupLocationTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				84F247812C4E8DCE003526A0 /* BDPickupLocationTVCell.swift */,
+				84F247822C4E8DCE003526A0 /* BDPickupLocationTVCell.xib */,
+			);
+			path = BDPickupLocationTVCell;
 			sourceTree = "<group>";
 		};
 		9BB6B282C797305FD6DD1AC6 /* Pods */ = {
@@ -6217,6 +6248,7 @@
 				65207D142BF494310076EF76 /* TermsPopupTVCell.xib in Resources */,
 				65207DE02BF494310076EF76 /* FareBreakdownTVCell.xib in Resources */,
 				657BF2FD2C059056000E636A /* AddDeatilsOfPersonTVCell.xib in Resources */,
+				84F247842C4E8DCE003526A0 /* BDPickupLocationTVCell.xib in Resources */,
 				84EA32012C47FA530031C482 /* ActivitiesDecreptionTVCell.xib in Resources */,
 				65207E042BF494320076EF76 /* PaymentTypeCVCell.xib in Resources */,
 				84EA31BE2C476B800031C482 /* ActivitiesSearchTVCell.xib in Resources */,
@@ -6381,6 +6413,7 @@
 				65207D2F2BF494310076EF76 /* ButtonCollectionViewCell.xib in Resources */,
 				65207DFA2BF494310076EF76 /* YourRecentSearchesTVCell.xib in Resources */,
 				65207CBE2BF494310076EF76 /* OpenSans-Light.ttf in Resources */,
+				84F2477F2C4E6E1E003526A0 /* ContractRemarkTVCell.xib in Resources */,
 				65844C712C049A8B005EA104 /* NewHotelPriceSummeryTVCell.xib in Resources */,
 				84A16FFF2C44D605002C7F83 /* AddDeatilsOfPassengerTVCell.xib in Resources */,
 				65207C962BF494310076EF76 /* loder.gif in Resources */,
@@ -6771,6 +6804,7 @@
 				65324F9C2C200AB600BA1E5A /* UpgradeServiceTVCell.swift in Sources */,
 				8404DA112C3E47CF000A648A /* CarrentalPreSearchModel.swift in Sources */,
 				65207E602BF494320076EF76 /* MoreDetailsModel.swift in Sources */,
+				84F2477A2C4E3E6C003526A0 /* Booking_Activity_details.swift in Sources */,
 				65207E862BF494320076EF76 /* updatePaymentFlightViewModel.swift in Sources */,
 				84EA31BA2C47696C0031C482 /* ActivitiesSearchVC.swift in Sources */,
 				843D491A2C426F0100C0F127 /* Bg_condition.swift in Sources */,
@@ -7003,6 +7037,7 @@
 				65207CA62BF494310076EF76 /* UITapGestureRecognizer.swift in Sources */,
 				843D49032C42577900C0F127 /* Raw_transfer_list.swift in Sources */,
 				65207E9A2BF494320076EF76 /* BookingSucessVC.swift in Sources */,
+				84F2477E2C4E6E1E003526A0 /* ContractRemarkTVCell.swift in Sources */,
 				65207EBD2BF494320076EF76 /* InsurancePlaneTVCell.swift in Sources */,
 				65207E9B2BF494320076EF76 /* BookingConfirmedVC.swift in Sources */,
 				65207E582BF494320076EF76 /* AcceptCookiesTVCell.swift in Sources */,
@@ -7016,6 +7051,7 @@
 				65207D992BF494310076EF76 /* ButtonTVCell.swift in Sources */,
 				65207D1A2BF494310076EF76 /* AddDeatilsOfGuestTVCell.swift in Sources */,
 				65207CCD2BF494310076EF76 /* SelectFareListVC.swift in Sources */,
+				84F247832C4E8DCE003526A0 /* BDPickupLocationTVCell.swift in Sources */,
 				844B880B2C4911330068CC93 /* OperationDates.swift in Sources */,
 				65207CC72BF494310076EF76 /* BaseViewModelProtocol.swift in Sources */,
 				843D48F22C420D2900C0F127 /* GetTransferCityVM.swift in Sources */,
@@ -7410,7 +7446,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7453,7 +7489,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

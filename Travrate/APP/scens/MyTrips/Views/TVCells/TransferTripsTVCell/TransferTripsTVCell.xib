@@ -1,21 +1,150 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TransferTripsTVCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="30" id="KGk-i7-Jjw" customClass="TransferTripsTVCell" customModule="Travrate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="564" height="145"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="564" height="145"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRE-GM-MjL" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                        <rect key="frame" x="15" y="0.0" width="534" height="135"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="TcF-Ik-S3j">
+                                <rect key="frame" x="15" y="40" width="160" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="kiJ-yX-B4D"/>
+                                    <constraint firstAttribute="width" constant="160" id="nBr-LR-t77"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skoda Octavia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5E-cH-Su2">
+                                <rect key="frame" x="404" y="5" width="114" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Up to Passengers 3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpv-02-Kab">
+                                <rect key="frame" x="251.66666666666671" y="32" width="266.33333333333326" height="16.666666666666671"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
+                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Standard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNS-3j-hPo">
+                                <rect key="frame" x="447" y="53.666666666666657" width="71" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="refundableColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Free Cancellation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3s-6h-FPJ">
+                                <rect key="frame" x="421.33333333333331" y="75.666666666666671" width="96.666666666666686" height="16.666666666666671"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
+                                <color key="textColor" name="Buttoncolor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue 07 May 2024-2:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9R0-tM-X4R">
+                                <rect key="frame" x="14.999999999999993" y="0.0" width="122.33333333333331" height="31.666666666666668"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
+                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yej-9a-FD6">
+                                <rect key="frame" x="398" y="97.333333333333329" width="120" height="27"/>
+                                <color key="backgroundColor" name="BooknowBtnColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="2r7-HU-BaJ"/>
+                                    <constraint firstAttribute="width" constant="120" id="K2g-gJ-V4f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="tintColor" name="WhiteColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="View Voucher"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="TcF-Ik-S3j" secondAttribute="bottom" id="06S-Rb-Ykf"/>
+                            <constraint firstItem="c3s-6h-FPJ" firstAttribute="trailing" secondItem="bNS-3j-hPo" secondAttribute="trailing" id="1AR-DG-OUd"/>
+                            <constraint firstItem="Fpv-02-Kab" firstAttribute="leading" secondItem="TcF-Ik-S3j" secondAttribute="trailing" constant="76.670000000000002" id="ASW-B6-OwJ"/>
+                            <constraint firstItem="bNS-3j-hPo" firstAttribute="trailing" secondItem="Fpv-02-Kab" secondAttribute="trailing" id="B7k-h7-80P"/>
+                            <constraint firstItem="c5E-cH-Su2" firstAttribute="centerY" secondItem="9R0-tM-X4R" secondAttribute="centerY" id="BK2-c7-pj9"/>
+                            <constraint firstItem="Yej-9a-FD6" firstAttribute="top" secondItem="c3s-6h-FPJ" secondAttribute="bottom" constant="5" id="Gor-c3-LZk"/>
+                            <constraint firstItem="bNS-3j-hPo" firstAttribute="top" secondItem="Fpv-02-Kab" secondAttribute="bottom" constant="5" id="HlZ-7y-aJN"/>
+                            <constraint firstItem="Fpv-02-Kab" firstAttribute="trailing" secondItem="c5E-cH-Su2" secondAttribute="trailing" id="Ir4-Un-T39"/>
+                            <constraint firstItem="9R0-tM-X4R" firstAttribute="leading" secondItem="XRE-GM-MjL" secondAttribute="leading" constant="15" id="LZM-QS-TBC"/>
+                            <constraint firstItem="TcF-Ik-S3j" firstAttribute="leading" secondItem="XRE-GM-MjL" secondAttribute="leading" constant="15" id="THL-HA-W50"/>
+                            <constraint firstItem="c3s-6h-FPJ" firstAttribute="top" secondItem="bNS-3j-hPo" secondAttribute="bottom" id="ZG4-mZ-otL"/>
+                            <constraint firstItem="TcF-Ik-S3j" firstAttribute="top" secondItem="9R0-tM-X4R" secondAttribute="bottom" constant="8.3300000000000001" id="l8S-Ic-oEF"/>
+                            <constraint firstItem="9R0-tM-X4R" firstAttribute="top" secondItem="XRE-GM-MjL" secondAttribute="top" id="lNB-Tc-y6s"/>
+                            <constraint firstItem="Fpv-02-Kab" firstAttribute="top" secondItem="c5E-cH-Su2" secondAttribute="bottom" constant="5" id="mgD-PU-PYA"/>
+                            <constraint firstAttribute="trailing" secondItem="c5E-cH-Su2" secondAttribute="trailing" constant="16" id="mqY-iF-Y8T"/>
+                            <constraint firstAttribute="bottom" secondItem="Yej-9a-FD6" secondAttribute="bottom" constant="10.67" id="sCO-SX-tJf"/>
+                            <constraint firstItem="Yej-9a-FD6" firstAttribute="trailing" secondItem="c3s-6h-FPJ" secondAttribute="trailing" id="xev-cb-LZc"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="BorderColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="XRE-GM-MjL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="F0X-KQ-iyz"/>
+                    <constraint firstAttribute="trailing" secondItem="XRE-GM-MjL" secondAttribute="trailing" constant="15" id="X7X-hq-KJb"/>
+                    <constraint firstAttribute="bottom" secondItem="XRE-GM-MjL" secondAttribute="bottom" constant="10" id="mut-0t-zTf"/>
+                    <constraint firstItem="XRE-GM-MjL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vsr-mL-Q9M"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="313" y="63"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="car" width="168" height="99"/>
+        <namedColor name="BooknowBtnColor">
+            <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BorderColor">
+            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Buttoncolor">
+            <color red="0.2669999897480011" green="0.70999997854232788" blue="0.046999998390674591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WhiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="refundableColor">
+            <color red="0.0" green="0.44299998879432678" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

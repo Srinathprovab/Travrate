@@ -42,14 +42,8 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
             callGetCarRentalVoucherAPI()
         }else if tabselect == "Activities" {
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {[self] in
-                loderBool = false
-                hideLoadera()
-                
-                callGetActivitesVoucherAPI()
-               
-            }
             
+            callGetActivitesVoucherAPI()
         }else {
             
             
@@ -488,33 +482,46 @@ extension BookingConfirmedVC {
     
     
     func callGetActivitesVoucherAPI() {
+    
+        
+        
+        
         viewModel?.CALL_ACTIVITIES_VOUCHER_API(dictParam: [:], url: MySingleton.shared.voucherurlsting)
     }
     
     
     func activitiesVoucherDetails(response: ActivitiesVoucherModel) {
-        print(response.data?.agent_details)
+        
+        hideLoadera()
+        loderBool = false
+        
+       
         
         DispatchQueue.main.async {
-            self.setupActivitiesVoucherTVCells()
+            self.setupActivitiesVoucherTVCells(res: response)
         }
     }
     
     
     
-    func setupActivitiesVoucherTVCells() {
+    func setupActivitiesVoucherTVCells(res:ActivitiesVoucherModel) {
         tablerow.removeAll()
         
-        tablerow.append(TableRow(title:bookingId,
-                                 subTitle: "TR-64522-8457",
-                                 key: "activites",
-                                 buttonTitle: "25-06-2023",
-                                 tempText: "BW-54F4G4",
+        let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MMM-yyyy"
+            let currentDate = Date()
+            let formattedDate = dateFormatter.string(from: currentDate)
+        
+        tablerow.append(TableRow(title:res.data?.booking_itinerary_details?[0].booking_reference,
+                                 subTitle: res.data?.booking_itinerary_details?[0].app_reference,
+                                 key: "sports",
+                                 buttonTitle: formattedDate,
+                                 tempText: res.data?.booking_itinerary_details?[0].app_reference,
                                  cellType:.NewBookingConfirmedTVCell))
         
         tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         tablerow.append(TableRow(cellType:.ActivitiesBookingDetailsTVCell))
-        tablerow.append(TableRow(cellType:.ActivityInformationTVCell))
+        tablerow.append(TableRow(moreData:res,cellType:.ActivityInformationTVCell))
         
         
         

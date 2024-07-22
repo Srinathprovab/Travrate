@@ -10,6 +10,7 @@ import Foundation
 
 
 struct ActivitiesBookingModel : Codable {
+    let addon_services : [Addon_services]?
     let data : ActivitiesBookingDate?
     let msg : String?
     let status : Bool?
@@ -23,6 +24,7 @@ struct ActivitiesBookingModel : Codable {
         case status = "status"
         case hit_url = "hit_url"
         case post = "post"
+        case addon_services = "addon_services"
     }
 
     init(from decoder: Decoder) throws {
@@ -32,6 +34,7 @@ struct ActivitiesBookingModel : Codable {
         status = try values.decodeIfPresent(Bool.self, forKey: .status)
         hit_url = try values.decodeIfPresent(String.self, forKey: .hit_url)
         post = try values.decodeIfPresent(Post.self, forKey: .post)
+        addon_services = try values.decodeIfPresent([Addon_services].self, forKey: .addon_services)
     }
 
 }
@@ -39,7 +42,7 @@ struct ActivitiesBookingModel : Codable {
 
 
 struct ActivitiesBookingDate : Codable {
-    let activity_details : Activity_details?
+    let activity_details : Booking_Activity_details?
     let activity_search_params : Activity_search_params?
 
     enum CodingKeys: String, CodingKey {
@@ -50,7 +53,7 @@ struct ActivitiesBookingDate : Codable {
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        activity_details = try values.decodeIfPresent(Activity_details.self, forKey: .activity_details)
+        activity_details = try values.decodeIfPresent(Booking_Activity_details.self, forKey: .activity_details)
         activity_search_params = try values.decodeIfPresent(Activity_search_params.self, forKey: .activity_search_params)
     }
 

@@ -135,7 +135,27 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
                 }
                 
                 
-            }else if selectedTap == "Activities" {
+            }else if selectedTap == "CarRental" {
+                
+                if let minPrice = carfilterModel.minPriceRange, let maxPrice = carfilterModel.maxPriceRange {
+                    // Both minPrice and maxPrice have values in filterModel
+                    minValue = Float(minPrice)
+                    maxValue = Float(maxPrice)
+                    
+                    
+                    rangeSlider.minValue = prices.compactMap { Float($0) }.min()!
+                    rangeSlider.maxValue = prices.compactMap { Float($0) }.max()!
+                    
+                    // Set the thumbs to the values
+                    rangeSlider.selectedMinimum = minValue
+                    rangeSlider.selectedMaximum = maxValue
+                    
+                    //  Update the slider's appearance
+                    rangeSlider.setNeedsDisplay()
+                }
+                
+                
+            } else if selectedTap == "Activities" {
                 
                 if let minPrice = activitiesfiltermodel.minPriceRange, let maxPrice = activitiesfiltermodel.maxPriceRange {
                     // Both minPrice and maxPrice have values in filterModel

@@ -36,7 +36,7 @@ class FareRulesTVCell: TableViewCell {
     }
     
     override func prepareForReuse() {
-        hide()
+       // hide()
     }
     
     
@@ -60,6 +60,10 @@ class FareRulesTVCell: TableViewCell {
         dropDownImg.image = UIImage(named: "downarrow")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#64276F"))
         
        // downBtn.isHidden = true
+        
+        if cellInfo?.key == "penalties" {
+            show()
+        }
     }
     
     

@@ -8,7 +8,7 @@
 import UIKit
 
 class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate, AppliedActivitiesFilters {
-   
+    
     
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var destinationcitylbl: UILabel!
@@ -18,6 +18,10 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate,
     @IBOutlet weak var modifyBtn: UIButton!
     @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var backbtn: UIButton!
+    @IBOutlet weak var searchNameTF: UITextField!
+    @IBOutlet weak var searchNameView: BorderedView!
+    @IBOutlet weak var searchNameBtn: UIButton!
+    @IBOutlet weak var closeBtn: UIButton!
     
     
     static var newInstance: ActivitiesSearchResultsVC? {
@@ -28,6 +32,12 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate,
     }
     
     
+    var searchText = String()
+    var filtered1 = [Activity]()
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        closeSearchNameTextfield()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         addObserver()
@@ -43,6 +53,13 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate,
     
     
     func setupUI() {
+        
+        searchNameTF.setLeftPaddingPoints(15)
+        searchNameTF.addTarget(self, action: #selector(searchTextChanged(_:)), for: .editingChanged)
+        searchNameView.isHidden = true
+        searchNameBtn.addTarget(self, action: #selector(didTapOnSearchNameBtnAction(_:)), for: .touchUpInside)
+        closeBtn.addTarget(self, action: #selector(didTapOnCloseSearchNameTFBtnAction(_:)), for: .touchUpInside)
+        
         modifyBtn.addTarget(self, action: #selector(didTapOnModifySearchBtnAction(_:)), for: .touchUpInside)
         backbtn.addTarget(self, action: #selector(didTapOnBackBtnAction(_:)), for: .touchUpInside)
         filterBtn.addTarget(self, action: #selector(didTapOnFilterBtnAction(_:)), for: .touchUpInside)
@@ -66,6 +83,23 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate,
     }
     
     
+    @objc func didTapOnSearchNameBtnAction(_ sender:UIButton) {
+        searchNameView.isHidden = false
+        searchNameTF.becomeFirstResponder()
+    }
+    
+    @objc func didTapOnCloseSearchNameTFBtnAction(_ sender:UIButton) {
+        closeSearchNameTextfield()
+    }
+    
+    func closeSearchNameTextfield() {
+        searchNameView.isHidden = true
+        searchNameTF.text = ""
+        searchNameTF.resignFirstResponder()
+        setupTVCells(list: MySingleton.shared.activityList)
+    }
+    
+    
     //MARK: - gotoFilterVC
     @objc func didTapOnFilterBtnAction(_ sender:UIButton) {
         gotoFilterVC(strkey: "activitiesfilter")
@@ -86,6 +120,8 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate,
         MySingleton.shared.activity_code = cell.activitycode
         MySingleton.shared.resultToken = cell.resultToken
         MySingleton.shared.activity_image = cell.selectedImage
+        MySingleton.shared.activity_duration_type = cell.selecteddurationType
+        MySingleton.shared.activity_name_type = cell.selectedNameType
         
         gotoActivitiesDetailsVC()
     }
@@ -129,8 +165,9 @@ extension ActivitiesSearchResultsVC {
         MySingleton.shared.payemail = ""
         MySingleton.shared.paymobile = ""
         MySingleton.shared.paymobilecountrycode = ""
-
+        
         MySingleton.shared.activityList = response.data?.raw_activity_list?.activitySearchResult?.activity ?? []
+        
         MySingleton.shared.activites_booking_source = response.data?.booking_source ?? ""
         MySingleton.shared.activites_currency = response.data?.currency_obj?.to_currency ?? ""
         MySingleton.shared.activites_searchid = "\(response.data?.search_id ?? 0)"
@@ -139,7 +176,7 @@ extension ActivitiesSearchResultsVC {
         let cityname = defaults.string(forKey: UserDefaultsKeys.activitescityname)
         let fromdate = defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate)
         let todate = defaults.string(forKey: UserDefaultsKeys.calActivitesRetDate)
-       
+        
         
         destinationcitylbl.text = cityname
         dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: fromdate ?? "", f1: "dd-MM-yyyy", f2: "dd MMM yy")) To \(MySingleton.shared.convertDateFormat(inputDate: todate ?? "", f1: "dd-MM-yyyy", f2: "dd MMM yy"))"
@@ -157,15 +194,13 @@ extension ActivitiesSearchResultsVC {
         }
         paxlbl.text = labelText
         
-        MySingleton.shared.setAttributedTextnew(str1: "\(MySingleton.shared.activityList.count)", str2: " Activities  Available", lbl: totalcountlbl, str1font: .InterBold(size: 16), str2font: .InterRegular(size: 14), str1Color: .TitleColor, str2Color: .TitleColor)
-        
         DispatchQueue.main.async {
             self.appendResults(list: response.data?.raw_activity_list?.activitySearchResult?.activity ?? [])
         }
     }
     
     
-    func appendResults(list:[Activity]) {
+    func appendResults(list: [Activity]) {
         
         prices.removeAll()
         durationTypeArray.removeAll()
@@ -177,25 +212,34 @@ extension ActivitiesSearchResultsVC {
             prices.append(i.amountStarts ?? "")
         }
         
-        durationTypeArray = durationTypeArray.unique()
-        activitiesTypeArray = activitiesTypeArray.unique()
-        prices = prices.unique()
+        // Remove empty elements
+        durationTypeArray = durationTypeArray.filter { !$0.isEmpty }
+        activitiesTypeArray = activitiesTypeArray.filter { !$0.isEmpty }
+        prices = prices.filter { !$0.isEmpty }
         
+        // Get unique elements
+        durationTypeArray = Array(Set(durationTypeArray))
+        activitiesTypeArray = Array(Set(activitiesTypeArray))
+        prices = Array(Set(prices))
         
         DispatchQueue.main.async {
             self.setupTVCells(list: list)
         }
     }
+
     
     
     func setupTVCells(list:[Activity]) {
         MySingleton.shared.tablerow.removeAll()
         
         
+        MySingleton.shared.setAttributedTextnew(str1: "\(list.count)", str2: " Activities  Available", lbl: totalcountlbl, str1font: .InterBold(size: 16), str2font: .InterRegular(size: 14), str1Color: .TitleColor, str2Color: .TitleColor)
+        
         
         for  (index,value) in list.enumerated() {
             MySingleton.shared.tablerow.append(TableRow(title:"\(index + 1)",moreData: value,cellType:.ActivitiesResultTVCell))
         }
+        
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType: .EmptyTVCell))
         
@@ -218,28 +262,59 @@ extension ActivitiesSearchResultsVC {
         print("durationTypeArray : \(durationTypeArray.joined(separator: ","))")
         print("activitiesTypeArray : \(activitiesTypeArray.joined(separator: ","))")
         
-       
+        
+        
+        // Filter the car rentals based on the specified criteria
+        let filteredArray = MySingleton.shared.activityList.filter { activity in
+            guard let totalString = activity.amountStarts else { return false }
             
-            // Filter the car rentals based on the specified criteria
-            let filteredArray = MySingleton.shared.activityList.filter { activity in
-                guard let totalString = activity.amountStarts else { return false }
-                
-                let priceInRange = (Double(totalString) ?? 0.0) >= minpricerange && (Double(totalString) ?? 0.0) <= maxpricerange
-                let durationTypeMatch = durationTypeArray.isEmpty || durationTypeArray.contains(activity.activityDuration ?? "")
-                let activitiesTypeMatch = activitiesTypeArray.isEmpty || activitiesTypeArray.contains(activity.type ?? "")
-                
-                return priceInRange && durationTypeMatch && activitiesTypeMatch
-                
-                
-            }
+            let priceInRange = (Double(totalString) ?? 0.0) >= minpricerange && (Double(totalString) ?? 0.0) <= maxpricerange
+            let durationTypeMatch = durationTypeArray.isEmpty || durationTypeArray.contains(activity.activityDuration ?? "")
+            let activitiesTypeMatch = activitiesTypeArray.isEmpty || activitiesTypeArray.contains(activity.type ?? "")
             
-            setupTVCells(list: filteredArray)
+            return priceInRange && durationTypeMatch && activitiesTypeMatch
             
-            // Reload the table view with the filtered results
-            commonTableView.reloadData()
             
+        }
+        
+        setupTVCells(list: filteredArray)
+        
+        // Reload the table view with the filtered results
+        commonTableView.reloadData()
+        
     }
     
+}
+
+
+
+
+extension ActivitiesSearchResultsVC {
+    
+    
+    @objc func searchTextChanged(_ sender: UITextField) {
+        searchText = sender.text ?? ""
+        
+        
+        if searchText == "" {
+            isSearchBool = false
+            filterContentForSearchText(searchText)
+        }else {
+            isSearchBool = true
+            filterContentForSearchText(searchText)
+        }
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        print("Filterin with:", searchText)
+        
+        filtered1.removeAll()
+        filtered1 =  MySingleton.shared.activityList.filter { thing in
+            return "\(thing.name?.lowercased() ?? "")".contains(searchText.lowercased())
+        }
+        
+        setupTVCells(list: filtered1)
+    }
 }
 
 

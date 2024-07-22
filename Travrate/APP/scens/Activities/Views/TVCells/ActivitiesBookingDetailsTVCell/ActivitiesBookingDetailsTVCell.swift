@@ -12,9 +12,11 @@ class ActivitiesBookingDetailsTVCell: TableViewCell {
     @IBOutlet weak var activityimg: UIImageView!
     @IBOutlet weak var activityNamelbl: UILabel!
     @IBOutlet weak var activityloclbl: UILabel!
-    @IBOutlet weak var namebtn: UIButton!
+    @IBOutlet weak var namelbl: UILabel!
     @IBOutlet weak var passengerslbl: UILabel!
     @IBOutlet weak var cancellationPolicylbl: UILabel!
+    @IBOutlet weak var durationTypelbl: UILabel!
+    @IBOutlet weak var calimg: UIImageView!
     
     var bookingsource = String()
     var activitycode = String()
@@ -36,13 +38,20 @@ class ActivitiesBookingDetailsTVCell: TableViewCell {
     func setupui() {
         activityimg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         activityimg.layer.cornerRadius = 12
-        namebtn.layer.cornerRadius = 15
-        namebtn.layer.borderWidth = 1
-        namebtn.layer.borderColor = UIColor.BorderColor.cgColor
+       
     }
     
     
     override func updateUI() {
+        
+        durationTypelbl.text = MySingleton.shared.activity_duration_type
+        namelbl.text = MySingleton.shared.activity_name_type
+        
+        
+        if durationTypelbl.text == "" {
+            durationTypelbl.isHidden = true
+            calimg.isHidden = true
+        }
         
         activitylist = cellInfo?.moreData as? Activity
         activitycode = activitylist?.code ?? ""
@@ -70,6 +79,8 @@ class ActivitiesBookingDetailsTVCell: TableViewCell {
             }
         })
     }
+    
+    
     
     
 }

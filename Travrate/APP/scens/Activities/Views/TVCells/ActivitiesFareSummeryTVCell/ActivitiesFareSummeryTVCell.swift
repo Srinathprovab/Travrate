@@ -7,6 +7,12 @@
 
 import UIKit
 
+
+protocol ActivitiesFareSummeryTVCellDelegate {
+    func didTapOnDeleteAddonBtnAction(cell:ActivitiesFareSummeryTVCell)
+}
+
+
 class ActivitiesFareSummeryTVCell: TableViewCell {
     
     
@@ -20,7 +26,15 @@ class ActivitiesFareSummeryTVCell: TableViewCell {
     @IBOutlet weak var childview: UIView!
     @IBOutlet weak var infantview: UIView!
     @IBOutlet weak var topview: UIView!
+    @IBOutlet weak var notificationkwdlbl: UILabel!
+    @IBOutlet weak var priceChangekwdlbl: UILabel!
+    @IBOutlet weak var notificationView: UIView!
+    @IBOutlet weak var priceView: UIView!
+    @IBOutlet weak var notificationBtn: UIButton!
+    @IBOutlet weak var priceBtn: UIButton!
     
+    
+    var delegate:ActivitiesFareSummeryTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -44,6 +58,23 @@ class ActivitiesFareSummeryTVCell: TableViewCell {
         topview.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         topview.layer.cornerRadius = 8
         
+        
+        notificationView.isHidden = true
+        priceView.isHidden = true
+        
+        
+        if  hotelpriceCheck == true {
+            priceView.isHidden = false
+        } else {
+            priceView.isHidden = true
+        }
+        
+        if  hotelnotificationCheck == true {
+            notificationView.isHidden = false
+        } else {
+            notificationView.isHidden = true
+        }
+        
         activitynamelbl.text = defaults.string(forKey: UserDefaultsKeys.activitesname)
         let adultcount = defaults.integer(forKey: UserDefaultsKeys.activitesadultCount)
         let childcount = defaults.integer(forKey: UserDefaultsKeys.activiteschildCount)
@@ -55,7 +86,7 @@ class ActivitiesFareSummeryTVCell: TableViewCell {
         infantlbl.text = "\(infantcount)"
         
         
-//        totlConvertedGrand = 250.00
+        //        totlConvertedGrand = 250.00
         MySingleton.shared.setAttributedTextnew(str1: "\(MySingleton.shared.activites_currency) ",
                                                 str2: String(format: "%.2f", totlConvertedGrand),
                                                 lbl: totalamountlbl,
@@ -73,6 +104,31 @@ class ActivitiesFareSummeryTVCell: TableViewCell {
                                                 str2font: .InterSemiBold(size: 16),
                                                 str1Color: .TitleColor,
                                                 str2Color: .TitleColor)
+        
+        
+        notificationkwdlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelnotificationPrice)"
+        priceChangekwdlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelpriceChange)"
+        notificationBtn.addTarget(self, action: #selector(didTapOnDeleteAddonBtnAction(_:)), for: .touchUpInside)
+        priceBtn.addTarget(self, action: #selector(didTapOnDeleteAddonBtnAction(_:)), for: .touchUpInside)
+        
+        
+    }
+    
+    
+    
+    @objc func didTapOnDeleteAddonBtnAction(_ sender:UIButton) {
+        sender.tag == 1 ? tapOnDeleteNotification():tapOnDeletePriceChange()
+        delegate?.didTapOnDeleteAddonBtnAction(cell: self)
+    }
+    
+    func tapOnDeleteNotification() {
+        totlConvertedGrand -= Double(notificationPrice) ?? 0.0
+        self.notificationView.isHidden = true
+    }
+    
+    func tapOnDeletePriceChange() {
+        totlConvertedGrand -= Double(priceChange) ?? 0.0
+        self.priceView.isHidden = true
     }
     
     

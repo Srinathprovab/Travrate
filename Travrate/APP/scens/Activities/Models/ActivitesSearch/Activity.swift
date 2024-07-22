@@ -9,7 +9,7 @@ struct Activity : Codable {
     let type : String?
     let name : String?
     let currency : String?
-    //let modalities : [Modalities]?
+    let modalities : [ActivityModalities]?
     //let segment : [Segment]?
     let activityDuration : String?
     //let amounts : [Amounts]?
@@ -28,7 +28,7 @@ struct Activity : Codable {
         case type = "type"
         case name = "name"
         case currency = "currency"
-        //		case modalities = "modalities"
+        		case modalities = "modalities"
         //		case segment = "segment"
         case activityDuration = "activityDuration"
         //		case amounts = "amounts"
@@ -48,7 +48,7 @@ struct Activity : Codable {
         type = try values.decodeIfPresent(String.self, forKey: .type)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         currency = try values.decodeIfPresent(String.self, forKey: .currency)
-        //		modalities = try values.decodeIfPresent([Modalities].self, forKey: .modalities)
+        		modalities = try values.decodeIfPresent([ActivityModalities].self, forKey: .modalities)
         //		segment = try values.decodeIfPresent([Segment].self, forKey: .segment)
         activityDuration = try values.decodeIfPresent(String.self, forKey: .activityDuration)
         //	amounts = try values.decodeIfPresent([Amounts].self, forKey: .amounts)
@@ -57,6 +57,29 @@ struct Activity : Codable {
         image = try values.decodeIfPresent(String.self, forKey: .image)
         //		endPoints = try values.decodeIfPresent([EndPoints].self, forKey: .endPoints)
         //		startingPoints = try values.decodeIfPresent([StartingPoints].self, forKey: .startingPoints)
+    }
+    
+}
+
+
+
+struct ActivityModalities : Codable {
+   
+    let name : String?
+   
+    
+    enum CodingKeys: String, CodingKey {
+        
+      
+        case name = "name"
+        
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+       
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+        
     }
     
 }

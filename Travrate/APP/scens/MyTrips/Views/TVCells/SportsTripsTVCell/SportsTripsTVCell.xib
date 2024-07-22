@@ -2,13 +2,26 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Medium.ttf">
+            <string>OpenSans-Medium</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,49 +32,138 @@
                 <rect key="frame" x="0.0" y="0.0" width="381" height="160"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4by-Ye-RHZ" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                        <rect key="frame" x="15" y="10" width="351" height="150"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jTE-4T-a2Z" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                        <rect key="frame" x="15" y="0.0" width="351" height="150"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportstrip" translatesAutoresizingMaskIntoConstraints="NO" id="DMP-zP-21e">
-                                <rect key="frame" x="0.0" y="0.0" width="351" height="150"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tue 07 May 2024-2:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8D-cZ-A3e">
+                                <rect key="frame" x="9.9999999999999929" y="14" width="122.33333333333331" height="16.666666666666671"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
+                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Football(Soccer)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2y-HM-wmS">
+                                <rect key="frame" x="9.9999999999999929" y="38.666666666666664" width="123.33333333333331" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="TitleColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Semi-Final; Paris SG VS Borussia Dortmund rfrfrf" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPK-R2-zo7">
+                                <rect key="frame" x="9.9999999999999858" y="68.666666666666671" width="245.66666666666663" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="TitleColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Parc des Princes-Paris -France" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qja-Eg-oTZ">
+                                <rect key="frame" x="10" y="98.666666666666671" width="168" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddw-us-fjO">
+                                <rect key="frame" x="221" y="100" width="120" height="40"/>
+                                <color key="backgroundColor" name="TransferBookNowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7q0-CI-QgS"/>
+                                    <constraint firstAttribute="width" constant="120" id="enz-zs-EBg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="View Voucher">
+                                    <color key="titleColor" name="WhiteColor"/>
+                                </state>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp1" translatesAutoresizingMaskIntoConstraints="NO" id="GAd-C6-CAg">
+                                <rect key="frame" x="291" y="10" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="F1U-uJ-jil"/>
+                                    <constraint firstAttribute="width" constant="40" id="nxO-2t-UZi"/>
+                                </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp2" translatesAutoresizingMaskIntoConstraints="NO" id="Q2Q-bC-nfn">
+                                <rect key="frame" x="241" y="10" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="2jx-b3-Ics"/>
+                                    <constraint firstAttribute="height" constant="40" id="wy7-3i-zoG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD:25.597" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x92-Sg-zkt">
+                                <rect key="frame" x="224.66666666666666" y="62.666666666666664" width="116.33333333333334" height="27.333333333333336"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DMP-zP-21e" firstAttribute="leading" secondItem="4by-Ye-RHZ" secondAttribute="leading" id="1Cn-bb-NCs"/>
-                            <constraint firstAttribute="bottom" secondItem="DMP-zP-21e" secondAttribute="bottom" id="6eE-DR-Cud"/>
-                            <constraint firstAttribute="height" constant="150" id="CdJ-aN-D45"/>
-                            <constraint firstItem="DMP-zP-21e" firstAttribute="top" secondItem="4by-Ye-RHZ" secondAttribute="top" id="GcT-6D-luZ"/>
-                            <constraint firstAttribute="trailing" secondItem="DMP-zP-21e" secondAttribute="trailing" id="e0A-8x-ZhY"/>
+                            <constraint firstItem="Q2Q-bC-nfn" firstAttribute="centerY" secondItem="GAd-C6-CAg" secondAttribute="centerY" id="21g-Pu-euo"/>
+                            <constraint firstItem="ddw-us-fjO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qja-Eg-oTZ" secondAttribute="trailing" constant="10" id="2uJ-AM-uVY"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yPK-R2-zo7" secondAttribute="trailing" constant="80" id="5km-B6-7Fe"/>
+                            <constraint firstItem="C2y-HM-wmS" firstAttribute="leading" secondItem="jTE-4T-a2Z" secondAttribute="leading" constant="10" id="5rt-WX-FEN"/>
+                            <constraint firstAttribute="trailing" secondItem="GAd-C6-CAg" secondAttribute="trailing" constant="20" id="CAu-IH-wpb"/>
+                            <constraint firstItem="qja-Eg-oTZ" firstAttribute="top" secondItem="yPK-R2-zo7" secondAttribute="bottom" constant="8" id="DNg-X1-jfM"/>
+                            <constraint firstItem="i8D-cZ-A3e" firstAttribute="top" secondItem="jTE-4T-a2Z" secondAttribute="top" constant="14" id="EUY-w6-Ywi"/>
+                            <constraint firstItem="ddw-us-fjO" firstAttribute="top" secondItem="x92-Sg-zkt" secondAttribute="bottom" constant="10" id="GCF-qs-GYT"/>
+                            <constraint firstItem="qja-Eg-oTZ" firstAttribute="leading" secondItem="jTE-4T-a2Z" secondAttribute="leading" constant="10" id="GFn-Qa-5ZK"/>
+                            <constraint firstAttribute="trailing" secondItem="ddw-us-fjO" secondAttribute="trailing" constant="10" id="HIS-zE-xMb"/>
+                            <constraint firstAttribute="trailing" secondItem="x92-Sg-zkt" secondAttribute="trailing" constant="10" id="Ls7-lW-iQe"/>
+                            <constraint firstItem="C2y-HM-wmS" firstAttribute="top" secondItem="i8D-cZ-A3e" secondAttribute="bottom" constant="8" id="MWu-dM-zKf"/>
+                            <constraint firstItem="GAd-C6-CAg" firstAttribute="leading" secondItem="Q2Q-bC-nfn" secondAttribute="trailing" constant="10" id="Ppz-UK-96j"/>
+                            <constraint firstItem="i8D-cZ-A3e" firstAttribute="leading" secondItem="jTE-4T-a2Z" secondAttribute="leading" constant="10" id="QxU-35-cWy"/>
+                            <constraint firstItem="GAd-C6-CAg" firstAttribute="top" secondItem="jTE-4T-a2Z" secondAttribute="top" constant="10" id="fEg-Xb-ibx"/>
+                            <constraint firstItem="yPK-R2-zo7" firstAttribute="leading" secondItem="jTE-4T-a2Z" secondAttribute="leading" constant="10" id="fzC-g8-bVp"/>
+                            <constraint firstAttribute="bottom" secondItem="ddw-us-fjO" secondAttribute="bottom" constant="10" id="rfL-fJ-are"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="135" id="vcc-NQ-vip"/>
+                            <constraint firstAttribute="bottom" secondItem="qja-Eg-oTZ" secondAttribute="bottom" constant="14.33" id="wF5-4Y-N1K"/>
+                            <constraint firstItem="yPK-R2-zo7" firstAttribute="top" secondItem="C2y-HM-wmS" secondAttribute="bottom" constant="8" id="xK4-AU-FHQ"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" name="BorderColor"/>
-                            </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                 <real key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="BorderColor"/>
+                            </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="12"/>
+                                <real key="value" value="6"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="4by-Ye-RHZ" secondAttribute="trailing" constant="15" id="aQh-rX-sS9"/>
-                    <constraint firstItem="4by-Ye-RHZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="j3u-cj-3PS"/>
-                    <constraint firstItem="4by-Ye-RHZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xvE-lz-P81"/>
-                    <constraint firstAttribute="bottom" secondItem="4by-Ye-RHZ" secondAttribute="bottom" id="zo0-ie-JqZ"/>
+                    <constraint firstItem="jTE-4T-a2Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="OJY-KC-8lz"/>
+                    <constraint firstAttribute="trailing" secondItem="jTE-4T-a2Z" secondAttribute="trailing" constant="15" id="YDB-V4-gWC"/>
+                    <constraint firstItem="jTE-4T-a2Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="hmh-mj-cUq"/>
+                    <constraint firstAttribute="bottom" secondItem="jTE-4T-a2Z" secondAttribute="bottom" constant="10" id="wf5-B0-fLw"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="datelbl" destination="i8D-cZ-A3e" id="BYT-4r-jip"/>
+                <outlet property="kwdlbl" destination="x92-Sg-zkt" id="yfj-gT-ljU"/>
+                <outlet property="sportcitylbl" destination="qja-Eg-oTZ" id="496-cL-gIr"/>
+                <outlet property="sportimg1" destination="Q2Q-bC-nfn" id="w9y-Ve-AiX"/>
+                <outlet property="sportimg2" destination="GAd-C6-CAg" id="zYG-lJ-8l4"/>
+                <outlet property="subtitlelbl" destination="yPK-R2-zo7" id="e0b-PK-CBb"/>
+                <outlet property="titlelbl" destination="C2y-HM-wmS" id="s0d-Ta-P2D"/>
+                <outlet property="viewTicketBtn" destination="ddw-us-fjO" id="otr-zg-vr3"/>
+            </connections>
             <point key="canvasLocation" x="185.49618320610685" y="39.436619718309863"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="sportstrip" width="1584" height="616"/>
+        <image name="sp1" width="40" height="40"/>
+        <image name="sp2" width="40" height="40"/>
         <namedColor name="BorderColor">
             <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TitleColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TransferBookNowColor">
+            <color red="0.96100002527236938" green="0.37299999594688416" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WhiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

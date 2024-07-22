@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -34,75 +33,97 @@
                                                     <constraint firstAttribute="height" constant="220" id="w4V-m8-HHK"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8to-jF-f28">
-                                                <rect key="frame" x="15" y="230" width="390" height="29.333333333333314"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8to-jF-f28">
+                                                <rect key="frame" x="15" y="230" width="390" height="38.333333333333314"/>
                                                 <string key="text">Arabian Desert Dunes Safari with Camel
 Ride and Dinner</string>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="loc" translatesAutoresizingMaskIntoConstraints="NO" id="oPV-OL-bWp">
-                                                <rect key="frame" x="15" y="269.33333333333331" width="16" height="16"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc" translatesAutoresizingMaskIntoConstraints="NO" id="oPV-OL-bWp">
+                                                <rect key="frame" x="15" y="278.33333333333331" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="5lm-ol-o26"/>
                                                     <constraint firstAttribute="height" constant="16" id="XsD-d0-I4e"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G6-0r-gT9">
-                                                <rect key="frame" x="35.999999999999986" y="269.33333333333337" width="249.66666666666663" height="19.333333333333314"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G6-0r-gT9">
+                                                <rect key="frame" x="35.999999999999986" y="278.33333333333331" width="249.66666666666663" height="38.333333333333314"/>
                                                 <string key="text">burj nahar intersection al murar 7 
 burj nahar intersection</string>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <color key="textColor" name="FareColor2"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us8-1q-Lbd">
-                                                <rect key="frame" x="15" y="324" width="75" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="75" id="bPX-TF-fNP"/>
-                                                    <constraint firstAttribute="height" constant="36" id="tHn-Al-ajW"/>
-                                                </constraints>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Name">
-                                                    <color key="titleColor" name="subtitleNewcolor"/>
-                                                </state>
-                                            </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="depcal" translatesAutoresizingMaskIntoConstraints="NO" id="rla-na-0PD">
-                                                <rect key="frame" x="105" y="332" width="20" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="CdB-sw-Flh"/>
-                                                    <constraint firstAttribute="width" constant="20" id="p3e-m7-j3A"/>
-                                                </constraints>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Half-day morning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zj-8D-tQW">
-                                                <rect key="frame" x="135" y="333.66666666666669" width="112.66666666666669" height="17"/>
+                                                <rect key="frame" x="155" y="333.33333333333331" width="112.66666666666669" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFE-NT-D2K" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                                                <rect key="frame" x="15" y="326.66666666666669" width="100" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwJ-MU-fMj">
+                                                        <rect key="frame" x="10" y="5" width="80" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" name="FareSubTitleColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="pwJ-MU-fMj" secondAttribute="bottom" constant="5" id="0vt-cN-Kzr"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="78H-6Z-JpZ"/>
+                                                    <constraint firstAttribute="height" constant="30" id="9Km-HB-zc4"/>
+                                                    <constraint firstItem="pwJ-MU-fMj" firstAttribute="top" secondItem="OFE-NT-D2K" secondAttribute="top" constant="5" id="Bhq-VE-3TI"/>
+                                                    <constraint firstItem="pwJ-MU-fMj" firstAttribute="leading" secondItem="OFE-NT-D2K" secondAttribute="leading" constant="10" id="SMl-SU-UYd"/>
+                                                    <constraint firstItem="pwJ-MU-fMj" firstAttribute="centerY" secondItem="OFE-NT-D2K" secondAttribute="centerY" id="Svr-W2-KV8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pwJ-MU-fMj" secondAttribute="trailing" constant="10" id="klD-8D-hUm"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="BorderColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="depcal" translatesAutoresizingMaskIntoConstraints="NO" id="rla-na-0PD">
+                                                <rect key="frame" x="125" y="331.66666666666669" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="FmV-cV-lOc"/>
+                                                    <constraint firstAttribute="height" constant="20" id="U4f-Ts-0ce"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="5G6-0r-gT9" firstAttribute="top" secondItem="oPV-OL-bWp" secondAttribute="top" id="2Lf-mR-NTx"/>
-                                            <constraint firstItem="rla-na-0PD" firstAttribute="centerY" secondItem="Us8-1q-Lbd" secondAttribute="centerY" id="2eR-JX-jOs"/>
                                             <constraint firstItem="8to-jF-f28" firstAttribute="leading" secondItem="dPT-3x-dNS" secondAttribute="leading" constant="15" id="36O-tg-O6r"/>
                                             <constraint firstAttribute="trailing" secondItem="Zt5-4Z-MNQ" secondAttribute="trailing" id="5Dy-Ch-E2S"/>
                                             <constraint firstItem="5G6-0r-gT9" firstAttribute="leading" secondItem="oPV-OL-bWp" secondAttribute="trailing" constant="5" id="A0t-zu-cwj"/>
-                                            <constraint firstItem="rla-na-0PD" firstAttribute="leading" secondItem="Us8-1q-Lbd" secondAttribute="trailing" constant="15" id="CbP-1N-BsQ"/>
-                                            <constraint firstItem="Us8-1q-Lbd" firstAttribute="top" secondItem="5G6-0r-gT9" secondAttribute="bottom" constant="35.329999999999998" id="FNc-eq-cma"/>
-                                            <constraint firstItem="Us8-1q-Lbd" firstAttribute="leading" secondItem="dPT-3x-dNS" secondAttribute="leading" constant="15" id="GoE-bl-JmS"/>
+                                            <constraint firstAttribute="bottom" secondItem="OFE-NT-D2K" secondAttribute="bottom" constant="23.329999999999998" id="CV6-si-QZv"/>
+                                            <constraint firstItem="5Zj-8D-tQW" firstAttribute="centerY" secondItem="rla-na-0PD" secondAttribute="centerY" id="Gos-74-SEA"/>
+                                            <constraint firstItem="OFE-NT-D2K" firstAttribute="leading" secondItem="dPT-3x-dNS" secondAttribute="leading" constant="15" id="KRa-i8-18R"/>
                                             <constraint firstItem="oPV-OL-bWp" firstAttribute="leading" secondItem="dPT-3x-dNS" secondAttribute="leading" constant="15" id="Nqc-vs-Caa"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Zj-8D-tQW" secondAttribute="trailing" constant="10" id="QSY-Cz-4TQ"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="380" id="QgA-Bt-nHg"/>
-                                            <constraint firstItem="5Zj-8D-tQW" firstAttribute="centerY" secondItem="rla-na-0PD" secondAttribute="centerY" id="Xac-1Q-RTx"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5G6-0r-gT9" secondAttribute="trailing" constant="60" id="c47-JD-ED0"/>
                                             <constraint firstItem="oPV-OL-bWp" firstAttribute="top" secondItem="8to-jF-f28" secondAttribute="bottom" constant="10" id="kws-Fa-lHJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="Us8-1q-Lbd" secondAttribute="bottom" constant="20" symbolic="YES" id="mxf-Dp-o7I"/>
                                             <constraint firstItem="Zt5-4Z-MNQ" firstAttribute="top" secondItem="dPT-3x-dNS" secondAttribute="top" id="nIw-QA-GQh"/>
                                             <constraint firstItem="8to-jF-f28" firstAttribute="top" secondItem="Zt5-4Z-MNQ" secondAttribute="bottom" constant="10" id="oQT-cO-wym"/>
                                             <constraint firstAttribute="trailing" secondItem="8to-jF-f28" secondAttribute="trailing" constant="15" id="slJ-Kx-hwJ"/>
-                                            <constraint firstItem="5Zj-8D-tQW" firstAttribute="leading" secondItem="rla-na-0PD" secondAttribute="trailing" constant="10" id="xHj-sj-xC5"/>
+                                            <constraint firstItem="5Zj-8D-tQW" firstAttribute="leading" secondItem="rla-na-0PD" secondAttribute="trailing" constant="10" id="ttY-U7-DLa"/>
+                                            <constraint firstItem="rla-na-0PD" firstAttribute="leading" secondItem="OFE-NT-D2K" secondAttribute="trailing" constant="10" id="vcg-R2-SSf"/>
+                                            <constraint firstItem="rla-na-0PD" firstAttribute="centerY" secondItem="OFE-NT-D2K" secondAttribute="centerY" id="vgi-ic-Ubd"/>
                                             <constraint firstItem="Zt5-4Z-MNQ" firstAttribute="leading" secondItem="dPT-3x-dNS" secondAttribute="leading" id="ytr-B0-NsX"/>
+                                            <constraint firstItem="OFE-NT-D2K" firstAttribute="top" secondItem="5G6-0r-gT9" secondAttribute="bottom" constant="10" id="zsw-fq-brM"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -180,8 +201,10 @@ burj nahar intersection</string>
                 <outlet property="activityNamelbl" destination="8to-jF-f28" id="CtO-Gu-JjX"/>
                 <outlet property="activityimg" destination="Zt5-4Z-MNQ" id="1OJ-0h-6O1"/>
                 <outlet property="activityloclbl" destination="5G6-0r-gT9" id="DFZ-ED-enu"/>
+                <outlet property="calimg" destination="rla-na-0PD" id="EPi-OM-hg5"/>
                 <outlet property="cancellationPolicylbl" destination="oXM-y2-Dju" id="CKd-TE-nMX"/>
-                <outlet property="namebtn" destination="Us8-1q-Lbd" id="382-Ky-Vgx"/>
+                <outlet property="durationTypelbl" destination="5Zj-8D-tQW" id="W5X-UV-FcY"/>
+                <outlet property="namelbl" destination="pwJ-MU-fMj" id="CXc-QM-LIR"/>
                 <outlet property="passengerslbl" destination="W8I-oA-SHZ" id="mHs-Dm-rf4"/>
             </connections>
             <point key="canvasLocation" x="105.34351145038167" y="108.09859154929578"/>
@@ -200,11 +223,11 @@ burj nahar intersection</string>
         <namedColor name="FareColor2">
             <color red="0.15299999713897705" green="0.62000000476837158" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="FareSubTitleColor">
+            <color red="0.46700000762939453" green="0.46700000762939453" blue="0.46700000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="WhiteColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="subtitleNewcolor">
-            <color red="0.3449999988079071" green="0.3449999988079071" blue="0.3449999988079071" alpha="0.50999999046325684" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

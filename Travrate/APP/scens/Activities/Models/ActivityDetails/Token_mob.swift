@@ -4,7 +4,7 @@ import Foundation
 struct Token_mob : Codable {
     //	let operationDays : OperationDays?
     let activity_name : String?
-    let amountsFrom : [AmountsFrom]?
+  //  let amountsFrom : [AmountsFrom]?
     let feature : String?
     let activityCode : String?
     let type : String?
@@ -21,7 +21,7 @@ struct Token_mob : Codable {
         
         //	case operationDays = "operationDays"
         case activity_name = "activity_name"
-        case amountsFrom = "amountsFrom"
+     //   case amountsFrom = "amountsFrom"
         case feature = "feature"
         case activityCode = "activityCode"
         case type = "type"
@@ -39,7 +39,7 @@ struct Token_mob : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         //	operationDays = try values.decodeIfPresent(OperationDays.self, forKey: .operationDays)
         activity_name = try values.decodeIfPresent(String.self, forKey: .activity_name)
-        amountsFrom = try values.decodeIfPresent([AmountsFrom].self, forKey: .amountsFrom)
+   //     amountsFrom = try values.decodeIfPresent([AmountsFrom].self, forKey: .amountsFrom)
         feature = try values.decodeIfPresent(String.self, forKey: .feature)
         activityCode = try values.decodeIfPresent(String.self, forKey: .activityCode)
         type = try values.decodeIfPresent(String.self, forKey: .type)

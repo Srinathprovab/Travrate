@@ -260,17 +260,14 @@ extension FlightDeatilsVC {
                 MySingleton.shared.tablerow.append(TableRow(title: "\(index)",
                                                             moreData: element,
                                                             cellType: .ItineraryTVCell))
-                
-                
-                MySingleton.shared.tablerow.append(TableRow(cellType:.TicketIssuingTimeTVCell))
-                MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
             }
         }else {
             TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)
         }
         
         
-       
+        MySingleton.shared.tablerow.append(TableRow(cellType:.TicketIssuingTimeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         
         commonTVData = MySingleton.shared.tablerow
@@ -323,7 +320,7 @@ extension FlightDeatilsVC {
         
         MySingleton.shared.tablerow.append(TableRow(title:"\(MySingleton.shared.checkedbaggagevalue) Each Luggage piece cannot exceed the airline's allowed dimensions or size",
                                                     cellType:.BaggageInfoImageTVCell))
-       
+        
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
@@ -399,23 +396,24 @@ extension FlightDeatilsVC {
             TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
             
             
-                        MySingleton.shared.fareRulesData.forEach { i in
-                            
-                            if i.rule_heading != "PENALTIES"{
-                                MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
-                                                                            subTitle: i.rule_content?.htmlToString,
-                                                                            cellType:.FareRulesTVCell))
-                                
-                                print(i.rule_heading)
-                            }
-                            
-                            
-                        }
+            MySingleton.shared.fareRulesData.forEach { i in
+                
+                if i.rule_heading != "PENALTIES"{
+                    MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
+                                                                subTitle: i.rule_content?.htmlToString,
+                                                                key: "no",
+                                                                cellType:.FareRulesTVCell))
+                    
+                    
+                }
+                
+                
+            }
             
             
             MySingleton.shared.tablerow.append(TableRow(cellType:.SeeMoreRulesBtnTVCell))
             
-           // MySingleton.shared.tablerow.append(TableRow(cellType:.AddFareRulesTVCell)) SeeMoreRulesBtnTVCell
+            // MySingleton.shared.tablerow.append(TableRow(cellType:.AddFareRulesTVCell)) SeeMoreRulesBtnTVCell
             
         }else {
             
@@ -443,16 +441,17 @@ extension FlightDeatilsVC {
             TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
             
             
-                        MySingleton.shared.penalityArray.forEach { i in
-                            MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
-                                                                        subTitle: i.rule_content?.htmlToString,
-                                                                        cellType:.FareRulesTVCell))
-                        }
+            MySingleton.shared.penalityArray.forEach { i in
+                MySingleton.shared.tablerow.append(TableRow(title:i.rule_heading,
+                                                            subTitle: i.rule_content?.htmlToString,
+                                                            key: "penalties",
+                                                            cellType:.FareRulesTVCell))
+            }
             
             
             MySingleton.shared.tablerow.append(TableRow(cellType:.SeeMoreRulesBtnTVCell))
             
-           // MySingleton.shared.tablerow.append(TableRow(cellType:.AddFareRulesTVCell)) SeeMoreRulesBtnTVCell
+            // MySingleton.shared.tablerow.append(TableRow(cellType:.AddFareRulesTVCell)) SeeMoreRulesBtnTVCell
             
         }else {
             

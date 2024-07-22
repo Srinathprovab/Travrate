@@ -192,6 +192,8 @@ enum TVCellType {
     case ActivitiesBookingDetailsTVCell
     case ActivitiesFareSummeryTVCell
     case ActivityInformationTVCell
+    case ContractRemarkTVCell
+    case BDPickupLocationTVCell
     
     
     //TRIPS

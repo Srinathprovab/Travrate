@@ -43,13 +43,13 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             self.gotodashBoardScreen()
-            // self.gotoBookingConfirmedVC()
+            //  self.gotoBookingConfirmedVC()
             
         })
     }
     
     
-   
+    
     
     
     func gotodashBoardScreen() {
@@ -65,14 +65,16 @@ class ViewController: UIViewController {
     func gotoBookingConfirmedVC() {
         
         
-        defaults.setValue("CarRental", forKey: UserDefaultsKeys.tabselect)
+        defaults.setValue("Activities", forKey: UserDefaultsKeys.tabselect)
         
         guard let vc = BookingConfirmedVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
-     //   MySingleton.shared.voucherurlsting = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/sport/voucher/TR-SE-20240710040022/voucher_view"
+        //   MySingleton.shared.voucherurlsting = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/sport/voucher/TR-SE-20240710040022/voucher_view"
+        
+        MySingleton.shared.voucherurlsting = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/voucher/sightseeing/TR-A-HB-0722-110653715/PTBSID0000000010/BOOKING_CONFIRMED/email_voucher/srinath@gmail.com"
         
         
-        MySingleton.shared.voucherurlsting = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/voucher/TR-CAR-20240712103921/PTBSID0000007785/BOOKING_CONFIRMED/show_voucher"
+        //  MySingleton.shared.voucherurlsting = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/voucher/TR-CAR-20240712103921/PTBSID0000007785/BOOKING_CONFIRMED/show_voucher"
         
         urlString = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/sport/voucher/TR-SE-20240710125733/voucher_view"
         callapibool = true

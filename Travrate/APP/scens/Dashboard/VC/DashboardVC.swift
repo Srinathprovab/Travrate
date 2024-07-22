@@ -31,7 +31,7 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         
         if !UserDefaults.standard.bool(forKey: "cookiesExecuteOnce") {
             
-            self.gotoAcceptCookiesVC()
+           // self.gotoAcceptCookiesVC()
             UserDefaults.standard.set(true, forKey: "cookiesExecuteOnce")
         }
     }

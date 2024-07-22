@@ -1061,9 +1061,7 @@ extension FlightResultVC {
     func flightList(response: FlightModel) {
         
         bookingSourceDataArrayCount -= 1
-        MySingleton.shared.returnDateTapbool = false
-        MySingleton.shared.searchid = "\(response.data?.search_id ?? "0")"
-        MySingleton.shared.traceid = response.data?.traceId ?? ""
+        
         
         
         MySingleton.shared.payemail = ""
@@ -1074,9 +1072,6 @@ extension FlightResultVC {
         
         cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tcity) ?? "")"
         
-        
-        
-       
         let adultcount = defaults.integer(forKey: UserDefaultsKeys.adultCount)
         let childcount = defaults.integer(forKey: UserDefaultsKeys.childCount)
         let infantcount = defaults.integer(forKey: UserDefaultsKeys.infantsCount)
@@ -1089,25 +1084,35 @@ extension FlightResultVC {
             labelText += ", Infant: \(infantcount)"
         }
         paxlbl.text = "\(labelText) | \(classname ?? "")"
-     //   paxlbl.text = "\(MySingleton.shared.adultsCount) Adult | \(MySingleton.shared.childCount) Child | \(MySingleton.shared.infantsCount) Infant | \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "")"
-        
-        depDatelbl.text = response.data?.search_params?.depature ?? ""
-        retDatelbl.text = response.data?.search_params?.searchreturn ?? ""
-        citycodeslbl.text = "(\(response.data?.search_params?.from_loc ?? "") - \(response.data?.search_params?.to_loc ?? ""))"
-        let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
-        if journyType == "oneway" {
-            datelbl.text = MySingleton.shared.convertDateFormat(inputDate: response.data?.search_params?.depature ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")
-            
-        }else {
-            datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: response.data?.search_params?.depature ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: response.data?.search_params?.searchreturn ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
-            
-        }
-        
         
         
         if let newResults = response.data?.j_flight_list, !newResults.isEmpty {
             // Append the new data to the existing data
             MySingleton.shared.flights.append(contentsOf: newResults)
+            
+            
+            
+            if MySingleton.shared.flights.count > 0 {
+                DispatchQueue.main.async {
+
+                    MySingleton.shared.returnDateTapbool = false
+                    MySingleton.shared.searchid = "\(response.data?.search_id ?? "0")"
+                    MySingleton.shared.traceid = response.data?.traceId ?? ""
+                    
+                    self.depDatelbl.text = response.data?.search_params?.depature ?? ""
+                    self.retDatelbl.text = response.data?.search_params?.searchreturn ?? ""
+                    self.citycodeslbl.text = "(\(response.data?.search_params?.from_loc ?? "") - \(response.data?.search_params?.to_loc ?? ""))"
+                    let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
+                    if journyType == "oneway" {
+                        self.datelbl.text = MySingleton.shared.convertDateFormat(inputDate: response.data?.search_params?.depature ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")
+                    }else {
+                        self.datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: response.data?.search_params?.depature ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: response.data?.search_params?.searchreturn ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
+                    }
+                    
+                    self.appendPriceAndDate(list: MySingleton.shared.flights)
+                }
+            }
+            
             
         } else {
             // No more items to load, update UI accordingly
@@ -1116,17 +1121,17 @@ extension FlightResultVC {
         }
         
         
-        if bookingSourceDataArrayCount == 0 {
-            
-            
-            if MySingleton.shared.flights.count <= 0 {
-                gotoNoInternetScreen(keystr: "noresult")
-                
-            }else {
-                
-                appendPriceAndDate(list: MySingleton.shared.flights)
-            }
-        }
+//        if bookingSourceDataArrayCount == 0 {
+//            
+//            
+//            if MySingleton.shared.flights.count <= 0 {
+//                gotoNoInternetScreen(keystr: "noresult")
+//                
+//            }else {
+//                
+//                appendPriceAndDate(list: MySingleton.shared.flights)
+//            }
+//        }
         
         
         

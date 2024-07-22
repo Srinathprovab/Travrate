@@ -57,6 +57,9 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
         typeTV.separatorStyle = .none
         typeTV.allowsMultipleSelection = true
         
+        
+        
+        
     }
     
     
@@ -105,7 +108,7 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
         
         return CGFloat(numberOfCells) * (cellHeight + padding)
     }
-
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -119,6 +122,8 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
             cell.delegate = self
             
             let data = MySingleton.shared.activity_details?.modalities?[indexPath.row]
+            
+            
             
             cell.activitiesTypeNamelbl.text = data?.name
             cell.rateKeySring = data?.rates?[0].rateDetails?[0].rateKey ?? ""
@@ -134,14 +139,37 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
             
             
             
-//            cell.chooselbl.text = cancelPolicy[indexPath.row].data_text ?? ""
+            // Set image
+            if indexPath.row < MySingleton.shared.activitiesImagesArray.count {
+                let imageUrl = MySingleton.shared.activitiesImagesArray[indexPath.row].image
+                cell.img.sd_setImage(with: URL(string: imageUrl ?? ""), placeholderImage: UIImage(named: "placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                    if let error = error {
+                        // Handle error loading image
+                        print("Error loading image: \(error.localizedDescription)")
+                        // Check if the error is due to a 404 Not Found response
+                        if (error as NSError).code == NSURLErrorBadServerResponse {
+                            // Set placeholder image for 404 error
+                            cell.img.image = UIImage(named: "noimage")
+                        } else {
+                            // Set placeholder image for other errors
+                            cell.img.image = UIImage(named: "noimage")
+                        }
+                    }
+                })
+            } else {
+                // Use placeholder image if no image is available
+                cell.img.image = UIImage(named: "placeholder.png")
+            }
+            
+            
+            //            cell.chooselbl.text = cancelPolicy[indexPath.row].data_text ?? ""
             
             
             if tableView.isLast(for: indexPath) {
                 cell.holderView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
                 cell.holderView.layer.cornerRadius = 8
             }
-           
+            
             
             c = cell
             

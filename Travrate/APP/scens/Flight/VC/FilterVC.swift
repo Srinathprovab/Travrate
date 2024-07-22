@@ -351,7 +351,7 @@ class FilterVC: BaseTableVC{
             
         case "carfilter":
             sortBylbl.text = "Filter"
-            setupCarRentalSortByTVCells()
+            setupCarRentalTVCells()
             break
             
         case "sort":
@@ -531,7 +531,7 @@ class FilterVC: BaseTableVC{
 
         
         tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title:"Done",key: "btn",cellType:.ButtonTVCell))
+        tablerow.append(TableRow(title:"Apply",key: "btn",cellType:.ButtonTVCell))
         tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         commonTVData = tablerow
@@ -549,7 +549,7 @@ class FilterVC: BaseTableVC{
         tablerow.append(TableRow(title:"Car Type",data: cartype,cellType:.CheckBoxTVCell))
         
         tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title:"Done",key: "btn",cellType:.ButtonTVCell))
+        tablerow.append(TableRow(title:"Apply",key: "btn",cellType:.ButtonTVCell))
         tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         commonTVData = tablerow
@@ -558,13 +558,13 @@ class FilterVC: BaseTableVC{
     
     
     //MARK: - setupHotelsSortByTVCells
-    func setupCarRentalSortByTVCells() {
+    func setupCarRentalTVCells() {
         
         commonTableView.isScrollEnabled = true
         tablerow.removeAll()
         
         
-        tablerow.append(TableRow(title:"Price",cellType:.CarrentalPriceSliderTVCell))
+        tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
       //  tablerow.append(TableRow(title:"AC / Non AC",data: fuleArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Care Fule",data: fuleArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Menual/Auto",data: carmanualArray,cellType:.CheckBoxTVCell))
@@ -1548,7 +1548,7 @@ class FilterVC: BaseTableVC{
             if tabSelected == "Flight" {
                 setupFilterTVCells()
             }else if tabSelected == "CarRental" {
-                setupCarRentalSortByTVCells()
+                setupCarRentalTVCells()
             }else if tabSelected == "Sports" {
                 setupSportsFilterTVCells()
             }else {
@@ -1564,7 +1564,6 @@ class FilterVC: BaseTableVC{
         
         if let tabselect = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String {
             let pricesFloat = prices.compactMap { Float($0) }
-            let carpricesFloat = carprices.compactMap { Float($0) }
             let durationFloat = durationArray.compactMap { Float($0) }
             let transitTimeFloat = layoverdurationArray.compactMap { Float($0) }
             
@@ -1743,13 +1742,13 @@ class FilterVC: BaseTableVC{
                     if minpricerangefilter != 0.0 {
                         carfilterModel.minPriceRange = minpricerangefilter
                     }else {
-                        carfilterModel.minPriceRange = Double(carpricesFloat.min() ?? 0.0)
+                        carfilterModel.minPriceRange = Double(pricesFloat.min() ?? 0.0)
                     }
                     
                     if maxpricerangefilter != 0.0 {
                         carfilterModel.maxPriceRange = maxpricerangefilter
                     }else {
-                        carfilterModel.maxPriceRange = Double(carpricesFloat.max() ?? 0.0)
+                        carfilterModel.maxPriceRange = Double(pricesFloat.max() ?? 0.0)
                     }
                     
                     
@@ -2225,10 +2224,10 @@ extension FilterVC {
         
         
         
-        let pricesFloatnew = carprices.compactMap { Float($0) }
-        carfilterModel.minPriceRange = Double((pricesFloatnew.min() ?? carprices.compactMap { Float($0) }.min()) ?? 0.0)
-        carfilterModel.maxPriceRange = Double((pricesFloatnew.max() ?? carprices.compactMap { Float($0) }.max()) ?? 0.0)
-        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CarrentalPriceSliderTVCell {
+        let pricesFloatnew = prices.compactMap { Float($0) }
+        carfilterModel.minPriceRange = Double((pricesFloatnew.min() ?? prices.compactMap { Float($0) }.min()) ?? 0.0)
+        carfilterModel.maxPriceRange = Double((pricesFloatnew.max() ?? prices.compactMap { Float($0) }.max()) ?? 0.0)
+        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SliderTVCell {
             cell.setupUI()
         }
         minpricerangefilter = carfilterModel.minPriceRange ?? 0.0
@@ -2543,11 +2542,11 @@ extension FilterVC {
         
         //MARK: - Price
         if carfilterModel.minPriceRange != 0.0 {
-            minpricerangefilter = carfilterModel.minPriceRange ?? Double(carprices.compactMap { Float($0) }.min()!)
+            minpricerangefilter = carfilterModel.minPriceRange ?? Double(prices.compactMap { Float($0) }.min()!)
         }
         
         if carfilterModel.maxPriceRange != 0.0 {
-            maxpricerangefilter = carfilterModel.maxPriceRange ?? Double(carprices.compactMap { Float($0) }.max()!)
+            maxpricerangefilter = carfilterModel.maxPriceRange ?? Double(prices.compactMap { Float($0) }.max()!)
         }
         
         

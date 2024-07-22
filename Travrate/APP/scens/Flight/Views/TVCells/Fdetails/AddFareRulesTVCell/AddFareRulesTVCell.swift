@@ -111,6 +111,7 @@ extension AddFareRulesTVCell:UITableViewDelegate,UITableViewDataSource {
                     cell.titlelbl.text = data.rule_heading
                     cell.subTitlelbl.text = data.rule_content
                     cell.subTitlelbl.numberOfLines = 0
+                    cell.show()
                 }
                 
                 

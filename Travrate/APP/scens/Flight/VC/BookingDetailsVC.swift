@@ -1002,6 +1002,8 @@ extension BookingDetailsVC:TimerManagerDelegate {
     
     func addObserver() {
         
+        notificationCheck = true
+        notificationPrice = "1"
         MySingleton.shared.guestbool = false
         MySingleton.shared.selectedAddonServices.removeAll()
         

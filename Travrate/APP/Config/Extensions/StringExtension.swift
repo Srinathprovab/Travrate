@@ -11,6 +11,14 @@ import UIKit
 extension String {
     
     
+    func formattedCurrentDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        return formattedDate
+    }
+    
     
     func maxLength(length: Int) -> String {
         var str = self

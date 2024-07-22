@@ -110,9 +110,10 @@ class MySingleton {
     var addonServices = [Addon_services]()
     var addonServicesOrigenArray = [String]()
     var carAddonServices = [Addon_services]()
+    var activitiesAddonServices = [Addon_services]()
     var transferAddonServices = [Addon_services]()
     var firstHalf_addonServices: [Addon_services] = []
-       var secondHalf_addonServices: [Addon_services] = []
+    var secondHalf_addonServices: [Addon_services] = []
     var ageCategory: AgeCategory = .adult
     var passportExpireDateBool = false
     var passengertypeArray = [String]()
@@ -164,7 +165,7 @@ class MySingleton {
     var selected_meals_codeArray = [String]()
     var selected_special_assistance_codeArray = [String]()
     var addon_servicesArray = [String]()
-   // var addOptions =  [AddOptions]()
+    // var addOptions =  [AddOptions]()
     
     var visaNationalityCode = String()
     var visaResidencyCode = String()
@@ -214,7 +215,7 @@ class MySingleton {
     var carproductarray = [Product]()
     var carresulttoken = String()
     var carresultindex = String()
-   
+    
     var car_extra_option_price = String()
     var car_total_amount = String()
     var car_total_amount_origin = String()
@@ -281,12 +282,15 @@ class MySingleton {
     var activity_cancellation_string = String()
     var activitiesImagesArray = [Activity_images]()
     var activity_details :Activity_details?
+    var bookingactivitydetails :Booking_Activity_details?
     var modalitiesdetails = [ActivityDetailsModalities]()
     var activitiesPostData : Post?
     var activity_name = String()
     var activity_loc = String()
     var activity_image = String()
-  
+    var activity_duration_type = String()
+    var activity_name_type = String()
+    
     
     //View Models
     var loginvm:LoginViewModel?

@@ -204,7 +204,7 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as? MoreServiceCVCell {
             cell.titlelbl.text = serviceArray[indexPath.row]
             cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal)
-          
+            
             
             
             
@@ -234,9 +234,9 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? MoreServiceCVCell {
             
-            cell.holderView.backgroundColor = .LayoverColor
-            cell.holderView.layer.borderWidth = 1
-            cell.holderView.layer.borderColor = UIColor.Buttoncolor.cgColor
+            //            cell.holderView.backgroundColor = .LayoverColor
+            //            cell.holderView.layer.borderWidth = 1
+            //            cell.holderView.layer.borderColor = UIColor.Buttoncolor.cgColor
             moreTabNameArray.append(titlelbl.text ?? "")
             
             switch cell.titlelbl.text {
@@ -282,9 +282,9 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
         if let cell = collectionView.cellForItem(at: indexPath) as? MoreServiceCVCell {
-            cell.holderView.backgroundColor = .WhiteColor
-            cell.holderView.layer.borderWidth = 1
-            cell.holderView.layer.borderColor = UIColor.BorderColor.cgColor
+            //            cell.holderView.backgroundColor = .WhiteColor
+            //            cell.holderView.layer.borderWidth = 1
+            //            cell.holderView.layer.borderColor = UIColor.BorderColor.cgColor
             
             
             if let index = moreTabNameArray.firstIndex(of: cell.titlelbl.text ?? "") {

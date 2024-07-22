@@ -1101,6 +1101,8 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.PaymentSelectionArray = response.payment_selection ?? []
         transfersendtopaymenturl = response.hit_url ?? ""
         
+        
+        
         DispatchQueue.main.async {
             self.setupTransferTVCells()
         }
@@ -1136,6 +1138,9 @@ extension SelectPaymentMethodsVC {
             hideLoadera()
             
             MySingleton.shared.voucherurlsting = response.hit_url ?? ""
+            
+            
+            
             response.status == true ?  gotoBookingConfirmedVC() : showToast(message: response.msg ?? "")
         }
         
@@ -1212,7 +1217,7 @@ extension SelectPaymentMethodsVC {
     
     func activitieSendToPaymeentDetailsResponse(response: SendToPaymentModel) {
         DispatchQueue.main.async {
-            MySingleton.shared.activitiesProcessPassengerVM?.CALL_SEND_TO_PAYMENT_API(dictParam: [:], urlstr: response.hit_url ?? "")
+            MySingleton.shared.activitiesProcessPassengerVM?.CALL_ACTIVITIES_SECURE_BOOKING_API(dictParam: [:], urlstr: response.hit_url ?? "")
         }
     }
     
@@ -1222,7 +1227,15 @@ extension SelectPaymentMethodsVC {
         hideLoadera()
         
         MySingleton.shared.voucherurlsting = response.hit_url ?? ""
-        response.status == true ?  gotoBookingConfirmedVC() : showToast(message: response.msg ?? "")
+        
+        
+
+        
+        if response.status == true  {
+            gotoBookingConfirmedVC()
+        }else {
+            showToast(message: response.msg ?? "")
+        }
     }
     
     

@@ -35,6 +35,7 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
     
     var caraddon = [Addon_services]()
     var transferaddon = [Addon_services]()
+    var activitiesAddon = [Addon_services]()
     var firstHalfSelectionState: [Bool] = []
     var secondHalfSelectionState: [Bool] = []
     // var hotelSelectionState: [Bool] = []
@@ -55,6 +56,7 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
     
     override func updateUI() {
         
+        activitiesAddon = MySingleton.shared.activitiesAddonServices
         caraddon = MySingleton.shared.carAddonServices
         transferaddon = MySingleton.shared.transferAddonServices
         
@@ -126,6 +128,8 @@ extension AddonTableViewCell {
             return caraddon.count
         }else if cellInfo?.key == "transfer" {
             return transferaddon.count
+        }else if cellInfo?.key == "activities" {
+            return activitiesAddon.count
         } else{
             return hotel_Addservices.count
         }
@@ -200,6 +204,17 @@ extension AddonTableViewCell {
             }
             
             
+        }else if cellInfo?.key == "activities"{
+            let data = activitiesAddon[indexPath.row]
+            // Display data in the cell
+            cell.leftICon.sd_setImage(with: URL(string: data.images ?? ""))
+            cell.titleLabel.text = data.title
+            cell.subTitleLabel.text = data.details
+            cell.originValue = data.origin ?? ""
+            cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
+            
+            
+            
         }else {
             let data = hotel_Addservices[indexPath.row]
             // Display data in the cell
@@ -248,6 +263,14 @@ extension AddonTableViewCell {
             MySingleton.shared.addonServicesOrigenArray.append(cell.originValue)
             
             delegate?.didSelectAddon(index: indexPath.row, origen: "", price: carService.price ?? "")
+        }else if cellInfo?.key == "activities" {
+            let carService = activitiesAddon[indexPath.row] as Addon_services
+            hotelselectedIndexPathArray.append(indexPath)
+            updateActivitiesTotal(for: carService, isSelected: true)
+            
+            MySingleton.shared.addonServicesOrigenArray.append(cell.originValue)
+            
+            delegate?.didSelectAddon(index: indexPath.row, origen: "", price: carService.price ?? "")
         }else {
             
             let hotelService = hotel_Addservices[indexPath.row] as HotelAddonModel
@@ -291,6 +314,20 @@ extension AddonTableViewCell {
             let carService = transferaddon[indexPath.row] as Addon_services
             removeIndexPath(&hotelselectedIndexPathArray, indexPath: indexPath)
             updateTransferTotal(for: carService, isSelected: false)
+            
+            
+            if let index = MySingleton.shared.addonServicesOrigenArray.firstIndex(of: cell.originValue)  {
+                MySingleton.shared.addonServicesOrigenArray.remove(at: index)
+            }
+            
+            
+            delegate?.didDeselectAddon(index: indexPath.row, origen: "")
+            
+        }else if cellInfo?.key == "activities" {
+            
+            let carService = activitiesAddon[indexPath.row] as Addon_services
+            removeIndexPath(&hotelselectedIndexPathArray, indexPath: indexPath)
+            updateActivitiesTotal(for: carService, isSelected: false)
             
             
             if let index = MySingleton.shared.addonServicesOrigenArray.firstIndex(of: cell.originValue)  {
@@ -373,6 +410,23 @@ extension AddonTableViewCell {
     //MARK: - updateCarTotal transfer
     
     private func updateTransferTotal(for service: Addon_services, isSelected: Bool) {
+        let amount = Double(service.price ?? "0") ?? 0
+        if isSelected {
+            totlConvertedGrand += amount
+        } else {
+            totlConvertedGrand -= amount
+        }
+        
+        // Optionally update your UI with the new total
+        // updateTotalLabel()
+        
+        print("Updated Hotel Total: \(totlConvertedGrand)")
+    }
+    
+    
+    //MARK: - updateCarTotal Activities
+    
+    private func updateActivitiesTotal(for service: Addon_services, isSelected: Bool) {
         let amount = Double(service.price ?? "0") ?? 0
         if isSelected {
             totlConvertedGrand += amount

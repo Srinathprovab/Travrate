@@ -172,7 +172,7 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
                 sampleCell.setNeedsLayout()
                 sampleCell.layoutIfNeeded()
                 let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-                totalHeight = height + 500
+                totalHeight = height
             }
         }
         
@@ -280,9 +280,9 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
     
     
     
-    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        return UITableView.automaticDimension
-    //    }
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return UITableView.automaticDimension
+        }
     
     
 }

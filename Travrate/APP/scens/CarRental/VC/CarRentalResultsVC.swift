@@ -218,7 +218,7 @@ extension CarRentalResultsVC {
         loderBool = false
         holderView.isHidden = false
         
-        carprices.removeAll()
+        prices.removeAll()
         fuleArray.removeAll()
         carmanualArray.removeAll()
         doorcountArray.removeAll()
@@ -231,7 +231,7 @@ extension CarRentalResultsVC {
             
         }
         
-        carprices = carprices.unique()
+        prices = carprices.unique()
         fuleArray = fuleArray.unique()
         carmanualArray = carmanualArray.unique()
         doorcountArray = doorcountArray.unique()

@@ -102,7 +102,7 @@ class VocherDetailsViewModel {
         BASE_URL = ""
         self.view?.showLoader()
         
-        ServiceManager.postOrPutApiCall(endPoint: url , parameters: parms, resultType: ActivitiesVoucherModel.self, p:dictParam) { sucess, result, errorMessage in
+        ServiceManager.getApiCall(endPoint: url , urlParams: parms as? Dictionary<String, String>,parameters: parms, resultType: ActivitiesVoucherModel.self, p:dictParam) { sucess, result, errorMessage in
             
             DispatchQueue.main.async {
                 self.view?.hideLoader()

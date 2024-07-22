@@ -8,79 +8,85 @@
 import Foundation
 
 struct Activities_Booking_itinerary_details : Codable {
-    let origin : String?
     let booking_source : String?
-    let booking_reference : String?
     let app_reference : String?
-    let activity_name : String?
+//    let status : String?
+//    let pickup : String?
+//    let country : String?
+//    let dateFrom : String?
+//    let dateTo : String?
+//    let comminisionVateAmt : String?
+//    let origin : String?
+//    let activity_name : String?
+//    let city : String?
+//    let activity_type : String?
+//    let comminisionAmt : String?
+//    let supplier_vatNo : String?
+//    let contactInfo : String?
+//    let supplier_name : String?
     let activity_code : String?
-    let activity_type : String?
-    let dateFrom : String?
-    let dateTo : String?
-    let address : String?
-    let city : String?
-    let country : String?
-    let status : String?
-    let totalAmount : String?
-    let contactInfo : String?
-    let supplier_name : String?
-    let supplier_vatNo : String?
-    let comminisionPercentage : String?
-    let comminisionAmt : String?
-    let pickup : String?
-    let comminisionVateAmt : String?
-    let comminisionVatPercentage : String?
+//    let aminities : String?
+//    let comminisionPercentage : String?
+//    let totalAmount : String?
+    let booking_reference : String?
+//    let comminisionVatPercentage : String?
+//    let address : String?
+//    let description : String?
 
     enum CodingKeys: String, CodingKey {
 
-        case origin = "origin"
         case booking_source = "booking_source"
-        case booking_reference = "booking_reference"
         case app_reference = "app_reference"
-        case activity_name = "activity_name"
+//        case status = "status"
+//        case pickup = "pickup"
+//        case country = "country"
+//        case dateFrom = "dateFrom"
+//        case dateTo = "dateTo"
+//        case comminisionVateAmt = "comminisionVateAmt"
+//        case origin = "origin"
+//        case activity_name = "activity_name"
+//        case city = "city"
+//        case activity_type = "activity_type"
+//        case comminisionAmt = "comminisionAmt"
+//        case supplier_vatNo = "supplier_vatNo"
+//        case contactInfo = "contactInfo"
+//        case supplier_name = "supplier_name"
         case activity_code = "activity_code"
-        case activity_type = "activity_type"
-        case dateFrom = "dateFrom"
-        case dateTo = "dateTo"
-        case address = "address"
-        case city = "city"
-        case country = "country"
-        case status = "status"
-        case totalAmount = "totalAmount"
-        case contactInfo = "contactInfo"
-        case supplier_name = "supplier_name"
-        case supplier_vatNo = "supplier_vatNo"
-        case comminisionPercentage = "comminisionPercentage"
-        case comminisionAmt = "comminisionAmt"
-        case pickup = "pickup"
-        case comminisionVateAmt = "comminisionVateAmt"
-        case comminisionVatPercentage = "comminisionVatPercentage"
+//        case aminities = "aminities"
+//        case comminisionPercentage = "comminisionPercentage"
+//        case totalAmount = "totalAmount"
+       case booking_reference = "booking_reference"
+//        case comminisionVatPercentage = "comminisionVatPercentage"
+//        case address = "address"
+//        case description = "description"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        origin = try values.decodeIfPresent(String.self, forKey: .origin)
         booking_source = try values.decodeIfPresent(String.self, forKey: .booking_source)
-        booking_reference = try values.decodeIfPresent(String.self, forKey: .booking_reference)
         app_reference = try values.decodeIfPresent(String.self, forKey: .app_reference)
-        activity_name = try values.decodeIfPresent(String.self, forKey: .activity_name)
+//        status = try values.decodeIfPresent(String.self, forKey: .status)
+//        pickup = try values.decodeIfPresent(String.self, forKey: .pickup)
+//        country = try values.decodeIfPresent(String.self, forKey: .country)
+//        dateFrom = try values.decodeIfPresent(String.self, forKey: .dateFrom)
+//        dateTo = try values.decodeIfPresent(String.self, forKey: .dateTo)
+//        comminisionVateAmt = try values.decodeIfPresent(String.self, forKey: .comminisionVateAmt)
+//        origin = try values.decodeIfPresent(String.self, forKey: .origin)
+//        activity_name = try values.decodeIfPresent(String.self, forKey: .activity_name)
+//        city = try values.decodeIfPresent(String.self, forKey: .city)
+//        activity_type = try values.decodeIfPresent(String.self, forKey: .activity_type)
+//        comminisionAmt = try values.decodeIfPresent(String.self, forKey: .comminisionAmt)
+//        supplier_vatNo = try values.decodeIfPresent(String.self, forKey: .supplier_vatNo)
+//        contactInfo = try values.decodeIfPresent(String.self, forKey: .contactInfo)
+//        supplier_name = try values.decodeIfPresent(String.self, forKey: .supplier_name)
         activity_code = try values.decodeIfPresent(String.self, forKey: .activity_code)
-        activity_type = try values.decodeIfPresent(String.self, forKey: .activity_type)
-        dateFrom = try values.decodeIfPresent(String.self, forKey: .dateFrom)
-        dateTo = try values.decodeIfPresent(String.self, forKey: .dateTo)
-        address = try values.decodeIfPresent(String.self, forKey: .address)
-        city = try values.decodeIfPresent(String.self, forKey: .city)
-        country = try values.decodeIfPresent(String.self, forKey: .country)
-        status = try values.decodeIfPresent(String.self, forKey: .status)
-        totalAmount = try values.decodeIfPresent(String.self, forKey: .totalAmount)
-        contactInfo = try values.decodeIfPresent(String.self, forKey: .contactInfo)
-        supplier_name = try values.decodeIfPresent(String.self, forKey: .supplier_name)
-        supplier_vatNo = try values.decodeIfPresent(String.self, forKey: .supplier_vatNo)
-        comminisionPercentage = try values.decodeIfPresent(String.self, forKey: .comminisionPercentage)
-        comminisionAmt = try values.decodeIfPresent(String.self, forKey: .comminisionAmt)
-        pickup = try values.decodeIfPresent(String.self, forKey: .pickup)
-        comminisionVateAmt = try values.decodeIfPresent(String.self, forKey: .comminisionVateAmt)
-        comminisionVatPercentage = try values.decodeIfPresent(String.self, forKey: .comminisionVatPercentage)
+//        aminities = try values.decodeIfPresent(String.self, forKey: .aminities)
+//        comminisionPercentage = try values.decodeIfPresent(String.self, forKey: .comminisionPercentage)
+//        totalAmount = try values.decodeIfPresent(String.self, forKey: .totalAmount)
+        booking_reference = try values.decodeIfPresent(String.self, forKey: .booking_reference)
+//        comminisionVatPercentage = try values.decodeIfPresent(String.self, forKey: .comminisionVatPercentage)
+//        address = try values.decodeIfPresent(String.self, forKey: .address)
+//        description = try values.decodeIfPresent(String.self, forKey: .description)
     }
 
 }
