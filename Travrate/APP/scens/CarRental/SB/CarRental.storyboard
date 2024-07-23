@@ -37,7 +37,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fti-SP-k6c">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="260"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportsbg" translatesAutoresizingMaskIntoConstraints="NO" id="SgW-NO-GdE">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Car rental" translatesAutoresizingMaskIntoConstraints="NO" id="SgW-NO-GdE">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="260"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0D-1E-LJz">
@@ -73,8 +73,8 @@
                                                     <constraint firstItem="7bQ-0Z-Den" firstAttribute="leading" secondItem="b0D-1E-LJz" secondAttribute="leading" id="vmg-g0-372"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indulge Your Self" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bP-G3-YX4">
-                                                <rect key="frame" x="113.66666666666669" y="65" width="166" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Rental" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bP-G3-YX4">
+                                                <rect key="frame" x="145.66666666666666" y="65" width="101.66666666666666" height="24"/>
                                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -723,12 +723,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Car rental" width="428" height="268"/>
         <image name="back" width="20" height="20"/>
         <image name="back1" width="20" height="20"/>
         <image name="close" width="26" height="26"/>
         <image name="filter" width="22" height="22"/>
         <image name="modify" width="79" height="30"/>
-        <image name="sportsbg" width="428" height="266"/>
         <namedColor name="BooknowBtnColor">
             <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

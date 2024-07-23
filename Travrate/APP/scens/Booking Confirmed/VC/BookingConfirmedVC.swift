@@ -521,6 +521,11 @@ extension BookingConfirmedVC {
         
         tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         tablerow.append(TableRow(cellType:.ActivitiesBookingDetailsTVCell))
+        
+        tablerow.append(TableRow(title:"Lead",
+                                                    key:"activites",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        
         tablerow.append(TableRow(moreData:res,cellType:.ActivityInformationTVCell))
         
         

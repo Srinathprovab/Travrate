@@ -56,16 +56,17 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
             cell.retDatePicker.minimumDate = cell.depDatePicker.date
-            
-            MySingleton.shared.sportFromDate = cell.depDatelbl.text ?? ""
-            MySingleton.shared.sportToDate = cell.retDatelbl.text ?? ""
+    
         }else {
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
             defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
             
-            MySingleton.shared.sportFromDate = cell.depDatelbl.text ?? ""
-            MySingleton.shared.sportToDate = cell.retDatelbl.text ?? ""
+            
         }
+        
+        
+        MySingleton.shared.sportFromDate = cell.depDatelbl.text ?? ""
+        MySingleton.shared.sportToDate = cell.retDatelbl.text ?? ""
         
         commonTableView.reloadData()
         self.view.endEditing(true)

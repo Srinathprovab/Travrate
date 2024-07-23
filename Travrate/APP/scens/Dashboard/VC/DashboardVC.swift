@@ -106,6 +106,7 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     }
     
     override func didTapOnFlightTabSelectBtnAction(cell: TabSelectTVCell) {
+        
         defaults.set("Flight", forKey: UserDefaultsKeys.tabselect)
         defaults.set("Origin", forKey: UserDefaultsKeys.fromcityname)
         defaults.set("Destination", forKey: UserDefaultsKeys.tocityname)
@@ -118,7 +119,8 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         defaults.set("0", forKey: UserDefaultsKeys.infantsCount)
         defaults.set("ALL", forKey: UserDefaultsKeys.fcariercode)
         defaults.set("ALL AIRLINES", forKey: UserDefaultsKeys.fcariername)
-       
+        defaults.set("1", forKey: UserDefaultsKeys.totalTravellerCount)
+        
         
         gotoFlightSearchVC()
     }

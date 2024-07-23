@@ -40,8 +40,12 @@ class HolidaysVC: BaseTableVC, HolidayListVMDelegate {
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        callapibool = false
-        dismiss(animated: true)
+        MySingleton.shared.callboolapi = false
+        callapibool = true
+        guard let vc = DashBoardTBVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.selectedIndex = 0
+        present(vc, animated: true)
     }
     
     

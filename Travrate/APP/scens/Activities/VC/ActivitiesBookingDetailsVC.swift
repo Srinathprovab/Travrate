@@ -44,7 +44,7 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
     
     func setupUI() {
         
-        
+        MySingleton.shared.addonServicesOrigenArray.removeAll()
         continuetoPaymentBtnView.backgroundColor = .Buttoncolor
         continuetoPaymentBtnView.isUserInteractionEnabled = true
         continuetoPaymentBtnlbl.text = "Continue To Next"
@@ -607,10 +607,11 @@ extension ActivitiesBookingDetailsVC {
         let lastNameString = "[\"" + lastNameArray.joined(separator: "\",\"") + "\"]"
         let passengertypeString = "[\"" + passengertypeArray.joined(separator: "\",\"") + "\"]"
         let laedpassengerArrayString = "[\"" + laedpassengerArray.joined(separator: "\",\"") + "\"]"
+        let addonArrayString = "[\"" + MySingleton.shared.addonServicesOrigenArray.joined(separator: "\",\"") + "\"]"
         
         
         
-        
+       
         
         let alocation = MySingleton.shared.activity_loc
         let agent_payable = MySingleton.shared.agentpayable

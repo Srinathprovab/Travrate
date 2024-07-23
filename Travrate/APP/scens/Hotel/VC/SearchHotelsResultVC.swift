@@ -33,7 +33,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     var lastContentOffset: CGFloat = 0
     var tablerow = [TableRow]()
     var filtered = [HotelSearchResult]()
-   
+    
     var searchText = String()
     var isvcfrom = String()
     var payload = [String:Any]()
@@ -90,7 +90,17 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         self.cittlbl.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? ""
         self.dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
         
-        paxlbl.text = "Room \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? "1") | Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "2")"
+        
+        let roomscount = defaults.integer(forKey: UserDefaultsKeys.roomcount)
+        let adultcount = defaults.integer(forKey: UserDefaultsKeys.hoteladultscount)
+        let childcount = defaults.integer(forKey: UserDefaultsKeys.hotelchildcount)
+        
+        var labelText = adultcount > 1 ? "Room: \(roomscount) | Adults \(adultcount)" : "Adult \(adultcount)"
+        if childcount > 0 {
+            labelText += ", Child \(childcount)"
+        }
+        paxlbl.text = labelText
+        
         
         cvHolderView.isHidden = true
         
@@ -295,7 +305,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
             hotelname: cell.hotelNamelbl.text ?? ""
         )
         mapModelArray.append(mapModel)
-        gotoMapViewVC()
+       // gotoMapViewVC()
     }
     
     func gotoMapViewVC() {
@@ -737,7 +747,7 @@ extension SearchHotelsResultVC:AppliedFilters{
         
         // Set the filter flag to true
         isSearchBool = true
-       
+        
         
         // Print filter parameters for debugging
         print("Min Price Range: \(minpricerange)")

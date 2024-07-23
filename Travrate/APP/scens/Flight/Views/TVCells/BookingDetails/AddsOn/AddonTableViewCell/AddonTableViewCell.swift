@@ -2,7 +2,7 @@
 //  AddonTableViewCell.swift
 //  Burhantrips
 //
-//  Created by MA1882 on 20/01/24.
+//  Created by MA1882 on 20/01/24.  
 //
 
 import UIKit
@@ -249,11 +249,15 @@ extension AddonTableViewCell {
                 
                 delegate?.didSelectAddon(index: indexPath.row, origen: "second", price: secondHalfAddonServices[indexPath.row].price ?? "")
             }
+            
+            
+            MySingleton.shared.addonServicesOrigenArray.append(cell.originValue)
         }else if cellInfo?.key == "car" {
             let carService = caraddon[indexPath.row] as Addon_services
             hotelselectedIndexPathArray.append(indexPath)
             updateCarTotal(for: carService, isSelected: true)
             
+            MySingleton.shared.addonServicesOrigenArray.append(cell.originValue)
             delegate?.didSelectAddon(index: indexPath.row, origen: "", price: carService.price ?? "")
         }else if cellInfo?.key == "transfer" {
             let carService = transferaddon[indexPath.row] as Addon_services
@@ -261,7 +265,6 @@ extension AddonTableViewCell {
             updateTransferTotal(for: carService, isSelected: true)
             
             MySingleton.shared.addonServicesOrigenArray.append(cell.originValue)
-            
             delegate?.didSelectAddon(index: indexPath.row, origen: "", price: carService.price ?? "")
         }else if cellInfo?.key == "activities" {
             let carService = activitiesAddon[indexPath.row] as Addon_services
@@ -269,7 +272,6 @@ extension AddonTableViewCell {
             updateActivitiesTotal(for: carService, isSelected: true)
             
             MySingleton.shared.addonServicesOrigenArray.append(cell.originValue)
-            
             delegate?.didSelectAddon(index: indexPath.row, origen: "", price: carService.price ?? "")
         }else {
             
@@ -277,6 +279,7 @@ extension AddonTableViewCell {
             hotelselectedIndexPathArray.append(indexPath)
             updateHotelTotal(for: hotelService, isSelected: true)
             
+            MySingleton.shared.addonServicesOrigenArray.append(cell.originValue)
             delegate?.didSelectAddon(index: indexPath.row, origen: "", price: hotelService.price ?? "")
         }
         

@@ -117,13 +117,21 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel In Style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79q-iu-UgF">
+                                                <rect key="frame" x="139.33333333333334" y="67" width="114.33333333333334" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="79q-iu-UgF" firstAttribute="centerX" secondItem="5d7-2C-1Ox" secondAttribute="centerX" id="4oc-tb-DSu"/>
                                             <constraint firstItem="k1s-qe-2qh" firstAttribute="top" secondItem="5d7-2C-1Ox" secondAttribute="top" constant="60" id="5G7-ky-QoE"/>
                                             <constraint firstAttribute="height" constant="260" id="Cox-FS-Hu9"/>
                                             <constraint firstAttribute="bottom" secondItem="vkc-MJ-853" secondAttribute="bottom" id="IHm-pD-yty"/>
                                             <constraint firstItem="vkc-MJ-853" firstAttribute="top" secondItem="5d7-2C-1Ox" secondAttribute="top" id="IKF-a9-3JE"/>
+                                            <constraint firstItem="79q-iu-UgF" firstAttribute="centerY" secondItem="jkG-Cs-eda" secondAttribute="centerY" id="O6C-DP-ygD"/>
                                             <constraint firstAttribute="bottom" secondItem="PGV-ay-AuD" secondAttribute="bottom" constant="106" id="Ox0-eA-Taj"/>
                                             <constraint firstItem="k1s-qe-2qh" firstAttribute="leading" secondItem="5d7-2C-1Ox" secondAttribute="leading" constant="13" id="Smo-1b-tZj"/>
                                             <constraint firstAttribute="trailing" secondItem="vkc-MJ-853" secondAttribute="trailing" id="dQg-gf-tfz"/>

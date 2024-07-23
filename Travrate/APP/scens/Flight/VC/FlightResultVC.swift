@@ -1076,12 +1076,12 @@ extension FlightResultVC {
         let childcount = defaults.integer(forKey: UserDefaultsKeys.childCount)
         let infantcount = defaults.integer(forKey: UserDefaultsKeys.infantsCount)
         let classname = defaults.string(forKey: UserDefaultsKeys.selectClass)
-        var labelText = adultcount > 1 ? "Adults: \(adultcount)" : "Adult: \(adultcount)"
+        var labelText = adultcount > 1 ? "Adults \(adultcount)" : "Adult \(adultcount)"
         if childcount > 0 {
-            labelText += ", Child: \(childcount)"
+            labelText += ", Child \(childcount)"
         }
         if infantcount > 0 {
-            labelText += ", Infant: \(infantcount)"
+            labelText += ", Infant \(infantcount)"
         }
         paxlbl.text = "\(labelText) | \(classname ?? "")"
         

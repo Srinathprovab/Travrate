@@ -11,7 +11,19 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        
+        
+        let dictionary = defaults.dictionaryRepresentation()
+        
+        // Iterate over each key and remove it
+        for key in dictionary.keys {
+            defaults.removeObject(forKey: key)
+        }
+        
+        
         // Do any additional setup after loading the view.
         if !UserDefaults.standard.bool(forKey: "ExecuteOnce") {
             
@@ -43,7 +55,7 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             self.gotodashBoardScreen()
-            //  self.gotoBookingConfirmedVC()
+            // self.gotoBookingConfirmedVC()
             
         })
     }

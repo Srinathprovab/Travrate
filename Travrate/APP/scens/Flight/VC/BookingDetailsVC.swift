@@ -52,7 +52,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         
         origin_array.removeAll()
         whatsAppCheck = false
-        notificationCheck = false
+        notificationCheck = true
         priceCheck = false
         flexibleCheck = false
         gifimg.isHidden = true
@@ -1002,7 +1002,7 @@ extension BookingDetailsVC:TimerManagerDelegate {
     
     func addObserver() {
         
-        notificationCheck = true
+       
         notificationPrice = "1"
         MySingleton.shared.guestbool = false
         MySingleton.shared.selectedAddonServices.removeAll()

@@ -69,13 +69,21 @@
                                                     <constraint firstItem="2mc-m4-0ay" firstAttribute="top" secondItem="oqe-gj-Fkh" secondAttribute="top" id="vFT-VH-caP"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ir-K4-qc8">
+                                                <rect key="frame" x="158.33333333333334" y="66.666666666666671" width="76.333333333333343" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="260" id="0iX-Hs-ubL"/>
+                                            <constraint firstItem="6ir-K4-qc8" firstAttribute="centerY" secondItem="2mc-m4-0ay" secondAttribute="centerY" id="2cf-iw-8su"/>
                                             <constraint firstAttribute="bottom" secondItem="WHF-0H-CzY" secondAttribute="bottom" id="G8A-4G-OlL"/>
                                             <constraint firstItem="oqe-gj-Fkh" firstAttribute="leading" secondItem="nf0-am-0dr" secondAttribute="leading" constant="13" id="Hgg-Fd-Z53"/>
                                             <constraint firstItem="oqe-gj-Fkh" firstAttribute="top" secondItem="nf0-am-0dr" secondAttribute="top" constant="60" id="Kln-tu-ofI"/>
+                                            <constraint firstItem="6ir-K4-qc8" firstAttribute="centerX" secondItem="nf0-am-0dr" secondAttribute="centerX" id="QWh-d5-Qr0"/>
                                             <constraint firstItem="WHF-0H-CzY" firstAttribute="leading" secondItem="nf0-am-0dr" secondAttribute="leading" id="csd-7l-VdP"/>
                                             <constraint firstItem="WHF-0H-CzY" firstAttribute="top" secondItem="nf0-am-0dr" secondAttribute="top" id="i22-jo-cdp"/>
                                             <constraint firstAttribute="trailing" secondItem="WHF-0H-CzY" secondAttribute="trailing" id="xbq-tM-i1r"/>

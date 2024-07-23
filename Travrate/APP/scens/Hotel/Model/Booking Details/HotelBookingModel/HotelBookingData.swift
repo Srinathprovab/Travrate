@@ -17,7 +17,7 @@ struct HotelBookingData : Codable {
     let tax_service_sum : Int?
     let convenience_fees : Int?
     let discount : Int?
-    let converted_currency_rate : Int?
+  //  let converted_currency_rate : Int?
     let room_paxes_details : [Room_paxes_details]?
     let token : String?
     let pre_booking_cancellation_policy : String?
@@ -42,7 +42,7 @@ struct HotelBookingData : Codable {
         case tax_service_sum = "tax_service_sum"
         case convenience_fees = "convenience_fees"
         case discount = "discount"
-        case converted_currency_rate = "converted_currency_rate"
+    //    case converted_currency_rate = "converted_currency_rate"
         case room_paxes_details = "room_paxes_details"
         case token = "token"
         case pre_booking_cancellation_policy = "pre_booking_cancellation_policy"
@@ -68,7 +68,7 @@ struct HotelBookingData : Codable {
         tax_service_sum = try values.decodeIfPresent(Int.self, forKey: .tax_service_sum)
         convenience_fees = try values.decodeIfPresent(Int.self, forKey: .convenience_fees)
         discount = try values.decodeIfPresent(Int.self, forKey: .discount)
-        converted_currency_rate = try values.decodeIfPresent(Int.self, forKey: .converted_currency_rate)
+   //     converted_currency_rate = try values.decodeIfPresent(Int.self, forKey: .converted_currency_rate)
         room_paxes_details = try values.decodeIfPresent([Room_paxes_details].self, forKey: .room_paxes_details)
         token = try values.decodeIfPresent(String.self, forKey: .token)
         pre_booking_cancellation_policy = try values.decodeIfPresent(String.self, forKey: .pre_booking_cancellation_policy)

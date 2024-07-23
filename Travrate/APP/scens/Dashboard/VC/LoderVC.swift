@@ -140,7 +140,12 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             locationslbl.text = searchHoteldata?.city_name ?? ""
             checkinlbl.text = MySingleton.shared.convertDateFormat(inputDate: searchHoteldata?.check_in ?? "", f1: "dd/MM/yyyy", f2: "dd-MMM-yyyy")
             checkoutlbl.text = MySingleton.shared.convertDateFormat(inputDate: searchHoteldata?.check_out ?? "", f1: "dd/MM/yyyy", f2: "dd-MMM-yyyy")
-            guestlbl.text = searchHoteldata?.adult?[0] ?? ""
+           
+          
+            let adultcount = MySingleton.shared.hoteladultscount
+            let childcount = MySingleton.shared.hotelchildcount
+            guestlbl.text = "\(adultcount + childcount)"
+            //guestlbl.isHidden = true
             
             // Example usage:
             let checkInDate = defaults.string(forKey: UserDefaultsKeys.checkin) ?? ""
@@ -244,7 +249,7 @@ extension LoderVC {
             sportsView.isHidden = false
             sporteventlbl.text = MySingleton.shared.sportsTeamName
             sportvenulbl.text = MySingleton.shared.sportsVenuName
-            sportdateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")) To \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy"))"
+            sportdateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")) To \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy"))"
             
         }else if tabselect == "CarRental" {
             
