@@ -104,7 +104,7 @@ extension PopularFiltersTVCell:UICollectionViewDelegate,UICollectionViewDataSour
                     DispatchQueue.main.async {
                         cell.holderView.backgroundColor = HexColor("34C759")
                         cell.titlelbl.textColor = .WhiteColor
-                        cell.starimg.tintColor = .lightGray
+                        cell.starimg.tintColor = .WhiteColor
                         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
                     }
                     
@@ -113,7 +113,7 @@ extension PopularFiltersTVCell:UICollectionViewDelegate,UICollectionViewDataSour
                     DispatchQueue.main.async {
                         cell.holderView.backgroundColor = UIColor.WhiteColor
                         cell.titlelbl.textColor = .TitleColor
-                        cell.starimg.tintColor = .black
+                        cell.starimg.tintColor = .TitleColor
                     }
                     
                 }
@@ -150,7 +150,7 @@ extension PopularFiltersTVCell:UICollectionViewDelegate,UICollectionViewDataSour
             
             cell.holderView.backgroundColor = UIColor.WhiteColor
             cell.titlelbl.textColor = .TitleColor
-            cell.starimg.tintColor = .black
+            cell.starimg.tintColor = .TitleColor
             
             if let index1 = startRatingArray.firstIndex(of: cell.titlelbl.text ?? "") {
                 startRatingArray.remove(at: index1)

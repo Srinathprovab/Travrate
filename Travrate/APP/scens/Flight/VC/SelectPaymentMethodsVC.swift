@@ -363,13 +363,13 @@ extension SelectPaymentMethodsVC {
     
     
     func mibileSendToPaymentDetails(response: MobilePassengerdetailsModel) {
-        //        DispatchQueue.main.async {
-        //            MySingleton.shared.mobilepaymentvm?.CALL_FLIGHT_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.url ?? "")
-        //        }
+                DispatchQueue.main.async {
+                    MySingleton.shared.mobilepaymentvm?.CALL_FLIGHT_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.url ?? "")
+                }
         
-        DispatchQueue.main.async {
-            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
-        }
+//        DispatchQueue.main.async {
+//            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
+//        }
     }
     
     
@@ -377,9 +377,10 @@ extension SelectPaymentMethodsVC {
         print("====== response.data  ======")
         print(response.data)
         
-        DispatchQueue.main.async {
-            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
-        }
+        gotoLoadWebViewVC(urlStr1: response.data ?? "")
+//        DispatchQueue.main.async {
+//            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
+//        }
     }
     
     

@@ -852,6 +852,7 @@ class FilterVC: BaseTableVC{
         
         isSearchBool = false
         resetHotelBool = true
+        filterresettapbool = true
         
         if let tabselect = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String  {
             if tabselect == "Flight" {

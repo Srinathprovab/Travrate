@@ -188,14 +188,14 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
         
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["id"] = cell.origin
+        
+        print(" ==== cell.origin ==== ")
+        print(cell.origin)
+        
         callGetRemoveRecentSearchAPI()
     }
     
     override func didTapOnSearchRecentFlightsBtnAction(cell: YourRecentSearchesCVCell) {
-        
-        
-        
-        print(cell.trip_type)
         
         
         

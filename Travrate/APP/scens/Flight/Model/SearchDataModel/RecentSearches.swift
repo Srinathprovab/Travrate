@@ -7,22 +7,38 @@
 
 import Foundation
 
+
+struct SearchDataModel : Codable {
+    
+    let status : Int?
+    let recent_searches : [Recent_searches]?
+
+    enum CodingKeys: String, CodingKey {
+
+        case status = "status"
+        case recent_searches = "recent_searches"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        status = try values.decodeIfPresent(Int.self, forKey: .status)
+        recent_searches = try values.decodeIfPresent([Recent_searches].self, forKey: .recent_searches)
+    }
+
+}
+
+
+
 struct Recent_searches : Codable {
-    let origin : String?
-   // let json_data : String?
     let arr_data : Arr_data?
 
     enum CodingKeys: String, CodingKey {
 
-        case origin = "origin"
-      //  case json_data = "json_data"
         case arr_data = "arr_data"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        origin = try values.decodeIfPresent(String.self, forKey: .origin)
-       // json_data = try values.decodeIfPresent(String.self, forKey: .json_data)
         arr_data = try values.decodeIfPresent(Arr_data.self, forKey: .arr_data)
     }
 

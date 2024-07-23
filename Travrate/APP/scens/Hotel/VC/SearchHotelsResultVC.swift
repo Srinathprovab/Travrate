@@ -364,7 +364,7 @@ extension SearchHotelsResultVC {
             print(theJSONText ?? "")
             payload1["search_params"] = theJSONText
             payload1["offset"] = "0"
-            payload1["limit"] = "20"
+            payload1["limit"] = "100"
             
             viewModel?.CallHotelPreSearchAPI(dictParam: payload1)
             
@@ -462,6 +462,7 @@ extension SearchHotelsResultVC {
         filtered = list
         holderView.isHidden = false
         prices.removeAll()
+        neighbourwoodArray.removeAll()
         nearBylocationsArray.removeAll()
         faretypeArray .removeAll()
         amenitiesArray.removeAll()
@@ -475,7 +476,7 @@ extension SearchHotelsResultVC {
             
             prices.append(i.price ?? "0")
             hotelstarratingArray.append("\(i.star_rating ?? 0)")
-            
+            neighbourwoodArray.append(i.location ?? "")
             if let refund = i.refund, !refund.isEmpty {
                 faretypeArray.append(refund)
             }
@@ -492,16 +493,9 @@ extension SearchHotelsResultVC {
         faretypeArray = Array(Set(faretypeArray))
         amenitiesArray = Array(Set(amenitiesArray))
         hotelstarratingArray = Array(Set(hotelstarratingArray))
+        neighbourwoodArray = Array(Set(neighbourwoodArray))
         
-        //        list.forEach { i in
-        //            let mapModel = MapModel(
-        //                longitude: i.longitude ?? "",
-        //                latitude: i.latitude ?? "",
-        //                hotelname: i.name ?? ""
-        //            )
-        //            mapModelArray.append(mapModel)
-        //        }
-        
+       
         
         DispatchQueue.main.async {[self] in
             commonTableView.reloadData()
@@ -746,7 +740,16 @@ extension SearchHotelsResultVC:AppliedFilters{
     func hotelFilterByApplied(minpricerange: Double, maxpricerange: Double, starRating: String, starRatingNew: [String], refundableTypeArray: [String], nearByLocA: [String], niberhoodA: [String], aminitiesA: [String]) {
         
         // Set the filter flag to true
-        isSearchBool = true
+        
+      //  isSearchBool = filterresettapbool == true ? false : true
+        
+        
+        if filterresettapbool == true {
+            isSearchBool = false
+        }else{
+            isSearchBool = true
+        }
+        
         
         
         // Print filter parameters for debugging
@@ -764,13 +767,12 @@ extension SearchHotelsResultVC:AppliedFilters{
             guard let totalString = Double(hotel.price ?? "0.0") else { return false }
             
             let priceInRange = totalString >= minpricerange && totalString <= maxpricerange
-            //  let ratingMatches = starRating.isEmpty || String(hotel.star_rating ?? 0) == starRating
             let ratingMatches = starRatingNew.isEmpty || starRatingNew.contains("\(hotel.star_rating ?? 0)")
-            // Check if the hotel's refund type matches any selected refundable types or the array is empty
             let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(hotel.refund ?? "")
+            let niberhoodMatch = niberhoodA.isEmpty || niberhoodA.contains(hotel.location ?? "")
             
             
-            return priceInRange && ratingMatches && refundableMatch
+            return priceInRange && ratingMatches && refundableMatch && niberhoodMatch
         }
         
         // Update the filtered results
@@ -792,11 +794,6 @@ extension SearchHotelsResultVC:AppliedFilters{
     
     //MARK: - SORT BY FILTER
     func filtersSortByApplied(sortBy: SortParameter) {
-        //        if MySingleton.shared.filterApplyedBool == true {
-        //            isLoadingData = true
-        //        }else {
-        //            isLoadingData = false
-        //        }
         
         
         commonTableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)

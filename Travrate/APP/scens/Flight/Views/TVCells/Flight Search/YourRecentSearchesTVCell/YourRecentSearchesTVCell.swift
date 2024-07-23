@@ -102,6 +102,10 @@ class YourRecentSearchesTVCell: TableViewCell, YourRecentSearchesCVCellDelegate 
                 recentsearchCV.scrollToItem(at: firstIndexPath, at: .centeredHorizontally, animated: true)
             }
         }
+        
+        
+        print(" ==== origin ==== ")
+        print(cell.origin)
 
         delegate?.didTapOnCloserecentSearchBtnAction(cell: cell)
     }
@@ -162,7 +166,7 @@ extension YourRecentSearchesTVCell:UICollectionViewDelegate,UICollectionViewData
             cell.delegate = self
 
             cell.cellindex = indexPath.row
-            cell.origin = MySingleton.shared.recentData?[indexPath.row].origin ?? ""
+            cell.origin = MySingleton.shared.recentData?[indexPath.row].arr_data?.origin ?? ""
             
             cell.tripTypelbl.text = MySingleton.shared.recentData?[indexPath.row].arr_data?.trip_type ?? ""
             cell.citylbl.text = "\(MySingleton.shared.recentData?[indexPath.row].arr_data?.from_custom ?? "") to \(MySingleton.shared.recentData?[indexPath.row].arr_data?.to_custom ?? "")"
@@ -170,7 +174,7 @@ extension YourRecentSearchesTVCell:UICollectionViewDelegate,UICollectionViewData
             
             
             if MySingleton.shared.recentData?[indexPath.row].arr_data?.trip_type != "oneway" {
-                cell.datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.recentData?[indexPath.row].arr_data?.depature ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM")) - \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.recentData?[indexPath.row].arr_data?.sdreturn ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
+                cell.datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.recentData?[indexPath.row].arr_data?.depature ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM")) - \(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.recentData?[indexPath.row].arr_data?.rreturn ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
             }
             
             
@@ -188,7 +192,7 @@ extension YourRecentSearchesTVCell:UICollectionViewDelegate,UICollectionViewData
             cell.from = MySingleton.shared.recentData?[indexPath.row].arr_data?.from ?? ""
             cell.user_id = MySingleton.shared.recentData?[indexPath.row].arr_data?.user_id ?? ""
             cell.from_custom = MySingleton.shared.recentData?[indexPath.row].arr_data?.from_custom ?? ""
-            cell.sreturn = MySingleton.shared.recentData?[indexPath.row].arr_data?.sdreturn ?? ""
+            cell.sreturn = MySingleton.shared.recentData?[indexPath.row].arr_data?.rreturn ?? ""
             cell.search_source = MySingleton.shared.recentData?[indexPath.row].arr_data?.search_source ?? ""
             cell.psscarrier = MySingleton.shared.recentData?[indexPath.row].arr_data?.psscarrier ?? ""
             cell.infant = MySingleton.shared.recentData?[indexPath.row].arr_data?.infant ?? "0"

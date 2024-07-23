@@ -98,7 +98,7 @@ var selectedSpecificatonArray = [String]()
 var startRatingArray = [String]()
 var starRatingInputArray = [String]()
 var hotelstarratingArray = [String]()
-
+var filterresettapbool = false
 
 //DASHBOARD
 var callapibool = Bool()

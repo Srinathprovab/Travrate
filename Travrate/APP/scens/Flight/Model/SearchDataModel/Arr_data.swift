@@ -2,79 +2,82 @@
 
 import Foundation
 struct Arr_data : Codable {
-    let trip_type : String?
-    let adult : String?
-    let child : String?
-    let infant : String?
-    let v_class : String?
-    let from : String?
-    let from_loc_id : String?
-    let to : String?
-    let to_loc_id : String?
-    let depature : String?
-    let sdreturn : String?
-    let out_jrn : String?
-    let ret_jrn : String?
-    let direct_flight : String?
     let psscarrier : String?
-    let search_flight : String?
+    let to_custom : String?
+    let direct_flight : String?
+    let v_class : String?
+    let rreturn : String?
     let user_id : String?
     let search_source : String?
+    let ret_jrn : String?
     let currency : String?
+    let origin : String?
+    let trip_type : String?
+    let to : String?
+    let depature : String?
     let carrier : String?
     let from_custom : String?
-    let to_custom : String?
-    
+    let from : String?
+    let to_loc_id : String?
+    let out_jrn : String?
+    let infant : String?
+    let from_loc_id : String?
+    let search_flight : String?
+    let adult : String?
+    let child : String?
+
     enum CodingKeys: String, CodingKey {
-        
-        case trip_type = "trip_type"
-        case adult = "adult"
-        case child = "child"
-        case infant = "infant"
-        case v_class = "v_class"
-        case from = "from"
-        case from_loc_id = "from_loc_id"
-        case to = "to"
-        case to_loc_id = "to_loc_id"
-        case depature = "depature"
-        case sdreturn = "return"
-        case out_jrn = "out_jrn"
-        case ret_jrn = "ret_jrn"
-        case direct_flight = "direct_flight"
+
         case psscarrier = "psscarrier"
-        case search_flight = "search_flight"
+        case to_custom = "to_custom"
+        case direct_flight = "direct_flight"
+        case v_class = "v_class"
+        case rreturn = "return"
         case user_id = "user_id"
         case search_source = "search_source"
+        case ret_jrn = "ret_jrn"
         case currency = "currency"
+        case origin = "origin"
+        case trip_type = "trip_type"
+        case to = "to"
+        case depature = "depature"
         case carrier = "carrier"
         case from_custom = "from_custom"
-        case to_custom = "to_custom"
+        case from = "from"
+        case to_loc_id = "to_loc_id"
+        case out_jrn = "out_jrn"
+        case infant = "infant"
+        case from_loc_id = "from_loc_id"
+        case search_flight = "search_flight"
+        case adult = "adult"
+        case child = "child"
     }
-    
+
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        trip_type = try values.decodeIfPresent(String.self, forKey: .trip_type)
-        adult = try values.decodeIfPresent(String.self, forKey: .adult)
-        child = try values.decodeIfPresent(String.self, forKey: .child)
-        infant = try values.decodeIfPresent(String.self, forKey: .infant)
-        v_class = try values.decodeIfPresent(String.self, forKey: .v_class)
-        from = try values.decodeIfPresent(String.self, forKey: .from)
-        from_loc_id = try values.decodeIfPresent(String.self, forKey: .from_loc_id)
-        to = try values.decodeIfPresent(String.self, forKey: .to)
-        to_loc_id = try values.decodeIfPresent(String.self, forKey: .to_loc_id)
-        depature = try values.decodeIfPresent(String.self, forKey: .depature)
-        sdreturn = try values.decodeIfPresent(String.self, forKey: .sdreturn)
-        out_jrn = try values.decodeIfPresent(String.self, forKey: .out_jrn)
-        ret_jrn = try values.decodeIfPresent(String.self, forKey: .ret_jrn)
-        direct_flight = try values.decodeIfPresent(String.self, forKey: .direct_flight)
         psscarrier = try values.decodeIfPresent(String.self, forKey: .psscarrier)
-        search_flight = try values.decodeIfPresent(String.self, forKey: .search_flight)
+        to_custom = try values.decodeIfPresent(String.self, forKey: .to_custom)
+        direct_flight = try values.decodeIfPresent(String.self, forKey: .direct_flight)
+        v_class = try values.decodeIfPresent(String.self, forKey: .v_class)
+        rreturn = try values.decodeIfPresent(String.self, forKey: .rreturn)
         user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
         search_source = try values.decodeIfPresent(String.self, forKey: .search_source)
+        ret_jrn = try values.decodeIfPresent(String.self, forKey: .ret_jrn)
         currency = try values.decodeIfPresent(String.self, forKey: .currency)
+        origin = try values.decodeIfPresent(String.self, forKey: .origin)
+        trip_type = try values.decodeIfPresent(String.self, forKey: .trip_type)
+        to = try values.decodeIfPresent(String.self, forKey: .to)
+        depature = try values.decodeIfPresent(String.self, forKey: .depature)
         carrier = try values.decodeIfPresent(String.self, forKey: .carrier)
         from_custom = try values.decodeIfPresent(String.self, forKey: .from_custom)
-        to_custom = try values.decodeIfPresent(String.self, forKey: .to_custom)
+        from = try values.decodeIfPresent(String.self, forKey: .from)
+        to_loc_id = try values.decodeIfPresent(String.self, forKey: .to_loc_id)
+        out_jrn = try values.decodeIfPresent(String.self, forKey: .out_jrn)
+        infant = try values.decodeIfPresent(String.self, forKey: .infant)
+        from_loc_id = try values.decodeIfPresent(String.self, forKey: .from_loc_id)
+        search_flight = try values.decodeIfPresent(String.self, forKey: .search_flight)
+        adult = try values.decodeIfPresent(String.self, forKey: .adult)
+        child = try values.decodeIfPresent(String.self, forKey: .child)
     }
-    
+
 }

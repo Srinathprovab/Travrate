@@ -175,7 +175,10 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
                 }
                 
                 
-            } else {
+            } else if selectedTap == "Hotel" {
+                
+                
+                
                 
                 if let minPrice = hotelfiltermodel.minPriceRange, let maxPrice = hotelfiltermodel.maxPriceRange {
                     // Both minPrice and maxPrice have values in filterModel
@@ -186,6 +189,7 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
                     rangeSlider.minValue = prices.compactMap { Float($0) }.min()!
                     rangeSlider.maxValue = prices.compactMap { Float($0) }.max()!
                     
+                    
                     // Set the thumbs to the values
                     rangeSlider.selectedMinimum = minValue
                     rangeSlider.selectedMaximum = maxValue
@@ -195,6 +199,9 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
                 }
                 
                 
+            } else {
+                
+              
             }
         }
         
