@@ -122,7 +122,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="K2d-kZ-A5m" secondAttribute="trailing" constant="15" id="EY2-Wf-be1"/>
+                                            <constraint firstAttribute="trailing" secondItem="K2d-kZ-A5m" secondAttribute="trailing" constant="15" id="Czj-6k-djF"/>
                                             <constraint firstItem="K2d-kZ-A5m" firstAttribute="leading" secondItem="tEb-JK-aLM" secondAttribute="leading" constant="15" id="F9W-Tx-9MJ"/>
                                             <constraint firstAttribute="height" constant="40" id="oxg-95-FFM"/>
                                             <constraint firstItem="K2d-kZ-A5m" firstAttribute="top" secondItem="tEb-JK-aLM" secondAttribute="top" constant="10" id="uSf-4u-lvB"/>
@@ -291,7 +291,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

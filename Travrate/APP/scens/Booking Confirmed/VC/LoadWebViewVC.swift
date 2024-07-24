@@ -176,8 +176,6 @@ extension LoadWebViewVC {
     }
     
     
-    
-    
     func callSecureBookingAPI(str:String) {
         print(str)
         MySingleton.shared.viewmodel1?.Call_mobile_secure_booking_API(dictParam: [:], url: str)
@@ -187,16 +185,18 @@ extension LoadWebViewVC {
     
     
     func mobilesecurebookingDetails(response: MobilePrePaymentModel) {
-        //gotoBookingConfirmedVC(str: response.url ?? "")
+       
         print(" ======= Voucher URL =======")
         print(response.url)
+        
+        MySingleton.shared.voucherurlsting = response.url ?? ""
+        response.status == true ? gotoBookingSucessVC():showToast(message: response.message ?? "")
     }
     
     
-    func gotoBookingConfirmedVC(str:String) {
-        guard let vc = BookingConfirmedVC.newInstance.self else {return}
+    func gotoBookingSucessVC() {
+        guard let vc = BookingSucessVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
-        urlString = str
         present(vc, animated: true)
     }
     
@@ -204,6 +204,9 @@ extension LoadWebViewVC {
     func mobolePaymentDetails(response: PaymentModel) {
         //
     }
+    
+    
+    
     
 }
 

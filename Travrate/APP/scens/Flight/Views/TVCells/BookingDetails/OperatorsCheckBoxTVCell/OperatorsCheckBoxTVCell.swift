@@ -16,6 +16,9 @@ class OperatorsCheckBoxTVCell: TableViewCell {
     @IBOutlet weak var check1img: UIImageView!
     @IBOutlet weak var check2img: UIImageView!
     
+    @IBOutlet weak var titlelbl1: UILabel!
+    @IBOutlet weak var titlelbl2: UILabel!
+    
     var check1bool = false
     var check2bool = false
     
@@ -54,6 +57,23 @@ class OperatorsCheckBoxTVCell: TableViewCell {
 //            enableContinueToPaymentBool()
 //        }
         
+        
+        MySingleton.shared.setAttributedTextnew(str1: "*",
+                                                    str2: "Multiple operators and Fare Family information added to flight details page. Please read it",
+                                                    lbl: titlelbl1,
+                                                    str1font: .InterMedium(size: 14),
+                                                    str2font: .InterMedium(size: 14),
+                                                    str1Color: .BooknowBtnColor,
+                                                    str2Color: .BackBtnColor)
+            
+            
+            MySingleton.shared.setAttributedTextnew(str1: "*",
+                                                    str2: "Once payment is confirmed, tickets will be issued at the earliest within 24 hours at max",
+                                                    lbl: titlelbl2,
+                                                    str1font: .InterMedium(size: 14),
+                                                    str2font: .InterMedium(size: 14),
+                                                    str1Color: .BooknowBtnColor,
+                                                    str2Color: .BackBtnColor)
         
     }
     

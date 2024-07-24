@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -51,6 +50,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwv-Ft-x10">
+                                                <rect key="frame" x="53.333333333333329" y="12.333333333333334" width="7.6666666666666643" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="BooknowBtnColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYH-ps-RuW">
                                                 <rect key="frame" x="394" y="0.0" width="50" height="45"/>
                                                 <constraints>
@@ -68,9 +73,11 @@
                                         <constraints>
                                             <constraint firstItem="TYH-ps-RuW" firstAttribute="top" secondItem="LlM-89-uAZ" secondAttribute="top" id="4AW-1g-3wV"/>
                                             <constraint firstItem="7eg-UD-VaZ" firstAttribute="centerY" secondItem="LlM-89-uAZ" secondAttribute="centerY" id="9MX-LD-qCL"/>
+                                            <constraint firstItem="rwv-Ft-x10" firstAttribute="leading" secondItem="7eg-UD-VaZ" secondAttribute="trailing" constant="2" id="IYM-bY-c7S"/>
                                             <constraint firstAttribute="bottom" secondItem="TYH-ps-RuW" secondAttribute="bottom" id="MF2-aF-FOH"/>
                                             <constraint firstItem="TYH-ps-RuW" firstAttribute="centerY" secondItem="LlM-89-uAZ" secondAttribute="centerY" id="Pno-4P-Ihd"/>
                                             <constraint firstItem="7eg-UD-VaZ" firstAttribute="leading" secondItem="LlM-89-uAZ" secondAttribute="leading" constant="10" id="UOd-sx-pKa"/>
+                                            <constraint firstItem="rwv-Ft-x10" firstAttribute="centerY" secondItem="7eg-UD-VaZ" secondAttribute="centerY" id="hvF-lA-TGk"/>
                                             <constraint firstAttribute="trailing" secondItem="TYH-ps-RuW" secondAttribute="trailing" id="kH8-xh-0L6"/>
                                             <constraint firstAttribute="height" constant="45" id="xgf-hW-9U3"/>
                                         </constraints>
@@ -337,6 +344,9 @@
     </objects>
     <resources>
         <image name="close" width="26" height="26"/>
+        <namedColor name="BooknowBtnColor">
+            <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BorderColor">
             <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

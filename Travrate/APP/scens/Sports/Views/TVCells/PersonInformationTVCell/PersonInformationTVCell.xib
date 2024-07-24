@@ -38,8 +38,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kj-TT-BJ7">
                                 <rect key="frame" x="0.0" y="33.333333333333343" width="529" height="88"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select no of person*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBK-i1-P6V">
-                                        <rect key="frame" x="14" y="15.999999999999998" width="183.66666666666666" height="19.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select no of person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBK-i1-P6V">
+                                        <rect key="frame" x="14" y="15.999999999999998" width="176.66666666666666" height="19.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -85,9 +85,17 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ks-g6-yEj">
+                                        <rect key="frame" x="192.66666666666666" y="15" width="7.6666666666666572" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="7ks-g6-yEj" firstAttribute="centerY" secondItem="wBK-i1-P6V" secondAttribute="centerY" id="Nuy-0A-HnU"/>
+                                    <constraint firstItem="7ks-g6-yEj" firstAttribute="leading" secondItem="wBK-i1-P6V" secondAttribute="trailing" constant="2" id="Psc-st-2el"/>
                                     <constraint firstAttribute="bottom" secondItem="SYX-2X-e4g" secondAttribute="bottom" constant="2.6699999999999999" id="Ssn-lp-ncm"/>
                                     <constraint firstItem="wBK-i1-P6V" firstAttribute="leading" secondItem="5kj-TT-BJ7" secondAttribute="leading" constant="14" id="Tih-Z1-BI1"/>
                                     <constraint firstAttribute="trailing" secondItem="SYX-2X-e4g" secondAttribute="trailing" constant="14" id="UZM-OM-GlS"/>
@@ -100,8 +108,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-GL-lWp">
                                 <rect key="frame" x="0.0" y="121.33333333333331" width="529" height="88"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ticket type*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhO-db-YYo">
-                                        <rect key="frame" x="14" y="6" width="81.333333333333329" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ticket type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhO-db-YYo">
+                                        <rect key="frame" x="14" y="6" width="74.333333333333329" height="17"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -205,6 +213,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="BooknowBtnColor">
+            <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BorderColor">
             <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -22,6 +22,7 @@ class SportsBookNowTVCell: TableViewCell {
     @IBOutlet weak var kwdlbk: UILabel!
     @IBOutlet weak var servicefeelbl: UILabel!
     @IBOutlet weak var flashlbl: UILabel!
+    @IBOutlet weak var noofTickets: UILabel!
     
     
     
@@ -47,6 +48,7 @@ class SportsBookNowTVCell: TableViewCell {
     func setupUI() {
         bookNowbtn.layer.cornerRadius = 4
         
+      
         MySingleton.shared.setAttributedTextnew(str1: "important Notes ",
                                                 str2: "(Flash)",
                                                 lbl: flashlbl,
@@ -73,7 +75,7 @@ class SportsBookNowTVCell: TableViewCell {
         ticketValue = cellInfo?.subTitle ?? ""
         servicefeelbl.text = cellInfo?.headerText ?? ""
         
-        
+        noofTickets.text = "No.of tickets \(cellInfo?.text ?? "")"
     }
     
     

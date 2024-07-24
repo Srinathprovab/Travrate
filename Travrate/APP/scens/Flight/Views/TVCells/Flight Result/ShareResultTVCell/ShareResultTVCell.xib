@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -38,8 +37,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfb-Dh-bK3">
                                 <rect key="frame" x="0.0" y="62" width="433" height="78"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First name*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuX-lg-35P">
-                                        <rect key="frame" x="30" y="0.0" width="71" height="16.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuX-lg-35P">
+                                        <rect key="frame" x="30" y="0.0" width="66" height="16.333333333333332"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -73,6 +72,12 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwy-3V-BCb">
+                                        <rect key="frame" x="98" y="-2.3333333333333357" width="7.6666666666666714" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -83,13 +88,15 @@
                                     <constraint firstAttribute="bottom" secondItem="aPt-FU-iRE" secondAttribute="bottom" constant="1.6699999999999999" id="hGU-p5-2Ob"/>
                                     <constraint firstItem="MuX-lg-35P" firstAttribute="top" secondItem="bfb-Dh-bK3" secondAttribute="top" id="nu9-U3-H7i"/>
                                     <constraint firstAttribute="height" constant="78" id="o0U-Fs-gem"/>
+                                    <constraint firstItem="Bwy-3V-BCb" firstAttribute="centerY" secondItem="MuX-lg-35P" secondAttribute="centerY" id="rCk-jI-Tqg"/>
+                                    <constraint firstItem="Bwy-3V-BCb" firstAttribute="leading" secondItem="MuX-lg-35P" secondAttribute="trailing" constant="2" id="xzg-r5-uVd"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8k4-Vm-akd">
                                 <rect key="frame" x="0.0" y="150" width="433" height="78"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74j-Dr-ZH0">
-                                        <rect key="frame" x="30" y="0.0" width="71" height="16.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74j-Dr-ZH0">
+                                        <rect key="frame" x="30" y="0.0" width="65.666666666666671" height="16.333333333333332"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -123,13 +130,21 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEZ-t3-vMN">
+                                        <rect key="frame" x="97.666666666666671" y="-2.3333333333333428" width="7.6666666666666714" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="74j-Dr-ZH0" firstAttribute="leading" secondItem="8k4-Vm-akd" secondAttribute="leading" constant="30" id="3EJ-Sm-Ifv"/>
+                                    <constraint firstItem="FEZ-t3-vMN" firstAttribute="centerY" secondItem="74j-Dr-ZH0" secondAttribute="centerY" id="JD8-Dx-v1J"/>
                                     <constraint firstAttribute="height" constant="78" id="QSn-Jb-Iq5"/>
                                     <constraint firstAttribute="bottom" secondItem="QHw-fL-Skj" secondAttribute="bottom" constant="1.6699999999999999" id="QWb-7G-uJT"/>
                                     <constraint firstAttribute="trailing" secondItem="QHw-fL-Skj" secondAttribute="trailing" constant="30" id="VWL-dV-9N4"/>
+                                    <constraint firstItem="FEZ-t3-vMN" firstAttribute="leading" secondItem="74j-Dr-ZH0" secondAttribute="trailing" constant="2" id="W6h-ft-Jf3"/>
                                     <constraint firstItem="74j-Dr-ZH0" firstAttribute="top" secondItem="8k4-Vm-akd" secondAttribute="top" id="bkc-sn-lOl"/>
                                     <constraint firstItem="QHw-fL-Skj" firstAttribute="leading" secondItem="8k4-Vm-akd" secondAttribute="leading" constant="30" id="mjz-Ti-xR9"/>
                                     <constraint firstItem="QHw-fL-Skj" firstAttribute="top" secondItem="74j-Dr-ZH0" secondAttribute="bottom" constant="10" id="yI3-rx-tfm"/>
@@ -138,8 +153,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62f-1V-mdX">
                                 <rect key="frame" x="0.0" y="238" width="433" height="78"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Email Id*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSc-3o-wmw">
-                                        <rect key="frame" x="30" y="0.0" width="137.66666666666666" height="16.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Email Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSc-3o-wmw">
+                                        <rect key="frame" x="30" y="0.0" width="132.66666666666666" height="16.333333333333332"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -190,14 +205,22 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVN-1r-hka">
+                                        <rect key="frame" x="164.66666666666666" y="-2.3333333333333428" width="7.6666666666666572" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="SCv-20-vNe" firstAttribute="leading" secondItem="62f-1V-mdX" secondAttribute="leading" constant="30" id="5jS-00-RRH"/>
+                                    <constraint firstItem="KVN-1r-hka" firstAttribute="centerY" secondItem="FSc-3o-wmw" secondAttribute="centerY" id="BRV-kG-ujb"/>
                                     <constraint firstItem="FSc-3o-wmw" firstAttribute="leading" secondItem="62f-1V-mdX" secondAttribute="leading" constant="30" id="LXa-dz-NpK"/>
                                     <constraint firstAttribute="height" constant="78" id="YqF-UY-9mu"/>
                                     <constraint firstAttribute="trailing" secondItem="SCv-20-vNe" secondAttribute="trailing" constant="30" id="ebh-5k-D5d"/>
                                     <constraint firstAttribute="bottom" secondItem="SCv-20-vNe" secondAttribute="bottom" constant="1.6699999999999999" id="fFH-Ts-Dgx"/>
+                                    <constraint firstItem="KVN-1r-hka" firstAttribute="leading" secondItem="FSc-3o-wmw" secondAttribute="trailing" constant="2" id="jUV-AA-F1o"/>
                                     <constraint firstItem="SCv-20-vNe" firstAttribute="top" secondItem="FSc-3o-wmw" secondAttribute="bottom" constant="10" id="vyu-8s-5mX"/>
                                     <constraint firstItem="FSc-3o-wmw" firstAttribute="top" secondItem="62f-1V-mdX" secondAttribute="top" id="xOA-9X-4ea"/>
                                 </constraints>

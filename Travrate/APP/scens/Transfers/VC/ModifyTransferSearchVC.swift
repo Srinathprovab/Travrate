@@ -76,16 +76,20 @@ class ModifyTransferSearchVC: BaseTableVC {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         
-        if cell.depDateTF.isFirstResponder == true {
-            defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.transfercalDepDate)
-            defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.transfercalRetDate)
-            cell.retDatePicker.minimumDate = cell.depDatePicker.date
-            
-        }else {
-            
-            defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.transfercalDepDate)
-            defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.transfercalRetDate)
-            
+        
+        let selectedDepDate = cell.depDatePicker.date
+        if let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: selectedDepDate) {
+            if cell.depDateTF.isFirstResponder == true {
+                defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.transfercalDepDate)
+                defaults.set(formatter.string(from: nextDay), forKey: UserDefaultsKeys.transfercalRetDate)
+                cell.retDatePicker.minimumDate = nextDay
+                
+            }else {
+                
+                defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.transfercalDepDate)
+                defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.transfercalRetDate)
+                
+            }
         }
         
         commonTableView.reloadData()

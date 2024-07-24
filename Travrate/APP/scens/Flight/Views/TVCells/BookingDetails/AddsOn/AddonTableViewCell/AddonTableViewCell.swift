@@ -60,6 +60,9 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
         caraddon = MySingleton.shared.carAddonServices
         transferaddon = MySingleton.shared.transferAddonServices
         
+        
+        
+        
         if cellInfo?.key == "flight" {
             if cellInfo?.key1 == "first" {
                 displayFirstHalf = true

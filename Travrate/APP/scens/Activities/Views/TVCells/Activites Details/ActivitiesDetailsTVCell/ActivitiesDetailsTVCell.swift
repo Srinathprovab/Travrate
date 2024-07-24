@@ -138,51 +138,54 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
     }
     
     func updateHeight() {
-        tvheight.constant = (calculateTableViewHeight())
+        tvheight.constant = 4000
         detailsTV.reloadData()
         self.layoutIfNeeded() // Ensure the layout is updated
     }
     
-    func calculateTableViewHeight() -> CGFloat {
-        var totalHeight: CGFloat = 0
-        
-        if tapkey == "activities" {
-            // Assume one row of ActivitiesTypeTVCell
-            if let sampleCell = detailsTV.dequeueReusableCell(withIdentifier: "type") as? ActivitiesTypeTVCell {
-                sampleCell.updateHeight()
-                let sampleIndexPath = IndexPath(row: 0, section: 0)
-                sampleCell.setNeedsLayout()
-                sampleCell.layoutIfNeeded()
-                let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-                totalHeight = height
-            }
-        } else if tapkey == "highlights" {
-            // Assume one row of ActivitiesHighlightsTVCell
-            if let sampleCell = detailsTV.dequeueReusableCell(withIdentifier: "highlightes") as? ActivitiesHighlightsTVCell {
-                let sampleIndexPath = IndexPath(row: 0, section: 0)
-                sampleCell.setNeedsLayout()
-                sampleCell.layoutIfNeeded()
-                let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-                totalHeight = height
-            }
-        } else {
-            // Assume one row of ActivitiesDecreptionTVCell
-            if let sampleCell = detailsTV.dequeueReusableCell(withIdentifier: "desc") as? ActivitiesDecreptionTVCell {
-                let sampleIndexPath = IndexPath(row: 0, section: 0)
-                sampleCell.setNeedsLayout()
-                sampleCell.layoutIfNeeded()
-                let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-                totalHeight = height
-            }
-        }
-        
-        // Add a small padding to avoid cutting off the cell
-        let padding: CGFloat = 0
-        totalHeight += padding
-        
-        return totalHeight
-    }
+    
 
+    
+//    func calculateTableViewHeight() -> CGFloat {
+//        var totalHeight: CGFloat = 0
+//        
+//        if tapkey == "activities" {
+//            // Assume one row of ActivitiesTypeTVCell
+//            if let sampleCell = detailsTV.dequeueReusableCell(withIdentifier: "type") as? ActivitiesTypeTVCell {
+//                sampleCell.updateHeight()
+//                let sampleIndexPath = IndexPath(row: 0, section: 0)
+//                sampleCell.setNeedsLayout()
+//                sampleCell.layoutIfNeeded()
+//                let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+//                totalHeight = height
+//            }
+//        } else if tapkey == "highlights" {
+//            // Assume one row of ActivitiesHighlightsTVCell
+//            if let sampleCell = detailsTV.dequeueReusableCell(withIdentifier: "highlightes") as? ActivitiesHighlightsTVCell {
+//                let sampleIndexPath = IndexPath(row: 0, section: 0)
+//                sampleCell.setNeedsLayout()
+//                sampleCell.layoutIfNeeded()
+//                let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+//                totalHeight = height
+//            }
+//        } else {
+//            // Assume one row of ActivitiesDecreptionTVCell
+//            if let sampleCell = detailsTV.dequeueReusableCell(withIdentifier: "desc") as? ActivitiesDecreptionTVCell {
+//                let sampleIndexPath = IndexPath(row: 0, section: 0)
+//                sampleCell.setNeedsLayout()
+//                sampleCell.layoutIfNeeded()
+//                let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+//                totalHeight = height
+//            }
+//        }
+//        
+//        // Add a small padding to avoid cutting off the cell
+//        let padding: CGFloat = 0
+//        totalHeight += padding
+//        
+//        return totalHeight
+//    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -280,9 +283,9 @@ extension ActivitiesDetailsTVCell:UITableViewDelegate, UITableViewDataSource {
     
     
     
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return UITableView.automaticDimension
-        }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
     
     
 }

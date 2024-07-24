@@ -50,16 +50,27 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KH2-ex-elh" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="345" height="278"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2C-8w-IcD">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JF4-M7-k2X">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="44"/>
-                                        <color key="backgroundColor" name="BackBtnColor"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2C-8w-IcD">
+                                                <rect key="frame" x="105.66666666666669" y="0.0" width="134" height="44"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="o3s-HA-LdS"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="18"/>
+                                                <color key="textColor" name="WhiteColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" name="HeadingColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="o3s-HA-LdS"/>
+                                            <constraint firstItem="E2C-8w-IcD" firstAttribute="centerY" secondItem="JF4-M7-k2X" secondAttribute="centerY" id="Bkj-qC-zMH"/>
+                                            <constraint firstAttribute="height" constant="44" id="i3b-7C-s5f"/>
+                                            <constraint firstItem="E2C-8w-IcD" firstAttribute="centerX" secondItem="JF4-M7-k2X" secondAttribute="centerX" id="yta-pV-I3u"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSq-ee-pY4">
                                         <rect key="frame" x="0.0" y="44" width="345" height="1"/>
                                         <color key="backgroundColor" name="AppBorderColor"/>
@@ -169,7 +180,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="MBk-4h-UPX" firstAttribute="leading" secondItem="KH2-ex-elh" secondAttribute="leading" id="3Vi-G5-FhY"/>
-                                    <constraint firstItem="E2C-8w-IcD" firstAttribute="leading" secondItem="KH2-ex-elh" secondAttribute="leading" id="BdP-IT-d0T"/>
+                                    <constraint firstItem="JF4-M7-k2X" firstAttribute="top" secondItem="KH2-ex-elh" secondAttribute="top" id="8xS-0z-HJO"/>
                                     <constraint firstAttribute="trailing" secondItem="PrO-n4-nhJ" secondAttribute="trailing" constant="16" id="Bsb-VA-eRa"/>
                                     <constraint firstItem="4C6-Ko-ymp" firstAttribute="leading" secondItem="KH2-ex-elh" secondAttribute="leading" constant="16" id="EUo-JT-dEx"/>
                                     <constraint firstAttribute="trailing" secondItem="cX5-6V-jml" secondAttribute="trailing" constant="16" id="Gka-sP-D0J"/>
@@ -191,26 +202,26 @@
                                     <constraint firstItem="unt-lt-XVG" firstAttribute="top" secondItem="cX5-6V-jml" secondAttribute="bottom" constant="7.6699999999999999" id="aoI-oI-fvg"/>
                                     <constraint firstItem="qHe-la-wf0" firstAttribute="top" secondItem="JuL-zE-9bQ" secondAttribute="bottom" constant="10" id="ay5-N3-aAG"/>
                                     <constraint firstItem="JSq-ee-pY4" firstAttribute="leading" secondItem="KH2-ex-elh" secondAttribute="leading" id="bCb-qA-amA"/>
+                                    <constraint firstItem="JF4-M7-k2X" firstAttribute="leading" secondItem="KH2-ex-elh" secondAttribute="leading" id="bL3-7o-wfS"/>
                                     <constraint firstItem="lum-ia-egv" firstAttribute="leading" secondItem="KH2-ex-elh" secondAttribute="leading" constant="16" id="bkA-hi-hoU"/>
                                     <constraint firstAttribute="trailing" secondItem="MBk-4h-UPX" secondAttribute="trailing" id="clJ-eG-anh"/>
                                     <constraint firstItem="qHe-la-wf0" firstAttribute="leading" secondItem="KH2-ex-elh" secondAttribute="leading" constant="16" id="eL5-Np-hiv"/>
                                     <constraint firstAttribute="height" constant="278" id="gWf-mM-jh0"/>
+                                    <constraint firstAttribute="trailing" secondItem="JF4-M7-k2X" secondAttribute="trailing" id="kd1-aE-Mdf"/>
                                     <constraint firstItem="I7h-sN-SnL" firstAttribute="centerY" secondItem="4C6-Ko-ymp" secondAttribute="centerY" id="lfK-SF-Cut"/>
                                     <constraint firstItem="4C6-Ko-ymp" firstAttribute="top" secondItem="TnN-BN-T36" secondAttribute="bottom" constant="10" id="mz4-8a-b9y"/>
+                                    <constraint firstItem="JSq-ee-pY4" firstAttribute="top" secondItem="JF4-M7-k2X" secondAttribute="bottom" id="ocQ-sq-xLC"/>
                                     <constraint firstItem="6Q9-J0-ieU" firstAttribute="top" secondItem="lum-ia-egv" secondAttribute="bottom" constant="8" id="pD6-bf-WCL"/>
                                     <constraint firstItem="cX5-6V-jml" firstAttribute="leading" secondItem="KH2-ex-elh" secondAttribute="leading" constant="16" id="rFj-ig-g0V"/>
                                     <constraint firstAttribute="trailing" secondItem="f6k-n5-nWo" secondAttribute="trailing" constant="16" id="rtc-bv-2JR"/>
                                     <constraint firstAttribute="trailing" secondItem="JSq-ee-pY4" secondAttribute="trailing" id="sBs-9M-12v"/>
                                     <constraint firstAttribute="trailing" secondItem="unt-lt-XVG" secondAttribute="trailing" constant="16" id="sbD-Ls-NT6"/>
                                     <constraint firstItem="cX5-6V-jml" firstAttribute="top" secondItem="JSq-ee-pY4" secondAttribute="bottom" constant="10" id="vD8-F8-XzI"/>
-                                    <constraint firstItem="E2C-8w-IcD" firstAttribute="top" secondItem="KH2-ex-elh" secondAttribute="top" id="vhS-TZ-QRf"/>
                                     <constraint firstItem="PrO-n4-nhJ" firstAttribute="centerY" secondItem="I0D-fY-WSk" secondAttribute="centerY" id="vxv-AP-6Wf"/>
                                     <constraint firstItem="unt-lt-XVG" firstAttribute="leading" secondItem="KH2-ex-elh" secondAttribute="leading" constant="16" id="w2K-Hd-IVL"/>
                                     <constraint firstAttribute="trailing" secondItem="Zyw-Cr-zhf" secondAttribute="trailing" constant="16" id="wT4-zf-b0c"/>
-                                    <constraint firstAttribute="trailing" secondItem="E2C-8w-IcD" secondAttribute="trailing" id="wzA-BQ-k34"/>
                                     <constraint firstItem="Zyw-Cr-zhf" firstAttribute="centerY" secondItem="lum-ia-egv" secondAttribute="centerY" id="xZy-Do-R7u"/>
                                     <constraint firstItem="6Q9-J0-ieU" firstAttribute="leading" secondItem="KH2-ex-elh" secondAttribute="leading" constant="16" id="ybj-Ch-8eO"/>
-                                    <constraint firstItem="JSq-ee-pY4" firstAttribute="top" secondItem="E2C-8w-IcD" secondAttribute="bottom" id="zfo-1b-RyW"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -408,6 +419,7 @@
                 <outlet property="pricesummerylbl" destination="E2C-8w-IcD" id="afH-kU-zci"/>
                 <outlet property="roomCountLabel" destination="kKG-3C-7HV" id="fmj-Ar-waM"/>
                 <outlet property="roomTypelbl" destination="qHe-la-wf0" id="Vis-MY-fHU"/>
+                <outlet property="topview" destination="JF4-M7-k2X" id="cZ2-8v-bDp"/>
                 <outlet property="whatsAppPriceLbl" destination="157-2o-FMX" id="Dwe-Q3-ezh"/>
                 <outlet property="whatsAppView" destination="idl-89-MVr" id="PtK-kA-gz9"/>
             </connections>
@@ -427,11 +439,14 @@
         <namedColor name="AppLabelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="BackBtnColor">
+        <namedColor name="HeadingColor">
             <color red="0.10599999874830246" green="0.29399999976158142" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="IttenarySelectedColor">
             <color red="0.3919999897480011" green="0.15299999713897705" blue="0.43500000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WhiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

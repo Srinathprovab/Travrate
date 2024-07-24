@@ -30,6 +30,11 @@ class PrimaryContactInfoTVCell: TableViewCell {
     @IBOutlet weak var showpassBtn: UIButton!
     
     
+    @IBOutlet weak var nametitlelbl: UILabel!
+    @IBOutlet weak var mobiletitlelbl: UILabel!
+    @IBOutlet weak var pwdTitlelbl: UILabel!
+    
+    
     var delegate:PrimaryContactInfoTVCellDelegate?
     var maxLength = 8
     var isSearchBool = Bool()
@@ -82,6 +87,10 @@ class PrimaryContactInfoTVCell: TableViewCell {
             guestBtn.isHidden = true
             regBtn.setTitle("Login", for: .normal)
         }
+        
+        
+        
+       
         
     }
     

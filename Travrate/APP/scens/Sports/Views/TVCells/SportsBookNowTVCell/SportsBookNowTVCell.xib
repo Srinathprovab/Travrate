@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -153,6 +153,7 @@
                 <outlet property="bookNowbtn" destination="2A4-H1-X3E" id="81I-t4-eeh"/>
                 <outlet property="flashlbl" destination="2t1-BT-b3R" id="Fvg-M0-tZw"/>
                 <outlet property="kwdlbk" destination="B2Y-Sv-O4y" id="w5D-6P-7JR"/>
+                <outlet property="noofTickets" destination="S6f-TM-Jml" id="kXI-39-QBl"/>
                 <outlet property="noofticketslbl" destination="S6f-TM-Jml" id="nEx-20-rDM"/>
                 <outlet property="servicefeelbl" destination="01R-K8-sDe" id="90f-Io-hqC"/>
                 <outlet property="sportnamelbl" destination="LdD-ZS-vq0" id="ksU-B8-CR8"/>

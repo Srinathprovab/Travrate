@@ -99,6 +99,7 @@ var startRatingArray = [String]()
 var starRatingInputArray = [String]()
 var hotelstarratingArray = [String]()
 var filterresettapbool = false
+var filteredSportsTickekData = [SportsDetailsData]()
 
 //DASHBOARD
 var callapibool = Bool()
@@ -168,8 +169,6 @@ var totalFlexiblePrice: Double = 0.0
 var totalPriceChange: Double = 0.0
 var totalNotificationPrice: Double = 0.0
 
-
-
 var bookedjurnycitys = String()
 var lastContentOffset: CGFloat = 0
 var urlString = String()
@@ -223,7 +222,6 @@ var selectedCellIndices: [IndexPath] = [] // Keep track of selected cell indices
 
 var withwhomtitleArray = [String]()
 var withwhomcodeArray = [String]()
-
 var multitripstittleArray = [String]()
 var multitripscodeArray = [String]()
 

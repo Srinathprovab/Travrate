@@ -32,7 +32,7 @@ class NewHotelPriceSummeryTVCell: TableViewCell {
     @IBOutlet weak var pricelbl: UILabel!
     @IBOutlet weak var holderView: UIStackView!
     @IBOutlet weak var pricesummerylbl: UILabel!
-    
+    @IBOutlet weak var topview: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +45,8 @@ class NewHotelPriceSummeryTVCell: TableViewCell {
         pricesummerylbl.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         pricesummerylbl.layer.cornerRadius = 8
         
+        topview.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        topview.layer.cornerRadius = 8
         
         hotelflexibleAmount = Int(hotelflexiblePrie) ?? 0
         hotelwhatsAppAmount = Int(hotelwhatsAppPrice) ?? 0

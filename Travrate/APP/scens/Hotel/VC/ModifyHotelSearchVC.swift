@@ -17,9 +17,10 @@ class ModifyHotelSearchVC: BaseTableVC {
         return vc
     }
     var countrycode = String()
-    
+    let formatter = DateFormatter()
     
     override func viewWillAppear(_ animated: Bool) {
+        formatter.dateFormat = "dd-MM-yyyy"
         addObserver()
     }
     
@@ -61,10 +62,19 @@ class ModifyHotelSearchVC: BaseTableVC {
     //MARK: - donedatePicker cancelDatePicker
     override func donedatePicker(cell:HotelSearchTVCell){
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
-        defaults.set(formatter.string(from: cell.checkoutDatePicker.date), forKey: UserDefaultsKeys.checkout)
+        
+        let selectedDepDate = cell.checkinDatePicker.date
+        if let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: selectedDepDate) {
+            if cell.checkinTF.isFirstResponder == true {
+                defaults.set(formatter.string(from: selectedDepDate), forKey: UserDefaultsKeys.checkin)
+                defaults.set(formatter.string(from: nextDay), forKey: UserDefaultsKeys.checkout)
+                cell.checkoutDatePicker.minimumDate = nextDay
+            }else {
+                defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
+                defaults.set(formatter.string(from: cell.checkoutDatePicker.date), forKey: UserDefaultsKeys.checkout)
+            }
+            
+        }
         
         commonTableView.reloadData()
         self.view.endEditing(true)

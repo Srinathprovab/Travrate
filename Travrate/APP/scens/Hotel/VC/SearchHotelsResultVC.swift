@@ -305,7 +305,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
             hotelname: cell.hotelNamelbl.text ?? ""
         )
         mapModelArray.append(mapModel)
-       // gotoMapViewVC()
+        gotoMapViewVC()
     }
     
     func gotoMapViewVC() {
@@ -394,7 +394,7 @@ extension SearchHotelsResultVC {
     func callHotelSearchAPI(bookingsource:String,searchid:String){
         payload.removeAll()
         payload["offset"] = "0"
-        payload["limit"] = "10"
+        payload["limit"] = "100"
         payload["booking_source"] = bookingsource
         payload["search_id"] = searchid
         payload["ResultIndex"] = "1"
@@ -543,7 +543,13 @@ extension SearchHotelsResultVC {
                 
                 
                 cell.locationlbl.text = dict.address
-                setAttributedText1(str1: dict.currency ?? "", str2: dict.price ?? "", lbl: cell.kwdlbl)
+                MySingleton.shared.setAttributedTextnew(str1: dict.currency ?? "",
+                                                        str2: dict.price ?? "",
+                                                        lbl: cell.kwdlbl,
+                                                        str1font: .InterSemiBold(size: 14),
+                                                        str2font: .InterSemiBold(size: 16),
+                                                        str1Color: .TitleColor,
+                                                        str2Color: .TitleColor)
                 cell.bookingsource = dict.booking_source ?? ""
                 cell.hotelid = String(dict.hotel_code ?? "0")
                 cell.lat = dict.latitude ?? ""
@@ -558,7 +564,6 @@ extension SearchHotelsResultVC {
                 
                 //   cell.setAttributedString1(str1:dict.currency ?? "", str2: dict.price ?? "")
                 cell.ratingView.value = CGFloat(dict.star_rating ?? 0)
-                
                 cell.hotel_DescLabel = dict.hotel_desc ?? "bbbbb"
                 
                 
@@ -601,7 +606,13 @@ extension SearchHotelsResultVC {
                 
                 cell.ratingView.value = CGFloat(dict.star_rating ?? 0)
                 cell.locationlbl.text = dict.address
-                setAttributedText1(str1: dict.currency ?? "", str2: dict.price ?? "", lbl: cell.kwdlbl)
+                MySingleton.shared.setAttributedTextnew(str1: dict.currency ?? "",
+                                                        str2: dict.price ?? "",
+                                                        lbl: cell.kwdlbl,
+                                                        str1font: .InterSemiBold(size: 14),
+                                                        str2font: .InterSemiBold(size: 16),
+                                                        str1Color: .TitleColor,
+                                                        str2Color: .TitleColor)
                 cell.bookingsource = dict.booking_source ?? ""
                 cell.hotelid = String(dict.hotel_code ?? "0")
                 cell.lat = dict.latitude ?? ""

@@ -52,21 +52,21 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         
-        if cell.depDateTF.isFirstResponder == true {
-            defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
-            defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
-            cell.retDatePicker.minimumDate = cell.depDatePicker.date
-    
-        }else {
-            defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
-            defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
-            
-            
+        
+        let selectedDepDate = cell.depDatePicker.date
+        if let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: selectedDepDate) {
+            if cell.depDateTF.isFirstResponder == true {
+                defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
+                defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
+                cell.retDatePicker.minimumDate = cell.depDatePicker.date
+            }else {
+                defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
+                defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
+                
+            }
         }
         
-        
-        MySingleton.shared.sportFromDate = cell.depDatelbl.text ?? ""
-        MySingleton.shared.sportToDate = cell.retDatelbl.text ?? ""
+    
         
         commonTableView.reloadData()
         self.view.endEditing(true)
@@ -85,9 +85,9 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
             showToast(message: "Please Select Team Or Match")
         }else if MySingleton.shared.sportsVenuName.isEmpty == true {
             showToast(message: "Please Select Venu Or Country")
-        } else if MySingleton.shared.sportFromDate.isEmpty == true {
+        } else if defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) == "Select Date" {
             showToast(message: "Select Date")
-        }else if MySingleton.shared.sportToDate.isEmpty == true {
+        }else if defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) == "Select Date" {
             showToast(message: "Select Date")
         }else {
             
@@ -98,7 +98,7 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
             MySingleton.shared.payload["to"] = ""
             MySingleton.shared.payload["event_id"] = ""
             MySingleton.shared.payload["venue_type"] = ""
-            MySingleton.shared.payload["form_date"] = MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
+            MySingleton.shared.payload["form_date"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
             MySingleton.shared.payload["to_date"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
             MySingleton.shared.payload["special_events_id"] = MySingleton.shared.sportscityId
             

@@ -182,13 +182,13 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     
     
     @IBAction func didTapOnDropOfDifferentLocBtnAction(_ sender: Any) {
-        dropuplocView.isHidden = false
+        dropuplocView.isHidden = true
         dropofSameCheckImage.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
         NotificationCenter.default.post(name: NSNotification.Name("reloadTV"), object: nil)
         
         difflocbool.toggle()
         if difflocbool {
-            dropuplocView.isHidden = false
+            dropuplocView.isHidden = true
             dropofDiffCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
         }else {
             dropuplocView.isHidden = true

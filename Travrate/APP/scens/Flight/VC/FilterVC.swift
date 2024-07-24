@@ -2340,6 +2340,12 @@ extension FilterVC {
         hotelfiltermodel.starRatingNew.removeAll()
         startRatingArray.removeAll()
         
+        starRatingInputArray = ["3","4","5"]
+        hotelfiltermodel.starRatingNew = starRatingInputArray
+        if let cell = commonTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? PopularFiltersTVCell {
+            cell.starratingCV.reloadData()
+        }
+       
         
         // Deselect all cells in your checkOptionsTVCell table view
         deselectAllCheckOptionsCells()

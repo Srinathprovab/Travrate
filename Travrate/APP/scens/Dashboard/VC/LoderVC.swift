@@ -249,7 +249,7 @@ extension LoderVC {
             sportsView.isHidden = false
             sporteventlbl.text = MySingleton.shared.sportsTeamName
             sportvenulbl.text = MySingleton.shared.sportsVenuName
-            sportdateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")) To \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy"))"
+            sportdateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")) To \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy"))"
             
         }else if tabselect == "CarRental" {
             

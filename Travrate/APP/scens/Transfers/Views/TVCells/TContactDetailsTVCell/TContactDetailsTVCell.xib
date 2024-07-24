@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -79,6 +78,12 @@
                                             </view>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQX-Sg-npA">
+                                        <rect key="frame" x="97.333333333333329" y="-1.6666666666666643" width="7.6666666666666714" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="WhiteColor"/>
                                 <constraints>
@@ -88,6 +93,8 @@
                                     <constraint firstAttribute="trailing" secondItem="scb-Cy-5Y1" secondAttribute="trailing" id="RYl-1O-WSS"/>
                                     <constraint firstItem="jnf-hH-Hyx" firstAttribute="leading" secondItem="NUb-FI-uh1" secondAttribute="leading" id="elj-dw-Dlc"/>
                                     <constraint firstItem="jnf-hH-Hyx" firstAttribute="top" secondItem="wKJ-3p-MYI" secondAttribute="top" id="kxm-7O-YSZ"/>
+                                    <constraint firstItem="uQX-Sg-npA" firstAttribute="leading" secondItem="jnf-hH-Hyx" secondAttribute="trailing" constant="2" id="mCp-Qq-EKq"/>
+                                    <constraint firstItem="uQX-Sg-npA" firstAttribute="centerY" secondItem="jnf-hH-Hyx" secondAttribute="centerY" id="poV-OQ-rgx"/>
                                     <constraint firstItem="scb-Cy-5Y1" firstAttribute="leading" secondItem="wKJ-3p-MYI" secondAttribute="leading" id="sxF-eJ-XNF"/>
                                     <constraint firstAttribute="bottom" secondItem="scb-Cy-5Y1" secondAttribute="bottom" constant="6" id="uDt-Kh-V05"/>
                                 </constraints>
@@ -135,6 +142,12 @@
                                             </view>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aw0-h9-Uce">
+                                        <rect key="frame" x="37.333333333333329" y="-1.6666666666666572" width="7.6666666666666643" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="WhiteColor"/>
                                 <constraints>
@@ -143,6 +156,8 @@
                                     <constraint firstItem="T3m-zN-yyO" firstAttribute="top" secondItem="9MN-Me-ED3" secondAttribute="bottom" constant="8" id="A51-wM-08O"/>
                                     <constraint firstAttribute="height" constant="75" id="AoF-y4-TfI"/>
                                     <constraint firstAttribute="trailing" secondItem="T3m-zN-yyO" secondAttribute="trailing" id="CUF-QN-F7Q"/>
+                                    <constraint firstItem="Aw0-h9-Uce" firstAttribute="centerY" secondItem="9MN-Me-ED3" secondAttribute="centerY" id="PZ7-C0-lEa"/>
+                                    <constraint firstItem="Aw0-h9-Uce" firstAttribute="leading" secondItem="9MN-Me-ED3" secondAttribute="trailing" constant="2" id="Pzc-4M-Tra"/>
                                     <constraint firstItem="9MN-Me-ED3" firstAttribute="top" secondItem="FpV-WW-D3P" secondAttribute="top" id="ftg-6X-wdf"/>
                                     <constraint firstAttribute="bottom" secondItem="T3m-zN-yyO" secondAttribute="bottom" constant="6" id="qav-4d-VzC"/>
                                     <constraint firstItem="9MN-Me-ED3" firstAttribute="leading" secondItem="FpV-WW-D3P" secondAttribute="leading" id="wpf-I7-pTX"/>
@@ -225,12 +240,20 @@
                                             <constraint firstItem="wVX-1R-qJk" firstAttribute="leading" secondItem="PkV-1h-xS1" secondAttribute="leading" id="K5v-7u-ntL"/>
                                         </constraints>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tf-dU-ki1">
+                                        <rect key="frame" x="103.33333333333334" y="-1.6666666666666572" width="7.6666666666666714" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="WhiteColor"/>
                                 <constraints>
                                     <constraint firstItem="SnK-JM-uq7" firstAttribute="top" secondItem="Gag-1E-3eH" secondAttribute="top" id="5dx-Gc-MgK"/>
                                     <constraint firstItem="SnK-JM-uq7" firstAttribute="leading" secondItem="Q9t-cv-sIr" secondAttribute="leading" id="8pL-G7-HVo"/>
+                                    <constraint firstItem="4tf-dU-ki1" firstAttribute="centerY" secondItem="SnK-JM-uq7" secondAttribute="centerY" id="TgQ-tO-sUJ"/>
                                     <constraint firstAttribute="bottom" secondItem="PkV-1h-xS1" secondAttribute="bottom" constant="6" id="UnN-WO-dAn"/>
+                                    <constraint firstItem="4tf-dU-ki1" firstAttribute="leading" secondItem="SnK-JM-uq7" secondAttribute="trailing" constant="2" id="XR4-oL-xNG"/>
                                     <constraint firstItem="PkV-1h-xS1" firstAttribute="top" secondItem="SnK-JM-uq7" secondAttribute="bottom" constant="8" id="avB-Uc-Nq0"/>
                                     <constraint firstAttribute="height" constant="75" id="ax6-cr-6Ey"/>
                                     <constraint firstItem="PkV-1h-xS1" firstAttribute="leading" secondItem="Gag-1E-3eH" secondAttribute="leading" id="jRa-nA-HVq"/>
@@ -277,16 +300,22 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="contactnametitlelblb" destination="jnf-hH-Hyx" id="9No-2n-oXm"/>
                 <outlet property="countrycodeTF" destination="tCH-8z-lpr" id="3dP-Pg-UJo"/>
                 <outlet property="emailTF" destination="yqi-jx-4we" id="avX-2d-0dX"/>
+                <outlet property="emailtitlelblb" destination="9MN-Me-ED3" id="zoh-zL-Qp6"/>
                 <outlet property="fullnameTF" destination="NUb-FI-uh1" id="QVL-ab-UUB"/>
                 <outlet property="mobileTF" destination="HjE-Rt-H5c" id="Hlv-AY-jT5"/>
                 <outlet property="mobileTFView" destination="Q9t-cv-sIr" id="NCQ-Zk-l5V"/>
+                <outlet property="mobiletitlelbl" destination="SnK-JM-uq7" id="T8f-WR-C6x"/>
             </connections>
             <point key="canvasLocation" x="314.50381679389312" y="116.90140845070422"/>
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="BooknowBtnColor">
+            <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BorderColor">
             <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

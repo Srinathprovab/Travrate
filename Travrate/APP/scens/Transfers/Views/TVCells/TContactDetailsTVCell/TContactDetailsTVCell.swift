@@ -21,6 +21,10 @@ class TContactDetailsTVCell: TableViewCell {
     @IBOutlet weak var fullnameTF: UITextField!
     @IBOutlet weak var countrycodeTF: UITextField!
     
+    @IBOutlet weak var contactnametitlelblb: UILabel!
+    @IBOutlet weak var emailtitlelblb: UILabel!
+    @IBOutlet weak var mobiletitlelbl: UILabel!
+    
     
     var billingCountryName = String()
     var maxLength = 8
@@ -109,6 +113,9 @@ class TContactDetailsTVCell: TableViewCell {
         }
         
         
+        
+        
+        
     }
     
     
@@ -123,6 +130,9 @@ class TContactDetailsTVCell: TableViewCell {
         
         countrycodeTF.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
         countrycodeTF.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
+        
+        
+       
     }
     
     func setupTF(tf:UITextField) {

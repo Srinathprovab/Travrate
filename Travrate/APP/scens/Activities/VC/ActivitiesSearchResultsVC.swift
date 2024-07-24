@@ -208,8 +208,11 @@ extension ActivitiesSearchResultsVC {
         
         list.forEach { i in
             durationTypeArray.append(i.activityDuration ?? "")
-            activitiesTypeArray.append(i.type ?? "")
             prices.append(i.amountStarts ?? "")
+            
+            i.modalities?.forEach({ j in
+                activitiesTypeArray.append(j.name ?? "")
+            })
         }
         
         // Remove empty elements
@@ -254,35 +257,38 @@ extension ActivitiesSearchResultsVC {
 
 extension ActivitiesSearchResultsVC {
     
+    
     func activitiesFilterByApplied(minpricerange: Double, maxpricerange: Double, durationTypeArray: [String], activitiesTypeArray: [String]) {
-        
         
         print("minpricerange : \(minpricerange)")
         print("maxpricerange : \(maxpricerange)")
         print("durationTypeArray : \(durationTypeArray.joined(separator: ","))")
         print("activitiesTypeArray : \(activitiesTypeArray.joined(separator: ","))")
         
-        
-        
+        // Normalize input arrays for case-insensitive comparison
+        let normalizedDurationTypeArray = durationTypeArray.map { $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) }
+        let normalizedActivitiesTypeArray = activitiesTypeArray.map { $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) }
+
         // Filter the car rentals based on the specified criteria
         let filteredArray = MySingleton.shared.activityList.filter { activity in
             guard let totalString = activity.amountStarts else { return false }
             
             let priceInRange = (Double(totalString) ?? 0.0) >= minpricerange && (Double(totalString) ?? 0.0) <= maxpricerange
-            let durationTypeMatch = durationTypeArray.isEmpty || durationTypeArray.contains(activity.activityDuration ?? "")
-            let activitiesTypeMatch = activitiesTypeArray.isEmpty || activitiesTypeArray.contains(activity.type ?? "")
+            let durationTypeMatch = normalizedDurationTypeArray.isEmpty || normalizedDurationTypeArray.contains(activity.activityDuration?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) ?? "")
             
+            let activitiesTypeMatch = normalizedActivitiesTypeArray.isEmpty || (activity.modalities?.contains { modality in
+                normalizedActivitiesTypeArray.contains(modality.name?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) ?? "")
+            } ?? false)
+
             return priceInRange && durationTypeMatch && activitiesTypeMatch
-            
-            
         }
-        
+
         setupTVCells(list: filteredArray)
         
         // Reload the table view with the filtered results
         commonTableView.reloadData()
-        
     }
+
     
 }
 

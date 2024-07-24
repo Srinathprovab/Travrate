@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -61,8 +60,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFi-T1-w40">
                                 <rect key="frame" x="28" y="193" width="304" height="82"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJa-GU-eCE">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="16.666666666666668"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJa-GU-eCE">
+                                        <rect key="frame" x="0.0" y="0.0" width="79" height="16.666666666666668"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -96,6 +95,12 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtI-VK-b6I">
+                                        <rect key="frame" x="81" y="-1.6666666666666572" width="7.6666666666666714" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -103,8 +108,9 @@
                                     <constraint firstItem="b2C-ho-ae3" firstAttribute="leading" secondItem="hFi-T1-w40" secondAttribute="leading" id="4hd-42-HRH"/>
                                     <constraint firstAttribute="bottom" secondItem="b2C-ho-ae3" secondAttribute="bottom" constant="2.3300000000000001" id="RK7-5a-pOV"/>
                                     <constraint firstItem="fJa-GU-eCE" firstAttribute="leading" secondItem="hFi-T1-w40" secondAttribute="leading" id="TBv-Vs-Vhj"/>
+                                    <constraint firstItem="xtI-VK-b6I" firstAttribute="leading" secondItem="fJa-GU-eCE" secondAttribute="trailing" constant="2" id="WGk-BD-3RV"/>
                                     <constraint firstItem="fJa-GU-eCE" firstAttribute="top" secondItem="hFi-T1-w40" secondAttribute="top" id="bAX-Kb-hXG"/>
-                                    <constraint firstAttribute="trailing" secondItem="fJa-GU-eCE" secondAttribute="trailing" id="ks8-cp-n6c"/>
+                                    <constraint firstItem="xtI-VK-b6I" firstAttribute="centerY" secondItem="fJa-GU-eCE" secondAttribute="centerY" id="ktx-LE-uob"/>
                                     <constraint firstAttribute="height" constant="82" id="qkd-0v-eOe"/>
                                     <constraint firstAttribute="trailing" secondItem="b2C-ho-ae3" secondAttribute="trailing" id="qxc-gs-3i9"/>
                                 </constraints>
@@ -112,8 +118,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYd-fK-08i">
                                 <rect key="frame" x="28" y="295" width="304" height="82"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGX-Sk-mhp">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="16.666666666666668"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGX-Sk-mhp">
+                                        <rect key="frame" x="0.0" y="0.0" width="54.333333333333336" height="16.666666666666668"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -162,16 +168,23 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4e-8V-6pN">
+                                        <rect key="frame" x="56.333333333333329" y="-1.6666666666666856" width="7.6666666666666643" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dGX-Sk-mhp" firstAttribute="leading" secondItem="IYd-fK-08i" secondAttribute="leading" id="2td-ag-KfW"/>
-                                    <constraint firstAttribute="trailing" secondItem="dGX-Sk-mhp" secondAttribute="trailing" id="3Ft-zn-Xlt"/>
                                     <constraint firstAttribute="height" constant="82" id="4UN-Mc-bbx"/>
                                     <constraint firstAttribute="bottom" secondItem="cOW-qa-7vM" secondAttribute="bottom" constant="2.3300000000000001" id="ACZ-hW-7bq"/>
                                     <constraint firstAttribute="trailing" secondItem="cOW-qa-7vM" secondAttribute="trailing" id="F4h-KD-NHC"/>
                                     <constraint firstItem="cOW-qa-7vM" firstAttribute="top" secondItem="dGX-Sk-mhp" secondAttribute="bottom" constant="15" id="PP2-Fs-bnR"/>
+                                    <constraint firstItem="Z4e-8V-6pN" firstAttribute="leading" secondItem="dGX-Sk-mhp" secondAttribute="trailing" constant="2" id="ZMC-Vs-vd0"/>
                                     <constraint firstItem="dGX-Sk-mhp" firstAttribute="top" secondItem="IYd-fK-08i" secondAttribute="top" id="md7-Jd-IMB"/>
+                                    <constraint firstItem="Z4e-8V-6pN" firstAttribute="centerY" secondItem="dGX-Sk-mhp" secondAttribute="centerY" id="oaI-hy-aMI"/>
                                     <constraint firstItem="cOW-qa-7vM" firstAttribute="leading" secondItem="IYd-fK-08i" secondAttribute="leading" id="pYJ-qS-ntj"/>
                                 </constraints>
                             </view>

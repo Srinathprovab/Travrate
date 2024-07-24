@@ -27,7 +27,9 @@ class TotalNoofTravellerTVCell: TableViewCell {
     }
     
     override func updateUI() {
+        
         titlelbl.text = cellInfo?.title ?? ""
+       
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {

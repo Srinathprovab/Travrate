@@ -332,7 +332,9 @@ extension BDTransferVC {
         }
         
         MySingleton.shared.tablerow.append(TableRow(moreData:transfer_data,cellType:.TContactDetailsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(key: "transfer", moreData: services, cellType:.AddonTableViewCell))
+        if MySingleton.shared.transferAddonServices.count > 0 {
+            MySingleton.shared.tablerow.append(TableRow(key: "transfer", moreData: services, cellType:.AddonTableViewCell))
+        }
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.TransferfareSummeryTVCell))

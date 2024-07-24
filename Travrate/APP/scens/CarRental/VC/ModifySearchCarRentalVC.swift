@@ -61,23 +61,28 @@ class ModifySearchCarRentalVC: BaseTableVC {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
 
-        
-        if cell.pickupDateTF.isFirstResponder == true {
-            defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.pickuplocDate)
-            defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.dropuplocDate)
-
-            cell.dropupDatePicker.minimumDate = cell.pickupDatePicker.date
-            
-        }else {
-            
-            defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.pickuplocDate)
-            defaults.set(formatter.string(from: cell.dropupDatePicker.date), forKey: UserDefaultsKeys.dropuplocDate)
-            
+        let selectedDepDate = cell.pickupDatePicker.date
+        if let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: selectedDepDate) {
+            if cell.pickupDateTF.isFirstResponder == true {
+                defaults.set(formatter.string(from: selectedDepDate), forKey: UserDefaultsKeys.pickuplocDate)
+                defaults.set(formatter.string(from: nextDay), forKey: UserDefaultsKeys.dropuplocDate)
+                cell.dropupDatePicker.minimumDate = nextDay
+                
+            }else {
+                
+                defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.pickuplocDate)
+                defaults.set(formatter.string(from: cell.dropupDatePicker.date), forKey: UserDefaultsKeys.dropuplocDate)
+                
+            }
         }
+        
+       
         
         commonTableView.reloadData()
         self.view.endEditing(true)
     }
+    
+    
     override func cancelDatePicker(cell:SearchCarRentalTVCell) {
         view.endEditing(true)
     }

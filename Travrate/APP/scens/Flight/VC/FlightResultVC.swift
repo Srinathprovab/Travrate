@@ -1002,6 +1002,7 @@ extension FlightResultVC {
     
     func callActiveBookingSourceAPI() {
         
+        defaults.set(false, forKey: "flightfilteronce")
         MySingleton.shared.loderString = "loder"
         loderBool = true
         showLoadera()

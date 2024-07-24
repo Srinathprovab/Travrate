@@ -26,7 +26,7 @@ class ViewTicketInfoVC: BaseTableVC, SportDetailsVMDelegate {
         }
         
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class ViewTicketInfoVC: BaseTableVC, SportDetailsVMDelegate {
     
     
     override func didTapOnBookNowBtnAction(cell: SportsBookNowTVCell) {
-      
+        
         MySingleton.shared.sport_ticket_value = cell.ticketValue
         gotoSportsBookingDetailsVC()
         
@@ -79,6 +79,14 @@ class ViewTicketInfoVC: BaseTableVC, SportDetailsVMDelegate {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
+    
+    
+    //MARK: - didTapOnTicketsBtnAction SportsStadiumTVCell
+    override func didTapOnTicketsBtnAction(cell: SportsStadiumTVCell) {
+        setupTVCells()
+    }
+    
+    
     
 }
 
@@ -94,7 +102,7 @@ extension ViewTicketInfoVC {
                                          "ViewStadiumBtnsTVCell",
                                          "SportsBookNowTVCell",
                                          "EmptyTVCell"])
-       
+        
         
     }
     
@@ -116,6 +124,7 @@ extension ViewTicketInfoVC {
     
     func sportDetails(response: SportsDetailsModel) {
         
+        filteredSportsTickekData = response.data ?? []
         MySingleton.shared.sports_searchid = response.search_id ?? ""
         MySingleton.shared.sportsDetailsData = response.data ?? []
         MySingleton.shared.sportListData = response.event_list
@@ -141,11 +150,12 @@ extension ViewTicketInfoVC {
         MySingleton.shared.tablerow.append(TableRow(cellType:.ViewStadiumBtnsTVCell))
         
         
-        MySingleton.shared.sportsDetailsData?.forEach({ i in
+        filteredSportsTickekData.forEach({ i in
             MySingleton.shared.tablerow.append(TableRow(title:i.categoryName,
                                                         subTitle: i.ticket_value,
                                                         price: "\(i.price ?? 0)",
                                                         currency: i.currency,
+                                                        text: "\(i.availableSellingQuantities?.count ?? 0)",
                                                         headerText: "Service fee- \(i.serviceFee ?? 0) \(i.currency ?? "")",
                                                         cellType:.SportsBookNowTVCell))
         })
@@ -156,6 +166,7 @@ extension ViewTicketInfoVC {
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()
     }
+    
     
     
     

@@ -107,7 +107,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
-            callSendToPaymentAPI()
+            callFlightSendToPaymentAPI()
         }else if tabselect == "Hotel" {
             hotelSendToPayment()
         }else if tabselect == "Sports" {
@@ -292,36 +292,6 @@ extension SelectPaymentMethodsVC {
     }
     
     
-    func setupHotelTVCells() {
-        MySingleton.shared.tablerow.removeAll()
-        
-        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        
-        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.BookingHotelDetailsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
-                                                    key:"hotel",
-                                                    cellType:.BookedTravelDetailsTVCell))
-        
-        
-        
-        tablerow.append(TableRow(title:hbookingDetails?.name,
-                                 subTitle: hbookingDetails?.address,
-                                 covetedAmnt: totlConvertedGrand, price: hoteltotalprice,
-                                 text: MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
-                                 headerText: "\(MySingleton.shared.roompaxesdetails[0].no_of_rooms ?? 0) \(MySingleton.shared.roompaxesdetails[0].room_name ?? "")",
-                                 buttonTitle:MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
-                                 tempText: "\(MySingleton.shared.totalnights )",
-                                 TotalQuestions: "\(MySingleton.shared.roompaxesdetails[0].no_of_adults ?? "0")",
-                                 cellType: .NewHotelPriceSummeryTVCell,
-                                 questionBase: "\(MySingleton.shared.roompaxesdetails[0].no_of_children ?? "0")"))
-        
-        
-        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
-        
-        commonTVData = MySingleton.shared.tablerow
-        commonTableView.reloadData()
-    }
     
     
     func setupSportsTVCells() {
@@ -352,7 +322,7 @@ extension SelectPaymentMethodsVC {
 extension SelectPaymentMethodsVC {
     
     //MARK: - FLIGHT
-    func callSendToPaymentAPI() {
+    func callFlightSendToPaymentAPI() {
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["app_reference"] =  MySingleton.shared.tmpFlightPreBookingId
         MySingleton.shared.payload["search_id"] = MySingleton.shared.searchid
@@ -363,13 +333,13 @@ extension SelectPaymentMethodsVC {
     
     
     func mibileSendToPaymentDetails(response: MobilePassengerdetailsModel) {
-                DispatchQueue.main.async {
-                    MySingleton.shared.mobilepaymentvm?.CALL_FLIGHT_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.url ?? "")
-                }
+        DispatchQueue.main.async {
+            MySingleton.shared.mobilepaymentvm?.CALL_FLIGHT_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.url ?? "")
+        }
         
-//        DispatchQueue.main.async {
-//            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
-//        }
+        //        DispatchQueue.main.async {
+        //            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
+        //        }
     }
     
     
@@ -378,9 +348,9 @@ extension SelectPaymentMethodsVC {
         print(response.data)
         
         gotoLoadWebViewVC(urlStr1: response.data ?? "")
-//        DispatchQueue.main.async {
-//            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
-//        }
+        //        DispatchQueue.main.async {
+        //            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
+        //        }
     }
     
     
@@ -414,9 +384,6 @@ extension SelectPaymentMethodsVC {
     
     func hotelpreBookingDetails(response: HotelMBPModel) {
         
-        
-        //   htoken = response.t
-        
         responseHotelBookingDetials = response
         
         DispatchQueue.main.async {
@@ -442,6 +409,39 @@ extension SelectPaymentMethodsVC {
     }
     
     
+    
+    func setupHotelTVCells() {
+        MySingleton.shared.tablerow.removeAll()
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.BookingHotelDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
+                                                    key:"hotel",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(title:hbookingDetails?.name,
+                                                    subTitle: hbookingDetails?.address,
+                                                    covetedAmnt: totlConvertedGrand, price: hoteltotalprice,
+                                                    text: MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
+                                                    headerText: "\(MySingleton.shared.roompaxesdetails[0].no_of_rooms ?? 0) \(MySingleton.shared.roompaxesdetails[0].room_name ?? "")",
+                                                    buttonTitle:MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "yyyy-MM-dd", f2: "dd MMM yyyy"),
+                                                    tempText: "\(MySingleton.shared.totalnights )",
+                                                    TotalQuestions: "\(MySingleton.shared.roompaxesdetails[0].no_of_adults ?? "0")",
+                                                    cellType: .NewHotelPriceSummeryTVCell,
+                                                    questionBase: "\(MySingleton.shared.roompaxesdetails[0].no_of_children ?? "0")"))
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+    }
+    
+    
     func hotelSendToPayment() {
         
         MySingleton.shared.payload.removeAll()
@@ -458,13 +458,13 @@ extension SelectPaymentMethodsVC {
     
     
     func hotelSendToPayMentDetails(response: HotelPaymentModel) {
-        //        DispatchQueue.main.async {
-        //            self.hdvm?.CALL_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
-        //        }
-        
         DispatchQueue.main.async {
-            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data?.url ?? "")
+            self.hdvm?.CALL_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
         }
+        
+        //        DispatchQueue.main.async {
+        //            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data?.url ?? "")
+        //        }
     }
     
     
@@ -473,9 +473,11 @@ extension SelectPaymentMethodsVC {
         print(response.data)
         
         
-        DispatchQueue.main.async {
-            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
-        }
+        //        DispatchQueue.main.async {
+        //            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
+        //        }
+        
+        gotoLoadWebViewVC(urlStr1: response.data ?? "")
     }
     
     
@@ -925,7 +927,7 @@ extension SelectPaymentMethodsVC {
         
         loderBool = false
         hideLoadera()
-    
+        
         MySingleton.shared.PaymentSelectionArray = response.payment_selection ?? []
         appref = response.data?.app_reference ?? ""
         carRentalsendToPaymenthiturl = "\(BASE_URL)car/send_to_payment/\(response.data?.app_reference ?? "")/\(response.data?.search_id ?? "")"
@@ -983,8 +985,8 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.payload["extra_option_price"] = MySingleton.shared.car_extra_option_price
         
         
-            MySingleton.shared.carBookingVM?.CALL_CAR_SEND_TO_PAYMENT_API(dictParam: MySingleton.shared.payload, urlstr: self.carRentalsendToPaymenthiturl)
-
+        MySingleton.shared.carBookingVM?.CALL_CAR_SEND_TO_PAYMENT_API(dictParam: MySingleton.shared.payload, urlstr: self.carRentalsendToPaymenthiturl)
+        
         
     }
     
@@ -992,7 +994,7 @@ extension SelectPaymentMethodsVC {
     func carSendtoPaymentDetails(response: CarSecureBookingMode) {
         
         
-      //  let hit_url = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/secure_booking/\(appref)"
+        //  let hit_url = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/secure_booking/\(appref)"
         
         DispatchQueue.main.async {
             MySingleton.shared.carBookingVM?.CALL_CAR_SECURE_BOOKING_API(dictParam: [:], urlstr: response.hit_url ?? "")
@@ -1230,7 +1232,7 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.voucherurlsting = response.hit_url ?? ""
         
         
-
+        
         
         if response.status == true  {
             gotoBookingConfirmedVC()
@@ -1284,7 +1286,7 @@ extension SelectPaymentMethodsVC {
             
             
             DispatchQueue.main.async {[self] in
-               // self.setupCarRentalTVCells()
+                // self.setupCarRentalTVCells()
                 self.callcarBookingAPI()
             }
             

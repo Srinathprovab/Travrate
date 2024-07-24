@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -120,10 +119,23 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noR-Pi-Bbt">
+                                                        <rect key="frame" x="105.33333333333334" y="-1.6666666666666572" width="7.6666666666666714" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BooknowBtnColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBQ-T7-PJU">
+                                                        <rect key="frame" x="348" y="-1.6666666666666572" width="7.6666666666666856" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BooknowBtnColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" name="WhiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="PLY-5y-cm4" firstAttribute="leading" secondItem="Sig-pt-kdq" secondAttribute="leading" id="41j-Am-oTR"/>
+                                                    <constraint firstItem="OBQ-T7-PJU" firstAttribute="leading" secondItem="Xky-mi-wAx" secondAttribute="trailing" constant="2" id="8ZS-qY-VdS"/>
                                                     <constraint firstItem="PLY-5y-cm4" firstAttribute="leading" secondItem="NsD-Cd-F9D" secondAttribute="leading" id="CJD-yN-WLU"/>
                                                     <constraint firstItem="J0N-q2-3vW" firstAttribute="leading" secondItem="Sig-pt-kdq" secondAttribute="leading" id="DMO-ab-pWK"/>
                                                     <constraint firstItem="Xky-mi-wAx" firstAttribute="leading" secondItem="DBI-R9-gpp" secondAttribute="leading" id="Esj-xm-d2I"/>
@@ -132,7 +144,10 @@
                                                     <constraint firstAttribute="bottom" secondItem="J0N-q2-3vW" secondAttribute="bottom" constant="6" id="bUo-iR-R8G"/>
                                                     <constraint firstItem="J0N-q2-3vW" firstAttribute="top" secondItem="PLY-5y-cm4" secondAttribute="bottom" constant="8" id="ebc-js-2N9"/>
                                                     <constraint firstItem="Xky-mi-wAx" firstAttribute="top" secondItem="Sig-pt-kdq" secondAttribute="top" id="gkP-ld-xh5"/>
+                                                    <constraint firstItem="OBQ-T7-PJU" firstAttribute="centerY" secondItem="Xky-mi-wAx" secondAttribute="centerY" id="qWX-Xa-2ea"/>
+                                                    <constraint firstItem="noR-Pi-Bbt" firstAttribute="leading" secondItem="PLY-5y-cm4" secondAttribute="trailing" constant="2" id="try-9v-DOm"/>
                                                     <constraint firstAttribute="height" constant="75" id="vRy-Nb-tMX"/>
+                                                    <constraint firstItem="noR-Pi-Bbt" firstAttribute="centerY" secondItem="PLY-5y-cm4" secondAttribute="centerY" id="zLb-FP-ElS"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8D-fb-kyd">
@@ -227,16 +242,41 @@
                                                             </view>
                                                         </subviews>
                                                     </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjp-aQ-FsS">
+                                                        <rect key="frame" x="33.333333333333336" y="-1.6666666666666856" width="7.6666666666666643" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BooknowBtnColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="508-JQ-46y">
+                                                        <rect key="frame" x="243.66666666666666" y="-1" width="32.666666666666657" height="19"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTN-1j-4iq">
+                                                        <rect key="frame" x="278.33333333333331" y="-1.6666666666666856" width="7.6666666666666856" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BooknowBtnColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" name="WhiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="4xh-ZF-Ytf" firstAttribute="leading" secondItem="u8D-fb-kyd" secondAttribute="leading" id="0ZZ-KU-teu"/>
+                                                    <constraint firstItem="508-JQ-46y" firstAttribute="centerY" secondItem="4xh-ZF-Ytf" secondAttribute="centerY" id="0hX-ff-1UJ"/>
                                                     <constraint firstItem="4xh-ZF-Ytf" firstAttribute="top" secondItem="u8D-fb-kyd" secondAttribute="top" id="65k-mq-JCF"/>
                                                     <constraint firstAttribute="height" constant="75" id="BOJ-Bs-1Gh"/>
+                                                    <constraint firstItem="I8e-pI-3fb" firstAttribute="top" secondItem="508-JQ-46y" secondAttribute="bottom" constant="7" id="I0h-0N-IJV"/>
+                                                    <constraint firstItem="zTN-1j-4iq" firstAttribute="centerY" secondItem="508-JQ-46y" secondAttribute="centerY" id="O70-ss-LGo"/>
                                                     <constraint firstAttribute="trailing" secondItem="I8e-pI-3fb" secondAttribute="trailing" id="ZKE-vK-Jqo"/>
                                                     <constraint firstAttribute="bottom" secondItem="I8e-pI-3fb" secondAttribute="bottom" constant="6" id="ZuI-Ud-h9E"/>
                                                     <constraint firstItem="I8e-pI-3fb" firstAttribute="leading" secondItem="u8D-fb-kyd" secondAttribute="leading" id="als-5V-aWf"/>
+                                                    <constraint firstItem="508-JQ-46y" firstAttribute="leading" secondItem="16l-Zq-Szi" secondAttribute="leading" id="bYp-Vz-6SD"/>
+                                                    <constraint firstItem="qjp-aQ-FsS" firstAttribute="leading" secondItem="4xh-ZF-Ytf" secondAttribute="trailing" constant="2" id="ggJ-qL-luE"/>
                                                     <constraint firstItem="I8e-pI-3fb" firstAttribute="top" secondItem="4xh-ZF-Ytf" secondAttribute="bottom" constant="8" id="nmd-hU-1BK"/>
+                                                    <constraint firstItem="zTN-1j-4iq" firstAttribute="leading" secondItem="508-JQ-46y" secondAttribute="trailing" constant="2" id="rdL-sA-6I3"/>
+                                                    <constraint firstItem="qjp-aQ-FsS" firstAttribute="centerY" secondItem="4xh-ZF-Ytf" secondAttribute="centerY" id="uNi-UT-c85"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -322,12 +362,28 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaS-qz-1SZ">
+                                                        <rect key="frame" x="372.66666666666669" y="-1.6666666666666856" width="7.6666666666666856" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BooknowBtnColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdd-tB-pue">
+                                                        <rect key="frame" x="130" y="-1.6666666666666856" width="7.6666666666666572" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BooknowBtnColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" name="WhiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="yGe-Dz-rh3" firstAttribute="leading" secondItem="sGW-A1-UPM" secondAttribute="leading" id="3Xv-7D-xAl"/>
+                                                    <constraint firstItem="rdd-tB-pue" firstAttribute="centerY" secondItem="3lJ-qg-jtO" secondAttribute="centerY" id="B4k-B4-Iiw"/>
+                                                    <constraint firstItem="qaS-qz-1SZ" firstAttribute="leading" secondItem="yGe-Dz-rh3" secondAttribute="trailing" constant="2" id="C5s-RP-Amj"/>
                                                     <constraint firstAttribute="bottom" secondItem="6iy-nD-Vpx" secondAttribute="bottom" constant="6" id="DI6-Fx-ZAG"/>
                                                     <constraint firstItem="3lJ-qg-jtO" firstAttribute="top" secondItem="oQT-cI-sIV" secondAttribute="top" id="Nlp-SY-RYK"/>
+                                                    <constraint firstItem="rdd-tB-pue" firstAttribute="leading" secondItem="3lJ-qg-jtO" secondAttribute="trailing" constant="2" id="VPY-on-puE"/>
+                                                    <constraint firstItem="qaS-qz-1SZ" firstAttribute="centerY" secondItem="yGe-Dz-rh3" secondAttribute="centerY" id="YJ3-Sc-LCU"/>
                                                     <constraint firstAttribute="height" constant="75" id="YPx-8v-Ss0"/>
                                                     <constraint firstItem="3lJ-qg-jtO" firstAttribute="leading" secondItem="oQT-cI-sIV" secondAttribute="leading" id="aOl-v3-6zx"/>
                                                     <constraint firstAttribute="trailing" secondItem="6iy-nD-Vpx" secondAttribute="trailing" id="eay-Ro-mm3"/>
@@ -435,17 +491,33 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6na-Pj-h1Y">
+                                                        <rect key="frame" x="33.333333333333336" y="-1.6666666666666856" width="7.6666666666666643" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BooknowBtnColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZX-YK-03b">
+                                                        <rect key="frame" x="278.33333333333331" y="-1.6666666666666856" width="7.6666666666666856" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BooknowBtnColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" name="WhiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="0mJ-Kf-Cb9"/>
                                                     <constraint firstItem="tJm-Th-BNj" firstAttribute="leading" secondItem="a65-ii-s8f" secondAttribute="leading" id="22E-I9-sbD"/>
                                                     <constraint firstItem="L20-7V-Dww" firstAttribute="leading" secondItem="QT9-6U-T5U" secondAttribute="leading" id="7WF-F6-TWM"/>
+                                                    <constraint firstItem="6na-Pj-h1Y" firstAttribute="leading" secondItem="L20-7V-Dww" secondAttribute="trailing" constant="2" id="A6p-uV-KlJ"/>
                                                     <constraint firstAttribute="trailing" secondItem="fMi-qE-uCN" secondAttribute="trailing" id="Ezs-1V-cuQ"/>
                                                     <constraint firstItem="fMi-qE-uCN" firstAttribute="leading" secondItem="QT9-6U-T5U" secondAttribute="leading" id="IZj-3g-rpe"/>
+                                                    <constraint firstItem="bZX-YK-03b" firstAttribute="centerY" secondItem="tJm-Th-BNj" secondAttribute="centerY" id="Kcx-Hf-0VK"/>
+                                                    <constraint firstItem="6na-Pj-h1Y" firstAttribute="centerY" secondItem="L20-7V-Dww" secondAttribute="centerY" id="Nuv-2L-Joh"/>
                                                     <constraint firstItem="fMi-qE-uCN" firstAttribute="top" secondItem="L20-7V-Dww" secondAttribute="bottom" constant="8" id="P3b-hL-XEQ"/>
                                                     <constraint firstItem="L20-7V-Dww" firstAttribute="top" secondItem="QT9-6U-T5U" secondAttribute="top" id="U4X-aN-d6g"/>
                                                     <constraint firstItem="tJm-Th-BNj" firstAttribute="top" secondItem="QT9-6U-T5U" secondAttribute="top" id="UJd-tE-X01"/>
+                                                    <constraint firstItem="bZX-YK-03b" firstAttribute="leading" secondItem="tJm-Th-BNj" secondAttribute="trailing" constant="2" id="lza-2m-mx5"/>
                                                     <constraint firstAttribute="bottom" secondItem="fMi-qE-uCN" secondAttribute="bottom" constant="6" id="xYy-zY-DmO"/>
                                                 </constraints>
                                             </view>
@@ -502,6 +574,9 @@
     <resources>
         <image name="tcal" width="24" height="20.666666030883789"/>
         <image name="time" width="24" height="24"/>
+        <namedColor name="BooknowBtnColor">
+            <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BorderColor">
             <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

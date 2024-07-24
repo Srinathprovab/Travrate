@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -36,8 +35,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64C-mn-gBG" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                 <rect key="frame" x="10" y="95" width="472" height="70"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Team, Match (or) Artist*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Vi-XB-yTq">
-                                        <rect key="frame" x="0.0" y="0.0" width="472" height="70"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Team, Match (or) Artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Vi-XB-yTq">
+                                        <rect key="frame" x="0.0" y="0.0" width="422" height="70"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -67,10 +66,10 @@
                                     <constraint firstItem="qmS-DA-4Ot" firstAttribute="centerY" secondItem="64C-mn-gBG" secondAttribute="centerY" id="Kg7-h0-z7q"/>
                                     <constraint firstAttribute="bottom" secondItem="3Vi-XB-yTq" secondAttribute="bottom" id="QCi-aC-62v"/>
                                     <constraint firstAttribute="height" constant="70" id="XTE-57-lmb"/>
+                                    <constraint firstItem="yfL-aP-E7K" firstAttribute="leading" secondItem="3Vi-XB-yTq" secondAttribute="trailing" id="XWK-iI-JeC"/>
                                     <constraint firstItem="3Vi-XB-yTq" firstAttribute="top" secondItem="64C-mn-gBG" secondAttribute="top" id="cAm-6p-YjL"/>
                                     <constraint firstItem="3Vi-XB-yTq" firstAttribute="leading" secondItem="64C-mn-gBG" secondAttribute="leading" id="hPY-RA-YTe"/>
                                     <constraint firstAttribute="trailing" secondItem="yfL-aP-E7K" secondAttribute="trailing" constant="20" id="kpo-Nu-xaU"/>
-                                    <constraint firstAttribute="trailing" secondItem="3Vi-XB-yTq" secondAttribute="trailing" id="m81-vH-ZcC"/>
                                     <constraint firstItem="yfL-aP-E7K" firstAttribute="centerY" secondItem="64C-mn-gBG" secondAttribute="centerY" id="mEu-cq-ejG"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -110,8 +109,8 @@
                                             <constraint firstAttribute="height" constant="20" id="P4h-Dd-iAz"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Venue, City  (or) Country*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRe-1W-kTW">
-                                        <rect key="frame" x="0.0" y="0.0" width="472" height="70"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Venue, City  (or) Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRe-1W-kTW">
+                                        <rect key="frame" x="0.0" y="0.0" width="422" height="70"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -136,8 +135,8 @@
                                     <constraint firstItem="7J4-1g-gYg" firstAttribute="leading" secondItem="CiO-dY-7oO" secondAttribute="leading" constant="10" id="Q0w-92-1Xi"/>
                                     <constraint firstAttribute="trailing" secondItem="kFc-ho-DVk" secondAttribute="trailing" constant="20" id="Q2e-Yq-cuF"/>
                                     <constraint firstItem="IRe-1W-kTW" firstAttribute="top" secondItem="CiO-dY-7oO" secondAttribute="top" id="Qfr-ti-Thd"/>
-                                    <constraint firstAttribute="trailing" secondItem="IRe-1W-kTW" secondAttribute="trailing" id="ikY-m7-c2h"/>
                                     <constraint firstAttribute="height" constant="70" id="kjA-0n-4EM"/>
+                                    <constraint firstItem="kFc-ho-DVk" firstAttribute="leading" secondItem="IRe-1W-kTW" secondAttribute="trailing" id="thP-o7-I2g"/>
                                     <constraint firstItem="7J4-1g-gYg" firstAttribute="centerY" secondItem="CiO-dY-7oO" secondAttribute="centerY" id="wDk-ER-HKp"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -171,7 +170,7 @@
                                                                     <constraint firstAttribute="height" constant="24" id="i0Y-2M-l0a"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tx3-1U-tGz">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tx3-1U-tGz">
                                                                 <rect key="frame" x="20" y="10" width="158" height="18"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
                                                                 <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -226,7 +225,7 @@
                                                                     <constraint firstAttribute="height" constant="24" id="bqO-R7-bw2"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yz6-iu-Uzv">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yz6-iu-Uzv">
                                                                 <rect key="frame" x="20" y="10" width="158" height="18"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
                                                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,7 +305,7 @@
                                             <constraint firstAttribute="width" constant="30" id="e8L-nh-sV0"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select Service*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnC-Rc-wIg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnC-Rc-wIg">
                                         <rect key="frame" x="16" y="24" width="390" height="22"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" systemColor="systemGray2Color"/>
@@ -434,7 +433,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

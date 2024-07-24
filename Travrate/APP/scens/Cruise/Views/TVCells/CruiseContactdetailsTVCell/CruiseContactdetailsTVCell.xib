@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,14 +22,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="774" id="KGk-i7-Jjw" customClass="CruiseContactdetailsTVCell" customModule="Travgate" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="774" id="KGk-i7-Jjw" customClass="CruiseContactdetailsTVCell" customModule="Travrate" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="463" height="774"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="463" height="774"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjS-RZ-Vrt" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjS-RZ-Vrt" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                         <rect key="frame" x="20" y="10" width="423" height="762"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Plan Your Package!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yti-Os-jGZ">
@@ -60,13 +60,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-sw-V8N">
                                 <rect key="frame" x="15" y="134.33333333333334" width="393" height="85"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4D-0H-tiR">
-                                        <rect key="frame" x="0.0" y="0.0" width="78.666666666666671" height="19.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4D-0H-tiR">
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="19.333333333333332"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjQ-Ra-G0N" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjQ-Ra-G0N" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.333333333333314" width="393" height="55"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sg-Zo-QwU">
@@ -143,12 +143,20 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qtx-Ay-IzZ">
+                                        <rect key="frame" x="73" y="-0.66666666666668561" width="7.6666666666666714" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="GjQ-Ra-G0N" firstAttribute="top" secondItem="z4D-0H-tiR" secondAttribute="bottom" constant="5" id="TQz-oB-4i4"/>
+                                    <constraint firstItem="Qtx-Ay-IzZ" firstAttribute="leading" secondItem="z4D-0H-tiR" secondAttribute="trailing" constant="2" id="deR-qj-SQE"/>
                                     <constraint firstItem="GjQ-Ra-G0N" firstAttribute="leading" secondItem="PZl-sw-V8N" secondAttribute="leading" id="g16-vJ-2BZ"/>
                                     <constraint firstAttribute="trailing" secondItem="GjQ-Ra-G0N" secondAttribute="trailing" id="gS5-ql-eEx"/>
+                                    <constraint firstItem="Qtx-Ay-IzZ" firstAttribute="centerY" secondItem="z4D-0H-tiR" secondAttribute="centerY" id="hBN-Ah-Xn9"/>
                                     <constraint firstItem="z4D-0H-tiR" firstAttribute="top" secondItem="PZl-sw-V8N" secondAttribute="top" id="pXM-p6-dfP"/>
                                     <constraint firstItem="z4D-0H-tiR" firstAttribute="leading" secondItem="PZl-sw-V8N" secondAttribute="leading" id="qX6-dZ-Yj0"/>
                                     <constraint firstAttribute="height" constant="85" id="xzP-ts-NjD"/>
@@ -157,13 +165,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reg-JF-WTY">
                                 <rect key="frame" x="15" y="229.33333333333337" width="393" height="85"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enail ID*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyv-OA-RQ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="19.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enail ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyv-OA-RQ1">
+                                        <rect key="frame" x="0.0" y="0.0" width="49" height="19.333333333333332"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jHk-jk-x2c" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jHk-jk-x2c" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.333333333333343" width="393" height="55"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HSm-I3-dGs">
@@ -192,11 +200,19 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hw-js-aQ9">
+                                        <rect key="frame" x="51" y="-0.66666666666668561" width="7.6666666666666643" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="jyv-OA-RQ1" firstAttribute="top" secondItem="reg-JF-WTY" secondAttribute="top" id="52Q-b6-xzt"/>
+                                    <constraint firstItem="4Hw-js-aQ9" firstAttribute="centerY" secondItem="jyv-OA-RQ1" secondAttribute="centerY" id="B6P-g9-ZKY"/>
                                     <constraint firstItem="jyv-OA-RQ1" firstAttribute="leading" secondItem="reg-JF-WTY" secondAttribute="leading" id="GR6-aV-Pe1"/>
+                                    <constraint firstItem="4Hw-js-aQ9" firstAttribute="leading" secondItem="jyv-OA-RQ1" secondAttribute="trailing" constant="2" id="H90-HN-2yr"/>
                                     <constraint firstAttribute="height" constant="85" id="Rjr-WG-TxI"/>
                                     <constraint firstItem="jHk-jk-x2c" firstAttribute="leading" secondItem="reg-JF-WTY" secondAttribute="leading" id="aDg-sf-QnW"/>
                                     <constraint firstAttribute="trailing" secondItem="jHk-jk-x2c" secondAttribute="trailing" id="fgA-6r-9Ze"/>
@@ -206,13 +222,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ri1-Jk-akF">
                                 <rect key="frame" x="15" y="324.33333333333331" width="393" height="85"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile number*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDg-Kn-Cyz">
-                                        <rect key="frame" x="0.0" y="0.0" width="108.33333333333333" height="19.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDg-Kn-Cyz">
+                                        <rect key="frame" x="0.0" y="0.0" width="100.66666666666667" height="19.333333333333332"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDo-xI-cYO" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDo-xI-cYO" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.333333333333371" width="393" height="55"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-ma-q1A">
@@ -289,12 +305,20 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYp-p3-SGJ">
+                                        <rect key="frame" x="102.66666666666666" y="-0.66666666666662877" width="7.6666666666666714" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="IYp-p3-SGJ" firstAttribute="leading" secondItem="RDg-Kn-Cyz" secondAttribute="trailing" constant="2" id="28B-ly-OSS"/>
                                     <constraint firstItem="XDo-xI-cYO" firstAttribute="top" secondItem="RDg-Kn-Cyz" secondAttribute="bottom" constant="5" id="4Qc-HV-JF0"/>
                                     <constraint firstAttribute="height" constant="85" id="9TW-ce-4eh"/>
                                     <constraint firstAttribute="trailing" secondItem="XDo-xI-cYO" secondAttribute="trailing" id="CBy-QP-Szj"/>
+                                    <constraint firstItem="IYp-p3-SGJ" firstAttribute="centerY" secondItem="RDg-Kn-Cyz" secondAttribute="centerY" id="QXK-4f-jH8"/>
                                     <constraint firstItem="XDo-xI-cYO" firstAttribute="leading" secondItem="ri1-Jk-akF" secondAttribute="leading" id="uZq-ZF-RSH"/>
                                     <constraint firstItem="RDg-Kn-Cyz" firstAttribute="leading" secondItem="ri1-Jk-akF" secondAttribute="leading" id="uiV-iK-KtH"/>
                                     <constraint firstItem="RDg-Kn-Cyz" firstAttribute="top" secondItem="ri1-Jk-akF" secondAttribute="top" id="uvE-XU-93f"/>
@@ -303,13 +327,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4w-oN-crt">
                                 <rect key="frame" x="15" y="419.33333333333331" width="393" height="85"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Of people*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1K-lQ-YnG">
-                                        <rect key="frame" x="0.0" y="0.0" width="94.666666666666671" height="19.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Of people" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1K-lQ-YnG">
+                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="19.333333333333332"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8g-d3-nPd" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8g-d3-nPd" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.333333333333371" width="393" height="55"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downarrownew" translatesAutoresizingMaskIntoConstraints="NO" id="mUk-HE-dVL">
@@ -355,10 +379,18 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGZ-nk-wXZ">
+                                        <rect key="frame" x="88.666666666666671" y="-0.66666666666662877" width="7.6666666666666714" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="yGZ-nk-wXZ" firstAttribute="leading" secondItem="j1K-lQ-YnG" secondAttribute="trailing" constant="2" id="79j-aa-sm5"/>
                                     <constraint firstAttribute="trailing" secondItem="a8g-d3-nPd" secondAttribute="trailing" id="7MS-vI-Y4f"/>
+                                    <constraint firstItem="yGZ-nk-wXZ" firstAttribute="centerY" secondItem="j1K-lQ-YnG" secondAttribute="centerY" id="HNV-Rn-zIy"/>
                                     <constraint firstItem="a8g-d3-nPd" firstAttribute="top" secondItem="j1K-lQ-YnG" secondAttribute="bottom" constant="5" id="PZT-Er-Axh"/>
                                     <constraint firstItem="j1K-lQ-YnG" firstAttribute="leading" secondItem="v4w-oN-crt" secondAttribute="leading" id="VfC-bd-xTE"/>
                                     <constraint firstAttribute="height" constant="85" id="btI-ex-DsO"/>
@@ -381,7 +413,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L7f-Wz-IFH">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5OV-uS-9LD" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5OV-uS-9LD" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cal" translatesAutoresizingMaskIntoConstraints="NO" id="fFV-Zv-bm9">
@@ -420,7 +452,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1CG-34-ace" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1CG-34-ace" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="393" y="0.0" width="34" height="55"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cal" translatesAutoresizingMaskIntoConstraints="NO" id="Ek8-6t-fTS">
@@ -482,18 +514,26 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O1-yH-7Ee">
+                                        <rect key="frame" x="84" y="-0.66666666666674246" width="7.6666666666666714" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="BooknowBtnColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="bwp-Er-Xgo"/>
+                                    <constraint firstItem="3O1-yH-7Ee" firstAttribute="leading" secondItem="wRl-wA-2K9" secondAttribute="trailing" constant="2" id="eCm-dK-vlB"/>
                                     <constraint firstItem="Wo7-E7-mVx" firstAttribute="leading" secondItem="Jsp-RF-3jQ" secondAttribute="leading" id="gXp-rz-ucS"/>
                                     <constraint firstAttribute="trailing" secondItem="Wo7-E7-mVx" secondAttribute="trailing" id="imz-Z2-Mxn"/>
                                     <constraint firstItem="wRl-wA-2K9" firstAttribute="leading" secondItem="Jsp-RF-3jQ" secondAttribute="leading" id="m9B-4s-2yR"/>
                                     <constraint firstItem="wRl-wA-2K9" firstAttribute="top" secondItem="Jsp-RF-3jQ" secondAttribute="top" id="pF3-Nw-dcI"/>
+                                    <constraint firstItem="3O1-yH-7Ee" firstAttribute="centerY" secondItem="wRl-wA-2K9" secondAttribute="centerY" id="qew-Y3-lgE"/>
                                     <constraint firstItem="Wo7-E7-mVx" firstAttribute="top" secondItem="wRl-wA-2K9" secondAttribute="bottom" constant="5" id="qoE-66-F1N"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miP-Pm-NOm" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miP-Pm-NOm" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                 <rect key="frame" x="15" y="619.33333333333337" width="393" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit an enquiry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oji-U4-plM">
@@ -534,7 +574,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeW-Oq-q9l" customClass="BorderedView" customModule="Travgate" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeW-Oq-q9l" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                 <rect key="frame" x="15" y="684.33333333333337" width="393" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request a call back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJC-Yc-DSq">
@@ -658,14 +698,17 @@
         <image name="cal" width="18" height="20"/>
         <image name="call" width="31" height="31.333333969116211"/>
         <image name="downarrownew" width="24" height="24"/>
+        <namedColor name="BooknowBtnColor">
+            <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BorderColor">
-            <color red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Buttoncolor">
             <color red="0.2669999897480011" green="0.70999997854232788" blue="0.046999998390674591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="subtitleNewcolor">
-            <color red="0.3449999988079071" green="0.3449999988079071" blue="0.3449999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3449999988079071" green="0.3449999988079071" blue="0.3449999988079071" alpha="0.50999999046325684" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

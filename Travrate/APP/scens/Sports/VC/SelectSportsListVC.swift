@@ -141,15 +141,13 @@ extension SelectSportsListVC {
         
         teamlbl.text = MySingleton.shared.sportscityName
         venulbl.text = MySingleton.shared.sportsVenuName
-        dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
+        dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
         
         MySingleton.shared.sportslistArray = response.data ?? []
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
             loderBool = false
             hideLoadera()
         }
-        
-        
         
         
         DispatchQueue.main.async {

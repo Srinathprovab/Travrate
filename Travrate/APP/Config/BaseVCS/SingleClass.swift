@@ -585,6 +585,20 @@ class MySingleton {
     }
     
     
+    func isValidPassportNumber(_ passportNumber: String) -> Bool {
+        // Define the regular expression pattern
+        let passportPattern = "^[A-Z0-9]{6,9}$"
+        
+        // Create a regular expression object
+        let regex = try? NSRegularExpression(pattern: passportPattern, options: [])
+
+        // Test the string against the pattern
+        let range = NSRange(location: 0, length: passportNumber.utf16.count)
+        let match = regex?.firstMatch(in: passportNumber, options: [], range: range)
+
+        // Return true if there is a match, false otherwise
+        return match != nil
+    }
     
 }
 

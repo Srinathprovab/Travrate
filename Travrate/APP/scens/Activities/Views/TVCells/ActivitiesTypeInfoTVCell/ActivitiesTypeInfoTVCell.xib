@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -44,12 +43,23 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44P-Oh-vCe">
-                                                <rect key="frame" x="9.9999999999999858" y="141" width="253.66666666666663" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="5gi-6E-AxI">
+                                                <rect key="frame" x="89.333333333333314" y="137" width="94.666666666666686" height="20.333333333333343"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44P-Oh-vCe">
+                                                        <rect key="frame" x="0.0" y="0.0" width="85" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="co0-r3-qhb">
+                                                        <rect key="frame" x="87.000000000000014" y="0.0" width="7.6666666666666714" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BooknowBtnColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97l-lR-zzs" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                 <rect key="frame" x="9.9999999999999858" y="160" width="253.66666666666663" height="35"/>
                                                 <subviews>
@@ -116,18 +126,17 @@
                                             <constraint firstItem="97l-lR-zzs" firstAttribute="leading" secondItem="S3O-o5-udq" secondAttribute="leading" constant="10" id="Amc-AF-HGz"/>
                                             <constraint firstAttribute="trailing" secondItem="97l-lR-zzs" secondAttribute="trailing" constant="10" id="Da7-7K-rVb"/>
                                             <constraint firstItem="viz-7f-5tb" firstAttribute="top" secondItem="LPj-62-LWD" secondAttribute="bottom" constant="5" id="Djj-Vd-Ocj"/>
-                                            <constraint firstItem="44P-Oh-vCe" firstAttribute="top" secondItem="Qly-ri-4wb" secondAttribute="bottom" constant="5" id="Ibt-G9-009"/>
                                             <constraint firstAttribute="trailing" secondItem="viz-7f-5tb" secondAttribute="trailing" constant="10" id="PXg-3n-E7q"/>
-                                            <constraint firstItem="44P-Oh-vCe" firstAttribute="leading" secondItem="S3O-o5-udq" secondAttribute="leading" constant="10" id="QqB-eE-tgo"/>
+                                            <constraint firstItem="97l-lR-zzs" firstAttribute="top" secondItem="5gi-6E-AxI" secondAttribute="bottom" constant="2.6699999999999999" id="QgF-b2-LBC"/>
+                                            <constraint firstItem="5gi-6E-AxI" firstAttribute="centerX" secondItem="S3O-o5-udq" secondAttribute="centerX" id="RSm-lO-rjb"/>
                                             <constraint firstItem="LPj-62-LWD" firstAttribute="leading" secondItem="S3O-o5-udq" secondAttribute="leading" constant="10" id="Rva-iW-neo"/>
                                             <constraint firstItem="viz-7f-5tb" firstAttribute="leading" secondItem="S3O-o5-udq" secondAttribute="leading" constant="10" id="TPA-yd-rDh"/>
-                                            <constraint firstAttribute="trailing" secondItem="44P-Oh-vCe" secondAttribute="trailing" constant="10" id="WT0-8f-hT5"/>
                                             <constraint firstItem="lZT-WB-h0f" firstAttribute="top" secondItem="S3O-o5-udq" secondAttribute="top" constant="10" id="WeN-g4-2sG"/>
                                             <constraint firstAttribute="trailing" secondItem="LPj-62-LWD" secondAttribute="trailing" constant="10" id="ZIP-8c-XBu"/>
                                             <constraint firstItem="Qly-ri-4wb" firstAttribute="top" secondItem="lZT-WB-h0f" secondAttribute="bottom" constant="6" id="dJH-Cs-fAC"/>
                                             <constraint firstItem="LPj-62-LWD" firstAttribute="top" secondItem="97l-lR-zzs" secondAttribute="bottom" id="gph-bD-pFT"/>
                                             <constraint firstItem="lZT-WB-h0f" firstAttribute="leading" secondItem="S3O-o5-udq" secondAttribute="leading" constant="10" id="qxj-4j-dKx"/>
-                                            <constraint firstItem="97l-lR-zzs" firstAttribute="top" secondItem="44P-Oh-vCe" secondAttribute="bottom" constant="2" id="uvw-fS-EbZ"/>
+                                            <constraint firstItem="5gi-6E-AxI" firstAttribute="top" secondItem="Qly-ri-4wb" secondAttribute="bottom" constant="1" id="wOb-tI-pkH"/>
                                             <constraint firstItem="Qly-ri-4wb" firstAttribute="centerX" secondItem="S3O-o5-udq" secondAttribute="centerX" id="xyH-X8-Tjf"/>
                                         </constraints>
                                     </view>

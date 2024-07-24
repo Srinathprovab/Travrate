@@ -727,7 +727,8 @@ extension BookingDetailsVC {
                         // Textfield is empty
                         cell.titleView.layer.borderColor = UIColor.red.cgColor
                         callpaymentbool = false
-                        
+                        showToast(message: "Please Select Title")
+                        return
                     } else {
                         // Textfield is not empty
                     }
@@ -736,9 +737,13 @@ extension BookingDetailsVC {
                         // Textfield is empty
                         cell.fnameView.layer.borderColor = UIColor.red.cgColor
                         callpaymentbool = false
+                        showToast(message: "Enter First name")
+                        return
                     }else if (cell.fnameTF.text?.count ?? 0) <= 3{
                         cell.fnameView.layer.borderColor = UIColor.red.cgColor
                         fnameCharBool = false
+                        showToast(message: "Enter at least more than 3 characters")
+                        return
                     }else {
                         fnameCharBool = true
                     }
@@ -747,9 +752,13 @@ extension BookingDetailsVC {
                         // Textfield is empty
                         cell.lnameView.layer.borderColor = UIColor.red.cgColor
                         callpaymentbool = false
+                        showToast(message: "Enter Last name")
+                        return
                     }else if (cell.lnameTF.text?.count ?? 0) <= 3{
                         cell.lnameView.layer.borderColor = UIColor.red.cgColor
                         lnameCharBool = false
+                        showToast(message: "Enter at least more than 3 characters")
+                        return
                     } else {
                         // Textfield is not empty
                         lnameCharBool = true
@@ -760,6 +769,8 @@ extension BookingDetailsVC {
                         // Textfield is empty
                         cell.dobView.layer.borderColor = UIColor.red.cgColor
                         callpaymentbool = false
+                        showToast(message: "Select date of birth")
+                        return
                     } else {
                         // Textfield is not empty
                     }
@@ -769,8 +780,21 @@ extension BookingDetailsVC {
                         // Textfield is empty
                         cell.passportnoView.layer.borderColor = UIColor.red.cgColor
                         callpaymentbool = false
+                        showToast(message: "Enter passport number")
+                        return
                     } else {
                         // Textfield is not empty
+                    }
+                    
+                    
+                    if MySingleton.shared.isValidPassportNumber(cell.passportnoTF.text ?? "") == false {
+                        // passport no is not valid
+                        cell.passportnoView.layer.borderColor = UIColor.red.cgColor
+                        showToast(message: "Invalid passport number")
+                        callpaymentbool = false
+                        return
+                    } else {
+                        // passport no is valid
                     }
                     
                     
@@ -778,6 +802,8 @@ extension BookingDetailsVC {
                         // Textfield is empty
                         cell.issuecountryView.layer.borderColor = UIColor.red.cgColor
                         callpaymentbool = false
+                        showToast(message: "Select country code")
+                        return
                     } else {
                         // Textfield is not empty
                     }
@@ -787,6 +813,8 @@ extension BookingDetailsVC {
                         // Textfield is empty
                         cell.passportexpireView.layer.borderColor = UIColor.red.cgColor
                         callpaymentbool = false
+                        showToast(message: "Select expirey date")
+                        return
                     } else {
                         // Textfield is not empty
                     }
