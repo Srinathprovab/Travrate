@@ -17,7 +17,7 @@ class SelectedSportInfoTVCell: TableViewCell {
     @IBOutlet weak var subtitlelbl: UILabel!
     @IBOutlet weak var sportcitylbl: UILabel!
     @IBOutlet weak var tournamentnamelbl: UILabel!
-    
+    @IBOutlet weak var vslbl: UILabel!
     
     var participantsA = [Participants]()
     var delegate:SportInfoTVCellDelegate?
@@ -43,11 +43,59 @@ class SelectedSportInfoTVCell: TableViewCell {
         
         participantsA = MySingleton.shared.participantsArray
         
+        
         if participantsA.isEmpty == false {
             
-            self.sportimg1.sd_setImage(with: URL(string: participantsA[0].participants_img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+//            self.sportimg1.isHidden = false
+//            self.sportimg2.isHidden = false
+//            self.vslbl.isHidden = false
+//            
             
-            self.sportimg2.sd_setImage(with: URL(string: participantsA[1].participants_img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            
+            self.sportimg1.sd_setImage(with: URL(string: participantsA[0].participants_img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                if let error = error {
+                    // Handle error loading image
+                    print("Error loading image: \(error.localizedDescription)")
+                    // Check if the error is due to a 404 Not Found response
+                    if (error as NSError).code == NSURLErrorBadServerResponse {
+                        // Set placeholder image for 404 error
+                        self.sportimg1.isHidden = true
+                        self.vslbl.isHidden = true
+                    } else {
+                        // Set placeholder image for other errors
+                        self.sportimg1.isHidden = true
+                        self.vslbl.isHidden = true
+                    }
+                }else {
+                    self.sportimg1.isHidden = false
+                    self.vslbl.isHidden = false
+                }
+            })
+            
+            
+            
+            self.sportimg2.sd_setImage(with: URL(string: participantsA[1].participants_img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                if let error = error {
+                    // Handle error loading image
+                    print("Error loading image: \(error.localizedDescription)")
+                    // Check if the error is due to a 404 Not Found response
+                    if (error as NSError).code == NSURLErrorBadServerResponse {
+                        // Set placeholder image for 404 error
+                        self.sportimg2.isHidden = true
+                        self.vslbl.isHidden = true
+                    } else {
+                        // Set placeholder image for other errors
+                        self.sportimg2.isHidden = true
+                        self.vslbl.isHidden = true
+                    }
+                }else {
+                    self.sportimg2.isHidden = false
+                    self.vslbl.isHidden = false
+                }
+            })
+            
+            
+            
             
             
         }

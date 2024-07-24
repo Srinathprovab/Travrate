@@ -294,26 +294,7 @@ extension SelectPaymentMethodsVC {
     
     
     
-    func setupSportsTVCells() {
-        
-        MySingleton.shared.tablerow.removeAll()
-        
-        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        
-        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
-        MySingleton.shared.tablerow.append(TableRow(key:"bookingdetails",
-                                                    cellType:.SportInfoTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Lead",
-                                                    key:"sportspay",
-                                                    cellType:.BookedTravelDetailsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.SportsFareSummeryTVCell))
-        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
-        
-        
-        
-        commonTVData = MySingleton.shared.tablerow
-        commonTableView.reloadData()
-    }
+   
     
     
 }
@@ -515,6 +496,28 @@ extension SelectPaymentMethodsVC {
         DispatchQueue.main.async {
             self.setupSportsTVCells()
         }
+    }
+    
+    
+    func setupSportsTVCells() {
+        
+        MySingleton.shared.tablerow.removeAll()
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(key:"bookingdetails",
+                                                    cellType:.SportInfoTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead",
+                                                    key:"sportspay",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.SportsFareSummeryTVCell))
+        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
+        
+        
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
     }
     
     

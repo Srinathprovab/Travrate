@@ -57,23 +57,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5Lw-Qq-0HP">
-                                <rect key="frame" x="349" y="63" width="110" height="40"/>
+                                <rect key="frame" x="459" y="83" width="0.0" height="0.0"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp2" translatesAutoresizingMaskIntoConstraints="NO" id="cZ6-Ns-zqy">
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp2" translatesAutoresizingMaskIntoConstraints="NO" id="cZ6-Ns-zqy">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="PJS-ik-Vzq"/>
                                             <constraint firstAttribute="height" constant="40" id="dZV-aG-fBM"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V/S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wt-Us-cmK">
-                                        <rect key="frame" x="45" y="0.0" width="20" height="40"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V/S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wt-Us-cmK">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp1" translatesAutoresizingMaskIntoConstraints="NO" id="zQ2-5F-FHX">
-                                        <rect key="frame" x="70" y="0.0" width="40" height="40"/>
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp1" translatesAutoresizingMaskIntoConstraints="NO" id="zQ2-5F-FHX">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="3Vc-wk-L8R"/>
                                             <constraint firstAttribute="width" constant="40" id="J3n-wS-QEV"/>
@@ -138,6 +138,7 @@
                 <outlet property="subtitlelbl" destination="IWr-xT-dh7" id="8fU-Za-lbt"/>
                 <outlet property="titlelbl" destination="ohM-z2-BpZ" id="4DH-Q4-Q2A"/>
                 <outlet property="tournamentnamelbl" destination="nM7-iC-j5k" id="Yc6-ka-cgp"/>
+                <outlet property="vslbl" destination="2wt-Us-cmK" id="j8Q-D6-4Zs"/>
             </connections>
             <point key="canvasLocation" x="141.22137404580153" y="34.507042253521128"/>
         </tableViewCell>

@@ -84,9 +84,9 @@ class ModifySportSearchVC: BaseTableVC, SportServiceVMDelegate {
             showToast(message: "Please Select Team Or Match")
         }else if MySingleton.shared.sportsVenuName.isEmpty == true {
             showToast(message: "Please Select Venu Or Country")
-        } else if MySingleton.shared.sportFromDate.isEmpty == true {
+        } else if defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) == "Select Date" {
             showToast(message: "Select Date")
-        }else if MySingleton.shared.sportToDate.isEmpty == true {
+        }else if defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) == "Select Date" {
             showToast(message: "Select Date")
         }else {
             
@@ -97,7 +97,7 @@ class ModifySportSearchVC: BaseTableVC, SportServiceVMDelegate {
             MySingleton.shared.payload["to"] = ""
             MySingleton.shared.payload["event_id"] = ""
             MySingleton.shared.payload["venue_type"] = ""
-            MySingleton.shared.payload["form_date"] = MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
+            MySingleton.shared.payload["form_date"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
             MySingleton.shared.payload["to_date"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
             MySingleton.shared.payload["special_events_id"] = MySingleton.shared.sportscityId
             

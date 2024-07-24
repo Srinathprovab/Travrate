@@ -1,4 +1,4 @@
-//
+
 import Foundation
 struct Participants : Codable {
 	let id : Int?

@@ -10,13 +10,13 @@ import UIKit
 class ViewTicketInfoVC: BaseTableVC, SportDetailsVMDelegate {
     
     
-    
     static var newInstance: ViewTicketInfoVC? {
         let storyboard = UIStoryboard(name: Storyboard.Sports.name,
                                       bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? ViewTicketInfoVC
         return vc
     }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,8 +36,6 @@ class ViewTicketInfoVC: BaseTableVC, SportDetailsVMDelegate {
         
         MySingleton.shared.sportsdetailsvm = SportDetailsVM(self)
     }
-    
-    
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
@@ -105,8 +103,7 @@ extension ViewTicketInfoVC {
         
         
     }
-    
-    
+
     
     func callAPI() {
         
