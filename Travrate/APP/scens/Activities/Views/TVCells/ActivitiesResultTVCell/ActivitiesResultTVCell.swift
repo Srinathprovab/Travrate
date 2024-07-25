@@ -22,7 +22,6 @@ class ActivitiesResultTVCell: TableViewCell {
     @IBOutlet weak var nametyprlbl: UILabel!
     @IBOutlet weak var durationTypelbl: UILabel!
     @IBOutlet weak var calimg: UIImageView!
-    
 
     var selecteddurationType = String()
     var selectedNameType = String()
@@ -46,12 +45,20 @@ class ActivitiesResultTVCell: TableViewCell {
     
     
     func setupui() {
+        
+        
         activityimg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         activityimg.layer.cornerRadius = 12
         detailsBtn.layer.cornerRadius = 4
-       
         
+        setuplabels(lbl: activityNamelbl, text: "", textcolor: .TitleColor, font: .InterMedium(size: 16), align: .left)
+        setuplabels(lbl: activityloclbl, text: "", textcolor: HexColor("#01A7EE"), font: .InterMedium(size: 13), align: .left)
+        setuplabels(lbl: nametyprlbl, text: "", textcolor: .TitleColor, font: .InterMedium(size: 12), align: .center)
+        setuplabels(lbl: durationTypelbl, text: "", textcolor: .TitleColor, font: .InterMedium(size: 12), align: .center)
+        
+        detailsBtn.titleLabel?.font = .InterBold(size: 14)
         detailsBtn.addTarget(self, action: #selector(didTapOnActivitesDetailsBtnAction(_:)), for: .touchUpInside)
+        
     }
     
     
@@ -66,10 +73,10 @@ class ActivitiesResultTVCell: TableViewCell {
         MySingleton.shared.setAttributedTextnew(str1: "\(MySingleton.shared.activites_currency) ",
                                                 str2: activitylist?.amountStarts ?? "",
                                                 lbl: kwdlbl,
-                                                str1font: .InterSemiBold(size: 12),
-                                                str2font: .InterSemiBold(size: 22),
+                                                str1font: .InterMedium(size: 12),
+                                                str2font: .InterBold(size: 22),
                                                 str1Color: .TitleColor,
-                                                str2Color: .TitleColor)
+                                                str2Color: HexColor("#3C627A"))
         
         
         selectedImage = activitylist?.image ?? ""

@@ -26,10 +26,9 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
         setupUI()
-        
         MySingleton.shared.sportsCityvm = SportServiceVM(self)
         
     }
@@ -66,8 +65,6 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
             }
         }
         
-    
-        
         commonTableView.reloadData()
         self.view.endEditing(true)
     }
@@ -76,6 +73,7 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     override func cancelDatePicker(cell: SportsSearchTVCell) {
         self.view.endEditing(true)
     }
+    
     
     override func didTapOnSearchSportsBtnAction(cell: SportsSearchTVCell) {
         
@@ -105,8 +103,6 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
             gotoSelectSportsListVC()
             
         }
-        
-        
     }
     
     func gotoSelectSportsListVC() {
@@ -117,6 +113,7 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
+    
 }
 
 

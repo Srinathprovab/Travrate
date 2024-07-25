@@ -16,20 +16,30 @@ class ActivitiesTypeTVCell: UITableViewCell, ActivitiesTypeInfoTVCellDelegate {
     
     @IBOutlet weak var typeTV: UITableView!
     @IBOutlet weak var tvheight: NSLayoutConstraint!
-    
+    @IBOutlet weak var activityTypelbl: UILabel!
+    @IBOutlet weak var totalPricelbl: UILabel!
     
     var cancelPolicy = [Cancelpolicy]()
     var delegate:ActivitiesTypeTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        setupTV()
+        setupUI()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    
+    func setupUI() {
+        setuplabels(lbl: activityTypelbl, text: "Activities Type", textcolor: .TitleColor, font: .InterRegular(size: 14), align: .center)
+        setuplabels(lbl: activityTypelbl, text: "Total price", textcolor: .TitleColor, font: .InterRegular(size: 14), align: .center)
+
+        setupTV()
     }
     
     
@@ -87,6 +97,7 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
                                                     str1Color: .TitleColor,
                                                     str2Color: .TitleColor)
             
+            
             sampleCell.setupDropDown()
             
             sampleCell.img.image = UIImage(named: "car")
@@ -129,13 +140,15 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
             cell.rateKeySring = data?.rates?[0].rateDetails?[0].rateKey ?? ""
             cell.agentpayable = String(format: "%.2f",  data?.amountsFrom?[0].amount?.default_value ?? 0.0)
             cell.setupDropDown()
+           
+            
             MySingleton.shared.setAttributedTextnew(str1: "\(MySingleton.shared.activites_currency) ",
                                                     str2: String(format: "%.2f",  data?.amountsFrom?[0].amount?.default_value ?? 0.0),
                                                     lbl: cell.kedlbl,
-                                                    str1font: .InterSemiBold(size: 12),
-                                                    str2font: .InterSemiBold(size: 22),
+                                                    str1font: .InterMedium(size: 12),
+                                                    str2font: .InterBold(size: 22),
                                                     str1Color: .TitleColor,
-                                                    str2Color: .TitleColor)
+                                                    str2Color: HexColor("#3C627A"))
             
             
             

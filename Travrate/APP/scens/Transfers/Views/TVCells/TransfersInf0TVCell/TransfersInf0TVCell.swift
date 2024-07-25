@@ -18,6 +18,8 @@ class TransfersInf0TVCell: TableViewCell {
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var kwdlbl: UILabel!
     @IBOutlet weak var passengerslbl: UILabel!
+    @IBOutlet weak var freeCancellationTitlelbl: UILabel!
+    @IBOutlet weak var booknowlbl: UILabel!
     
     
     
@@ -27,6 +29,7 @@ class TransfersInf0TVCell: TableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setupUI()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,6 +38,15 @@ class TransfersInf0TVCell: TableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    
+    func setupUI() {
+        setuplabels(lbl: titlelbl, text: "", textcolor: HexColor("#297B00"), font: .InterMedium(size: 16), align: .center)
+        setuplabels(lbl: freeCancellationTitlelbl, text: "", textcolor: HexColor("#44B50C"), font: .InterRegular(size: 14), align: .center)
+        setuplabels(lbl: carmodellbl, text: "", textcolor: .TitleColor, font: .InterSemiBold(size: 16), align: .right)
+        setuplabels(lbl: passengerslbl, text: "", textcolor: HexColor("#707070"), font: .OpenSansRegular(size: 12), align: .right)
+        setuplabels(lbl: booknowlbl, text: "Book Now", textcolor: .WhiteColor, font: .OpenSansMedium(size: 16), align: .center)
+    }
     
     
     
@@ -65,7 +77,7 @@ class TransfersInf0TVCell: TableViewCell {
                                                 str2: String(format: "%.2f", transferlist?.price ?? ""),
                                                 lbl: kwdlbl,
                                                 str1font: .InterSemiBold(size: 12),
-                                                str2font: .InterSemiBold(size: 22),
+                                                str2font: .InterBold(size: 20),
                                                 str1Color: .TitleColor,
                                                 str2Color: .TitleColor)
         

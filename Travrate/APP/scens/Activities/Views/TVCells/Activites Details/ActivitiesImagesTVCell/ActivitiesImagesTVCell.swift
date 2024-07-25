@@ -48,8 +48,8 @@ class ActivitiesImagesTVCell: TableViewCell {
         activityNamelbl.text = MySingleton.shared.activity_details?.activity_name
         locNamelbl.text = MySingleton.shared.activity_details?.location?.address
         MySingleton.shared.activity_loc = MySingleton.shared.activity_details?.location?.address ?? ""
-       
-       
+        
+        
         if MySingleton.shared.activitiesImagesArray.count > 0 {
             
             activityImage.sd_setImage(with: URL(string:  MySingleton.shared.activitiesImagesArray[0].image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
@@ -73,11 +73,16 @@ class ActivitiesImagesTVCell: TableViewCell {
             
         }
         
-       
+        
     }
     
     func setupUI() {
         activityImage.layer.cornerRadius = 8
+        
+        
+        setuplabels(lbl: activityNamelbl, text: "", textcolor: .TitleColor, font: .InterMedium(size: 16), align: .left)
+        setuplabels(lbl: locNamelbl, text: "", textcolor: HexColor("#01A7EE"), font: .InterMedium(size: 13), align: .left)
+        
         setupCV()
         //  setupSCrollImagesCV()
     }

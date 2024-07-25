@@ -66,6 +66,7 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate,
         commonTableView.registerTVCells(["EmptyTVCell",
                                          "ActivitiesResultTVCell"])
         
+        
     }
     
     

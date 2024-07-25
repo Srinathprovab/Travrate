@@ -90,8 +90,8 @@ class ActivitiesFareSummeryTVCell: TableViewCell {
         MySingleton.shared.setAttributedTextnew(str1: "\(MySingleton.shared.activites_currency) ",
                                                 str2: String(format: "%.2f", totlConvertedGrand),
                                                 lbl: totalamountlbl,
-                                                str1font: .InterSemiBold(size: 20),
-                                                str2font: .InterSemiBold(size: 20),
+                                                str1font: .InterBold(size: 16),
+                                                str2font: .InterBold(size: 16),
                                                 str1Color: .TitleColor,
                                                 str2Color: .TitleColor)
         

@@ -80,10 +80,6 @@
 		65207CBA2BF494310076EF76 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652079432BF4942E0076EF76 /* Poppins-Bold.ttf */; };
 		65207CBB2BF494310076EF76 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652079442BF4942E0076EF76 /* Poppins-Black.ttf */; };
 		65207CBC2BF494310076EF76 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652079452BF4942E0076EF76 /* Poppins-SemiBold.ttf */; };
-		65207CBD2BF494310076EF76 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652079472BF4942E0076EF76 /* OpenSans-SemiBold.ttf */; };
-		65207CBE2BF494310076EF76 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652079482BF4942E0076EF76 /* OpenSans-Light.ttf */; };
-		65207CBF2BF494310076EF76 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652079492BF4942E0076EF76 /* OpenSans-Bold.ttf */; };
-		65207CC12BF494310076EF76 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6520794B2BF4942E0076EF76 /* OpenSans-Regular.ttf */; };
 		65207CC22BF494310076EF76 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520794C2BF4942E0076EF76 /* ColorManager.swift */; };
 		65207CC32BF494310076EF76 /* DeviceName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520794E2BF4942E0076EF76 /* DeviceName.swift */; };
 		65207CC42BF494310076EF76 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520794F2BF4942E0076EF76 /* NSObject+Helper.swift */; };
@@ -623,7 +619,6 @@
 		65207EDB2BF494320076EF76 /* LoginTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C8B2BF494300076EF76 /* LoginTVCell.swift */; };
 		65207EDC2BF494320076EF76 /* ResetPasswordTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65207C8D2BF494300076EF76 /* ResetPasswordTVCell.xib */; };
 		65207EDD2BF494320076EF76 /* ResetPasswordTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C8E2BF494300076EF76 /* ResetPasswordTVCell.swift */; };
-		65207EDE2BF497A60076EF76 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6520794A2BF4942E0076EF76 /* OpenSans-Medium.ttf */; };
 		65324F922C1FFBBA00BA1E5A /* SelectedServiceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65324F902C1FFBBA00BA1E5A /* SelectedServiceTVCell.swift */; };
 		65324F932C1FFBBA00BA1E5A /* SelectedServiceTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65324F912C1FFBBA00BA1E5A /* SelectedServiceTVCell.xib */; };
 		65324F962C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65324F942C2002FF00BA1E5A /* SelectedAdditionalOptionsTVCell.swift */; };
@@ -840,6 +835,11 @@
 		84C4FF182C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C4FF172C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib */; };
 		84C4FF192C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FF162C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift */; };
 		84C895832C4B5085002241D3 /* SendToPaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C895822C4B5085002241D3 /* SendToPaymentModel.swift */; };
+		84D5F1EA2C51DFA500C4EFA3 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652079472BF4942E0076EF76 /* OpenSans-SemiBold.ttf */; };
+		84D5F1EB2C51DFA500C4EFA3 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652079482BF4942E0076EF76 /* OpenSans-Light.ttf */; };
+		84D5F1EC2C51DFA500C4EFA3 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652079492BF4942E0076EF76 /* OpenSans-Bold.ttf */; };
+		84D5F1ED2C51DFA500C4EFA3 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6520794A2BF4942E0076EF76 /* OpenSans-Medium.ttf */; };
+		84D5F1EE2C51DFA600C4EFA3 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6520794B2BF4942E0076EF76 /* OpenSans-Regular.ttf */; };
 		84D96CA22C4CD3B700323B8E /* MyTrips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D96CA12C4CD3B700323B8E /* MyTrips.storyboard */; };
 		84D96CA42C4CD85D00323B8E /* FlightTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D96CA32C4CD85D00323B8E /* FlightTrips.swift */; };
 		84D96CA62C4CDBCC00323B8E /* HotelTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D96CA52C4CDBCC00323B8E /* HotelTrips.swift */; };
@@ -997,7 +997,6 @@
 		6520793F2BF4942E0076EF76 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		652079402BF4942E0076EF76 /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
 		652079412BF4942E0076EF76 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
-		652079422BF4942E0076EF76 /* OpenSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Medium.ttf"; sourceTree = "<group>"; };
 		652079432BF4942E0076EF76 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		652079442BF4942E0076EF76 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
 		652079452BF4942E0076EF76 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -2226,7 +2225,6 @@
 				6520793F2BF4942E0076EF76 /* Poppins-Medium.ttf */,
 				652079402BF4942E0076EF76 /* Oswald-Medium.ttf */,
 				652079412BF4942E0076EF76 /* Poppins-ExtraBold.ttf */,
-				652079422BF4942E0076EF76 /* OpenSans-Medium.ttf */,
 				652079432BF4942E0076EF76 /* Poppins-Bold.ttf */,
 				652079442BF4942E0076EF76 /* Poppins-Black.ttf */,
 				652079452BF4942E0076EF76 /* Poppins-SemiBold.ttf */,
@@ -6208,7 +6206,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65207EDE2BF497A60076EF76 /* OpenSans-Medium.ttf in Resources */,
+				84D5F1EA2C51DFA500C4EFA3 /* OpenSans-SemiBold.ttf in Resources */,
+				84D5F1EB2C51DFA500C4EFA3 /* OpenSans-Light.ttf in Resources */,
+				84D5F1EC2C51DFA500C4EFA3 /* OpenSans-Bold.ttf in Resources */,
+				84D5F1ED2C51DFA500C4EFA3 /* OpenSans-Medium.ttf in Resources */,
+				84D5F1EE2C51DFA600C4EFA3 /* OpenSans-Regular.ttf in Resources */,
 				84D96CA22C4CD3B700323B8E /* MyTrips.storyboard in Resources */,
 				65207EBB2BF494320076EF76 /* TravelMaxTVCell.xib in Resources */,
 				65207DEA2BF494310076EF76 /* SelectFareInfoTVCell.xib in Resources */,
@@ -6301,7 +6303,6 @@
 				65207DDB2BF494310076EF76 /* AddAssistanceTVCell.xib in Resources */,
 				65207EDC2BF494320076EF76 /* ResetPasswordTVCell.xib in Resources */,
 				65207DE42BF494310076EF76 /* AddItineraryTVCell.xib in Resources */,
-				65207CBF2BF494310076EF76 /* OpenSans-Bold.ttf in Resources */,
 				65207CBA2BF494310076EF76 /* Poppins-Bold.ttf in Resources */,
 				65207E352BF494320076EF76 /* TripsTVCell.xib in Resources */,
 				65207CB72BF494310076EF76 /* Oswald-Medium.ttf in Resources */,
@@ -6360,7 +6361,6 @@
 				65207CB52BF494310076EF76 /* Poppins-Light.ttf in Resources */,
 				84D96CCC2C4CE31800323B8E /* ActivitiesTripsTVCell.xib in Resources */,
 				65207DA62BF494310076EF76 /* BaggageInfoTVCell.xib in Resources */,
-				65207CBD2BF494310076EF76 /* OpenSans-SemiBold.ttf in Resources */,
 				65207E1E2BF494320076EF76 /* VisaTVCell.xib in Resources */,
 				65207DBC2BF494310076EF76 /* GuestTVCell.xib in Resources */,
 				65207DEE2BF494310076EF76 /* FlightResultTVCell.xib in Resources */,
@@ -6395,7 +6395,6 @@
 				65207C982BF494310076EF76 /* fdetails.gif in Resources */,
 				84D96CC72C4CE2FC00323B8E /* CarRentalTripsTVCell.xib in Resources */,
 				65207D942BF494310076EF76 /* SliderTVCell.xib in Resources */,
-				65207CC12BF494310076EF76 /* OpenSans-Regular.ttf in Resources */,
 				65207E2F2BF494320076EF76 /* SportInfoTVCell.xib in Resources */,
 				65207EC02BF494320076EF76 /* InsurenceSearchTVCell.xib in Resources */,
 				65207DB62BF494310076EF76 /* OperatorsCheckBoxTVCell.xib in Resources */,
@@ -6412,7 +6411,6 @@
 				65207DC42BF494310076EF76 /* AddonContentTVCell.xib in Resources */,
 				65207D2F2BF494310076EF76 /* ButtonCollectionViewCell.xib in Resources */,
 				65207DFA2BF494310076EF76 /* YourRecentSearchesTVCell.xib in Resources */,
-				65207CBE2BF494310076EF76 /* OpenSans-Light.ttf in Resources */,
 				84F2477F2C4E6E1E003526A0 /* ContractRemarkTVCell.xib in Resources */,
 				65844C712C049A8B005EA104 /* NewHotelPriceSummeryTVCell.xib in Resources */,
 				84A16FFF2C44D605002C7F83 /* AddDeatilsOfPassengerTVCell.xib in Resources */,

@@ -21,8 +21,13 @@ struct TopFlightListModel {
     let from_loc: String?
     let to_loc: String?
     let airline_class:String?
+    let from_airport_city: String?
+    let to_airport_city:String?
     // Add other properties as needed
 }
+
+
+
 
 
 protocol PopularDestinationsTVCellDelegate {
@@ -96,7 +101,9 @@ class PopularDestinationsTVCell: TableViewCell {
                                    v_class: flight.airline_class ?? "",
                                    from_loc: flight.from_loc ?? "",
                                    to_loc: flight.to_loc ?? "",
-                                   airline_class: flight.airline_class ?? "")
+                                   airline_class: flight.airline_class ?? "",
+                                   from_airport_city:flight.from_airport_city,
+                                   to_airport_city: flight.to_airport_city)
             }
             
         }
@@ -176,8 +183,6 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 
                 cell.titlelbl.text = countryArray[indexPath.row]
                 
-                
-                
                 if indexPath == selectedIndex {
                     cell.titlelbl.textColor = .WhiteColor
                     cell.holderView.backgroundColor = .Buttoncolor
@@ -248,7 +253,9 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                                        v_class: flight.airline_class ?? "",
                                        from_loc: flight.from_loc ?? "",
                                        to_loc: flight.to_loc ?? "",
-                                       airline_class: flight.airline_class ?? "")
+                                       airline_class: flight.airline_class ?? "",
+                                       from_airport_city:flight.from_airport_city,
+                                       to_airport_city: flight.to_airport_city)
                 }
                 
                 // Update the selected index path
@@ -266,6 +273,7 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.traveldate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calDepDate)
                 defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.returndate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calRetDate)
                 defaults.setValue(flight.airline_class, forKey: UserDefaultsKeys.selectClass)
+                defaults.setValue(flight.airline_class, forKey: UserDefaultsKeys.rselectClass)
                 defaults.setValue("1", forKey: UserDefaultsKeys.adultCount)
                 defaults.setValue("0", forKey: UserDefaultsKeys.childCount)
                 defaults.setValue("0", forKey: UserDefaultsKeys.infantsCount)
@@ -280,13 +288,14 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 defaults.set(flight.to_city, forKey: UserDefaultsKeys.tolocid)
                 
                 
-                defaults.set("Kuwait", forKey: UserDefaultsKeys.fromcityname)
-                defaults.set(flight.airport_city, forKey: UserDefaultsKeys.tocityname)
-                defaults.set("Kuwait", forKey: UserDefaultsKeys.fcity)
-                defaults.set(flight.airport_city, forKey: UserDefaultsKeys.tcity)
+                defaults.set(flight.from_airport_city, forKey: UserDefaultsKeys.fromcityname)
+                defaults.set(flight.to_airport_city, forKey: UserDefaultsKeys.tocityname)
+                defaults.set(flight.from_airport_city, forKey: UserDefaultsKeys.fcity)
+                defaults.set(flight.to_airport_city, forKey: UserDefaultsKeys.tcity)
                 
+                defaults.set("Flight", forKey: UserDefaultsKeys.tabselect)
                 
-                // delegate?.didTapOnPopulardestination(cell: self)
+                delegate?.didTapOnPopulardestination(cell: self)
             }
         }
     }

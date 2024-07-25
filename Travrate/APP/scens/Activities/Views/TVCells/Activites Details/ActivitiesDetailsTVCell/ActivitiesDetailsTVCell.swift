@@ -48,6 +48,11 @@ class ActivitiesDetailsTVCell: TableViewCell, ActivitiesTypeTVCellDelegate {
     
     
     func setupUI() {
+        activitiesBtn.titleLabel?.font = .InterBold(size: 16)
+        highlightsBtn.titleLabel?.font = .InterBold(size: 16)
+        detailsBtn.titleLabel?.font = .InterBold(size: 16)
+        
+        
         activitiesBtn.addTarget(self, action: #selector(didTapONActivitiesBtnAction(_:)), for: .touchUpInside)
         highlightsBtn.addTarget(self, action: #selector(didTapOnHighlightsBtnAction(_:)), for: .touchUpInside)
         detailsBtn.addTarget(self, action: #selector(didTapOnDetailsBtnAction(_:)), for: .touchUpInside)

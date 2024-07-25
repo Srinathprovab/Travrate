@@ -194,6 +194,7 @@ extension SearchHotelVC {
         NotificationCenter.default.post(name: NSNotification.Name("resetallFilters"), object: nil)
         MySingleton.shared.payload.removeAll()
         
+        
         MySingleton.shared.payload["city"] = defaults.string(forKey: UserDefaultsKeys.locationcity)
         MySingleton.shared.payload["hotel_destination"] = defaults.string(forKey: UserDefaultsKeys.locationid)
         

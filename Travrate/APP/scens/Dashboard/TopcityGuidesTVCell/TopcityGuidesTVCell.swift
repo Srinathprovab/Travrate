@@ -105,7 +105,30 @@ extension TopcityGuidesTVCell:UICollectionViewDelegate,UICollectionViewDataSourc
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
+     
         
+        print(hotellist[indexPath.row].city)
+        print(hotellist[indexPath.row].city_id_fal)
+        
+//        "id": "73", //
+//                   "title": "",
+//                   "city_name": "SHARJAH",// city
+//                   "city": "404", hotel_destination
+//                   "check_in": "2024-10-10",//hotel_checkin
+//                   "check_out": "2024-10-15", hotel_checkout
+//                   "image": "https://provab.net/travrate/extras/uploads/hotel_top_destination_thumb/top-dest-hotel-404.jpg",
+//                   "voucher_status": "INACTIVE",
+//                   "voucher": "NO",
+//                   "price": null,
+//                   "status": "1",
+//                   "created_at": "2024-04-15 10:07:23",
+//                   "updated_at": "2024-04-15 10:08:55",
+//                   "ar_title": "",
+//                   "hotel_code": null,
+//                   "country": "United Arab Emirates",
+//                   "rating": "5",
+//                   "hotel_name": null
     }
     
     
