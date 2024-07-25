@@ -1,41 +1,32 @@
 //
-//  PopularDestinationsTVCell.swift
-//  TravgateApp
+//  PopularHotelDestinationsTVCell.swift
+//  Travrate
 //
-//  Created by FCI on 02/01/24.
+//  Created by Admin on 25/07/24.
 //
 
 import UIKit
 
-struct TopFlightListModel {
-    let airport_city: String
-    let image: String?
-    let traveldate: String?
-    let returndate: String?
-    let from_city: String?
-    let to_city: String?
-    let fromcityairportcode: String?
-    let tocityairportcode: String?
-    let triptype: String?
-    let v_class: String?
-    let from_loc: String?
-    let to_loc: String?
-    let airline_class:String?
-    let from_airport_city: String?
-    let to_airport_city:String?
-    // Add other properties as needed
+
+struct TopHotelDetailsModel {
+    
+    let id: String
+    let city_name: String
+    let check_in: String
+    let check_out: String
+    let image: String
+    let price: String?
+    let rating: String
+    let hotel_name: String?
+    let country: String
+    let hotel_code: String
 }
 
-
-
-
-
-protocol PopularDestinationsTVCellDelegate {
-    func didTapOnPopulardestination(cell:PopularDestinationsTVCell)
+protocol PopularHotelDestinationsTVCellDellegate {
+    func didTapOnPopulardestination(cell:PopularHotelDestinationsTVCell)
 }
 
-
-class PopularDestinationsTVCell: TableViewCell {
+class PopularHotelDestinationsTVCell: TableViewCell {
     
     
     @IBOutlet weak var citySelectCV: UICollectionView!
@@ -45,12 +36,12 @@ class PopularDestinationsTVCell: TableViewCell {
     // Define a variable to store the selected index path
     var countryBtnTapbool = false
     var selectedIndex: IndexPath?
-    var filteredFlights: [TopFlightListModel] = []
+    var filteredHotels: [TopHotelDetailsModel] = []
     var itemCount = Int()
     var autoScrollTimer: Timer?
-    var flightlist = [TopFlightDetails]()
+    var hotellist = [TopHotelDetails]()
     var countryArray = [String]()
-    var delegate:PopularDestinationsTVCellDelegate?
+    var delegate:PopularHotelDestinationsTVCellDellegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -68,11 +59,11 @@ class PopularDestinationsTVCell: TableViewCell {
     
     
     override func updateUI() {
-        flightlist = MySingleton.shared.topFlightDetails
-        itemCount = flightlist.count
+        hotellist = MySingleton.shared.topHotelDetails
+        itemCount = hotellist.count
         
         countryArray.removeAll()
-        flightlist.forEach { i in
+        hotellist.forEach { i in
             countryArray.append(i.country ?? "")
         }
         countryArray = countryArray.unique()
@@ -82,28 +73,23 @@ class PopularDestinationsTVCell: TableViewCell {
         if countryArray.count > 0 {
             let selectedCity = countryArray[0]
             // Assuming TopFlightListModel and TopFlightDetails have similar properties
-            filteredFlights = flightlist.filter { flight in
+            filteredHotels = hotellist.filter { flight in
                 if let airportCity = flight.country {
                     return airportCity.contains(selectedCity)
                 }
                 return false
-            }.map { flight in
+            }.map { hotel in
                 // TopFlightListModel(airport_city: flight.airport_city ?? "", image: flight.image)
-                TopFlightListModel(airport_city: flight.airport_city ?? "",
-                                   image: flight.image ?? "",
-                                   traveldate: flight.travel_date ?? "",
-                                   returndate: flight.return_date ?? "",
-                                   from_city: flight.from_city ?? "",
-                                   to_city: flight.to_city ?? "",
-                                   fromcityairportcode: flight.from_city ?? "",
-                                   tocityairportcode: flight.to_city ?? "",
-                                   triptype: flight.trip_type ?? "",
-                                   v_class: flight.airline_class ?? "",
-                                   from_loc: flight.from_loc ?? "",
-                                   to_loc: flight.to_loc ?? "",
-                                   airline_class: flight.airline_class ?? "",
-                                   from_airport_city:flight.from_airport_city,
-                                   to_airport_city: flight.to_airport_city)
+                TopHotelDetailsModel(id: hotel.city ?? "",
+                                     city_name: hotel.city_name ?? "",
+                                     check_in: hotel.check_in ?? "",
+                                     check_out: hotel.check_out ?? "",
+                                     image: hotel.image ?? "",
+                                     price: hotel.price ?? "",
+                                     rating: hotel.rating ?? "",
+                                     hotel_name: hotel.hotel_name ?? "",
+                                     country: hotel.country ?? "",
+                                     hotel_code: hotel.hotel_code ?? "")
             }
             
         }
@@ -124,7 +110,7 @@ class PopularDestinationsTVCell: TableViewCell {
         citySelectCV.dataSource = self
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = CGSize(width: 100, height: 34)
-        // layout.itemSize = CGSize(width: 100 , height: 34)
+        //        layout.itemSize = CGSize(width: 100 , height: 34)
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 3
         layout.minimumLineSpacing = 3
@@ -164,14 +150,14 @@ class PopularDestinationsTVCell: TableViewCell {
 
 
 
-extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
+extension PopularHotelDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         
         if collectionView == citySelectCV {
             return countryArray.count
         }else {
-            return filteredFlights.count
+            return filteredHotels.count
         }
     }
     
@@ -203,10 +189,10 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
             
             
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as? SelectDestCVCell {
-                let flight = filteredFlights[indexPath.row]
-                cell.titlelbl.text = flight.airport_city
+                let flight = filteredHotels[indexPath.row]
+                cell.titlelbl.text = flight.city_name
                 
-                if flight.image == nil || flight.image?.isEmpty == true {
+                if flight.image == nil || flight.image.isEmpty == true {
                     cell.img.image = UIImage(named: "noimage")
                 } else {
                     cell.img.sd_setImage(with: URL(string: flight.image ?? ""), placeholderImage: UIImage(named: "placeholder.png"), completed: { (image, error, cacheType, imageURL) in
@@ -236,27 +222,22 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 // Filter flightlist based on selected city
                 let selectedCity = countryArray[indexPath.row]
                 // Assuming TopFlightListModel and TopFlightDetails have similar properties
-                filteredFlights = flightlist.filter { flight in
+                filteredHotels = hotellist.filter { flight in
                     if let airportCity = flight.country {
                         return airportCity.contains(selectedCity)
                     }
                     return false
-                }.map { flight in
-                    TopFlightListModel(airport_city: flight.airport_city ?? "",
-                                       image: flight.image ?? "",
-                                       traveldate: flight.travel_date ?? "",
-                                       returndate: flight.return_date ?? "",
-                                       from_city: flight.from_city ?? "",
-                                       to_city: flight.to_city ?? "",
-                                       fromcityairportcode: flight.from_city ?? "",
-                                       tocityairportcode: flight.to_city ?? "",
-                                       triptype: flight.trip_type ?? "",
-                                       v_class: flight.airline_class ?? "",
-                                       from_loc: flight.from_loc ?? "",
-                                       to_loc: flight.to_loc ?? "",
-                                       airline_class: flight.airline_class ?? "",
-                                       from_airport_city:flight.from_airport_city,
-                                       to_airport_city: flight.to_airport_city)
+                }.map { hotel in
+                    TopHotelDetailsModel(id: hotel.city ?? "",
+                                         city_name: hotel.city_name ?? "",
+                                         check_in: hotel.check_in ?? "",
+                                         check_out: hotel.check_out ?? "",
+                                         image: hotel.image ?? "",
+                                         price: hotel.price ?? "",
+                                         rating: hotel.rating ?? "",
+                                         hotel_name: hotel.hotel_name ?? "",
+                                         country: hotel.country ?? "",
+                                         hotel_code: hotel.hotel_code ?? "")
                 }
                 
                 // Update the selected index path
@@ -267,37 +248,22 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 selectDestCV.reloadData()
             }
         }else {
-            if let cell = collectionView.cellForItem(at: indexPath) as? SelectDestCVCell {
                 
-                let flight = filteredFlights[indexPath.row]
+                let hotel = filteredHotels[indexPath.row]
+                defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
                 
-                defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.traveldate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calDepDate)
-                defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.returndate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calRetDate)
-                defaults.setValue(flight.airline_class, forKey: UserDefaultsKeys.selectClass)
-                defaults.setValue(flight.airline_class, forKey: UserDefaultsKeys.rselectClass)
-                defaults.setValue("1", forKey: UserDefaultsKeys.adultCount)
-                defaults.setValue("0", forKey: UserDefaultsKeys.childCount)
-                defaults.setValue("0", forKey: UserDefaultsKeys.infantsCount)
-                defaults.setValue("1", forKey: UserDefaultsKeys.totalTravellerCount)
-                defaults.setValue(flight.triptype, forKey: UserDefaultsKeys.journeyType)
-                defaults.setValue("ALL", forKey: UserDefaultsKeys.fcariercode)
+                defaults.set("\(hotel.city_name) (\(hotel.country))", forKey: UserDefaultsKeys.locationcity)
+                defaults.set(hotel.id, forKey: UserDefaultsKeys.locationid)
+                defaults.set(MySingleton.shared.convertDateFormat(inputDate: hotel.check_in, f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkin)
+                defaults.set(MySingleton.shared.convertDateFormat(inputDate: hotel.check_out, f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkout)
+                defaults.set("2", forKey: UserDefaultsKeys.roomcount)
+                defaults.set("Kuwait", forKey: UserDefaultsKeys.hnationality)
+                defaults.set("KW", forKey: UserDefaultsKeys.hnationalitycode)
                 
                 
-                defaults.set(flight.from_loc, forKey: UserDefaultsKeys.fromCity)
-                defaults.set(flight.from_city, forKey: UserDefaultsKeys.fromlocid)
-                defaults.set(flight.to_loc, forKey: UserDefaultsKeys.toCity)
-                defaults.set(flight.to_city, forKey: UserDefaultsKeys.tolocid)
-                
-                
-                defaults.set(flight.from_airport_city, forKey: UserDefaultsKeys.fromcityname)
-                defaults.set(flight.to_airport_city, forKey: UserDefaultsKeys.tocityname)
-                defaults.set(flight.from_airport_city, forKey: UserDefaultsKeys.fcity)
-                defaults.set(flight.to_airport_city, forKey: UserDefaultsKeys.tcity)
-                
-                defaults.set("Flight", forKey: UserDefaultsKeys.tabselect)
                 
                 delegate?.didTapOnPopulardestination(cell: self)
-            }
+            
         }
     }
     
@@ -330,11 +296,12 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
             return CGSize(width: 190, height: 125)
         }
     }
+    
 }
 
 
 // MARK: - Auto Scrolling
-extension PopularDestinationsTVCell {
+extension PopularHotelDestinationsTVCell {
     
     
     func startAutoScroll() {

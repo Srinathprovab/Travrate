@@ -31,7 +31,7 @@ class TopcityGuidesTVCell: TableViewCell {
     
     
     override func updateUI() {
-        hotellist = MySingleton.shared.topHotelDetails
+        hotellist = MySingleton.shared.topCityGuides
         itemCount = hotellist.count
       //  startAutoScroll()
         topcitysCV.reloadData()

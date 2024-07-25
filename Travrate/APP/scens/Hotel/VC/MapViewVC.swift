@@ -35,6 +35,10 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
         return vc
     }
     
+    
+    
+    
+    
     var gmsView: GMSMapView?
     let locationManager = CLLocationManager()
     

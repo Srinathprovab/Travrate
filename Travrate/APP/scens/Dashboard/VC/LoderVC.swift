@@ -137,7 +137,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             
             img.sd_setImage(with: URL(string: searchHoteldata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
-            locationslbl.text = searchHoteldata?.city_name ?? ""
+            locationslbl.text = defaults.string(forKey: UserDefaultsKeys.locationcity)
             checkinlbl.text = MySingleton.shared.convertDateFormat(inputDate: searchHoteldata?.check_in ?? "", f1: "dd/MM/yyyy", f2: "dd-MMM-yyyy")
             checkoutlbl.text = MySingleton.shared.convertDateFormat(inputDate: searchHoteldata?.check_out ?? "", f1: "dd/MM/yyyy", f2: "dd-MMM-yyyy")
            

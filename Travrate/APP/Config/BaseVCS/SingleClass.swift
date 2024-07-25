@@ -137,7 +137,8 @@ class MySingleton {
     var tabselect = "close"
     var indexpagevm:IndexPageViewModel?
     var topFlightDetails = [TopFlightDetails]()
-    var topHotelDetails = [City_guides]()
+    var topCityGuides = [City_guides]()
+    var topHotelDetails = [TopHotelDetails]()
     var deail_code_list = [Deail_code_list]()
     var currencyListArray = [Currency_list]()
     var cruiseList = [CruiseData]()

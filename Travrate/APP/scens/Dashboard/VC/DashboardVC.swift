@@ -64,6 +64,7 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
                                          "PopularDestinationsTVCell",
                                          "TopcityGuidesTVCell",
                                          "SpecialOffersTVCell",
+                                         "PopularHotelDestinationsTVCell",
                                          "EmptyTVCell"])
         
         
@@ -80,6 +81,11 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         }
         
         if MySingleton.shared.topHotelDetails.count > 0 {
+            MySingleton.shared.tablerow.append(TableRow(cellType:.PopularHotelDestinationsTVCell))
+        }
+        
+        
+        if MySingleton.shared.topCityGuides.count > 0 {
             MySingleton.shared.tablerow.append(TableRow(cellType:.TopcityGuidesTVCell))
         }
         
@@ -220,6 +226,11 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     
     
     
+    //MARK: - Go To Flight Search
+    override func didTapOnPopulardestination(cell: PopularHotelDestinationsTVCell) {
+        gotoSearchHotelVC()
+    }
+    
 }
 
 
@@ -233,7 +244,8 @@ extension DashboardVC:IndexPageViewModelDelegate {
     func indexPageDetails(response: IndexPagemodel) {
         
         MySingleton.shared.topFlightDetails = response.topFlightDetails ?? []
-        MySingleton.shared.topHotelDetails = response.city_guides ?? []
+        MySingleton.shared.topHotelDetails = response.topHotelDetails ?? []
+        MySingleton.shared.topCityGuides = response.city_guides ?? []
         MySingleton.shared.deail_code_list = response.deail_code_list ?? []
         
         DispatchQueue.main.async {[self] in

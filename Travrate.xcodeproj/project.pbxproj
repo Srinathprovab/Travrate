@@ -827,6 +827,8 @@
 		84A1700A2C452128002C7F83 /* TransferPrePaymentConfModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A170092C452128002C7F83 /* TransferPrePaymentConfModel.swift */; };
 		84A1700E2C452ECA002C7F83 /* TransferfareSummeryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1700C2C452ECA002C7F83 /* TransferfareSummeryTVCell.swift */; };
 		84A1700F2C452ECA002C7F83 /* TransferfareSummeryTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A1700D2C452ECA002C7F83 /* TransferfareSummeryTVCell.xib */; };
+		84A6366D2C52794900780660 /* PopularHotelDestinationsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A6366C2C52794900780660 /* PopularHotelDestinationsTVCell.xib */; };
+		84A6366E2C52794900780660 /* PopularHotelDestinationsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6366B2C52794900780660 /* PopularHotelDestinationsTVCell.swift */; };
 		84B82D0A2C48179900A160D6 /* paymentes.json in Resources */ = {isa = PBXBuildFile; fileRef = 84B82D092C48179900A160D6 /* paymentes.json */; };
 		84B82D0E2C481BE600A160D6 /* ActivitiesTypeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B82D0C2C481BE600A160D6 /* ActivitiesTypeTVCell.swift */; };
 		84B82D0F2C481BE600A160D6 /* ActivitiesTypeTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B82D0D2C481BE600A160D6 /* ActivitiesTypeTVCell.xib */; };
@@ -1752,6 +1754,8 @@
 		84A170092C452128002C7F83 /* TransferPrePaymentConfModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPrePaymentConfModel.swift; sourceTree = "<group>"; };
 		84A1700C2C452ECA002C7F83 /* TransferfareSummeryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferfareSummeryTVCell.swift; sourceTree = "<group>"; };
 		84A1700D2C452ECA002C7F83 /* TransferfareSummeryTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransferfareSummeryTVCell.xib; sourceTree = "<group>"; };
+		84A6366B2C52794900780660 /* PopularHotelDestinationsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularHotelDestinationsTVCell.swift; sourceTree = "<group>"; };
+		84A6366C2C52794900780660 /* PopularHotelDestinationsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularHotelDestinationsTVCell.xib; sourceTree = "<group>"; };
 		84B82D092C48179900A160D6 /* paymentes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = paymentes.json; sourceTree = "<group>"; };
 		84B82D0C2C481BE600A160D6 /* ActivitiesTypeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTypeTVCell.swift; sourceTree = "<group>"; };
 		84B82D0D2C481BE600A160D6 /* ActivitiesTypeTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTypeTVCell.xib; sourceTree = "<group>"; };
@@ -4321,6 +4325,7 @@
 		65207B912BF4942F0076EF76 /* TVCells */ = {
 			isa = PBXGroup;
 			children = (
+				84A6366A2C52793600780660 /* PopularHotelDestinationsTVCell */,
 			);
 			path = TVCells;
 			sourceTree = "<group>";
@@ -5693,6 +5698,15 @@
 			path = TransferfareSummeryTVCell;
 			sourceTree = "<group>";
 		};
+		84A6366A2C52793600780660 /* PopularHotelDestinationsTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				84A6366B2C52794900780660 /* PopularHotelDestinationsTVCell.swift */,
+				84A6366C2C52794900780660 /* PopularHotelDestinationsTVCell.xib */,
+			);
+			path = PopularHotelDestinationsTVCell;
+			sourceTree = "<group>";
+		};
 		84B82D0B2C481BD000A160D6 /* ActivitiesTypeTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -6448,6 +6462,7 @@
 				65207CAE2BF494310076EF76 /* Oswald-SemiBold.ttf in Resources */,
 				65207EAD2BF494320076EF76 /* BookingConfirmedTVCell.xib in Resources */,
 				65207CAD2BF494310076EF76 /* Oswald-Bold.ttf in Resources */,
+				84A6366D2C52794900780660 /* PopularHotelDestinationsTVCell.xib in Resources */,
 				65207D362BF494310076EF76 /* HolidayPackagesTVCell.xib in Resources */,
 				65207DC62BF494310076EF76 /* TravellerAdultTVCell.xib in Resources */,
 				65207D072BF494310076EF76 /* AmenitiesTVCell.xib in Resources */,
@@ -6774,6 +6789,7 @@
 				84EA31CE2C479BF90031C482 /* ActivitesListModel.swift in Sources */,
 				844B88112C4911950068CC93 /* Languages.swift in Sources */,
 				657BF3112C05EF1A000E636A /* SportDetailsVM.swift in Sources */,
+				84A6366E2C52794900780660 /* PopularHotelDestinationsTVCell.swift in Sources */,
 				843D48F02C420D1100C0F127 /* GetTransferCityModel.swift in Sources */,
 				65207EC42BF494320076EF76 /* ResetPasswordViewModel.swift in Sources */,
 				65207E4C2BF494320076EF76 /* TripsVC.swift in Sources */,
@@ -7444,7 +7460,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7487,7 +7503,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

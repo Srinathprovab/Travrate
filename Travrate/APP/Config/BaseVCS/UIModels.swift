@@ -122,6 +122,7 @@ enum TVCellType {
     case AddDeatilsOfGuestTVCell
     case CancellationStringTVCell
     case NewHotelPriceSummeryTVCell
+    case PopularHotelDestinationsTVCell
     
     
     //VISA

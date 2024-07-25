@@ -16,45 +16,45 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="252" id="KGk-i7-Jjw" customClass="PopularDestinationsTVCell" customModule="Travrate" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PopularHotelDestinationsTVCell" customModule="Travrate" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="445" height="245"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="445" height="245"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dgo-hw-58Z">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kA5-gL-sCN">
                         <rect key="frame" x="0.0" y="0.0" width="445" height="245"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular Flight Destinations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xft-OR-pc9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular Hotel Destinations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOy-Cg-N4k">
                                 <rect key="frame" x="15" y="16" width="415" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                 <color key="textColor" name="BackBtnColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="64d-u4-aKZ">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DQM-uW-pPF">
                                 <rect key="frame" x="18" y="53" width="409" height="185"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zDv-S3-QhL">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kod-ko-qU4">
                                         <rect key="frame" x="0.0" y="0.0" width="409" height="40"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="wG0-DU-fC0"/>
+                                            <constraint firstAttribute="height" constant="40" id="UOX-oC-5eF"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O5D-da-vFs">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bfl-5o-QCp">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                     </collectionView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vJi-Yp-iG1">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xvh-FU-eZY">
                                         <rect key="frame" x="0.0" y="60" width="409" height="125"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="125" id="RXZ-ZO-QDg"/>
+                                            <constraint firstAttribute="height" constant="125" id="cqs-Ep-C6y"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JRD-Sf-8Pp">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jxX-GT-1gP">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -66,29 +66,29 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="64d-u4-aKZ" firstAttribute="top" secondItem="xft-OR-pc9" secondAttribute="bottom" constant="15" id="BGb-DQ-xu1"/>
-                            <constraint firstItem="xft-OR-pc9" firstAttribute="top" secondItem="Dgo-hw-58Z" secondAttribute="top" constant="16" id="PNb-tc-OB2"/>
-                            <constraint firstAttribute="trailing" secondItem="xft-OR-pc9" secondAttribute="trailing" constant="15" id="Rl5-eR-yyW"/>
-                            <constraint firstItem="xft-OR-pc9" firstAttribute="leading" secondItem="Dgo-hw-58Z" secondAttribute="leading" constant="15" id="Uqp-AE-ggY"/>
-                            <constraint firstAttribute="bottom" secondItem="64d-u4-aKZ" secondAttribute="bottom" constant="7" id="cQC-6e-Tdc"/>
-                            <constraint firstItem="64d-u4-aKZ" firstAttribute="leading" secondItem="Dgo-hw-58Z" secondAttribute="leading" constant="18" id="qOc-NI-ZXP"/>
-                            <constraint firstAttribute="trailing" secondItem="64d-u4-aKZ" secondAttribute="trailing" constant="18" id="uhr-u0-5Sh"/>
+                            <constraint firstItem="wOy-Cg-N4k" firstAttribute="leading" secondItem="kA5-gL-sCN" secondAttribute="leading" constant="15" id="0xe-Bz-5J7"/>
+                            <constraint firstAttribute="trailing" secondItem="DQM-uW-pPF" secondAttribute="trailing" constant="18" id="1M8-F5-eCv"/>
+                            <constraint firstItem="DQM-uW-pPF" firstAttribute="leading" secondItem="kA5-gL-sCN" secondAttribute="leading" constant="18" id="Ck1-5b-tsk"/>
+                            <constraint firstItem="wOy-Cg-N4k" firstAttribute="top" secondItem="kA5-gL-sCN" secondAttribute="top" constant="16" id="PaU-27-6LL"/>
+                            <constraint firstItem="DQM-uW-pPF" firstAttribute="top" secondItem="wOy-Cg-N4k" secondAttribute="bottom" constant="15" id="VTP-KS-8fT"/>
+                            <constraint firstAttribute="trailing" secondItem="wOy-Cg-N4k" secondAttribute="trailing" constant="15" id="fbI-Uj-BO6"/>
+                            <constraint firstAttribute="bottom" secondItem="DQM-uW-pPF" secondAttribute="bottom" constant="7" id="h4N-iG-Tg4"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Dgo-hw-58Z" secondAttribute="bottom" id="Gqe-Ng-hqs"/>
-                    <constraint firstAttribute="trailing" secondItem="Dgo-hw-58Z" secondAttribute="trailing" id="V1e-fl-xUC"/>
-                    <constraint firstItem="Dgo-hw-58Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Z7s-ts-VAM"/>
-                    <constraint firstItem="Dgo-hw-58Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="uEw-4j-OOr"/>
+                    <constraint firstAttribute="bottom" secondItem="kA5-gL-sCN" secondAttribute="bottom" id="4iK-LQ-NHy"/>
+                    <constraint firstAttribute="trailing" secondItem="kA5-gL-sCN" secondAttribute="trailing" id="OBS-3a-3Kk"/>
+                    <constraint firstItem="kA5-gL-sCN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iPE-W2-Yg7"/>
+                    <constraint firstItem="kA5-gL-sCN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="r4S-Vg-lPy"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="citySelectCV" destination="zDv-S3-QhL" id="iCe-6o-K3h"/>
-                <outlet property="selectDestCV" destination="vJi-Yp-iG1" id="wdl-Ju-veC"/>
+                <outlet property="citySelectCV" destination="kod-ko-qU4" id="OYV-3r-zy6"/>
+                <outlet property="selectDestCV" destination="xvh-FU-eZY" id="ieA-ZM-6HT"/>
             </connections>
-            <point key="canvasLocation" x="25.190839694656489" y="176.7605633802817"/>
+            <point key="canvasLocation" x="124" y="21"/>
         </tableViewCell>
     </objects>
     <resources>
