@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol DriverDetailsTVCellDelegate {
+protocol DriverDetailsTVCellDelegate:AnyObject {
     func textViewDidChange(textView:UITextView)
     func editingTextFieldChanged(tf:UITextField)
     func didTapOnTitleSelectBtnAction(cell:DriverDetailsTVCell)
@@ -53,7 +53,7 @@ class DriverDetailsTVCell: TableViewCell,UITextViewDelegate {
     
     var mrtitle = String()
     var placeHolder = "Address"
-    var delegate:DriverDetailsTVCellDelegate?
+    weak var delegate:DriverDetailsTVCellDelegate?
     var agedropDown = DropDown()
     let datePicker = UIDatePicker()
     

@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol AddDeatilsOfPassengerTVCellDelegate {
+protocol AddDeatilsOfPassengerTVCellDelegate: AnyObject {
     
     func didTapOnExpandAdultViewbtnAction(cell:AddDeatilsOfPassengerTVCell)
     func tfeditingChanged(tf:UITextField)
@@ -58,7 +58,7 @@ class AddDeatilsOfPassengerTVCell: TableViewCell {
     
     let titledropDown = DropDown()
     var expandViewBool = true
-    var delegate:AddDeatilsOfPassengerTVCellDelegate?
+    weak var delegate:AddDeatilsOfPassengerTVCellDelegate?
     var indexposition = Int()
     
     override func awakeFromNib() {

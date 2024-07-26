@@ -10,7 +10,7 @@ import DropDown
 import CoreData
 
 
-protocol AddDeatilsOfPersonTVCellDelegate {
+protocol AddDeatilsOfPersonTVCellDelegate: AnyObject {
     
     
     func didTapOnExpandAdultViewbtnAction(cell:AddDeatilsOfPersonTVCell)
@@ -62,7 +62,7 @@ class AddDeatilsOfPersonTVCell: TableViewCell {
     var nationalityName = String()
     var passIssuingCountryName = String()
     var expandViewBool = true
-    var delegate:AddDeatilsOfPersonTVCellDelegate?
+    weak var delegate:AddDeatilsOfPersonTVCellDelegate?
     var indexposition = Int()
     var isSearchBool = Bool()
     var searchText = String()

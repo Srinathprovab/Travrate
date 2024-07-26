@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SortbyTVCellDelegate {
+protocol SortbyTVCellDelegate:AnyObject {
     func didTapOnLowtoHighBtn(cell:SortbyTVCell)
     func didTapOnHightoLowBtn(cell:SortbyTVCell)
     //    func didTapOnResetSortbyBtn(cell:SortbyTVCell)
@@ -26,7 +26,7 @@ class SortbyTVCell: TableViewCell {
     @IBOutlet weak var hightoLowBtn: UIButton!
     
     var selectedSortByOption = String()
-    var delegate:SortbyTVCellDelegate?
+    weak var delegate:SortbyTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

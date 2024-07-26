@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TermsAgreeTVCellDelegate {
+protocol TermsAgreeTVCellDelegate: AnyObject {
     func didTapOnCheckBoxBtnAction(cell:TermsAgreeTVCell)
 }
 
@@ -18,7 +18,7 @@ class TermsAgreeTVCell: TableViewCell {
     
     
     
-    var delegate:TermsAgreeTVCellDelegate?
+    weak var delegate:TermsAgreeTVCellDelegate?
     var checkBool = false
     override func awakeFromNib() {
         super.awakeFromNib()

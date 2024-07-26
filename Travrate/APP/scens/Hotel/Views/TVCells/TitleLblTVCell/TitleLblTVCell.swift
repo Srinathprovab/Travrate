@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol TitleLblTVCellDelegate {
+protocol TitleLblTVCellDelegate:AnyObject {
     func didTapOnEditBtn(cell:TitleLblTVCell)
 }
 
@@ -31,7 +31,7 @@ class TitleLblTVCell: TableViewCell {
     var airlinecode = String()
     var nationalitycode = String()
     var travellerId = String()
-    var delegate:TitleLblTVCellDelegate?
+    weak var delegate:TitleLblTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AddPassengerButtonTVCellDelegate {
+protocol AddPassengerButtonTVCellDelegate: AnyObject {
     func didTapOnAddPassengerBtnAction(cell:AddPassengerButtonTVCell)
 }
 
@@ -17,7 +17,7 @@ class AddPassengerButtonTVCell: TableViewCell {
     @IBOutlet weak var addpassengerBtn: UIButton!
 
     
-    var delegate:AddPassengerButtonTVCellDelegate?
+   weak var delegate:AddPassengerButtonTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

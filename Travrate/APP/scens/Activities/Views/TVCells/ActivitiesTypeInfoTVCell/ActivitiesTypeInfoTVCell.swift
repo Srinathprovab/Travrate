@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol ActivitiesTypeInfoTVCellDelegate {
+protocol ActivitiesTypeInfoTVCellDelegate:AnyObject {
     func didTapOnBookNowBtnAction(cell:ActivitiesTypeInfoTVCell)
 }
 
@@ -31,7 +31,7 @@ class ActivitiesTypeInfoTVCell: UITableViewCell {
     let dropDown = DropDown()
     var agentpayable = String()
     var rateKeySring = String()
-    var delegate:ActivitiesTypeInfoTVCellDelegate?
+    weak var delegate:ActivitiesTypeInfoTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

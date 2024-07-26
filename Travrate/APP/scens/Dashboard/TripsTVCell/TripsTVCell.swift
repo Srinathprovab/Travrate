@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TripsTVCellDelegate {
+protocol TripsTVCellDelegate: AnyObject {
     func didTapOnTripsBtnAction(cell:TripsTVCell)
 }
 
@@ -19,7 +19,7 @@ class TripsTVCell: TableViewCell {
     @IBOutlet weak var tapbtn: UIButton!
     
     
-    var delegate:TripsTVCellDelegate?
+    weak var delegate:TripsTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

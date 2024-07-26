@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol OperatorsCheckBoxTVCellDelegate {
+protocol OperatorsCheckBoxTVCellDelegate: AnyObject{
     func enableContinuetoPaymentBtn(cell:OperatorsCheckBoxTVCell)
 }
 
@@ -23,7 +23,7 @@ class OperatorsCheckBoxTVCell: TableViewCell {
     var check2bool = false
     
     
-    var delegate:OperatorsCheckBoxTVCellDelegate?
+    weak var delegate:OperatorsCheckBoxTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

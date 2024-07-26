@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CruiseItineraryTVCellDelegate {
+protocol CruiseItineraryTVCellDelegate: AnyObject {
     func didTapOnContactusBtnAction(cell:CruiseItineraryTVCell)
     func didTapOnImage()
 }
@@ -23,7 +23,7 @@ class CruiseItineraryTVCell: TableViewCell, CruiseAddItineraryTVCellDelegate {
     @IBOutlet weak var desclbl: UILabel!
     
     var imagesArray = [String]()
-    var delegate:CruiseItineraryTVCellDelegate?
+    weak var delegate:CruiseItineraryTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

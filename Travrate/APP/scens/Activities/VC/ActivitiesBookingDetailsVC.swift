@@ -10,7 +10,7 @@ import UIKit
 class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDelegate {
     
     
-    
+    @IBOutlet weak var bookingTitlelbl: UILabel!
     @IBOutlet weak var gifimg: UIImageView!
     @IBOutlet weak var continuetoPaymentBtnView: UIView!
     @IBOutlet weak var continuetoPaymentBtnlbl: UILabel!
@@ -44,6 +44,8 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
     
     func setupUI() {
         
+        setuplabels(lbl: bookingTitlelbl, text: "Booking Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         MySingleton.shared.addonServicesOrigenArray.removeAll()
         continuetoPaymentBtnView.backgroundColor = .Buttoncolor
         continuetoPaymentBtnView.isUserInteractionEnabled = true

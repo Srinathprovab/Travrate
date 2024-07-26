@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol SignupTVCellDelegate {
+protocol SignupTVCellDelegate: AnyObject {
     func didTapOnRegisterCloseBtnAction(cell:SignupTVCell)
     func didTapOnSignupBtnAction(cell:SignupTVCell)
     func editingTextField(tf:UITextField)
@@ -55,7 +55,7 @@ class SignupTVCell: TableViewCell {
     
     var showbool1 = false
     var showbool2 = false
-    var delegate:SignupTVCellDelegate?
+    weak var delegate:SignupTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

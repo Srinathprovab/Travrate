@@ -35,6 +35,8 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
         addObserver()
     }
     

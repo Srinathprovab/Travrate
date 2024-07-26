@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol DepartureTimeTVCellDelegate {
+protocol DepartureTimeTVCellDelegate:AnyObject {
     func didSelectDepartureTime(cell:DepartureTimeCVCell)
     func didDeSelectDepartureTime(cell:DepartureTimeCVCell)
 }
@@ -18,7 +18,7 @@ class DepartureTimeTVCell: TableViewCell {
     @IBOutlet weak var departureTimeCV: UICollectionView!
     
     
-    var delegate:DepartureTimeTVCellDelegate?
+    weak var delegate:DepartureTimeTVCellDelegate?
     var selectedIndices = [IndexPath]()
     var timeImages = ["mor1","mor2","mor3","mor4"]
     var timeArray = ["12AM - 6AM","6AM - 12PM","12PM - 6PM","6PM - 12AM"]

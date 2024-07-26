@@ -10,7 +10,7 @@ import MaterialComponents
 import DropDown
 
 
-protocol ContactUsTVCellDelegate {
+protocol ContactUsTVCellDelegate: AnyObject {
     
     func editingTextField(tf:UITextField)
     func didTapOnAddressBtnAction(cell:ContactUsTVCell)
@@ -40,7 +40,7 @@ class ContactUsTVCell: TableViewCell, UITextViewDelegate {
     var searchText = String()
     var requestBool = false
     var placeHolder = String()
-    var delegate:ContactUsTVCellDelegate?
+    weak var delegate:ContactUsTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

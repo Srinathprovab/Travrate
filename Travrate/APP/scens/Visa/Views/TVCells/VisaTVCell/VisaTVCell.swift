@@ -9,7 +9,7 @@ import UIKit
 import DropDown
 
 
-protocol VisaTVCellDelegate {
+protocol VisaTVCellDelegate: AnyObject {
     func editingTextField(tf:UITextField)
     func didTapOnSubmitEnquiryBtnAction(cell:VisaTVCell)
     func didTapOnPassengersBtnAction(cell:VisaTVCell)
@@ -67,7 +67,7 @@ class VisaTVCell: TableViewCell {
     var searchText = String()
     let dateOfTravelPicker = UIDatePicker()
     
-    var delegate:VisaTVCellDelegate?
+    weak var delegate:VisaTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -71,7 +71,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
         
         // Do any additional setup after loading the view.
         
-        img.layer.cornerRadius = 40
+        img.layer.cornerRadius = 70
         loadGifFrames()
         startGifAnimation()
         

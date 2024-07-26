@@ -8,7 +8,7 @@
 import UIKit
 import EasyTipView
 
-protocol SportsBookNowTVCellDelegate {
+protocol SportsBookNowTVCellDelegate: AnyObject {
     func didTapOnBookNowBtnAction(cell:SportsBookNowTVCell)
     func didTapOnConfBtnAction(cell:SportsBookNowTVCell)
 }
@@ -31,7 +31,7 @@ class SportsBookNowTVCell: TableViewCell {
     var searchid = String()
     var token = String()
     var ticketValue = String()
-    var delegate:SportsBookNowTVCellDelegate?
+    weak var delegate:SportsBookNowTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

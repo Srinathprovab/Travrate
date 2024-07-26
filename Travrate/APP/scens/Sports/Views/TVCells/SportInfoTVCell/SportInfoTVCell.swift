@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SportInfoTVCellDelegate {
+protocol SportInfoTVCellDelegate: AnyObject {
     func didTapOnViewTicketBtnAction(cell:SportInfoTVCell)
     func didTapOnViewStadiumBtnAction(cell:SportInfoTVCell)
 }
@@ -29,7 +29,7 @@ class SportInfoTVCell: TableViewCell {
     var participantsA = [Participants]()
     var searchid = String()
     var token = String()
-    var delegate:SportInfoTVCellDelegate?
+    weak var delegate:SportInfoTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

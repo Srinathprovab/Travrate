@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol TDetailsLoginTVCellDelegate {
+protocol TDetailsLoginTVCellDelegate: AnyObject {
     func didTapOnLoginBtn(cell:TDetailsLoginTVCell)
 }
 
@@ -20,7 +20,7 @@ class TDetailsLoginTVCell: TableViewCell {
     @IBOutlet weak var loginlbl: UILabel!
     @IBOutlet weak var loginBtn: UIButton!
     
-    var delegate:TDetailsLoginTVCellDelegate?
+    weak var delegate:TDetailsLoginTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

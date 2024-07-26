@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-protocol BCFlightDetailsTVCellDelegate {
+protocol BCFlightDetailsTVCellDelegate: AnyObject {
     func didTapOnViewVoucherBtnAction(cell:BCFlightDetailsTVCell)
 }
 
@@ -19,7 +19,7 @@ class BCFlightDetailsTVCell: TableViewCell {
     @IBOutlet weak var tvHeight: NSLayoutConstraint!
     
     
-    var delegate:BCFlightDetailsTVCellDelegate?
+    weak var delegate:BCFlightDetailsTVCellDelegate?
     var bookingFlightDetails = [Booking_itinerary_summary]()
     override func awakeFromNib() {
         super.awakeFromNib()

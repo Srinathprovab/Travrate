@@ -595,8 +595,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zdq-GB-Gm9">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LWR-C9-3Gg">
-                                        <rect key="frame" x="10" y="341" width="373" height="170"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="LWR-C9-3Gg">
+                                        <rect key="frame" x="10" y="351" width="373" height="150"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="l25-XI-TrN">
                                                 <rect key="frame" x="116.66666666666669" y="0.0" width="140" height="140"/>
@@ -605,13 +605,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Znw-uG-AlA">
-                                                                <rect key="frame" x="9.9999999999999858" y="10" width="120.00000000000001" height="120"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loder.gif" translatesAutoresizingMaskIntoConstraints="NO" id="oct-hi-Pgh">
-                                                                <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                                <rect key="frame" x="-10" y="-10" width="160" height="160"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="140" id="V9O-b8-KBW"/>
-                                                                    <constraint firstAttribute="width" constant="140" id="XWd-cR-lDC"/>
+                                                                    <constraint firstAttribute="height" constant="160" id="V9O-b8-KBW"/>
+                                                                    <constraint firstAttribute="width" constant="160" id="XWd-cR-lDC"/>
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
@@ -619,12 +619,12 @@
                                                         <constraints>
                                                             <constraint firstItem="oct-hi-Pgh" firstAttribute="centerY" secondItem="9gQ-po-Fmn" secondAttribute="centerY" id="1Mu-40-xrX"/>
                                                             <constraint firstAttribute="height" constant="140" id="4UA-rX-Yni"/>
-                                                            <constraint firstItem="Znw-uG-AlA" firstAttribute="top" secondItem="9gQ-po-Fmn" secondAttribute="top" constant="10" id="JgZ-1x-jFE"/>
+                                                            <constraint firstItem="Znw-uG-AlA" firstAttribute="top" secondItem="9gQ-po-Fmn" secondAttribute="top" id="JgZ-1x-jFE"/>
                                                             <constraint firstItem="oct-hi-Pgh" firstAttribute="centerX" secondItem="9gQ-po-Fmn" secondAttribute="centerX" id="LSw-n4-H2B"/>
                                                             <constraint firstAttribute="width" constant="140" id="jcQ-hj-0Rs"/>
-                                                            <constraint firstItem="Znw-uG-AlA" firstAttribute="leading" secondItem="9gQ-po-Fmn" secondAttribute="leading" constant="10" id="qnF-hl-g1a"/>
-                                                            <constraint firstAttribute="trailing" secondItem="Znw-uG-AlA" secondAttribute="trailing" constant="10" id="vHA-Nd-X8n"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Znw-uG-AlA" secondAttribute="bottom" constant="10" id="yRg-lI-ruZ"/>
+                                                            <constraint firstItem="Znw-uG-AlA" firstAttribute="leading" secondItem="9gQ-po-Fmn" secondAttribute="leading" id="qnF-hl-g1a"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Znw-uG-AlA" secondAttribute="trailing" id="vHA-Nd-X8n"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Znw-uG-AlA" secondAttribute="bottom" id="yRg-lI-ruZ"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -648,7 +648,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round Trip - 1 Adult" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NE5-ck-e7C">
-                                                                <rect key="frame" x="53.666666666666664" y="12" width="111.66666666666671" height="0.0"/>
+                                                                <rect key="frame" x="53.666666666666664" y="12" width="111.66666666666669" height="0.0"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -670,10 +670,10 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEe-63-Irn">
-                                                <rect key="frame" x="0.0" y="140" width="373" height="30"/>
+                                                <rect key="frame" x="0.0" y="120" width="373" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Wait ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBa-DR-4ci">
-                                                        <rect key="frame" x="116.66666666666669" y="0.0" width="140" height="15.666666666666666"/>
+                                                        <rect key="frame" x="106.66666666666669" y="10" width="160" height="15.666666666666664"/>
                                                         <fontDescription key="fontDescription" name=".SFUI-Semibold" family=".AppleSystemUIFont" pointSize="14"/>
                                                         <color key="textColor" name="TitleColor"/>
                                                         <nil key="highlightedColor"/>
@@ -682,11 +682,11 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="cEg-1b-efC"/>
-                                                    <constraint firstItem="kBa-DR-4ci" firstAttribute="top" secondItem="ZEe-63-Irn" secondAttribute="top" id="fh8-Uh-VYJ"/>
+                                                    <constraint firstItem="kBa-DR-4ci" firstAttribute="top" secondItem="ZEe-63-Irn" secondAttribute="top" constant="10" id="fh8-Uh-VYJ"/>
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XqS-2M-uJp">
-                                                <rect key="frame" x="0.0" y="170" width="373" height="200"/>
+                                                <rect key="frame" x="0.0" y="150" width="373" height="200"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kuwait(KWI) to Dubai(DXB)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0d-JP-ugV">
                                                         <rect key="frame" x="10" y="10.000000000000002" width="353" height="24.666666666666671"/>
@@ -817,7 +817,7 @@
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYA-E6-L83">
-                                                <rect key="frame" x="-3.3333333333333428" y="170" width="379.66666666666674" height="100"/>
+                                                <rect key="frame" x="-3.3333333333333428" y="150" width="379.66666666666674" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport Dubai International" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOi-Fm-b1C">
                                                         <rect key="frame" x="10" y="10" width="359.66666666666669" height="22"/>
@@ -853,7 +853,7 @@
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HIT-em-5cu">
-                                                <rect key="frame" x="0.0" y="170" width="373" height="120"/>
+                                                <rect key="frame" x="0.0" y="150" width="373" height="120"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport Dubai International" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM5-Wl-C7W">
                                                         <rect key="frame" x="10" y="9.9999999999999982" width="353" height="19.333333333333329"/>
@@ -899,7 +899,7 @@
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjQ-yg-ESb">
-                                                <rect key="frame" x="0.0" y="170" width="373" height="120"/>
+                                                <rect key="frame" x="0.0" y="150" width="373" height="120"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Istanbul Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxd-uF-IgR">
                                                         <rect key="frame" x="10" y="20" width="353" height="19.333333333333329"/>

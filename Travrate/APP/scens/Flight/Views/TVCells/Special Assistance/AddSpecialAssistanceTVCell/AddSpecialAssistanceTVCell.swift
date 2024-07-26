@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol AddSpecialAssistanceTVCellDelegate {
+protocol AddSpecialAssistanceTVCellDelegate: AnyObject {
     func didTapOnCheckBoxBtnAction(cell:AddSpecialAssistanceTVCell)
     func didTapOnShowSpecialAssistanceDropDownListBtnAction(cell:AddSpecialAssistanceTVCell)
 }
@@ -26,7 +26,7 @@ class AddSpecialAssistanceTVCell: UITableViewCell {
     var assistanceNameArray = [String]()
     var assistanceidArray = [String]()
     var checkBoxBool = false
-    var delegate:AddSpecialAssistanceTVCellDelegate?
+    weak var delegate:AddSpecialAssistanceTVCellDelegate?
     
     
     override func awakeFromNib() {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ChoosePackageTVCellDelergate {
+protocol ChoosePackageTVCellDelergate:AnyObject {
     func didTapOnSelectPackageBtnAction(cell:ChoosePackageTVCell)
 }
 
@@ -27,7 +27,7 @@ class ChoosePackageTVCell: TableViewCell {
     var carproductcode = String()
     var extraOptionPrice = String()
     var carproduct : Product?
-    var delegate:ChoosePackageTVCellDelergate?
+    weak var delegate:ChoosePackageTVCellDelergate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

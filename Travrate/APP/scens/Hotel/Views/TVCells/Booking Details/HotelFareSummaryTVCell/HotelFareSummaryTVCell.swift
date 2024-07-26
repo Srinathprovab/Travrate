@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HotelFareSummaryTVCellDelegate {
+protocol HotelFareSummaryTVCellDelegate:AnyObject {
     func didTapOnUserTermsBtnAction(cell:HotelFareSummaryTVCell)
     func didTapOnPrivacyPolicyBtnAction(cell:HotelFareSummaryTVCell)
 }
@@ -25,7 +25,7 @@ class HotelFareSummaryTVCell: TableViewCell {
     @IBOutlet weak var addonValue: UILabel!
     
     
-    var delegate:HotelFareSummaryTVCellDelegate?
+    weak var delegate:HotelFareSummaryTVCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

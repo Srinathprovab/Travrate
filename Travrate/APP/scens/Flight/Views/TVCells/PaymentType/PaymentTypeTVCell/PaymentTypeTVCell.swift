@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PaymentTypeTVCellDelegate {
+protocol PaymentTypeTVCellDelegate: AnyObject {
     func didTapOnPayNowBtnAction(cell:PaymentTypeTVCell)
 }
 
@@ -19,7 +19,7 @@ class PaymentTypeTVCell: TableViewCell {
     
     
     var paymentTypeImageArray = ["knetpay","visapay","masterpay"]
-    var delegate:PaymentTypeTVCellDelegate?
+    weak var delegate:PaymentTypeTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

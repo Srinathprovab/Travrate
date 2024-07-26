@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol BookTransfersTVCellDelegate {
+protocol BookTransfersTVCellDelegate: AnyObject {
     func donedatePicker(cell:BookTransfersTVCell)
     func cancelDatePicker(cell:BookTransfersTVCell)
     func doneTimePicker(cell:BookTransfersTVCell)
@@ -52,7 +52,7 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
     let returntimePicker = UIDatePicker()
     
     
-    var delegate:BookTransfersTVCellDelegate?
+    weak var delegate:BookTransfersTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

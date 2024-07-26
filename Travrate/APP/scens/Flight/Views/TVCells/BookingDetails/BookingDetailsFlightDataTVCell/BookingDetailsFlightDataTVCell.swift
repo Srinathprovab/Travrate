@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol BookingDetailsFlightDataTVCellDelegate {
+protocol BookingDetailsFlightDataTVCellDelegate: AnyObject {
     func didTapOnFlightDetails(cell:BookingDetailsFlightDataTVCell)
 }
 
@@ -25,7 +25,7 @@ class BookingDetailsFlightDataTVCell: TableViewCell {
     var farerulesrefKey = String()
     var farerulesrefContent = String()
     
-    var delegate:BookingDetailsFlightDataTVCellDelegate?
+    weak var delegate:BookingDetailsFlightDataTVCellDelegate?
     var flightsummery = [Summary]()
     var flightlist :FlightList?
     override func awakeFromNib() {

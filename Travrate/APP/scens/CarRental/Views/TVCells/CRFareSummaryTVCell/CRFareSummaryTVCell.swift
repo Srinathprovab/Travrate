@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CRFareSummaryTVCelldelegate {
+protocol CRFareSummaryTVCelldelegate:AnyObject {
     func didTapOnDeleteOptionsBtnAction(cell:CRFareSummaryTVCell)
 }
 
@@ -27,7 +27,7 @@ class CRFareSummaryTVCell: TableViewCell {
     @IBOutlet weak var tvheight: NSLayoutConstraint!
     
     
-    var delegate : CRFareSummaryTVCelldelegate?
+    weak var delegate : CRFareSummaryTVCelldelegate?
     var carproductDetails :Product?
     override func awakeFromNib() {
         super.awakeFromNib()

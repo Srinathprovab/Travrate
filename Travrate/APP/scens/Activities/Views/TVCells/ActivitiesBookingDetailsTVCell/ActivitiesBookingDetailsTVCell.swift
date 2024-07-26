@@ -21,7 +21,8 @@ class ActivitiesBookingDetailsTVCell: TableViewCell {
     var bookingsource = String()
     var activitycode = String()
     var activitylist :Activity?
-    var delegate:ActivitiesResultTVCellDelegate?
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

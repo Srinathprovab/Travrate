@@ -110,16 +110,18 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
             callFlightSendToPaymentAPI()
         }else if tabselect == "Hotel" {
             hotelSendToPayment()
+           // gotoBookingConfirmedVC()
         }else if tabselect == "Sports" {
             callSportsSendToPayment()
         }else if tabselect == "transfers" {
             callTransferSendToPaymentAPI()
+           // gotoBookingConfirmedVC()
         }else if tabselect == "CarRental" {
             callCarrentalSendToPaymentAPI()
         }else if tabselect == "Activities" {
             callActivitiesSendToPayMentAPI()
         }else{
-            gotoBookingConfirmedVC()
+           
         }
     }
     

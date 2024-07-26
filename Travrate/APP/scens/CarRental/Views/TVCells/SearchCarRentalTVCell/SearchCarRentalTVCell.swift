@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol SearchCarRentalTVCellDelegate {
+protocol SearchCarRentalTVCellDelegate:AnyObject {
     func didTapOnPickupLocationBtnAction(cell:SearchCarRentalTVCell)
     func didTapOnSearchBtnAction(cell:SearchCarRentalTVCell)
     func tfeditingChanged(tf: UITextField)
@@ -57,7 +57,7 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     
     var locaionList = [PickuplocationListModel]()
     var Pickupvvm :PickuplocationListVM?
-    var delegate:SearchCarRentalTVCellDelegate?
+    weak var delegate:SearchCarRentalTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

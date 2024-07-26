@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CarRentalResultTVCellDelegate {
+protocol CarRentalResultTVCellDelegate:AnyObject {
     func didTapOnViewDetailsBtnAction(cell:CarRentalResultTVCell)
 }
 
@@ -35,18 +35,22 @@ class CarRentalResultTVCell: TableViewCell {
     var result_index = String()
     var carlist:Raw_hotel_list?
     
-    var delegate:CarRentalResultTVCellDelegate?
+    weak var delegate:CarRentalResultTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-       // setupCV()
+        setupUI()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state   10.265 : 0 : 0
+    }
+    
+    func setupUI() {
+        setuplabels(lbl: titlelbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 18), align: .left)
     }
     
     
@@ -96,11 +100,11 @@ class CarRentalResultTVCell: TableViewCell {
             
             
             viewDetailsBtn.layer.cornerRadius = 4
-            MySingleton.shared.setAttributedTextnew(str1: carlist?.product?[0].currency ?? "",
+            MySingleton.shared.setAttributedTextnew(str1: "\(carlist?.product?[0].currency ?? "") ",
                                                     str2: carlist?.product?[0].total ?? "",
                                                     lbl: kwdlbl,
                                                     str1font: .InterSemiBold(size: 12),
-                                                    str2font: .InterSemiBold(size: 22),
+                                                    str2font: .InterBold(size: 22),
                                                     str1Color: .TitleColor,
                                                     str2Color: .TitleColor)
             

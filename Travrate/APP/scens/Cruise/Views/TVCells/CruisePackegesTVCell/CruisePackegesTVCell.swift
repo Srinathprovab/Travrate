@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CruisePackegesTVCellDelegate {
+protocol CruisePackegesTVCellDelegate: AnyObject {
     func didTapOnCruisePackageBtnAction(cell:CruisePackegesTVCell)
 }
 
@@ -21,7 +21,7 @@ class CruisePackegesTVCell: TableViewCell {
     
     
     var cruiseKey = String()
-    var delegate:CruisePackegesTVCellDelegate?
+    weak var delegate:CruisePackegesTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

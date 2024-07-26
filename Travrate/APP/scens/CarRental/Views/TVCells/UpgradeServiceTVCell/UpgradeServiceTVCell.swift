@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol UpgradeServiceTVCellDelegate {
+protocol UpgradeServiceTVCellDelegate:AnyObject {
     func didTapOnUpgradeServiceBtnAction(cell:UpgradeServiceTVCell)
 }
 
@@ -18,7 +18,7 @@ class UpgradeServiceTVCell: TableViewCell {
     @IBOutlet weak var dropdownimg: UIImageView!
     
     
-    var delegate:UpgradeServiceTVCellDelegate?
+    weak var delegate:UpgradeServiceTVCellDelegate?
     var selectbool = false
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,16 +33,6 @@ class UpgradeServiceTVCell: TableViewCell {
     
     
     @IBAction func didTapOnUpgradeServiceBtnAction(_ sender: Any) {
-        selectbool.toggle()
-        if selectbool {
-            bottomView.isHidden = false
-            dropdownimg.image = UIImage(named: "dropup")?.withRenderingMode(.alwaysOriginal).withTintColor(.black)
-        }else {
-            bottomView.isHidden = true
-            dropdownimg.image = UIImage(named: "downarrow")
-        }
-        
-        
         delegate?.didTapOnUpgradeServiceBtnAction(cell: self)
     }
     

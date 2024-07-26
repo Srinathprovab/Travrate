@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol TContactDetailsTVCellDelegate {
+protocol TContactDetailsTVCellDelegate: AnyObject{
     func editingTextField(tf:UITextField)
     func didTapOnCountryCodeBtn(cell:TContactDetailsTVCell)
 }
@@ -41,7 +41,7 @@ class TContactDetailsTVCell: TableViewCell {
     var countryNameArray = [String]()
     var isoCountryCode = String()
     
-    var delegate:TContactDetailsTVCellDelegate?
+    weak var delegate:TContactDetailsTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

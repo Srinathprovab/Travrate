@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TravellerEconomyTVCellDelegate {
+protocol TravellerEconomyTVCellDelegate: AnyObject {
     func didTapOnDecrementButton(cell:TravellerEconomyTVCell)
     func didTapOnIncrementButton(cell:TravellerEconomyTVCell)
 }
@@ -23,7 +23,7 @@ class TravellerEconomyTVCell: TableViewCell {
     @IBOutlet weak var incrementView: UIView!
     @IBOutlet weak var incrementImg: UIImageView!
     
-    var delegate: TravellerEconomyTVCellDelegate?
+    weak var delegate: TravellerEconomyTVCellDelegate?
     var count = 0
     override func awakeFromNib() {
         super.awakeFromNib()

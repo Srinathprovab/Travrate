@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol NewBookingConfirmedTVCellDelegate {
+protocol NewBookingConfirmedTVCellDelegate: AnyObject {
     func didTapOnBackBtnAction(cell:NewBookingConfirmedTVCell)
 }
 
@@ -23,7 +23,7 @@ class NewBookingConfirmedTVCell: TableViewCell {
     @IBOutlet weak var bgimage: UIImageView!
     
     
-    var delegate:NewBookingConfirmedTVCellDelegate?
+    weak var delegate:NewBookingConfirmedTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

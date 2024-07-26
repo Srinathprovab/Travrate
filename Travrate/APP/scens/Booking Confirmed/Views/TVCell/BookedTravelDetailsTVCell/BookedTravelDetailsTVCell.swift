@@ -251,7 +251,7 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 
                 if indexPath.row == 0{
                     cell.setAttributedText(str1: "\(cellInfo?.title ?? "")", str2: "")
-                    cell.passengerTypelbl.text = "Lead Passenger"
+                    cell.passengerTypelbl.text = "Lead"
                     cell.travellerNamelbl.text = data.firstName
                     cell.emaillbl.text = MySingleton.shared.payemail
                     cell.mobileLbl.text = MySingleton.shared.paymobile

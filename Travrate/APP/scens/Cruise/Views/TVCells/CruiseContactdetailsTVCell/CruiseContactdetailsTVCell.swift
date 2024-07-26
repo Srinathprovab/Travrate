@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol CruiseContactdetailsTVCellDelegate {
+protocol CruiseContactdetailsTVCellDelegate: AnyObject {
     func editingTextField(tf:UITextField)
     func didTapOnSubmitEnquiryBtnAction(cell:CruiseContactdetailsTVCell)
     func didTapOnRequestCallBackBtnAction(cell:CruiseContactdetailsTVCell)
@@ -47,7 +47,7 @@ class CruiseContactdetailsTVCell: TableViewCell {
     var isSearchBool = Bool()
     var searchText = String()
     var cname = String()
-    var delegate:CruiseContactdetailsTVCellDelegate?
+    weak var delegate:CruiseContactdetailsTVCellDelegate?
     var titleDropdown = DropDown()
     override func awakeFromNib() {
         super.awakeFromNib()

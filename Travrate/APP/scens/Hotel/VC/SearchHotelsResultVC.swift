@@ -246,13 +246,38 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     //MARK: -  didTapOnViewMapBtnAction
     @objc func didTapOnViewMapBtnAction(_ sender:UIButton) {
         mapModelArray.removeAll()
-        hotelSearchResult.forEach { i in
-            let mapModel = MapModel(
-                longitude: i.longitude ?? "",
-                latitude: i.latitude ?? "",
-                hotelname: i.name ?? ""
-            )
-            mapModelArray.append(mapModel)
+//        hotelSearchResult.forEach { i in
+//            let mapModel = MapModel(
+//                longitude: i.longitude ?? "",
+//                latitude: i.latitude ?? "",
+//                hotelname: i.name ?? ""
+//            )
+//            mapModelArray.append(mapModel)
+//        }
+        
+        mapModelArray.removeAll()
+        if isSearchBool == false {
+           
+            hotelSearchResult.forEach { i in
+                let mapModel = MapModel(
+                    longitude: i.longitude ?? "",
+                    latitude: i.latitude ?? "",
+                    hotelname: i.name ?? ""
+                )
+                mapModelArray.append(mapModel)
+            }
+            
+            
+        } else {
+            filtered.forEach { i in
+                let mapModel = MapModel(
+                    longitude: i.longitude ?? "",
+                    latitude: i.latitude ?? "",
+                    hotelname: i.name ?? ""
+                )
+                mapModelArray.append(mapModel)
+            }
+            
         }
         gotoMapViewVC()
     }
@@ -352,10 +377,7 @@ extension SearchHotelsResultVC {
     }
     
     
-    
-    
     func callHotelPreSearchAPI() {
-        
         
         do {
             
@@ -375,7 +397,6 @@ extension SearchHotelsResultVC {
     }
     
     func hoteSearchPreResult(response: HotelSearchNewModel) {
-        
         bsDataArray.forEach { i in
             
             let seconds = 1.0
@@ -385,9 +406,6 @@ extension SearchHotelsResultVC {
             }
             
         }
-        
-        
-        
     }
     
     
@@ -703,6 +721,7 @@ extension SearchHotelsResultVC {
     func hoteSearchPagenationResult(response: HotelSearchModel) {
         
         loderBool = true
+        mapModelArray.removeAll()
         response.data?.hotelSearchResult?.forEach { i in
             
             hotelprices.append(i.price ?? "")
@@ -774,7 +793,7 @@ extension SearchHotelsResultVC:AppliedFilters{
         
         
         // Filter the hotels based on the specified criteria
-        let filteredArray = hotelSearchResult.filter { hotel in
+       let filteredArray = hotelSearchResult.filter { hotel in
             guard let totalString = Double(hotel.price ?? "0.0") else { return false }
             
             let priceInRange = totalString >= minpricerange && totalString <= maxpricerange
@@ -790,11 +809,15 @@ extension SearchHotelsResultVC:AppliedFilters{
         filtered = filteredArray
         hotelsCountlbl.text = "\(filtered.count)"
         // Display a message if no hotels match the criteria
-        if filtered.count == 0 {
+        
+        mapModelArray.removeAll()
+        if filteredArray.count == 0 {
             TableViewHelper.EmptyMessage(message: "No Data Found", tableview: commonTableView, vc: self)
         } else {
             TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
+            
         }
+
         
         
         // Reload the table view with the filtered results

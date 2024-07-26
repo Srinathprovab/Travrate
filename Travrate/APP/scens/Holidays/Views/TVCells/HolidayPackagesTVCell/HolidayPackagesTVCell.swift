@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol HolidayPackagesTVCellDelegate {
+protocol HolidayPackagesTVCellDelegate:AnyObject {
     func didTapOnHolidayPackage(cell:HolidayPackagesTVCell)
 }
 
@@ -20,7 +20,7 @@ class HolidayPackagesTVCell: TableViewCell {
     
     
     var holidayKey = String()
-    var delegate:HolidayPackagesTVCellDelegate?
+    weak var delegate:HolidayPackagesTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

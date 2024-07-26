@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ActivitiesTypeTVCellDelegate {
+protocol ActivitiesTypeTVCellDelegate:AnyObject {
     func didTapOnBookNowBtnAction(cell:ActivitiesTypeInfoTVCell)
 }
 
@@ -20,7 +20,7 @@ class ActivitiesTypeTVCell: UITableViewCell, ActivitiesTypeInfoTVCellDelegate {
     @IBOutlet weak var totalPricelbl: UILabel!
     
     var cancelPolicy = [Cancelpolicy]()
-    var delegate:ActivitiesTypeTVCellDelegate?
+    weak var delegate:ActivitiesTypeTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

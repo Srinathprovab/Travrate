@@ -9,7 +9,7 @@ import UIKit
 import DropDown
 
 
-protocol NewSpecialAssistanceTVCellDelegate {
+protocol NewSpecialAssistanceTVCellDelegate: AnyObject {
     func didTapOnCheckBoxBtnAction(cell:NewSpecialAssistanceTVCell)
     func didTapOnServiceBtnAction(cell:NewSpecialAssistanceTVCell)
     func textViewDidChange(textView:UITextView)
@@ -31,7 +31,7 @@ class NewSpecialAssistanceTVCell: TableViewCell, AddAssistanceTVCellDelegate, UI
     var firstnameArray = [String]()
     var serviceDropDown = DropDown()
     var checkbool = false
-    var delegate:NewSpecialAssistanceTVCellDelegate?
+    weak var delegate:NewSpecialAssistanceTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

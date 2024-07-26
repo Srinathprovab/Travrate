@@ -14,7 +14,7 @@ struct AdditionalOption {
 }
 
 
-protocol ChooseAdditionalOptionsTVCellDelegate {
+protocol ChooseAdditionalOptionsTVCellDelegate:AnyObject {
     func didTapOnAdditionalOptionasBtnAction(cell:ChooseAdditionalOptionsTVCell)
 }
 
@@ -27,7 +27,7 @@ class ChooseAdditionalOptionsTVCell: TableViewCell {
     
     
     
-    var delegate:ChooseAdditionalOptionsTVCellDelegate?
+    weak var delegate:ChooseAdditionalOptionsTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

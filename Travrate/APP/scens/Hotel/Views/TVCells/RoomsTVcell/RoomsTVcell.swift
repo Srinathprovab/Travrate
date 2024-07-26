@@ -10,7 +10,7 @@ import CoreLocation
 import GoogleMaps
 
 
-protocol RoomsTVcellDelegate {
+protocol RoomsTVcellDelegate:AnyObject {
     func didTapOnRoomsBtn(cell:RoomsTVcell)
     func didTapOnHotelsDetailsBtn(cell:RoomsTVcell)
     func didTapOnAmenitiesBtn(cell:RoomsTVcell)
@@ -51,7 +51,7 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
     
     let locationManager = CLLocationManager()
     var selectedCell: NewRoomDetailsTVCell?
-    var delegate:RoomsTVcellDelegate?
+    weak var delegate:RoomsTVcellDelegate?
     var key = "rooms"
     override func awakeFromNib() {
         super.awakeFromNib()

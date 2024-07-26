@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol QuickLinkTableViewCellDelegate {
+protocol QuickLinkTableViewCellDelegate: AnyObject {
     func didTaponCell(cell:SideMenuTitleTVCell)
 }
 
@@ -22,7 +22,7 @@ class QuickLinkTableViewCell: TableViewCell, UITableViewDataSource, UITableViewD
     
     
     
-    var delegate:QuickLinkTableViewCellDelegate?
+    weak var delegate:QuickLinkTableViewCellDelegate?
     var bookings = ["My Bookings", "Free Cancellation", "Customer Support"]
     var tabNamesImages = ["flightIcon","hotelIcon","visaIcon", "payIcon"]
     

@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol AddDeatilsOfGuestTVCellDelegate {
+protocol AddDeatilsOfGuestTVCellDelegate:AnyObject {
     
     func didTapOnExpandAdultViewbtnAction(cell:AddDeatilsOfGuestTVCell)
     func tfeditingChanged(tf:UITextField)
@@ -42,7 +42,7 @@ class AddDeatilsOfGuestTVCell: TableViewCell {
     var countryNames = [String]()
     var maxLength = 50
     var expandViewBool = true
-    var delegate:AddDeatilsOfGuestTVCellDelegate?
+    weak var delegate:AddDeatilsOfGuestTVCellDelegate?
     var indexposition = Int()
     
     override func awakeFromNib() {

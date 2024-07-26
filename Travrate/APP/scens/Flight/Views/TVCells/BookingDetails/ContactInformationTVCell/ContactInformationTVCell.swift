@@ -9,7 +9,7 @@ import UIKit
 import DropDown
 import IQKeyboardManager
 
-protocol ContactInformationTVCellDelegate {
+protocol ContactInformationTVCellDelegate: AnyObject {
     func didTapOnCountryCodeBtn(cell:ContactInformationTVCell)
     func editingTextField(tf:UITextField)
     func didTapOnDropDownBtn(cell:ContactInformationTVCell)
@@ -50,7 +50,7 @@ class ContactInformationTVCell: TableViewCell {
     var countryNameArray = [String]()
     var isoCountryCode = String()
     var billingCountryName = String()
-    var delegate:ContactInformationTVCellDelegate?
+    weak var delegate:ContactInformationTVCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

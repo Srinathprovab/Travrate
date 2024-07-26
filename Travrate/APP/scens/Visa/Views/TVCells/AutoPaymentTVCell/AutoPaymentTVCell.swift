@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AutoPaymentTVCellDelegate {
+protocol AutoPaymentTVCellDelegate: AnyObject {
     func editingTextField(tf:UITextField)
     func didTapOnPaynowBtnAction(cell:AutoPaymentTVCell)
 }
@@ -32,7 +32,7 @@ class AutoPaymentTVCell: TableViewCell {
     @IBOutlet weak var refView: UIView!
     
     var cvtabsName = ["Flight","Hotel","Insurence","Visa"]
-    var delegate:AutoPaymentTVCellDelegate?
+    weak var delegate:AutoPaymentTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

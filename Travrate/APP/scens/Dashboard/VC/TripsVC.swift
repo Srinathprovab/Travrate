@@ -81,9 +81,9 @@ extension TripsVC {
             setupTVCells()
         }else {
             
-            //            loginlbl.isHidden = true
-            //            commonTableView.isHidden = false
-            //            setupTVCells()
+//                        loginlbl.isHidden = true
+//                        commonTableView.isHidden = false
+//                        setupTVCells()
             
             loginlbl.isHidden = false
             commonTableView.isHidden = true
@@ -142,6 +142,7 @@ extension TripsVC {
         NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("logindone"), object: nil)
+        
         
         checkLoginStatus()
         

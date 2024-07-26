@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol RoomsCountTVCellDelegate {
+protocol RoomsCountTVCellDelegate:AnyObject {
     func didTapOnAddRoomBtnAction(cell:RoomsCountTVCell)
     func didTapOnCloseRoom(cell:RoomsCountTVCell)
     
@@ -181,7 +181,7 @@ class RoomsCountTVCell: UITableViewCell {
     
     
     var roomCount = 1
-    var delegate:RoomsCountTVCellDelegate?
+    weak var delegate:RoomsCountTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

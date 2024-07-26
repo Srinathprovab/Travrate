@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol PersonInformationTVCellDelegate {
+protocol PersonInformationTVCellDelegate: AnyObject {
     func didTapOnSelectPersonsBtnAction(cell:PersonInformationTVCell)
     func didTapOnSelectTicketTypeBtnAction(cell:PersonInformationTVCell)
 }
@@ -24,7 +24,7 @@ class PersonInformationTVCell: TableViewCell {
     
     var personsDropdown = DropDown()
     var tickettypeDropdown = DropDown()
-    var delegate:PersonInformationTVCellDelegate?
+    weak var delegate:PersonInformationTVCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

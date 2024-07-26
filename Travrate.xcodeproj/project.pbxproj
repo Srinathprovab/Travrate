@@ -796,6 +796,7 @@
 		845BB4DB2C297B7600571339 /* ShareResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB4DA2C297B7600571339 /* ShareResultVC.swift */; };
 		845BB4DF2C297C4300571339 /* ShareResultTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845BB4DE2C297C4300571339 /* ShareResultTVCell.xib */; };
 		845BB4E02C297C4300571339 /* ShareResultTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB4DD2C297C4300571339 /* ShareResultTVCell.swift */; };
+		8461E9F52C53636200CF9E11 /* UpgradeServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461E9F42C53636200CF9E11 /* UpgradeServiceVC.swift */; };
 		846D24C72C40B9140030C539 /* CarBookingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D24C62C40B9140030C539 /* CarBookingVM.swift */; };
 		846D24C92C40BC510030C539 /* carPrePaymrntConfirmationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D24C82C40BC510030C539 /* carPrePaymrntConfirmationModel.swift */; };
 		846D24CB2C40BC690030C539 /* Car_passengers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D24CA2C40BC680030C539 /* Car_passengers.swift */; };
@@ -1723,6 +1724,7 @@
 		845BB4DA2C297B7600571339 /* ShareResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultVC.swift; sourceTree = "<group>"; };
 		845BB4DD2C297C4300571339 /* ShareResultTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultTVCell.swift; sourceTree = "<group>"; };
 		845BB4DE2C297C4300571339 /* ShareResultTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareResultTVCell.xib; sourceTree = "<group>"; };
+		8461E9F42C53636200CF9E11 /* UpgradeServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeServiceVC.swift; sourceTree = "<group>"; };
 		846D24C62C40B9140030C539 /* CarBookingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBookingVM.swift; sourceTree = "<group>"; };
 		846D24C82C40BC510030C539 /* carPrePaymrntConfirmationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carPrePaymrntConfirmationModel.swift; sourceTree = "<group>"; };
 		846D24CA2C40BC680030C539 /* Car_passengers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car_passengers.swift; sourceTree = "<group>"; };
@@ -1893,6 +1895,7 @@
 				8404DA252C3E6D5D000A648A /* ModifySearchCarRentalVC.swift */,
 				6512C7622C16EE080077EA68 /* CarRentalResultsVC.swift */,
 				6512C7692C16FEFF0077EA68 /* CarRentalChoosePackageVC.swift */,
+				8461E9F42C53636200CF9E11 /* UpgradeServiceVC.swift */,
 				65684C8C2C1C31A4002A96BE /* CRProceedToBookVC.swift */,
 				65684C902C1C3268002A96BE /* CRBookingDetailsVC.swift */,
 			);
@@ -6793,6 +6796,7 @@
 				843D48F02C420D1100C0F127 /* GetTransferCityModel.swift in Sources */,
 				65207EC42BF494320076EF76 /* ResetPasswordViewModel.swift in Sources */,
 				65207E4C2BF494320076EF76 /* TripsVC.swift in Sources */,
+				8461E9F52C53636200CF9E11 /* UpgradeServiceVC.swift in Sources */,
 				65207E772BF494320076EF76 /* CruiseDetailsVC.swift in Sources */,
 				65207D062BF494310076EF76 /* AllCountryCodeListModel.swift in Sources */,
 				65207E982BF494320076EF76 /* LoadWebViewVC.swift in Sources */,
@@ -7457,7 +7461,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
@@ -7500,7 +7504,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;

@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol AddFareRulesTVCellDelegate {
+protocol AddFareRulesTVCellDelegate: AnyObject {
     func didTapOnMoreFareRulesBtnAction(cell:AddFareRulesTVCell)
     func showContentBtnAction(cell:FareRulesTVCell)
 }
@@ -20,7 +20,7 @@ class AddFareRulesTVCell: TableViewCell {
     @IBOutlet weak var arrowimg: UIImageView!
     @IBOutlet weak var tvheight: NSLayoutConstraint!
     
-    var delegate:AddFareRulesTVCellDelegate?
+    weak var delegate:AddFareRulesTVCellDelegate?
     var morebool = false
     override func awakeFromNib() {
         super.awakeFromNib()

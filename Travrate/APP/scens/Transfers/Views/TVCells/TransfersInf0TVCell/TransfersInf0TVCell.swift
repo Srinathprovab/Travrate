@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol TransfersInf0TVCellDelegate {
+protocol TransfersInf0TVCellDelegate: AnyObject {
     func didTapOnBookNowBtnAction(cell:TransfersInf0TVCell)
 }
 
@@ -25,7 +25,7 @@ class TransfersInf0TVCell: TableViewCell {
     
     var token = String()
     var transferlist: Raw_transfer_list?
-    var delegate:TransfersInf0TVCellDelegate?
+    weak var delegate:TransfersInf0TVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

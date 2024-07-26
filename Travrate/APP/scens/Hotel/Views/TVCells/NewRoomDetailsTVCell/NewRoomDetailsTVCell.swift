@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol NewRoomDetailsTVCellDelegate {
+protocol NewRoomDetailsTVCellDelegate:AnyObject {
     func didTapOnCancellationPolicyBtnAction(cell:NewRoomDetailsTVCell)
     func didTapOnSelectRoomBtnAction(cell:NewRoomDetailsTVCell)
     
@@ -37,7 +37,7 @@ class NewRoomDetailsTVCell: UITableViewCell {
     var CancellationPolicyFromDate = String()
     var ratekey = String()
     var ratekeyNewArray = [String]()
-    var delegate:NewRoomDetailsTVCellDelegate?
+    weak var delegate:NewRoomDetailsTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

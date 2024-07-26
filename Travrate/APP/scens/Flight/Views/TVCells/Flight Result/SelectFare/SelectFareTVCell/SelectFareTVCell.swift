@@ -19,7 +19,7 @@ struct SelectFare {
 }
 
 
-protocol SelectFareTVCellDelegate {
+protocol SelectFareTVCellDelegate: AnyObject {
     func didTapOnSelectFareBtnAction(cell:SelectFareInfoTVCell, at indexPath: IndexPath)
     func didTapOnCloseFareBtnAction(cell: SelectFareInfoTVCell, at indexPath: IndexPath)
     func didTapOnDepartureBtnAction(cell:SelectFareTVCell)
@@ -39,7 +39,7 @@ class SelectFareTVCell: TableViewCell, SelectFareInfoTVCellDelegate {
     var selectedFareType: String = "departure"
     
     var showFareSelectedBool = false
-    var delegate:SelectFareTVCellDelegate?
+    weak var delegate:SelectFareTVCellDelegate?
     var selectedDepartureIndex: IndexPath?
     var selectedReturnIndex: IndexPath?
     var depSelectedFares: [SelectFare] = []

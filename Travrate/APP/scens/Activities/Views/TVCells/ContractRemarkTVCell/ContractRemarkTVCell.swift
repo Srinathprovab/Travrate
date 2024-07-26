@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ContractRemarkTVCellDelegate {
+protocol ContractRemarkTVCellDelegate:AnyObject {
     func didTapOnDropupBtnAction(cell:ContractRemarkTVCell)
 }
 
@@ -17,7 +17,7 @@ class ContractRemarkTVCell: TableViewCell {
     @IBOutlet weak var dropdownbtn: UIButton!
 
     
-    var delegate:ContractRemarkTVCellDelegate?
+    weak var delegate:ContractRemarkTVCellDelegate?
     var dropdownbool = false
     override func awakeFromNib() {
         super.awakeFromNib()

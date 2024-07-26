@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol MainTravelPersonTVCellDelete {
+protocol MainTravelPersonTVCellDelete: AnyObject {
     func editingTextFieldChanged(tf:UITextField)
     func didTapOnTitleSelectBtnAction(cell:MainTravelPersonTVCell)
     
@@ -37,7 +37,7 @@ class MainTravelPersonTVCell: TableViewCell {
     var dropDown = DropDown()
     var agedropDown = DropDown()
     let datePicker = UIDatePicker()
-    var delegate:MainTravelPersonTVCellDelete?
+    weak var delegate:MainTravelPersonTVCellDelete?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

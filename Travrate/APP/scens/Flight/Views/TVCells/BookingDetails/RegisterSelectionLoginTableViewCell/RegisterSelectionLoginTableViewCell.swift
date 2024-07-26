@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol RegisterSelectionLoginTableViewCellDelegate {
+protocol RegisterSelectionLoginTableViewCellDelegate: AnyObject {
     func didTapOnRegisterNowOrLoginButtonAction(cell: RegisterSelectionLoginTableViewCell)
 }
 
@@ -17,7 +17,7 @@ class RegisterSelectionLoginTableViewCell: TableViewCell {
     @IBOutlet weak var loginRadioImage: UIImageView!
     
     
-    var delegate: RegisterSelectionLoginTableViewCellDelegate?
+    weak var delegate: RegisterSelectionLoginTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

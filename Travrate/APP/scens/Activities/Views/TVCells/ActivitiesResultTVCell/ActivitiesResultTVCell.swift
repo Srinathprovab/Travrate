@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol ActivitiesResultTVCellDelegate {
+protocol ActivitiesResultTVCellDelegate:AnyObject {
     func didTapOnActivitesDetailsBtnAction(cell:ActivitiesResultTVCell)
 }
 
@@ -30,7 +30,7 @@ class ActivitiesResultTVCell: TableViewCell {
     var bookingsource = String()
     var activitycode = String()
     var activitylist :Activity?
-    var delegate:ActivitiesResultTVCellDelegate?
+    weak var delegate:ActivitiesResultTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

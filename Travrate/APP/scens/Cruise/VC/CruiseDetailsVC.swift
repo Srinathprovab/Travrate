@@ -27,6 +27,19 @@ class CruiseDetailsVC: BaseTableVC, CruiseDetailsViewModelDelegate {
     var emailid = String()
     var mobile = String()
     
+   
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        MySingleton.shared.cruiseItinerary.removeAll()
+        MySingleton.shared.cruiseDetails = nil
+        selectedCruiseOrigen = ""
+        MySingleton.shared.cruiseItinerary.removeAll()
+        imgsArray.removeAll()
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         defaults.setValue("Select Date", forKey: UserDefaultsKeys.fromtravelDate)
         addObserver()
@@ -82,7 +95,6 @@ class CruiseDetailsVC: BaseTableVC, CruiseDetailsViewModelDelegate {
         formatter.dateFormat = "dd/MM/yyyy"
         
         defaults.set(formatter.string(from: cell.travelFromDatePicker.date), forKey: UserDefaultsKeys.fromtravelDate)
-        
         defaults.set(formatter.string(from: cell.travelToDatePicker.date), forKey: UserDefaultsKeys.totravelDate)
         
         
@@ -194,6 +206,8 @@ extension CruiseDetailsVC {
     }
     
     
+   
+    
     func cruiseDetails(response: CruiseDetailsModel) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
@@ -202,6 +216,10 @@ extension CruiseDetailsVC {
         }
         
         BASE_URL = BASE_URL1
+        MySingleton.shared.cruiseItinerary.removeAll()
+        imgsArray.removeAll()
+        
+        
         MySingleton.shared.cruiseDetails = response
         selectedCruiseOrigen = response.cruise_data?.origin ?? ""
         MySingleton.shared.cruiseItinerary = response.cruise_data?.itinerary ?? []

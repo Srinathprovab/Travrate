@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol RadioButtonTVCellDelegate {
+protocol RadioButtonTVCellDelegate: AnyObject {
     func didTapOnRadioButton(cell:RadioButtonTVCell)
 }
 
@@ -16,7 +16,7 @@ class RadioButtonTVCell: TableViewCell {
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var radioImg: UIImageView!
 
-    var delegate: RadioButtonTVCellDelegate?
+    weak var delegate: RadioButtonTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -44,7 +44,7 @@ enum AgeCategory {
 }
 
 
-protocol AddDeatilsOfTravellerTVCellDelegate {
+protocol AddDeatilsOfTravellerTVCellDelegate: AnyObject {
     func didTapOnExpandAdultViewbtnAction(cell:AddDeatilsOfTravellerTVCell)
     func tfeditingChanged(tf:UITextField)
     
@@ -110,7 +110,7 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
     var nationalityName = String()
     var passIssuingCountryName = String()
     var expandViewBool = true
-    var delegate:AddDeatilsOfTravellerTVCellDelegate?
+    weak var delegate:AddDeatilsOfTravellerTVCellDelegate?
     var indexposition = Int()
     var isSearchBool = Bool()
     var searchText = String()

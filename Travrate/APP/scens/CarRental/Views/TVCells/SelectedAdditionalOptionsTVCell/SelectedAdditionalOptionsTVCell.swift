@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SelectedAdditionalOptionsTVCellDelegate {
+protocol SelectedAdditionalOptionsTVCellDelegate:AnyObject {
     func didTapOnSelectedAdditionalOptionsBtnAction(cell:SelectedAdditionalOptionsTVCell)
 }
 
@@ -17,7 +17,7 @@ class SelectedAdditionalOptionsTVCell: TableViewCell {
     @IBOutlet weak var dropdownimg: UIImageView!
     
     
-    var delegate:SelectedAdditionalOptionsTVCellDelegate?
+    weak var delegate:SelectedAdditionalOptionsTVCellDelegate?
     var selectbool = false
     override func awakeFromNib() {
         super.awakeFromNib()

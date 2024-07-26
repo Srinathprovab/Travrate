@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol AddMealToPassengerTVCellDelegate {
+protocol AddMealToPassengerTVCellDelegate: AnyObject {
     func didTapOnCheckBoxBtnAction(cell:AddMealToPassengerTVCell)
     func didTapOnShowMealDropDownListBtnAction(cell:AddMealToPassengerTVCell)
     func didTapOnShowMealDropDownListForCircleBtnAction(cell:AddMealToPassengerTVCell)
@@ -33,7 +33,7 @@ class AddMealToPassengerTVCell: UITableViewCell {
     var mealNameArray = [String]()
     var mealidArray = [String]()
     var checkBoxBool = false
-    var delegate:AddMealToPassengerTVCellDelegate?
+    weak var delegate:AddMealToPassengerTVCellDelegate?
     
     
     override func awakeFromNib() {

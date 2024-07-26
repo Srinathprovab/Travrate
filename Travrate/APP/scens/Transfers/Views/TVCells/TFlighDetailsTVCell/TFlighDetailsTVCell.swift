@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TFlighDetailsTVCellDelegate {
+protocol TFlighDetailsTVCellDelegate: AnyObject {
     
     func editingTextField(tf:UITextField)
     func doneTimePicker(cell:TFlighDetailsTVCell)
@@ -34,7 +34,7 @@ class TFlighDetailsTVCell: TableViewCell {
     let arrivalTimePicker = UIDatePicker()
     let departTimePicker = UIDatePicker()
     
-    var delegate:TFlighDetailsTVCellDelegate?
+    weak var delegate:TFlighDetailsTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

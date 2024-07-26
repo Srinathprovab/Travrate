@@ -10,7 +10,7 @@ import UIKit
 
 
 
-protocol CheckBoxTVCellDelegate {
+protocol CheckBoxTVCellDelegate:AnyObject {
     func didTapOnCheckBoxDropDownBtn(cell:CheckBoxTVCell)
     func didTapOnShowMoreBtn(cell:CheckBoxTVCell)
     
@@ -39,7 +39,7 @@ class CheckBoxTVCell: TableViewCell {
     var tvheight = CGFloat()
     var selectedIndices = [IndexPath]()
     var showbool = true
-    var delegate:CheckBoxTVCellDelegate?
+    weak var delegate:CheckBoxTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

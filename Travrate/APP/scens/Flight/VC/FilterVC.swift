@@ -100,17 +100,17 @@ enum SortParameter {
 
 
 
-protocol AppliedActivitiesFilters {
+protocol AppliedActivitiesFilters:AnyObject {
     
     func activitiesFilterByApplied(minpricerange:Double,
-                              maxpricerange:Double,
-                              durationTypeArray:[String],
-                              activitiesTypeArray:[String])
+                                   maxpricerange:Double,
+                                   durationTypeArray:[String],
+                                   activitiesTypeArray:[String])
     
 }
 
 
-protocol AppliedTransferFilters {
+protocol AppliedTransferFilters:AnyObject {
     
     func sportFilterByApplied(minpricerange:Double,
                               maxpricerange:Double,
@@ -119,7 +119,7 @@ protocol AppliedTransferFilters {
 }
 
 
-protocol AppliedCarrentalFilters {
+protocol AppliedCarrentalFilters:AnyObject {
     
     func sportFilterByApplied(minpricerange:Double,
                               maxpricerange:Double,
@@ -131,7 +131,7 @@ protocol AppliedCarrentalFilters {
 
 
 
-protocol AppliedSportsFilters {
+protocol AppliedSportsFilters:AnyObject {
     
     func sportFilterByApplied(tournamentA:[String],
                               eventsA:[String],
@@ -193,14 +193,14 @@ class FilterVC: BaseTableVC{
     
     //MARK: - Flights
     weak var delegate: AppliedFilters?
-    var sportsdelegate: AppliedSportsFilters?
-    var carrentaldelegate: AppliedCarrentalFilters?
-    var transferfilterDelegate: AppliedTransferFilters?
-    var activitiesfilterDelegate: AppliedActivitiesFilters?
+    weak var sportsdelegate: AppliedSportsFilters?
+    weak var carrentaldelegate: AppliedCarrentalFilters?
+    weak var transferfilterDelegate: AppliedTransferFilters?
+    weak var activitiesfilterDelegate: AppliedActivitiesFilters?
     
     var minpricerangefilter = Double()
     var maxpricerangefilter = Double()
-
+    
     
     var mindurationrangefilter = Double()
     var maxdurationrangefilter = Double()
@@ -266,6 +266,7 @@ class FilterVC: BaseTableVC{
     
     override func viewWillAppear(_ animated: Bool) {
         
+       
         
         for noOfStops in noofstopsArray {
             if let stopsInt = Int(noOfStops) {
@@ -280,7 +281,7 @@ class FilterVC: BaseTableVC{
         }
         
         
-       // stopsArray = ["0 Stop","1 Stop","2 Stop"]
+        // stopsArray = ["0 Stop","1 Stop","2 Stop"]
         
         
         print("====== print(stopsArray) =======")
@@ -422,7 +423,7 @@ class FilterVC: BaseTableVC{
         tablerow.append(TableRow(title:"No. Of Stops",data: stopsArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Refundable Type",data: faretypeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Luggage",data: luggageArray,cellType:.CheckBoxTVCell))
-       
+        
         //        tablerow.append(TableRow(title:"Departure Time",cellType:.FilterDepartureTVCell))
         //        tablerow.append(TableRow(title:"Arrival Time",cellType:.FilterDepartureTVCell))
         
@@ -528,7 +529,7 @@ class FilterVC: BaseTableVC{
         tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
         tablerow.append(TableRow(title:"Duration Type",data: durationTypeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Activities Type",data: activitiesTypeArray,cellType:.CheckBoxTVCell))
-
+        
         
         tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
         tablerow.append(TableRow(title:"Apply",key: "btn",cellType:.ButtonTVCell))
@@ -565,7 +566,7 @@ class FilterVC: BaseTableVC{
         
         
         tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
-      //  tablerow.append(TableRow(title:"AC / Non AC",data: fuleArray,cellType:.CheckBoxTVCell))
+        //  tablerow.append(TableRow(title:"AC / Non AC",data: fuleArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Care Fule",data: fuleArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Menual/Auto",data: carmanualArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Door Count",data: doorcountArray,cellType:.CheckBoxTVCell))
@@ -850,7 +851,7 @@ class FilterVC: BaseTableVC{
     @IBAction func didTapOnResetBtn(_ sender: Any) {
         sortBy = .nothing
         
-        isSearchBool = false
+        
         resetHotelBool = true
         filterresettapbool = true
         
@@ -1047,7 +1048,7 @@ class FilterVC: BaseTableVC{
                     selectedDoorCountArray.append(cell.titlelbl.text ?? "")
                     break
                     
-               
+                    
                     
                     
                 default:
@@ -1063,7 +1064,7 @@ class FilterVC: BaseTableVC{
                     selectedCarTypeArray.append(cell.titlelbl.text ?? "")
                     break
                     
-               
+                    
                     
                 default:
                     break
@@ -1285,7 +1286,7 @@ class FilterVC: BaseTableVC{
                     }
                     break
                     
-               
+                    
                     
                     
                 default:
@@ -1301,10 +1302,10 @@ class FilterVC: BaseTableVC{
                     if let index = selectedCarTypeArray.firstIndex(of: cell.titlelbl.text ?? "") {
                         selectedCarTypeArray.remove(at: index)
                     }
-               
+                    
                     break
                     
-                   
+                    
                     
                 default:
                     break
@@ -1320,17 +1321,17 @@ class FilterVC: BaseTableVC{
                     if let index = selectedDurationTypeArray.firstIndex(of: cell.titlelbl.text ?? "") {
                         selectedDurationTypeArray.remove(at: index)
                     }
-               
+                    
                     break
                     
                 case "Activities Type":
                     if let index = selectedActivitiesTypeArray.firstIndex(of: cell.titlelbl.text ?? "") {
                         selectedActivitiesTypeArray.remove(at: index)
                     }
-               
+                    
                     break
                     
-                
+                    
                     
                 default:
                     break
@@ -1448,78 +1449,78 @@ class FilterVC: BaseTableVC{
     
     
     //MARK: - didSelectDepartureTime
-//    override func didSelectDepartureTime(cell: DepartureTimeCVCell) {
-//        if cell.filterTitle == "Departure Time" {
-//            
-//            
-//            switch cell.titlelbl.text {
-//                
-//            case "from 12AM":
-//                departureTimeFilter.append("12 am - 6 am")
-//                break
-//                
-//            case "from 6AM":
-//                departureTimeFilter.append("06 am - 12 pm")
-//                break
-//                
-//            case "from 12PM":
-//                departureTimeFilter.append("12 pm - 06 pm")
-//                break
-//                
-//                
-//            case "from 6PM":
-//                departureTimeFilter.append("06 pm - 12 am")
-//                break
-//                
-//            default:
-//                break
-//            }
-//            
-//            
-//        }else {
-//            arrivalTimeFilter.append(cell.titlelbl.text ?? "")
-//            
-//            
-//            switch cell.titlelbl.text {
-//                
-//            case "from 12AM":
-//                arrivalTimeFilter.append("12 am - 6 am")
-//                break
-//                
-//            case "from 6AM":
-//                arrivalTimeFilter.append("06 am - 12 pm")
-//                break
-//                
-//            case "from 12PM":
-//                arrivalTimeFilter.append("12 pm - 06 pm")
-//                break
-//                
-//                
-//            case "from 6PM":
-//                arrivalTimeFilter.append("06 pm - 12 am")
-//                break
-//                
-//            default:
-//                break
-//            }
-//        }
-//    }
+    //    override func didSelectDepartureTime(cell: DepartureTimeCVCell) {
+    //        if cell.filterTitle == "Departure Time" {
+    //
+    //
+    //            switch cell.titlelbl.text {
+    //
+    //            case "from 12AM":
+    //                departureTimeFilter.append("12 am - 6 am")
+    //                break
+    //
+    //            case "from 6AM":
+    //                departureTimeFilter.append("06 am - 12 pm")
+    //                break
+    //
+    //            case "from 12PM":
+    //                departureTimeFilter.append("12 pm - 06 pm")
+    //                break
+    //
+    //
+    //            case "from 6PM":
+    //                departureTimeFilter.append("06 pm - 12 am")
+    //                break
+    //
+    //            default:
+    //                break
+    //            }
+    //
+    //
+    //        }else {
+    //            arrivalTimeFilter.append(cell.titlelbl.text ?? "")
+    //
+    //
+    //            switch cell.titlelbl.text {
+    //
+    //            case "from 12AM":
+    //                arrivalTimeFilter.append("12 am - 6 am")
+    //                break
+    //
+    //            case "from 6AM":
+    //                arrivalTimeFilter.append("06 am - 12 pm")
+    //                break
+    //
+    //            case "from 12PM":
+    //                arrivalTimeFilter.append("12 pm - 06 pm")
+    //                break
+    //
+    //
+    //            case "from 6PM":
+    //                arrivalTimeFilter.append("06 pm - 12 am")
+    //                break
+    //
+    //            default:
+    //                break
+    //            }
+    //        }
+    //    }
     
     
     //MARK: - didSelectDepartureTime
-//    override func didDeSelectDepartureTime(cell: DepartureTimeCVCell) {
-//        
-//        if cell.filterTitle == "Departure Time" {
-//            if let index = departureTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
-//                departureTimeFilter.remove(at: index)
-//            }
-//        }else {
-//            if let index = arrivalTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
-//                arrivalTimeFilter.remove(at: index)
-//            }
-//        }
-//        
-//    }
+    //    override func didDeSelectDepartureTime(cell: DepartureTimeCVCell) {
+    //
+    //        if cell.filterTitle == "Departure Time" {
+    //            if let index = departureTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
+    //                departureTimeFilter.remove(at: index)
+    //            }
+    //        }else {
+    //            if let index = arrivalTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
+    //                arrivalTimeFilter.remove(at: index)
+    //            }
+    //        }
+    //
+    //    }
     
     
     
@@ -1561,6 +1562,12 @@ class FilterVC: BaseTableVC{
     //MARK: - Apply Filter
     override func btnAction(cell: ButtonTVCell) {
         
+        
+        if resetHotelBool == true {
+            filterresettapbool = true
+        }else {
+            filterresettapbool = false
+        }
         
         
         if let tabselect = defaults.object(forKey: UserDefaultsKeys.tabselect) as? String {
@@ -1738,7 +1745,7 @@ class FilterVC: BaseTableVC{
             }else if tabselect == "CarRental" {
                 
                 if filterKey == "carfilter" {
-                
+                    
                     
                     if minpricerangefilter != 0.0 {
                         carfilterModel.minPriceRange = minpricerangefilter
@@ -1772,19 +1779,19 @@ class FilterVC: BaseTableVC{
                         carfilterModel.doorcountA .removeAll()
                     }
                     
-                
+                    
                     carrentaldelegate?.sportFilterByApplied(minpricerange: carfilterModel.minPriceRange ?? 0.0,
                                                             maxpricerange: carfilterModel.maxPriceRange ?? 0.0,
                                                             fuleArray: carfilterModel.fuleA,
                                                             carmanualArray: carfilterModel.carmanualA,
                                                             doorcountArray: carfilterModel.doorcountA)
                     
-                   
+                    
                 }
             }else if tabselect == "Activities" {
                 
                 if filterKey == "activitiesfilter" {
-                
+                    
                     
                     if minpricerangefilter != 0.0 {
                         activitiesfiltermodel.minPriceRange = minpricerangefilter
@@ -1811,19 +1818,19 @@ class FilterVC: BaseTableVC{
                         activitiesfiltermodel.activitiesTypeA .removeAll()
                     }
                     
-                
+                    
                     activitiesfilterDelegate?.activitiesFilterByApplied(minpricerange: activitiesfiltermodel.minPriceRange ?? 0.0,
                                                                         maxpricerange: activitiesfiltermodel.maxPriceRange ?? 0.0,
                                                                         durationTypeArray: activitiesfiltermodel.durationTypeA,
                                                                         activitiesTypeArray: activitiesfiltermodel.activitiesTypeA)
-                   
                     
-                   
+                    
+                    
                 }
             }else if tabselect == "transfers" {
                 
                 if filterKey == "transferfilter" {
-                
+                    
                     
                     if minpricerangefilter != 0.0 {
                         transferfilterModel.minPriceRange = minpricerangefilter
@@ -1844,16 +1851,16 @@ class FilterVC: BaseTableVC{
                         transferfilterModel.carTypeA .removeAll()
                     }
                     
-                
+                    
                     transferfilterDelegate?.sportFilterByApplied(minpricerange: Double(String(format: "%.2f", transferfilterModel.minPriceRange ?? 0.0)) ?? 0.0,
-                                                            maxpricerange: Double(String(format: "%.2f", transferfilterModel.maxPriceRange ?? 0.0)) ?? 0.0,
+                                                                 maxpricerange: Double(String(format: "%.2f", transferfilterModel.maxPriceRange ?? 0.0)) ?? 0.0,
                                                                  cartypeArray: transferfilterModel.carTypeA)
                     
-                   
+                    
                 }
             }else {
                 
-               
+                
                 isSearchBool = true
                 
                 if minpricerangefilter != 0.0 {
@@ -2237,7 +2244,7 @@ extension FilterVC {
         carfilterModel.fuleA = []
         carfilterModel.carmanualA = []
         carfilterModel.doorcountA = []
-       
+        
         selectedFuleArray.removeAll()
         selectedCarManual.removeAll()
         selectedDoorCountArray.removeAll()
@@ -2345,7 +2352,7 @@ extension FilterVC {
         if let cell = commonTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? PopularFiltersTVCell {
             cell.starratingCV.reloadData()
         }
-       
+        
         
         // Deselect all cells in your checkOptionsTVCell table view
         deselectAllCheckOptionsCells()
@@ -2568,7 +2575,7 @@ extension FilterVC {
         if !carfilterModel.doorcountA.isEmpty {
             selectedDoorCountArray = carfilterModel.doorcountA
         }
-
+        
         
     }
     

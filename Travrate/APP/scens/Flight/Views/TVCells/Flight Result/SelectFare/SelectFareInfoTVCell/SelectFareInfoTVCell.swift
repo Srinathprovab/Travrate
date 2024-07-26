@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SelectFareInfoTVCellDelegate {
+protocol SelectFareInfoTVCellDelegate: AnyObject {
     func didTapOnCloseFareBtnAction(cell:SelectFareInfoTVCell)
     func didTapOnSelectFareBtnAction(cell:SelectFareInfoTVCell)
 }
@@ -29,7 +29,7 @@ class SelectFareInfoTVCell: TableViewCell {
     var indexpathDep = [IndexPath]()
     var indexpathRet = [IndexPath]()
     var journyType = String()
-    var delegate:SelectFareInfoTVCellDelegate?
+    weak var delegate:SelectFareInfoTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

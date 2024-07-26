@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol AddAssistanceTVCellDelegate {
+protocol AddAssistanceTVCellDelegate: AnyObject {
     func didTapOnShowAssistanceDropDownListBtnAction(cell:AddAssistanceTVCell)
 }
 
@@ -23,7 +23,7 @@ class AddAssistanceTVCell: UITableViewCell {
     var assistanceNameArray = [String]()
     var assistanceidArray = [String]()
     var assistanceDropDown = DropDown()
-    var delegate:AddAssistanceTVCellDelegate?
+    weak var delegate:AddAssistanceTVCellDelegate?
     
     
     override func awakeFromNib() {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SideMenuTitleTVCellDelegate {
+protocol SideMenuTitleTVCellDelegate: AnyObject {
     func didTaponCell(cell: SideMenuTitleTVCell)
 }
 
@@ -21,7 +21,7 @@ class SideMenuTitleTVCell: TableViewCell {
     @IBOutlet weak var menuTitlelbl: UILabel!
     @IBOutlet weak var imgWidth: NSLayoutConstraint!
     
-    var delegate: SideMenuTitleTVCellDelegate?
+    weak var delegate: SideMenuTitleTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

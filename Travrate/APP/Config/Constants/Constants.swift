@@ -98,7 +98,7 @@ var selectedSpecificatonArray = [String]()
 var startRatingArray = [String]()
 var starRatingInputArray = [String]()
 var hotelstarratingArray = [String]()
-var filterresettapbool = false
+var filterresettapbool = true
 var filteredSportsTickekData = [SportsDetailsData]()
 
 //DASHBOARD
@@ -217,6 +217,7 @@ var htokenkey = String()
 var roomselected = String()
 var selectedrRateKeyArray = String()
 var hotelSearchResult = [HotelSearchResult]()
+
 var selectedCellStates: [IndexPath: Bool] = [:]
 var selectedCellIndices: [IndexPath] = [] // Keep track of selected cell indices
 

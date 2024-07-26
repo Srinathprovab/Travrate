@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ActivitiesImagesTVCellDelegate {
+protocol ActivitiesImagesTVCellDelegate:AnyObject {
     func didTapOnMoreBtnAction(cell:ActivitiesImagesTVCell)
 }
 
@@ -23,7 +23,7 @@ class ActivitiesImagesTVCell: TableViewCell {
     var itemCount = Int()
     var autoScrollTimer: Timer?
     var hotelImagesArray = [String]()
-    var delegate:ActivitiesImagesTVCellDelegate?
+    weak var delegate:ActivitiesImagesTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

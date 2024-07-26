@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol AddRoomsGuestsTVCellDelegate {
+protocol AddRoomsGuestsTVCellDelegate:AnyObject {
     func closeBtnAction(cell:AddRoomsGuestsTVCell)
     func adultsIncrementButtonAction(cell:AddRoomsGuestsTVCell)
     func adultsDecrementBtnAction(cell:AddRoomsGuestsTVCell)
@@ -34,7 +34,7 @@ class AddRoomsGuestsTVCell: TableViewCell {
     
     var adultcount = 1
     var childCount = Int()
-    var delegate:AddRoomsGuestsTVCellDelegate?
+    weak var delegate:AddRoomsGuestsTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

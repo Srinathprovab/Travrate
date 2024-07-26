@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol StarRatingTVCellDelegate {
+protocol StarRatingTVCellDelegate:AnyObject {
     func didTapOnStarRatingCell(cell:StarRatingCVCell)
 }
 
@@ -19,7 +19,7 @@ class PopularFiltersTVCell: TableViewCell {
     
     
     
-    var delegate:StarRatingTVCellDelegate?
+    weak var delegate:StarRatingTVCellDelegate?
     var starArray = ["1","2","3","4","5"]
     override func awakeFromNib() {
         super.awakeFromNib()

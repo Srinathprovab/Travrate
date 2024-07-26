@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol ViewStadiumBtnsTVCellDelegate {
+protocol ViewStadiumBtnsTVCellDelegate: AnyObject {
     func didTapOnViewStadiumBtnAction(cell:ViewStadiumBtnsTVCell)
     func didTapOnSeatingArrangementsBtnAction(cell:ViewStadiumBtnsTVCell)
 }
@@ -16,7 +16,7 @@ protocol ViewStadiumBtnsTVCellDelegate {
 class ViewStadiumBtnsTVCell: TableViewCell {
     
     
-    var delegate:ViewStadiumBtnsTVCellDelegate?
+    weak var delegate:ViewStadiumBtnsTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

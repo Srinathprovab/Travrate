@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol HotelSearchTVCellDelegate {
+protocol HotelSearchTVCellDelegate:AnyObject {
     func donedatePicker(cell:HotelSearchTVCell)
     func cancelDatePicker(cell:HotelSearchTVCell)
     func didTapOnAddRoomsBtnAction(cell:HotelSearchTVCell)
@@ -64,7 +64,7 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
     var countryCode = String()
     var cnameArray = [String]()
     
-    var delegate: HotelSearchTVCellDelegate?
+    weak var delegate: HotelSearchTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

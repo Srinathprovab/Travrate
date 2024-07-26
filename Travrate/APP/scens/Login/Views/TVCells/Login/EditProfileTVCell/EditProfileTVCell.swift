@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol EditProfileTVCellDelegate {
+protocol EditProfileTVCellDelegate: AnyObject {
     func didTapOnUpdateProfileBtnAction(cell:EditProfileTVCell)
     func editingTextField(tf:UITextField)
     func didTapOnMailBtnAction(cell:EditProfileTVCell)
@@ -38,7 +38,7 @@ class EditProfileTVCell: TableViewCell {
     
     let datePicker = UIDatePicker()
     var gender = String()
-    var delegate:EditProfileTVCellDelegate?
+    weak var delegate:EditProfileTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

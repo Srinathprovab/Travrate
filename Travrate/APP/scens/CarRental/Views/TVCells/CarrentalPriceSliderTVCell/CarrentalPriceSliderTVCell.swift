@@ -9,7 +9,7 @@ import UIKit
 import TTRangeSlider
 
 
-protocol CarrentalPriceSliderTVCellDelegate {
+protocol CarrentalPriceSliderTVCellDelegate:AnyObject {
     func didTapOnShowSliderBtn(cell:CarrentalPriceSliderTVCell)
 }
 
@@ -33,7 +33,7 @@ class CarrentalPriceSliderTVCell: TableViewCell, TTRangeSliderDelegate {
     var minValue1 = Double()
     var maxValue1 = Double()
     var showbool = false
-    var delegate:CarrentalPriceSliderTVCellDelegate?
+    weak var delegate:CarrentalPriceSliderTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

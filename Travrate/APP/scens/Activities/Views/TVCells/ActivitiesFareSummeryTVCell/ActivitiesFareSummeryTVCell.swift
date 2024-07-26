@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol ActivitiesFareSummeryTVCellDelegate {
+protocol ActivitiesFareSummeryTVCellDelegate:AnyObject {
     func didTapOnDeleteAddonBtnAction(cell:ActivitiesFareSummeryTVCell)
 }
 
@@ -34,7 +34,7 @@ class ActivitiesFareSummeryTVCell: TableViewCell {
     @IBOutlet weak var priceBtn: UIButton!
     
     
-    var delegate:ActivitiesFareSummeryTVCellDelegate?
+    weak var delegate:ActivitiesFareSummeryTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

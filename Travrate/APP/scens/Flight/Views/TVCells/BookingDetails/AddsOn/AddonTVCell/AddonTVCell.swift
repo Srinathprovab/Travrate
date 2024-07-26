@@ -28,7 +28,7 @@ class SelectedAddonService {
 
 
 
-protocol AddonTVCellDelegate {
+protocol AddonTVCellDelegate: AnyObject {
     func didTapOnAddonServiceBtnAction(cell:AddonTVCell)
 }
 
@@ -38,7 +38,7 @@ class AddonTVCell: TableViewCell {
     @IBOutlet weak var tvHeight: NSLayoutConstraint!
     
     
-    var delegate:AddonTVCellDelegate?
+    weak var delegate:AddonTVCellDelegate?
    var addonservicelist = [Addon_services]()
     override func awakeFromNib() {
         super.awakeFromNib()

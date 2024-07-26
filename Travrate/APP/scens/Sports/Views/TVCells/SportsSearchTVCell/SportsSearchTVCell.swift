@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol SportsSearchTVCellDelegate {
+protocol SportsSearchTVCellDelegate: AnyObject {
     
     func didTapOnSelectServiceBtn(cell:SportsSearchTVCell)
     func didTapOnSearchSportsBtnAction(cell:SportsSearchTVCell)
@@ -45,7 +45,7 @@ class SportsSearchTVCell: TableViewCell, SportServiceVMDelegate {
     let retDatePicker = UIDatePicker()
     let dropDown = DropDown()
     
-    var delegate:SportsSearchTVCellDelegate?
+    weak var delegate:SportsSearchTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

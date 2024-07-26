@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol UsePromoCodesTVCellDelegate {
+protocol UsePromoCodesTVCellDelegate: AnyObject {
     func didTapClosepromoViewBtnAction(cell:UsePromoCodesTVCell)
     func didTapOnApplyPromosCodesBtn(cell:UsePromoCodesTVCell)
     func editingChanged(tf:UITextField)
@@ -27,7 +27,7 @@ class UsePromoCodesTVCell: TableViewCell {
     var promocodecode = String()
     var promocodeval = String()
     var index = Int()
-    var delegate:UsePromoCodesTVCellDelegate?
+    weak var delegate:UsePromoCodesTVCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

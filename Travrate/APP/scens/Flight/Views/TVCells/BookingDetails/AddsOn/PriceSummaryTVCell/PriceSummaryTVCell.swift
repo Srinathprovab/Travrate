@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PriceSummaryTVCellDelegate {
+protocol PriceSummaryTVCellDelegate: AnyObject {
     func didTapOnRemoveTravelInsuranceBtn(cell:PriceSummaryTVCell)
     func didTapOnRemovePromoCodeBtnAction(cell:PriceSummaryTVCell)
 }
@@ -34,7 +34,7 @@ class PriceSummaryTVCell: TableViewCell {
     @IBOutlet weak var travellerAdultTV: UITableView!
     @IBOutlet weak var promoview: UIView!
     
-    var delegate:PriceSummaryTVCellDelegate?
+    weak var delegate:PriceSummaryTVCellDelegate?
     var key = String()
     var adultsCount = 1
     var childCount = 0

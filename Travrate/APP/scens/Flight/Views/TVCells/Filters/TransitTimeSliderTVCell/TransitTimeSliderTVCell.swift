@@ -9,7 +9,7 @@ import UIKit
 import TTRangeSlider
 
 
-protocol TransitTimeSliderTVCellDelegate {
+protocol TransitTimeSliderTVCellDelegate:AnyObject {
     func didTapOnShowSliderBtn(cell:TransitTimeSliderTVCell)
 }
 
@@ -33,7 +33,7 @@ class TransitTimeSliderTVCell: TableViewCell, TTRangeSliderDelegate {
     var minValue1 = Double()
     var maxValue1 = Double()
     var showbool = false
-    var delegate:TransitTimeSliderTVCellDelegate?
+    weak var delegate:TransitTimeSliderTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

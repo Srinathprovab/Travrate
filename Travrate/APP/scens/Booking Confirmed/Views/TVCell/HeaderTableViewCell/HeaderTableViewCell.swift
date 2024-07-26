@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol HeaderTableViewCellDelegate {
+protocol HeaderTableViewCellDelegate: AnyObject {
     func didTapOnFacebookLinkBtnAction(cell:HeaderTableViewCell)
     func didTapOnTwitterLinkBtnAction(cell:HeaderTableViewCell)
     func didTapOnLinkedlnLinkBtnAction(cell:HeaderTableViewCell)
@@ -20,7 +20,7 @@ class HeaderTableViewCell: TableViewCell {
     @IBOutlet weak var copyrightlbl: UILabel!
     
     
-    var delegate:HeaderTableViewCellDelegate?
+    weak var delegate:HeaderTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

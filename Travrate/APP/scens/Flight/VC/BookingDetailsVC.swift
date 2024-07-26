@@ -947,16 +947,16 @@ extension BookingDetailsVC {
         
         // Check additional conditions
         if !callpaymentbool {
-            showToast(message: "Add Details")
-            return
-        }else if MySingleton.shared.passportExpireDateBool == false {
-            showToast(message: "Invalid expiry. Passport expires within the next 3 months.")
+            showToast(message: "Add Traveller Details")
             return
         }else if !fnameCharBool {
             showToast(message: "First name should have more than 3 characters")
             return
         }else if !lnameCharBool {
             showToast(message: "Last name should have more than 3 characters")
+            return
+        }else if MySingleton.shared.passportExpireDateBool == false {
+            showToast(message: "Invalid expiry. Passport expires within the next 3 months.")
             return
         }else if MySingleton.shared.payemail == "" {
             showToast(message: "Enter Email Address")

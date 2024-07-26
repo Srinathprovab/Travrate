@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FlightUpcomingTVCellDelegate {
+protocol FlightUpcomingTVCellDelegate: AnyObject {
     func didTapOnViewVoucherBtnAction(cell:FlightUpcomingTVCell)
 }
 
@@ -19,7 +19,7 @@ class FlightUpcomingTVCell: TableViewCell {
     @IBOutlet weak var tvview: UIView!
     
     
-    var delegate:FlightUpcomingTVCellDelegate?
+    weak var delegate:FlightUpcomingTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

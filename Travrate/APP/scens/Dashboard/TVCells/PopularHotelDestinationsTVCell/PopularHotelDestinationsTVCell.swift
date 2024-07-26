@@ -22,7 +22,7 @@ struct TopHotelDetailsModel {
     let hotel_code: String
 }
 
-protocol PopularHotelDestinationsTVCellDellegate {
+protocol PopularHotelDestinationsTVCellDellegate: AnyObject {
     func didTapOnPopulardestination(cell:PopularHotelDestinationsTVCell)
 }
 
@@ -41,7 +41,7 @@ class PopularHotelDestinationsTVCell: TableViewCell {
     var autoScrollTimer: Timer?
     var hotellist = [TopHotelDetails]()
     var countryArray = [String]()
-    var delegate:PopularHotelDestinationsTVCellDellegate?
+    weak var delegate:PopularHotelDestinationsTVCellDellegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

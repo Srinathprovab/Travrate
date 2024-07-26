@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ShareResultTVCellDelegate {
+protocol ShareResultTVCellDelegate: AnyObject {
     func texteditingchanged(tf:UITextField)
     func didTapOnSendBtnAction(cell:ShareResultTVCell)
     func didTapOnCopyWhatsapplinkBtnAction(cell:ShareResultTVCell)
@@ -28,7 +28,7 @@ class ShareResultTVCell: TableViewCell {
     @IBOutlet weak var copylinkBtn: UIButton!
     
     
-    var delegate:ShareResultTVCellDelegate?
+    weak var delegate:ShareResultTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

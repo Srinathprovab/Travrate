@@ -9,7 +9,7 @@ import UIKit
 import Toast_Swift
 import DropDown
 
-protocol LoginDetailsTableViewCellDelegate {
+protocol LoginDetailsTableViewCellDelegate: AnyObject {
     func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String, countryCode: String)
 }
 
@@ -42,7 +42,7 @@ class LoginDetailsTableViewCell: TableViewCell {
     let dropDown = DropDown()
     var countryNameArray = [String]()
     var isoCountryCode = String()
-    var delegate: LoginDetailsTableViewCellDelegate?
+    weak var delegate: LoginDetailsTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

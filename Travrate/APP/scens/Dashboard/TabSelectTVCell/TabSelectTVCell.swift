@@ -9,7 +9,7 @@ import UIKit
 import EasyTipView
 
 
-protocol TabSelectTVCellDelegate {
+protocol TabSelectTVCellDelegate:AnyObject {
     
     func didTapOnMenuBtnAction(cell:TabSelectTVCell)
     func didTapOnSelectCurrencyBtnAction(cell:TabSelectTVCell)
@@ -47,7 +47,7 @@ class TabSelectTVCell: TableViewCell {
     var moreTabNameArray = [String]()
     var serviceArray = ["Transfers","Sports","Car rental","Activities","Holidays","Cruise"]
     var serviceImgsArray = ["transfer","sports","s3","activitiestrip","s2","s5",]
-    var delegate:TabSelectTVCellDelegate?
+    weak var delegate:TabSelectTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

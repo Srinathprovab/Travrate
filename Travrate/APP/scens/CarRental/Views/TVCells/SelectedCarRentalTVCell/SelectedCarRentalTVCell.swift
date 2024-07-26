@@ -25,7 +25,6 @@ class SelectedCarRentalTVCell: TableViewCell {
     var result_token = String()
     var result_index = String()
     var carlist:Result_token?
-    var delegate:CarRentalResultTVCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

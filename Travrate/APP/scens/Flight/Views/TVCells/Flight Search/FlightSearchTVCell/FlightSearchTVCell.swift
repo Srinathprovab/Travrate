@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol FlightSearchTVCellDelegate {
+protocol FlightSearchTVCellDelegate: AnyObject {
     func didTapOnAdvanceOption(cell:FlightSearchTVCell)
     func didTapOnClassBtnAction(cell:FlightSearchTVCell)
     func didTapOnSwipeCityBtnAction(cell: FlightSearchTVCell)
@@ -77,7 +77,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
    // var infoimgArray1 = ["in1","in2","in3","in4","in5","in6"]
   //  var infoArray1 = ["Add Baggage","Meal","Add Insurance","Add Special assistance","Add Seat","Add airport Transfers"]
     var infoArray = ["Add Baggage","Meal","Add Insurance","Add Special assistance"]
-    var delegate:FlightSearchTVCellDelegate?
+    weak var delegate:FlightSearchTVCellDelegate?
     var infoViewbool = false
     let onewayclassDropdown = DropDown()
     let roundtripclassDropdown = DropDown()

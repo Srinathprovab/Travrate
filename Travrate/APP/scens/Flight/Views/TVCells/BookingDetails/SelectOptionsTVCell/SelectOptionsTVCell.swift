@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SelectOptionsTVCellDeegate {
+protocol SelectOptionsTVCellDeegate: AnyObject {
     func didTapOnOptionsButtonAction(cell:SelectOptionsTVCell)
 }
 
@@ -18,7 +18,7 @@ class SelectOptionsTVCell: TableViewCell {
     var infoArrayCountBool = Bool()
     var infoArray = ["Add Baggage","Meal","Add Insurance","Add Special assistance"]
     var infoimgArray = ["in1","in2","in3","in4"]
-    var delegate:SelectOptionsTVCellDeegate?
+    weak var delegate:SelectOptionsTVCellDeegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

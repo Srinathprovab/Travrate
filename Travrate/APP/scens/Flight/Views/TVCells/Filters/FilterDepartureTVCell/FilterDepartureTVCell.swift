@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FilterDepartureTVCellDelegate {
+protocol FilterDepartureTVCellDelegate:AnyObject {
     func didTapOnDropDownBtn(cell:FilterDepartureTVCell)
     
     func didTapOnTimeBtn(cell:FilterDepartureTVCell)
@@ -47,7 +47,7 @@ class FilterDepartureTVCell: TableViewCell {
     var timeString = String()
     var b = true
     var showbool = true
-    var delegate:FilterDepartureTVCellDelegate?
+    weak var delegate:FilterDepartureTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

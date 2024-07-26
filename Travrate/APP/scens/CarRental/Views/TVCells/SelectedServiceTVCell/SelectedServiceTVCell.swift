@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SelectedServiceTVCellDelegate {
+protocol SelectedServiceTVCellDelegate:AnyObject {
     func didTapOnSelectServiceBtnAction(cell:SelectedServiceTVCell)
 }
 
@@ -17,7 +17,7 @@ class SelectedServiceTVCell: TableViewCell {
     @IBOutlet weak var dropdownimg: UIImageView!
     
     
-    var delegate:SelectedServiceTVCellDelegate?
+    weak var delegate:SelectedServiceTVCellDelegate?
     var selectbool = false
     override func awakeFromNib() {
         super.awakeFromNib()

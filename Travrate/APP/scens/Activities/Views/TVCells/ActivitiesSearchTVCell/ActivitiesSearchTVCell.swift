@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ActivitiesSearchTVCellDelegate {
+protocol ActivitiesSearchTVCellDelegate:AnyObject {
     func didTapOnActivitesSearchBtnAction(cell:ActivitiesSearchTVCell)
     func donedatePicker(cell:ActivitiesSearchTVCell)
     func cancelDatePicker(cell:ActivitiesSearchTVCell)
@@ -49,7 +49,7 @@ class ActivitiesSearchTVCell: TableViewCell, GetActivitesDestinationListVMDelega
     let retDatePicker = UIDatePicker()
     var isSearchBool = Bool()
     var searchText = String()
-    var delegate:ActivitiesSearchTVCellDelegate?
+    weak var delegate:ActivitiesSearchTVCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -365,7 +365,7 @@ extension ActivitiesSearchTVCell {
     @objc func didTapOnAdultIncrementBtnAction(_ sender:UIButton) {
         
         // Increment adults, but don't exceed 9 travelers in total
-        if (MySingleton.shared.adultsCount + MySingleton.shared.childCount) < 9 {
+        if (MySingleton.shared.adultsCount) < 9 {
             MySingleton.shared.adultsCount += 1
             self.adultCountlbl.text = "\(MySingleton.shared.adultsCount)"
         }
@@ -380,8 +380,8 @@ extension ActivitiesSearchTVCell {
             MySingleton.shared.adultsCount -= 1
             adultCountlbl.text = "\(MySingleton.shared.adultsCount)"
             
-            MySingleton.shared.infantsCount = 0
-            infantCountlbl.text = "0"
+           // MySingleton.shared.infantsCount = 0
+           // infantCountlbl.text = "0"
         }
         
         updateTotalTravelerCount()
@@ -391,7 +391,13 @@ extension ActivitiesSearchTVCell {
     @objc func didTapOnChildIncrementBtnAction(_ sender:UIButton) {
         
         // Increment adults and children, but don't exceed 9 travelers in total
-        if (MySingleton.shared.adultsCount + MySingleton.shared.childCount) < 9 {
+//        if (MySingleton.shared.adultsCount + MySingleton.shared.childCount) < 9 {
+//            MySingleton.shared.childCount += 1
+//            self.childCountlbl.text = "\(MySingleton.shared.childCount)"
+//        }
+        
+        // Increment adults, but don't exceed 9 travelers in total
+        if ( MySingleton.shared.childCount) < 9 {
             MySingleton.shared.childCount += 1
             self.childCountlbl.text = "\(MySingleton.shared.childCount)"
         }
@@ -414,7 +420,13 @@ extension ActivitiesSearchTVCell {
     @objc func didTapOnInfantIncrementBtnAction(_ sender:UIButton) {
         
         // Increment infants based on the selected adult count, but don't exceed the selected adult count
-        if MySingleton.shared.adultsCount > MySingleton.shared.infantsCount {
+//        if MySingleton.shared.adultsCount > MySingleton.shared.infantsCount {
+//            MySingleton.shared.infantsCount += 1
+//            self.infantCountlbl.text = "\(MySingleton.shared.infantsCount)"
+//        }
+        
+        // Increment adults, but don't exceed 9 travelers in total
+        if (MySingleton.shared.infantsCount ) < 9 {
             MySingleton.shared.infantsCount += 1
             self.infantCountlbl.text = "\(MySingleton.shared.infantsCount)"
         }

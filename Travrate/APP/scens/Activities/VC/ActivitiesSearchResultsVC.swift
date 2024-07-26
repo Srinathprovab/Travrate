@@ -54,6 +54,12 @@ class ActivitiesSearchResultsVC: BaseTableVC, MobilepreactivitysearchVMDelegate,
     
     func setupUI() {
         
+        
+        setuplabels(lbl: destinationcitylbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: dateslbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+        setuplabels(lbl: paxlbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+
+        
         searchNameTF.setLeftPaddingPoints(15)
         searchNameTF.addTarget(self, action: #selector(searchTextChanged(_:)), for: .editingChanged)
         searchNameView.isHidden = true
@@ -180,7 +186,7 @@ extension ActivitiesSearchResultsVC {
         
         
         destinationcitylbl.text = cityname
-        dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: fromdate ?? "", f1: "dd-MM-yyyy", f2: "dd MMM yy")) To \(MySingleton.shared.convertDateFormat(inputDate: todate ?? "", f1: "dd-MM-yyyy", f2: "dd MMM yy"))"
+        dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: fromdate ?? "", f1: "dd-MM-yyyy", f2: "dd MMM")) - \(MySingleton.shared.convertDateFormat(inputDate: todate ?? "", f1: "dd-MM-yyyy", f2: "dd MMM"))"
         
         
         let adultcount = defaults.integer(forKey: UserDefaultsKeys.activitesadultCount)

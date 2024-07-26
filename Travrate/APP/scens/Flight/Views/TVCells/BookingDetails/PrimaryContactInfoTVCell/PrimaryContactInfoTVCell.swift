@@ -9,7 +9,7 @@ import UIKit
 import DropDown
 
 
-protocol PrimaryContactInfoTVCellDelegate {
+protocol PrimaryContactInfoTVCellDelegate: AnyObject {
     func editingTextField(tf:UITextField)
     func didTapOnCountryCodeBtn(cell:PrimaryContactInfoTVCell)
     func didTapOnRegisterBtnAction(cell:PrimaryContactInfoTVCell)
@@ -35,7 +35,7 @@ class PrimaryContactInfoTVCell: TableViewCell {
     @IBOutlet weak var pwdTitlelbl: UILabel!
     
     
-    var delegate:PrimaryContactInfoTVCellDelegate?
+    weak var delegate:PrimaryContactInfoTVCellDelegate?
     var maxLength = 8
     var isSearchBool = Bool()
     var searchText = String()

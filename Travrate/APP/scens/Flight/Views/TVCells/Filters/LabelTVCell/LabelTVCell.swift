@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol LabelTVCellDelegate {
+protocol LabelTVCellDelegate:AnyObject {
     func didTapOnCloseBtn(cell:LabelTVCell)
     func didTapOnShowMoreBtn(cell:LabelTVCell)
 }
@@ -25,7 +25,7 @@ class LabelTVCell: TableViewCell {
     @IBOutlet weak var logoimg: UIImageView!
     
     var airlinecode = String()
-    var delegate:LabelTVCellDelegate?
+    weak var delegate:LabelTVCellDelegate?
     var showMoreBool = true
     var titleKey = String()
     override func awakeFromNib() {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AddonTableViewCellDelegate {
+protocol AddonTableViewCellDelegate: AnyObject {
     func didSelectAddon(index: Int, origen: String,price:String)
     func didDeselectAddon(index: Int, origen: String)
 }
@@ -45,7 +45,7 @@ class AddonTableViewCell: TableViewCell, UITableViewDelegate, UITableViewDataSou
     var totalHotelGrand: Double = 0.0
     
     
-    var delegate: AddonTableViewCellDelegate?
+    weak var delegate: AddonTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         

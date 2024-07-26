@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ActivitiesDetailsTVCellDelegate {
+protocol ActivitiesDetailsTVCellDelegate:AnyObject {
     func didTapOnActivitiesBtnsAction(cell:ActivitiesDetailsTVCell)
     func didTapOnBookNowBtnAction(cell:ActivitiesTypeInfoTVCell)
 }
@@ -28,7 +28,7 @@ class ActivitiesDetailsTVCell: TableViewCell, ActivitiesTypeTVCellDelegate {
     @IBOutlet weak var tvheight: NSLayoutConstraint!
     
     
-    var delegate:ActivitiesDetailsTVCellDelegate?
+    weak var delegate:ActivitiesDetailsTVCellDelegate?
     var tapkey = String()
     override func awakeFromNib() {
         super.awakeFromNib()

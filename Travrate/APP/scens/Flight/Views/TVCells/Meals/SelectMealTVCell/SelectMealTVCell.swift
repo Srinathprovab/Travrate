@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol SelectMealTVCellDelegate {
+protocol SelectMealTVCellDelegate: AnyObject {
     func didTapOnCheckBoxBtnAction(cell:SelectMealTVCell)
 }
 
@@ -17,7 +17,7 @@ class SelectMealTVCell: TableViewCell, AddMealToPassengerTVCellDelegate {
     @IBOutlet weak var tvHeight: NSLayoutConstraint!
     
     var firstnameArray = [String]()
-    var delegate:SelectMealTVCellDelegate?
+   weak var delegate:SelectMealTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

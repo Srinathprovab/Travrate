@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FareRulesTVCellDelegate {
+protocol FareRulesTVCellDelegate: AnyObject {
     func showContentBtnAction(cell:FareRulesTVCell)
 }
 
@@ -21,7 +21,7 @@ class FareRulesTVCell: TableViewCell {
     
     
     var dropdownBool = false
-    var delegate:FareRulesTVCellDelegate?
+    weak var delegate:FareRulesTVCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

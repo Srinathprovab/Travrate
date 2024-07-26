@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HolidayItineraryTVCellDelegate {
+protocol HolidayItineraryTVCellDelegate:AnyObject {
     func didTapOnContactusBtnAction(cell:HolidayItineraryTVCell)
     func didTapOnImage()
     func didTapOnTitleDropDownBtnAction(cell:CruiseAddItineraryTVCell)
@@ -24,7 +24,7 @@ class HolidayItineraryTVCell: TableViewCell, CruiseAddItineraryTVCellDelegate {
     @IBOutlet weak var contactusBtn: UIButton!
     
     
-    var delegate : HolidayItineraryTVCellDelegate?
+    weak var delegate : HolidayItineraryTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

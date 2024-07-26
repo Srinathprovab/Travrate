@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol LoginTVCellDelegate {
+protocol LoginTVCellDelegate: AnyObject {
     func didTapOnSignUpBtnAction(cell:LoginTVCell)
     func didTapOnLoginBtnAction(cell:LoginTVCell)
     func didTapOnForgetPasswordBtnAction(cell:LoginTVCell)
@@ -26,7 +26,7 @@ class LoginTVCell: TableViewCell {
     @IBOutlet weak var emailview: UIView!
     @IBOutlet weak var passwordview: UIView!
     var passbool = false
-    var delegate:LoginTVCellDelegate?
+    weak var delegate:LoginTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol InsurancePlaneTVCellDelegate {
+protocol InsurancePlaneTVCellDelegate: AnyObject {
     func didTapOnSelectPlanBtnAction(cell:InsurancePlaneTVCell)
     func didTapOnPremiumDetailsBtnAction(cell:InsurancePlaneTVCell)
 }
@@ -38,7 +38,7 @@ class InsurancePlaneTVCell: TableViewCell {
                           "TRAVEL+ USD 50,000",
                           "10 DAYS SINGLE TRIP"]
     
-    var delegate:InsurancePlaneTVCellDelegate?
+    weak var delegate:InsurancePlaneTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

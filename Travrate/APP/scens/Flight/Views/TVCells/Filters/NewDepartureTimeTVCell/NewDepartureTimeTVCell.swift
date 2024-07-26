@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol NewDepartureTimeTVCellDelegate {
+protocol NewDepartureTimeTVCellDelegate:AnyObject {
     func didSelectDepartureTime(cell:DepartureTimeCVCell)
     func didDeSelectDepartureTime(cell:DepartureTimeCVCell)
     func didTapOnDropDownBtnAction(cell:NewDepartureTimeTVCell)
@@ -22,7 +22,7 @@ class NewDepartureTimeTVCell: TableViewCell {
     
     
     
-    var delegate:NewDepartureTimeTVCellDelegate?
+    weak var delegate:NewDepartureTimeTVCellDelegate?
     var selectedIndices = [IndexPath]()
     var timeImages = ["mor1","mor2","mor3","mor4"]
     var titleTimeArray = ["from 12AM","from 6AM","from 12PM","from 6PM"]

@@ -40,6 +40,9 @@ class ActivitiesDetailsVC: BaseTableVC, ActivityDetailsVMDelagate {
     
     
     func setupUI() {
+        setuplabels(lbl: destinationcitylbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: dateslbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+        setuplabels(lbl: paxlbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
         
         backbtn.addTarget(self, action: #selector(didTapOnBackBtnAction(_:)), for: .touchUpInside)
         commonTableView.registerTVCells(["ActivitiesImagesTVCell",

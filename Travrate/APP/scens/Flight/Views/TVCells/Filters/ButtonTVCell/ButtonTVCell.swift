@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ButtonTVCellDelegate {
+protocol ButtonTVCellDelegate:AnyObject {
     func btnAction(cell: ButtonTVCell)
     func didTapOnDualBtn1(cell: ButtonTVCell)
     func didTapOnDualBtn2(cell: ButtonTVCell)
@@ -30,7 +30,7 @@ class ButtonTVCell: TableViewCell {
     @IBOutlet weak var btnLeftConstraint: NSLayoutConstraint!
     
     var key = String()
-    var delegate:ButtonTVCellDelegate?
+    weak var delegate:ButtonTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

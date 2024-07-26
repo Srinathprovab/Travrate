@@ -11,7 +11,7 @@ import UIKit
 import Toast_Swift
 import DropDown
 
-protocol GuestTVCellDelegate {
+protocol GuestTVCellDelegate: AnyObject {
     func GuestRegisterNowButtonAction(cell: GuestTVCell, email: String, pass: String, phone: String, countryCode: String)
 }
 
@@ -45,7 +45,7 @@ class GuestTVCell: TableViewCell {
     let dropDown = DropDown()
     var countryNameArray = [String]()
     var isoCountryCode = String()
-    var delegate: GuestTVCellDelegate?
+    weak var delegate: GuestTVCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

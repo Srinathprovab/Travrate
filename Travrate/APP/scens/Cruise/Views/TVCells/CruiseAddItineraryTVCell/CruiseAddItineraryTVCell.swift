@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CruiseAddItineraryTVCellDelegate {
+protocol CruiseAddItineraryTVCellDelegate: AnyObject {
     func didTapOnTitleDropDownBtnAction(cell:CruiseAddItineraryTVCell)
 }
 
@@ -23,7 +23,7 @@ class CruiseAddItineraryTVCell: UITableViewCell {
     
     
     var showbool = false
-    var delegate:CruiseAddItineraryTVCellDelegate?
+    weak var delegate:CruiseAddItineraryTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

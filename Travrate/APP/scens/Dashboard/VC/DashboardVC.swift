@@ -594,12 +594,13 @@ extension DashboardVC {
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("logindone"), object: nil)
         
         
-        // Iterate over each key and remove it
-        let dictionary = defaults.dictionaryRepresentation()
-        for key in dictionary.keys {
-            defaults.removeObject(forKey: key)
-        }
-        
+//        // Iterate over each key and remove it
+//        let dictionary = defaults.dictionaryRepresentation()
+//        for key in dictionary.keys {
+//            defaults.removeObject(forKey: key)
+//        }
+//        NotificationCenter.default.removeObserver(self)
+
         
         if MySingleton.shared.callboolapi == true {
             callIndexPageAPI()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol YourRecentSearchesCVCellDelegate {
+protocol YourRecentSearchesCVCellDelegate: AnyObject {
     func didTapOnCloserecentSearchBtnAction(cell:YourRecentSearchesCVCell)
     func didTapOnSearchRecentFlightsBtnAction(cell:YourRecentSearchesCVCell)
 }
@@ -47,7 +47,7 @@ class YourRecentSearchesCVCell: UICollectionViewCell {
     var fcityname = String()
     var tcityname = String()
     
-    var delegate:YourRecentSearchesCVCellDelegate?
+    weak var delegate:YourRecentSearchesCVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

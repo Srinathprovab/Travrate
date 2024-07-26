@@ -30,7 +30,7 @@ struct TopFlightListModel {
 
 
 
-protocol PopularDestinationsTVCellDelegate {
+protocol PopularDestinationsTVCellDelegate: AnyObject {
     func didTapOnPopulardestination(cell:PopularDestinationsTVCell)
 }
 
@@ -50,7 +50,7 @@ class PopularDestinationsTVCell: TableViewCell {
     var autoScrollTimer: Timer?
     var flightlist = [TopFlightDetails]()
     var countryArray = [String]()
-    var delegate:PopularDestinationsTVCellDelegate?
+    weak var delegate:PopularDestinationsTVCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

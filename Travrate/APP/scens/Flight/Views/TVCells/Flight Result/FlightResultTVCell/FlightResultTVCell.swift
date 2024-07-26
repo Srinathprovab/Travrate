@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FlightResultTVCellDelegate {
+protocol FlightResultTVCellDelegate: AnyObject {
     
     func didTapOnFlightDetails(cell:FlightResultTVCell)
     func didTapOnBookNowBtnAction(cell:FlightResultTVCell)
@@ -44,7 +44,7 @@ class FlightResultTVCell: TableViewCell {
     var shareresultbookingsource = String()
     var selectedResult = String()
     var newsimilarList = [[FlightList]]()
-    var delegate:FlightResultTVCellDelegate?
+    weak var delegate:FlightResultTVCellDelegate?
     var flightsummery = [Summary]()
     var journeyKeystr = String()
     var flightlist :FlightList?

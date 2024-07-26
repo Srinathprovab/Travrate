@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 
-protocol MenuBGTVCellDelegate {
+protocol MenuBGTVCellDelegate: AnyObject {
     func didTapOnLoginBtn(cell:MenuBGTVCell)
     func didTapOnEditProfileBtn(cell:MenuBGTVCell)
 }
@@ -21,7 +21,7 @@ class MenuBGTVCell: TableViewCell {
     @IBOutlet weak var editProfileView: UIView!
     @IBOutlet weak var editProfileBtn: UIButton!
     
-    var delegate:MenuBGTVCellDelegate?
+    weak var delegate:MenuBGTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

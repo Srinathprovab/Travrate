@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ResetPasswordTVCellDelegate {
+protocol ResetPasswordTVCellDelegate: AnyObject {
     func didTapOnSendEmailBtnAction(cell:ResetPasswordTVCell)
     func editingTextField(tf:UITextField)
     func didTapOnRestPasswordBackBtnAction(cell:ResetPasswordTVCell)
@@ -23,7 +23,7 @@ class ResetPasswordTVCell: TableViewCell {
     @IBOutlet weak var mobileview: UIView!
     
     
-    var delegate:ResetPasswordTVCellDelegate?
+    weak  var delegate:ResetPasswordTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

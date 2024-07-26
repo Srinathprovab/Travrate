@@ -11,7 +11,7 @@ import UIKit
 
 
 
-protocol NewRoomTVCellDelegate {
+protocol NewRoomTVCellDelegate:AnyObject {
     func didTapOnCancellationPolicyBtnAction(cell:NewRoomDetailsTVCell)
     func didTapOnSelectRoomBtnAction(cell:NewRoomDetailsTVCell)
 }
@@ -29,7 +29,7 @@ class NewRoomTVCell: TableViewCell, NewRoomDetailsTVCellDelegate {
     
     var newRoomindexPath: IndexPath?
     var room = [Rooms]()
-    var delegate:NewRoomTVCellDelegate?
+    weak var delegate:NewRoomTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

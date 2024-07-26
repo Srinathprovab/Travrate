@@ -9,7 +9,7 @@ import UIKit
 import SwiftRangeSlider
 import TTRangeSlider
 
-protocol SliderTVCellDelegate {
+protocol SliderTVCellDelegate:AnyObject {
     func didTapOnShowSliderBtn(cell:SliderTVCell)
 }
 
@@ -33,7 +33,7 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
     var minValue1 = Double()
     var maxValue1 = Double()
     var showbool = true
-    var delegate:SliderTVCellDelegate?
+    weak var delegate:SliderTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

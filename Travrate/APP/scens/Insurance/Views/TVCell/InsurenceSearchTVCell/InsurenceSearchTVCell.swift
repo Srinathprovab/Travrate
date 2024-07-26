@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-protocol InsurenceSearchTVCellDelegate {
+protocol InsurenceSearchTVCellDelegate: AnyObject {
     
     func didTapOnInsurenceSearchBtnAction(cell:InsurenceSearchTVCell)
     func didTapOnWhoTravellingBtnAction(cell:InsurenceSearchTVCell)
@@ -57,7 +57,7 @@ class InsurenceSearchTVCell: TableViewCell {
     var selectagecode = String()
     var selectzonecode = String()
    
-    var delegate:InsurenceSearchTVCellDelegate?
+    weak var delegate:InsurenceSearchTVCellDelegate?
     
     
     override func awakeFromNib() {

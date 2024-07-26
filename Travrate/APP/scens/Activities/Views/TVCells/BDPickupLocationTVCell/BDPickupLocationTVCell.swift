@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol BDPickupLocationTVCellDelegate {
+protocol BDPickupLocationTVCellDelegate:AnyObject {
     func editingTextField(tf:UITextField)
 }
 
@@ -18,7 +18,7 @@ class BDPickupLocationTVCell: TableViewCell {
     
     
     
-    var delegate:BDPickupLocationTVCellDelegate?
+    weak var delegate:BDPickupLocationTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

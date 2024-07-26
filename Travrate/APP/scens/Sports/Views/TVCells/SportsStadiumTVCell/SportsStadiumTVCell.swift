@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SportsStadiumTVCellDelegate {
+protocol SportsStadiumTVCellDelegate: AnyObject {
     func didTapOnTicketsBtnAction(cell:SportsStadiumTVCell)
 }
 
@@ -16,7 +16,7 @@ class SportsStadiumTVCell: TableViewCell {
     @IBOutlet weak var ticketsCV: UICollectionView!
     
     var ticketsArray = ["All","1 Ticket","2 Ticket","3 Ticket","4 Ticket","5 Ticket","5+ Ticket"]
-    var delegate:SportsStadiumTVCellDelegate?
+    weak var delegate:SportsStadiumTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

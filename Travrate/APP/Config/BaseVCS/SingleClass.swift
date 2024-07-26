@@ -10,90 +10,6 @@ import UIKit
 import EasyTipView
 
 
-struct FlightInputModel {
-    var departureDate: String
-    var returnDate: String
-    var fromclass: String
-    var toclass: String
-    var adultCount: Int
-    var childCount: Int
-    var infantsCount: Int
-    var totalTravellerCount: Int
-    var journeyType: String
-    var carrierCode: String
-    var carrierName: String
-    var fromCity: String
-    var fromCitycode: String
-    var fromLocationId: String
-    var toCity: String
-    var toCitycode: String
-    var toLocationId: String
-    var fromcitynamewithcode: String
-    var toCityNamewithcode: String
-    var fromcityname: String
-    var toCityName: String
-    var fromAirportCity: String
-    var toAirportCity: String
-    var directFlight: String
-
-    // Method to convert FlightInputModel to a dictionary
-    func toDictionary() -> [String: Any] {
-        return [
-            "departureDate": departureDate,
-            "returnDate": returnDate,
-            "fromclass": fromclass,
-            "toclass": toclass,
-            "adultCount": adultCount,
-            "childCount": childCount,
-            "infantsCount": infantsCount,
-            "totalTravellerCount": totalTravellerCount,
-            "journeyType": journeyType,
-            "carrierCode": carrierCode,
-            "carrierName": carrierName,
-            "fromCity": fromCity,
-            "fromLocationId": fromLocationId,
-            "fromCitycode": fromCitycode,
-            "toCity": toCity,
-            "toLocationId": toLocationId,
-            "toCitycode": toCitycode,
-            "fromcitynamewithcode": fromcitynamewithcode,
-            "toCityNamewithcode": toCityNamewithcode,
-            "fromcityname": fromcityname,
-            "toCityName": toCityName,
-            "fromAirportCity": fromAirportCity,
-            "toAirportCity": toAirportCity,
-            "directFlight": directFlight
-        ]
-    }
-
-    // Initialize FlightInputModel from a dictionary
-    init(from dictionary: [String: Any]) {
-        self.departureDate = dictionary["departureDate"] as? String ?? ""
-        self.returnDate = dictionary["returnDate"] as? String ?? ""
-        self.fromclass = dictionary["airlineClass"] as? String ?? ""
-        self.toclass = dictionary["toclass"] as? String ?? ""
-        self.adultCount = dictionary["adultCount"] as? Int ?? 1
-        self.childCount = dictionary["childCount"] as? Int ?? 0
-        self.infantsCount = dictionary["infantsCount"] as? Int ?? 0
-        self.totalTravellerCount = dictionary["totalTravellerCount"] as? Int ?? 0
-        self.journeyType = dictionary["journeyType"] as? String ?? ""
-        self.carrierCode = dictionary["carrierCode"] as? String ?? ""
-        self.carrierName = dictionary["carrierName"] as? String ?? ""
-        self.fromCity = dictionary["fromCity"] as? String ?? ""
-        self.fromLocationId = dictionary["fromLocationId"] as? String ?? ""
-        self.fromCitycode = dictionary["fromCitycode"] as? String ?? ""
-        self.toCity = dictionary["toCity"] as? String ?? ""
-        self.toLocationId = dictionary["toLocationId"] as? String ?? ""
-        self.toCitycode = dictionary["toCitycode"] as? String ?? ""
-        self.fromcitynamewithcode = dictionary["fromcitynamewithcode"] as? String ?? ""
-        self.toCityNamewithcode = dictionary["toCityNamewithcode"] as? String ?? ""
-        self.fromcityname = dictionary["fromcityname"] as? String ?? ""
-        self.toCityName = dictionary["toCityName"] as? String ?? ""
-        self.fromAirportCity = dictionary["fromAirportCity"] as? String ?? ""
-        self.toAirportCity = dictionary["toAirportCity"] as? String ?? ""
-        self.directFlight = dictionary["directFlight"] as? String ?? ""
-    }
-}
 
 
 
@@ -116,8 +32,9 @@ func setuplabels(lbl:UILabel,text:String,textcolor:UIColor,font:UIFont,align:NST
 
 class MySingleton {
     // Declare static constant instance
-    static let shared = MySingleton()
+    static  let shared = MySingleton()
     
+   
     // Declare your variables
     var loderString = "loder"
     var myVariable1: Int
@@ -125,7 +42,6 @@ class MySingleton {
     var tablerow = [TableRow]()
     var payload = [String:Any]()
     var payload1 = [String:Any]()
-    var flightInput:FlightInputModel?
     var inputs = [String:Any]()
     
     

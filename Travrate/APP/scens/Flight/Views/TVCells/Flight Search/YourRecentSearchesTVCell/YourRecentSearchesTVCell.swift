@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol YourRecentSearchesTVCellDelegate {
+protocol YourRecentSearchesTVCellDelegate: AnyObject {
     func didTapOnCloserecentSearchBtnAction(cell:YourRecentSearchesCVCell)
     func didTapOnSearchRecentFlightsBtnAction(cell:YourRecentSearchesCVCell)
 }
@@ -20,7 +20,7 @@ class YourRecentSearchesTVCell: TableViewCell, YourRecentSearchesCVCellDelegate 
     
     var itemCount = Int()
     var autoScrollTimer: Timer?
-    var delegate:YourRecentSearchesTVCellDelegate?
+    weak  var delegate:YourRecentSearchesTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -20,7 +20,6 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
         addObserver()
     }
     
@@ -35,18 +34,15 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
         if tabselect == "Flight" {
             callGetFlightVoucherAPI()
         }else if tabselect == "transfers" {
-            
+            callGetTransfersVoucherAPI()
         }else if tabselect == "Sports" {
             callGetSportsVoucherAPI()
         }else if tabselect == "CarRental" {
             callGetCarRentalVoucherAPI()
         }else if tabselect == "Activities" {
-            
-            
             callGetActivitesVoucherAPI()
         }else {
-            
-            
+            callGetHotelVoucherAPI()
         }
         
         
@@ -77,7 +73,9 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
                                          "BCFlightDetailsTVCell",
                                          "CarRentalResultTVCell",
                                          "PickupTVCell",
-                                         "TitleLblTVCell",
+                                         "TitleLblTVCell", 
+                                         "BookingHotelDetailsTVCell",
+                                         "BDTransfersInf0TVCell",
                                          "ActivityInformationTVCell",
                                          "ActivitiesBookingDetailsTVCell",
                                          "BookedTravelDetailsTVCell"])
@@ -231,6 +229,49 @@ extension BookingConfirmedVC {
 }
 
 
+//MARK: - Hotel Voucher Details
+extension BookingConfirmedVC {
+    
+    
+    func callGetHotelVoucherAPI() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            loderBool = false
+            self.hideLoadera()
+            self.setupHotelTVCells()
+        }
+        
+    }
+    
+    
+    
+    func setupHotelTVCells() {
+        MySingleton.shared.tablerow.removeAll()
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:bookingId,
+                                 subTitle: bookingRefrence,
+                                 key: "sports",
+                                 buttonTitle: bookedDate,
+                                 tempText: pnrNo,
+                                 cellType:.NewBookingConfirmedTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(cellType:.BookingHotelDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
+                                                    key:"hotel",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        
+        
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height: 30, cellType:.EmptyTVCell))
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+    }
+}
+
+
+
 
 
 
@@ -293,6 +334,56 @@ extension BookingConfirmedVC {
     
     
     
+}
+
+
+
+
+//MARK: - Transfers Voucher Details
+extension BookingConfirmedVC {
+    
+    
+    func callGetTransfersVoucherAPI() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            loderBool = false
+            self.hideLoadera()
+            self.setupTransferTVCells()
+        }
+       
+    }
+    
+    
+    
+    
+    func setupTransferTVCells() {
+        MySingleton.shared.tablerow.removeAll()
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:bookingId,
+                                 subTitle: bookingRefrence,
+                                 key: "transfer",
+                                 buttonTitle: bookedDate,
+                                 tempText: pnrNo,
+                                 cellType:.NewBookingConfirmedTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(moreData:transfer_data,cellType:.BDTransfersInf0TVCell))
+        
+       
+        
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead",
+                                                    key:"transfer",
+                                                    cellType:.BookedTravelDetailsTVCell))
+        
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(height:30,cellType:.EmptyTVCell))
+        
+        
+        commonTVData = MySingleton.shared.tablerow
+        commonTableView.reloadData()
+        
+    }
 }
 
 
@@ -449,15 +540,7 @@ extension BookingConfirmedVC {
                                  cellType:.PickupTVCell))
         
         
-        //        tablerow.append(TableRow(title:MySingleton.shared.carVoucherData?.drop_date ?? "",
-        //                                 subTitle: MySingleton.shared.carVoucherData?.from_loc ?? "",
-        //                                 text: "\(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_1 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_2 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_3 ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_city ?? "") , \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_county ?? ""), \(MySingleton.shared.carVoucherData?.api_response_data?.location_info?.address_postcode ?? "")",
-        //                                 buttonTitle: "Drop Off",
-        //                                 cellType:.PickupTVCell))
-        
-        
-        
-        
+       
         
         tablerow.append(TableRow(title:"Driver Details",key: "carbc",cellType:.TitleLblTVCell))
         tablerow.append(TableRow(key:"car",cellType:.BookedTravelDetailsTVCell))

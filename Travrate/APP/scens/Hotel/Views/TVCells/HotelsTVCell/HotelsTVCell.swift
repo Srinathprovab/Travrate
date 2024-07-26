@@ -8,7 +8,7 @@
 import UIKit
 import AARatingBar
 
-protocol HotelsTVCellelegate{
+protocol HotelsTVCellelegate:AnyObject{
     func didTapOnTermsAndConditionBtn(cell: HotelsTVCell)
     func didTapOnBookNowBtnAction(cell: HotelsTVCell)
     func didTapOnLocationBtnAction(cell: HotelsTVCell)
@@ -41,7 +41,7 @@ class HotelsTVCell: TableViewCell {
     var hotel_DescLabel = String()
     var facilityArray = [HFacility]()
     var hotelDescLabel = String()
-    var delegate:HotelsTVCellelegate?
+    weak var delegate:HotelsTVCellelegate?
     var completeDescription = ""
     
     
