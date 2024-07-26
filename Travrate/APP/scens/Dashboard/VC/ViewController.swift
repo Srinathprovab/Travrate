@@ -16,12 +16,7 @@ class ViewController: UIViewController {
         
         
         
-        let dictionary = defaults.dictionaryRepresentation()
-        
-        // Iterate over each key and remove it
-        for key in dictionary.keys {
-            defaults.removeObject(forKey: key)
-        }
+       
         
         
         // Do any additional setup after loading the view.

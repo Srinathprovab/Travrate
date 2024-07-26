@@ -128,6 +128,8 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         defaults.set("1", forKey: UserDefaultsKeys.totalTravellerCount)
         
         
+    
+        
         gotoFlightSearchVC()
     }
     
@@ -591,6 +593,12 @@ extension DashboardVC {
         
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("logindone"), object: nil)
         
+        
+        // Iterate over each key and remove it
+        let dictionary = defaults.dictionaryRepresentation()
+        for key in dictionary.keys {
+            defaults.removeObject(forKey: key)
+        }
         
         
         if MySingleton.shared.callboolapi == true {

@@ -41,7 +41,7 @@ class HolidaysVC: BaseTableVC, HolidayListVMDelegate {
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
         BASE_URL = BASE_URL1
-        MySingleton.shared.callboolapi = false
+        MySingleton.shared.callboolapi = true
         callapibool = true
         guard let vc = DashBoardTBVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
