@@ -295,6 +295,7 @@
                         <outlet property="searchImg" destination="5CI-Hr-eX0" id="WgU-K7-gZZ"/>
                         <outlet property="searchTF" destination="53T-xl-b6l" id="ur9-58-uB4"/>
                         <outlet property="searchTextfieldHolderView" destination="x0K-C2-c6y" id="QTG-rD-LOY"/>
+                        <outlet property="titlelbl" destination="vvN-hc-UKu" id="ypc-ci-Ynv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVl-wT-EF2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1264,6 +1265,7 @@
                     <connections>
                         <outlet property="commonTableView" destination="8ef-9W-17H" id="Rtd-oJ-ulE"/>
                         <outlet property="kwdlbl" destination="5E6-wF-h4X" id="6xy-dc-UQl"/>
+                        <outlet property="titlelbl" destination="7vv-f1-mRn" id="yhF-aW-duD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adf-rH-Rk0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1456,6 +1458,7 @@
                         <outlet property="googleMapView" destination="Mtp-0L-Joe" id="uYK-tC-Pys"/>
                         <outlet property="mapBtn" destination="zZh-AL-f1m" id="BXi-qX-ExR"/>
                         <outlet property="satelliteBtn" destination="2Ld-vq-m6Z" id="Thu-N2-UOp"/>
+                        <outlet property="titlelbl" destination="qEL-La-NXs" id="bgu-I3-wfa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f8L-12-8xG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1534,7 +1537,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

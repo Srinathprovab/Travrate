@@ -16,7 +16,7 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVM
     
     
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var gifimg: UIImageView!
     @IBOutlet weak var continuetoPaymentBtnView: UIView!
     @IBOutlet weak var continuetoPaymentBtnlbl: UILabel!
@@ -234,7 +234,8 @@ extension BDTransferVC {
     
     func setupUI(){
         
-        
+        setuplabels(lbl: titlelbl, text: "Booking Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+       
         arrivaldate = defaults.string(forKey: UserDefaultsKeys.transfercalRetDate) ?? ""
         arrivaltime = defaults.string(forKey: UserDefaultsKeys.transfercalRetTime) ?? ""
         depdate = defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? ""

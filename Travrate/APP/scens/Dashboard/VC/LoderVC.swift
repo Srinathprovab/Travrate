@@ -295,12 +295,12 @@ extension LoderVC {
             sportsView.isHidden = false
             sporteventlbl.text = cityname
             sportvenulbl.text = "\(fromdate) To \(todate)"
-            var labelText = adultcount > 1 ? "Adults: \(adultcount)" : "Adult: \(adultcount)"
+            var labelText = adultcount > 1 ? "Adults \(adultcount)" : "Adult \(adultcount)"
             if childcount > 0 {
-                labelText += ", Child: \(childcount)"
+                labelText += ", Child \(childcount)"
             }
             if infantcount > 0 {
-                labelText += ", Infant: \(infantcount)"
+                labelText += ", Infant \(infantcount)"
             }
             sportdateslbl.text = labelText
             

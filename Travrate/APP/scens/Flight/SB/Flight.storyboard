@@ -839,7 +839,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0Y-78-d4J">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Flight Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBG-FV-x1w">
                                                 <rect key="frame" x="100" y="65" width="193" height="22"/>
@@ -868,11 +868,11 @@
                                             <constraint firstItem="uBG-FV-x1w" firstAttribute="leading" secondItem="u0Y-78-d4J" secondAttribute="leading" constant="100" id="VnU-9L-aXC"/>
                                             <constraint firstItem="70d-CJ-361" firstAttribute="top" secondItem="u0Y-78-d4J" secondAttribute="top" constant="61" id="dLG-WK-CyJ"/>
                                             <constraint firstItem="70d-CJ-361" firstAttribute="centerY" secondItem="uBG-FV-x1w" secondAttribute="centerY" id="ggz-iO-vgQ"/>
-                                            <constraint firstAttribute="height" constant="120" id="tyI-fE-2El"/>
+                                            <constraint firstAttribute="height" constant="100" id="tyI-fE-2El"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fol-Ja-8eL">
-                                        <rect key="frame" x="0.0" y="120" width="393" height="732"/>
+                                        <rect key="frame" x="0.0" y="100" width="393" height="752"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -918,7 +918,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNc-qZ-bKr">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flight Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1H-EF-s58">
                                                 <rect key="frame" x="100" y="65" width="193" height="22"/>
@@ -947,11 +947,11 @@
                                             <constraint firstItem="l1H-EF-s58" firstAttribute="top" secondItem="gNc-qZ-bKr" secondAttribute="top" constant="65" id="8v0-G2-gjo"/>
                                             <constraint firstItem="A1x-jt-cU4" firstAttribute="centerY" secondItem="l1H-EF-s58" secondAttribute="centerY" id="LlF-lw-7AD"/>
                                             <constraint firstItem="l1H-EF-s58" firstAttribute="centerX" secondItem="gNc-qZ-bKr" secondAttribute="centerX" id="POB-c1-eqR"/>
-                                            <constraint firstAttribute="height" constant="120" id="Zzc-51-Cge"/>
+                                            <constraint firstAttribute="height" constant="100" id="Zzc-51-Cge"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lG8-cj-iHx">
-                                        <rect key="frame" x="0.0" y="215" width="393" height="537"/>
+                                        <rect key="frame" x="0.0" y="195" width="393" height="557"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUG-PL-ib6" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
@@ -997,7 +997,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIM-b1-28v" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="120" width="393" height="95"/>
+                                        <rect key="frame" x="0.0" y="100" width="393" height="95"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZZB-0i-qCz">
                                                 <rect key="frame" x="10" y="16" width="373" height="30"/>
@@ -1240,6 +1240,7 @@
                         <outlet property="ittanerylbl" destination="v02-9m-cxM" id="V7h-Xj-q4K"/>
                         <outlet property="kwdlbl" destination="vwU-j6-9Hh" id="ac1-lr-aCF"/>
                         <outlet property="selectBtnsHolderView" destination="sIM-b1-28v" id="btN-nE-RGA"/>
+                        <outlet property="titlelbl" destination="l1H-EF-s58" id="tku-po-QCa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9r-K6-Ssj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1534,7 +1535,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8s-lU-l5F">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgy-O3-uEV">
                                                 <rect key="frame" x="100" y="65" width="193" height="22"/>
@@ -1559,7 +1560,7 @@
                                         <color key="backgroundColor" name="LayoverColor"/>
                                         <constraints>
                                             <constraint firstItem="Qp7-tQ-Ck9" firstAttribute="centerY" secondItem="Xgy-O3-uEV" secondAttribute="centerY" id="0gR-Dv-tbd"/>
-                                            <constraint firstAttribute="height" constant="120" id="2cR-8H-DrW"/>
+                                            <constraint firstAttribute="height" constant="100" id="2cR-8H-DrW"/>
                                             <constraint firstItem="Xgy-O3-uEV" firstAttribute="top" secondItem="X8s-lU-l5F" secondAttribute="top" constant="65" id="2mF-cP-LbW"/>
                                             <constraint firstItem="Qp7-tQ-Ck9" firstAttribute="leading" secondItem="X8s-lU-l5F" secondAttribute="leading" constant="13" id="Nfo-9X-6uJ"/>
                                             <constraint firstItem="Xgy-O3-uEV" firstAttribute="leading" secondItem="X8s-lU-l5F" secondAttribute="leading" constant="100" id="Qf4-m3-msD"/>
@@ -1567,7 +1568,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Kf-S7-4gb">
-                                        <rect key="frame" x="0.0" y="167" width="393" height="585"/>
+                                        <rect key="frame" x="0.0" y="147" width="393" height="605"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYg-86-XBA" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
@@ -1617,7 +1618,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Session Expires In: 12:24" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGU-TD-hTN">
-                                        <rect key="frame" x="15" y="135" width="363" height="22"/>
+                                        <rect key="frame" x="15" y="115" width="363" height="22"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" name="WhiteColor"/>
                                         <nil key="highlightedColor"/>
@@ -1657,6 +1658,7 @@
                         <outlet property="gifimg" destination="OYl-G0-RS7" id="8Sv-1G-GhO"/>
                         <outlet property="holderView" destination="9KT-Pw-doX" id="HBg-FK-C3h"/>
                         <outlet property="sessionlbl" destination="FGU-TD-hTN" id="nqd-gt-s8d"/>
+                        <outlet property="titlelbl" destination="Xgy-O3-uEV" id="Kmm-ZR-MSm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xol-sb-dHi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1675,7 +1677,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTa-Il-rQQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flight Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUX-Hp-FZC">
                                                 <rect key="frame" x="100" y="65" width="193" height="22"/>
@@ -1704,11 +1706,11 @@
                                             <constraint firstItem="FUX-Hp-FZC" firstAttribute="centerX" secondItem="VTa-Il-rQQ" secondAttribute="centerX" id="ma5-qD-Xtc"/>
                                             <constraint firstItem="8dk-Ku-ayS" firstAttribute="centerY" secondItem="FUX-Hp-FZC" secondAttribute="centerY" id="npd-wD-1OJ"/>
                                             <constraint firstItem="8dk-Ku-ayS" firstAttribute="top" secondItem="VTa-Il-rQQ" secondAttribute="top" constant="61" id="pDi-gY-lgT"/>
-                                            <constraint firstAttribute="height" constant="110" id="zLG-vq-IDS"/>
+                                            <constraint firstAttribute="height" constant="100" id="zLG-vq-IDS"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eON-kv-T4B">
-                                        <rect key="frame" x="0.0" y="110" width="393" height="742"/>
+                                        <rect key="frame" x="0.0" y="100" width="393" height="752"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -1736,6 +1738,7 @@
                     <connections>
                         <outlet property="commonTableView" destination="eON-kv-T4B" id="RIU-aC-Lnv"/>
                         <outlet property="holderView" destination="8mp-8C-7T2" id="u9K-5H-C1h"/>
+                        <outlet property="titlelbl" destination="FUX-Hp-FZC" id="fM5-Gp-8Sh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RmV-F6-8Vb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1996,11 +1999,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Oly-KO-ejO">
-                                        <rect key="frame" x="0.0" y="110" width="393" height="622"/>
+                                        <rect key="frame" x="0.0" y="100" width="393" height="632"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csx-Cg-d5V">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5r-lm-3oB">
                                                 <rect key="frame" x="100" y="65" width="193" height="0.0"/>
@@ -2025,7 +2028,7 @@
                                         </subviews>
                                         <color key="backgroundColor" name="LayoverColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="110" id="FGx-1t-Ovl"/>
+                                            <constraint firstAttribute="height" constant="100" id="FGx-1t-Ovl"/>
                                             <constraint firstItem="lBF-37-dA9" firstAttribute="leading" secondItem="csx-Cg-d5V" secondAttribute="leading" constant="13" id="Hk9-SE-WC6"/>
                                             <constraint firstItem="lBF-37-dA9" firstAttribute="centerY" secondItem="A5r-lm-3oB" secondAttribute="centerY" id="Nt4-1B-YCI"/>
                                             <constraint firstItem="A5r-lm-3oB" firstAttribute="top" secondItem="csx-Cg-d5V" secondAttribute="top" constant="65" id="OCD-AF-tPN"/>
@@ -2142,14 +2145,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rOl-Y6-8io">
-                                        <rect key="frame" x="0.0" y="110" width="393" height="742"/>
+                                        <rect key="frame" x="0.0" y="100" width="393" height="752"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6gf-ma-rlQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="622"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="632"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTO-fD-5yv">
-                                                <rect key="frame" x="0.0" y="622" width="393" height="120"/>
+                                                <rect key="frame" x="0.0" y="632" width="393" height="120"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYp-hC-jyU" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="27.666666666666629" width="353" height="65"/>
@@ -2223,7 +2226,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ej-4m-E0z">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Fare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5b-kT-ONL">
                                                 <rect key="frame" x="100" y="65" width="193" height="22"/>
@@ -2249,7 +2252,7 @@
                                         <color key="backgroundColor" name="LayoverColor"/>
                                         <constraints>
                                             <constraint firstItem="d5b-kT-ONL" firstAttribute="leading" secondItem="1ej-4m-E0z" secondAttribute="leading" constant="100" id="Hri-GV-Gga"/>
-                                            <constraint firstAttribute="height" constant="110" id="JbL-kO-4U3"/>
+                                            <constraint firstAttribute="height" constant="100" id="JbL-kO-4U3"/>
                                             <constraint firstItem="d5b-kT-ONL" firstAttribute="top" secondItem="1ej-4m-E0z" secondAttribute="top" constant="65" id="MIW-mU-nlg"/>
                                             <constraint firstItem="cIM-Hf-nC0" firstAttribute="leading" secondItem="1ej-4m-E0z" secondAttribute="leading" constant="13" id="h04-Tb-1Xv"/>
                                             <constraint firstItem="d5b-kT-ONL" firstAttribute="centerX" secondItem="1ej-4m-E0z" secondAttribute="centerX" id="y4z-bx-ZnU"/>
@@ -2283,6 +2286,7 @@
                         <outlet property="continueBtnView" destination="OTO-fD-5yv" id="elo-g3-qry"/>
                         <outlet property="gifimg" destination="2gU-S0-h61" id="Eod-8r-br5"/>
                         <outlet property="kwdlbl" destination="zHz-cX-M0v" id="f2U-Nu-cg3"/>
+                        <outlet property="titlelbl" destination="d5b-kT-ONL" id="BzY-me-hJ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ynB-M0-6IW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2301,11 +2305,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="76B-Fy-UW7">
-                                        <rect key="frame" x="0.0" y="110" width="393" height="742"/>
+                                        <rect key="frame" x="0.0" y="100" width="393" height="752"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uT-rF-Xxd">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Payment Methods" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QA-hW-DbZ">
                                                 <rect key="frame" x="10" y="65" width="373" height="22"/>
@@ -2331,7 +2335,7 @@
                                         <color key="backgroundColor" name="LayoverColor"/>
                                         <constraints>
                                             <constraint firstItem="YTq-sR-eR5" firstAttribute="leading" secondItem="9uT-rF-Xxd" secondAttribute="leading" constant="13" id="FUi-oQ-Mmi"/>
-                                            <constraint firstAttribute="height" constant="110" id="cnd-BZ-Fo5"/>
+                                            <constraint firstAttribute="height" constant="100" id="cnd-BZ-Fo5"/>
                                             <constraint firstItem="4QA-hW-DbZ" firstAttribute="top" secondItem="9uT-rF-Xxd" secondAttribute="top" constant="65" id="hyd-Yk-iTA"/>
                                             <constraint firstItem="4QA-hW-DbZ" firstAttribute="leading" secondItem="9uT-rF-Xxd" secondAttribute="leading" constant="10" id="jBg-uH-J2u"/>
                                             <constraint firstItem="YTq-sR-eR5" firstAttribute="centerY" secondItem="4QA-hW-DbZ" secondAttribute="centerY" id="uhj-PP-Nbo"/>
@@ -2362,6 +2366,7 @@
                     </view>
                     <connections>
                         <outlet property="commonTableView" destination="76B-Fy-UW7" id="is1-IK-2NA"/>
+                        <outlet property="titlelbl" destination="4QA-hW-DbZ" id="6qQ-jr-1yz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsw-wA-35K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2380,14 +2385,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="E3J-l0-shO">
-                                        <rect key="frame" x="0.0" y="110" width="393" height="742"/>
+                                        <rect key="frame" x="0.0" y="100" width="393" height="752"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UTq-to-QlL">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="622"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="632"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnS-4o-Lzn">
-                                                <rect key="frame" x="0.0" y="622" width="393" height="120"/>
+                                                <rect key="frame" x="0.0" y="632" width="393" height="120"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqg-yd-Xk1" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="27.666666666666629" width="353" height="65"/>
@@ -2461,7 +2466,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXq-Va-aA3">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Fare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lm4-Ku-5ys">
                                                 <rect key="frame" x="100" y="65" width="193" height="22"/>
@@ -2489,7 +2494,7 @@
                                             <constraint firstItem="lm4-Ku-5ys" firstAttribute="centerX" secondItem="JXq-Va-aA3" secondAttribute="centerX" id="NHN-0d-ujL"/>
                                             <constraint firstItem="lm4-Ku-5ys" firstAttribute="leading" secondItem="JXq-Va-aA3" secondAttribute="leading" constant="100" id="Saz-vu-8ti"/>
                                             <constraint firstItem="NMj-tc-V7t" firstAttribute="leading" secondItem="JXq-Va-aA3" secondAttribute="leading" constant="13" id="UVc-F6-WMg"/>
-                                            <constraint firstAttribute="height" constant="110" id="V2T-wW-BYn"/>
+                                            <constraint firstAttribute="height" constant="100" id="V2T-wW-BYn"/>
                                             <constraint firstItem="NMj-tc-V7t" firstAttribute="centerY" secondItem="lm4-Ku-5ys" secondAttribute="centerY" id="VJY-Pb-FpA"/>
                                             <constraint firstItem="lm4-Ku-5ys" firstAttribute="top" secondItem="JXq-Va-aA3" secondAttribute="top" constant="65" id="l4l-CG-RT8"/>
                                         </constraints>
@@ -2539,7 +2544,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sk9-Sx-eqn">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oog-uZ-tGo">
                                                 <rect key="frame" x="100" y="65" width="193" height="22"/>
@@ -2566,13 +2571,13 @@
                                             <constraint firstAttribute="trailing" secondItem="5D4-Fp-vfS" secondAttribute="trailing" constant="13" id="1QI-aZ-t9a"/>
                                             <constraint firstItem="5D4-Fp-vfS" firstAttribute="top" secondItem="Sk9-Sx-eqn" secondAttribute="top" constant="61" id="2YY-z5-Qan"/>
                                             <constraint firstItem="5D4-Fp-vfS" firstAttribute="centerY" secondItem="Oog-uZ-tGo" secondAttribute="centerY" id="IGj-R1-1Jr"/>
-                                            <constraint firstAttribute="height" constant="110" id="O96-k3-Q94"/>
+                                            <constraint firstAttribute="height" constant="100" id="O96-k3-Q94"/>
                                             <constraint firstItem="Oog-uZ-tGo" firstAttribute="leading" secondItem="Sk9-Sx-eqn" secondAttribute="leading" constant="100" id="d0F-we-77T"/>
                                             <constraint firstItem="Oog-uZ-tGo" firstAttribute="centerX" secondItem="Sk9-Sx-eqn" secondAttribute="centerX" id="qzU-wh-r2D"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Lx9-Pu-QAk">
-                                        <rect key="frame" x="0.0" y="110" width="393" height="742"/>
+                                        <rect key="frame" x="0.0" y="100" width="393" height="752"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -2600,6 +2605,7 @@
                     <connections>
                         <outlet property="commonTableView" destination="Lx9-Pu-QAk" id="7QG-OM-fAj"/>
                         <outlet property="holderView" destination="oFo-zZ-uLB" id="KXS-k0-7t6"/>
+                        <outlet property="titlelbl" destination="Oog-uZ-tGo" id="IbT-Oz-dmv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23O-K4-hIE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2652,10 +2658,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

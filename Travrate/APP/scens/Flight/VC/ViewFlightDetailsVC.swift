@@ -16,6 +16,7 @@ class ViewFlightDetailsVC: BaseTableVC,FlightDetailsViewModelDelegate {
     
     
     @IBOutlet weak var holderView: UIView!
+    @IBOutlet weak var titlelbl: UILabel!
     
     var fd = [[ItinearyFlightDetails]]()
     
@@ -43,6 +44,8 @@ class ViewFlightDetailsVC: BaseTableVC,FlightDetailsViewModelDelegate {
     
     func setUI() {
         
+        setuplabels(lbl: titlelbl, text: "Flight Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         commonTableView.registerTVCells(["TicketIssuingTimeTVCell",
                                          "ItineraryTVCell",
                                          "FareBreakdownTVCell"])

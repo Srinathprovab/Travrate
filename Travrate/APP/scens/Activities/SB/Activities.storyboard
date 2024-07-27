@@ -591,11 +591,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ifE-2H-C52">
-                                        <rect key="frame" x="0.0" y="100" width="393" height="672"/>
+                                        <rect key="frame" x="0.0" y="110" width="393" height="662"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpB-jL-yFM">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qd6-WZ-5sF">
                                                 <rect key="frame" x="100" y="60.000000000000007" width="193" height="19.333333333333336"/>
@@ -621,7 +621,7 @@
                                             <constraint firstItem="P3u-bT-ycV" firstAttribute="leading" secondItem="cpB-jL-yFM" secondAttribute="leading" constant="13" id="YBg-dO-8k0"/>
                                             <constraint firstAttribute="trailing" secondItem="Qd6-WZ-5sF" secondAttribute="trailing" constant="100" id="iMO-8o-Woj"/>
                                             <constraint firstItem="Qd6-WZ-5sF" firstAttribute="top" secondItem="cpB-jL-yFM" secondAttribute="top" constant="60" id="nvg-0k-G8C"/>
-                                            <constraint firstAttribute="height" constant="90" id="oWz-IU-tSR"/>
+                                            <constraint firstAttribute="height" constant="100" id="oWz-IU-tSR"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zW-gd-oeJ">

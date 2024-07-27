@@ -14,6 +14,8 @@ protocol ActivitiesResultTVCellDelegate:AnyObject {
 
 class ActivitiesResultTVCell: TableViewCell {
     
+    
+    @IBOutlet weak var activitylocimg: UIImageView!
     @IBOutlet weak var activityimg: UIImageView!
     @IBOutlet weak var activityNamelbl: UILabel!
     @IBOutlet weak var activityloclbl: UILabel!
@@ -46,7 +48,7 @@ class ActivitiesResultTVCell: TableViewCell {
     
     func setupui() {
         
-        
+       // activitylocimg.image = UIImage(named: "loc11")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#3C627A"))
         activityimg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         activityimg.layer.cornerRadius = 12
         detailsBtn.layer.cornerRadius = 4

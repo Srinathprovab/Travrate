@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -421,6 +422,7 @@
                     </view>
                     <connections>
                         <outlet property="commonTableView" destination="cOC-2c-z9f" id="HNd-Kg-Pg3"/>
+                        <outlet property="titlelbl" destination="408-nQ-HSm" id="Kbv-lX-wP2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVU-2K-Eie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -713,6 +715,7 @@
                         <outlet property="continuetoPaymentBtnView" destination="L3I-7e-T13" id="VWy-OJ-BwH"/>
                         <outlet property="continuetoPaymentBtnlbl" destination="w3o-ID-3NA" id="NTX-al-jHH"/>
                         <outlet property="gifimg" destination="NaZ-gu-NN2" id="m0P-Gi-aOd"/>
+                        <outlet property="titlelbl" destination="CHT-fH-dqR" id="fQV-hX-XDM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylf-0v-S1B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -738,13 +741,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modify Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fr-MP-TS1">
-                                                <rect key="frame" x="10" y="60" width="373" height="22"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="16"/>
+                                                <rect key="frame" x="10" y="60.000000000000007" width="373" height="20.333333333333336"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                 <color key="textColor" name="HeadingColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fs-Eb-lc3">
-                                                <rect key="frame" x="353" y="56" width="30" height="30"/>
+                                                <rect key="frame" x="353" y="55.333333333333343" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="mzk-jA-fgB"/>
                                                     <constraint firstAttribute="width" constant="30" id="yPp-ai-wJ2"/>

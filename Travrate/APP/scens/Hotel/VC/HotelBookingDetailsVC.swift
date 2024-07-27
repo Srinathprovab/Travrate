@@ -16,6 +16,7 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
    
     
     
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var kwdlbl: UILabel!
     
     static var newInstance: HotelBookingDetailsVC? {
@@ -54,6 +55,8 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
     
     
     func setupUI() {
+        setuplabels(lbl: titlelbl, text: "Booking Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+      
         
         commonTableView.registerTVCells(["BookingHotelDetailsTVCell",
                                          "EmptyTVCell",

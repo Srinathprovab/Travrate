@@ -85,7 +85,7 @@ class ActivitiesTypeInfoTVCell: UITableViewCell {
                 self?.chooselbl.isHidden = false
                 
                 
-                self?.chooselbl.text = "Cancellation from \(item) Will charge \(self?.agentpayable ?? "")"
+                self?.chooselbl.text = "Cancellation from \(item) will charge \(self?.agentpayable ?? "")"
                 MySingleton.shared.activity_selecteddate = MySingleton.shared.convertDateFormat(inputDate: item, f1: "dd-MM-yyyy", f2: "yyyy-MM-dd")
                 MySingleton.shared.activity_cancellation_string = self?.chooselbl.text ?? ""
             }

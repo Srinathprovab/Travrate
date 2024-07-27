@@ -10,7 +10,7 @@ import UIKit
 class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegate, MobilePaymentVMDelegate, HotelBookingViewModelDelegate, SportsPaymentViewModelDelegate, TransferBookingVMDelegate, ActivitiesProcessPassengerVMDelegate, CarBookingVMDelegate {
     
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     
     static var newInstance:  SelectPaymentMethodsVC? {
         let storyboard = UIStoryboard(name: Storyboard.Flight.name,
@@ -51,6 +51,8 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     
     
     func setupUI() {
+        setuplabels(lbl: titlelbl, text: "Select Payment Methods", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         commonTableView.registerTVCells(["BookingDetailsFlightDataTVCell",
                                          "PaymentTypeTVCell",
                                          "BookedTravelDetailsTVCell",

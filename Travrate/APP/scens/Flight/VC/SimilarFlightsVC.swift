@@ -31,6 +31,8 @@ class SimilarFlightsVC: BaseTableVC {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        setuplabels(lbl: titlelbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         commonTableView.registerTVCells(["FlightResultTVCell",
                                          "EmptyTVCell"])
     }

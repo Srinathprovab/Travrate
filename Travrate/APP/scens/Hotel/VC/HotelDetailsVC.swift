@@ -74,6 +74,10 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     //MARK: - setupUI
     func setupUI() {
         
+        setuplabels(lbl: citylbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: datelbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+        setuplabels(lbl: paxlbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+        
         holderView.backgroundColor = .AppBorderColor
         self.citylbl.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? ""
         self.datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
@@ -258,6 +262,8 @@ extension HotelDetailsVC {
     
     //MARK: - CALL HOTEL DETAILS API
     func callAPI() {
+        
+        
         
         MySingleton.shared.loderString = "fdetails"
         MySingleton.shared.afterResultsBool = true

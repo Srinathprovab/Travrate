@@ -318,11 +318,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KQn-kt-fIv">
-                                        <rect key="frame" x="0.0" y="100" width="393" height="752"/>
+                                        <rect key="frame" x="0.0" y="110" width="393" height="742"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkl-LE-mhT">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your Package" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epm-mq-a6s">
                                                 <rect key="frame" x="100" y="60.000000000000007" width="193" height="19.333333333333336"/>
@@ -350,7 +350,7 @@
                                             <constraint firstItem="VWj-4w-thA" firstAttribute="centerY" secondItem="epm-mq-a6s" secondAttribute="centerY" id="GOE-hf-nlh"/>
                                             <constraint firstItem="epm-mq-a6s" firstAttribute="centerX" secondItem="bkl-LE-mhT" secondAttribute="centerX" id="GWb-Dq-aTc"/>
                                             <constraint firstItem="epm-mq-a6s" firstAttribute="top" secondItem="bkl-LE-mhT" secondAttribute="top" constant="60" id="c0w-VF-4oa"/>
-                                            <constraint firstAttribute="height" constant="90" id="gV3-5i-nfY"/>
+                                            <constraint firstAttribute="height" constant="100" id="gV3-5i-nfY"/>
                                             <constraint firstItem="VWj-4w-thA" firstAttribute="leading" secondItem="bkl-LE-mhT" secondAttribute="leading" constant="13" id="pUz-aI-IDh"/>
                                         </constraints>
                                     </view>
@@ -378,6 +378,7 @@
                     </view>
                     <connections>
                         <outlet property="commonTableView" destination="KQn-kt-fIv" id="Evx-F5-rwr"/>
+                        <outlet property="titlelbl" destination="epm-mq-a6s" id="UDi-KP-Ueh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ii2-w7-4FP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -517,11 +518,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0fx-8t-pQt">
-                                        <rect key="frame" x="0.0" y="100" width="393" height="672"/>
+                                        <rect key="frame" x="0.0" y="110" width="393" height="662"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Urt-JG-Iae">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aST-9m-58n">
                                                 <rect key="frame" x="100" y="60.000000000000007" width="193" height="19.333333333333336"/>
@@ -548,7 +549,7 @@
                                             <constraint firstItem="w78-iG-hQi" firstAttribute="leading" secondItem="Urt-JG-Iae" secondAttribute="leading" constant="13" id="1Z1-ed-3xV"/>
                                             <constraint firstItem="w78-iG-hQi" firstAttribute="centerY" secondItem="aST-9m-58n" secondAttribute="centerY" id="3Hg-lf-kOm"/>
                                             <constraint firstAttribute="trailing" secondItem="aST-9m-58n" secondAttribute="trailing" constant="100" id="CUJ-FA-ym4"/>
-                                            <constraint firstAttribute="height" constant="90" id="vSz-4v-ZMw"/>
+                                            <constraint firstAttribute="height" constant="100" id="vSz-4v-ZMw"/>
                                             <constraint firstItem="aST-9m-58n" firstAttribute="top" secondItem="Urt-JG-Iae" secondAttribute="top" constant="60" id="xiy-EK-1YJ"/>
                                             <constraint firstItem="aST-9m-58n" firstAttribute="centerX" secondItem="Urt-JG-Iae" secondAttribute="centerX" id="xkg-UD-fPU"/>
                                         </constraints>
@@ -639,6 +640,7 @@
                         <outlet property="continuetoPaymentBtnView" destination="IHD-F3-A2s" id="1Gy-2A-mX9"/>
                         <outlet property="continuetoPaymentBtnlbl" destination="qeq-Ak-IRc" id="436-DG-9bD"/>
                         <outlet property="gifimg" destination="Pny-yM-Fx0" id="qBZ-RR-AJq"/>
+                        <outlet property="titlelbl" destination="aST-9m-58n" id="ynf-DQ-lzD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9eG-dL-dIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -794,6 +796,7 @@
                     </view>
                     <connections>
                         <outlet property="commonTableView" destination="W06-RB-Kou" id="Tnn-Aj-qbJ"/>
+                        <outlet property="titlelbl" destination="FKK-O0-x67" id="RXC-5c-nZh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0I-TF-4hU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

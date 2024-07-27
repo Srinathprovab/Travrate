@@ -22,7 +22,7 @@ struct MapModel {
 
 class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var googleMapView: UIView!
     @IBOutlet weak var mapBtn: UIButton!
@@ -54,6 +54,9 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
     
     func setupUI() {
         
+        
+        setuplabels(lbl: titlelbl, text: "MapView", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         
         self.googleMapView.backgroundColor = .clear
         backButton.addTarget(self, action: #selector(backbtnAction), for: .touchUpInside)

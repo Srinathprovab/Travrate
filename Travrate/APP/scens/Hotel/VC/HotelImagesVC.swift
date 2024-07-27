@@ -23,9 +23,10 @@ class HotelImagesVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect) ?? ""
         if tabselect == "Hotel" {
-            titlelbl.text = "Hotel Images"
+            setuplabels(lbl: titlelbl, text: "Hotel Images", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
         }else {
-            titlelbl.text = "Activities Images"
+            setuplabels(lbl: titlelbl, text: "Activities Images", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         }
     }
     
@@ -33,7 +34,7 @@ class HotelImagesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view. Hotel Images
         setupCV()
     }
     

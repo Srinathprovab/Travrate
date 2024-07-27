@@ -57,6 +57,12 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
     
     
     func setupUI() {
+        
+        
+        setuplabels(lbl: cityslbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: datelbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+        setuplabels(lbl: paxlbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+        
         let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
         if journyType == "oneway" {
             retDatelbl.isHidden = true

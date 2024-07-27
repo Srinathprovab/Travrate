@@ -10,6 +10,8 @@ import UIKit
 class UpgradeServiceVC: BaseTableVC, CarDetailsVMDelegate {
     
     
+    
+    @IBOutlet weak var titlelbl: UILabel!
     static var newInstance: UpgradeServiceVC? {
         let storyboard = UIStoryboard(name: Storyboard.CarRental.name,
                                       bundle: nil)
@@ -82,7 +84,8 @@ extension UpgradeServiceVC {
     func setupUI(){
         
         
-        
+        setuplabels(lbl: titlelbl, text: "Upgrade your Package", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         commonTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // Top left corner, Top right corner respectively
         commonTableView.layer.cornerRadius = 12
         commonTableView.clipsToBounds = true

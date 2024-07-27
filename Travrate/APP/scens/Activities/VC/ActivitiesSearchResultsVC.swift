@@ -192,12 +192,12 @@ extension ActivitiesSearchResultsVC {
         let adultcount = defaults.integer(forKey: UserDefaultsKeys.activitesadultCount)
         let childcount = defaults.integer(forKey: UserDefaultsKeys.activiteschildCount)
         let infantcount = defaults.integer(forKey: UserDefaultsKeys.activitesinfantsCount)
-        var labelText = adultcount > 1 ? "Adults: \(adultcount)" : "Adult: \(adultcount)"
+        var labelText = adultcount > 1 ? "Adults \(adultcount)" : "Adult \(adultcount)"
         if childcount > 0 {
-            labelText += ", Child: \(childcount)"
+            labelText += ", Child \(childcount)"
         }
         if infantcount > 0 {
-            labelText += ", Infant: \(infantcount)"
+            labelText += ", Infant \(infantcount)"
         }
         paxlbl.text = labelText
         
@@ -243,7 +243,7 @@ extension ActivitiesSearchResultsVC {
         MySingleton.shared.tablerow.removeAll()
         
         
-        MySingleton.shared.setAttributedTextnew(str1: "\(list.count)", str2: " Activities  Available", lbl: totalcountlbl, str1font: .InterBold(size: 16), str2font: .InterRegular(size: 14), str1Color: .TitleColor, str2Color: .TitleColor)
+        MySingleton.shared.setAttributedTextnew(str1: "\(list.count)", str2: " Activities available", lbl: totalcountlbl, str1font: .InterBold(size: 16), str2font: .InterRegular(size: 14), str1Color: .TitleColor, str2Color: .TitleColor)
         
         
         for  (index,value) in list.enumerated() {

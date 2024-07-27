@@ -110,6 +110,11 @@ extension SelectSportsListVC {
     
     func setupUI(){
         
+        
+        setuplabels(lbl: teamlbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: venulbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: dateslbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+        
         commonTableView.registerTVCells(["SportInfoTVCell",
                                          "EmptyTVCell"])
         

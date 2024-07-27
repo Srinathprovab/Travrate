@@ -9,6 +9,7 @@ import UIKit
 
 class ViewTicketInfoVC: BaseTableVC, SportDetailsVMDelegate {
     
+    @IBOutlet weak var titlelbl: UILabel!
     
     static var newInstance: ViewTicketInfoVC? {
         let storyboard = UIStoryboard(name: Storyboard.Sports.name,
@@ -94,6 +95,8 @@ extension ViewTicketInfoVC {
     
     
     func setupUI(){
+        setuplabels(lbl: titlelbl, text: "View Ticket Info", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         
         commonTableView.registerTVCells(["SelectedSportInfoTVCell",
                                          "SportsStadiumTVCell",

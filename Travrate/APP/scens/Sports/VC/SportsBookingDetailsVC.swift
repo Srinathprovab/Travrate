@@ -9,7 +9,7 @@ import UIKit
 
 class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var gifimg: UIImageView!
     @IBOutlet weak var continuetoPaymentBtnView: UIView!
     @IBOutlet weak var continuetoPaymentBtnlbl: UILabel!
@@ -280,7 +280,8 @@ extension SportsBookingDetailsVC {
     
     func setupUI(){
         
-        
+        setuplabels(lbl: titlelbl, text: "Booking Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         continuetoPaymentBtnView.backgroundColor = .Buttoncolor
         continuetoPaymentBtnView.isUserInteractionEnabled = true
         continuetoPaymentBtnlbl.text = "Continue To Next"

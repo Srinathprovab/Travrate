@@ -9,7 +9,7 @@ import UIKit
 
 class FlightDeatilsVC: BaseTableVC, FlightDetailsViewModelDelegate {
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var selectBtnsHolderView: UIView!
     @IBOutlet weak var ittaneryView: BorderedView!
     @IBOutlet weak var ittanerylbl: UILabel!
@@ -49,7 +49,7 @@ class FlightDeatilsVC: BaseTableVC, FlightDetailsViewModelDelegate {
     
     
     func setUI() {
-        
+        setuplabels(lbl: titlelbl, text: "Flight Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
         selectBtnsHolderView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // Top left corner, Top right corner respectively
         selectBtnsHolderView.layer.cornerRadius = 10
         selectBtnsHolderView.clipsToBounds = true

@@ -354,7 +354,7 @@ extension ActivitiesBookingDetailsVC {
         let childcount = defaults.integer(forKey: UserDefaultsKeys.activiteschildCount)
         let infantcount = defaults.integer(forKey: UserDefaultsKeys.activitesinfantsCount)
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Traveller  Details",
+        MySingleton.shared.tablerow.append(TableRow(title:"Enter Passenger Information",
                                                     cellType:.TotalNoofTravellerTVCell))
         
         for i in 1...adultcount {

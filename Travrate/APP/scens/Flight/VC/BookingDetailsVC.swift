@@ -9,7 +9,7 @@ import UIKit
 
 class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDelegate, MPBViewModelDelegate {
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var gifimg: UIImageView!
     @IBOutlet weak var sessionlbl: UILabel!
     @IBOutlet weak var holderView: UIView!
@@ -50,6 +50,8 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
     func setupUI() {
         MySingleton.shared.addon_servicesArray.removeAll()
         
+        setuplabels(lbl: titlelbl, text: "Booking Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         origin_array.removeAll()
         whatsAppCheck = false
         notificationCheck = true

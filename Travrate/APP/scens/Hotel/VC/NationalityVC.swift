@@ -10,6 +10,7 @@ import UIKit
 class NationalityVC: BaseTableVC, AirlineListViewModelDelegate {
     
     
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var searchTextfieldHolderView: UIView!
     @IBOutlet weak var searchImg: UIImageView!
@@ -65,6 +66,8 @@ class NationalityVC: BaseTableVC, AirlineListViewModelDelegate {
     
     func setupUI() {
         
+        setuplabels(lbl: titlelbl, text: "Nationality", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         
         searchImg.image = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBtnColor)
         searchTF.becomeFirstResponder()

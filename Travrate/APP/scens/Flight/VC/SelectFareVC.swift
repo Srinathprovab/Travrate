@@ -9,7 +9,7 @@ import UIKit
 
 class SelectFareVC: BaseTableVC, SelectFareViewModelDelegate {
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var continueBtnView: UIView!
     @IBOutlet weak var gifimg: UIImageView!
     @IBOutlet weak var kwdlbl: UILabel!
@@ -39,6 +39,9 @@ class SelectFareVC: BaseTableVC, SelectFareViewModelDelegate {
     }
     
     func setupUI() {
+        
+        setuplabels(lbl: titlelbl, text: "Select Fare", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         MySingleton.shared.setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""): ",
                                                 str2: String(format: "%.2f", MySingleton.shared.totalselectedfareprice),
                                                 lbl: kwdlbl,

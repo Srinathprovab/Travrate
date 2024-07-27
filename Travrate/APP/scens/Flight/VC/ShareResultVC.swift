@@ -10,7 +10,7 @@ import UIKit
 
 class ShareResultVC: BaseTableVC, ShareResultViewModelDelegate {
    
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var holderView: UIView!
     
     
@@ -41,7 +41,8 @@ class ShareResultVC: BaseTableVC, ShareResultViewModelDelegate {
     
     
     func setUI() {
-        
+        setuplabels(lbl: titlelbl, text: "Share Result", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         commonTableView.registerTVCells(["ShareResultTVCell"])
         setupTVCells()
         

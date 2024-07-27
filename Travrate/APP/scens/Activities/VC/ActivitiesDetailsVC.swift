@@ -172,12 +172,12 @@ extension ActivitiesDetailsVC {
             let adultcount = Int(response.data?.activity_search_params?.adult ?? "") ?? 0
             let childcount = Int(response.data?.activity_search_params?.child ?? "") ?? 0
             let infantcount = Int(response.data?.activity_search_params?.infant ?? "") ?? 0
-            var labelText = adultcount > 1 ? "Adults: \(adultcount)" : "Adult: \(adultcount)"
+            var labelText = adultcount > 1 ? "Adults \(adultcount)" : "Adult \(adultcount)"
             if childcount > 0 {
-                labelText += ", Child: \(childcount)"
+                labelText += ", Child \(childcount)"
             }
             if infantcount > 0 {
-                labelText += ", Infant: \(infantcount)"
+                labelText += ", Infant \(infantcount)"
             }
             paxlbl.text = labelText
             

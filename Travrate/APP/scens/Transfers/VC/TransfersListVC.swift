@@ -94,6 +94,10 @@ extension TransfersListVC {
     
     func setupUI(){
         
+        setuplabels(lbl: fromcitylbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: tocitylbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: dateslbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+        
         modifybtn.addTarget(self, action: #selector(didTapOnModifySearchBtnAction(_:)), for: .touchUpInside)
         commonTableView.registerTVCells(["TransfersInf0TVCell",
                                          "EmptyTVCell"])

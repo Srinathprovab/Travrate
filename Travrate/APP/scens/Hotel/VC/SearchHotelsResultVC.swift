@@ -87,6 +87,10 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     func setupUI() {
         
         
+        setuplabels(lbl: cittlbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: dateslbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+        setuplabels(lbl: paxlbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
+        
         self.cittlbl.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? ""
         self.dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
         
@@ -95,7 +99,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         let adultcount = defaults.integer(forKey: UserDefaultsKeys.hoteladultscount)
         let childcount = defaults.integer(forKey: UserDefaultsKeys.hotelchildcount)
         
-        var labelText = adultcount > 1 ? "Room: \(roomscount) | Adults \(adultcount)" : "Adult \(adultcount)"
+        var labelText = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Adult \(adultcount)"
         if childcount > 0 {
             labelText += ", Child \(childcount)"
         }

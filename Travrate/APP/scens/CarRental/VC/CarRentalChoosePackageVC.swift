@@ -10,6 +10,8 @@ import UIKit
 class CarRentalChoosePackageVC: BaseTableVC, CarDetailsVMDelegate {
    
     
+    @IBOutlet weak var titlelbl: UILabel!
+    
     static var newInstance: CarRentalChoosePackageVC? {
         let storyboard = UIStoryboard(name: Storyboard.CarRental.name,
                                       bundle: nil)
@@ -77,7 +79,8 @@ extension CarRentalChoosePackageVC {
     func setupUI(){
         
         
-        
+        setuplabels(lbl: titlelbl, text: "Choose your Package", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
+
         commonTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // Top left corner, Top right corner respectively
         commonTableView.layer.cornerRadius = 12
         commonTableView.clipsToBounds = true
