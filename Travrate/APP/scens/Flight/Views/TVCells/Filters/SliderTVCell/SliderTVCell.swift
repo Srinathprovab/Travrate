@@ -64,8 +64,8 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
         downImg.image = UIImage(named: "dropup")
         downBtn.setTitle("", for: .normal)
         setupLabels(lbl: titlelbl, text: "", textcolor: .TitleColor, font: .OpenSansMedium(size: 16))
-        setuplabels(lbl: minlbl, text: "", textcolor: .TitleColor, font: .OpenSansBold(size: 16), align: .center)
-        setuplabels(lbl: maxlbl, text: "", textcolor: .TitleColor, font: .OpenSansBold(size: 16), align: .center)
+        setuplabels(lbl: minlbl, text: "", textcolor: .TitleColor, font: .OpenSansBold(size: 16), align: .right)
+        setuplabels(lbl: maxlbl, text: "", textcolor: .TitleColor, font: .OpenSansBold(size: 16), align: .left)
         rangeSlider.isHidden = true
         rangeSlider.backgroundColor = .WhiteColor
         

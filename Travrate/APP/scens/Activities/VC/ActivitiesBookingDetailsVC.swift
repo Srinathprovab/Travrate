@@ -399,7 +399,7 @@ extension ActivitiesBookingDetailsVC {
         
         MySingleton.shared.tablerow.append(TableRow(cellType:.BDPickupLocationTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.TContactDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(key: "activities",cellType:.TContactDetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(key: "activities", moreData: services, cellType:.AddonTableViewCell))
         MySingleton.shared.tablerow.append(TableRow(title:contract_remark,cellType:.ContractRemarkTVCell))

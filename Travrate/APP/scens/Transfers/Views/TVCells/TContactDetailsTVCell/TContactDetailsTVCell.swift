@@ -15,12 +15,13 @@ protocol TContactDetailsTVCellDelegate: AnyObject{
 
 class TContactDetailsTVCell: TableViewCell {
     
+    
+    @IBOutlet weak var contactnameView: UIView!
     @IBOutlet weak var mobileTFView: UIView!
     @IBOutlet weak var mobileTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var fullnameTF: UITextField!
     @IBOutlet weak var countrycodeTF: UITextField!
-    
     @IBOutlet weak var contactnametitlelblb: UILabel!
     @IBOutlet weak var emailtitlelblb: UILabel!
     @IBOutlet weak var mobiletitlelbl: UILabel!
@@ -114,7 +115,9 @@ class TContactDetailsTVCell: TableViewCell {
         
         
         
-        
+        if cellInfo?.key == "activities" {
+            contactnameView.isHidden = true
+        }
         
     }
     
@@ -131,7 +134,7 @@ class TContactDetailsTVCell: TableViewCell {
         countrycodeTF.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
         countrycodeTF.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
         
-        
+       
        
     }
     

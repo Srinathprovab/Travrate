@@ -36,8 +36,8 @@ class ActivitiesTypeTVCell: UITableViewCell, ActivitiesTypeInfoTVCellDelegate {
     
     
     func setupUI() {
-        setuplabels(lbl: activityTypelbl, text: "Activities Type", textcolor: .TitleColor, font: .InterRegular(size: 14), align: .center)
-        setuplabels(lbl: activityTypelbl, text: "Total price", textcolor: .TitleColor, font: .InterRegular(size: 14), align: .center)
+        setuplabels(lbl: activityTypelbl, text: "Activities Type", textcolor: .TitleColor, font: .InterSemiBold(size: 14), align: .center)
+        setuplabels(lbl: totalPricelbl, text: "Total price", textcolor: .TitleColor, font: .InterSemiBold(size: 14), align: .center)
 
         setupTV()
     }
