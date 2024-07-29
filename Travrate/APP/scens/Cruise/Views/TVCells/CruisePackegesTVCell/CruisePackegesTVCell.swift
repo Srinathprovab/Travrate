@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol CruisePackegesTVCellDelegate: AnyObject {
     func didTapOnCruisePackageBtnAction(cell:CruisePackegesTVCell)
@@ -35,6 +36,15 @@ class CruisePackegesTVCell: TableViewCell {
     }
     
     override func updateUI() {
+        
+//        // Clear memory cache
+//        SDImageCache.shared.clearMemory()
+//
+//        // Optionally clear disk cache as well
+//        SDImageCache.shared.clearDisk {
+//            print("Disk cache cleared when view controller is dismissed")
+//        }
+        
         titlelbl.text = MySingleton.shared.cruise?.cruise_package_text ?? ""
         updateHeight()
     }
@@ -82,8 +92,84 @@ extension CruisePackegesTVCell:UITableViewDelegate,UITableViewDataSource {
             let data = MySingleton.shared.cruiseList[indexPath.row]
             cell.titlelbl.text = data.heading ?? ""
             cell.subtitlelbl.text = data.subheading ?? ""
-            cell.img.sd_setImage(with: URL(string: data.image_url ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
+
+//            cell.img.sd_setImage(with: URL(string:  data.image_url ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], context: [.imageTransformer: compressor], progress: <#SDImageLoaderProgressBlock?#>, completed: { (image, error, cacheType, imageURL) in
+//                            if let error = error {
+//                                // Handle error loading image
+//                                print("Error loading image: \(error.localizedDescription)")
+//                                // Check if the error is due to a 404 Not Found response
+//                                if (error as NSError).code == NSURLErrorBadServerResponse {
+//                                    // Set placeholder image for 404 error
+//                                    cell.img.image = UIImage(named: "noimage")
+//                                } else {
+//                                    // Set placeholder image for other errors
+//                                    cell.img.image = UIImage(named: "noimage")
+//                                }
+//                            }
+//                        })
+            
+            
+           
+            
+            let compressor = ImageCompressionTransformer(quality: 0.1) // Compress to 50% quality
+
+            // Assume `compressor` is already defined and initialized
+            let imageUrl = URL(string: data.image_url ?? "")
+
+            
+            // Set image with placeholder and transformers
+            cell.img.sd_setImage(
+                with: imageUrl,
+                placeholderImage: UIImage(named: "placeholder.png"),
+                options: [.retryFailed],
+                context: [.imageTransformer: compressor],
+                progress: { receivedSize, expectedSize, url in
+                    // Optionally handle progress updates here
+                    // Example: Update a progress indicator
+                    let progress = Float(receivedSize) / Float(expectedSize)
+                    print("Download Progress: \(progress)")
+                },
+                completed: { image, error, cacheType, url in
+                    if let error = error {
+                        // Handle error loading image
+                        print("Error loading image: \(error.localizedDescription)")
+                        // Check if the error is due to a 404 Not Found response
+                        if (error as NSError).code == NSURLErrorFileDoesNotExist {
+                            // Set placeholder image for 404 error
+                            cell.img.image = UIImage(named: "noimage")
+                        } else {
+                            // Set placeholder image for other errors
+                            cell.img.image = UIImage(named: "noimage")
+                        }
+                    } else {
+                        // Optionally handle success here
+                        print("Image loaded successfully")
+                    }
+                }
+            )
+
+//            let imageUrl = URL(string: data.image_url ?? "")
+//                    
+//                    cell.img.sd_setImage(
+//                        with: imageUrl,
+//                        placeholderImage: UIImage(named: "placeholder.png"),
+//                        options: [.retryFailed, .lowPriority],
+//                        context: nil,
+//                        progress: { receivedSize, expectedSize, url in
+//                            // Optionally handle progress updates here
+//                        },
+//                        completed: { image, error, cacheType, url in
+//                            // Optionally handle completion here
+//                            if let error = error {
+//                                print("Error loading image: \(error.localizedDescription)")
+//                            }
+//                        }
+//                    )
+//            
+//            
+           
+        
             cell.cruiseKey = data.key ?? ""
             
             
@@ -103,4 +189,32 @@ extension CruisePackegesTVCell:UITableViewDelegate,UITableViewDataSource {
     }
     
     
+     
+    
+    
 }
+
+
+class ImageCompressionTransformer: NSObject, SDImageTransformer {
+    let compressionQuality: CGFloat
+
+    init(quality: CGFloat) {
+        self.compressionQuality = quality
+    }
+
+    func transformedImage(with image: UIImage, forKey key: String) -> UIImage? {
+        // Compress the image to the specified quality
+        guard let compressedData = image.jpegData(compressionQuality: compressionQuality),
+              let compressedImage = UIImage(data: compressedData) else {
+            return nil
+        }
+        return compressedImage
+    }
+
+    var transformerKey: String {
+        // Unique identifier for caching purposes
+        return "ImageCompressionTransformer-\(compressionQuality)"
+    }
+}
+
+

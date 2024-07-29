@@ -196,9 +196,6 @@ extension ActivitiesDetailsVC {
         
         MySingleton.shared.tablerow.removeAll()
         
-        
-        
-        
         MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesImagesTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesDetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))

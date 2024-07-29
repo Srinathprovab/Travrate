@@ -86,7 +86,6 @@ class SelectedHolidayPackageVC: BaseTableVC, HolidaySelectedVMDelegate {
         formatter.dateFormat = "dd/MM/yyyy"
         
         defaults.set(formatter.string(from: cell.travelFromDatePicker.date), forKey: UserDefaultsKeys.holidayfromtravelDate)
-        
         defaults.set(formatter.string(from: cell.travelToDatePicker.date), forKey: UserDefaultsKeys.holidaytotravelDate)
         
         
@@ -187,6 +186,7 @@ extension SelectedHolidayPackageVC {
         
         
         if response.status == true {
+            imgsArray.removeAll()
             MySingleton.shared.holidaySelectedData = response.data
             imgsArray = response.data?.tour__2_data?[0].more_image ?? []
             selectedHolidayOrigen = response.data?.tour__2_data?[0].origin ?? ""

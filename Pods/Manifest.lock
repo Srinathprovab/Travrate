@@ -42,7 +42,7 @@ PODS:
     - "MaterialComponents/TextControls+BaseTextFields"
   - MBProgressHUD (1.2.0)
   - MDFInternationalization (3.0.0)
-  - MyFatoorah (2.0.147)
+  - MyFatoorah (2.0.148)
   - Ottu (1.0.84):
     - ApplePayButton (= 1.0.3)
   - ReachabilitySwift (4.3.1)
@@ -107,7 +107,7 @@ SPEC CHECKSUMS:
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
-  MyFatoorah: 89e81099aa934baeb19779beb5969d9a5a8c8850
+  MyFatoorah: 358da63b56f1a3e3f2adbd664ce0dbb034162563
   Ottu: f72a91963ea841c0a7c242842fed8b255f87bb42
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SDWebImage: 066c47b573f408f18caa467d71deace7c0f8280d
@@ -116,6 +116,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TTRangeSlider: 8cf72eca457c3b700c92eb0074be908c986e25ec
 
-PODFILE CHECKSUM: a0dd0a4e5dfa25dde17de5fead3c7fe1a480c3d5
+PODFILE CHECKSUM: abd3762f9ab4da147ba57c0104f778dd217b949d
 
 COCOAPODS: 1.15.2

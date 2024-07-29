@@ -54,6 +54,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     override func viewWillAppear(_ animated: Bool) {
         addObserver()
         
+        
         if callapibool == true{
             holderView.isHidden = true
             callActiveBookingSourceAPI()
@@ -915,12 +916,12 @@ extension SearchHotelsResultVC {
     
     func addObserver() {
         
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)
-        
         
     }
     

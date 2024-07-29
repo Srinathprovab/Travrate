@@ -438,7 +438,6 @@ extension HotelBookingDetailsVC {
         hoteltotalprice = "\(response.data?.hotel_total_price ?? 0.0)"
         hotel_Addservices = response.data?.addon_services ?? []
         htoken = response.data?.token ?? ""
-        
         totlConvertedGrand = Double(response.data?.total_price ?? "") ?? 0.0
         
         

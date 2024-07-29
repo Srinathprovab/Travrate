@@ -20,11 +20,13 @@ protocol SearchCarRentalTVCellDelegate:AnyObject {
 class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     
     
+    @IBOutlet weak var dropoffViewHeight: NSLayoutConstraint!
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var pickuplocTF: UITextField!
     @IBOutlet weak var pickuplocTV: UITableView!
     @IBOutlet weak var dropuplocTF: UITextField!
     @IBOutlet weak var dropuplocView: BorderedView!
+    @IBOutlet weak var dropuplocHolderView: UIView!
     @IBOutlet weak var pickupDatelbl: UILabel!
     @IBOutlet weak var pickupDateTF: UITextField!
     @IBOutlet weak var dropupDatelbl: UILabel!
@@ -38,9 +40,13 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     @IBOutlet weak var dropofSameCheckImage: UIImageView!
     @IBOutlet weak var dropofDiffCheckImage: UIImageView!
     @IBOutlet weak var tvheight: NSLayoutConstraint!
+    @IBOutlet weak var dropofflocTV: UITableView!
+    @IBOutlet weak var dropofftvheight: NSLayoutConstraint!
     
     
-    var samelocbool = true
+    
+    var searchbool = false
+    var samelocbool = false
     var difflocbool = false
     let pickupTimePicker = UIDatePicker()
     let dropupTimePicker = UIDatePicker()
@@ -76,19 +82,27 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     
     func setupUI() {
         
-        
-        pickuplocTF.textColor = .SubTitleColor
-        pickuplocTF.font = .OpenSansMedium(size: 16)
-        pickuplocTF.delegate = self
-        pickuplocTF.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
+        dropoffViewHeight.constant = 15
         dropofSameCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
         
         if pickuplocTF.text?.isEmpty == false {
             pickuplocTF.textColor = .TitleColor
         }
         
+        pickuplocTF.textColor = .SubTitleColor
+        pickuplocTF.font = .OpenSansMedium(size: 16)
+        pickuplocTF.delegate = self
+        pickuplocTF.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
+        
+        dropuplocTF.textColor = .SubTitleColor
+        dropuplocTF.font = .OpenSansMedium(size: 16)
+        dropuplocTF.delegate = self
+        dropuplocTF.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
+        
         pickuplocTV.layer.borderWidth = 1
         pickuplocTV.layer.borderColor = UIColor.AppBorderColor.cgColor
+        dropofflocTV.layer.borderWidth = 1
+        dropofflocTV.layer.borderColor = UIColor.AppBorderColor.cgColor
         
     }
     
@@ -97,15 +111,14 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         
         
         pickuplocTF.text = defaults.string(forKey: UserDefaultsKeys.pickuplocationname) ?? ""
+        dropuplocTF.text = defaults.string(forKey: UserDefaultsKeys.dropuplocationname) ?? ""
         pickupDatelbl.text = defaults.string(forKey: UserDefaultsKeys.pickuplocDate) ?? "Select Date"
         dropupDatelbl.text = defaults.string(forKey: UserDefaultsKeys.dropuplocDate) ?? "Select Date"
         pickupTimelbl.text = defaults.string(forKey: UserDefaultsKeys.pickuplocTime) ?? "Select Time"
         dropupTimelbl.text = defaults.string(forKey: UserDefaultsKeys.dropuplocTime) ?? "Select Time"
         driverAgelbl.text = defaults.string(forKey: UserDefaultsKeys.driverage) ?? "Select Driver's Age"
         
-        func updateLabelColor(label: UILabel, defaultText: String, defaultColor: UIColor, selectedColor: UIColor) {
-            label.textColor = label.text == defaultText ? defaultColor : selectedColor
-        }
+       
 
         updateLabelColor(label: pickupDatelbl, defaultText: "Select Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
         updateLabelColor(label: dropupDatelbl, defaultText: "Select Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
@@ -116,11 +129,16 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         
         
         pickuplocTF.textColor = pickuplocTF.text != "Select Location" ? .TitleColor : .subtitleNewcolor
+        dropuplocTF.textColor = pickuplocTF.text != "Select Location" ? .TitleColor : .subtitleNewcolor
         
-
+        
+        func updateLabelColor(label: UILabel, defaultText: String, defaultColor: UIColor, selectedColor: UIColor) {
+            label.textColor = label.text == defaultText ? defaultColor : selectedColor
+        }
         
         setupTV()
         tvheight.constant = 0
+        dropofftvheight.constant = 0
         
         searchBtn.layer.cornerRadius = 4
         pickuplocTF.addTarget(self, action: #selector(tfeditingChanged(_:)), for: .editingChanged)
@@ -135,8 +153,8 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         
         
         
-        dropuplocTF.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
-        dropuplocTF.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
+//        dropuplocTF.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
+//        dropuplocTF.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
     }
     
     @objc func tfeditingChanged(_ tf: UITextField) {
@@ -158,6 +176,7 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     
     
     @IBAction func didTapOnClearDropuplocTFbtnAction(_ sender: Any) {
+        dropofftvheight.constant = 0
         dropuplocTF.text = ""
         dropuplocTF.becomeFirstResponder()
     }
@@ -168,32 +187,22 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
     
     
     @IBAction func didTapOnDropOfSameLocBtnAction(_ sender: Any) {
-        dropuplocView.isHidden = true
-        
-        
+                
+        dropoffViewHeight.constant = 15
+        dropuplocHolderView.isHidden = true
+        dropofSameCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
+        dropofDiffCheckImage.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
         NotificationCenter.default.post(name: NSNotification.Name("reloadTV"), object: nil)
-        samelocbool.toggle()
-        if samelocbool {
-            dropofSameCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
-        }else {
-            dropofSameCheckImage.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
-        }
+
     }
     
     
     @IBAction func didTapOnDropOfDifferentLocBtnAction(_ sender: Any) {
-        dropuplocView.isHidden = true
+        dropoffViewHeight.constant = 110
+        dropuplocHolderView.isHidden = false
         dropofSameCheckImage.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
+        dropofDiffCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
         NotificationCenter.default.post(name: NSNotification.Name("reloadTV"), object: nil)
-        
-        difflocbool.toggle()
-        if difflocbool {
-            dropuplocView.isHidden = true
-            dropofDiffCheckImage.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
-        }else {
-            dropuplocView.isHidden = true
-            dropofDiffCheckImage.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
-        }
     }
     
 }
@@ -229,23 +238,42 @@ extension SearchCarRentalTVCell {
 extension SearchCarRentalTVCell:UITableViewDelegate, UITableViewDataSource  {
     
     //MARK: - Text Filed Editing Changed
-    
-    
     @objc func textFiledEditingChanged(_ textField:UITextField) {
-        if textField.text?.isEmpty == true {
-        }else {
-            CallLocationListAPI(str: textField.text ?? "")
-        }
         
+        if textField == pickuplocTF {
+            searchbool = true
+            if textField.text?.isEmpty == true {
+            }else {
+                CallLocationListAPI(str: textField.text ?? "")
+            }
+        }else {
+            searchbool = false
+            if textField.text?.isEmpty == true {
+            }else {
+                CallLocationListAPI(str: textField.text ?? "")
+            }
+        }
+       
         
     }
     
     
     override func textFieldDidBeginEditing(_ textField: UITextField) {
-        pickuplocTF.text = ""
-        pickuplocTF.textColor = .TitleColor
-        pickuplocTF.placeholder = "Pick Up Location"
-        CallLocationListAPI(str: textField.text ?? "")
+        
+        
+        if textField == pickuplocTF {
+            searchbool = true
+            pickuplocTF.text = ""
+            pickuplocTF.textColor = .TitleColor
+            pickuplocTF.placeholder = "Pick Up Location"
+            CallLocationListAPI(str: textField.text ?? "")
+        }else {
+            searchbool = false
+            dropuplocTF.text = ""
+            dropuplocTF.textColor = .TitleColor
+            dropuplocTF.placeholder = "Drop Off Location"
+            CallLocationListAPI(str: textField.text ?? "")
+        }
     }
     
     
@@ -262,39 +290,65 @@ extension SearchCarRentalTVCell:UITableViewDelegate, UITableViewDataSource  {
     func locationListResponse(response: [PickuplocationListModel]) {
         locaionList = response
         filterdcountrylist = locaionList
-        
-        if pickuplocTF.isFirstResponder == true {
+        if searchbool == true {
             tvheight.constant = CGFloat(locaionList.count * 50)
             DispatchQueue.main.async {[self] in
                 pickuplocTV.reloadData()
             }
         }else {
-            loadCountryNamesAndCode()
+            dropoffViewHeight.constant = CGFloat(locaionList.count * 50)
+            DispatchQueue.main.async {[self] in
+                dropofflocTV.reloadData()
+            }
         }
         
     }
     
     func setupTV() {
+        
         pickuplocTV.delegate = self
         pickuplocTV.dataSource = self
         pickuplocTV.register(UINib(nibName: "TitleLblTVCell", bundle: nil), forCellReuseIdentifier: "cell")
+        
+        dropofflocTV.delegate = self
+        dropofflocTV.dataSource = self
+        dropofflocTV.register(UINib(nibName: "TitleLblTVCell", bundle: nil), forCellReuseIdentifier: "cell1")
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locaionList.count
+        if  searchbool == true  {
+            return locaionList.count
+        }else {
+            return locaionList.count
+        }
+        
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var ccell = UITableViewCell()
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? TitleLblTVCell {
-            cell.selectionStyle = .none
-            cell.titlelbl.text = locaionList[indexPath.row].label
-            cell.titlelbl.textColor = .TitleColor
+        if searchbool == true  {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? TitleLblTVCell {
+                cell.selectionStyle = .none
+                cell.titlelbl.text = locaionList[indexPath.row].label
+                cell.titlelbl.textColor = .TitleColor
+                
+                ccell = cell
+            }
+        }else {
             
-            ccell = cell
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? TitleLblTVCell {
+                cell.selectionStyle = .none
+                cell.titlelbl.text = locaionList[indexPath.row].label
+                cell.titlelbl.textColor = .TitleColor
+                
+                ccell = cell
+            }
         }
+        
         
         return ccell
     }
@@ -303,17 +357,25 @@ extension SearchCarRentalTVCell:UITableViewDelegate, UITableViewDataSource  {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? TitleLblTVCell {
             
-            self.pickuplocTF.text = locaionList[indexPath.row].value
-            defaults.set(locaionList[indexPath.row].value, forKey: UserDefaultsKeys.pickuplocationname)
-            defaults.set(locaionList[indexPath.row].id, forKey: UserDefaultsKeys.pickuplocationcode)
-            pickuplocTF.textColor = .TitleColor
-            pickuplocTF.resignFirstResponder()
-            tvheight.constant = 0
             
             
-            print(self.pickuplocTF.text)
-            print(locaionList[indexPath.row].id)
+            if tableView == pickuplocTV {
+                self.pickuplocTF.text = locaionList[indexPath.row].value
+                defaults.set(locaionList[indexPath.row].value, forKey: UserDefaultsKeys.pickuplocationname)
+                defaults.set(locaionList[indexPath.row].id, forKey: UserDefaultsKeys.pickuplocationcode)
+                pickuplocTF.textColor = .TitleColor
+                pickuplocTF.resignFirstResponder()
+                tvheight.constant = 0
+            }else {
+                self.dropuplocTF.text = locaionList[indexPath.row].value
+                defaults.set(locaionList[indexPath.row].value, forKey: UserDefaultsKeys.dropuplocationname)
+                defaults.set(locaionList[indexPath.row].id, forKey: UserDefaultsKeys.dropuplocationcode)
+                dropuplocTF.textColor = .TitleColor
+                dropuplocTF.resignFirstResponder()
+                dropofftvheight.constant = 0
+            }
             
+           
             delegate?.didTapOnPickupLocationBtnAction(cell: self)
             
             
@@ -549,9 +611,9 @@ extension SearchCarRentalTVCell {
         dropofdropdown.bottomOffset = CGPoint(x: 0, y: dropuplocView.frame.size.height + 10)
         dropofdropdown.selectionAction = { [weak self] (index: Int, item: String) in
             
-            self?.dropupTimeTF.text = ""
-            self?.dropupTimelbl.text = item
-            self?.dropupTimelbl.textColor = .TitleColor
+            self?.dropuplocTF.text = ""
+            self?.dropuplocTF.text = item
+            self?.dropuplocTF.textColor = .TitleColor
             
             defaults.set(item, forKey: UserDefaultsKeys.dropuplocationname)
             defaults.set(self?.dropofLocCodeArray[index], forKey: UserDefaultsKeys.dropuplocationcode)

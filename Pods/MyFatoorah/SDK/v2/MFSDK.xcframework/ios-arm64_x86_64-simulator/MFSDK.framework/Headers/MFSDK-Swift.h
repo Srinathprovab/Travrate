@@ -358,6 +358,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=defau
 
 SWIFT_CLASS("_TtC5MFSDK18MFCallbackResponse")
 @interface MFCallbackResponse : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 @property (nonatomic, readonly, copy) NSString * _Nullable cardBrand;
 @property (nonatomic, copy) NSString * _Nonnull first8Digits;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -848,7 +849,9 @@ SWIFT_CLASS("_TtC5MFSDK25MFInitiateSessionResponse")
 @property (nonatomic, copy) NSString * _Nullable sessionId;
 @property (nonatomic, copy) NSString * _Nullable countryCode;
 @property (nonatomic, copy) NSArray<MFCustomerToken *> * _Nullable customerTokens;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId countryCode:(NSString * _Nonnull)countryCode OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -920,7 +923,7 @@ SWIFT_CLASS("_TtC5MFSDK17MFPaymentCardView")
 - (void)layoutSubviews;
 - (void)loadWithInitiateSession:(MFInitiateSessionResponse * _Nonnull)initiateSession binDidChangeCompletion:(void (^ _Nullable)(NSString * _Nonnull))binDidChangeCompletion;
 - (void)pay:(MFExecutePaymentRequest * _Nonnull)request :(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFPaymentStatusResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion;
-- (void)validateWithValidateSessionCompletionObjC:(void (^ _Nonnull)(NSString * _Nullable, MFFailResponse * _Nullable))validateSessionCompletionObjC;
+- (void)submitWithCompletion:(void (^ _Nonnull)(MFCallbackResponse * _Nullable, MFFailResponse * _Nullable))completion;
 @end
 
 
@@ -933,6 +936,12 @@ SWIFT_CLASS("_TtC5MFSDK17MFPaymentCardView")
 SWIFT_PROTOCOL("_TtP5MFSDK17MFPaymentDelegate_")
 @protocol MFPaymentDelegate
 - (void)didInvoiceCreatedWithInvoiceId:(NSString * _Nonnull)invoiceId;
+@end
+
+
+SWIFT_CLASS("_TtC5MFSDK16MFPaymentHandler")
+@interface MFPaymentHandler : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -986,11 +995,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MFPaymentReq
 
 
 @interface MFPaymentRequest (SWIFT_EXTENSION(MFSDK))
-- (void)cancelTokenWithToken:(NSString * _Nonnull)token apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(BOOL, MFFailResponse * _Nullable))completion;
-@end
-
-
-@interface MFPaymentRequest (SWIFT_EXTENSION(MFSDK))
 - (void)executeApplePayPaymentWithRequest:(MFExecutePaymentRequest * _Nonnull)request urlScheme:(NSString * _Nonnull)urlScheme apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFPaymentStatusResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion SWIFT_AVAILABILITY(ios,obsoleted=13.0,message="Please use 'executeApplePayPaymentWithRequest:apiLanguage:completion:' instead") SWIFT_AVAILABILITY(ios,introduced=9.0);
 @end
 
@@ -1000,11 +1004,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MFPaymentReq
 @end
 
 
-enum MFRecurringTypeEnum : NSInteger;
+@interface MFPaymentRequest (SWIFT_EXTENSION(MFSDK))
+- (void)cancelTokenWithToken:(NSString * _Nonnull)token apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(BOOL, MFFailResponse * _Nullable))completion;
+@end
+
+
+@class MFSendPaymentRequest;
+@class MFSendPaymentResponse;
 
 @interface MFPaymentRequest (SWIFT_EXTENSION(MFSDK))
-- (void)executeRecurringPaymentWithRequest:(MFExecutePaymentRequest * _Nonnull)request cardInfo:(MFCardInfo * _Nonnull)cardInfo recurringIntervalDays:(NSInteger)recurringIntervalDays apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFDirectPaymentResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion SWIFT_DEPRECATED_MSG("Use instead `RecurringModel` in `MFExecutePaymentRequest` using `executePayment() executeDirectPayment()`");
-- (void)executeRecurringPaymentWithRequest:(MFExecutePaymentRequest * _Nonnull)request cardInfo:(MFCardInfo * _Nonnull)cardInfo recurringType:(enum MFRecurringTypeEnum)recurringType recurringIntervalDays:(NSInteger)recurringIntervalDays iteration:(NSInteger)iteration apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFDirectPaymentResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion SWIFT_DEPRECATED_MSG("Use instead `RecurringModel` in `MFExecutePaymentRequest` using `executePayment() executeDirectPayment()`");
+- (void)sendPaymentWithRequest:(MFSendPaymentRequest * _Nonnull)request apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFSendPaymentResponse * _Nullable, MFFailResponse * _Nullable))completion;
 @end
 
 
@@ -1017,11 +1026,11 @@ enum MFRecurringTypeEnum : NSInteger;
 - (void)initiatePaymentWithRequest:(MFInitiatePaymentRequest * _Nonnull)request apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFInitiatePaymentResponse * _Nullable, MFFailResponse * _Nullable))completion;
 @end
 
-@class MFSendPaymentRequest;
-@class MFSendPaymentResponse;
+enum MFRecurringTypeEnum : NSInteger;
 
 @interface MFPaymentRequest (SWIFT_EXTENSION(MFSDK))
-- (void)sendPaymentWithRequest:(MFSendPaymentRequest * _Nonnull)request apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFSendPaymentResponse * _Nullable, MFFailResponse * _Nullable))completion;
+- (void)executeRecurringPaymentWithRequest:(MFExecutePaymentRequest * _Nonnull)request cardInfo:(MFCardInfo * _Nonnull)cardInfo recurringIntervalDays:(NSInteger)recurringIntervalDays apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFDirectPaymentResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion SWIFT_DEPRECATED_MSG("Use instead `RecurringModel` in `MFExecutePaymentRequest` using `executePayment() executeDirectPayment()`");
+- (void)executeRecurringPaymentWithRequest:(MFExecutePaymentRequest * _Nonnull)request cardInfo:(MFCardInfo * _Nonnull)cardInfo recurringType:(enum MFRecurringTypeEnum)recurringType recurringIntervalDays:(NSInteger)recurringIntervalDays iteration:(NSInteger)iteration apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFDirectPaymentResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion SWIFT_DEPRECATED_MSG("Use instead `RecurringModel` in `MFExecutePaymentRequest` using `executePayment() executeDirectPayment()`");
 @end
 
 @class MFPaymentStatusRequest;
@@ -1171,6 +1180,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MFSettings *
 /// \param environment Test or Live
 ///
 - (void)configureWithToken:(NSString * _Nonnull)token country:(enum MFCountry)country environment:(enum MFEnvironment)environment;
+/// This initializer is added in case of calling MyFatoorah end points from the backend and only displaying apple pay button, card view, and displaying payment pages.
+/// \param country Current Country
+///
+/// \param environment Test/Live
+///
+- (void)configureWithCountry:(enum MFCountry)country environment:(enum MFEnvironment)environment;
 - (void)setThemeWithTheme:(MFTheme * _Nonnull)theme;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -1598,6 +1613,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=defau
 
 SWIFT_CLASS("_TtC5MFSDK18MFCallbackResponse")
 @interface MFCallbackResponse : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull sessionId;
 @property (nonatomic, readonly, copy) NSString * _Nullable cardBrand;
 @property (nonatomic, copy) NSString * _Nonnull first8Digits;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -2088,7 +2104,9 @@ SWIFT_CLASS("_TtC5MFSDK25MFInitiateSessionResponse")
 @property (nonatomic, copy) NSString * _Nullable sessionId;
 @property (nonatomic, copy) NSString * _Nullable countryCode;
 @property (nonatomic, copy) NSArray<MFCustomerToken *> * _Nullable customerTokens;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithSessionId:(NSString * _Nonnull)sessionId countryCode:(NSString * _Nonnull)countryCode OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -2160,7 +2178,7 @@ SWIFT_CLASS("_TtC5MFSDK17MFPaymentCardView")
 - (void)layoutSubviews;
 - (void)loadWithInitiateSession:(MFInitiateSessionResponse * _Nonnull)initiateSession binDidChangeCompletion:(void (^ _Nullable)(NSString * _Nonnull))binDidChangeCompletion;
 - (void)pay:(MFExecutePaymentRequest * _Nonnull)request :(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFPaymentStatusResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion;
-- (void)validateWithValidateSessionCompletionObjC:(void (^ _Nonnull)(NSString * _Nullable, MFFailResponse * _Nullable))validateSessionCompletionObjC;
+- (void)submitWithCompletion:(void (^ _Nonnull)(MFCallbackResponse * _Nullable, MFFailResponse * _Nullable))completion;
 @end
 
 
@@ -2173,6 +2191,12 @@ SWIFT_CLASS("_TtC5MFSDK17MFPaymentCardView")
 SWIFT_PROTOCOL("_TtP5MFSDK17MFPaymentDelegate_")
 @protocol MFPaymentDelegate
 - (void)didInvoiceCreatedWithInvoiceId:(NSString * _Nonnull)invoiceId;
+@end
+
+
+SWIFT_CLASS("_TtC5MFSDK16MFPaymentHandler")
+@interface MFPaymentHandler : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -2226,11 +2250,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MFPaymentReq
 
 
 @interface MFPaymentRequest (SWIFT_EXTENSION(MFSDK))
-- (void)cancelTokenWithToken:(NSString * _Nonnull)token apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(BOOL, MFFailResponse * _Nullable))completion;
-@end
-
-
-@interface MFPaymentRequest (SWIFT_EXTENSION(MFSDK))
 - (void)executeApplePayPaymentWithRequest:(MFExecutePaymentRequest * _Nonnull)request urlScheme:(NSString * _Nonnull)urlScheme apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFPaymentStatusResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion SWIFT_AVAILABILITY(ios,obsoleted=13.0,message="Please use 'executeApplePayPaymentWithRequest:apiLanguage:completion:' instead") SWIFT_AVAILABILITY(ios,introduced=9.0);
 @end
 
@@ -2240,11 +2259,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MFPaymentReq
 @end
 
 
-enum MFRecurringTypeEnum : NSInteger;
+@interface MFPaymentRequest (SWIFT_EXTENSION(MFSDK))
+- (void)cancelTokenWithToken:(NSString * _Nonnull)token apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(BOOL, MFFailResponse * _Nullable))completion;
+@end
+
+
+@class MFSendPaymentRequest;
+@class MFSendPaymentResponse;
 
 @interface MFPaymentRequest (SWIFT_EXTENSION(MFSDK))
-- (void)executeRecurringPaymentWithRequest:(MFExecutePaymentRequest * _Nonnull)request cardInfo:(MFCardInfo * _Nonnull)cardInfo recurringIntervalDays:(NSInteger)recurringIntervalDays apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFDirectPaymentResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion SWIFT_DEPRECATED_MSG("Use instead `RecurringModel` in `MFExecutePaymentRequest` using `executePayment() executeDirectPayment()`");
-- (void)executeRecurringPaymentWithRequest:(MFExecutePaymentRequest * _Nonnull)request cardInfo:(MFCardInfo * _Nonnull)cardInfo recurringType:(enum MFRecurringTypeEnum)recurringType recurringIntervalDays:(NSInteger)recurringIntervalDays iteration:(NSInteger)iteration apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFDirectPaymentResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion SWIFT_DEPRECATED_MSG("Use instead `RecurringModel` in `MFExecutePaymentRequest` using `executePayment() executeDirectPayment()`");
+- (void)sendPaymentWithRequest:(MFSendPaymentRequest * _Nonnull)request apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFSendPaymentResponse * _Nullable, MFFailResponse * _Nullable))completion;
 @end
 
 
@@ -2257,11 +2281,11 @@ enum MFRecurringTypeEnum : NSInteger;
 - (void)initiatePaymentWithRequest:(MFInitiatePaymentRequest * _Nonnull)request apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFInitiatePaymentResponse * _Nullable, MFFailResponse * _Nullable))completion;
 @end
 
-@class MFSendPaymentRequest;
-@class MFSendPaymentResponse;
+enum MFRecurringTypeEnum : NSInteger;
 
 @interface MFPaymentRequest (SWIFT_EXTENSION(MFSDK))
-- (void)sendPaymentWithRequest:(MFSendPaymentRequest * _Nonnull)request apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFSendPaymentResponse * _Nullable, MFFailResponse * _Nullable))completion;
+- (void)executeRecurringPaymentWithRequest:(MFExecutePaymentRequest * _Nonnull)request cardInfo:(MFCardInfo * _Nonnull)cardInfo recurringIntervalDays:(NSInteger)recurringIntervalDays apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFDirectPaymentResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion SWIFT_DEPRECATED_MSG("Use instead `RecurringModel` in `MFExecutePaymentRequest` using `executePayment() executeDirectPayment()`");
+- (void)executeRecurringPaymentWithRequest:(MFExecutePaymentRequest * _Nonnull)request cardInfo:(MFCardInfo * _Nonnull)cardInfo recurringType:(enum MFRecurringTypeEnum)recurringType recurringIntervalDays:(NSInteger)recurringIntervalDays iteration:(NSInteger)iteration apiLanguage:(enum MFAPILanguage)apiLanguage completion:(void (^ _Nonnull)(MFDirectPaymentResponse * _Nullable, MFFailResponse * _Nullable, NSString * _Nullable))completion SWIFT_DEPRECATED_MSG("Use instead `RecurringModel` in `MFExecutePaymentRequest` using `executePayment() executeDirectPayment()`");
 @end
 
 @class MFPaymentStatusRequest;
@@ -2411,6 +2435,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MFSettings *
 /// \param environment Test or Live
 ///
 - (void)configureWithToken:(NSString * _Nonnull)token country:(enum MFCountry)country environment:(enum MFEnvironment)environment;
+/// This initializer is added in case of calling MyFatoorah end points from the backend and only displaying apple pay button, card view, and displaying payment pages.
+/// \param country Current Country
+///
+/// \param environment Test/Live
+///
+- (void)configureWithCountry:(enum MFCountry)country environment:(enum MFEnvironment)environment;
 - (void)setThemeWithTheme:(MFTheme * _Nonnull)theme;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end

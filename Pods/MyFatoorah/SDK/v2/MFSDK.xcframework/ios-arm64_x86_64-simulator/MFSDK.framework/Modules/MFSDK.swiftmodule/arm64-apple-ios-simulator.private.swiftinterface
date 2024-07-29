@@ -196,11 +196,11 @@ extension MFSDK.MFPaymentRequest {
   }
   public init?(rawValue: MFSDK.MFCountry.RawValue)
 }
-@_inheritsConvenienceInitializers @objcMembers @objc public class MFInitiateSessionResponse : ObjectiveC.NSObject, Swift.Codable {
+@objcMembers @objc public class MFInitiateSessionResponse : ObjectiveC.NSObject, Swift.Codable {
   @objc public var sessionId: Swift.String?
   @objc public var countryCode: Swift.String?
   @objc public var customerTokens: [MFSDK.MFCustomerToken]?
-  @objc override dynamic public init()
+  @objc public init(sessionId: Swift.String, countryCode: Swift.String)
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -420,6 +420,7 @@ extension MFSDK.MFPaymentRequest {
   #endif
 }
 @_hasMissingDesignatedInitializers @objcMembers @objc public class MFCallbackResponse : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let sessionId: Swift.String
   @objc final public let cardBrand: Swift.String?
   @objc public var first8Digits: Swift.String
   @objc deinit
@@ -600,6 +601,11 @@ extension MFSDK.MFPaymentRequest {
   public func initiatePayment(request: MFSDK.MFInitiatePaymentRequest, apiLanguage: MFSDK.MFAPILanguage) async -> Swift.Result<MFSDK.MFInitiatePaymentResponse, MFSDK.MFFailResponse>
   #endif
 }
+@_inheritsConvenienceInitializers @objcMembers @objc public class MFPaymentHandler : ObjectiveC.NSObject {
+  public static func open(paymentUrl: Swift.String, redirectionUrl: Swift.String, apiLanguage: MFSDK.MFLanguage, completion: @escaping (Swift.Result<Swift.String, MFSDK.MFFailResponse>) -> Swift.Void)
+  @objc override dynamic public init()
+  @objc deinit
+}
 extension MFSDK.MFPaymentRequest {
   @objc @available(iOS 9.0, *)
   @available(swift, obsoleted: 1.0)
@@ -638,9 +644,11 @@ extension MFSDK.MFPaymentRequest {
   @objc @available(swift, obsoleted: 1.0)
   @_Concurrency.MainActor(unsafe) public func pay(_ request: MFSDK.MFExecutePaymentRequest, _ apiLanguage: MFSDK.MFAPILanguage, completion: @escaping (MFSDK.MFPaymentStatusResponse?, MFSDK.MFFailResponse?, _ invoiceId: Swift.String?) -> Swift.Void)
   @_Concurrency.MainActor(unsafe) public func pay(_ request: MFSDK.MFExecutePaymentRequest, _ apiLanguage: MFSDK.MFAPILanguage, completion: @escaping (Swift.Result<MFSDK.MFPaymentStatusResponse, MFSDK.MFFailResponse>, _ invoiceId: Swift.String?) -> Swift.Void)
-  @objc @available(swift, obsoleted: 1.0)
-  @_Concurrency.MainActor(unsafe) public func validate(validateSessionCompletionObjC: @escaping (Swift.String?, MFSDK.MFFailResponse?) -> Swift.Void)
+  @available(*, deprecated, message: "This function is deprecated and will be removed in later versions. Use thee function submit instead.")
   @_Concurrency.MainActor(unsafe) public func validate(validateSessionCompletion: @escaping (Swift.Result<Swift.String, MFSDK.MFFailResponse>) -> Swift.Void)
+  @objc @available(swift, obsoleted: 1.0)
+  @_Concurrency.MainActor(unsafe) public func submit(completion: @escaping (MFSDK.MFCallbackResponse?, MFSDK.MFFailResponse?) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public func submit(completion: @escaping (Swift.Result<MFSDK.MFCallbackResponse, MFSDK.MFFailResponse>) -> Swift.Void)
 }
 extension MFSDK.MFPaymentCardView : WebKit.WKScriptMessageHandler {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func userContentController(_ userContentController: WebKit.WKUserContentController, didReceive message: WebKit.WKScriptMessage)
@@ -653,6 +661,10 @@ extension MFSDK.MFPaymentCardView {
   #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13.0.0, *)
   @_Concurrency.MainActor(unsafe) public func validate() async -> (Swift.Result<Swift.String, MFSDK.MFFailResponse>)
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  @available(iOS 13.0.0, *)
+  @_Concurrency.MainActor(unsafe) public func submit() async -> (Swift.Result<MFSDK.MFCallbackResponse, MFSDK.MFFailResponse>)
   #endif
 }
 extension MFSDK.MFPaymentRequest {
@@ -1006,6 +1018,7 @@ public enum MFRecurringType {
   @objc public static let shared: MFSDK.MFSettings
   @objc weak public var delegate: MFSDK.MFPaymentDelegate?
   @objc public func configure(token: Swift.String, country: MFSDK.MFCountry, environment: MFSDK.MFEnvironment)
+  @objc public func configure(country: MFSDK.MFCountry, environment: MFSDK.MFEnvironment)
   @objc public func setTheme(theme: MFSDK.MFTheme)
   @objc override dynamic public init()
   @objc deinit

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CruiseVC: BaseTableVC, CruiseViewModelDelegate {
     
@@ -17,19 +18,21 @@ class CruiseVC: BaseTableVC, CruiseViewModelDelegate {
         return vc
     }
     
-
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
         MySingleton.shared.cruiseList.removeAll()
         MySingleton.shared.cruise = nil
         NotificationCenter.default.removeObserver(self)
+        
+       
     }
     
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
-        
-        
-        
         addObserver()
     }
     
@@ -98,7 +101,7 @@ extension CruiseVC {
         MySingleton.shared.afterResultsBool = true
         loderBool = true
         showLoadera()
-       
+        
         MySingleton.shared.cruisevm?.CALL_CRUISE_LIST_API(dictParam: [:])
     }
     
@@ -107,7 +110,7 @@ extension CruiseVC {
     
     func cruiseList(response: CruiseModel) {
         MySingleton.shared.cruiseList.removeAll()
-
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
             loderBool = false
@@ -150,7 +153,7 @@ extension CruiseVC {
             callAPI()
         }
         
-       
+        
     }
     
     

@@ -134,7 +134,6 @@ extension TripsVC {
     
     func addObserver() {
         
-        MySingleton.shared.getPaymentList()
         MySingleton.shared.returnDateTapbool = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)

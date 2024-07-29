@@ -1238,9 +1238,6 @@ extension SelectPaymentMethodsVC {
         
         MySingleton.shared.voucherurlsting = response.hit_url ?? ""
         
-        
-        
-        
         if response.status == true  {
             gotoBookingConfirmedVC()
         }else {
@@ -1257,6 +1254,7 @@ extension SelectPaymentMethodsVC {
     
     func addObserver() {
         
+       
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)

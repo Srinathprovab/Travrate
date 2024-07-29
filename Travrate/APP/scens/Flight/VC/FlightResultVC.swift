@@ -32,11 +32,14 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
     var filterdFlightList :[[FlightList]]?
     var bsDataArray = [ABSData]()
     var bookingSourceDataArrayCount = Int()
+    var flights = [[FlightList]]()
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        flights.removeAll()
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        
         addObserver()
     }
     
@@ -472,7 +475,7 @@ extension FlightResultVC {
         var similarFlightsDictionary: [Double: [[FlightList]]] = [:]
         
         // Iterate through the FlightList (ensure that FlightList contains the correct data)
-        MySingleton.shared.flights.forEach { flightArray in
+        flights.forEach { flightArray in
             flightArray.forEach { flight in
                 if let flightFare = Double(String(format: "%.2f", flight.price?.api_total_display_fare ?? "")) {
                     // Check if the fare is already present in the dictionary
@@ -793,7 +796,7 @@ extension FlightResultVC:AppliedFilters {
         
         if sortBy == .PriceLow{
             
-            let sortedArrays = MySingleton.shared.flights.sorted { (item1, item2) in
+            let sortedArrays = flights.sorted { (item1, item2) in
                 let price1 = item1.first?.price?.api_total_display_fare ?? 0.0
                 let price2 = item2.first?.price?.api_total_display_fare ?? 0.0
                 return price1 < price2
@@ -804,7 +807,7 @@ extension FlightResultVC:AppliedFilters {
             
         }else if sortBy == .PriceHigh{
             
-            let sortedArrays = MySingleton.shared.flights.sorted { (item1, item2) in
+            let sortedArrays = flights.sorted { (item1, item2) in
                 let price1 = item1.first?.price?.api_total_display_fare ?? 0.0
                 let price2 = item2.first?.price?.api_total_display_fare ?? 0.0
                 return price1 > price2
@@ -816,7 +819,7 @@ extension FlightResultVC:AppliedFilters {
             
         }else if sortBy == .DepartureLow {
             
-            let sortedArray = MySingleton.shared.flights.flatMap { $0 }.sorted { a, b in
+            let sortedArray = flights.flatMap { $0 }.sorted { a, b in
                 let operator_name1 = a.flight_details?.summary?.first?.destination?.time ?? ""
                 let operator_name2 = b.flight_details?.summary?.first?.destination?.time ?? ""
                 return operator_name1 < operator_name2 // Sort in descending order
@@ -828,7 +831,7 @@ extension FlightResultVC:AppliedFilters {
         }else if sortBy == .DepartureHigh {
             
             
-            let sortedArray = MySingleton.shared.flights.flatMap { $0 }.sorted { a, b in
+            let sortedArray = flights.flatMap { $0 }.sorted { a, b in
                 let operator_name1 = a.flight_details?.summary?.first?.destination?.time ?? ""
                 let operator_name2 = b.flight_details?.summary?.first?.destination?.time ?? ""
                 return operator_name1 > operator_name2 // Sort in descending order
@@ -839,7 +842,7 @@ extension FlightResultVC:AppliedFilters {
             
         }else if sortBy == .ArrivalLow{
             
-            let sortedArray = MySingleton.shared.flights.flatMap { $0 }.sorted { a, b in
+            let sortedArray = flights.flatMap { $0 }.sorted { a, b in
                 let operator_name1 = a.flight_details?.summary?.first?.origin?.time ?? ""
                 let operator_name2 = b.flight_details?.summary?.first?.origin?.time ?? ""
                 return operator_name1 < operator_name2 // Sort in descending order
@@ -849,7 +852,7 @@ extension FlightResultVC:AppliedFilters {
             
         }else if sortBy == .ArrivalHigh{
             
-            let sortedArray = MySingleton.shared.flights.flatMap { $0 }.sorted { a, b in
+            let sortedArray = flights.flatMap { $0 }.sorted { a, b in
                 let operator_name1 = a.flight_details?.summary?.first?.origin?.time ?? ""
                 let operator_name2 = b.flight_details?.summary?.first?.origin?.time ?? ""
                 return operator_name1 > operator_name2 // Sort in descending order
@@ -860,7 +863,7 @@ extension FlightResultVC:AppliedFilters {
             
         }else if sortBy == .DurationLow{
             
-            let sortedArray = MySingleton.shared.flights.flatMap { $0 }.sorted { a, b in
+            let sortedArray = flights.flatMap { $0 }.sorted { a, b in
                 let operator_name1 = a.flight_details?.summary?.first?.duration_seconds ?? 0
                 let operator_name2 = b.flight_details?.summary?.first?.duration_seconds ?? 0
                 return operator_name1 < operator_name2 // Sort in descending order
@@ -871,7 +874,7 @@ extension FlightResultVC:AppliedFilters {
             
         }else if sortBy == .DurationHigh{
             
-            let sortedArray = MySingleton.shared.flights.flatMap { $0 }.sorted { a, b in
+            let sortedArray = flights.flatMap { $0 }.sorted { a, b in
                 let operator_name1 = a.flight_details?.summary?.first?.duration_seconds ?? 0
                 let operator_name2 = b.flight_details?.summary?.first?.duration_seconds ?? 0
                 return operator_name1 > operator_name2 // Sort in descending order
@@ -880,7 +883,7 @@ extension FlightResultVC:AppliedFilters {
             setupSortTVCell(list: sortedArray)
             
         }else if sortBy == .airlinessortatoz {
-            let sortedArray = MySingleton.shared.flights.flatMap { $0 }.sorted { a, b in
+            let sortedArray = flights.flatMap { $0 }.sorted { a, b in
                 let operator_name1 = a.flight_details?.summary?.first?.operator_name ?? ""
                 let operator_name2 = b.flight_details?.summary?.first?.operator_name ?? ""
                 return operator_name1 < operator_name2 // Sort in ascending order
@@ -889,7 +892,7 @@ extension FlightResultVC:AppliedFilters {
         } else if sortBy == .airlinessortztoa {
             
             
-            let sortedArray = MySingleton.shared.flights.flatMap { $0 }.sorted { a, b in
+            let sortedArray = flights.flatMap { $0 }.sorted { a, b in
                 let operator_name1 = a.flight_details?.summary?.first?.operator_name ?? ""
                 let operator_name2 = b.flight_details?.summary?.first?.operator_name ?? ""
                 return operator_name1 > operator_name2 // Sort in ascending order
@@ -897,7 +900,7 @@ extension FlightResultVC:AppliedFilters {
             setupSortTVCell(list: sortedArray)
             
         } else if sortBy == .nothing{
-            setupTVCell(list: MySingleton.shared.flights)
+            setupTVCell(list: flights)
         }
         
     }
@@ -921,7 +924,7 @@ extension FlightResultVC {
         
         
         if MySingleton.shared.callboolapi == true {
-            MySingleton.shared.flights.removeAll()
+            flights.removeAll()
             
             holderView.isHidden = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
@@ -1097,11 +1100,11 @@ extension FlightResultVC {
         
         if let newResults = response.data?.j_flight_list, !newResults.isEmpty {
             // Append the new data to the existing data
-            MySingleton.shared.flights.append(contentsOf: newResults)
+            flights.append(contentsOf: newResults)
             
             
             
-            if MySingleton.shared.flights.count > 0 {
+            if flights.count > 0 {
                 DispatchQueue.main.async {
 
                     MySingleton.shared.returnDateTapbool = false
@@ -1118,7 +1121,7 @@ extension FlightResultVC {
                         self.datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: response.data?.search_params?.depature ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: response.data?.search_params?.searchreturn ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
                     }
                     
-                    self.appendPriceAndDate(list: MySingleton.shared.flights)
+                    self.appendPriceAndDate(list: self.flights)
                 }
             }
             
@@ -1133,12 +1136,12 @@ extension FlightResultVC {
 //        if bookingSourceDataArrayCount == 0 {
 //            
 //            
-//            if MySingleton.shared.flights.count <= 0 {
+//            if flights.count <= 0 {
 //                gotoNoInternetScreen(keystr: "noresult")
 //                
 //            }else {
 //                
-//                appendPriceAndDate(list: MySingleton.shared.flights)
+//                appendPriceAndDate(list: flights)
 //            }
 //        }
         
@@ -1236,7 +1239,7 @@ extension FlightResultVC {
         layoverdurationArray = layoverdurationArray.unique()
         
         DispatchQueue.main.async {
-            self.setupTVCell(list: MySingleton.shared.flights)
+            self.setupTVCell(list: self.flights)
         }
         
         

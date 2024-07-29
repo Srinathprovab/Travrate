@@ -27,9 +27,13 @@ class CarRentalResultsVC: BaseTableVC, CarrentalSearchVMDelegate, AppliedCarrent
     var bookingSourceDataArrayCount = Int()
     var activeBookingArray = [CarActivebookingsource]()
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        activeBookingArray.removeAll()
+        MySingleton.shared.carlist.removeAll()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        
-        
         addObserver()
     }
     
@@ -351,14 +355,6 @@ extension CarRentalResultsVC {
    
     func sportFilterByApplied(minpricerange: Double, maxpricerange: Double, fuleArray: [String], carmanualArray: [String], doorcountArray: [String]) {
         
-        print("minpricerange : \(minpricerange)")
-        print("maxpricerange : \(maxpricerange)")
-        print("fuleArray : \(fuleArray.joined(separator: ","))")
-        print("carmanualArray : \(carmanualArray.joined(separator: ","))")
-        print("doorcountArray : \(doorcountArray.joined(separator: ","))")
-        
-        
-       
             
             // Filter the car rentals based on the specified criteria
             let filteredArray = MySingleton.shared.carlist.filter { car in

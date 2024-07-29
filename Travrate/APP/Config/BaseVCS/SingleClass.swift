@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import EasyTipView
+import SDWebImage
 
 
 
@@ -615,3 +616,128 @@ protocol TimerManagerDelegate: AnyObject {
 }
 
 
+
+
+
+extension MySingleton {
+    
+    func removeallstoredValues() {
+        
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload1.removeAll()
+        travelerArray.removeAll()
+        MySingleton.shared.PaymentSelectionArray.removeAll()
+        
+        
+        //FLIGHTS
+        prices.removeAll()
+        durationArray.removeAll()
+        kwdPriceArray.removeAll()
+        dateArray.removeAll()
+        AirlinesArray.removeAll()
+        ConnectingFlightsArray.removeAll()
+        ConnectingAirportsArray.removeAll()
+        luggageArray.removeAll()
+        noofstopsArray.removeAll()
+        layoverdurationArray.removeAll()
+        MySingleton.shared.similarflightList.removeAll()
+        MySingleton.shared.flightPriceDetails = nil
+        MySingleton.shared.baggageDetails.removeAll()
+        MySingleton.shared.fareRulesData.removeAll()
+        MySingleton.shared.penalityArray.removeAll()
+        MySingleton.shared.mpbpriceDetails = nil
+        MySingleton.shared.mpbFlightData = nil
+        MySingleton.shared.frequent_flyersArray.removeAll()
+        MySingleton.shared.addonServices.removeAll()
+        MySingleton.shared.mealListArray.removeAll()
+        MySingleton.shared.ssrListArray.removeAll()
+        services.removeAll()
+        addon_services.removeAll()
+        social_linksArray.removeAll()
+        bottom_text_info.removeAll()
+        
+        
+        
+        
+        //HOTEL
+        mapModelArray.removeAll()
+        neighbourwoodArray.removeAll()
+        nearBylocationsArray.removeAll()
+        faretypeArray .removeAll()
+        amenitiesArray.removeAll()
+        mapModelArray.removeAll()
+        hotelstarratingArray.removeAll()
+        hotelSearchResult.removeAll()
+        MySingleton.shared.hotelDetails = nil
+        roomsDetails.removeAll()
+        imagesArray.removeAll()
+        formatAmeArray.removeAll()
+        formatDesc.removeAll()
+        MySingleton.shared.hotel_user_specification.removeAll()
+        hbookingDetails = nil
+        MySingleton.shared.bhotelDetials = nil
+        MySingleton.shared.hotel_user_specification.removeAll()
+        MySingleton.shared.roompaxesdetails.removeAll()
+        MySingleton.shared.hotelAddonServices.removeAll()
+        hotel_Addservices.removeAll()
+        
+        
+        //ACTIVITIES
+        durationTypeArray.removeAll()
+        activitiesTypeArray.removeAll()
+        MySingleton.shared.activityList.removeAll()
+        MySingleton.shared.activity_details = nil
+        MySingleton.shared.activitiesImagesArray.removeAll()
+        MySingleton.shared.activitiesAddonServices.removeAll()
+        MySingleton.shared.bookingactivitydetails = nil
+        MySingleton.shared.activitiesPostData =  nil
+        
+        
+        //CARRENTAL
+        fuleArray.removeAll()
+        carmanualArray.removeAll()
+        doorcountArray.removeAll()
+        MySingleton.shared.carlist.removeAll()
+        MySingleton.shared.extraOption.removeAll()
+        MySingleton.shared.carproductarray.removeAll()
+        MySingleton.shared.extraOption.removeAll()
+        MySingleton.shared.carproductarray.removeAll()
+        MySingleton.shared.carAddonServices.removeAll()
+        MySingleton.shared.carproductarray.removeAll()
+        MySingleton.shared.extraOption.removeAll()
+        
+        
+        //SPORTS
+        tournamentArray.removeAll()
+        eventsArray.removeAll()
+        sportsCityArray.removeAll()
+        sportsCountryArray.removeAll()
+        
+        
+        //TRANSFERS
+        MySingleton.shared.transferlist.removeAll()
+        cartype.removeAll()
+        MySingleton.shared.transferAddonServices.removeAll()
+        transfer_data = nil
+        
+        
+        //HOLIDAYS cruise
+        MySingleton.shared.holidaylist.removeAll()
+        MySingleton.shared.holidaySelectedData = nil
+        MySingleton.shared.holidayItinerary.removeAll()
+        
+        MySingleton.shared.cruiseList.removeAll()
+        MySingleton.shared.cruise = nil
+        MySingleton.shared.cruiseItinerary.removeAll()
+        MySingleton.shared.cruiseItinerary.removeAll()
+        
+        
+        // Clear memory cache
+        SDImageCache.shared.clearMemory()
+        
+        // Optionally clear disk cache as well
+        SDImageCache.shared.clearDisk {
+            print("Disk cache cleared when view controller is dismissed")
+        }
+    }
+}

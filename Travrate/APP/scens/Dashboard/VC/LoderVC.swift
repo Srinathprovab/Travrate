@@ -10,6 +10,7 @@ import UIKit
 class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoderViewModelDelegate {
     
     
+    
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var gifimg: UIImageView!
     @IBOutlet weak var triptypelbl: UILabel!
@@ -45,6 +46,22 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        setuplabels(lbl: triptypelbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: cityslbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: datelbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: locationslbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: checkinlbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: checkoutlbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: guestlbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: nightslbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: roomslbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: flightEconomylbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: sportvenulbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: sportvenulbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: sportdateslbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: carRentalNamelbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: carRentalDateslbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
         
         
         
@@ -82,6 +99,10 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     
     
     func setupUI() {
+        
+        
+        
+        
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
@@ -140,8 +161,8 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             locationslbl.text = defaults.string(forKey: UserDefaultsKeys.locationcity)
             checkinlbl.text = MySingleton.shared.convertDateFormat(inputDate: searchHoteldata?.check_in ?? "", f1: "dd/MM/yyyy", f2: "dd-MMM-yyyy")
             checkoutlbl.text = MySingleton.shared.convertDateFormat(inputDate: searchHoteldata?.check_out ?? "", f1: "dd/MM/yyyy", f2: "dd-MMM-yyyy")
-           
-          
+            
+            
             let adultcount = MySingleton.shared.hoteladultscount
             let childcount = MySingleton.shared.hotelchildcount
             guestlbl.text = "\(adultcount + childcount)"
@@ -269,7 +290,7 @@ extension LoderVC {
             let journytype =  defaults.string(forKey: UserDefaultsKeys.transferjournytype)
             let fromcity =  defaults.string(forKey: UserDefaultsKeys.transferfromcityname)
             let tocity =  defaults.string(forKey: UserDefaultsKeys.transfertocityname)
-           
+            
             let fromdate = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")
             let todate = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.transfercalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd-MMM-yyyy")
             

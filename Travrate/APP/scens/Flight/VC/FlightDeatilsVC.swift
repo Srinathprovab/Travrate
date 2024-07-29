@@ -228,6 +228,7 @@ extension FlightDeatilsVC {
         hideLoadera()
         
         holderView.isHidden = false
+        self.fd.removeAll()
         self.fd = response.flightDetails ?? [[]]
         MySingleton.shared.flightPriceDetails = response.priceDetails
         MySingleton.shared.baggageDetails = response.baggage_details ?? []

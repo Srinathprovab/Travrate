@@ -182,12 +182,7 @@ extension BookingConfirmedVC {
                 
                 bookingRefrence = i.app_reference ?? ""
                 bookingStatus = i.status ?? ""
-                
-                print("bookedDate    \(bookedDate)")
-                print("pnrNo      \(pnrNo)")
-                print("bookingRefrence   \(bookingRefrence)")
-                print("bookingId    \(bookingId)")
-                
+               
                 DispatchQueue.main.async {
                     self.setupTV()
                 }
@@ -565,10 +560,6 @@ extension BookingConfirmedVC {
     
     
     func callGetActivitesVoucherAPI() {
-    
-        
-        
-        
         viewModel?.CALL_ACTIVITIES_VOUCHER_API(dictParam: [:], url: MySingleton.shared.voucherurlsting)
     }
     

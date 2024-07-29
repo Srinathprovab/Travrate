@@ -346,6 +346,8 @@ extension DashboardVC {
         
         defaults.set("Select Location", forKey: UserDefaultsKeys.pickuplocationname)
         defaults.set("", forKey: UserDefaultsKeys.pickuplocationcode)
+        defaults.set("Select Location", forKey: UserDefaultsKeys.dropuplocationname)
+        defaults.set("", forKey: UserDefaultsKeys.dropuplocationcode)
         defaults.set("Select Date", forKey: UserDefaultsKeys.pickuplocDate)
         defaults.set("Select Date", forKey: UserDefaultsKeys.dropuplocDate)
         defaults.set("Select Time", forKey: UserDefaultsKeys.pickuplocTime)
@@ -580,7 +582,8 @@ extension DashboardVC {
     
     func addObserver() {
         
-        MySingleton.shared.getPaymentList()
+        MySingleton.shared.removeallstoredValues()
+       
         MySingleton.shared.returnDateTapbool = false
         filterresettapbool = false
         
@@ -679,3 +682,6 @@ extension DashboardVC {
         
     }
 }
+
+
+

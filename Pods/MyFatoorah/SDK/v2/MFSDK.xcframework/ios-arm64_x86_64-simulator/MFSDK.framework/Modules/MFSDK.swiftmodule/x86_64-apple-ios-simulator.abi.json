@@ -7951,6 +7951,40 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init(sessionId:countryCode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MFInitiateSessionResponse",
+                "printedName": "MFSDK.MFInitiateSessionResponse",
+                "usr": "c:@M@MFSDK@objc(cs)MFInitiateSessionResponse"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MFSDK@objc(cs)MFInitiateSessionResponse(im)initWithSessionId:countryCode:",
+            "mangledName": "$s5MFSDK25MFInitiateSessionResponseC9sessionId11countryCodeACSS_SStcfc",
+            "moduleName": "MFSDK",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init()",
             "children": [
               {
@@ -8039,7 +8073,6 @@
           "ObjCMembers"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
-        "inheritsConvenienceInitializers": true,
         "superclassNames": [
           "ObjectiveC.NSObject"
         ],
@@ -19068,6 +19101,56 @@
         "children": [
           {
             "kind": "Var",
+            "name": "sessionId",
+            "printedName": "sessionId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MFSDK@objc(cs)MFCallbackResponse(py)sessionId",
+            "mangledName": "$s5MFSDK18MFCallbackResponseC9sessionIdSSvp",
+            "moduleName": "MFSDK",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MFSDK@objc(cs)MFCallbackResponse(im)sessionId",
+                "mangledName": "$s5MFSDK18MFCallbackResponseC9sessionIdSSvg",
+                "moduleName": "MFSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "cardBrand",
             "printedName": "cardBrand",
             "children": [
@@ -26916,6 +26999,194 @@
       },
       {
         "kind": "Import",
+        "name": "WebKit",
+        "printedName": "WebKit",
+        "declKind": "Import",
+        "moduleName": "MFSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MFPaymentHandler",
+        "printedName": "MFPaymentHandler",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "open",
+            "printedName": "open(paymentUrl:redirectionUrl:apiLanguage:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MFLanguage",
+                "printedName": "MFSDK.MFLanguage",
+                "usr": "c:@M@MFSDK@E@MFLanguage"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<Swift.String, MFSDK.MFFailResponse>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<Swift.String, MFSDK.MFFailResponse>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MFFailResponse",
+                        "printedName": "MFSDK.MFFailResponse",
+                        "usr": "c:@M@MFSDK@objc(cs)MFFailResponse"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:5MFSDK16MFPaymentHandlerC4open10paymentUrl011redirectionF011apiLanguage10completionySS_SSAA10MFLanguageOys6ResultOySSAA14MFFailResponseCGctFZ",
+            "mangledName": "$s5MFSDK16MFPaymentHandlerC4open10paymentUrl011redirectionF011apiLanguage10completionySS_SSAA10MFLanguageOys6ResultOySSAA14MFFailResponseCGctFZ",
+            "moduleName": "MFSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MFPaymentHandler",
+                "printedName": "MFSDK.MFPaymentHandler",
+                "usr": "c:@M@MFSDK@objc(cs)MFPaymentHandler"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MFSDK@objc(cs)MFPaymentHandler(im)init",
+            "mangledName": "$s5MFSDK16MFPaymentHandlerCACycfc",
+            "moduleName": "MFSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@MFSDK@objc(cs)MFPaymentHandler",
+        "mangledName": "$s5MFSDK16MFPaymentHandlerC",
+        "moduleName": "MFSDK",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "ObjCMembers"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "MFSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "SafariServices",
         "printedName": "SafariServices",
         "declKind": "Import",
@@ -27598,6 +27869,61 @@
             "usr": "s:5MFSDK17MFPaymentCardViewC8validate0E17SessionCompletionyys6ResultOySSAA14MFFailResponseCGc_tF",
             "mangledName": "$s5MFSDK17MFPaymentCardViewC8validate0E17SessionCompletionyys6ResultOySSAA14MFFailResponseCGc_tF",
             "moduleName": "MFSDK",
+            "deprecated": true,
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "Available"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "submit",
+            "printedName": "submit(completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<MFSDK.MFCallbackResponse, MFSDK.MFFailResponse>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<MFSDK.MFCallbackResponse, MFSDK.MFFailResponse>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MFCallbackResponse",
+                        "printedName": "MFSDK.MFCallbackResponse",
+                        "usr": "c:@M@MFSDK@objc(cs)MFCallbackResponse"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MFFailResponse",
+                        "printedName": "MFSDK.MFFailResponse",
+                        "usr": "c:@M@MFSDK@objc(cs)MFFailResponse"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:5MFSDK17MFPaymentCardViewC6submit10completionyys6ResultOyAA18MFCallbackResponseCAA06MFFailI0CGc_tF",
+            "mangledName": "$s5MFSDK17MFPaymentCardViewC6submit10completionyys6ResultOyAA18MFCallbackResponseCAA06MFFailI0CGc_tF",
+            "moduleName": "MFSDK",
             "declAttributes": [
               "Custom",
               "AccessControl"
@@ -27742,6 +28068,45 @@
             "declKind": "Func",
             "usr": "s:5MFSDK17MFPaymentCardViewC8validates6ResultOySSAA14MFFailResponseCGyYaF",
             "mangledName": "$s5MFSDK17MFPaymentCardViewC8validates6ResultOySSAA14MFFailResponseCGyYaF",
+            "moduleName": "MFSDK",
+            "intro_iOS": "13.0.0",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "Available"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "submit",
+            "printedName": "submit()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Result",
+                "printedName": "Swift.Result<MFSDK.MFCallbackResponse, MFSDK.MFFailResponse>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MFCallbackResponse",
+                    "printedName": "MFSDK.MFCallbackResponse",
+                    "usr": "c:@M@MFSDK@objc(cs)MFCallbackResponse"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MFFailResponse",
+                    "printedName": "MFSDK.MFFailResponse",
+                    "usr": "c:@M@MFSDK@objc(cs)MFFailResponse"
+                  }
+                ],
+                "usr": "s:s6ResultO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:5MFSDK17MFPaymentCardViewC6submits6ResultOyAA18MFCallbackResponseCAA06MFFailH0CGyYaF",
+            "mangledName": "$s5MFSDK17MFPaymentCardViewC6submits6ResultOyAA18MFCallbackResponseCAA06MFFailH0CGyYaF",
             "moduleName": "MFSDK",
             "intro_iOS": "13.0.0",
             "declAttributes": [
@@ -39236,6 +39601,40 @@
           },
           {
             "kind": "Function",
+            "name": "configure",
+            "printedName": "configure(country:environment:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MFCountry",
+                "printedName": "MFSDK.MFCountry",
+                "usr": "c:@M@MFSDK@E@MFCountry"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MFEnvironment",
+                "printedName": "MFSDK.MFEnvironment",
+                "usr": "c:@M@MFSDK@E@MFEnvironment"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MFSDK@objc(cs)MFSettings(im)configureWithCountry:environment:",
+            "mangledName": "$s5MFSDK10MFSettingsC9configure7country11environmentyAA9MFCountryO_AA13MFEnvironmentOtF",
+            "moduleName": "MFSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "setTheme",
             "printedName": "setTheme(theme:)",
             "children": [
@@ -40699,44 +41098,51 @@
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFInitiateSessionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 448,
+      "offset": 591,
       "length": 11,
       "value": "\"SessionId\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFInitiateSessionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 487,
+      "offset": 630,
       "length": 13,
       "value": "\"CountryCode\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFInitiateSessionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 531,
+      "offset": 674,
       "length": 16,
       "value": "\"CustomerTokens\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFInitiateSessionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 448,
+      "offset": 591,
       "length": 11,
       "value": "\"SessionId\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFInitiateSessionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 487,
+      "offset": 630,
       "length": 13,
       "value": "\"CountryCode\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFInitiateSessionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 531,
+      "offset": 674,
       "length": 16,
       "value": "\"CustomerTokens\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFInitiateSessionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 205,
+      "length": 25,
+      "value": "\"MFSDK.MFInitiateSessionResponse\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Constants.swift",
@@ -41616,35 +42022,49 @@
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFCallbackResponse.swift",
       "kind": "StringLiteral",
-      "offset": 312,
+      "offset": 345,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFCallbackResponse.swift",
       "kind": "StringLiteral",
-      "offset": 463,
+      "offset": 550,
+      "length": 11,
+      "value": "\"SessionId\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFCallbackResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 587,
       "length": 11,
       "value": "\"CardBrand\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFCallbackResponse.swift",
       "kind": "StringLiteral",
-      "offset": 503,
+      "offset": 627,
       "length": 14,
       "value": "\"First8Digits\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFCallbackResponse.swift",
       "kind": "StringLiteral",
-      "offset": 463,
+      "offset": 550,
+      "length": 11,
+      "value": "\"SessionId\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFCallbackResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 587,
       "length": 11,
       "value": "\"CardBrand\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Models\/MFInitiateSession\/MFCallbackResponse.swift",
       "kind": "StringLiteral",
-      "offset": 503,
+      "offset": 627,
       "length": 14,
       "value": "\"First8Digits\""
     },
@@ -42316,133 +42736,133 @@
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "StringLiteral",
-      "offset": 1536,
+      "offset": 1647,
       "length": 14,
       "value": "\"Name On Card\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "StringLiteral",
-      "offset": 1731,
+      "offset": 1842,
       "length": 8,
       "value": "\"Number\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "StringLiteral",
-      "offset": 1911,
+      "offset": 2022,
       "length": 9,
       "value": "\"MM \/ YY\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "StringLiteral",
-      "offset": 2085,
+      "offset": 2196,
       "length": 5,
       "value": "\"CVV\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "StringLiteral",
-      "offset": 2246,
+      "offset": 2357,
       "length": 18,
       "value": "\"Card Holder Name\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "StringLiteral",
-      "offset": 2420,
+      "offset": 2531,
       "length": 13,
       "value": "\"Card Number\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "StringLiteral",
-      "offset": 2581,
+      "offset": 2692,
       "length": 13,
       "value": "\"Expiry Date\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "StringLiteral",
-      "offset": 2735,
+      "offset": 2846,
       "length": 15,
       "value": "\"Security Code\""
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2877,
+      "offset": 2988,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "IntegerLiteral",
-      "offset": 3576,
+      "offset": 3687,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "IntegerLiteral",
-      "offset": 3709,
+      "offset": 3820,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "IntegerLiteral",
-      "offset": 3840,
+      "offset": 3951,
       "length": 2,
       "value": "13"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "BooleanLiteral",
-      "offset": 3959,
+      "offset": 4070,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "IntegerLiteral",
-      "offset": 4103,
+      "offset": 4214,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "IntegerLiteral",
-      "offset": 4251,
+      "offset": 4362,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "IntegerLiteral",
-      "offset": 4396,
+      "offset": 4507,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "IntegerLiteral",
-      "offset": 4537,
+      "offset": 4648,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "IntegerLiteral",
-      "offset": 4824,
+      "offset": 4935,
       "length": 2,
       "value": "32"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/MF-SDK-iOS\/MFSDK\/Payment Card View\/MFPaymentCardView.swift",
       "kind": "IntegerLiteral",
-      "offset": 4967,
+      "offset": 5078,
       "length": 2,
       "value": "10"
     },

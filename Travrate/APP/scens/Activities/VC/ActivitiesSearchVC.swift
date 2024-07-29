@@ -148,7 +148,6 @@ class ActivitiesSearchVC: BaseTableVC {
 extension ActivitiesSearchVC {
     
     func addObserver() {
-        MySingleton.shared.getPaymentList()
         
         
         print(" =====  PaymentSelectionArray  ====== ")

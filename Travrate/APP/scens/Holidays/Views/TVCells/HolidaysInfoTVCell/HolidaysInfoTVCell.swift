@@ -30,6 +30,12 @@ class HolidaysInfoTVCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+            super.prepareForReuse()
+            // Reset image to placeholder or nil
+        img.image = nil
+        }
+    
     
     func setupUI() {
         img.layer.cornerRadius = 6
