@@ -26,6 +26,7 @@ let KAccesstoken = "Accesstoken"
 let KAccesstokenValue = ""
 var key = ""
 let screenHeight = UIScreen.main.bounds.size.height
+let screenwidth = UIScreen.main.bounds.size.width
 //var data : Data?
 var loderBool = false
 var basicloderBool = false
@@ -92,7 +93,7 @@ var subtotal = String()
 //HOTEL
 var adtArray = [String]()
 var chArray = [String]()
-var hotelDetailsTapBool = true
+var hotelDetailsTapBool = false
 var oldjournyType = ""
 var selectedSpecificatonArray = [String]()
 var startRatingArray = [String]()

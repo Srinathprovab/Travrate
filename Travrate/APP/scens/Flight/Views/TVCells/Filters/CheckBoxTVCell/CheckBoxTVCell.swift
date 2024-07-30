@@ -761,7 +761,7 @@ extension CheckBoxTVCell {
         // Check the section title to determine which filter to apply
         switch titlelbl.text {
             
-        case "Care Fule":
+        case "Car Fule":
             if !carfilterModel.fuleA.isEmpty {
                 // Check if the cell's title matches any value in the luggage array
                 
@@ -789,7 +789,7 @@ extension CheckBoxTVCell {
             
             
             
-        case "Menual/Auto":
+        case "Manual/Auto":
             if !carfilterModel.carmanualA.isEmpty {
                 // Check if the cell's title matches any value in the luggage array
                 

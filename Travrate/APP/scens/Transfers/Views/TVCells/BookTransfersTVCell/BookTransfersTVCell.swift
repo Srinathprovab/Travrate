@@ -117,23 +117,22 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
             
             
             
-            fromTF.text = defaults.string(forKey: UserDefaultsKeys.transferfromcityname) ?? "From Airport*"
-            toTF.text = defaults.string(forKey: UserDefaultsKeys.transfertocityname) ?? "To Airport*"
+            fromTF.text = defaults.string(forKey: UserDefaultsKeys.transferfromcityname) ?? "From Airport"
+            toTF.text = defaults.string(forKey: UserDefaultsKeys.transfertocityname) ?? "To Airport"
             
             returnView.isHidden = true
-            depDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? ""
-            depTimeTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepTime) ?? ""
-            
-            defaults.set("Select Date*", forKey: UserDefaultsKeys.transfercalRetDate)
-            defaults.set("Select Time*", forKey: UserDefaultsKeys.transfercalRetTime)
+            depDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? "Select Date"
+            depTimeTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepTime) ?? "Select Time"
+            defaults.set("Select Date", forKey: UserDefaultsKeys.transfercalRetDate)
+            defaults.set("Select Time", forKey: UserDefaultsKeys.transfercalRetTime)
             
         }else {
             returnView.isHidden = false
-            depDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? ""
-            retDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalRetDate) ?? ""
+            depDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? "Select Date"
+            retDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalRetDate) ?? "Select Date"
+            depTimeTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepTime) ?? "Select Time"
+            retTimeTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalRetTime) ?? "Select Time"
             
-            depTimeTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepTime) ?? ""
-            retTimeTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalRetTime) ?? ""
         }
         
         
@@ -146,14 +145,13 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
         guard let transfercalRetTime =  defaults.string(forKey: UserDefaultsKeys.transfercalRetTime) else {return}
        
         
-        fromTF.textColor = (transferfromcityname == "From Airport*") ? .subtitleNewcolor : .TitleColor
-        toTF.textColor = (transfertocityname == "To Airport*") ? .subtitleNewcolor : .TitleColor
-        depDateTF.textColor = (transfercalDepDate == "Select Date*") ? .subtitleNewcolor : .TitleColor
-        depTimeTF.textColor = (transfercalDepTime == "Select Time*") ? .subtitleNewcolor : .TitleColor
-        retDateTF.textColor = (transfercalRetDate == "Select Date*") ? .subtitleNewcolor : .TitleColor
-        retTimeTF.textColor = (transfercalRetTime == "Select Time*") ? .subtitleNewcolor : .TitleColor
+        fromTF.textColor = (transferfromcityname == "From Airport") ? .subtitleNewcolor : .TitleColor
+        toTF.textColor = (transfertocityname == "To Airport") ? .subtitleNewcolor : .TitleColor
+        depDateTF.textColor = (transfercalDepDate == "Select Date") ? .subtitleNewcolor : .TitleColor
+        depTimeTF.textColor = (transfercalDepTime == "Select Time") ? .subtitleNewcolor : .TitleColor
+        retDateTF.textColor = (transfercalRetDate == "Select Date") ? .subtitleNewcolor : .TitleColor
+        retTimeTF.textColor = (transfercalRetTime == "Select Time") ? .subtitleNewcolor : .TitleColor
 
-        
         
     }
     

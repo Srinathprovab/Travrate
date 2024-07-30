@@ -200,7 +200,11 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         
         
         if cellInfo?.key == "oneway" {
+            fromTF.text = ""
+            fromTF.resignFirstResponder()
+            fromTF.placeholder = ""
             hideRoundTripBtn.isUserInteractionEnabled = false
+            
             roundtripclassView.isHidden = true
             classlbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
             
@@ -218,6 +222,14 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             returnDateBtn.isHidden = false
             
         }else {
+            fromTF.text = ""
+            fromTF.resignFirstResponder()
+            toTF.text = ""
+            toTF.resignFirstResponder()
+            fromTF.placeholder = ""
+            toTF.placeholder = ""
+            
+            
             hideRoundTripBtn.isUserInteractionEnabled = true
             roundtripclassView.isHidden = false
             classlbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
@@ -262,8 +274,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         }
         
         
-        
-        
         NotificationCenter.default.addObserver(self, selector: #selector(returndate), name: Notification.Name("returndate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(roundtripTap), name: Notification.Name("roundtripTap"), object: nil)
     }
@@ -305,42 +315,46 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     
     @IBAction func didTaponSwapCitysBtnAction(_ sender: Any) {
         
-        let a = fromlbl.text
-        let b = tolbl.text
         
-        fromlbl.text = b
-        tolbl.text = a
-        
-        defaults.set(fromlbl.text, forKey: UserDefaultsKeys.fromcityname)
-        defaults.set(tolbl.text, forKey: UserDefaultsKeys.tocityname)
-        
-        
-        
-        let m = defaults.string(forKey: UserDefaultsKeys.fromCity)
-        let n = defaults.string(forKey: UserDefaultsKeys.toCity)
-        
-        defaults.setValue(m, forKey: UserDefaultsKeys.toCity)
-        defaults.setValue(n, forKey: UserDefaultsKeys.fromCity)
-        
-        let y = defaults.string(forKey: UserDefaultsKeys.fromlocid)
-        let z = defaults.string(forKey: UserDefaultsKeys.tolocid)
-        
-        
-        defaults.setValue(y, forKey: UserDefaultsKeys.tolocid)
-        defaults.setValue(z, forKey: UserDefaultsKeys.fromlocid)
-        
-        let c = "\(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "")"
-        let d = "\(defaults.string(forKey: UserDefaultsKeys.tcity) ?? "")"
-        
-        defaults.setValue(d, forKey: UserDefaultsKeys.fcity)
-        defaults.setValue(c, forKey: UserDefaultsKeys.tcity)
-        
-        
-        let u = "\(defaults.string(forKey: UserDefaultsKeys.fromCode) ?? "")"
-        let v = "\(defaults.string(forKey: UserDefaultsKeys.toCode) ?? "")"
-        
-        defaults.setValue(v, forKey: UserDefaultsKeys.fromCode)
-        defaults.setValue(u, forKey: UserDefaultsKeys.toCode)
+        if  fromlbl.text != "Origin" && tolbl.text != "Destination" && fromlbl.text != "" && tolbl.text != ""{
+            
+            let a = fromlbl.text
+            let b = tolbl.text
+            
+            fromlbl.text = b
+            tolbl.text = a
+            
+            defaults.set(fromlbl.text, forKey: UserDefaultsKeys.fromcityname)
+            defaults.set(tolbl.text, forKey: UserDefaultsKeys.tocityname)
+            
+            
+            let m = defaults.string(forKey: UserDefaultsKeys.fromCity)
+            let n = defaults.string(forKey: UserDefaultsKeys.toCity)
+            
+            defaults.setValue(m, forKey: UserDefaultsKeys.toCity)
+            defaults.setValue(n, forKey: UserDefaultsKeys.fromCity)
+            
+            let y = defaults.string(forKey: UserDefaultsKeys.fromlocid)
+            let z = defaults.string(forKey: UserDefaultsKeys.tolocid)
+            
+            
+            defaults.setValue(y, forKey: UserDefaultsKeys.tolocid)
+            defaults.setValue(z, forKey: UserDefaultsKeys.fromlocid)
+            
+            let c = "\(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "")"
+            let d = "\(defaults.string(forKey: UserDefaultsKeys.tcity) ?? "")"
+            
+            defaults.setValue(d, forKey: UserDefaultsKeys.fcity)
+            defaults.setValue(c, forKey: UserDefaultsKeys.tcity)
+            
+            
+            let u = "\(defaults.string(forKey: UserDefaultsKeys.fromCode) ?? "")"
+            let v = "\(defaults.string(forKey: UserDefaultsKeys.toCode) ?? "")"
+            
+            defaults.setValue(v, forKey: UserDefaultsKeys.fromCode)
+            defaults.setValue(u, forKey: UserDefaultsKeys.toCode)
+            
+        }
     }
     
     @IBAction func didTapOnFlightSearchBtnAction(_ sender: Any) {

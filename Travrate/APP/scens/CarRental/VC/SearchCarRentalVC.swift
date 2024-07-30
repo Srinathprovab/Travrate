@@ -73,12 +73,10 @@ class SearchCarRentalVC: BaseTableVC {
                 defaults.set(formatter.string(from: selectedDepDate), forKey: UserDefaultsKeys.pickuplocDate)
                 defaults.set(formatter.string(from: nextDay), forKey: UserDefaultsKeys.dropuplocDate)
                 cell.dropupDatePicker.minimumDate = nextDay
-                
             }else {
                 
                 defaults.set(formatter.string(from: cell.pickupDatePicker.date), forKey: UserDefaultsKeys.pickuplocDate)
                 defaults.set(formatter.string(from: cell.dropupDatePicker.date), forKey: UserDefaultsKeys.dropuplocDate)
-                
             }
         }
         
@@ -116,7 +114,7 @@ class SearchCarRentalVC: BaseTableVC {
             showToast(message: "Select Pick Up Time")
         }else if dropuplocTime == "Select Time" {
             showToast(message: "Select Time")
-        }else if MySingleton.shared.carRentalDriverAge == "" {
+        }else if driverage == "Select Driver's Age" {
             showToast(message: "Select Driver Age")
         }else {
             

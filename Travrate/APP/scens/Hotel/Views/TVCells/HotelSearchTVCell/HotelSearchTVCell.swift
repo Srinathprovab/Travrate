@@ -82,7 +82,7 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
     
     func setupUI() {
         
-        fromcityTF.textColor = .AppLabelColor
+        fromcityTF.textColor = .TitleColor
         fromcityTF.font = .OpenSansMedium(size: 16)
         fromcityTF.delegate = self
         fromcityTF.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
@@ -115,20 +115,17 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
     override func updateUI() {
         
         
-        fromcityTF.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? "City/Location*"
+        fromcityTF.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? "City/Location"
         checkinlbl.text = defaults.string(forKey: UserDefaultsKeys.checkin) ?? "Add Date"
         checkoutlbl.text = defaults.string(forKey: UserDefaultsKeys.checkout) ?? "Add Date"
         roomcountlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectPersons) ?? "")"
-        nationalitylbl.text = "\(defaults.string(forKey: UserDefaultsKeys.hnationality) ?? "Select Nationality*")"
+        nationalitylbl.text = "\(defaults.string(forKey: UserDefaultsKeys.hnationality) ?? "Select Nationality")"
         
         
-        
-        
-        
-        fromcityTF.textColor = fromcityTF.text == "City/Location*" ? .subtitleNewcolor : .TitleColor
+        fromcityTF.textColor = fromcityTF.text == "City/Location" ? .subtitleNewcolor : .TitleColor
         updateLabelColor(label: checkinlbl, defaultText: "Add Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
         updateLabelColor(label: checkoutlbl, defaultText: "Add Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
-        updateLabelColor(label: nationalitylbl, defaultText: "Select Nationality*", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
+        updateLabelColor(label: nationalitylbl, defaultText: "Select Nationality", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
         
         func updateLabelColor(label: UILabel, defaultText: String, defaultColor: UIColor, selectedColor: UIColor) {
             label.textColor = label.text == defaultText ? defaultColor : selectedColor

@@ -289,8 +289,18 @@ extension RoomsTVcell: UITableViewDataSource ,UITableViewDelegate {
         }else if self.key == "hotels details"{
             if let cell = tableView.dequeueReusableCell(withIdentifier: "hdetails") as? TitleLabelTVCell {
                 cell.selectionStyle = .none
-                cell.hotelNamelbl.attributedText = "\(formatDesc[indexPath.row].heading ?? "")".htmlToAttributedString
-                cell.locationlbl.attributedText = formatDesc[indexPath.row].content?.htmlToAttributedString
+                cell.hotelNamelbl.text = "\(formatDesc[indexPath.row].heading ?? "")".htmlToString1
+               // cell.locationlbl.text = formatDesc[indexPath.row].content?.htmlToString1
+                
+                
+                let decodedText = formatDesc[indexPath.row].content?.replacingOccurrences(of: "\\r\\n", with: "<br>")
+                    .replacingOccurrences(of: "\\", with: "")
+                    .htmlToString
+                
+                cell.locationlbl.text = decodedText
+                
+                
+                
                 cell.setupHotelDetails()
                 ccell = cell
             }

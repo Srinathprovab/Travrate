@@ -102,7 +102,7 @@ extension PopularFiltersTVCell:UICollectionViewDelegate,UICollectionViewDataSour
                 if hotelfiltermodel.starRatingNew.contains(cell.titlelbl.text ?? "") {
                     
                     DispatchQueue.main.async {
-                        cell.holderView.backgroundColor = HexColor("34C759")
+                        cell.holderView.backgroundColor = .Buttoncolor
                         cell.titlelbl.textColor = .WhiteColor
                         cell.starimg.tintColor = .WhiteColor
                         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)

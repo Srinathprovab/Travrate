@@ -168,12 +168,12 @@ class AddDeatilsOfPersonTVCell: TableViewCell {
         collapsView()
         
         setupTextField(txtField: cityofbirthTF, tag1: 7, label: "City Of Birth*", placeholder: "City Of Birth")
-        setupTextField(txtField: titleTF, tag1: 11, label: "Title*", placeholder: "MR")
-        setupTextField(txtField: fnameTF, tag1: 1, label: "First Name*", placeholder: "First Name")
-        setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name*", placeholder: "Last Name")
-        setupTextField(txtField: dobTF, tag1: 3, label: "Date of Birth*", placeholder: "DOB")
-        setupTextField(txtField: passportnoTF, tag1: 5, label: "Passport NO*", placeholder: "Passport NO")
-        setupTextField(txtField: selectCountryTF, tag1: 6, label: "Passport Issuing Country*", placeholder: "Select Country")
+        setupTextField(txtField: titleTF, tag1: 11, label: "Title", placeholder: "MR")
+        setupTextField(txtField: fnameTF, tag1: 1, label: "First Name", placeholder: "First Name")
+        setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name", placeholder: "Last Name")
+        setupTextField(txtField: dobTF, tag1: 3, label: "Date of Birth", placeholder: "DOB")
+        setupTextField(txtField: passportnoTF, tag1: 5, label: "Passport No", placeholder: "Passport No")
+        setupTextField(txtField: selectCountryTF, tag1: 6, label: "Passport Issuing Country", placeholder: "Select Country")
         
         
         passportIssueingCountrySelectBtn.isHidden = true

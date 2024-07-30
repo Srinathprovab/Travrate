@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="396" height="45"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ksj-cc-xwW">
-                                <rect key="frame" x="10" y="0.0" width="39.666666666666664" height="45"/>
+                                <rect key="frame" x="14.999999999999996" y="0.0" width="39.666666666666657" height="45"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPC-iJ-Rmv">
                                         <rect key="frame" x="-40" y="0.0" width="40" height="45"/>
@@ -54,7 +54,7 @@
                             <constraint firstAttribute="bottom" secondItem="ksj-cc-xwW" secondAttribute="bottom" id="PlM-Hr-bIQ"/>
                             <constraint firstAttribute="height" constant="45" id="ZbG-Vv-h0Y"/>
                             <constraint firstItem="dgQ-wf-GPE" firstAttribute="centerY" secondItem="Cch-6G-67Y" secondAttribute="centerY" id="a4h-iE-JwY"/>
-                            <constraint firstItem="ksj-cc-xwW" firstAttribute="leading" secondItem="Cch-6G-67Y" secondAttribute="leading" constant="10" id="e2d-RH-kbY"/>
+                            <constraint firstItem="ksj-cc-xwW" firstAttribute="leading" secondItem="Cch-6G-67Y" secondAttribute="leading" constant="15" id="e2d-RH-kbY"/>
                             <constraint firstAttribute="trailing" secondItem="dgQ-wf-GPE" secondAttribute="trailing" constant="15" id="fQI-1a-n2C"/>
                         </constraints>
                     </view>

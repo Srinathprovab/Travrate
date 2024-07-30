@@ -61,22 +61,22 @@ extension MoreDetailsVC {
         MySingleton.shared.afterResultsBool = true
         loderBool = true
         showLoadera()
-        BASE_URL = ""
+        //BASE_URL = ""
         switch titleString {
         case "About Us":
             MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
-                                                                        urlStr: "https://provab.net/travrate/android_ios_webservices/mobile/index.php/general/cms?id=1")
+                                                                        urlStr: "\(BASE_URL)general/cms?id=1")
             break
             
         case "Terms & Conditions":
             MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
-                                                                        urlStr: "https://provab.net/travrate/android_ios_webservices/mobile/index.php/general/cms?id=3")
+                                                                        urlStr: "\(BASE_URL)general/cms?id=3")
             break
             
             
         case "Privacy Policy":
             MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
-                                                                        urlStr: "https://provab.net/travrate/android_ios_webservices/mobile/index.php/general/cms?id=4")
+                                                                        urlStr: "\(BASE_URL)general/cms?id=4")
             break
             
        

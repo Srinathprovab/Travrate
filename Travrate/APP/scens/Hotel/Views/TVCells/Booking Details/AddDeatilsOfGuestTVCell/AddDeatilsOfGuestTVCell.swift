@@ -139,10 +139,10 @@ class AddDeatilsOfGuestTVCell: TableViewCell {
         holderView.clipsToBounds = true
         
         collapsView()
-        setupTextField(txtField: titleTF, tag1: 1, label: "Title*", placeholder: "Mr")
-        setupTextField(txtField: fnameTF, tag1: 1, label: "First Name*", placeholder: "First Name*")
+        setupTextField(txtField: titleTF, tag1: 1, label: "Title", placeholder: "Mr")
+        setupTextField(txtField: fnameTF, tag1: 1, label: "First Name", placeholder: "First Name")
         setupTextField(txtField: mnameTF, tag1: 1, label: "Middle Name(Optional)", placeholder: "Middle Name(Optional)")
-        setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name*", placeholder: "Last Name*")
+        setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name", placeholder: "Last Name")
         
         
         

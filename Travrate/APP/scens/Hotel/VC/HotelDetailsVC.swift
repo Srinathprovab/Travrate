@@ -10,13 +10,18 @@ import UIKit
 class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDelegate {
     
     @IBOutlet weak var holderView: UIView!
-    @IBOutlet weak var kwdlbl: UILabel!
-    @IBOutlet weak var bookNowView: UIView!
+   // @IBOutlet weak var kwdlbl: UILabel!
+   // @IBOutlet weak var bookNowView: UIView!
     @IBOutlet weak var bookNowlbl: UILabel!
-    @IBOutlet weak var bookNowBtn: UIButton!
+   // @IBOutlet weak var bookNowBtn: UIButton!
     @IBOutlet weak var citylbl: UILabel!
     @IBOutlet weak var datelbl: UILabel!
     @IBOutlet weak var paxlbl: UILabel!
+    
+    @IBOutlet weak var gifimg: UIImageView!
+    @IBOutlet weak var continuetoPaymentBtnView: UIView!
+    @IBOutlet weak var continuetoPaymentBtnlbl: UILabel!
+    @IBOutlet weak var continueBtn: UIButton!
     
     
     static var newInstance: HotelDetailsVC? {
@@ -40,6 +45,7 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     
     //MARK: - Loading function
     override func viewWillAppear(_ animated: Bool) {
+        hotelDetailsTapBool = false
         selectedCellStates = [:]
         addObserver()
         
@@ -54,8 +60,8 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     
     //MARK: - show BookNow Btn
     @objc func showBookNowBtn() {
-        bookNowView.isUserInteractionEnabled = true
-        bookNowView.alpha = 1
+//        bookNowView.isUserInteractionEnabled = true
+//        bookNowView.alpha = 1
     }
     
     
@@ -74,6 +80,15 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     //MARK: - setupUI
     func setupUI() {
         
+        guard let gifURL = Bundle.main.url(forResource: "pay", withExtension: "gif") else { return }
+        guard let imageData = try? Data(contentsOf: gifURL) else { return }
+        guard let image = UIImage.gifImageWithData(imageData) else { return }
+        gifimg.image = image
+        gifimg.isHidden = true
+        
+        continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+        continuetoPaymentBtnView.isUserInteractionEnabled = true
+        
         setuplabels(lbl: citylbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
         setuplabels(lbl: datelbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
         setuplabels(lbl: paxlbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
@@ -85,10 +100,10 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         paxlbl.text = "Room \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? "1") | Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "2")"
         
         
-        bookNowView.backgroundColor = .AppBtnColor
-        setuplabels(lbl: kwdlbl, text: "Book Now", textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .right)
-        bookNowBtn.setTitle("", for: .normal)
-        bookNowBtn.addTarget(self, action: #selector(didTapOnBookNowBtn(_:)), for: .touchUpInside)
+//        bookNowView.backgroundColor = .AppBtnColor
+//        setuplabels(lbl: kwdlbl, text: "Book Now", textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .right)
+//        bookNowBtn.setTitle("", for: .normal)
+//        bookNowBtn.addTarget(self, action: #selector(didTapOnBookNowBtn(_:)), for: .touchUpInside)
         commonTableView.registerTVCells(["HotelImagesTVCell","EmptyTVCell","RoomsTVcell"])
         
     }
@@ -128,15 +143,7 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     //MARK: - didTapOnBookNowBtn
     @objc func didTapOnBookNowBtn(_ sender: UIButton) {
         
-        if hotelDetailsTapBool == true {
-            if selectedrRateKeyArray.isEmpty == false {
-                gotoHotelBookingDetailsVC()
-            }else {
-                showToast(message: "Select Room")
-            }
-        }else {
-            NotificationCenter.default.post(name: NSNotification.Name("gotoroom"), object: false)
-        }
+        
         
     }
     
@@ -187,6 +194,9 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     
     //MARK: - didTapOnSelectRoomBtnAction
     override func didTapOnSelectRoomBtnAction(cell:NewRoomDetailsTVCell){
+        hotelDetailsTapBool = true
+        continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+        gifimg.isHidden = false
         
         MySingleton.shared.cancellationRoomStringArray = cell.cancellatonStringArray
         
@@ -212,8 +222,8 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         // Update the selectedCell reference
         selectedCell = cell
         
-        bookNowView.isUserInteractionEnabled = true
-        bookNowView.alpha = 1
+//        bookNowView.isUserInteractionEnabled = true
+//        bookNowView.alpha = 1
         grandTotal = cell.pricelbl.text ?? ""
         setuplabels(lbl: bookNowlbl, text: cell.pricelbl.text ?? "" , textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .left)
         
@@ -251,6 +261,20 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
             self.present(vc, animated: true)
         }
         
+    }
+    
+    
+    
+    @IBAction func didTapOnReserveNowBtnAction(_ sender: Any) {
+        if hotelDetailsTapBool == true {
+            if selectedrRateKeyArray.isEmpty == false {
+                gotoHotelBookingDetailsVC()
+            }else {
+                showToast(message: "Select Room")
+            }
+        }else {
+            NotificationCenter.default.post(name: NSNotification.Name("gotoroom"), object: false)
+        }
     }
     
 }
@@ -318,13 +342,13 @@ extension HotelDetailsVC {
     }
     
     @objc func roomtapbool(notify:NSNotification) {
-        if let tapbool = notify.object as? Bool {
-            if tapbool == true {
-                kwdlbl.text = "Book Now"
-            }else {
-                kwdlbl.text = "Select Now"
-            }
-        }
+//        if let tapbool = notify.object as? Bool {
+//            if tapbool == true {
+//                kwdlbl.text = "Book Now"
+//            }else {
+//                kwdlbl.text = "Select Now"
+//            }
+//        }
     }
     
     @objc func reload() {

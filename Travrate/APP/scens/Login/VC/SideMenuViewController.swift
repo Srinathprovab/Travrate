@@ -94,17 +94,17 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
             
             
             defaults.set("Flight", forKey: UserDefaultsKeys.tabselect)
-            defaults.set("Origin", forKey: UserDefaultsKeys.fromcityname)
-            defaults.set("Destination", forKey: UserDefaultsKeys.tocityname)
-            defaults.set("Economy", forKey: UserDefaultsKeys.selectClass)
-            defaults.set("Economy", forKey: UserDefaultsKeys.rselectClass)
-            defaults.set("Add Date", forKey: UserDefaultsKeys.calDepDate)
-            defaults.set("Add Date", forKey: UserDefaultsKeys.calRetDate)
-            defaults.set("1", forKey: UserDefaultsKeys.adultCount)
-            defaults.set("0", forKey: UserDefaultsKeys.childCount)
-            defaults.set("0", forKey: UserDefaultsKeys.infantsCount)
-            defaults.set("ALL", forKey: UserDefaultsKeys.fcariercode)
-            defaults.set("ALL AIRLINES", forKey: UserDefaultsKeys.fcariername)
+            //            defaults.set("Origin", forKey: UserDefaultsKeys.fromcityname)
+            //            defaults.set("Destination", forKey: UserDefaultsKeys.tocityname)
+            //            defaults.set("Economy", forKey: UserDefaultsKeys.selectClass)
+            //            defaults.set("Economy", forKey: UserDefaultsKeys.rselectClass)
+            //            defaults.set("Add Date", forKey: UserDefaultsKeys.calDepDate)
+            //            defaults.set("Add Date", forKey: UserDefaultsKeys.calRetDate)
+            //            defaults.set("1", forKey: UserDefaultsKeys.adultCount)
+            //            defaults.set("0", forKey: UserDefaultsKeys.childCount)
+            //            defaults.set("0", forKey: UserDefaultsKeys.infantsCount)
+            //            defaults.set("ALL", forKey: UserDefaultsKeys.fcariercode)
+            //            defaults.set("ALL AIRLINES", forKey: UserDefaultsKeys.fcariername)
             
             
             
@@ -113,29 +113,29 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
             
         case "Hotel":
             defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
-            defaults.set("City/Location*", forKey: UserDefaultsKeys.locationcity)
-            defaults.set("Add Date", forKey: UserDefaultsKeys.checkin)
-            defaults.set("Add Date", forKey: UserDefaultsKeys.checkout)
-            defaults.set("Select Nationality*", forKey: UserDefaultsKeys.hnationality)
-            
+            //            defaults.set("City/Location*", forKey: UserDefaultsKeys.locationcity)
+            //            defaults.set("Add Date", forKey: UserDefaultsKeys.checkin)
+            //            defaults.set("Add Date", forKey: UserDefaultsKeys.checkout)
+            //            defaults.set("Select Nationality*", forKey: UserDefaultsKeys.hnationality)
+            //
             
             gotoSearchHotelVC()
             break
             
         case "Transfers":
             defaults.set("transfers", forKey: UserDefaultsKeys.tabselect)
-            defaults.set("From Airport*", forKey: UserDefaultsKeys.transferfromcityname)
-            defaults.set("", forKey: UserDefaultsKeys.transferfromcityid)
-            defaults.set("To Airport*", forKey: UserDefaultsKeys.transfertocityname)
-            defaults.set("", forKey: UserDefaultsKeys.transfertocityid)
-            defaults.set("Select Date*", forKey: UserDefaultsKeys.transfercalDepDate)
-            defaults.set("Select Time*", forKey: UserDefaultsKeys.transfercalDepTime)
-            defaults.set("Select Date*", forKey: UserDefaultsKeys.transfercalRetDate)
-            defaults.set("Select Time*", forKey: UserDefaultsKeys.transfercalRetTime)
-            defaults.set("", forKey: UserDefaultsKeys.transferfromlat)
-            defaults.set("", forKey: UserDefaultsKeys.transferfromlang)
-            defaults.set("", forKey: UserDefaultsKeys.transfertolat)
-            defaults.set("", forKey: UserDefaultsKeys.transfertolang)
+            //            defaults.set("From Airport*", forKey: UserDefaultsKeys.transferfromcityname)
+            //            defaults.set("", forKey: UserDefaultsKeys.transferfromcityid)
+            //            defaults.set("To Airport*", forKey: UserDefaultsKeys.transfertocityname)
+            //            defaults.set("", forKey: UserDefaultsKeys.transfertocityid)
+            //            defaults.set("Select Date*", forKey: UserDefaultsKeys.transfercalDepDate)
+            //            defaults.set("Select Time*", forKey: UserDefaultsKeys.transfercalDepTime)
+            //            defaults.set("Select Date*", forKey: UserDefaultsKeys.transfercalRetDate)
+            //            defaults.set("Select Time*", forKey: UserDefaultsKeys.transfercalRetTime)
+            //            defaults.set("", forKey: UserDefaultsKeys.transferfromlat)
+            //            defaults.set("", forKey: UserDefaultsKeys.transferfromlang)
+            //            defaults.set("", forKey: UserDefaultsKeys.transfertolat)
+            //            defaults.set("", forKey: UserDefaultsKeys.transfertolang)
             
             gotoBookTransfersVC()
             
@@ -189,8 +189,8 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
     
     func gotoSportsSearchVC() {
         
-        defaults.set("Select Date", forKey: UserDefaultsKeys.sportcalDepDate)
-        defaults.set("Select Date", forKey: UserDefaultsKeys.sportcalRetDate)
+        //        defaults.set("Select Date", forKey: UserDefaultsKeys.sportcalDepDate)
+        //        defaults.set("Select Date", forKey: UserDefaultsKeys.sportcalRetDate)
         
         callapibool = true
         guard let vc = SportsSearchVC.newInstance.self else {return}

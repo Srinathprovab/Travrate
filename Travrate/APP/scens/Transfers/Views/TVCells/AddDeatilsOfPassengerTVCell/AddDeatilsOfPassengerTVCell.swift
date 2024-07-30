@@ -140,10 +140,10 @@ class AddDeatilsOfPassengerTVCell: TableViewCell {
         holderView.layer.cornerRadius = 4
         holderView.clipsToBounds = true
         
-        setupTextField(txtField: titleTF, tag1: 1, label: "Title*", placeholder: "Mr")
-        setupTextField(txtField: fnameTF, tag1: 1, label: "First Name*", placeholder: "First Name*")
-        setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name*", placeholder: "Last Name*")
-        setupTextField(txtField: emailTF, tag1: 2, label: "Email Id*", placeholder: "Email Address*")
+        setupTextField(txtField: titleTF, tag1: 1, label: "Title", placeholder: "Mr")
+        setupTextField(txtField: fnameTF, tag1: 1, label: "First Name", placeholder: "First Name*")
+        setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name", placeholder: "Last Name*")
+        setupTextField(txtField: emailTF, tag1: 2, label: "Email Id", placeholder: "Email Address*")
         setupTextField(txtField: mobileTF, tag1: 2, label: "Mobile", placeholder: "Mobile Number")
         setupTextField(txtField: countrycodeTF, tag1: 2, label: "+965", placeholder: "Code")
         

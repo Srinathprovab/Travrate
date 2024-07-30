@@ -391,7 +391,7 @@ extension CRBookingDetailsVC {
             showToast(message: "Select Pick Up Time")
         }else if dropuplocTime == "Select Time" {
             showToast(message: "Select Time")
-        }else if MySingleton.shared.carRentalDriverAge == "" {
+        }else if driverage == "Select Driver's Age" {
             showToast(message: "Select Driver Age")
         }else {
             

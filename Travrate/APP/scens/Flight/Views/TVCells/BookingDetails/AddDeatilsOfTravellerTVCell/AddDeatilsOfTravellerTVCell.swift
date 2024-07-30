@@ -237,13 +237,13 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
         collapsView()
         
         
-        setupTextField(txtField: titleTF, tag1: 11, label: "Title*", placeholder: "MR")
-        setupTextField(txtField: fnameTF, tag1: 1, label: "First Name*", placeholder: "First Name")
-        setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name*", placeholder: "Last Name")
-        setupTextField(txtField: dobTF, tag1: 3, label: "Date of Birth*", placeholder: "DOB")
-        setupTextField(txtField: passportnoTF, tag1: 5, label: "Passport NO*", placeholder: "Passport NO")
-        setupTextField(txtField: passportIssuingCountryTF, tag1: 6, label: "Passport Issuing Country*", placeholder: "Issuing Country")
-        setupTextField(txtField: passportExpireDateTF, tag1: 7, label: "Passport Expiry Date*", placeholder: "Expiry Date")
+        setupTextField(txtField: titleTF, tag1: 11, label: "Title", placeholder: "MR")
+        setupTextField(txtField: fnameTF, tag1: 1, label: "First Name", placeholder: "First Name")
+        setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name", placeholder: "Last Name")
+        setupTextField(txtField: dobTF, tag1: 3, label: "Date of Birth", placeholder: "DOB")
+        setupTextField(txtField: passportnoTF, tag1: 5, label: "Passport NO", placeholder: "Passport NO")
+        setupTextField(txtField: passportIssuingCountryTF, tag1: 6, label: "Passport Issuing Country", placeholder: "Issuing Country")
+        setupTextField(txtField: passportExpireDateTF, tag1: 7, label: "Passport Expiry Date", placeholder: "Expiry Date")
 //        setupTextField(txtField: flyerProgramTF, tag1: 8, label: "Flyer Program ", placeholder: "Flyer Program")
 //        setupTextField(txtField: flyerNoTF, tag1: 9, label: "Flyer Number ", placeholder: "Flyer Number")
         

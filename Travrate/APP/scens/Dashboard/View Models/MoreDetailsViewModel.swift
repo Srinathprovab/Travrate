@@ -21,7 +21,7 @@ class MoreDetailsViewModel {
     func CALL_GET_MORE_DETAILS_API(dictParam: [String: Any],urlStr:String){
         let parms = NSDictionary(dictionary:dictParam)
         print("Parameters = \(parms)")
-        
+        BASE_URL = ""
         // self.view?.showLoader()
         
         ServiceManager.postOrPutApiCall(endPoint: urlStr, urlParams: parms as? Dictionary<String, String>,parameters: parms, resultType: MoreDetailsModel.self, p:dictParam) { sucess, result, errorMessage in
@@ -30,6 +30,7 @@ class MoreDetailsViewModel {
                 self.view?.hideLoader()
                 if sucess {
                     guard let response = result else {return}
+                    BASE_URL = BASE_URL1
                     self.view.moreDetails(response: response)
                 } else {
                     self.view.showToast(message: errorMessage ?? "")

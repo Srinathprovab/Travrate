@@ -18,6 +18,11 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
     
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var kwdlbl: UILabel!
+    @IBOutlet weak var gifimg: UIImageView!
+    @IBOutlet weak var continuetoPaymentBtnView: UIView!
+    @IBOutlet weak var continuetoPaymentBtnlbl: UILabel!
+    @IBOutlet weak var continueBtn: UIButton!
+    
     
     static var newInstance: HotelBookingDetailsVC? {
         let storyboard = UIStoryboard(name: Storyboard.Hotel.name,
@@ -55,6 +60,16 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
     
     
     func setupUI() {
+        
+        guard let gifURL = Bundle.main.url(forResource: "pay", withExtension: "gif") else { return }
+        guard let imageData = try? Data(contentsOf: gifURL) else { return }
+        guard let image = UIImage.gifImageWithData(imageData) else { return }
+        gifimg.image = image
+        gifimg.isHidden = true
+        
+        continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+        continuetoPaymentBtnView.isUserInteractionEnabled = true
+        continuetoPaymentBtnlbl.text = "Continue to Payment"
         setuplabels(lbl: titlelbl, text: "Booking Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
       
         
@@ -303,6 +318,16 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
         
     }
     
+    //MARK: - didTapOnCheckBoxBtnAction TermsAgreeTVCell
+    override func didTapOnCheckBoxBtnAction(cell:TermsAgreeTVCell) {
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+    }
     
 }
 

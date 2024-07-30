@@ -570,6 +570,7 @@ extension BookingDetailsVC {
             }
             
         
+            totlConvertedGrand = totlConvertedGrand + (Double(notificationPrice) ?? 0.0)
             
             DispatchQueue.main.async {[self] in
                 setupTVCell()

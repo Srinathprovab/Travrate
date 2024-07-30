@@ -166,10 +166,10 @@ class ContactInformationTVCell: TableViewCell {
         
         countryCodeBtn.setTitle("", for: .normal)
         
-        setuptf(tf: emailTF, tag1: 1, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Email Address*")
-        setuptf(tf: mobileTF, tag1: 2, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Enter Mobile Number*")
+        setuptf(tf: emailTF, tag1: 1, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Email Address")
+        setuptf(tf: mobileTF, tag1: 2, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Enter Mobile Number")
         setuptf(tf: countrycodeTF, tag1: 3, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "+355")
-        setuptf(tf: contactnameTF, tag1: 4, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Contact Name*")
+        setuptf(tf: contactnameTF, tag1: 4, leftpadding: 20, font: .LatoRegular(size: 16), placeholder: "Contact Name")
         
         
         setupDropDown()

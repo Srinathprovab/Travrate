@@ -179,12 +179,11 @@ extension MyAccountVC {
         }
        
         NotificationCenter.default.addObserver(self, selector: #selector(logindone), name: Notification.Name("logindone"), object: nil)
-        
         checkLoginStatus()
     }
     
     
     @objc func logindone() {
-        self.commonTableView.reloadData()
+        checkLoginStatus()
     }
 }

@@ -43,27 +43,27 @@ class SelectedCRPackageTVCell: TableViewCell {
         MySingleton.shared.setAttributedTextnew(str1: "\( carproduct?.currency ?? ""):",
                                                 str2: "\( carproduct?.total ?? "")",
                                                 lbl: kwdlbl,
-                                                str1font: .InterSemiBold(size: 12),
-                                                str2font: .InterSemiBold(size: 22),
+                                                str1font: .InterBold(size: 12),
+                                                str2font: .InterBold(size: 22),
                                                 str1Color: .TitleColor,
                                                 str2Color: .TitleColor)
         
         
-        MySingleton.shared.setAttributedTextnew(str1: "Excess liability \(carproduct?.currency ?? ""):",
-                                                str2: "\( carproduct?.excess ?? "")",
+        MySingleton.shared.setAttributedTextnew(str1: "Excess liability ",
+                                                str2: "\(carproduct?.currency ?? ""):\( carproduct?.excess ?? "")",
                                                 lbl: liabililtylbl,
                                                 str1font: .InterSemiBold(size: 14),
-                                                str2font: .InterSemiBold(size: 14),
-                                                str1Color: .TitleColor,
+                                                str2font: .InterBold(size: 14),
+                                                str1Color: HexColor("#5B5B5B"),
                                                 str2Color: .TitleColor)
         
         
-        MySingleton.shared.setAttributedTextnew(str1: "Excluded Security Deposit \(carproduct?.currency ?? ""):",
-                                                str2: "\( carproduct?.deposit ?? "")",
+        MySingleton.shared.setAttributedTextnew(str1: "Excluded Security Deposit ",
+                                                str2: "\(carproduct?.currency ?? ""):\( carproduct?.deposit ?? "")",
                                                 lbl: depositelbl,
                                                 str1font: .InterSemiBold(size: 14),
-                                                str2font: .InterSemiBold(size: 14),
-                                                str1Color: .TitleColor,
+                                                str2font: .InterBold(size: 14),
+                                                str1Color: HexColor("#5B5B5B"),
                                                 str2Color: .TitleColor)
         
         

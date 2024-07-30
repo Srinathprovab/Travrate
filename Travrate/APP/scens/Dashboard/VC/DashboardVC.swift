@@ -114,18 +114,18 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     override func didTapOnFlightTabSelectBtnAction(cell: TabSelectTVCell) {
         
         defaults.set("Flight", forKey: UserDefaultsKeys.tabselect)
-        defaults.set("Origin", forKey: UserDefaultsKeys.fromcityname)
-        defaults.set("Destination", forKey: UserDefaultsKeys.tocityname)
-        defaults.set("Economy", forKey: UserDefaultsKeys.selectClass)
-        defaults.set("Economy", forKey: UserDefaultsKeys.rselectClass)
-        defaults.set("Add Date", forKey: UserDefaultsKeys.calDepDate)
-        defaults.set("Add Date", forKey: UserDefaultsKeys.calRetDate)
-        defaults.set("1", forKey: UserDefaultsKeys.adultCount)
-        defaults.set("0", forKey: UserDefaultsKeys.childCount)
-        defaults.set("0", forKey: UserDefaultsKeys.infantsCount)
-        defaults.set("ALL", forKey: UserDefaultsKeys.fcariercode)
-        defaults.set("ALL AIRLINES", forKey: UserDefaultsKeys.fcariername)
-        defaults.set("1", forKey: UserDefaultsKeys.totalTravellerCount)
+//        defaults.set("Origin", forKey: UserDefaultsKeys.fromcityname)
+//        defaults.set("Destination", forKey: UserDefaultsKeys.tocityname)
+//        defaults.set("Economy", forKey: UserDefaultsKeys.selectClass)
+//        defaults.set("Economy", forKey: UserDefaultsKeys.rselectClass)
+//        defaults.set("Add Date", forKey: UserDefaultsKeys.calDepDate)
+//        defaults.set("Add Date", forKey: UserDefaultsKeys.calRetDate)
+//        defaults.set("1", forKey: UserDefaultsKeys.adultCount)
+//        defaults.set("0", forKey: UserDefaultsKeys.childCount)
+//        defaults.set("0", forKey: UserDefaultsKeys.infantsCount)
+//        defaults.set("ALL", forKey: UserDefaultsKeys.fcariercode)
+//        defaults.set("ALL AIRLINES", forKey: UserDefaultsKeys.fcariername)
+//        defaults.set("1", forKey: UserDefaultsKeys.totalTravellerCount)
         
         
     
@@ -136,10 +136,10 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     
     override func didTapOnHotelTabSelect(cell: TabSelectTVCell) {
         defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
-        defaults.set("City/Location*", forKey: UserDefaultsKeys.locationcity)
-        defaults.set("Add Date", forKey: UserDefaultsKeys.checkin)
-        defaults.set("Add Date", forKey: UserDefaultsKeys.checkout)
-        defaults.set("Select Nationality*", forKey: UserDefaultsKeys.hnationality)
+//        defaults.set("City/Location", forKey: UserDefaultsKeys.locationcity)
+//        defaults.set("Add Date", forKey: UserDefaultsKeys.checkin)
+//        defaults.set("Add Date", forKey: UserDefaultsKeys.checkout)
+//        defaults.set("Select Nationality", forKey: UserDefaultsKeys.hnationality)
         
         gotoSearchHotelVC()
     }
@@ -165,18 +165,18 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     
     override func didTapOnTransfersbtnAction(cell: TabSelectTVCell) {
         defaults.set("transfers", forKey: UserDefaultsKeys.tabselect)
-        defaults.set("From Airport*", forKey: UserDefaultsKeys.transferfromcityname)
-        defaults.set("", forKey: UserDefaultsKeys.transferfromcityid)
-        defaults.set("To Airport*", forKey: UserDefaultsKeys.transfertocityname)
-        defaults.set("", forKey: UserDefaultsKeys.transfertocityid)
-        defaults.set("Select Date*", forKey: UserDefaultsKeys.transfercalDepDate)
-        defaults.set("Select Time*", forKey: UserDefaultsKeys.transfercalDepTime)
-        defaults.set("Select Date*", forKey: UserDefaultsKeys.transfercalRetDate)
-        defaults.set("Select Time*", forKey: UserDefaultsKeys.transfercalRetTime)
-        defaults.set("", forKey: UserDefaultsKeys.transferfromlat)
-        defaults.set("", forKey: UserDefaultsKeys.transferfromlang)
-        defaults.set("", forKey: UserDefaultsKeys.transfertolat)
-        defaults.set("", forKey: UserDefaultsKeys.transfertolang)
+//        defaults.set("From Airport", forKey: UserDefaultsKeys.transferfromcityname)
+//        defaults.set("", forKey: UserDefaultsKeys.transferfromcityid)
+//        defaults.set("To Airport", forKey: UserDefaultsKeys.transfertocityname)
+//        defaults.set("", forKey: UserDefaultsKeys.transfertocityid)
+//        defaults.set("Select Date", forKey: UserDefaultsKeys.transfercalDepDate)
+//        defaults.set("Select Time", forKey: UserDefaultsKeys.transfercalDepTime)
+//        defaults.set("Select Date", forKey: UserDefaultsKeys.transfercalRetDate)
+//        defaults.set("Select Time", forKey: UserDefaultsKeys.transfercalRetTime)
+//        defaults.set("", forKey: UserDefaultsKeys.transferfromlat)
+//        defaults.set("", forKey: UserDefaultsKeys.transferfromlang)
+//        defaults.set("", forKey: UserDefaultsKeys.transfertolat)
+//        defaults.set("", forKey: UserDefaultsKeys.transfertolang)
         
         
         
@@ -197,13 +197,13 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     
     override func didTapOnActivitiesbtnAction(cell: TabSelectTVCell) {
         defaults.set("Activities", forKey: UserDefaultsKeys.tabselect)
-        defaults.set("Select Destination City", forKey: UserDefaultsKeys.activitescityname)
-        defaults.set("Select Date", forKey: UserDefaultsKeys.calActivitesDepDate)
-        defaults.set("Select Date", forKey: UserDefaultsKeys.calActivitesRetDate)
-        defaults.set("1", forKey: UserDefaultsKeys.activitesadultCount)
-        defaults.set("0", forKey: UserDefaultsKeys.activiteschildCount)
-        defaults.set("0", forKey: UserDefaultsKeys.activitesinfantsCount)
-        totalPax = "1"
+//        defaults.set("Select Destination City", forKey: UserDefaultsKeys.activitescityname)
+//        defaults.set("Select Date", forKey: UserDefaultsKeys.calActivitesDepDate)
+//        defaults.set("Select Date", forKey: UserDefaultsKeys.calActivitesRetDate)
+//        defaults.set("1", forKey: UserDefaultsKeys.activitesadultCount)
+//        defaults.set("0", forKey: UserDefaultsKeys.activiteschildCount)
+//        defaults.set("0", forKey: UserDefaultsKeys.activitesinfantsCount)
+//        totalPax = "1"
         gotoActivitiesSearchVC()
        
     }
@@ -325,8 +325,8 @@ extension DashboardVC {
     
     func gotoSportsSearchVC() {
         
-        defaults.set("Select Date", forKey: UserDefaultsKeys.sportcalDepDate)
-        defaults.set("Select Date", forKey: UserDefaultsKeys.sportcalRetDate)
+//        defaults.set("Select Date", forKey: UserDefaultsKeys.sportcalDepDate)
+//        defaults.set("Select Date", forKey: UserDefaultsKeys.sportcalRetDate)
         
         callapibool = true
         guard let vc = SportsSearchVC.newInstance.self else {return}
@@ -344,15 +344,15 @@ extension DashboardVC {
     func gotoSearchCarRentalVC() {
         callapibool = true
         
-        defaults.set("Select Location", forKey: UserDefaultsKeys.pickuplocationname)
-        defaults.set("", forKey: UserDefaultsKeys.pickuplocationcode)
-        defaults.set("Select Location", forKey: UserDefaultsKeys.dropuplocationname)
-        defaults.set("", forKey: UserDefaultsKeys.dropuplocationcode)
-        defaults.set("Select Date", forKey: UserDefaultsKeys.pickuplocDate)
-        defaults.set("Select Date", forKey: UserDefaultsKeys.dropuplocDate)
-        defaults.set("Select Time", forKey: UserDefaultsKeys.pickuplocTime)
-        defaults.set("Select Time", forKey: UserDefaultsKeys.dropuplocTime)
-        defaults.set("Select Driver's Age", forKey: UserDefaultsKeys.driverage)
+//        defaults.set("Select Location", forKey: UserDefaultsKeys.pickuplocationname)
+//        defaults.set("", forKey: UserDefaultsKeys.pickuplocationcode)
+//        defaults.set("Select Location", forKey: UserDefaultsKeys.dropuplocationname)
+//        defaults.set("", forKey: UserDefaultsKeys.dropuplocationcode)
+//        defaults.set("Select Date", forKey: UserDefaultsKeys.pickuplocDate)
+//        defaults.set("Select Date", forKey: UserDefaultsKeys.dropuplocDate)
+//        defaults.set("Select Time", forKey: UserDefaultsKeys.pickuplocTime)
+//        defaults.set("Select Time", forKey: UserDefaultsKeys.dropuplocTime)
+//        defaults.set("Select Driver's Age", forKey: UserDefaultsKeys.driverage)
         
         guard let vc = SearchCarRentalVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen

@@ -567,8 +567,8 @@ class FilterVC: BaseTableVC{
         
         tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
         //  tablerow.append(TableRow(title:"AC / Non AC",data: fuleArray,cellType:.CheckBoxTVCell))
-        tablerow.append(TableRow(title:"Care Fule",data: fuleArray,cellType:.CheckBoxTVCell))
-        tablerow.append(TableRow(title:"Menual/Auto",data: carmanualArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Car Fule",data: fuleArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Manual/Auto",data: carmanualArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Door Count",data: doorcountArray,cellType:.CheckBoxTVCell))
         
         
@@ -1036,11 +1036,11 @@ class FilterVC: BaseTableVC{
                 
                 switch cell.filtertitle {
                     
-                case "Care Fule":
+                case "Car Fule":
                     selectedFuleArray.append(cell.titlelbl.text ?? "")
                     break
                     
-                case "Menual/Auto":
+                case "Manual/Auto":
                     selectedCarManual.append(cell.titlelbl.text ?? "")
                     break
                     
@@ -1268,13 +1268,13 @@ class FilterVC: BaseTableVC{
                 
                 switch cell.filtertitle {
                     
-                case "Care Fule":
+                case "Car Fule":
                     if let index = selectedFuleArray.firstIndex(of: cell.titlelbl.text ?? "") {
                         selectedFuleArray.remove(at: index)
                     }
                     break
                     
-                case "Menual/Auto":
+                case "Manual/Auto":
                     if let index = selectedCarManual.firstIndex(of: cell.titlelbl.text ?? "") {
                         selectedCarManual.remove(at: index)
                     }

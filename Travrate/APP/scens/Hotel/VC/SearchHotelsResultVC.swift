@@ -316,6 +316,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     
     
     func goToHotelDetailsVC(hid:String,bs:String,kwdprice:String) {
+        hotelDetailsTapBool = false
         guard let vc = HotelDetailsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.hotelid = hid
