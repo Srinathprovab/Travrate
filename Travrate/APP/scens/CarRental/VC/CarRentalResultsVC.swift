@@ -52,9 +52,9 @@ class CarRentalResultsVC: BaseTableVC, CarrentalSearchVMDelegate, AppliedCarrent
     
     //MARK: - didTapOnBackBtnAction
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        MySingleton.shared.callboolapi = true
-        guard let vc = DashBoardTBVC.newInstance.self else {return}
-        vc.selectedIndex = 0
+        MySingleton.shared.callboolapi = false
+        callapibool = false
+        guard let vc = SearchCarRentalVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false)
     }

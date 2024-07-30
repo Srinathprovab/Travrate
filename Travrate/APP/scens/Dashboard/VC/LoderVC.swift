@@ -25,18 +25,16 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     @IBOutlet weak var nightslbl: UILabel!
     @IBOutlet weak var roomslbl: UILabel!
     @IBOutlet weak var transfersInfoView: UIView!
-    
     @IBOutlet weak var sportsView: UIView!
     @IBOutlet weak var sporteventlbl: UILabel!
     @IBOutlet weak var sportvenulbl: UILabel!
     @IBOutlet weak var sportdateslbl: UILabel!
-    
     @IBOutlet weak var carrentalView: UIView!
     @IBOutlet weak var carRentalNamelbl: UILabel!
     @IBOutlet weak var carRentalDateslbl: UILabel!
-    
     @IBOutlet weak var flightEconomylbl: UILabel!
     @IBOutlet weak var waitView: UIView!
+    
     
     var searchdata:SearchData?
     var searchHoteldata:SearchHotelData?
@@ -57,7 +55,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
         setuplabels(lbl: nightslbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
         setuplabels(lbl: roomslbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
         setuplabels(lbl: flightEconomylbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
-        setuplabels(lbl: sportvenulbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
+        setuplabels(lbl: sporteventlbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
         setuplabels(lbl: sportvenulbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
         setuplabels(lbl: sportdateslbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
         setuplabels(lbl: carRentalNamelbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
@@ -80,9 +78,6 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     }
     
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,10 +94,6 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     
     
     func setupUI() {
-        
-        
-        
-        
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -23,18 +22,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="KGk-i7-Jjw" customClass="SearchCarRentalTVCell" customModule="Travrate" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="491" height="688"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="35" id="KGk-i7-Jjw" customClass="SearchCarRentalTVCell" customModule="Travrate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="491" height="628"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="491" height="688"/>
+                <rect key="frame" x="0.0" y="0.0" width="491" height="628"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYp-Z0-x55" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="491" height="688"/>
+                        <rect key="frame" x="0.0" y="0.0" width="491" height="628"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJP-3q-M5e">
-                                <rect key="frame" x="20" y="608" width="451" height="60"/>
+                                <rect key="frame" x="20" y="548" width="451" height="60"/>
                                 <color key="backgroundColor" name="Buttoncolor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8M5-qj-X5d"/>
@@ -576,10 +575,10 @@
                             <constraint firstItem="rxw-Sv-ado" firstAttribute="leading" secondItem="RYp-Z0-x55" secondAttribute="leading" constant="10" id="PHb-HZ-baC"/>
                             <constraint firstAttribute="trailing" secondItem="Sa0-qz-0YW" secondAttribute="trailing" constant="10" id="Pyw-Fv-Sco"/>
                             <constraint firstAttribute="trailing" secondItem="BwV-2O-cmD" secondAttribute="trailing" constant="10" id="Ryv-MP-HWi"/>
+                            <constraint firstItem="PJP-3q-M5e" firstAttribute="top" secondItem="BwV-2O-cmD" secondAttribute="bottom" constant="44" id="VXe-PU-OQg"/>
                             <constraint firstAttribute="trailing" secondItem="rxw-Sv-ado" secondAttribute="trailing" constant="10" id="cF7-BI-FGU"/>
                             <constraint firstAttribute="bottom" secondItem="PJP-3q-M5e" secondAttribute="bottom" constant="20" id="dKv-QH-AaW"/>
                             <constraint firstAttribute="trailing" secondItem="PJP-3q-M5e" secondAttribute="trailing" constant="20" id="diD-TT-oDZ"/>
-                            <constraint firstItem="PJP-3q-M5e" firstAttribute="top" secondItem="BwV-2O-cmD" secondAttribute="bottom" constant="104" id="fO6-VI-q1S"/>
                             <constraint firstItem="m9w-LA-Iv5" firstAttribute="leading" secondItem="RYp-Z0-x55" secondAttribute="leading" constant="10" id="mpU-Y8-P8e"/>
                             <constraint firstItem="KBx-et-a57" firstAttribute="leading" secondItem="RYp-Z0-x55" secondAttribute="leading" id="nDD-zr-w44"/>
                             <constraint firstItem="Tzs-Fj-QvQ" firstAttribute="top" secondItem="KBx-et-a57" secondAttribute="bottom" id="neo-5X-acy"/>
@@ -636,7 +635,7 @@
                 <outlet property="searchBtn" destination="PJP-3q-M5e" id="cke-iS-if4"/>
                 <outlet property="tvheight" destination="11h-97-qE9" id="WGi-Yp-XE3"/>
             </connections>
-            <point key="canvasLocation" x="261.83206106870227" y="116.19718309859155"/>
+            <point key="canvasLocation" x="261.83206106870227" y="137.32394366197184"/>
         </tableViewCell>
     </objects>
     <resources>
