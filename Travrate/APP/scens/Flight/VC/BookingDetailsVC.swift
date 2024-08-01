@@ -160,7 +160,12 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
             MySingleton.shared.paymobile = tf.text ?? ""
             break
             
-        case 3:
+        case 111:
+            MySingleton.shared.paycontactname = tf.text ?? ""
+            break
+            
+            
+        case 5:
             MySingleton.shared.regpassword = tf.text ?? ""
             break
             

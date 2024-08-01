@@ -138,6 +138,7 @@ enum TVCellType {
     case CruisePackegesTVCell
     case CruiseItineraryTVCell
     case CruiseContactdetailsTVCell
+    case CruiseTermsTVCell
     
     
     //Transfers

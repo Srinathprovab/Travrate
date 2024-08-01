@@ -30,7 +30,7 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVM
         return vc
     }
     
-    
+    var totalPassengerCount = 1
     override func viewWillAppear(_ animated: Bool) {
         addObserver()
         
@@ -189,8 +189,8 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVM
     override func didTapOnExpandAdultViewbtnAction(cell: AddDeatilsOfPassengerTVCell) {
         
         // Decrease passenger count ensuring it doesn't go below 1
-        if MySingleton.shared.transferpassengercount > 1 {
-            MySingleton.shared.transferpassengercount -= 1
+        if  totalPassengerCount <= MySingleton.shared.transferpassengercount{
+            totalPassengerCount -= 1
         }
         
         travelerArray.remove(at: cell.indexposition)
@@ -200,8 +200,8 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVM
     // MARK: - didTapOnAddPassengerBtnAction Delegate Methods
     override func didTapOnAddPassengerBtnAction(cell: AddPassengerButtonTVCell) {
         // Increase passenger count ensuring it doesn't go above 3
-        if MySingleton.shared.transferpassengercount < 3 {
-            MySingleton.shared.transferpassengercount += 1
+        if  totalPassengerCount < MySingleton.shared.transferpassengercount{
+            totalPassengerCount += 1
         }
         setupTVCells()
     }
@@ -317,7 +317,7 @@ extension BDTransferVC {
         MySingleton.shared.tablerow.append(TableRow(moreData:transfer_data,cellType:.TFlighDetailsTVCell))
         
         // Add rows for each passenger
-        for i in 1...MySingleton.shared.transferpassengercount {
+        for i in 1...totalPassengerCount {
             MySingleton.shared.positionsCount += 1
             let travellerCell = TableRow(title: "Passenger \(i)",
                                          key: "adult",
@@ -328,7 +328,7 @@ extension BDTransferVC {
         }
         
         // Add button to add passenger if count is less than 3
-        if MySingleton.shared.transferpassengercount < 3 {
+        if totalPassengerCount < MySingleton.shared.transferpassengercount  {
             MySingleton.shared.tablerow.append(TableRow(cellType: .AddPassengerButtonTVCell))
         }
         
@@ -359,6 +359,7 @@ extension BDTransferVC {
 extension BDTransferVC {
     
     func addObserver() {
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)

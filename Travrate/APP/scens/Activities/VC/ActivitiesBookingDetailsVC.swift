@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDelegate {
+class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDelegate, LoginViewModelDelegate, RegisterViewModelDelegate {
     
     
     @IBOutlet weak var bookingTitlelbl: UILabel!
@@ -37,7 +37,8 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
         
         // Do any additional setup after loading the view.
         setupUI()
-        
+        MySingleton.shared.registervm = RegisterViewModel(self)
+        MySingleton.shared.loginvm = LoginViewModel(self)
         MySingleton.shared.activitiesPreProcessBookingVM = ActivitiesPreProcessBookingVM(self)
     }
     
@@ -176,9 +177,7 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
         print(tf.tag)
         
         switch tf.tag {
-        case 111:
-            MySingleton.shared.paycontactname = tf.text ?? ""
-            break
+       
             
         case 1:
             MySingleton.shared.payemail = tf.text ?? ""
@@ -188,9 +187,15 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
             MySingleton.shared.paymobile = tf.text ?? ""
             break
             
+        case 111:
+            MySingleton.shared.paycontactname = tf.text ?? ""
+            break
             
-        case 333:
-            print(tf.text)
+            
+      
+            
+        case 5:
+            MySingleton.shared.regpassword = tf.text ?? ""
             break
             
             

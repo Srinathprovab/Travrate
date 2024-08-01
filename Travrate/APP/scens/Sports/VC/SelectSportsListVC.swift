@@ -144,7 +144,7 @@ extension SelectSportsListVC {
     
     func sportListResponse(response: SportListModel) {
         
-        teamlbl.text = MySingleton.shared.sportscityName
+        teamlbl.text = MySingleton.shared.sportsserviceName
         venulbl.text = MySingleton.shared.sportsVenuName
         dateslbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
         

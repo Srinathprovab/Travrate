@@ -211,29 +211,23 @@
                                         <rect key="frame" x="0.0" y="165" width="432" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syj-8Z-W5Y" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+965" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJp-Vx-E94">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="oB1-9O-7tX"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="dJp-Vx-E94" secondAttribute="bottom" id="5Bg-bb-feQ"/>
-                                                    <constraint firstAttribute="width" constant="80" id="6ja-Yw-Yui"/>
-                                                    <constraint firstAttribute="trailing" secondItem="dJp-Vx-E94" secondAttribute="trailing" id="Chb-rX-dgo"/>
-                                                    <constraint firstAttribute="bottom" secondItem="dJp-Vx-E94" secondAttribute="bottom" id="DgT-xW-b7t"/>
-                                                    <constraint firstItem="dJp-Vx-E94" firstAttribute="top" secondItem="Syj-8Z-W5Y" secondAttribute="top" id="Jft-34-xwv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="dJp-Vx-E94" secondAttribute="trailing" id="1p6-wV-v3g"/>
+                                                    <constraint firstAttribute="bottom" secondItem="dJp-Vx-E94" secondAttribute="bottom" id="3Ks-jX-Yem"/>
+                                                    <constraint firstAttribute="width" constant="70" id="6ja-Yw-Yui"/>
                                                     <constraint firstAttribute="height" constant="40" id="Ri5-v0-nMD"/>
-                                                    <constraint firstItem="dJp-Vx-E94" firstAttribute="leading" secondItem="Syj-8Z-W5Y" secondAttribute="leading" id="XPc-yv-a9R"/>
-                                                    <constraint firstItem="dJp-Vx-E94" firstAttribute="top" secondItem="Syj-8Z-W5Y" secondAttribute="top" id="XiJ-lF-aKk"/>
-                                                    <constraint firstAttribute="trailing" secondItem="dJp-Vx-E94" secondAttribute="trailing" id="gJP-E3-LZh"/>
+                                                    <constraint firstItem="dJp-Vx-E94" firstAttribute="top" secondItem="Syj-8Z-W5Y" secondAttribute="top" id="nxW-wJ-lw3"/>
+                                                    <constraint firstItem="dJp-Vx-E94" firstAttribute="leading" secondItem="Syj-8Z-W5Y" secondAttribute="leading" id="xc3-1L-AzB"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -248,10 +242,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4HZ-qL-9gj" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                                                <rect key="frame" x="84" y="0.0" width="348" height="40"/>
+                                                <rect key="frame" x="74" y="0.0" width="358" height="40"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xG8-VC-DQ6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="348" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="358" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" textContentType="tel"/>
                                                     </textField>
@@ -338,6 +332,7 @@
                 <outlet property="titleTF" destination="VVL-K2-X9P" id="hbX-AE-BkK"/>
                 <outlet property="titleView" destination="yGg-y1-hbW" id="SAR-ic-Ty4"/>
                 <outlet property="titlelbl" destination="7eg-UD-VaZ" id="2st-gn-Qv1"/>
+                <outlet property="totalPassengerCountlbl" destination="Tqx-l1-76w" id="bY2-vF-gtg"/>
             </connections>
             <point key="canvasLocation" x="129.7709923664122" y="170.77464788732397"/>
         </tableViewCell>

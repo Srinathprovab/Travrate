@@ -147,6 +147,13 @@ class SelectedHolidayPackageVC: BaseTableVC, HolidaySelectedVMDelegate {
         vc.imagesArray = self.imgsArray
         present(vc, animated: false)
     }
+    
+    
+    override func didTapOnCommonTermsBtnAction() {
+        commonTableView.reloadData()
+    }
+    
+   
 }
 
 
@@ -161,6 +168,7 @@ extension SelectedHolidayPackageVC {
         commonTableView.clipsToBounds = true
         commonTableView.registerTVCells(["HolidayItineraryTVCell",
                                          "HolidayContactdetailsTVCell",
+                                         "CruiseTermsTVCell",
                                          "EmptyTVCell"])
         
         
@@ -206,8 +214,8 @@ extension SelectedHolidayPackageVC {
         MySingleton.shared.tablerow.removeAll()
         
         MySingleton.shared.tablerow.append(TableRow(cellType:.HolidayItineraryTVCell))
-        
         MySingleton.shared.tablerow.append(TableRow(cellType:.HolidayContactdetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.CruiseTermsTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow

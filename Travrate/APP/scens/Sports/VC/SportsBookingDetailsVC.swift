@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
+class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate, LoginViewModelDelegate, RegisterViewModelDelegate {
     
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var gifimg: UIImageView!
@@ -37,7 +37,8 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
         
         // Do any additional setup after loading the view.
         setupUI()
-        
+        MySingleton.shared.registervm = RegisterViewModel(self)
+        MySingleton.shared.loginvm = LoginViewModel(self)
         MySingleton.shared.sportsbookingvm = SportsBookingVM(self)
     }
     
@@ -91,6 +92,8 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
         }else if MySingleton.shared.regpassword.isEmpty == true {
             showToast(message: "Enter Password")
         }else {
+            
+            
             callRegisterAPI()
         }
         
@@ -173,8 +176,13 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate {
             MySingleton.shared.paymobile = tf.text ?? ""
             break
             
-        case 4:
+        case 111:
             MySingleton.shared.payusername = tf.text ?? ""
+            break
+            
+            
+        case 5:
+            MySingleton.shared.regpassword = tf.text ?? ""
             break
             
             

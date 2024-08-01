@@ -106,10 +106,14 @@ extension SportsBookNowTVCell {
             self.easyTipView = EasyTipView(text: tipViewString, preferences: preferences)
             self.easyTipView.show(forView: flashlbl, withinSuperview: self.contentView)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [unowned self] in
+            self.flashlbl.isUserInteractionEnabled = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 8) { [unowned self] in
                 self.easyTipView.dismiss()
                 self.easyTipView = nil
+                self.flashlbl.isUserInteractionEnabled = true
             }
+            
+            
         }
     }
     

@@ -58,6 +58,14 @@ class SubmitOTPVC: UIViewController, HolidaySelectedVMDelegate, CruiseDetailsVie
         }
     }
     
+    
+    @IBAction func didTapOnCloseBtnAction(_ sender: Any) {
+        callapibool = false
+        MySingleton.shared.callboolapi = false
+        dismiss(animated: false)
+    }
+    
+    
 }
 
 

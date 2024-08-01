@@ -22,7 +22,7 @@ class TransfersInf0TVCell: TableViewCell {
     @IBOutlet weak var booknowlbl: UILabel!
     
     
-    
+    var noofpassengers = Int()
     var token = String()
     var transferlist: Raw_transfer_list?
     weak var delegate:TransfersInf0TVCellDelegate?
@@ -42,7 +42,7 @@ class TransfersInf0TVCell: TableViewCell {
     
     func setupUI() {
         setuplabels(lbl: titlelbl, text: "", textcolor: HexColor("#297B00"), font: .InterMedium(size: 16), align: .center)
-        setuplabels(lbl: freeCancellationTitlelbl, text: "", textcolor: HexColor("#44B50C"), font: .InterRegular(size: 14), align: .center)
+        setuplabels(lbl: freeCancellationTitlelbl, text: "Free Cancellation", textcolor: HexColor("#44B50C"), font: .InterRegular(size: 14), align: .center)
         setuplabels(lbl: carmodellbl, text: "", textcolor: .TitleColor, font: .InterSemiBold(size: 16), align: .right)
         setuplabels(lbl: passengerslbl, text: "", textcolor: HexColor("#707070"), font: .OpenSansRegular(size: 12), align: .right)
         setuplabels(lbl: booknowlbl, text: "Book Now", textcolor: .WhiteColor, font: .OpenSansMedium(size: 16), align: .center)
@@ -53,7 +53,7 @@ class TransfersInf0TVCell: TableViewCell {
     override func updateUI() {
         transferlist = cellInfo?.moreData as? Raw_transfer_list
         token = transferlist?.token ?? ""
-        
+        noofpassengers = transferlist?.car_detail?.luggage_capacity ?? 0
         passengerslbl.text = "Up to Passengers \(transferlist?.car_detail?.luggage_capacity ?? 0)"
         carmodellbl.text = transferlist?.car_detail?.models?[0]
         titlelbl.text = transferlist?.car_detail?.title ?? ""

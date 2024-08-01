@@ -38,9 +38,10 @@ class AddDeatilsOfPassengerTVCell: TableViewCell {
     @IBOutlet weak var countrycodeView: BorderedView!
     @IBOutlet weak var emailview: BorderedView!
     @IBOutlet weak var mobileview: UIStackView!
+    @IBOutlet weak var totalPassengerCountlbl: UILabel!
     
     
-    
+
     var maxLength = 8
     var isSearchBool = Bool()
     var searchText = String()
@@ -146,7 +147,7 @@ class AddDeatilsOfPassengerTVCell: TableViewCell {
         setupTextField(txtField: emailTF, tag1: 2, label: "Email Id", placeholder: "Email Address*")
         setupTextField(txtField: mobileTF, tag1: 2, label: "Mobile", placeholder: "Mobile Number")
         setupTextField(txtField: countrycodeTF, tag1: 2, label: "+965", placeholder: "Code")
-        
+        countrycodeTF.textAlignment = .center
         
         setupTitleDropDown()
         
@@ -158,7 +159,11 @@ class AddDeatilsOfPassengerTVCell: TableViewCell {
         countrycodeTF.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
         countrycodeTF.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
         
-        
+        setuplabels(lbl: totalPassengerCountlbl, 
+                    text: "Passenger Details(Max Passenger Allowed \(MySingleton.shared.transferpassengercount))",
+                    textcolor: .TitleColor,
+                    font: .InterSemiBold(size: 15),
+                    align: .left)
     }
     
     

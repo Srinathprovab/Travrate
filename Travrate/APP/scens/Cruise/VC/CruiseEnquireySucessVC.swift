@@ -29,18 +29,35 @@ class CruiseEnquireySucessVC: UIViewController {
         
         callapibool = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-           
+            
             if let  tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect), tabselect == "Cruise" {
-                self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
-                
+                //  self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
+                // self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
+                self.gotoCruiseVC()
             }else {
-                self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
-                
+                // self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
+                self.gotoHolidaysVC()
             }
         }
     }
     
     
+    
+    func gotoCruiseVC() {
+        callapibool = true
+        MySingleton.shared.callboolapi = true
+        guard let vc = CruiseVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false)
+    }
+    
+    func gotoHolidaysVC() {
+        callapibool = true
+        MySingleton.shared.callboolapi = true
+        guard let vc = HolidaysVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false)
+    }
     
     
 }

@@ -84,14 +84,14 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
         
         
         fromTF.tag = 1
-        fromTF.textColor = .TitleColor
+        //fromTF.textColor = .TitleColor
         fromTF.font = .OpenSansMedium(size: 16)
         fromTF.delegate = self
         fromTF.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
         fromTF.setLeftPaddingPoints(35)
         
         toTF.tag = 2
-        toTF.textColor = .TitleColor
+       // toTF.textColor = .TitleColor
         toTF.font = .OpenSansMedium(size: 16)
         toTF.delegate = self
         toTF.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
@@ -117,8 +117,8 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
             
             
             
-            fromTF.text = defaults.string(forKey: UserDefaultsKeys.transferfromcityname) ?? "From Airport"
-            toTF.text = defaults.string(forKey: UserDefaultsKeys.transfertocityname) ?? "To Airport"
+            fromTF.text = defaults.string(forKey: UserDefaultsKeys.transferfromcityname) ?? ""
+            toTF.text = defaults.string(forKey: UserDefaultsKeys.transfertocityname) ?? ""
             
             returnView.isHidden = true
             depDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? "Select Date"
@@ -145,7 +145,7 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
         guard let transfercalRetTime =  defaults.string(forKey: UserDefaultsKeys.transfercalRetTime) else {return}
        
         
-        fromTF.textColor = (transferfromcityname == "From Airport") ? .subtitleNewcolor : .TitleColor
+        fromTF.textColor = (transferfromcityname == "" || fromTF.text == "From Airport") ? .subtitleNewcolor : .TitleColor
         toTF.textColor = (transfertocityname == "To Airport") ? .subtitleNewcolor : .TitleColor
         depDateTF.textColor = (transfercalDepDate == "Select Date") ? .subtitleNewcolor : .TitleColor
         depTimeTF.textColor = (transfercalDepTime == "Select Time") ? .subtitleNewcolor : .TitleColor

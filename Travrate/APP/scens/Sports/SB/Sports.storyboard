@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -42,18 +41,18 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="260"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckb-F3-tZJ">
-                                                <rect key="frame" x="13" y="60" width="34" height="34"/>
+                                                <rect key="frame" x="13" y="60" width="40" height="40"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="o9i-2z-gu0">
-                                                        <rect key="frame" x="5" y="5" width="24" height="24"/>
+                                                        <rect key="frame" x="5" y="5" width="30" height="30"/>
                                                         <color key="tintColor" red="0.96078431369999995" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="24" id="crv-fI-O44"/>
-                                                            <constraint firstAttribute="width" constant="24" id="oEp-hR-k3U"/>
+                                                            <constraint firstAttribute="height" constant="30" id="crv-fI-O44"/>
+                                                            <constraint firstAttribute="width" constant="30" id="oEp-hR-k3U"/>
                                                         </constraints>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfi-1f-4Lt">
-                                                        <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain"/>
@@ -66,16 +65,16 @@
                                                 <constraints>
                                                     <constraint firstItem="gfi-1f-4Lt" firstAttribute="leading" secondItem="ckb-F3-tZJ" secondAttribute="leading" id="6jR-Py-FCd"/>
                                                     <constraint firstAttribute="trailing" secondItem="gfi-1f-4Lt" secondAttribute="trailing" id="C5o-HP-hQB"/>
-                                                    <constraint firstAttribute="width" constant="34" id="MNy-oM-6h8"/>
+                                                    <constraint firstAttribute="width" constant="40" id="MNy-oM-6h8"/>
                                                     <constraint firstItem="o9i-2z-gu0" firstAttribute="centerX" secondItem="ckb-F3-tZJ" secondAttribute="centerX" id="bEG-4c-7Le"/>
-                                                    <constraint firstAttribute="height" constant="34" id="d1e-aX-ozE"/>
+                                                    <constraint firstAttribute="height" constant="40" id="d1e-aX-ozE"/>
                                                     <constraint firstAttribute="bottom" secondItem="gfi-1f-4Lt" secondAttribute="bottom" id="msp-Fw-Chf"/>
                                                     <constraint firstItem="o9i-2z-gu0" firstAttribute="centerY" secondItem="ckb-F3-tZJ" secondAttribute="centerY" id="nEz-cU-Tw4"/>
                                                     <constraint firstItem="gfi-1f-4Lt" firstAttribute="top" secondItem="ckb-F3-tZJ" secondAttribute="top" id="zGI-Yr-UOC"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indulge Your Self" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhj-dZ-MzD">
-                                                <rect key="frame" x="113.66666666666669" y="65" width="166" height="24"/>
+                                                <rect key="frame" x="113.66666666666669" y="68" width="166" height="24"/>
                                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>

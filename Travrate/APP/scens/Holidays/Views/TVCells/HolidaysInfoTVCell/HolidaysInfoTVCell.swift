@@ -31,10 +31,10 @@ class HolidaysInfoTVCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-            super.prepareForReuse()
-            // Reset image to placeholder or nil
+        super.prepareForReuse()
+        // Reset image to placeholder or nil
         img.image = nil
-        }
+    }
     
     
     func setupUI() {

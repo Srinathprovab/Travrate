@@ -38,8 +38,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lorem ipsum dolor sit amet consectetur. Turpis quis tortor ultrices libero ac pulvinar. Massa at duis non mattis neque leo." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8re-jl-MlB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8re-jl-MlB">
                                 <rect key="frame" x="15" y="47" width="393" height="19.333333333333329"/>
+                                <string key="text">For a truly unique experience, contact one of our travel advisors via Customer Support Portal or enter your details and we will contact you to help customise your package!</string>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" name="subtitleNewcolor"/>
                                 <nil key="highlightedColor"/>
@@ -165,8 +166,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oq3-xL-lhy">
                                 <rect key="frame" x="15" y="229.33333333333337" width="393" height="85"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enail ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhb-Kt-f17">
-                                        <rect key="frame" x="0.0" y="0.0" width="49" height="19.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhb-Kt-f17">
+                                        <rect key="frame" x="0.0" y="0.0" width="53.333333333333336" height="19.333333333333332"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -201,7 +202,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kp-hC-HNN">
-                                        <rect key="frame" x="51" y="-0.66666666666668561" width="7.6666666666666643" height="20.333333333333332"/>
+                                        <rect key="frame" x="55.333333333333329" y="-0.66666666666668561" width="7.6666666666666643" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="BooknowBtnColor"/>
                                         <nil key="highlightedColor"/>
@@ -425,20 +426,20 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select Date" placeholder="From" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Da4-Az-DF7">
-                                                                <rect key="frame" x="0.0" y="0.0" width="359" height="55"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="Da4-Az-DF7" secondAttribute="bottom" id="4d0-9e-Q09"/>
                                                             <constraint firstItem="r8N-8v-2d5" firstAttribute="centerY" secondItem="kkv-nB-XxN" secondAttribute="centerY" id="5AK-qF-Gkj"/>
-                                                            <constraint firstItem="r8N-8v-2d5" firstAttribute="leading" secondItem="Da4-Az-DF7" secondAttribute="trailing" id="HOc-5X-3yf"/>
+                                                            <constraint firstItem="Da4-Az-DF7" firstAttribute="leading" secondItem="kkv-nB-XxN" secondAttribute="leading" id="Lh3-cb-DNy"/>
                                                             <constraint firstAttribute="trailing" secondItem="r8N-8v-2d5" secondAttribute="trailing" constant="10" id="YoO-hZ-ii6"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Da4-Az-DF7" secondAttribute="bottom" id="eis-BP-kfv"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Da4-Az-DF7" secondAttribute="trailing" id="caM-ku-jUa"/>
                                                             <constraint firstAttribute="height" constant="55" id="fIy-lm-2tA"/>
-                                                            <constraint firstItem="Da4-Az-DF7" firstAttribute="leading" secondItem="kkv-nB-XxN" secondAttribute="leading" id="oSo-mP-ggn"/>
-                                                            <constraint firstItem="Da4-Az-DF7" firstAttribute="top" secondItem="kkv-nB-XxN" secondAttribute="top" id="tfX-0N-HZF"/>
+                                                            <constraint firstItem="Da4-Az-DF7" firstAttribute="top" secondItem="kkv-nB-XxN" secondAttribute="top" id="yDI-12-omG"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">

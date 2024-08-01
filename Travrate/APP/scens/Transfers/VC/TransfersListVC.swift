@@ -79,6 +79,8 @@ class TransfersListVC: BaseTableVC, PreTransfersearchVMDelegate, AppliedTransfer
     }
     
     override func didTapOnBookNowBtnAction(cell: TransfersInf0TVCell) {
+        
+        MySingleton.shared.transferpassengercount = cell.noofpassengers
         MySingleton.shared.transfer_token = cell.token
         didTapOnBookNowBtnAction()
     }

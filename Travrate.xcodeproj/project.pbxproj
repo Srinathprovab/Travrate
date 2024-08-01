@@ -721,6 +721,8 @@
 		841EE19A2C4640F400F604D6 /* Booking_transction_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EE1992C4640F400F604D6 /* Booking_transction_details.swift */; };
 		841EE19E2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EE19C2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.swift */; };
 		841EE19F2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841EE19D2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.xib */; };
+		84203D4A2C5A491500B26076 /* CruiseTermsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84203D482C5A491500B26076 /* CruiseTermsTVCell.swift */; };
+		84203D4B2C5A491500B26076 /* CruiseTermsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84203D492C5A491500B26076 /* CruiseTermsTVCell.xib */; };
 		84373E052C21A3DC0029CAB3 /* SingleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84373E042C21A3DC0029CAB3 /* SingleClass.swift */; };
 		8439A1D42C3BCC3C00CA3672 /* PaymentSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439A1D32C3BCC3C00CA3672 /* PaymentSelection.swift */; };
 		8439A1D72C3C009D00CA3672 /* HotelPaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439A1D62C3C009D00CA3672 /* HotelPaymentModel.swift */; };
@@ -1651,6 +1653,8 @@
 		841EE1992C4640F400F604D6 /* Booking_transction_details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Booking_transction_details.swift; sourceTree = "<group>"; };
 		841EE19C2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalDriverInfoTVCell.swift; sourceTree = "<group>"; };
 		841EE19D2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionalDriverInfoTVCell.xib; sourceTree = "<group>"; };
+		84203D482C5A491500B26076 /* CruiseTermsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseTermsTVCell.swift; sourceTree = "<group>"; };
+		84203D492C5A491500B26076 /* CruiseTermsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CruiseTermsTVCell.xib; sourceTree = "<group>"; };
 		84373E042C21A3DC0029CAB3 /* SingleClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleClass.swift; sourceTree = "<group>"; };
 		8439A1D32C3BCC3C00CA3672 /* PaymentSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSelection.swift; sourceTree = "<group>"; };
 		8439A1D62C3C009D00CA3672 /* HotelPaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelPaymentModel.swift; sourceTree = "<group>"; };
@@ -2860,6 +2864,7 @@
 		652079F92BF4942F0076EF76 /* TVCells */ = {
 			isa = PBXGroup;
 			children = (
+				84203D472C5A48F200B26076 /* CruiseTermsTVCell */,
 				652079FA2BF4942F0076EF76 /* HolidayPackagesTVCell */,
 				652079FD2BF4942F0076EF76 /* HolidaysInfoTVCell */,
 				65207A002BF4942F0076EF76 /* HolidayAddItineraryTVCell */,
@@ -5501,6 +5506,15 @@
 			path = AdditionalDriverInfoTVCell;
 			sourceTree = "<group>";
 		};
+		84203D472C5A48F200B26076 /* CruiseTermsTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				84203D482C5A491500B26076 /* CruiseTermsTVCell.swift */,
+				84203D492C5A491500B26076 /* CruiseTermsTVCell.xib */,
+			);
+			path = CruiseTermsTVCell;
+			sourceTree = "<group>";
+		};
 		8439A1D52C3C008800CA3672 /* HotelPaymentModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -6287,6 +6301,7 @@
 				65207EC12BF494320076EF76 /* Login.storyboard in Resources */,
 				65207CBC2BF494310076EF76 /* Poppins-SemiBold.ttf in Resources */,
 				65207DD22BF494310076EF76 /* LoginDetailsTableViewCell.xib in Resources */,
+				84203D4B2C5A491500B26076 /* CruiseTermsTVCell.xib in Resources */,
 				65207DD12BF494310076EF76 /* ContactInformationTVCell.xib in Resources */,
 				65207D1F2BF494310076EF76 /* UserSpecificationTVCell.xib in Resources */,
 				65207E9E2BF494320076EF76 /* BCFlightInfoTVCell.xib in Resources */,
@@ -6849,6 +6864,7 @@
 				65207D552BF494310076EF76 /* FlightSearchVC.swift in Sources */,
 				846D24D22C40C1CF0030C539 /* Api_token_data.swift in Sources */,
 				65207E092BF494320076EF76 /* BookTransfersVC.swift in Sources */,
+				84203D4A2C5A491500B26076 /* CruiseTermsTVCell.swift in Sources */,
 				65207DE82BF494310076EF76 /* SelectFareTVCell.swift in Sources */,
 				846D24CE2C40C17B0030C539 /* CarVoucherModel.swift in Sources */,
 				6512C7632C16EE080077EA68 /* CarRentalResultsVC.swift in Sources */,

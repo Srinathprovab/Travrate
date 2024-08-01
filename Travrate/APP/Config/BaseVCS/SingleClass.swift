@@ -208,6 +208,8 @@ class MySingleton {
     var sportsVenuId = String()
     var sportFromDate = String()
     var sportToDate = String()
+    var sportsserviceName = String()
+    var sportsservicId = String()
     var sportscityName = String()
     var sportscityId = String()
     var sports_searchid = String()

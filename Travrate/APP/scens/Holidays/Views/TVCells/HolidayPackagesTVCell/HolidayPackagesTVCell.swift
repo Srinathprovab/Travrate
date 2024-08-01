@@ -36,6 +36,39 @@ class HolidayPackagesTVCell: TableViewCell {
     override func updateUI() {
         titlelbl.text = cellInfo?.title ?? ""
         
+        let compressor = ImageCompressionTransformer(quality: 0.1) // Compress to 50% quality
+        let imageUrl = URL(string: cellInfo?.image ?? "")
+
+        packageImage.sd_setImage(
+            with: imageUrl,
+            placeholderImage: UIImage(named: "placeholder.png"),
+            options: [.retryFailed],
+            context: [.imageTransformer: compressor],
+            progress: { receivedSize, expectedSize, url in
+                // Optionally handle progress updates here
+                // Example: Update a progress indicator
+                let progress = Float(receivedSize) / Float(expectedSize)
+                print("Download Progress: \(progress)")
+            },
+            completed: { image, error, cacheType, url in
+                if let error = error {
+                    // Handle error loading image
+                    print("Error loading image: \(error.localizedDescription)")
+                    // Check if the error is due to a 404 Not Found response
+                    if (error as NSError).code == NSURLErrorFileDoesNotExist {
+                        // Set placeholder image for 404 error
+                        self.packageImage.image = UIImage(named: "noimage")
+                    } else {
+                        // Set placeholder image for other errors
+                        self.packageImage.image = UIImage(named: "noimage")
+                    }
+                } else {
+                    // Optionally handle success here
+                    print("Image loaded successfully")
+                }
+            }
+        )
+
         updateHeight()
     }
     

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -35,8 +36,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Nf-TF-3CF" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                         <rect key="frame" x="16" y="0.0" width="532" height="111"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long Side, Upper tier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdD-ZS-vq0">
-                                <rect key="frame" x="12" y="14" width="161.66666666666666" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Long Side, Upper tier" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdD-ZS-vq0">
+                                <rect key="frame" x="12" y="14" width="378" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -73,8 +74,11 @@
                                 <color key="textColor" name="TitleColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD:25.597" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2Y-Sv-O4y">
-                                <rect key="frame" x="403.66666666666669" y="13.999999999999998" width="116.33333333333331" height="27.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="KWD:25.597" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2Y-Sv-O4y">
+                                <rect key="frame" x="400" y="13.999999999999998" width="120" height="27.333333333333329"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="SFo-LS-je7"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -104,21 +108,20 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2t1-BT-b3R" firstAttribute="top" secondItem="S6f-TM-Jml" secondAttribute="bottom" constant="22" id="4UM-qM-DsM"/>
                             <constraint firstItem="2A4-H1-X3E" firstAttribute="top" secondItem="B2Y-Sv-O4y" secondAttribute="bottom" constant="5" id="5bY-B5-73Y"/>
-                            <constraint firstItem="B2Y-Sv-O4y" firstAttribute="top" secondItem="LdD-ZS-vq0" secondAttribute="top" id="7y2-RL-Fpn"/>
                             <constraint firstItem="01R-K8-sDe" firstAttribute="top" secondItem="2A4-H1-X3E" secondAttribute="bottom" constant="5" id="9Ud-Pd-8Cm"/>
+                            <constraint firstAttribute="bottom" secondItem="BPF-Xv-cNE" secondAttribute="bottom" constant="13.67" id="Chr-Ku-L1M"/>
                             <constraint firstAttribute="trailing" secondItem="2A4-H1-X3E" secondAttribute="trailing" constant="12" id="Cwx-uS-oit"/>
                             <constraint firstItem="QXa-ZA-peK" firstAttribute="centerX" secondItem="tlT-xp-DOP" secondAttribute="centerX" id="DRd-x0-e22"/>
                             <constraint firstItem="BPF-Xv-cNE" firstAttribute="leading" secondItem="0Nf-TF-3CF" secondAttribute="leading" constant="12" id="GRN-JD-zkf"/>
                             <constraint firstItem="S6f-TM-Jml" firstAttribute="leading" secondItem="0Nf-TF-3CF" secondAttribute="leading" constant="12" id="K9F-Ci-1Ee"/>
                             <constraint firstItem="LdD-ZS-vq0" firstAttribute="leading" secondItem="0Nf-TF-3CF" secondAttribute="leading" constant="12" id="KU2-1k-Vkq"/>
                             <constraint firstItem="LdD-ZS-vq0" firstAttribute="top" secondItem="0Nf-TF-3CF" secondAttribute="top" constant="14" id="Lj2-tU-08f"/>
+                            <constraint firstItem="BPF-Xv-cNE" firstAttribute="top" secondItem="S6f-TM-Jml" secondAttribute="bottom" constant="24.670000000000002" id="RC0-8C-rfg"/>
                             <constraint firstItem="S6f-TM-Jml" firstAttribute="top" secondItem="LdD-ZS-vq0" secondAttribute="bottom" constant="6" id="UCP-3H-VuM"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LdD-ZS-vq0" secondAttribute="trailing" constant="150" id="eEp-EU-TVi"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="111" id="egu-4q-k3V"/>
                             <constraint firstItem="tlT-xp-DOP" firstAttribute="centerY" secondItem="0Nf-TF-3CF" secondAttribute="centerY" id="fba-pb-LH4"/>
                             <constraint firstItem="tlT-xp-DOP" firstAttribute="centerX" secondItem="0Nf-TF-3CF" secondAttribute="centerX" id="g3i-7H-pcY"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="111" id="gZD-Ce-xN7"/>
                             <constraint firstItem="QXa-ZA-peK" firstAttribute="top" secondItem="tlT-xp-DOP" secondAttribute="bottom" constant="2" id="kFP-AT-I7Q"/>
                             <constraint firstAttribute="trailing" secondItem="01R-K8-sDe" secondAttribute="trailing" constant="12" id="knV-3W-PSL"/>
                             <constraint firstAttribute="bottom" secondItem="2t1-BT-b3R" secondAttribute="bottom" constant="11" id="mDH-zp-MpV"/>
@@ -126,6 +129,7 @@
                             <constraint firstItem="QXa-ZA-peK" firstAttribute="leading" secondItem="2t1-BT-b3R" secondAttribute="trailing" constant="10" id="pV4-53-qo6"/>
                             <constraint firstAttribute="bottom" secondItem="01R-K8-sDe" secondAttribute="bottom" constant="11" id="qYB-nT-XOF"/>
                             <constraint firstItem="2t1-BT-b3R" firstAttribute="leading" secondItem="BPF-Xv-cNE" secondAttribute="trailing" constant="6" id="qmk-8z-XHd"/>
+                            <constraint firstItem="B2Y-Sv-O4y" firstAttribute="leading" secondItem="LdD-ZS-vq0" secondAttribute="trailing" constant="10" id="sDY-MX-gOq"/>
                             <constraint firstAttribute="trailing" secondItem="B2Y-Sv-O4y" secondAttribute="trailing" constant="12" id="xep-z0-SLa"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

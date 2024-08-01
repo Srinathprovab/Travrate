@@ -24,6 +24,8 @@ class HolidayItineraryTVCell: TableViewCell, CruiseAddItineraryTVCellDelegate {
     @IBOutlet weak var contactusBtn: UIButton!
     
     
+    // Prototype cell for height calculation
+    private var prototypeCell: CruiseAddItineraryTVCell?
     weak var delegate : HolidayItineraryTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,14 +46,19 @@ class HolidayItineraryTVCell: TableViewCell, CruiseAddItineraryTVCellDelegate {
         
         
         desclbl.attributedText = MySingleton.shared.holidaySelectedData?.tour__2_data?[0].desc?.htmlToAttributedString
-        
         updateHeight()
+        
     }
     
     
     
     func setupUI() {
+        
+        contactusBtn.layer.borderWidth = 1.5
+        contactusBtn.layer.borderColor = UIColor.BooknowBtnColor.cgColor
+        contactusBtn.layer.cornerRadius = 15
         contactusBtn.addTarget(self, action: #selector(didTapOnContactusBtnAction(_:)), for: .touchUpInside)
+        
         setupCV()
         setupTV()
     }
@@ -130,19 +137,42 @@ extension HolidayItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSo
 
 extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     
-    
-    func updateHeight() {
-        itineraryTV.reloadData()
-        itineraryTV.layoutIfNeeded()
-        
-        let height = itineraryTV.contentSize.height
-        tvHeight.constant = height
-        
-        UIView.animate(withDuration: 0.3) {
-            self.layoutIfNeeded()
+    func calculateTableViewHeight() -> CGFloat {
+        // Ensure the prototype cell is initialized
+        if prototypeCell == nil {
+            prototypeCell = UINib(nibName: "CruiseAddItineraryTVCell", bundle: nil).instantiate(withOwner: nil, options: nil).first as? CruiseAddItineraryTVCell
         }
         
-        updateParentTableView()
+        // Calculate the total height based on the data and prototype cell
+        var totalHeight: CGFloat = 0
+        for data in MySingleton.shared.holidayItinerary {
+            if let cell = prototypeCell {
+                configureCell(cell, with: data)
+                
+                // Ensure the label can accommodate its content
+                cell.subtitlelbl.numberOfLines = 0
+                cell.subtitlelbl.lineBreakMode = .byWordWrapping
+                
+                cell.setNeedsLayout()
+                cell.layoutIfNeeded()
+                
+                let height = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+                totalHeight += height
+            }
+        }
+        
+        // Adjust padding based on typical content
+        let padding: CGFloat = 20
+        totalHeight += padding
+        
+        return totalHeight
+    }
+    
+    
+    func updateHeight() {
+        tvHeight.constant = calculateTableViewHeight()
+        itineraryTV.reloadData()
+        itineraryTV.layoutIfNeeded()
     }
     
     
@@ -157,8 +187,7 @@ extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         itineraryTV.separatorStyle = .none
         
         itineraryTV.rowHeight = UITableView.automaticDimension
-        itineraryTV.estimatedRowHeight = 360
-        
+        itineraryTV.estimatedRowHeight = 350
         
     }
     
@@ -172,28 +201,9 @@ extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CruiseAddItineraryTVCell {
             cell.delegate = self
             cell.selectionStyle = .none
-            
+            cell.tag = indexPath.row
             let data =  MySingleton.shared.holidayItinerary[indexPath.row]
-            cell.daylbl.text = "Day \(indexPath.row + 1)"
-            cell.titlelbl.text = data.title ?? ""
-            cell.subtitlelbl.text = data.desc ?? ""
-           
-            cell.img.sd_setImage(with: URL(string: data.image ?? ""),
-                                         placeholderImage: UIImage(named: "placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
-                if let error = error {
-                    // Handle error loading image
-                    print("Error loading banner image: \(error.localizedDescription)")
-                    // Check if the error is due to a 404 Not Found response
-                    if (error as NSError).code == NSURLErrorBadServerResponse {
-                        // Set placeholder image for 404 error
-                        cell.img.image = UIImage(named: "noimage")
-                    } else {
-                        // Set placeholder image for other errors
-                        cell.img.image = UIImage(named: "noimage")
-                    }
-                }
-            })
-            
+            configureCell(cell, with: data)
             
             c = cell
             
@@ -202,31 +212,28 @@ extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     }
     
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        itineraryTV.deselectRow(at: indexPath, animated: true)
-//        guard let cell = tableView.cellForRow(at: indexPath) as? CruiseAddItineraryTVCell else { return }
-//        
-//        cell.showbool.toggle()
-//        cell.dropdownimg.image = UIImage(named: cell.showbool ? "dropup" : "downarrow")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
-//        cell.subtitleHolderView.isHidden = !cell.showbool
-//        
-//        
-//        
-//        itineraryTV.beginUpdates()
-//        itineraryTV.endUpdates()
-//        
-//        updateHeight()
-//        delegate?.didTapOnTitleDropDownBtnAction(cell: cell)
-//    }
     
     
-    func updateParentTableView() {
-           guard let parentTableView = self.superview as? UITableView else { return }
-           UIView.setAnimationsEnabled(false)
-           parentTableView.beginUpdates()
-           parentTableView.endUpdates()
-           UIView.setAnimationsEnabled(true)
-       }
+    // Helper function to configure the cell
+    private func configureCell(_ cell: CruiseAddItineraryTVCell, with data: Itinerary) {
+        
+        
+        cell.daylbl.text = "Day \((cell.tag) + 1)"
+        cell.titlelbl.text = data.title ?? ""
+        cell.subtitlelbl.text = data.desc ?? ""
+        
+        cell.img.sd_setImage(with: URL(string: data.image ?? ""),
+                             placeholderImage: UIImage(named: "placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+            if let error = error {
+                print("Error loading banner image: \(error.localizedDescription)")
+                if (error as NSError).code == NSURLErrorBadServerResponse {
+                    cell.img.image = UIImage(named: "noimage")
+                } else {
+                    cell.img.image = UIImage(named: "noimage")
+                }
+            }
+        })
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -234,3 +241,6 @@ extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     
     
 }
+
+
+

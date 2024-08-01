@@ -168,6 +168,11 @@ class CruiseDetailsVC: BaseTableVC, CruiseDetailsViewModelDelegate {
         commonTableView.reloadData()
     }
     
+    //MARK: - didTapOnCommonTermsBtnAction
+    override func didTapOnCommonTermsBtnAction() {
+        commonTableView.reloadData()
+    }
+    
 }
 
 
@@ -183,6 +188,7 @@ extension CruiseDetailsVC {
         commonTableView.clipsToBounds = true
         commonTableView.registerTVCells(["CruiseItineraryTVCell",
                                          "CruiseContactdetailsTVCell",
+                                         "CruiseTermsTVCell",
                                          "EmptyTVCell"])
         
         setupVisaTVCells()
@@ -239,6 +245,7 @@ extension CruiseDetailsVC {
         MySingleton.shared.tablerow.append(TableRow(moreData:imgsArray,
                                                     cellType:.CruiseItineraryTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.CruiseContactdetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(cellType:.CruiseTermsTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         

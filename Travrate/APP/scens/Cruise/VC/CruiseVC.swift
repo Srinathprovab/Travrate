@@ -18,15 +18,12 @@ class CruiseVC: BaseTableVC, CruiseViewModelDelegate {
         return vc
     }
     
+   
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
+    deinit {
         MySingleton.shared.cruiseList.removeAll()
         MySingleton.shared.cruise = nil
         NotificationCenter.default.removeObserver(self)
-        
-       
     }
     
     
@@ -109,8 +106,6 @@ extension CruiseVC {
     
     
     func cruiseList(response: CruiseModel) {
-        MySingleton.shared.cruiseList.removeAll()
-        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
             loderBool = false
@@ -119,6 +114,8 @@ extension CruiseVC {
         
         MySingleton.shared.cruiseList = response.data ?? []
         MySingleton.shared.cruise = response
+        
+        
         DispatchQueue.main.async {
             self.setupTVCells()
         }

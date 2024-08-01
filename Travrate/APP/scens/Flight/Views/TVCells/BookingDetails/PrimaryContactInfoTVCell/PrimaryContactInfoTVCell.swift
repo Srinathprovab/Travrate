@@ -28,8 +28,6 @@ class PrimaryContactInfoTVCell: TableViewCell {
     @IBOutlet weak var regBtn: UIButton!
     @IBOutlet weak var guestBtn: UIButton!
     @IBOutlet weak var showpassBtn: UIButton!
-    
-    
     @IBOutlet weak var nametitlelbl: UILabel!
     @IBOutlet weak var mobiletitlelbl: UILabel!
     @IBOutlet weak var pwdTitlelbl: UILabel!
