@@ -160,8 +160,8 @@ extension UITextView{
     func setPlaceholder(ph:String) {
         
         let placeholderLabel = UILabel()
-        placeholderLabel.text = ""
-        placeholderLabel.font = UIFont.OpenSansRegular(size: 16)
+        placeholderLabel.text = "Type Here .."
+        placeholderLabel.font = UIFont.OpenSansRegular(size: 12)
         placeholderLabel.sizeToFit()
         placeholderLabel.tag = 222
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (self.font?.pointSize)! / 2)

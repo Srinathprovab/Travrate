@@ -25,7 +25,7 @@ class SportsBookNowTVCell: TableViewCell {
     @IBOutlet weak var noofTickets: UILabel!
     
     
-    
+    var sportsTotalPersonCount = 0
     var easyTipView : EasyTipView!
     let tipViewString =  "Orders are processed manually and subjected to supplier approval. the tickets are delivered 24-72 hours prior to the event"
     var searchid = String()
@@ -76,6 +76,9 @@ class SportsBookNowTVCell: TableViewCell {
         servicefeelbl.text = cellInfo?.headerText ?? ""
         
         noofTickets.text = "No.of tickets \(cellInfo?.text ?? "")"
+        sportsTotalPersonCount = Int(cellInfo?.text ?? "0") ?? 0
+        
+        
     }
     
     

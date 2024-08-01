@@ -63,9 +63,12 @@ extension PersonInformationTVCell {
     
     func setuppersonsDropdown() {
         
+       
         
         var noofpersonsArray = [String]()
-        for i in 1 ... (MySingleton.shared.sportsBookingData?.event_list?.availableCategoriesQuantity ?? 0) {
+//        for i in 1 ... (MySingleton.shared.sportsBookingData?.event_list?.availableCategoriesQuantity ?? 0) {
+        for i in 1 ...  MySingleton.shared.sportsTotalPersonCount {
+
             noofpersonsArray.append("\(i)")
         }
         

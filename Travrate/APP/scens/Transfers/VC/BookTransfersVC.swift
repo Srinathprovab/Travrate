@@ -238,9 +238,8 @@ extension BookTransfersVC {
             }else {
                 gotoTransfersListVC()
             }
-            
-            
         }
+        
         
     }
 

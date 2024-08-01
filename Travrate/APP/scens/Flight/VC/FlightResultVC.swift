@@ -1012,7 +1012,7 @@ extension FlightResultVC {
 extension FlightResultVC {
     
     func callActiveBookingSourceAPI() {
-        
+        self.holderView.isHidden = true
         defaults.set(false, forKey: "flightfilteronce")
         MySingleton.shared.loderString = "loder"
         loderBool = true
@@ -1023,6 +1023,18 @@ extension FlightResultVC {
     }
     
     func activebookingSourceResult(response: ActiveBookingSourceModel) {
+        
+        
+        prices.removeAll()
+        durationArray.removeAll()
+        kwdPriceArray.removeAll()
+        dateArray.removeAll()
+        AirlinesArray.removeAll()
+        ConnectingFlightsArray.removeAll()
+        ConnectingAirportsArray.removeAll()
+        luggageArray.removeAll()
+        noofstopsArray.removeAll()
+        layoverdurationArray.removeAll()
         
         bsDataArray = response.data ?? []
         bookingSourceDataArrayCount = response.data?.count ?? 0
@@ -1106,7 +1118,7 @@ extension FlightResultVC {
             
             if flights.count > 0 {
                 DispatchQueue.main.async {
-
+                    
                     MySingleton.shared.returnDateTapbool = false
                     MySingleton.shared.searchid = "\(response.data?.search_id ?? "0")"
                     MySingleton.shared.traceid = response.data?.traceId ?? ""
@@ -1133,17 +1145,21 @@ extension FlightResultVC {
         }
         
         
-//        if bookingSourceDataArrayCount == 0 {
-//            
-//            
-//            if flights.count <= 0 {
-//                gotoNoInternetScreen(keystr: "noresult")
-//                
-//            }else {
-//                
-//                appendPriceAndDate(list: flights)
-//            }
-//        }
+        if bookingSourceDataArrayCount == 0 {
+            
+            
+            if flights.count <= 0 {
+                gotoNoInternetScreen(keystr: "noresult")
+                
+            }else {
+                
+                hideLoadera()
+                loderBool = false
+                self.holderView.isHidden = false
+                
+                // appendPriceAndDate(list: flights)
+            }
+        }
         
         
         
@@ -1155,21 +1171,12 @@ extension FlightResultVC {
     func appendPriceAndDate(list:[[FlightList]]) {
         
         // Call this when you want to remove the child view controller
-        hideLoadera()
-        loderBool = false
-        self.holderView.isHidden = false
+        //        hideLoadera()
+        //        loderBool = false
+        //        self.holderView.isHidden = false
         
         flnew = list
-        prices.removeAll()
-        durationArray.removeAll()
-        kwdPriceArray.removeAll()
-        dateArray.removeAll()
-        AirlinesArray.removeAll()
-        ConnectingFlightsArray.removeAll()
-        ConnectingAirportsArray.removeAll()
-        luggageArray.removeAll()
-        noofstopsArray.removeAll()
-        layoverdurationArray.removeAll()
+        
         
         
         list.forEach { i in
@@ -1199,7 +1206,6 @@ extension FlightResultVC {
                         
                         if let convertedString = MySingleton.shared.convertToPC(input: m.weight_Allowance ?? "") {
                             luggageArray.append(convertedString)
-                            
                         } else {
                             print("Invalid input format")
                         }

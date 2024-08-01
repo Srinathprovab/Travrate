@@ -82,6 +82,7 @@ class MySingleton {
     var filterApplyedBool = false
     var adultsCount = 1
     var sportsPersonCount = 0
+    var sportsTotalPersonCount = 0
     var sportsShippingFees = 0
     var childCount = 0
     var infantsCount = 0
@@ -496,7 +497,7 @@ class MySingleton {
             } else if inputString.contains("Kg") {
                 return "\(number) Kilogram"
             } else if inputString.contains("NumberOfPieces") {
-                return "\(number) Piece per person."
+                return "\(number) Piece"
             }
         }
         return "Invalid input format."

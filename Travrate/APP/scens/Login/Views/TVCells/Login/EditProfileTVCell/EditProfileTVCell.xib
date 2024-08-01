@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -626,22 +627,22 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="R5l-NF-FDo">
-                                <rect key="frame" x="20" y="1041" width="346" height="174"/>
+                                <rect key="frame" x="28" y="1041" width="338" height="174"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hq-vg-Shs">
-                                        <rect key="frame" x="0.0" y="0.0" width="346" height="82"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="338" height="82"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PinCode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDY-B7-ODq">
-                                                <rect key="frame" x="0.0" y="0.0" width="346" height="16.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pincode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDY-B7-ODq">
+                                                <rect key="frame" x="0.0" y="0.0" width="338" height="16.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2c-gE-lyF" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="31.666666666666742" width="346" height="48"/>
+                                                <rect key="frame" x="0.0" y="31.666666666666742" width="338" height="48"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="8" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pin Code" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="qGf-8K-0uN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="48"/>
+                                                    <textField opaque="NO" tag="8" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pincode" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="qGf-8K-0uN">
+                                                        <rect key="frame" x="0.0" y="0.0" width="338" height="48"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" textContentType="postal-code"/>
                                                     </textField>
@@ -680,7 +681,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcr-d9-HRM">
-                                        <rect key="frame" x="50" y="126" width="246" height="48"/>
+                                        <rect key="frame" x="50" y="126" width="238" height="48"/>
                                         <color key="backgroundColor" name="Buttoncolor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="3Mf-kQ-guL"/>
@@ -724,7 +725,7 @@
                             <constraint firstItem="fzM-QO-omy" firstAttribute="leading" secondItem="bDF-qI-FSl" secondAttribute="leading" constant="28" id="RFB-ea-sGb"/>
                             <constraint firstItem="FDd-Bn-4V1" firstAttribute="leading" secondItem="bDF-qI-FSl" secondAttribute="leading" constant="28" id="V5l-LJ-TuH"/>
                             <constraint firstItem="hcv-sC-By6" firstAttribute="leading" secondItem="bDF-qI-FSl" secondAttribute="leading" constant="28" id="WEK-JK-fCa"/>
-                            <constraint firstItem="R5l-NF-FDo" firstAttribute="leading" secondItem="bDF-qI-FSl" secondAttribute="leading" constant="20" id="Xnn-00-5Sq"/>
+                            <constraint firstItem="R5l-NF-FDo" firstAttribute="leading" secondItem="bDF-qI-FSl" secondAttribute="leading" constant="28" id="Xnn-00-5Sq"/>
                             <constraint firstItem="cLk-Aw-FSL" firstAttribute="leading" secondItem="bDF-qI-FSl" secondAttribute="leading" constant="28" id="ZRf-eJ-1pG"/>
                             <constraint firstItem="Nhx-RG-G2E" firstAttribute="leading" secondItem="bDF-qI-FSl" secondAttribute="leading" constant="28" id="ar8-sm-hZP"/>
                             <constraint firstAttribute="trailing" secondItem="Nhx-RG-G2E" secondAttribute="trailing" constant="28" id="bSi-4g-ftL"/>

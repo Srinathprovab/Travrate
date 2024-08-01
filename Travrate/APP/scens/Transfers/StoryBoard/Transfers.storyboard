@@ -195,7 +195,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="135"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport Dubai International" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yb7-Ia-lqB">
-                                                <rect key="frame" x="10" y="60.000000000000007" width="373" height="19.333333333333336"/>
+                                                <rect key="frame" x="80" y="60.000000000000007" width="233" height="19.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="HeadingColor"/>
                                                 <nil key="highlightedColor"/>
@@ -213,13 +213,13 @@
                                                     <action selector="didTapOnBackBtnAction:" destination="kma-gH-KEx" eventType="touchUpInside" id="mqo-EK-1DQ"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport Ai Maktoum Dubai International Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZe-8s-pln">
-                                                <rect key="frame" x="10" y="84.666666666666671" width="373" height="19.333333333333329"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Airport Ai Maktoum Dubai International Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZe-8s-pln">
+                                                <rect key="frame" x="10" y="84.666666666666686" width="373" height="19.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="HeadingColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 8 - May 12 -Round Trip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMV-7X-eZg">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="May 8 - May 12 -Round Trip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMV-7X-eZg">
                                                 <rect key="frame" x="10" y="106" width="373" height="19.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="HeadingColor"/>
@@ -238,11 +238,12 @@
                                         <color key="backgroundColor" name="LayoverColor"/>
                                         <constraints>
                                             <constraint firstItem="mZe-8s-pln" firstAttribute="top" secondItem="IZV-EY-WNs" secondAttribute="bottom" id="8iR-6O-JWf"/>
+                                            <constraint firstAttribute="bottom" secondItem="wMV-7X-eZg" secondAttribute="bottom" constant="9.6699999999999999" id="GaZ-qE-dJG"/>
                                             <constraint firstItem="wMV-7X-eZg" firstAttribute="leading" secondItem="s1F-uM-y4l" secondAttribute="leading" constant="10" id="JFn-jD-XOK"/>
                                             <constraint firstAttribute="trailing" secondItem="UMZ-Sc-9Lg" secondAttribute="trailing" id="PMI-Cn-5XW"/>
                                             <constraint firstItem="IZV-EY-WNs" firstAttribute="centerY" secondItem="yb7-Ia-lqB" secondAttribute="centerY" id="YcI-3O-rOd"/>
                                             <constraint firstItem="IZV-EY-WNs" firstAttribute="leading" secondItem="s1F-uM-y4l" secondAttribute="leading" constant="13" id="ZaV-On-yZL"/>
-                                            <constraint firstItem="yb7-Ia-lqB" firstAttribute="leading" secondItem="s1F-uM-y4l" secondAttribute="leading" constant="10" id="cil-zJ-hBP"/>
+                                            <constraint firstItem="yb7-Ia-lqB" firstAttribute="leading" secondItem="s1F-uM-y4l" secondAttribute="leading" constant="80" id="cil-zJ-hBP"/>
                                             <constraint firstItem="mZe-8s-pln" firstAttribute="centerX" secondItem="yb7-Ia-lqB" secondAttribute="centerX" id="dpz-R9-Ltv"/>
                                             <constraint firstAttribute="trailing" secondItem="wMV-7X-eZg" secondAttribute="trailing" constant="10" id="h3V-0B-4H1"/>
                                             <constraint firstAttribute="height" constant="135" id="kJL-yi-jSU"/>

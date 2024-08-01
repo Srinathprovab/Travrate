@@ -66,7 +66,7 @@ class ViewTicketInfoVC: BaseTableVC, SportDetailsVMDelegate {
     
     
     override func didTapOnBookNowBtnAction(cell: SportsBookNowTVCell) {
-        
+        MySingleton.shared.sportsTotalPersonCount = cell.sportsTotalPersonCount
         MySingleton.shared.sport_ticket_value = cell.ticketValue
         gotoSportsBookingDetailsVC()
         

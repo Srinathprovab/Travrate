@@ -233,7 +233,7 @@ extension CheckBoxTVCell {
         switch titlelbl.text {
             
             
-        case "Departurn Time":
+        case "Departure Time":
             if !filterModel.departureTime.isEmpty {
                 // Check if the cell's title matches any value in the luggage array
                 

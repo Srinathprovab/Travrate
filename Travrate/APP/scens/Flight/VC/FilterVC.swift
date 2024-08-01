@@ -432,7 +432,7 @@ class FilterVC: BaseTableVC{
         //                tablerow.append(TableRow(title:"Arrival Time",cellType:.DepartureTimeTVCell))
         
         
-        tablerow.append(TableRow(title:"Departurn Time",key:"time", data: departurnTimeArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Departure Time",key:"time", data: departurnTimeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Arrival Time",key:"time", data: departurnTimeArray,cellType:.CheckBoxTVCell))
         
         
@@ -949,7 +949,7 @@ class FilterVC: BaseTableVC{
                 switch cell.filtertitle {
                     
                     
-                case "Departurn Time":
+                case "Departure Time":
                     selectedDepartureTime.append(cell.titlelbl.text ?? "")
                     break
                     
@@ -1139,7 +1139,7 @@ class FilterVC: BaseTableVC{
                 switch cell.filtertitle {
                     
                     
-                case "Departurn Time":
+                case "Departure Time":
                     if let index = selectedDepartureTime.firstIndex(of: cell.titlelbl.text ?? "") {
                         selectedDepartureTime.remove(at: index)
                     }

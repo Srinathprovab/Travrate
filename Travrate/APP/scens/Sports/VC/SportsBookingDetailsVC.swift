@@ -24,6 +24,7 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate, LoginViewMod
     
     
     override func viewWillAppear(_ animated: Bool) {
+        MySingleton.shared.sportsPersonCount = 0
         if callapibool == true {
             callAPI()
         }

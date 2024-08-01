@@ -59,31 +59,27 @@ class YourRecentSearchesTVCell: TableViewCell, YourRecentSearchesCVCellDelegate 
         
     }
     
-    
-    
-    
-//    func didTapOnCloserecentSearchBtnAction(cell: YourRecentSearchesCVCell) {
-//        let indexToRemove = cell.cellindex
-//        if  (MySingleton.shared.recentData?.count ?? 0) > 0 {
-//            MySingleton.shared.recentData?.remove(at: indexToRemove)
-//            recentsearchCV.deleteItems(at: [IndexPath(item: indexToRemove, section: 0)])
-//        }
-//        
-//        delegate?.didTapOnCloserecentSearchBtnAction(cell: cell)
-//    }
+
+
     
     func didTapOnCloserecentSearchBtnAction(cell: YourRecentSearchesCVCell) {
         let indexToRemove = cell.cellindex
-        
-        // Ensure there is at least one item to remove
+
+        // Ensure there is a valid index and at least one item to remove
         guard let recentData = MySingleton.shared.recentData, recentData.count > 0 else {
             print("No items to remove.")
             return
         }
-        
-        // Remove item from data source
+
+        // Validate the indexToRemove is within the bounds
+        guard indexToRemove >= 0 && indexToRemove < recentData.count else {
+            print("Invalid index. Index is out of bounds.")
+            return
+        }
+
+        // Safely remove the item from data source
         MySingleton.shared.recentData?.remove(at: indexToRemove)
-        
+
         // Check if the collection view is empty after removal
         if MySingleton.shared.recentData?.isEmpty ?? true {
             // Reload data instead of deleting to avoid inconsistency
@@ -91,7 +87,7 @@ class YourRecentSearchesTVCell: TableViewCell, YourRecentSearchesCVCellDelegate 
         } else {
             // Delete item from collection view
             recentsearchCV.deleteItems(at: [IndexPath(item: indexToRemove, section: 0)])
-            
+
             // Scroll to the previous item if it exists
             if indexToRemove > 0 {
                 let previousIndexPath = IndexPath(item: indexToRemove - 1, section: 0)
@@ -102,8 +98,7 @@ class YourRecentSearchesTVCell: TableViewCell, YourRecentSearchesCVCellDelegate 
                 recentsearchCV.scrollToItem(at: firstIndexPath, at: .centeredHorizontally, animated: true)
             }
         }
-        
-        
+
         print(" ==== origin ==== ")
         print(cell.origin)
 
@@ -169,6 +164,8 @@ extension YourRecentSearchesTVCell:UICollectionViewDelegate,UICollectionViewData
             cell.origin = MySingleton.shared.recentData?[indexPath.row].arr_data?.origin ?? ""
             
             cell.tripTypelbl.text = MySingleton.shared.recentData?[indexPath.row].arr_data?.trip_type ?? ""
+            cell.tripTypelbl.text  = cell.tripTypelbl.text == "circle" ? "RoundTrip":"Oneway"
+            
             cell.citylbl.text = "\(MySingleton.shared.recentData?[indexPath.row].arr_data?.from_custom ?? "") to \(MySingleton.shared.recentData?[indexPath.row].arr_data?.to_custom ?? "")"
             cell.datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.recentData?[indexPath.row].arr_data?.depature ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
             
