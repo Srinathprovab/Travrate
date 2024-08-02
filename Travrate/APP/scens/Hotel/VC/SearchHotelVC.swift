@@ -184,7 +184,21 @@ extension SearchHotelVC {
         MySingleton.shared.hoteladultscount = 2
         MySingleton.shared.hotelchildcount = 0
         
-        defaults.set("Rooms \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? ""),Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "")", forKey: UserDefaultsKeys.selectPersons)
+//        defaults.set("Rooms \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? ""),Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "")", forKey: UserDefaultsKeys.selectPersons)
+        
+        
+        let roomscount = defaults.integer(forKey: UserDefaultsKeys.roomcount)
+        let adultcount = defaults.integer(forKey: UserDefaultsKeys.hoteladultscount)
+        let childcount = defaults.integer(forKey: UserDefaultsKeys.hotelchildcount)
+        
+        
+        var adultsCoutntStr = adultcount > 1 ? "Room \(roomscount) | Adult \(adultcount)" : "Room \(roomscount) | Adult \(adultcount)"
+        var labelText = adultsCoutntStr
+        if childcount > 0 {
+            labelText += ", Child \(childcount)"
+        }
+       
+        defaults.set(labelText, forKey: UserDefaultsKeys.selectPersons)
         
     }
     

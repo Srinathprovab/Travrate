@@ -156,8 +156,13 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             
             let adultcount = MySingleton.shared.hoteladultscount
             let childcount = MySingleton.shared.hotelchildcount
-            guestlbl.text = "\(adultcount + childcount)"
-            //guestlbl.isHidden = true
+            var labelText = "\(adultcount) Adults"
+            if childcount > 0 {
+                labelText += " - \(childcount) Child"
+            }
+           
+            guestlbl.text = labelText
+           
             
             // Example usage:
             let checkInDate = defaults.string(forKey: UserDefaultsKeys.checkin) ?? ""

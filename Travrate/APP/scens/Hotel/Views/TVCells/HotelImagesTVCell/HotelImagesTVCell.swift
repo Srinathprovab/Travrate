@@ -16,8 +16,8 @@ class HotelImagesTVCell: TableViewCell {
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var hotelImg: UIImageView!
     @IBOutlet weak var imagesCV: UICollectionView!
-    @IBOutlet weak var hotelNamelbl: UILabel!
-    @IBOutlet weak var locNamelbl: UILabel!
+//    @IBOutlet weak var hotelNamelbl: UILabel!
+//    @IBOutlet weak var locNamelbl: UILabel!
     @IBOutlet weak var autoScrollImagesCV: UICollectionView!
     
     
@@ -62,8 +62,8 @@ class HotelImagesTVCell: TableViewCell {
         
         
         
-        hotelNamelbl.text = cellInfo?.title ?? ""
-        locNamelbl.text = cellInfo?.subTitle ?? ""
+//        hotelNamelbl.text = cellInfo?.title ?? ""
+//        locNamelbl.text = cellInfo?.subTitle ?? ""
         
         itemCount = imagesArray.count
 //        startAutoScroll()
@@ -73,8 +73,8 @@ class HotelImagesTVCell: TableViewCell {
     }
     
     func setupUI() {
-        contentView.backgroundColor = HexColor("#E6E8E7")
-        holderView.addCornerRadiusWithShadow(color: .clear, borderColor: UIColor.lightGray.withAlphaComponent(0.4), cornerRadius: 10)
+       // contentView.backgroundColor = HexColor("#E6E8E7")
+      //  holderView.addCornerRadiusWithShadow(color: .clear, borderColor: UIColor.lightGray.withAlphaComponent(0.4), cornerRadius: 10)
         
        
         hotelImg.layer.cornerRadius = 8

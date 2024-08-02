@@ -10,10 +10,10 @@ import UIKit
 class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDelegate {
     
     @IBOutlet weak var holderView: UIView!
-   // @IBOutlet weak var kwdlbl: UILabel!
-   // @IBOutlet weak var bookNowView: UIView!
+    // @IBOutlet weak var kwdlbl: UILabel!
+    // @IBOutlet weak var bookNowView: UIView!
     @IBOutlet weak var bookNowlbl: UILabel!
-   // @IBOutlet weak var bookNowBtn: UIButton!
+    // @IBOutlet weak var bookNowBtn: UIButton!
     @IBOutlet weak var citylbl: UILabel!
     @IBOutlet weak var datelbl: UILabel!
     @IBOutlet weak var paxlbl: UILabel!
@@ -60,8 +60,8 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     
     //MARK: - show BookNow Btn
     @objc func showBookNowBtn() {
-//        bookNowView.isUserInteractionEnabled = true
-//        bookNowView.alpha = 1
+        //        bookNowView.isUserInteractionEnabled = true
+        //        bookNowView.alpha = 1
     }
     
     
@@ -97,13 +97,25 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         self.citylbl.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? ""
         self.datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
         
-        paxlbl.text = "Room \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? "1") | Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "2")"
+        let roomscount = defaults.integer(forKey: UserDefaultsKeys.roomcount)
+        let adultcount = defaults.integer(forKey: UserDefaultsKeys.hoteladultscount)
+        let childcount = defaults.integer(forKey: UserDefaultsKeys.hotelchildcount)
         
         
-//        bookNowView.backgroundColor = .AppBtnColor
-//        setuplabels(lbl: kwdlbl, text: "Book Now", textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .right)
-//        bookNowBtn.setTitle("", for: .normal)
-//        bookNowBtn.addTarget(self, action: #selector(didTapOnBookNowBtn(_:)), for: .touchUpInside)
+        let adultsCoutntStr = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Room \(roomscount) | Adult \(adultcount)"
+        
+        var labelText = adultsCoutntStr
+        //  var labelText = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Adult \(adultcount)"
+        if childcount > 0 {
+            labelText += ", Child \(childcount)"
+        }
+        paxlbl.text = labelText
+        
+        
+        //        bookNowView.backgroundColor = .AppBtnColor
+        //        setuplabels(lbl: kwdlbl, text: "Book Now", textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .right)
+        //        bookNowBtn.setTitle("", for: .normal)
+        //        bookNowBtn.addTarget(self, action: #selector(didTapOnBookNowBtn(_:)), for: .touchUpInside)
         commonTableView.registerTVCells(["HotelImagesTVCell","EmptyTVCell","RoomsTVcell"])
         
     }
@@ -222,8 +234,8 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         // Update the selectedCell reference
         selectedCell = cell
         
-//        bookNowView.isUserInteractionEnabled = true
-//        bookNowView.alpha = 1
+        //        bookNowView.isUserInteractionEnabled = true
+        //        bookNowView.alpha = 1
         grandTotal = cell.pricelbl.text ?? ""
         setuplabels(lbl: bookNowlbl, text: cell.pricelbl.text ?? "" , textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .left)
         
@@ -318,6 +330,7 @@ extension HotelDetailsVC {
         roomsDetails = response.hotel_details?.rooms ?? [[]]
         imagesArray = response.hotel_details?.images ?? []
         formatAmeArray = response.hotel_details?.format_ame ?? []
+       
         formatDesc = response.hotel_details?.format_desc ?? []
         img = response.hotel_details?.image ?? ""
         
@@ -342,13 +355,13 @@ extension HotelDetailsVC {
     }
     
     @objc func roomtapbool(notify:NSNotification) {
-//        if let tapbool = notify.object as? Bool {
-//            if tapbool == true {
-//                kwdlbl.text = "Book Now"
-//            }else {
-//                kwdlbl.text = "Select Now"
-//            }
-//        }
+        //        if let tapbool = notify.object as? Bool {
+        //            if tapbool == true {
+        //                kwdlbl.text = "Book Now"
+        //            }else {
+        //                kwdlbl.text = "Select Now"
+        //            }
+        //        }
     }
     
     @objc func reload() {

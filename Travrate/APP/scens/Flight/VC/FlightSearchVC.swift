@@ -291,12 +291,21 @@ extension FlightSearchVC {
             defaults.set("1", forKey: UserDefaultsKeys.roomcount)
             defaults.set("2", forKey: UserDefaultsKeys.hoteladultscount)
             defaults.set("0", forKey: UserDefaultsKeys.hotelchildcount)
-            defaults.set("\(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? "") Rooms,\(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "") Adults,\(defaults.string(forKey: UserDefaultsKeys.hotelchildcount) ?? "") Child", forKey: UserDefaultsKeys.selectPersons)
+           // /*defaults.set("\(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? "") Rooms,\(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "") Adults,\*/(defaults.string(forKey: UserDefaultsKeys.hotelchildcount) ?? "") Child", forKey: UserDefaultsKeys.selectPersons)
+            
+            let roomscount = defaults.integer(forKey: UserDefaultsKeys.roomcount)
+            let adultcount = defaults.integer(forKey: UserDefaultsKeys.hoteladultscount)
+            let childcount = defaults.integer(forKey: UserDefaultsKeys.hotelchildcount)
             
             
-            
-            
-            UserDefaults.standard.set(true, forKey: "ExecuteOnce")
+            let adultsCoutntStr = adultcount > 1 ? "Room \(roomscount) | Adult \(adultcount)" : "Room \(roomscount) | Adult \(adultcount)"
+            var labelText = adultsCoutntStr
+            if childcount > 0 {
+                labelText += ", Child \(childcount)"
+            }
+           
+            defaults.set(labelText, forKey: UserDefaultsKeys.selectPersons)
+            defaults.set(true, forKey: "ExecuteOnce")
             
         }
         

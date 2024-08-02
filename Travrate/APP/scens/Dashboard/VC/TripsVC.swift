@@ -81,12 +81,12 @@ extension TripsVC {
             setupTVCells()
         }else {
             
-//                        loginlbl.isHidden = true
-//                        commonTableView.isHidden = false
-//                        setupTVCells()
+                        loginlbl.isHidden = true
+                        commonTableView.isHidden = false
+                        setupTVCells()
             
-            loginlbl.isHidden = false
-            commonTableView.isHidden = true
+//            loginlbl.isHidden = false
+//            commonTableView.isHidden = true
         }
     }
     

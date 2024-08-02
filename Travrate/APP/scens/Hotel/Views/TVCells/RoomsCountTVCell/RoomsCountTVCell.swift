@@ -201,6 +201,9 @@ class RoomsCountTVCell: UITableViewCell {
         setuplabels(lbl: addRoomlbl, text: "+ Add Room", textcolor: .WhiteColor, font: .LatoBold(size: 16), align: .center)
         addRoomBtnView.backgroundColor = .AppTabSelectColor
         addRoomBtnView.addCornerRadiusWithShadow(color: .clear, borderColor: .clear, cornerRadius: 8)
+        addRoomBtnView.layer.cornerRadius = 8
+        addRoomBtnView.clipsToBounds = true
+        
         
         roomView1.isHidden = false
         roomView2.isHidden = true

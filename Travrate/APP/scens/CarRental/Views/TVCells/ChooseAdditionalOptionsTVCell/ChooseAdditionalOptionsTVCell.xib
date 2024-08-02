@@ -47,7 +47,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="avi-L5-Rbz" firstAttribute="leading" secondItem="IVL-y8-Vf5" secondAttribute="leading" constant="10" id="9hX-Yz-wqX"/>
-                            <constraint firstAttribute="height" constant="145" id="BwD-7z-fSl"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="145" id="BwD-7z-fSl"/>
                             <constraint firstItem="h8Q-aE-Pqa" firstAttribute="top" secondItem="IVL-y8-Vf5" secondAttribute="top" constant="10" id="KTo-f4-nTI"/>
                             <constraint firstItem="avi-L5-Rbz" firstAttribute="top" secondItem="h8Q-aE-Pqa" secondAttribute="bottom" constant="15" id="Lyh-Zl-v0L"/>
                             <constraint firstItem="h8Q-aE-Pqa" firstAttribute="leading" secondItem="IVL-y8-Vf5" secondAttribute="leading" constant="10" id="NMN-e4-fNK"/>
@@ -78,6 +78,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="optionscv" destination="avi-L5-Rbz" id="07W-kV-SE4"/>
+                <outlet property="viewheight" destination="BwD-7z-fSl" id="6h5-A1-tEA"/>
             </connections>
             <point key="canvasLocation" x="396.94656488549617" y="130.63380281690141"/>
         </tableViewCell>

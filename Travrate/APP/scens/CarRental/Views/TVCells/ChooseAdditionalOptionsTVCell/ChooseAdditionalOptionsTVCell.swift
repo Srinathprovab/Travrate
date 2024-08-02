@@ -23,7 +23,7 @@ class ChooseAdditionalOptionsTVCell: TableViewCell {
     
     
     @IBOutlet weak var optionscv: UICollectionView!
-    
+    @IBOutlet weak var viewheight: NSLayoutConstraint!
     
     
     
@@ -31,7 +31,8 @@ class ChooseAdditionalOptionsTVCell: TableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        setupCV()
+        setupUI()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,8 +41,16 @@ class ChooseAdditionalOptionsTVCell: TableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupUI() {
+        updateHeight(height: 145, count: 1)
+        setupCV()
+    }
+    
+    func updateHeight(height:Int,count:Int) {
+        viewheight.constant = CGFloat(height * count)
+    }
+    
     override func updateUI() {
-        
         optionscv.reloadData()
     }
     
@@ -58,11 +67,11 @@ extension ChooseAdditionalOptionsTVCell:UICollectionViewDelegate,UICollectionVie
         optionscv.delegate = self
         optionscv.dataSource = self
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 178, height: 70)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
+        layout.itemSize = CGSize(width: 155, height: 70)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
         optionscv.collectionViewLayout = layout
         optionscv.bounces = false
         optionscv.allowsMultipleSelection = true
@@ -71,20 +80,23 @@ extension ChooseAdditionalOptionsTVCell:UICollectionViewDelegate,UICollectionVie
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  MySingleton.shared.extraOption.count
+       return  MySingleton.shared.extraOption.count
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var commonCell = UICollectionViewCell()
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? AdditionalOptionsCVCell {
             
-            cell.namelbl.text =  MySingleton.shared.extraOption[indexPath.row].option_name
             
-            MySingleton.shared.setAttributedTextnew(str1:  MySingleton.shared.extraOption[indexPath.row].option_currency ?? "",
-                                                    str2:  MySingleton.shared.extraOption[indexPath.row].option_price ?? "",
+            let data = MySingleton.shared.extraOption[indexPath.row]
+            cell.namelbl.text = data.option_name
+            
+            MySingleton.shared.setAttributedTextnew(str1:  data.option_currency ?? "",
+                                                    str2:  data.option_price ?? "",
                                                     lbl: cell.pricelbl,
-                                                    str1font: .InterMedium(size: 14),
-                                                    str2font: .InterMedium(size: 14),
+                                                    str1font: .InterMedium(size: 12),
+                                                    str2font: .InterMedium(size: 12),
                                                     str1Color: .TitleColor,
                                                     str2Color: .TitleColor)
             
@@ -98,6 +110,18 @@ extension ChooseAdditionalOptionsTVCell:UICollectionViewDelegate,UICollectionVie
                 collectionView.deselectItem(at: indexPath, animated: false)
                 cell.checkimg.image = UIImage(named: "newuncheck")
             }
+            
+            
+            
+            
+            if MySingleton.shared.extraOption.count == 6 || MySingleton.shared.extraOption.count == 5 {
+                updateHeight(height: 145 + 200 , count: 1)
+            }else if MySingleton.shared.extraOption.count == 4 || MySingleton.shared.extraOption.count == 3{
+                updateHeight(height: 145 + 100, count: 1)
+            }else {
+                updateHeight(height: 145, count: 1)
+            }
+            
             
             commonCell = cell
         }

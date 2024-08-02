@@ -550,7 +550,7 @@ extension BookingDetailsVC {
             MySingleton.shared.afterAddonAmountAdded = Int(response.pre_booking_params?.priceDetails?.grand_total ?? "0") ?? 0
             
             MySingleton.shared.stopTimer()
-            MySingleton.shared.startTimer(time: 900)
+            MySingleton.shared.startTimer(time: 1500)
             
             
             let i = response.pre_booking_params?.priceDetails

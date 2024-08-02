@@ -9,6 +9,7 @@ import UIKit
 
 class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RoomsCountTVCellDelegate {
     
+    @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var closeBtn: UIButton!
@@ -45,6 +46,8 @@ class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableVi
         tv.register(UINib(nibName: "RoomsCountTVCell", bundle: nil), forCellReuseIdentifier: "cell")
         tv.register(UINib(nibName: "ButtonTVCell", bundle: nil), forCellReuseIdentifier: "cell1")
         tv.separatorStyle = .none
+        
+        doneBtn.layer.cornerRadius = 8
     }
     
     @objc func closeBtnAction(_ sender:UIButton) {
@@ -128,7 +131,7 @@ class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             
         }else {
-            showToast(message: "Childerns Not More Than 2")
+            showToast(message: "Child Should Not More Than 2")
         }
         
         tv.reloadData()
@@ -202,7 +205,7 @@ class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             
         }else {
-            showToast(message: "Childerns Not More Than 2")
+            showToast(message: "Child Should  Not More Than 2")
         }
         
         tv.reloadData()
@@ -275,7 +278,7 @@ class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             
         }else {
-            showToast(message: "Childerns Not More Than 2")
+            showToast(message: "Child Should  Not More Than 2")
         }
         tv.reloadData()
     }
@@ -346,7 +349,7 @@ class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             
         }else {
-            showToast(message: "Childerns Not More Than 2")
+            showToast(message: "Child Should  Not More Than 2")
         }
         tv.reloadData()
     }
@@ -464,11 +467,25 @@ class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
         
-        if totalChildren == 0 {
-            defaults.set("Rooms \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? ""):Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "")", forKey: UserDefaultsKeys.selectPersons)
-        }else {
-            defaults.set("Rooms \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? ""):Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? ""),Child \(defaults.string(forKey: UserDefaultsKeys.hotelchildcount) ?? "")", forKey: UserDefaultsKeys.selectPersons)
+//        if totalChildren == 0 {
+//            defaults.set("Rooms \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? ""):Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "")", forKey: UserDefaultsKeys.selectPersons)
+//        }else {
+//            defaults.set("Rooms \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? ""):Adults \(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? ""),Child \(defaults.string(forKey: UserDefaultsKeys.hotelchildcount) ?? "")", forKey: UserDefaultsKeys.selectPersons)
+//        }
+        
+        let roomscount = defaults.integer(forKey: UserDefaultsKeys.roomcount)
+        let adultcount = defaults.integer(forKey: UserDefaultsKeys.hoteladultscount)
+        let childcount = defaults.integer(forKey: UserDefaultsKeys.hotelchildcount)
+        defaults.setValue(adultcount + childcount, forKey: UserDefaultsKeys.guestcount)
+        
+        
+        let adultsCoutntStr = adultcount > 1 ? "Room \(roomscount) | Adult \(adultcount)" : "Room \(roomscount) | Adult \(adultcount)"
+        var labelText = adultsCoutntStr
+        if childcount > 0 {
+            labelText += ", Child \(childcount)"
         }
+       
+        defaults.set(labelText, forKey: UserDefaultsKeys.selectPersons)
         
         
         

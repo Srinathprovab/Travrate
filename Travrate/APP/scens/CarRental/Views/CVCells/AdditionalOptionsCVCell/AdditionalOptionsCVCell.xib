@@ -35,24 +35,27 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="driver1" translatesAutoresizingMaskIntoConstraints="NO" id="B8c-Iq-pRD">
-                                <rect key="frame" x="39" y="20.666666666666671" width="40" height="40"/>
+                                <rect key="frame" x="36" y="25.666666666666671" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="2JO-VR-cRI"/>
-                                    <constraint firstAttribute="width" constant="40" id="W3r-Bd-SmI"/>
+                                    <constraint firstAttribute="height" constant="30" id="2JO-VR-cRI"/>
+                                    <constraint firstAttribute="width" constant="30" id="W3r-Bd-SmI"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OOA-EC-wGE">
-                                <rect key="frame" x="79" y="24" width="176" height="33"/>
+                                <rect key="frame" x="66" y="25.333333333333329" width="80" height="30.666666666666671"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional Driver" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lG3-el-rSK">
-                                        <rect key="frame" x="0.0" y="0.0" width="176" height="13.666666666666666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="13.666666666666666"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
                                         <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD 25.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlP-kz-AzN">
-                                        <rect key="frame" x="0.0" y="18.666666666666664" width="176" height="14.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <rect key="frame" x="0.0" y="18.666666666666668" width="80" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="tYi-0S-lo0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -62,9 +65,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OOA-EC-wGE" firstAttribute="centerY" secondItem="B8c-Iq-pRD" secondAttribute="centerY" id="6hL-ck-wHK"/>
-                            <constraint firstAttribute="trailing" secondItem="OOA-EC-wGE" secondAttribute="trailing" constant="10" id="BRa-Qd-Hcp"/>
                             <constraint firstItem="OOA-EC-wGE" firstAttribute="leading" secondItem="B8c-Iq-pRD" secondAttribute="trailing" id="CZZ-1z-f5Z"/>
-                            <constraint firstItem="B8c-Iq-pRD" firstAttribute="leading" secondItem="EEs-Dr-L1d" secondAttribute="trailing" constant="5" id="GHE-Rr-WbG"/>
+                            <constraint firstItem="B8c-Iq-pRD" firstAttribute="leading" secondItem="EEs-Dr-L1d" secondAttribute="trailing" constant="2" id="GHE-Rr-WbG"/>
                             <constraint firstItem="EEs-Dr-L1d" firstAttribute="leading" secondItem="p08-hM-eua" secondAttribute="leading" constant="10" id="dx2-Xf-gty"/>
                             <constraint firstItem="B8c-Iq-pRD" firstAttribute="centerY" secondItem="EEs-Dr-L1d" secondAttribute="centerY" id="oHg-lO-Jwc"/>
                             <constraint firstItem="EEs-Dr-L1d" firstAttribute="centerY" secondItem="p08-hM-eua" secondAttribute="centerY" id="qeC-6Z-eES"/>

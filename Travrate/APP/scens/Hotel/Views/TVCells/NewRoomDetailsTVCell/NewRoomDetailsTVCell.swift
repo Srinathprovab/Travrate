@@ -41,8 +41,7 @@ class NewRoomDetailsTVCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        selectRoomBtnView.backgroundColor = .AppBtnColor
+        setupUI()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,6 +49,16 @@ class NewRoomDetailsTVCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    
+    
+    
+    func setupUI() {
+        
+        selectRoomBtnView.backgroundColor = .AppBtnColor
+        
+        
+    }
+    
     
     
     

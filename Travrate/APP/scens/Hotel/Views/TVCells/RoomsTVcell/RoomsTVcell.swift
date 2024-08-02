@@ -80,16 +80,7 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
         
     }
     
-    func updateHeight(height:Int) {
-        
-        if self.key == "rooms" {
-            tvHeight.constant = CGFloat(height * roomsDetails.count)
-            roomDetailsTV.reloadData()
-        }else {
-            viewHeight.constant = 356
-        }
-        
-    }
+   
     
     @objc func gotoroom(){
         roomtaped()
@@ -238,6 +229,19 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
 
 extension RoomsTVcell: UITableViewDataSource ,UITableViewDelegate {
     
+    func updateHeight(height:Int) {
+        
+        if self.key == "rooms" {
+           // tvHeight.constant = CGFloat(height * roomsDetails.count)
+            tvHeight.constant = 8000
+            roomDetailsTV.reloadData()
+        }else {
+            viewHeight.constant = 356
+        }
+        
+    }
+    
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if self.key == "rooms" {
@@ -275,7 +279,10 @@ extension RoomsTVcell: UITableViewDataSource ,UITableViewDelegate {
                     
                     let section = indexPath.section
                     let data = roomsDetails[section]
+                    
+                    
                     cell.room = data
+        
                     cell.tvheight.constant = CGFloat(cell.room.count * 101)
                     cell.roomInfoTV.reloadData()
                     
@@ -311,6 +318,7 @@ extension RoomsTVcell: UITableViewDataSource ,UITableViewDelegate {
                 if formatAmeArray.count == 0 {
                     cell.amenitiesCV.setEmptyMessage("No Data Found")
                 }else {
+                    
                     cell.amenitiesCV.reloadData()
                 }
                 

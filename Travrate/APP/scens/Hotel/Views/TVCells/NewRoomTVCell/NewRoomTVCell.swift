@@ -127,19 +127,21 @@ extension NewRoomTVCell: UITableViewDataSource ,UITableViewDelegate {
             let data = room[indexPath.row]
             self.titlelbl.text = data.name ?? ""
             
+            
             MySingleton.shared.setAttributedTextnew(str1: "\(data.currency ?? "")",
                                  str2: "\(data.net ?? "")",
                                  lbl: cell.pricelbl,
-                                 str1font: .LatoBold(size: 12),
-                                 str2font: .LatoBold(size: 18),
-                                 str1Color: .AppBtnColor,
-                                 str2Color: .AppBtnColor)
+                                 str1font: .InterBold(size: 12),
+                                 str2font: .InterBold(size: 18),
+                                 str1Color: .TitleColor,
+                                 str2Color: .BackBtnColor)
             
             cell.cancellatonStringArray = data.cancellation_string ?? []
             cell.exactprice = data.net ?? ""
             cell.currency = data.currency ?? ""
             cell.indexpathvalue = newRoomindexPath
             
+           
             
 //            if data.refund == "Refundable" {
 //                cell.fareTypelbl.text = "Refundable"
@@ -173,6 +175,12 @@ extension NewRoomTVCell: UITableViewDataSource ,UITableViewDelegate {
             
             cell.ratekey = data.rateKey ?? ""
             cell.selectedRoom = "\(data.room_selected ?? 0)"
+            
+            
+            let guestcount = defaults.integer(forKey: UserDefaultsKeys.guestcount)
+            cell.noofGuestlbl.text = "\(guestcount) Guest"
+            
+            
             ccell = cell
         }
         

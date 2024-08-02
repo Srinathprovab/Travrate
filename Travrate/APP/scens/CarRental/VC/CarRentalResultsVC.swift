@@ -253,7 +253,7 @@ extension CarRentalResultsVC {
     func setupTVCells(list:[Raw_hotel_list]) {
         MySingleton.shared.tablerow.removeAll()
         
-        MySingleton.shared.setAttributedTextnew(str1: "\(list.count)", str2: " car are Available", lbl: carCountlbl, str1font: .OpenSansBold(size: 16), str2font: .OpenSansRegular(size: 14), str1Color: .TitleColor, str2Color: .TitleColor)
+        MySingleton.shared.setAttributedTextnew(str1: "\(list.count)", str2: " Cars are available", lbl: carCountlbl, str1font: .OpenSansBold(size: 16), str2font: .OpenSansRegular(size: 14), str1Color: .TitleColor, str2Color: .TitleColor)
         
         
         list.forEach { i in

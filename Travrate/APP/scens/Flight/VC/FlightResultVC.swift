@@ -468,8 +468,6 @@ extension FlightResultVC {
     }
     
     
-    
-    
     func similar(fare: Double) -> [[FlightList]] {
         // Create a dictionary to group flights with the same api_total_display_fare
         var similarFlightsDictionary: [Double: [[FlightList]]] = [:]
@@ -504,8 +502,6 @@ extension FlightResultVC {
 }
 
 
-
-
 extension Sequence where Iterator.Element: Hashable {
     func unique() -> [Iterator.Element] {
         var seen: [Iterator.Element: Bool] = [:]
@@ -518,18 +514,12 @@ extension Sequence where Iterator.Element: Hashable {
 //MARK: - AppliedFilters
 
 extension FlightResultVC:AppliedFilters {
-    
-    
-    
+
     
     func hotelFilterByApplied(minpricerange: Double, maxpricerange: Double, starRating: String, starRatingNew: [String], refundableTypeArray: [String], nearByLocA: [String], niberhoodA: [String], aminitiesA: [String]) {
         
     }
-    
-    
-    
-    
-    
+
     
     func isTimeInRange(time: String, range: String) -> Bool {
         let timeFormatter = DateFormatter()

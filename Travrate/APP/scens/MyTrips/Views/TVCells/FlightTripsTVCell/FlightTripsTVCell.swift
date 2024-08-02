@@ -11,18 +11,8 @@ class FlightTripsTVCell: TableViewCell, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var summeryTV: UITableView!
     @IBOutlet weak var tvheight: NSLayoutConstraint!
-//    @IBOutlet weak var fareTypelbl: UILabel!
-//    @IBOutlet weak var strikekwdlbl: UILabel!
     @IBOutlet weak var kwdlbl: UILabel!
-//    @IBOutlet weak var moreSimilarBtn: UIButton!
-//    @IBOutlet weak var bottomView: UIView!
-//    @IBOutlet weak var returnBtn: UIButton!
-//    
-//    @IBOutlet weak var bookNowBtnView: BorderedView!
-//    @IBOutlet weak var bookNowlbl: UILabel!
-//    @IBOutlet weak var simalarView: UIView!
-//    @IBOutlet weak var simalrViewHeight: NSLayoutConstraint!
-    
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

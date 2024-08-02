@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -476,6 +477,7 @@
                     </view>
                     <connections>
                         <outlet property="closeBtn" destination="xEc-2O-Sdl" id="WBQ-wt-UoS"/>
+                        <outlet property="doneBtn" destination="CEO-RM-6bK" id="49L-4b-Z5c"/>
                         <outlet property="titleView" destination="rOj-2h-uGo" id="efM-H6-s7O"/>
                         <outlet property="titlelbl" destination="haK-rX-MM2" id="Ds3-ip-uTC"/>
                         <outlet property="tv" destination="7ZH-g7-T7J" id="1Hx-w4-qRL"/>
@@ -814,6 +816,7 @@
                                                     <constraint firstAttribute="width" constant="34" id="cbm-k5-qg8"/>
                                                     <constraint firstAttribute="height" constant="34" id="hoY-zO-4A5"/>
                                                 </constraints>
+                                                <color key="tintColor" name="BackBtnColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="back"/>
                                                 <connections>

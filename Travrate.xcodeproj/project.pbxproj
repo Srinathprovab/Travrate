@@ -902,6 +902,7 @@
 		84F2477F2C4E6E1E003526A0 /* ContractRemarkTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F2477D2C4E6E1E003526A0 /* ContractRemarkTVCell.xib */; };
 		84F247832C4E8DCE003526A0 /* BDPickupLocationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F247812C4E8DCE003526A0 /* BDPickupLocationTVCell.swift */; };
 		84F247842C4E8DCE003526A0 /* BDPickupLocationTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F247822C4E8DCE003526A0 /* BDPickupLocationTVCell.xib */; };
+		84F707092C5CB1BA00A9DB5C /* FlightsTripsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F707082C5CB1BA00A9DB5C /* FlightsTripsModel.swift */; };
 		C97D73BB1B6BE358AA67FA43 /* Pods_Travrate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F50494F72C92520966E6C6BA /* Pods_Travrate.framework */; };
 		F06B67E3578E5C3E5338DB84 /* Pods_Travrate_TravrateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A574BD33497F24BB774A50E /* Pods_Travrate_TravrateUITests.framework */; };
 /* End PBXBuildFile section */
@@ -1829,6 +1830,7 @@
 		84F2477D2C4E6E1E003526A0 /* ContractRemarkTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractRemarkTVCell.xib; sourceTree = "<group>"; };
 		84F247812C4E8DCE003526A0 /* BDPickupLocationTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDPickupLocationTVCell.swift; sourceTree = "<group>"; };
 		84F247822C4E8DCE003526A0 /* BDPickupLocationTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BDPickupLocationTVCell.xib; sourceTree = "<group>"; };
+		84F707082C5CB1BA00A9DB5C /* FlightsTripsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsTripsModel.swift; sourceTree = "<group>"; };
 		CE92189CE1BB3D449E3B33D0 /* Pods-Travrate-TravrateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate-TravrateUITests.release.xcconfig"; path = "Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F50494F72C92520966E6C6BA /* Pods_Travrate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travrate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -5819,6 +5821,7 @@
 		84D96C9E2C4CD39900323B8E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84F707072C5CB19700A9DB5C /* FlightsTripModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -6111,6 +6114,14 @@
 				84F247822C4E8DCE003526A0 /* BDPickupLocationTVCell.xib */,
 			);
 			path = BDPickupLocationTVCell;
+			sourceTree = "<group>";
+		};
+		84F707072C5CB19700A9DB5C /* FlightsTripModel */ = {
+			isa = PBXGroup;
+			children = (
+				84F707082C5CB1BA00A9DB5C /* FlightsTripsModel.swift */,
+			);
+			path = FlightsTripModel;
 			sourceTree = "<group>";
 		};
 		9BB6B282C797305FD6DD1AC6 /* Pods */ = {
@@ -6692,6 +6703,7 @@
 				65207D9E2BF494310076EF76 /* FilterDepartureTVCell.swift in Sources */,
 				65207E002BF494310076EF76 /* YourRecentSearchesCVCell.swift in Sources */,
 				6545D8282BFC769100FBCB60 /* HomeTeam.swift in Sources */,
+				84F707092C5CB1BA00A9DB5C /* FlightsTripsModel.swift in Sources */,
 				65207CF32BF494310076EF76 /* Airline_list.swift in Sources */,
 				844B87FD2C4910BC0068CC93 /* BoxOfficeAmount.swift in Sources */,
 				65207E8A2BF494320076EF76 /* ViewController+CollectionViewDelegateAndDatSource.swift in Sources */,
@@ -7463,7 +7475,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 5TLY5PME9K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -7507,7 +7519,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 5TLY5PME9K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

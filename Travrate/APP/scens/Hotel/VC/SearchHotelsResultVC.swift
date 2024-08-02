@@ -100,7 +100,11 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         let adultcount = defaults.integer(forKey: UserDefaultsKeys.hoteladultscount)
         let childcount = defaults.integer(forKey: UserDefaultsKeys.hotelchildcount)
         
-        var labelText = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Adult \(adultcount)"
+        
+        let adultsCoutntStr = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Room \(roomscount) | Adult \(adultcount)"
+        
+        var labelText = adultsCoutntStr
+      //  var labelText = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Adult \(adultcount)"
         if childcount > 0 {
             labelText += ", Child \(childcount)"
         }
@@ -445,7 +449,7 @@ extension SearchHotelsResultVC {
         
         // Stop the timer if it's running
         MySingleton.shared.stopTimer()
-        MySingleton.shared.startTimer(time: 900) // Set your desired total time
+        MySingleton.shared.startTimer(time: 1500) // Set your desired total time
         
         if let newResults = response.data?.hotelSearchResult, !newResults.isEmpty {
             // Append the new data to the existing data
