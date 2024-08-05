@@ -52,7 +52,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     
     func setupUI() {
         setuplabels(lbl: titlelbl, text: "Select Payment Methods", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
-
+        
         commonTableView.registerTVCells(["BookingDetailsFlightDataTVCell",
                                          "PaymentTypeTVCell",
                                          "BookedTravelDetailsTVCell",
@@ -92,7 +92,7 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
         }else if tabselect == "transfers" {
             Same_Saerch_InPut_Transfers()
         }else{
-            gotoActivitiesSearchVC()
+            Same_Saerch_InPut_Activities()
         }
     }
     
@@ -112,18 +112,18 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
             callFlightSendToPaymentAPI()
         }else if tabselect == "Hotel" {
             hotelSendToPayment()
-           // gotoBookingConfirmedVC()
+            // gotoBookingConfirmedVC()
         }else if tabselect == "Sports" {
             callSportsSendToPayment()
         }else if tabselect == "transfers" {
             callTransferSendToPaymentAPI()
-           // gotoBookingConfirmedVC()
+            // gotoBookingConfirmedVC()
         }else if tabselect == "CarRental" {
             callCarrentalSendToPaymentAPI()
         }else if tabselect == "Activities" {
             callActivitiesSendToPayMentAPI()
         }else{
-           
+            
         }
     }
     
@@ -298,7 +298,7 @@ extension SelectPaymentMethodsVC {
     
     
     
-   
+    
     
     
 }
@@ -765,9 +765,9 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.payload["to"] = ""
         MySingleton.shared.payload["event_id"] = ""
         MySingleton.shared.payload["venue_type"] = ""
-        MySingleton.shared.payload["form_date"] = MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportFromDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
-        MySingleton.shared.payload["to_date"] = MySingleton.shared.convertDateFormat(inputDate: MySingleton.shared.sportToDate, f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
-        MySingleton.shared.payload["special_events_id"] = MySingleton.shared.sportscityId
+        MySingleton.shared.payload["form_date"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
+        MySingleton.shared.payload["to_date"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyy")
+        MySingleton.shared.payload["special_events_id"] = MySingleton.shared.sportsservicId
         
         gotoSelectSportsListVC()
     }
@@ -791,6 +791,7 @@ extension SelectPaymentMethodsVC {
         guard let dropuplocDate =  defaults.string(forKey: UserDefaultsKeys.dropuplocDate) else {return}
         guard let pickuplocTime =  defaults.string(forKey: UserDefaultsKeys.pickuplocTime) else {return}
         guard let dropuplocTime =  defaults.string(forKey: UserDefaultsKeys.dropuplocTime) else {return}
+        guard let driverage =  defaults.string(forKey: UserDefaultsKeys.driverage) else {return}
         
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["car_from"] = pickuplocationname
@@ -801,7 +802,7 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.payload["depart_time"] = pickuplocTime
         MySingleton.shared.payload["drop_date"] = dropuplocDate
         MySingleton.shared.payload["drop_time"] = dropuplocTime
-        MySingleton.shared.payload["age_1"] = MySingleton.shared.carRentalDriverAge
+        MySingleton.shared.payload["age_1"] = driverage
         
         gotoCarRentalResultsVC()
         
@@ -909,6 +910,42 @@ extension SelectPaymentMethodsVC {
     }
     
     
+    //MARK: - ACTIVITIES Same_Saerch_InPut_Activities
+    
+    func Same_Saerch_InPut_Activities() {
+        
+        
+        let cityid = defaults.string(forKey: UserDefaultsKeys.activitescityid)
+        let cityname = defaults.string(forKey: UserDefaultsKeys.activitescityname)
+        let fromdate = defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate)
+        let todate = defaults.string(forKey: UserDefaultsKeys.calActivitesRetDate)
+        let adultcount = defaults.string(forKey: UserDefaultsKeys.activitesadultCount) ?? "1"
+        let childcount = defaults.string(forKey: UserDefaultsKeys.activiteschildCount) ?? "0"
+        let infantcount = defaults.string(forKey: UserDefaultsKeys.activitesinfantsCount) ?? "0"
+        
+        
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["activity_destination"] = cityname
+        MySingleton.shared.payload["activity_destination_id"] = cityid
+        MySingleton.shared.payload["from_date"] = fromdate
+        MySingleton.shared.payload["to_date"] = todate
+        MySingleton.shared.payload["adult"] = adultcount
+        MySingleton.shared.payload["child"] = childcount
+        MySingleton.shared.payload["infant"] = infantcount
+        
+        gotoActivitiesSearchResultsVC()
+        
+        
+    }
+    
+    func gotoActivitiesSearchResultsVC() {
+        MySingleton.shared.afterResultsBool = false
+        MySingleton.shared.callboolapi = true
+        defaults.set(false, forKey: "activitesfilteronce")
+        guard let vc = ActivitiesSearchResultsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
     
 }
 
@@ -1176,6 +1213,7 @@ extension SelectPaymentMethodsVC {
         
         
         activitiesProcessPangerUrl = response.hit_url ?? ""
+        MySingleton.shared.getPaymentList()
         
         DispatchQueue.main.async {
             self.setupActivitiesTVCells()
@@ -1254,7 +1292,7 @@ extension SelectPaymentMethodsVC {
     
     func addObserver() {
         
-       
+        
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nointrnetreload), name: Notification.Name("nointrnetreload"), object: nil)

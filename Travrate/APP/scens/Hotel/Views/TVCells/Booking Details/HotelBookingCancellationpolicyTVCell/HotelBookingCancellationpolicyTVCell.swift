@@ -7,13 +7,20 @@
 
 import UIKit
 
+
+protocol HotelBookingCancellationpolicyTVCellDelegate:AnyObject {
+    func didTapOnContactInfoTapAction(cell:HotelBookingCancellationpolicyTVCell)
+}
+
 class HotelBookingCancellationpolicyTVCell: TableViewCell {
 
-    
-    @IBOutlet weak var roomTypelbl: UILabel!
+    @IBOutlet weak var contactinfolbl: UILabel!
     @IBOutlet weak var cancellationTV: UITableView!
     @IBOutlet weak var tvheight: NSLayoutConstraint!
     
+    
+    
+    weak var delegate:HotelBookingCancellationpolicyTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,14 +35,37 @@ class HotelBookingCancellationpolicyTVCell: TableViewCell {
     }
     
     func setupUI() {
+        
+        MySingleton.shared.setAttributedTextnew(str1: "For more information please contact us on the ",
+                                                str2: "travrate.info@gmail.com",
+                                                lbl: contactinfolbl,
+                                                str1font: .InterMedium(size: 12),
+                                                str2font: .InterMedium(size: 12),
+                                                str1Color: .BooknowBtnColor,
+                                                str2Color: .subtitleNewcolor)
+        
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
+        contactinfolbl.addGestureRecognizer(tapGesture)
+        contactinfolbl.isUserInteractionEnabled = true
+        
         setupTV()
+    }
+
+    override func updateUI() {
+        
+        tvheight.constant = CGFloat(MySingleton.shared.cancellationRoomStringArray.count * 78)
+        cancellationTV.reloadData()
     }
     
     
-    override func updateUI() {
-        roomTypelbl.text = "Room \(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? ""): \(MySingleton.shared.cancellationRoomStringArray[0].room_name ?? "")"
+    
+    @objc func labelTapped(gesture:UITapGestureRecognizer) {
+        if gesture.didTapAttributedString("travrate.info@gmail.com", in: contactinfolbl) {
+            delegate?.didTapOnContactInfoTapAction(cell: self)
+        }
+    
         
-        tvheight.constant = CGFloat(MySingleton.shared.cancellationRoomStringArray.count * 43)
     }
     
 }
@@ -67,6 +97,10 @@ extension HotelBookingCancellationpolicyTVCell:UITableViewDelegate,UITableViewDa
         var c = UITableViewCell()
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CancellationStringTVCell {
             
+            if cellInfo?.key == "booking" {
+                cell.titlelbl.isHidden = false
+            }
+            cell.titlelbl.text = "Room \(indexPath.row + 1): \(MySingleton.shared.cancellationRoomStringArray[0].room_name ?? "")"
             cell.cancellationStringlbl.text = MySingleton.shared.cancellationRoomStringArray[indexPath.row].policy
             
             c = cell

@@ -9,6 +9,8 @@ import UIKit
 
 class CancellationStringTVCell: TableViewCell {
 
+    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var cancellationStringlbl: UILabel!
     
     override func awakeFromNib() {
@@ -24,6 +26,10 @@ class CancellationStringTVCell: TableViewCell {
     
     override func updateUI() {
         cancellationStringlbl.text = cellInfo?.title ?? ""
+        
+        if cellInfo?.key == "details" {
+            titlelbl.isHidden = false
+        }
     }
     
 }

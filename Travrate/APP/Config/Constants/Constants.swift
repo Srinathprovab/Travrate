@@ -93,7 +93,7 @@ var subtotal = String()
 //HOTEL
 var adtArray = [String]()
 var chArray = [String]()
-var hotelDetailsTapBool = false
+var hotelDetailsTapBool = Bool()
 var oldjournyType = ""
 var selectedSpecificatonArray = [String]()
 var startRatingArray = [String]()
@@ -103,6 +103,7 @@ var filterresettapbool = true
 var filteredSportsTickekData = [SportsDetailsData]()
 
 //DASHBOARD
+var mrtitlecode = ""
 var callapibool = Bool()
 var travelerArray: [Traveler] = []
 
@@ -272,6 +273,7 @@ struct ApiEndpoints {
     static let ajax_share_itinerary_hotel = "ajax/share_itinerary_hotel"
     static let flight_mobile_pre_payment_confirmation = "flight/mobile_pre_payment_confirmation/"
     static let flight_mobile_send_to_payment = "flight/mobile_send_to_payment"
+    static let report_flight = "report/flight"
     
     
     
@@ -321,6 +323,7 @@ struct ApiEndpoints {
     static let sport_pre_booking = "sport/pre_booking"
     static let sport_sent_to_payment_pre = "sport/sent_to_payment_pre"
     static let sport_send_to_payment = "sport/send_to_payment"
+    static let report_sports = "report/sports"
     
     
     //CAR RENTAL

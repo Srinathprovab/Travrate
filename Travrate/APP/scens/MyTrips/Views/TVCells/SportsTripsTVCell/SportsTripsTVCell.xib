@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -71,6 +72,9 @@
                                 <state key="normal" title="View Voucher">
                                     <color key="titleColor" name="WhiteColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapOnVoucherBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bYT-qR-7p2"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp1" translatesAutoresizingMaskIntoConstraints="NO" id="GAd-C6-CAg">
                                 <rect key="frame" x="291" y="10" width="40" height="40"/>

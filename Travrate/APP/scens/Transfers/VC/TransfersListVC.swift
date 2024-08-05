@@ -28,7 +28,6 @@ class TransfersListVC: BaseTableVC, PreTransfersearchVMDelegate, AppliedTransfer
     var activeBookingArray = [Active_booking_source]()
     
     override func viewWillAppear(_ animated: Bool) {
-        
         addObserver()
     }
     
@@ -74,8 +73,11 @@ class TransfersListVC: BaseTableVC, PreTransfersearchVMDelegate, AppliedTransfer
     }
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        callapibool = false
-        dismiss(animated: true)
+        MySingleton.shared.callboolapi = true
+        guard let vc = DashBoardTBVC.newInstance.self else {return}
+        vc.selectedIndex = 0
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false)
     }
     
     override func didTapOnBookNowBtnAction(cell: TransfersInf0TVCell) {

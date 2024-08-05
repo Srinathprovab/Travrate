@@ -102,7 +102,7 @@ class ActivitiesSearchTVCell: TableViewCell, GetActivitesDestinationListVMDelega
         fromtvHeight.constant = 0
        // CallShowCityListAPI(str: "")
         
-        fromlbl.text = defaults.string(forKey: UserDefaultsKeys.activitescityname) ?? ""
+        fromlbl.text = defaults.string(forKey: UserDefaultsKeys.activitescityname) ?? "Select Destination City"
         depDatelbl.text = defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate) ?? "Select Date"
         retlbl.text = defaults.string(forKey: UserDefaultsKeys.calActivitesRetDate) ?? "Select Date"
         
@@ -131,7 +131,7 @@ class ActivitiesSearchTVCell: TableViewCell, GetActivitesDestinationListVMDelega
     @objc func didTapOnClearFromTFBtnAction(_ sender:UIButton) {
         fromTF.text = ""
         fromTF.becomeFirstResponder()
-        CallShowCityListAPI(str: "")
+        fromtvHeight.constant = 0
     }
     
     
@@ -161,7 +161,7 @@ class ActivitiesSearchTVCell: TableViewCell, GetActivitesDestinationListVMDelega
     
     
     override func textFieldDidBeginEditing(_ textField: UITextField) {
-        fromTF.placeholder = "Origin"
+        fromTF.placeholder = "Select Destination City"
         self.fromlbl.text = ""
         CallShowCityListAPI(str: textField.text ?? "")
     }

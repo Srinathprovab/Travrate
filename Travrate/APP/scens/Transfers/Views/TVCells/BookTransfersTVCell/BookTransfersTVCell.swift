@@ -176,13 +176,13 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
     @IBAction func clearFromTextFieldBtnAction(_ sender: Any) {
         fromTF.text = ""
         fromTF.becomeFirstResponder()
-        callGetCityListAPI(text: "")
+        fromtvheiht.constant = 0
     }
     
     @IBAction func didTapOnClearToTFBtnAction(_ sender: Any) {
         toTF.text = ""
         toTF.becomeFirstResponder()
-        callGetCityListAPI(text: "")
+        totvheiht.constant = 0
     }
     
 }

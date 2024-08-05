@@ -204,6 +204,7 @@ enum TVCellType {
     case SportsTripsTVCell
     case TransferTripsTVCell
     case HotelTripsTVCell
+    case FlightTripsTVCell
     
     
     

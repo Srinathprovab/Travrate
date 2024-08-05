@@ -121,10 +121,14 @@ class AddDeatilsOfGuestTVCell: TableViewCell {
         
         if cellInfo?.title == "Adult 1" {
             setAttributedText(str1: "Adult 1", str2: "  Lead Passanger")
-            travelerArray[self.indexposition ].laedpassenger = "1"
+            travelerArray[self.indexposition].laedpassenger = "1"
             expandView()
             expandViewBool = false
         }
+        
+        titleTF.text = "Mr"
+        travelerArray[self.indexposition].mrtitle = "1"
+        travelerArray[self.indexposition].gender = "1"
     }
     
     
@@ -144,8 +148,7 @@ class AddDeatilsOfGuestTVCell: TableViewCell {
         setupTextField(txtField: mnameTF, tag1: 1, label: "Middle Name(Optional)", placeholder: "Middle Name(Optional)")
         setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name", placeholder: "Last Name")
         
-        
-        
+       
         
         setupTitleDropDown()
         

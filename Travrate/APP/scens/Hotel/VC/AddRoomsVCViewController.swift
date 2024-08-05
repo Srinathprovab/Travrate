@@ -488,7 +488,8 @@ class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableVi
         defaults.set(labelText, forKey: UserDefaultsKeys.selectPersons)
         
         
-        
+        callapibool = false
+        MySingleton.shared.callboolapi = false
         NotificationCenter.default.post(name: NSNotification.Name("reload"), object: nil)
         dismiss(animated: true)
         

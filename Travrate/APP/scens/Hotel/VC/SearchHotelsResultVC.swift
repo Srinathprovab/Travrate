@@ -572,10 +572,10 @@ extension SearchHotelsResultVC {
                 
                 cell.locationlbl.text = dict.address
                 MySingleton.shared.setAttributedTextnew(str1: dict.currency ?? "",
-                                                        str2: dict.price ?? "",
+                                                        str2: String(format: "%.2f", dict.price ?? ""),
                                                         lbl: cell.kwdlbl,
-                                                        str1font: .InterSemiBold(size: 14),
-                                                        str2font: .InterSemiBold(size: 16),
+                                                        str1font: .InterBold(size: 14),
+                                                        str2font: .InterBold(size: 16),
                                                         str1Color: .TitleColor,
                                                         str2Color: .TitleColor)
                 cell.bookingsource = dict.booking_source ?? ""

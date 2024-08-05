@@ -20,6 +20,7 @@ protocol HolidayContactdetailsTVCellDelegate:AnyObject {
 
 class HolidayContactdetailsTVCell: TableViewCell {
     
+    
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var fnameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
@@ -49,6 +50,8 @@ class HolidayContactdetailsTVCell: TableViewCell {
     var cname = String()
     weak var delegate:HolidayContactdetailsTVCellDelegate?
     var titleDropdown = DropDown()
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -63,10 +66,9 @@ class HolidayContactdetailsTVCell: TableViewCell {
     
     
     override func updateUI() {
+        
         totalPassengerlbl.text = defaults.string(forKey: UserDefaultsKeys.holidaytotalpassengercount) ?? "1 Passenger"
-        
         travelFromTF.text = defaults.string(forKey: UserDefaultsKeys.holidayfromtravelDate) ?? "Select Date"
-        
         travelToTF.text = defaults.string(forKey: UserDefaultsKeys.holidaytotravelDate) ?? "Select Date"
         
         MySingleton.shared.travelfrom = travelFromTF.text ?? ""
@@ -89,16 +91,14 @@ class HolidayContactdetailsTVCell: TableViewCell {
         enquireyBtn.addTarget(self, action: #selector(didTapOnSubmitEnquiryBtnAction(_:)), for: .touchUpInside)
         requestCallBtn.addTarget(self, action: #selector(didTapOnRequestCallBackBtnAction(_:)), for: .touchUpInside)
         addPeopleBtn.addTarget(self, action: #selector(didTapOnAddPeopleBtnAction(_:)), for: .touchUpInside)
-        
-        
         countryCodeTF.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
         countryCodeTF.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
-        
         
         setupCountryCodeDropDown()
         setuptitleDropdown()
         showdepDatePicker()
         showreturndepDatePicker()
+        
     }
     
     func setupTF(tf:UITextField,tag:Int) {

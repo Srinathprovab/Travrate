@@ -13,10 +13,7 @@ class UserSpecificationTVCell: TableViewCell {
     @IBOutlet weak var userSpecificationTV: UITableView!
     @IBOutlet weak var tvHeight: NSLayoutConstraint!
     
-    
-    
-    var specificationArray = ["Please note early airrival","Please note late arrival","Please note late check out","If possible please provide adjoining rooms","If possible please provide adjoining rooms","Please note early airrival"]
-    
+
    
     override func awakeFromNib() {
         super.awakeFromNib()

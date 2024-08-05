@@ -68,14 +68,14 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     @IBOutlet weak var selectadditionallbl: UILabel!
     
     
-   
-   
+    
+    
     var timeArray = ["ALL times","12:00 AM - 06:00 AM","06:00 AM - 12:00 PM","12:00 PM - 12:00 PM","06:00 PM - 12:00 AM"]
     var selectClassArray = ["Economy","P.Economy","First","Business"]
-   // var selectClassArray = ["Economy","Premium","First","Business"]
+    // var selectClassArray = ["Economy","Premium","First","Business"]
     var infoimgArray = ["in1","in2","in3","in4"]
-   // var infoimgArray1 = ["in1","in2","in3","in4","in5","in6"]
-  //  var infoArray1 = ["Add Baggage","Meal","Add Insurance","Add Special assistance","Add Seat","Add airport Transfers"]
+    // var infoimgArray1 = ["in1","in2","in3","in4","in5","in6"]
+    //  var infoArray1 = ["Add Baggage","Meal","Add Insurance","Add Special assistance","Add Seat","Add airport Transfers"]
     var infoArray = ["Add Baggage","Meal","Add Insurance","Add Special assistance"]
     weak var delegate:FlightSearchTVCellDelegate?
     var infoViewbool = false
@@ -93,7 +93,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     var txtbool = Bool()
     
     let depDatePicker = UIDatePicker()
-  //  let retDatePicker = UIDatePicker()
+    //  let retDatePicker = UIDatePicker()
     let retDatePicker = UIDatePicker()
     
     var filterdcountrylist = [AirlineDate]()
@@ -243,7 +243,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             returnDateView.alpha = 1
             self.depTF.isHidden = false
             self.retTF.isHidden = false
-           
+            
             showdepDatePicker()
             showretDatePicker()
             
@@ -402,13 +402,15 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         if textField == fromTF {
             fromTF.placeholder = "Origin"
             self.fromlbl.text = ""
-            CallShowCityListAPI(str: textField.text ?? "")
+            fromtvHeight.constant = 0
+            // CallShowCityListAPI(str: textField.text ?? "")
             //  dropDown.show()
             
         }else {
             toTF.placeholder = "Destination"
             self.tolbl.text = ""
-            CallShowCityListAPI(str: textField.text ?? "")
+            totvHeight.constant = 0
+            //  CallShowCityListAPI(str: textField.text ?? "")
             //  dropDown1.show()
             
         }
@@ -501,7 +503,7 @@ extension FlightSearchTVCell {
             
             delegate?.didTapOnAdvanceOption(cell: self)
         }
-    
+        
         
     }
     
@@ -681,7 +683,7 @@ extension FlightSearchTVCell {
         roundtripclassDropdown.selectionAction = { [weak self] (index: Int, item: String) in
             self?.roundtripclasslbl.text = item
             defaults.set(item, forKey: UserDefaultsKeys.rselectClass)
-           
+            
             
             self?.delegate?.didTapOnClassBtnAction(cell: self!)
         }
@@ -745,7 +747,7 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? FromCityTVCell {
-           
+            
             if tableView == fromtv {
                 fromlbl.text = "\(cityList[indexPath.row].city ?? "") (\(cityList[indexPath.row].code ?? ""))"
                 fromlbl.textColor = .TitleColor
@@ -839,19 +841,19 @@ extension FlightSearchTVCell {
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-  
+        
         
         let label = UILabel()
         label.text = "Departure Date" // Initial text, can be changed dynamically
         label.sizeToFit()
         label.font = .OpenSansMedium(size: 16)
         let labelButton = UIBarButtonItem(customView: label)
-
+        
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
         toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
-
+        
         
         
         self.depTF.inputAccessoryView = toolbar
@@ -907,7 +909,7 @@ extension FlightSearchTVCell {
         label.sizeToFit()
         label.font = .OpenSansMedium(size: 16)
         let labelButton = UIBarButtonItem(customView: label)
-
+        
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));

@@ -172,6 +172,7 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         tvheight.constant = 0
         pickuplocTF.text = ""
         pickuplocTF.becomeFirstResponder()
+        tvheight.constant = 0
     }
     
     
@@ -179,6 +180,7 @@ class SearchCarRentalTVCell: TableViewCell, PickuplocationListVMDelegate {
         dropofftvheight.constant = 0
         dropuplocTF.text = ""
         dropuplocTF.becomeFirstResponder()
+        dropofftvheight.constant = 0
     }
     
     @IBAction func didTapOnSelectAgeBtnAction(_ sender: Any) {

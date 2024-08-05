@@ -143,13 +143,16 @@ class AddDeatilsOfPersonTVCell: TableViewCell {
                 
             }
             
+            titleTF.text = "Mr"
+            travelerArray[self.indexposition].mrtitle = "1"
+            travelerArray[self.indexposition].gender = "1"
             
             showdobDatePicker()
         }
         
         
         if cellInfo?.title == "Person 1" {
-            setAttributedText(str1: "Person 1", str2: "  Lead Passanger")
+            setAttributedText(str1: "Person 1", str2: "  Lead")
             travelerArray[self.indexposition ].laedpassenger = "1"
             expandView()
             expandViewBool = false

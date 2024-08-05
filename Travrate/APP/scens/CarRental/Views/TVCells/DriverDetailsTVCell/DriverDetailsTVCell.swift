@@ -86,6 +86,13 @@ class DriverDetailsTVCell: TableViewCell,UITextViewDelegate {
         setupDropDown()
         countrycodeTF.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
         countrycodeTF.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
+        
+        
+        
+        titleTF.text = "Mr"
+        mrtitlecode = "1"
+        
+        
     }
     
     func setupTF(tf:UITextField,tag:Int) {

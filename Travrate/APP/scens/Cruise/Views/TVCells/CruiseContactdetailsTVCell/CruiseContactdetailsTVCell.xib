@@ -543,7 +543,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="Ufz-RQ-UGk">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cruiseenq" translatesAutoresizingMaskIntoConstraints="NO" id="Ufz-RQ-UGk">
                                         <rect key="frame" x="76.666666666666671" y="15.333333333333258" width="24" height="24"/>
                                         <color key="tintColor" name="WhiteColor"/>
                                         <constraints>
@@ -709,6 +709,7 @@
     <resources>
         <image name="cal" width="18" height="20"/>
         <image name="call" width="31" height="31.333333969116211"/>
+        <image name="cruiseenq" width="11.333333015441895" height="11.333333015441895"/>
         <image name="downarrownew" width="24" height="24"/>
         <namedColor name="BooknowBtnColor">
             <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

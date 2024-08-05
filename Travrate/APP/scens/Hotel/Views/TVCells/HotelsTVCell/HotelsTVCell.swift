@@ -77,8 +77,8 @@ class HotelsTVCell: TableViewCell {
         MySingleton.shared.setAttributedTextnew(str1: "",
                                                 str2: "",
                                                 lbl: self.kwdlbl,
-                                                str1font: .InterSemiBold(size: 14),
-                                                str2font: .InterSemiBold(size: 16),
+                                                str1font: .InterBold(size: 14),
+                                                str2font: .InterBold(size: 16),
                                                 str1Color: .TitleColor,
                                                 str2Color: .TitleColor)
         

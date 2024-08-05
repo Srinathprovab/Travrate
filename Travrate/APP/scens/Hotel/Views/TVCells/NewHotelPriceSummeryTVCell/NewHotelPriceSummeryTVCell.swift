@@ -98,8 +98,8 @@ class NewHotelPriceSummeryTVCell: TableViewCell {
         
         hotelNamelbl.text = cellInfo?.title ?? ""
         hotelLoclbl.text = cellInfo?.subTitle ?? ""
-        checkinDatelbl.text = cellInfo?.text ?? ""
-        checkoutDatelbl.text = cellInfo?.buttonTitle ?? ""
+        checkinDatelbl.text = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "dd-MMM-yyyy", f2: "dd MMM, yyyy")
+        checkoutDatelbl.text = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "dd-MMM-yyyy", f2: "dd MMM, yyyy")
         
         noofNightslbl.text = cellInfo?.tempText ?? ""
         roomTypelbl.text = "Room:"

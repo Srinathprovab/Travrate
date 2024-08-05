@@ -223,6 +223,10 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
             expandView()
             expandViewBool = false
         }
+        
+        titleTF.text = "Mr"
+        travelerArray[self.indexposition].mrtitle = "1"
+        travelerArray[self.indexposition].gender = "1"
     }
     
     

@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BookingsVC: BaseTableVC {
+class BookingsVC: BaseTableVC, TripsViewModelDelegate {
+    
     
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var upcominglbl: UILabel!
@@ -28,13 +29,36 @@ class BookingsVC: BaseTableVC {
     
     var tabselect = String()
     var titletext = String()
-    
+    var trips :TripsViewModel?
+    var tripsBtnTap = "upcoming"
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        basicloderBool = true
+        loderBool = false
+        hideLoadera()
+        
+        
         tabselect = defaults.string(forKey: UserDefaultsKeys.tripsselect) ?? "Flight"
-        DispatchQueue.main.async {
-            self.tapOnUpcomingBtn()
+        if tabselect == "Sports" {
+            cancelledView.isHidden = true
         }
+        
+        
+        if  tripsBtnTap == "upcoming" {
+            DispatchQueue.main.async {
+                self.tapOnUpcomingBtn()
+            }
+        }else  if  tripsBtnTap == "completed" {
+            DispatchQueue.main.async {
+                self.tapOnCompletedBtn()
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.tapOnCancelledBtn()
+            }
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -42,16 +66,22 @@ class BookingsVC: BaseTableVC {
         
         // Do any additional setup after loading the view.
         setupUI()
+        
+        trips = TripsViewModel(self)
     }
     
     
     func setupUI() {
-        commonTableView.registerTVCells(["FlightUpcomingTVCell",
+        
+        
+        
+        commonTableView.registerTVCells(["FlightTripsTVCell",
                                          "HotelTripsTVCell",
                                          "TransferTripsTVCell",
                                          "SportsTripsTVCell",
                                          "CarRentalTripsTVCell",
                                          "ActivitiesTripsTVCell",
+                                         "FlightUpcomingTVCell",
                                          "EmptyTVCell"])
         
         
@@ -60,6 +90,7 @@ class BookingsVC: BaseTableVC {
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
         dismiss(animated: true)
     }
     
@@ -77,8 +108,25 @@ class BookingsVC: BaseTableVC {
     }
     
     
-    override func didTapOnViewVoucherBtnAction(cell: FlightUpcomingTVCell) {
-        print("didTapOnViewVoucherBtnAction")
+    
+    //MARK: - didTapOnViewVoutureBtnAction Flights
+    override func didTapOnViewVoutureBtnAction(cell: FlightTripsTVCell) {
+        gotoLoadWebViewVC(urlStr1: cell.voutureurl)
+    }
+    
+    func gotoLoadWebViewVC(urlStr1:String) {
+        guard let vc = LoadWebViewVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.urlString = urlStr1
+        vc.keystr = "voucher"
+        present(vc, animated: true)
+    }
+    
+    
+    //MARK: - didTapOnVoucherBtnAction Sports
+    override func didTapOnVoucherBtnAction(cell: SportsTripsTVCell) {
+        print(cell.voutureUrl)
+        gotoLoadWebViewVC(urlStr1: cell.voutureUrl)
     }
     
     
@@ -124,53 +172,67 @@ extension BookingsVC {
     
     
     func setupUpcomingTVCells() {
-        if tabselect == "Flight" {
-            self.callFlightUpcomingAPI()
-        }else if tabselect == "Transfers" {
-            callTransferstUpcomingAPI()
-        }else if tabselect == "Sports" {
-            callSportstUpcomingAPI()
-        }else if tabselect == "Car Rentals" {
-            callCarRentaltUpcomingAPI()
-        }else if tabselect == "Activities" {
-            callActivitiestUpcomingAPI()
-        }else{
-            self.callHoteltUpcomingAPI()
+        basicloderBool = true
+        tripsBtnTap = "upcoming"
+        
+        if callapibool == true {
+            if tabselect == "Flight" {
+                self.callFlightUpcomingAPI()
+            }else if tabselect == "Transfers" {
+                callTransferstUpcomingAPI()
+            }else if tabselect == "Sports" {
+                callSportstUpcomingAPI()
+            }else if tabselect == "Car Rentals" {
+                callCarRentaltUpcomingAPI()
+            }else if tabselect == "Activities" {
+                callActivitiestUpcomingAPI()
+            }else{
+                self.callHoteltUpcomingAPI()
+            }
         }
     }
     
     func setupCompletedTVCells() {
+        basicloderBool = true
+        tripsBtnTap = "completed"
         
-        if tabselect == "Flight" {
-            callFlightCompletedTVCells()
-        }else if tabselect == "Transfers" {
-            callTransferstCompletedTVCells()
-        }else if tabselect == "Sports" {
-            callSportstCompletedTVCells()
-        }else if tabselect == "Car Rentals" {
-            callCarRentaltCompletedTVCells()
-        }else if tabselect == "Activities" {
-            callActivitiestCompletedTVCells()
-        }else{
-            callHoteltCompletedTVCells()
+        if callapibool == true {
+            if tabselect == "Flight" {
+                callFlightCompletedTVCells()
+            }else if tabselect == "Transfers" {
+                callTransferstCompletedTVCells()
+            }else if tabselect == "Sports" {
+                
+                callSportstUpcomingAPI()
+            }else if tabselect == "Car Rentals" {
+                callCarRentaltCompletedTVCells()
+            }else if tabselect == "Activities" {
+                callActivitiestCompletedTVCells()
+            }else{
+                callHoteltCompletedTVCells()
+            }
         }
     }
     
     
     func setupCancelledTVCells() {
+        basicloderBool = true
+        tripsBtnTap = "cancelled"
         
-        if tabselect == "Flight" {
-            callFlightCancelledTVCells()
-        }else if tabselect == "Transfers" {
-            callTransferstCancelledTVCells()
-        }else if tabselect == "Sports" {
-            callSportstCancelledTVCells()
-        }else if tabselect == "Car Rentals" {
-            callCarRentaltCancelledTVCells()
-        }else if tabselect == "Activities" {
-            callActivitiestCancelledTVCells()
-        }else {
-            callHoteltCancelledTVCells()
+        if callapibool == true {
+            if tabselect == "Flight" {
+                callFlightCancelledTVCells()
+            }else if tabselect == "Transfers" {
+                callTransferstCancelledTVCells()
+            }else if tabselect == "Sports" {
+                callSportstUpcomingAPI()
+            }else if tabselect == "Car Rentals" {
+                callCarRentaltCancelledTVCells()
+            }else if tabselect == "Activities" {
+                callActivitiestCancelledTVCells()
+            }else {
+                callHoteltCancelledTVCells()
+            }
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MessageUI
 
 
 
@@ -13,7 +14,7 @@ import UIKit
 
 
 class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDelegate, TimerManagerDelegate, HotelBookingViewModelDelegate {
-   
+    
     
     
     @IBOutlet weak var titlelbl: UILabel!
@@ -71,7 +72,7 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
         continuetoPaymentBtnView.isUserInteractionEnabled = true
         continuetoPaymentBtnlbl.text = "Continue to Payment"
         setuplabels(lbl: titlelbl, text: "Booking Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
-      
+        
         
         commonTableView.registerTVCells(["BookingHotelDetailsTVCell",
                                          "EmptyTVCell",
@@ -116,6 +117,8 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
         
         if tf.tag == 1 {
             MySingleton.shared.payemail = tf.text ?? ""
+        }else if tf.tag == 5 {
+            MySingleton.shared.regpassword = tf.text ?? ""
         }else {
             MySingleton.shared.paymobile = tf.text ?? ""
         }
@@ -309,7 +312,7 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
         
     }
     
-   
+    
     func prePaymentConfirmationDetails(response: PaymentModel) {
         
     }
@@ -329,6 +332,14 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
         }
     }
     
+    
+    //MARK: - HotelBookingCancellationpolicyTVCell
+    override func didTapOnContactInfoTapAction(cell: HotelBookingCancellationpolicyTVCell) {
+        openEmail(mailstr: "travrate.info@gmail.com")
+    }
+    
+    
+    
 }
 
 //MARK: - setupUI
@@ -345,7 +356,7 @@ extension HotelBookingDetailsVC {
         
         
         MySingleton.shared.tablerow.append(TableRow(cellType:.BookingHotelDetailsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.HotelBookingCancellationpolicyTVCell))
+        MySingleton.shared.tablerow.append(TableRow(key:"booking",cellType:.HotelBookingCancellationpolicyTVCell))
         
         
         let userloggedBool = defaults.bool(forKey: UserDefaultsKeys.loggedInStatus)
@@ -361,8 +372,8 @@ extension HotelBookingDetailsVC {
         }
         
         
-       
         
+        MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Guest Details",
                                                     cellType:.TotalNoofTravellerTVCell))
         
@@ -949,6 +960,37 @@ extension HotelBookingDetailsVC {
         kwdlbl.text = "\(MySingleton.shared.roompaxesdetails[0].currency ?? ""):\(updatedGrandTotal)"
         
         
+    }
+    
+    
+    
+}
+
+
+
+extension HotelBookingDetailsVC:MFMailComposeViewControllerDelegate  {
+    
+    @objc func openEmail(mailstr:String) {
+        if MFMailComposeViewController.canSendMail() {
+            let composeVC = MFMailComposeViewController()
+            composeVC.mailComposeDelegate = self
+            composeVC.setToRecipients([mailstr]) // Set the recipient email address
+            
+            // Set the email subject
+            //    composeVC.setSubject("Hello from Swift!")
+            
+            // Set the email body
+            //   composeVC.setMessageBody("This is the body of the email.", isHTML: false)
+            
+            present(composeVC, animated: true, completion: nil)
+        } else {
+            // Handle the case when the device cannot send emails
+            print("Device cannot send emails.")
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     

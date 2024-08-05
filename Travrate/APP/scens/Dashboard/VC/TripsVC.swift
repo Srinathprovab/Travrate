@@ -59,6 +59,7 @@ class TripsVC: BaseTableVC {
     }
     
     func gotoBookingsVC() {
+        callapibool = true
         guard let vc = BookingsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)

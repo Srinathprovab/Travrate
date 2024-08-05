@@ -22,7 +22,7 @@ class AmenitiesCVCell: UICollectionViewCell {
         holderView.backgroundColor = .WhiteColor
         titlelbl.textColor = HexColor("#5B5B5B")
         titlelbl.font = UIFont.LatoRegular(size: 14)
-        titlelbl.numberOfLines = 0
+        
         
     }
     

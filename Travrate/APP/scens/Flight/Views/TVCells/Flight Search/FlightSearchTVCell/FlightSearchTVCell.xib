@@ -624,7 +624,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="74"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adult(12+)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6D-Eh-qfA">
-                                                <rect key="frame" x="15" y="7" width="156.66666666666666" height="18"/>
+                                                <rect key="frame" x="15" y="7" width="156.66666666666666" height="17.999999999999996"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
                                                 <color key="textColor" name="fromcolor"/>
                                                 <nil key="highlightedColor"/>
@@ -766,7 +766,7 @@
                                         <rect key="frame" x="191.66666666666663" y="0.0" width="186.33333333333337" height="74"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Child(2-11)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3r0-UQ-eas">
-                                                <rect key="frame" x="15" y="7" width="156.33333333333334" height="18"/>
+                                                <rect key="frame" x="15" y="7" width="156.33333333333334" height="17.999999999999996"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
                                                 <color key="textColor" name="fromcolor"/>
                                                 <nil key="highlightedColor"/>
@@ -913,7 +913,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="74"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infant(0-2)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iG1-L5-c9h">
-                                                <rect key="frame" x="15" y="7" width="156.66666666666666" height="18"/>
+                                                <rect key="frame" x="15" y="7" width="156.66666666666666" height="17.999999999999996"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
                                                 <color key="textColor" name="fromcolor"/>
                                                 <nil key="highlightedColor"/>

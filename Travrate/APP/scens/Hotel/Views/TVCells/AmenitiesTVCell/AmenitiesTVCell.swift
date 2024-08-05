@@ -100,6 +100,8 @@ extension AmenitiesTVCell:UICollectionViewDelegate,UICollectionViewDataSource,UI
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? AmenitiesCVCell {
             
             cell.titlelbl.text = namseArray[indexPath.row]
+            cell.titlelbl.numberOfLines = 0
+            
             
             commonCell = cell
         }
@@ -110,26 +112,37 @@ extension AmenitiesTVCell:UICollectionViewDelegate,UICollectionViewDataSource,UI
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = namseArray[indexPath.row]
+      //  let text = namseArray[indexPath.row]
         let width: CGFloat = 200 // Your desired width
-        let font = UIFont.LatoRegular(size: 14) // Match the font used in the label
-        let height = calculateHeightForText(text, font: font, width: width)
+        let height = calculateTableViewHeight()
         
         return CGSize(width: width, height: height + 16) // Adding padding if necessary
     }
     
     
-    func calculateHeightForText(_ text: String, font: UIFont, width: CGFloat) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = text.boundingRect(
-            with: constraintRect,
-            options: .usesLineFragmentOrigin,
-            attributes: [NSAttributedString.Key.font: font],
-            context: nil
-        )
-        
-        return ceil(boundingBox.height)
-    }
+   
+    
+        func calculateTableViewHeight() -> CGFloat {
+            var totalHeight: CGFloat = 0
+    
+            if let sampleCell = amenitiesCV.dequeueReusableCell(withReuseIdentifier: "cell", for: IndexPath(item: 0, section: 0)) as? AmenitiesCVCell {
+               
+                
+                sampleCell.titlelbl.numberOfLines = 0
+                
+                sampleCell.setNeedsLayout()
+                sampleCell.layoutIfNeeded()
+                
+                let height = sampleCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+                totalHeight = height
+            }
+    
+            // Add a small padding to avoid cutting off the cell
+            let padding: CGFloat = 0
+            totalHeight += padding
+    
+            return totalHeight
+        }
     
     
 }

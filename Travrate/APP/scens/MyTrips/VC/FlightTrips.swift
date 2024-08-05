@@ -12,16 +12,28 @@ extension BookingsVC {
     
     //MARK: - callFlightUpcomingAPI
     func callFlightUpcomingAPI() {
-        showToast(message: "callFlightUpcomingAPI")
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["user_id"] = "2893"
+        trips?.CALL_GET_FLIGHT_TRIPS_API(dictParam: MySingleton.shared.payload)
+    }
+    
+    func flightTripsResponse(response: FlightsTripsModel) {
+        basicloderBool = false
         DispatchQueue.main.async {
-            self.setupFlightUpcomingTVCells()
+            self.setupFlightUpcomingTVCells(res:  response.completed?.booking_details ?? [])
         }
     }
     
-    func setupFlightUpcomingTVCells() {
+    
+    func setupFlightUpcomingTVCells(res:[Flight_trips_Booking_details]) {
         MySingleton.shared.tablerow.removeAll()
         
-        MySingleton.shared.tablerow.append(TableRow(cellType:.FlightUpcomingTVCell))
+        if res[0].booking_itinerary_details?.count ?? 0 > 0 {
+            TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
+            MySingleton.shared.tablerow.append(TableRow(moreData:res,cellType:.FlightTripsTVCell))
+        }else {
+            TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
+        }
         
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -37,6 +49,7 @@ extension BookingsVC {
     func setupFlightCompletedTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
+        TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
         
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -54,7 +67,9 @@ extension BookingsVC {
     func setupFlightCancelledTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
-        MySingleton.shared.tablerow.append(TableRow(cellType:.FlightUpcomingTVCell))
+        TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
+        
+        
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
     }

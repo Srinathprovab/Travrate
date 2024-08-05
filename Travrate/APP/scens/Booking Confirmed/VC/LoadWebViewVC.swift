@@ -104,7 +104,12 @@ class LoadWebViewVC: UIViewController, WKNavigationDelegate, MobileSecureBooking
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        gotoDashboard()
+        if keystr == "voucher" {
+            callapibool = false
+           dismiss(animated: true)
+        }else {
+            gotoDashboard()
+        }
     }
     
     

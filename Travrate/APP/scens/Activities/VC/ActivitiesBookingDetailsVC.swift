@@ -190,8 +190,6 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
         case 111:
             MySingleton.shared.paycontactname = tf.text ?? ""
             break
-            
-            
       
             
         case 5:

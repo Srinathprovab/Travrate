@@ -23,7 +23,7 @@ class CRBookingDetailsVC: BaseTableVC {
     }
     
     var countrycode = String()
-    var mrtitlecode = ""
+  
     var fname = String()
     var lname = String()
     var email = String()

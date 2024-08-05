@@ -31,6 +31,8 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         return vc
     }
     
+    
+   
     var selectedCell: NewRoomDetailsTVCell?
     var tablerow = [TableRow]()
     var viewmodel:HotelDetailsViewModel?
@@ -45,7 +47,7 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     
     //MARK: - Loading function
     override func viewWillAppear(_ animated: Bool) {
-        hotelDetailsTapBool = false
+        
         selectedCellStates = [:]
         addObserver()
         
@@ -122,30 +124,6 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     
     
     
-    //MARK: - setuptv
-    func setuptv() {
-        tablerow.removeAll()
-        
-        tablerow.append(TableRow(title:hotelDetails?.name ?? "",
-                                 subTitle: "\(hotelDetails?.address ?? "")|\(hotelDetails?.city_name ?? "")",
-                                 image:img,
-                                 cellType:.HotelImagesTVCell))
-        
-        
-        tablerow.append(TableRow(title:hotelDetails?.latitude ?? "",
-                                 subTitle: hotelDetails?.longitude ?? "",
-                                 text: hotelDetails?.token,
-                                 buttonTitle: hotelDetails?.name ?? "",
-                                 moreData:roomsDetails,
-                                 tempText: hotelDetails?.tokenKey,
-                                 cellType:.RoomsTVcell))
-        
-        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
-        
-        commonTVData = tablerow
-        commonTableView.reloadData()
-    }
-    
     @objc func didTapOnBackBtn(_ sender:UIButton) {
         callapibool = false
         dismiss(animated: true)
@@ -171,8 +149,8 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     
     //MARK: - didTapOnRoomsBtn
     override func didTapOnRoomsBtn(cell: RoomsTVcell) {
-        cell.key = "rooms"
         hotelDetailsTapBool = true
+        cell.key = "rooms"
         cell.roomDetailsTV.reloadData()
     }
     
@@ -239,6 +217,7 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         grandTotal = cell.pricelbl.text ?? ""
         setuplabels(lbl: bookNowlbl, text: cell.pricelbl.text ?? "" , textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .left)
         
+       
         selectedrRateKeyArray = cell.ratekey
         
         MySingleton.shared.setAttributedTextnew(str1: "\(cell.currency )",
@@ -316,7 +295,7 @@ extension HotelDetailsVC {
     
     func hotelDetails(response: HotelSelectedDetailsModel) {
         
-        
+        selectedrRateKeyArray = ""
         loderBool = false
         hideLoadera()
         
@@ -330,7 +309,7 @@ extension HotelDetailsVC {
         roomsDetails = response.hotel_details?.rooms ?? [[]]
         imagesArray = response.hotel_details?.images ?? []
         formatAmeArray = response.hotel_details?.format_ame ?? []
-       
+        
         formatDesc = response.hotel_details?.format_desc ?? []
         img = response.hotel_details?.image ?? ""
         
@@ -339,6 +318,40 @@ extension HotelDetailsVC {
         DispatchQueue.main.async {[self] in
             setuptv()
         }
+    }
+    
+
+    
+    func setuptv() {
+        tablerow.removeAll()
+        
+        
+        if roomsDetails.count > 0 {
+            
+            TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
+            
+            tablerow.append(TableRow(title:hotelDetails?.name ?? "",
+                                     subTitle: "\(hotelDetails?.address ?? "")|\(hotelDetails?.city_name ?? "")",
+                                     image:img,
+                                     cellType:.HotelImagesTVCell))
+            
+            
+            tablerow.append(TableRow(title:hotelDetails?.latitude ?? "",
+                                     subTitle: hotelDetails?.longitude ?? "",
+                                     text: hotelDetails?.token,
+                                     buttonTitle: hotelDetails?.name ?? "",
+                                     moreData:roomsDetails,
+                                     tempText: hotelDetails?.tokenKey,
+                                     cellType:.RoomsTVcell))
+            
+            tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+            
+    }else {
+        TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
+    }
+        
+        commonTVData = tablerow
+        commonTableView.reloadData()
     }
     
 }

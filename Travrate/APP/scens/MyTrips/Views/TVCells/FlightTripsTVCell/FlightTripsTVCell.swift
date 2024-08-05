@@ -7,23 +7,59 @@
 
 import UIKit
 
+protocol FlightTripsTVCellDelegate:AnyObject {
+    func didTapOnViewVoutureBtnAction(cell:FlightTripsTVCell)
+}
+
 class FlightTripsTVCell: TableViewCell, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var summeryTV: UITableView!
     @IBOutlet weak var tvheight: NSLayoutConstraint!
     @IBOutlet weak var kwdlbl: UILabel!
-
     
+    weak var delegate:FlightTripsTVCellDelegate?
+    var voutureurl = String()
+    var bookingItinearyDetails = [Flight_Trips_Booking_itinerary_details]()
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupUI()
-        tvheight.constant = CGFloat((2) * 133)
+        
         // Initialization code
+        setupUI()
+        
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+    
+    override func updateUI() {
+        let bd = cellInfo?.moreData as? [Flight_trips_Booking_details]
+        bookingItinearyDetails = bd?[0].booking_itinerary_details ?? []
+        voutureurl = bd?[0].voucher_url ?? ""
+        updateHeight(ccount: bookingItinearyDetails.count)
     }
     
     func setupUI() {
-      //  bookNowlbl.font = .InterRegular(size: 12)
         setupTV()
+    }
+    
+    
+    @IBAction func didTapOnViewVoutureBtnAction(_ sender: Any) {
+        delegate?.didTapOnViewVoutureBtnAction(cell: self)
+    }
+    
+    
+}
+
+extension FlightTripsTVCell {
+    
+    
+    func updateHeight(ccount:Int) {
+        tvheight.constant = CGFloat((ccount) * 133)
+        summeryTV.reloadData()
     }
     
     
@@ -39,17 +75,8 @@ class FlightTripsTVCell: TableViewCell, UITableViewDataSource, UITableViewDelega
     }
     
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-}
-
-extension FlightTripsTVCell {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        return bookingItinearyDetails.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,41 +84,40 @@ extension FlightTripsTVCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? FlightResultSummeryTVCell {
             
             cell.selectionStyle = .none
-            //            let data = flightsummery[indexPath.row]
-            //
-            //            cell.flightDetailsTapBtn.addTarget(self, action: #selector(didTapFlightDetailsPopupBrtnBtnAction(_:)), for: .touchUpInside)
-            //            cell.fromCityTimelbl.text = data.origin?.time
-            //            cell.fromCityNamelbl.text = "\(data.origin?.city ?? "")(\(data.origin?.loc ?? ""))"
-            //            cell.toCityTimelbl.text = data.destination?.time
-            //            cell.toCityNamelbl.text = "\(data.destination?.city ?? "")(\(data.destination?.loc ?? ""))"
-            //            cell.hourslbl.text = data.duration
-            //            cell.noOfStopslbl.text = "\(data.no_of_stops ?? 0) Stop"
-            //            cell.inNolbl.text = "\(data.operator_code ?? "") - \(data.flight_number ?? "")"
-            //            cell.logoImg.sd_setImage(with: URL(string: data.operator_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
-            //            cell.classlbl.text = data.fclass?.name
-            //
-            //
-            //            cell.luggagelbl.text = "7kg"
-            //
-            //            if let convertedString = MySingleton.shared.convertToPC(input: data.weight_Allowance ?? "") {
-            //                cell.worklbl.text = convertedString
-            //            } else {
-            //                print("Invalid input format")
-            //            }
+            let data = bookingItinearyDetails[indexPath.row]
+            
+            //            cell.fromCityTimelbl.text = data.
+            //                        cell.fromCityNamelbl.text = "\(data.origin?.city ?? "")(\(data.origin?.loc ?? ""))"
+            //                        cell.toCityTimelbl.text = data.destination?.time
+            //                        cell.toCityNamelbl.text = "\(data.destination?.city ?? "")(\(data.destination?.loc ?? ""))"
+            //                        cell.hourslbl.text = data.duration
+            //                        cell.noOfStopslbl.text = "\(data.no_of_stops ?? 0) Stop"
+            //                        cell.inNolbl.text = "\(data.operator_code ?? "") - \(data.flight_number ?? "")"
+            //                        cell.logoImg.sd_setImage(with: URL(string: data.operator_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            //                        cell.classlbl.text = data.fclass?.name
             //
             //
+            //                        cell.luggagelbl.text = "7kg"
             //
-            //            if summeryTV.isLast(for: indexPath) {
-            //                cell.ul.isHidden = true
-            //            }
+            //                        if let convertedString = MySingleton.shared.convertToPC(input: data.weight_Allowance ?? "") {
+            //                            cell.worklbl.text = convertedString
+            //                        } else {
+            //                            print("Invalid input format")
+            //                        }
             //
             //
-            //            if data.operator_code == "J9" {
-            //                self.bookNowlbl.text = "Select Fare"
-            //            }else {
-            //                self.bookNowlbl.text = "Book Now"
-            //            }
             //
+            //                        if summeryTV.isLast(for: indexPath) {
+            //                            cell.ul.isHidden = true
+            //                        }
+            //
+            //
+            //                        if data.operator_code == "J9" {
+            //                            self.bookNowlbl.text = "Select Fare"
+            //                        }else {
+            //                            self.bookNowlbl.text = "Book Now"
+            //                        }
+            
             
             c = cell
             
