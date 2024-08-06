@@ -79,7 +79,7 @@ class TransferfareSummeryTVCell: TableViewCell {
         
         
         MySingleton.shared.setAttributedTextnew(str1: "\(transfer_data?.currency ?? "") ",
-                                                str2: String(format: "%.2f", transfer_data?.price ?? 0.0),
+                                                str2: String(format: "%.2f", totlConvertedGrand),
                                                 lbl: subtotallbl,
                                                 str1font: .InterSemiBold(size: 16),
                                                 str2font: .InterSemiBold(size: 16),

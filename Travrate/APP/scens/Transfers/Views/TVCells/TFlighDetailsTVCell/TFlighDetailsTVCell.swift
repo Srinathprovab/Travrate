@@ -104,7 +104,7 @@ extension TFlighDetailsTVCell {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         
-        
+      
         arrivalTimePicker.minimumDate = formatter.date(from: defaults.string(forKey: UserDefaultsKeys.transfercalDepTime) ?? "")
         arrivalTimePicker.datePickerMode = .time
         arrivalTimePicker.preferredDatePickerStyle = .wheels
@@ -132,6 +132,9 @@ extension TFlighDetailsTVCell {
         self.arrivalTimeTF.inputAccessoryView = toolbar
         self.arrivalTimeTF.inputView = arrivalTimePicker
     }
+    
+    
+
     
  
     //MARK: - showTimePicker

@@ -46,7 +46,7 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
     func setupUI() {
         
         setuplabels(lbl: bookingTitlelbl, text: "Booking Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
-
+        
         MySingleton.shared.addonServicesOrigenArray.removeAll()
         continuetoPaymentBtnView.backgroundColor = .Buttoncolor
         continuetoPaymentBtnView.isUserInteractionEnabled = true
@@ -111,6 +111,42 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
             gifimg.isHidden = true
         }
     }
+    
+    
+    override func didTapOnTermsBtnAction(cell:TermsAgreeTVCell) {
+        
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+        
+        gotoMoreDetailsVC(str: "Terms & Conditions")
+    }
+    
+    override func didTapOnPrivacyPolicyBtnAction(cell:TermsAgreeTVCell) {
+        
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+        
+        gotoMoreDetailsVC(str: "Privacy Policy")
+    }
+    
+    
+    func gotoMoreDetailsVC(str:String){
+        guard let vc = MoreDetailsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.titleString = str
+        present(vc, animated: true)
+    }
+    
     
     //MARK: - didTapOnRegisterNowOrLoginButtonAction
     override func didTapOnRegisterNowOrLoginButtonAction(cell: RegisterSelectionLoginTableViewCell) {
@@ -177,7 +213,7 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
         print(tf.tag)
         
         switch tf.tag {
-       
+            
             
         case 1:
             MySingleton.shared.payemail = tf.text ?? ""
@@ -190,7 +226,7 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
         case 111:
             MySingleton.shared.paycontactname = tf.text ?? ""
             break
-      
+            
             
         case 5:
             MySingleton.shared.regpassword = tf.text ?? ""
@@ -264,8 +300,8 @@ class ActivitiesBookingDetailsVC: BaseTableVC, ActivitiesPreProcessBookingVMDele
         reloadPriceSummaryTVCell()
     }
     
-   
-   
+    
+    
     
     //MARK: - didTapOnDropupBtnAction
     override func didTapOnDropupBtnAction(cell: ContractRemarkTVCell) {
@@ -616,7 +652,7 @@ extension ActivitiesBookingDetailsVC {
         
         
         
-       
+        
         
         let alocation = MySingleton.shared.activity_loc
         let agent_payable = MySingleton.shared.agentpayable

@@ -112,13 +112,12 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
         totvheiht.constant = 0
         
         
+        fromTF.text = defaults.string(forKey: UserDefaultsKeys.transferfromcityname) ?? ""
+        toTF.text = defaults.string(forKey: UserDefaultsKeys.transfertocityname) ?? ""
+        
+        
         let journytype = defaults.string(forKey: UserDefaultsKeys.transferjournytype)
         if journytype == "oneway" {
-            
-            
-            
-            fromTF.text = defaults.string(forKey: UserDefaultsKeys.transferfromcityname) ?? ""
-            toTF.text = defaults.string(forKey: UserDefaultsKeys.transfertocityname) ?? ""
             
             returnView.isHidden = true
             depDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? "Select Date"
@@ -127,6 +126,7 @@ class BookTransfersTVCell: TableViewCell, GetTransferCityVMDelegate {
             defaults.set("Select Time", forKey: UserDefaultsKeys.transfercalRetTime)
             
         }else {
+            
             returnView.isHidden = false
             depDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? "Select Date"
             retDateTF.text = defaults.string(forKey: UserDefaultsKeys.transfercalRetDate) ?? "Select Date"

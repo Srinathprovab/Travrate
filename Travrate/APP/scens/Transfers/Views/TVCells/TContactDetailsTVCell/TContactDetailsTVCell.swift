@@ -115,7 +115,7 @@ class TContactDetailsTVCell: TableViewCell {
         
         
         
-        if cellInfo?.key == "activities" {
+        if cellInfo?.key == "activities" || cellInfo?.key == "transfers" {
             contactnameView.isHidden = true
         }
         

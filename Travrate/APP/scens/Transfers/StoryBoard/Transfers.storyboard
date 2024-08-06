@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -213,13 +212,13 @@
                                                     <action selector="didTapOnBackBtnAction:" destination="kma-gH-KEx" eventType="touchUpInside" id="mqo-EK-1DQ"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Airport Ai Maktoum Dubai International Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZe-8s-pln">
-                                                <rect key="frame" x="10" y="84.666666666666686" width="373" height="19.333333333333329"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport Ai Maktoum Dubai International Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZe-8s-pln">
+                                                <rect key="frame" x="10" y="84.666666666666671" width="373" height="19.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="HeadingColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="May 8 - May 12 -Round Trip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMV-7X-eZg">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 8 - May 12 -Round Trip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMV-7X-eZg">
                                                 <rect key="frame" x="10" y="106" width="373" height="19.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="HeadingColor"/>
@@ -246,7 +245,7 @@
                                             <constraint firstItem="yb7-Ia-lqB" firstAttribute="leading" secondItem="s1F-uM-y4l" secondAttribute="leading" constant="80" id="cil-zJ-hBP"/>
                                             <constraint firstItem="mZe-8s-pln" firstAttribute="centerX" secondItem="yb7-Ia-lqB" secondAttribute="centerX" id="dpz-R9-Ltv"/>
                                             <constraint firstAttribute="trailing" secondItem="wMV-7X-eZg" secondAttribute="trailing" constant="10" id="h3V-0B-4H1"/>
-                                            <constraint firstAttribute="height" constant="135" id="kJL-yi-jSU"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="135" id="kJL-yi-jSU"/>
                                             <constraint firstItem="wMV-7X-eZg" firstAttribute="centerX" secondItem="mZe-8s-pln" secondAttribute="centerX" id="qd6-ms-zcj"/>
                                             <constraint firstItem="UMZ-Sc-9Lg" firstAttribute="centerY" secondItem="yb7-Ia-lqB" secondAttribute="centerY" id="ruI-gQ-4c4"/>
                                             <constraint firstAttribute="trailing" secondItem="mZe-8s-pln" secondAttribute="trailing" constant="10" id="sw3-ui-xjl"/>

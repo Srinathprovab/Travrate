@@ -397,7 +397,8 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func didTapOnViewVoutureBtnAction(cell: FlightTripsTVCell) {}
     func didTapOnVoucherBtnAction(cell: SportsTripsTVCell) {}
     func didTapOnContactInfoTapAction(cell: HotelBookingCancellationpolicyTVCell) {}
-    
+    func didTapOnTermsBtnAction(cell:TermsAgreeTVCell) {}
+    func didTapOnPrivacyPolicyBtnAction(cell:TermsAgreeTVCell) {}
     
     
     

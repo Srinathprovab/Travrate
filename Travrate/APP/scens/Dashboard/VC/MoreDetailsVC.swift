@@ -46,6 +46,8 @@ class MoreDetailsVC: BaseTableVC, MoreDetailsViewModelDelegate {
    
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        callapibool = false
+        MySingleton.shared.callboolapi = false
         dismiss(animated: true)
     }
     

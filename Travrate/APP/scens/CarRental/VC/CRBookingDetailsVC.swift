@@ -284,7 +284,7 @@ class CRBookingDetailsVC: BaseTableVC {
     
     
     
-    
+    //MARK: - TermsAgreeTVCell
     override func didTapOnCheckBoxBtnAction(cell:TermsAgreeTVCell) {
         if cell.checkBool {
             continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
@@ -294,6 +294,41 @@ class CRBookingDetailsVC: BaseTableVC {
             gifimg.isHidden = true
         }
     }
+    
+    override func didTapOnTermsBtnAction(cell:TermsAgreeTVCell) {
+        
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+        
+        gotoMoreDetailsVC(str: "Terms & Conditions")
+    }
+    
+    override func didTapOnPrivacyPolicyBtnAction(cell:TermsAgreeTVCell) {
+        
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+        
+        gotoMoreDetailsVC(str: "Privacy Policy")
+    }
+    
+    
+    func gotoMoreDetailsVC(str:String){
+        guard let vc = MoreDetailsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.titleString = str
+        present(vc, animated: true)
+    }
+    
     
     
 }

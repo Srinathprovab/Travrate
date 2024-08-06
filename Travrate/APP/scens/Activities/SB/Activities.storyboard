@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -193,6 +192,7 @@
                                             <constraint firstItem="fdm-6e-jax" firstAttribute="centerY" secondItem="ILD-dk-91j" secondAttribute="centerY" id="drq-dK-c1Z"/>
                                             <constraint firstItem="mmQ-Jd-C4e" firstAttribute="top" secondItem="UIb-Kv-nb8" secondAttribute="bottom" constant="5" id="ehz-H5-W5b"/>
                                             <constraint firstItem="ILD-dk-91j" firstAttribute="centerX" secondItem="Vbh-9Z-fHK" secondAttribute="centerX" id="gxg-tl-2xA"/>
+                                            <constraint firstItem="ILD-dk-91j" firstAttribute="leading" secondItem="fdm-6e-jax" secondAttribute="trailing" constant="57" id="jjn-EI-5sC"/>
                                             <constraint firstItem="UIb-Kv-nb8" firstAttribute="top" secondItem="fdm-6e-jax" secondAttribute="bottom" id="oMz-zM-BkX"/>
                                             <constraint firstItem="mmQ-Jd-C4e" firstAttribute="centerX" secondItem="UIb-Kv-nb8" secondAttribute="centerX" id="sqf-vi-TP6"/>
                                             <constraint firstItem="ILD-dk-91j" firstAttribute="top" secondItem="Vbh-9Z-fHK" secondAttribute="top" constant="60" id="t96-zX-aGB"/>
@@ -532,7 +532,8 @@
                                         <constraints>
                                             <constraint firstItem="qQA-EI-q7C" firstAttribute="centerY" secondItem="EGq-jc-I1L" secondAttribute="centerY" id="1G4-bg-BVv"/>
                                             <constraint firstItem="a3k-4Q-WOU" firstAttribute="centerX" secondItem="VmH-bt-BLt" secondAttribute="centerX" id="76C-Cr-y7n"/>
-                                            <constraint firstAttribute="height" constant="140" id="7LX-Uj-nRm"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="140" id="7LX-Uj-nRm"/>
+                                            <constraint firstItem="EGq-jc-I1L" firstAttribute="leading" secondItem="qUR-l5-b92" secondAttribute="leading" constant="40" id="9LO-bV-55m"/>
                                             <constraint firstItem="VmH-bt-BLt" firstAttribute="top" secondItem="qQA-EI-q7C" secondAttribute="bottom" id="Hxq-rS-Gyx"/>
                                             <constraint firstItem="VmH-bt-BLt" firstAttribute="centerX" secondItem="EGq-jc-I1L" secondAttribute="centerX" id="Mdh-79-sKp"/>
                                             <constraint firstItem="EGq-jc-I1L" firstAttribute="centerX" secondItem="qUR-l5-b92" secondAttribute="centerX" id="Odc-ea-ah9"/>
@@ -541,6 +542,7 @@
                                             <constraint firstItem="a3k-4Q-WOU" firstAttribute="top" secondItem="VmH-bt-BLt" secondAttribute="bottom" constant="5" id="bD5-6q-iIh"/>
                                             <constraint firstItem="VmH-bt-BLt" firstAttribute="leading" secondItem="qUR-l5-b92" secondAttribute="leading" constant="10" id="hbx-nk-Ras"/>
                                             <constraint firstAttribute="trailing" secondItem="VmH-bt-BLt" secondAttribute="trailing" constant="10" id="pvH-jJ-tQ2"/>
+                                            <constraint firstAttribute="bottom" secondItem="a3k-4Q-WOU" secondAttribute="bottom" constant="11.67" id="qel-R6-pfH"/>
                                             <constraint firstItem="qQA-EI-q7C" firstAttribute="leading" secondItem="qUR-l5-b92" secondAttribute="leading" constant="13" id="wUc-hE-rHf"/>
                                         </constraints>
                                     </view>

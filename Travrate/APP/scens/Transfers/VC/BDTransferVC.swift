@@ -8,11 +8,6 @@
 import UIKit
 
 class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVMDelegate {
-    func transfersSecurebookingDetails(response: SendToPaymentModel) {
-        
-    }
-    
-    
     
     
     
@@ -73,9 +68,9 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVM
     
     override func editingTextField(tf:UITextField) {
         switch tf.tag {
-        case 111:
-            MySingleton.shared.paycontactname = tf.text ?? ""
-            break
+            //        case 111:
+            //            MySingleton.shared.paycontactname = tf.text ?? ""
+            //            break
             
         case 1:
             MySingleton.shared.payemail = tf.text ?? ""
@@ -125,6 +120,41 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVM
         }
     }
     
+    override func didTapOnTermsBtnAction(cell:TermsAgreeTVCell) {
+        
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+        
+        gotoMoreDetailsVC(str: "Terms & Conditions")
+    }
+    
+    override func didTapOnPrivacyPolicyBtnAction(cell:TermsAgreeTVCell) {
+        
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+        
+        gotoMoreDetailsVC(str: "Privacy Policy")
+    }
+    
+    
+    func gotoMoreDetailsVC(str:String){
+        guard let vc = MoreDetailsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.titleString = str
+        present(vc, animated: true)
+    }
+    
+    
     
     //MARK: - Addon didSelectAddon  didDeselectAddon
     override func didDeselectAddon(index: Int, origen: String) {
@@ -158,9 +188,6 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVM
         }
         
     }
-    
-    
-    
     
     
     func updateTotalAndReload() {
@@ -223,7 +250,7 @@ class BDTransferVC: BaseTableVC, TransferPreBookingVMDelegate, TransferBookingVM
         self.view.endEditing(true)
     }
     
-    
+    func transfersSecurebookingDetails(response: SendToPaymentModel) {}
     
 }
 
@@ -235,7 +262,7 @@ extension BDTransferVC {
     func setupUI(){
         
         setuplabels(lbl: titlelbl, text: "Booking Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
-       
+        
         arrivaldate = defaults.string(forKey: UserDefaultsKeys.transfercalRetDate) ?? ""
         arrivaltime = defaults.string(forKey: UserDefaultsKeys.transfercalRetTime) ?? ""
         depdate = defaults.string(forKey: UserDefaultsKeys.transfercalDepDate) ?? ""
@@ -300,9 +327,13 @@ extension BDTransferVC {
         hotelflexiblePrie = response.addon_services?[1].price ?? ""
         totlConvertedGrand = totlConvertedGrand + (Double(hotelwhatsAppPrice) ?? 0.0) + (Double(hotelflexiblePrie) ?? 0.0)
         
-        DispatchQueue.main.async {
-            self.setupTVCells()
-        }
+        response.status == false ? resultnil() : self.setupTVCells()
+        
+        //        DispatchQueue.main.async {
+        //            self.setupTVCells()
+        //        }
+        
+        
     }
     
     
@@ -332,7 +363,7 @@ extension BDTransferVC {
             MySingleton.shared.tablerow.append(TableRow(cellType: .AddPassengerButtonTVCell))
         }
         
-        MySingleton.shared.tablerow.append(TableRow(moreData:transfer_data,cellType:.TContactDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(key:"transfers",moreData:transfer_data,cellType:.TContactDetailsTVCell))
         if MySingleton.shared.transferAddonServices.count > 0 {
             MySingleton.shared.tablerow.append(TableRow(key: "transfer", moreData: services, cellType:.AddonTableViewCell))
         }
@@ -341,7 +372,7 @@ extension BDTransferVC {
         MySingleton.shared.tablerow.append(TableRow(cellType:.TransferfareSummeryTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:5,cellType:.EmptyTVCell))
         
-        MySingleton.shared.tablerow.append(TableRow(title:"By Booking This item, You agree to pay the total amount shown, with includes service fees. you also agree to the terms ans conditions and privacy policy .",cellType:.TermsAgreeTVCell))
+        MySingleton.shared.tablerow.append(TableRow(key:"transfer",cellType:.TermsAgreeTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:20,cellType:.EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow
@@ -477,17 +508,17 @@ extension BDTransferVC {
                 
                 if cell.titleTF.text?.isEmpty == true {
                     // Textfield is empty
-                    cell.titleView.layer.borderColor = UIColor.red.cgColor
+                  //  cell.titleView.layer.borderColor = UIColor.red.cgColor
                     callpaymenthotelbool = false
                     
                 }
                 
                 if cell.fnameTF.text?.isEmpty == true {
                     // Textfield is empty
-                    cell.fnameView.layer.borderColor = UIColor.red.cgColor
+                   // cell.fnameView.layer.borderColor = UIColor.red.cgColor
                     callpaymenthotelbool = false
                 }else if (cell.fnameTF.text?.count ?? 0) <= 3{
-                    cell.fnameView.layer.borderColor = UIColor.red.cgColor
+                   // cell.fnameView.layer.borderColor = UIColor.red.cgColor
                     fnameCharBool = false
                 }else {
                     fnameCharBool = true
@@ -495,10 +526,10 @@ extension BDTransferVC {
                 
                 if cell.lnameTF.text?.isEmpty == true {
                     // Textfield is empty
-                    cell.lnameView.layer.borderColor = UIColor.red.cgColor
+                   // cell.lnameView.layer.borderColor = UIColor.red.cgColor
                     callpaymenthotelbool = false
                 }else if (cell.lnameTF.text?.count ?? 0) <= 3{
-                    cell.lnameView.layer.borderColor = UIColor.red.cgColor
+                  //  cell.lnameView.layer.borderColor = UIColor.red.cgColor
                     lnameCharBool = false
                 } else {
                     // Textfield is not empty
@@ -508,20 +539,20 @@ extension BDTransferVC {
                 
                 if cell.emailTF.text?.isEmpty == true {
                     // Textfield is empty
-                    cell.emailview.layer.borderColor = UIColor.red.cgColor
+                  //  cell.emailview.layer.borderColor = UIColor.red.cgColor
                     callpaymenthotelbool = false
                 }
                 
                 
                 if cell.mobileTF.text?.isEmpty == true {
                     // Textfield is empty
-                    cell.mobileview.layer.borderColor = UIColor.red.cgColor
+                   // cell.mobileview.layer.borderColor = UIColor.red.cgColor
                     callpaymenthotelbool = false
                 }
                 
                 if cell.countrycodeTF.text?.isEmpty == true {
                     // Textfield is empty
-                    cell.mobileview.layer.borderColor = UIColor.red.cgColor
+                   // cell.mobileview.layer.borderColor = UIColor.red.cgColor
                     callpaymenthotelbool = false
                 }
                 
@@ -545,32 +576,6 @@ extension BDTransferVC {
         let mobilenoArrayString = "[\"" + mobilenoArray.joined(separator: "\",\"") + "\"]"
         let mobilecountrycodeArrayString = "[\"" + mobilecountrycodeArray.joined(separator: "\",\"") + "\"]"
         let addonArrayString = "[\"" + MySingleton.shared.addonServicesOrigenArray.joined(separator: "\",\"") + "\"]"
-        
-        //    search_id:9408
-        //    token:
-        //    depart_airport:Airport Al Maktoum International Airport
-        //    arrival_airport:Airport Dubai International
-        //    pnr_no:
-        //    arrival_flight_no:866
-        //    arrival_terminal:1
-        //    arrival_date:19-08-2024
-        //    arrival_time:12:05
-        //    depart_flight_no:985
-        //    depart_terminal:3
-        //    depart_date:21-08-2024
-        //    depart_time:12:45
-        //    addon_services:["10","14"]
-        //    title:["10","10"]
-        //    first_name:["Poovarasan","test"]
-        //    last_name:["Govidaraju","tester"]
-        //    pemail:["supervision@provab.com","tesrter@gmail.com"]
-        //    pn_code:["987456","98753"]
-        //    phone_no:["98746321","9874563210"]
-        //    c_name:poovarsan
-        //    c_email:supervision@provab.com
-        //    pn_country_code:+91
-        //    contact_number:98746321
-        //    tc:on
         
         
         MySingleton.shared.payload["search_id"] = MySingleton.shared.transfer_searchid
@@ -606,41 +611,61 @@ extension BDTransferVC {
             MySingleton.shared.payload["depart_terminal"] = depterminal
             MySingleton.shared.payload["depart_date"] = depdate
             MySingleton.shared.payload["depart_time"] = deptime
+            
+            if arrivalflightno == "" {
+                showToast(message: "Please Enter Arrival Flight Number")
+                return
+            } else if arrivalterminal == "" {
+                showToast(message: "Please Enter Arrival Terminal Number")
+                return
+            }else if depflightno == "" {
+                showToast(message: "Please Enter Departure Flight Number")
+                return
+            }else if depterminal == "" {
+                showToast(message: "Please Enter Departure Terminal Number")
+                return
+            }
+        }else {
+            if arrivalflightno == "" {
+                showToast(message: "Please Enter Arrival Flight Number")
+                return
+            } else if arrivalterminal == "" {
+                showToast(message: "Please Enter Arrival Terminal Number")
+                return
+            }
         }
         
         
-        // Check additional conditions
+        
         if callpaymenthotelbool == false{
             showToast(message: "Add Details")
-        }else if MySingleton.shared.paycontactname == "" {
-            showToast(message: "Enter Contact Name")
+            return
         }else if MySingleton.shared.payemail == "" {
             showToast(message: "Enter Email Address")
+            return
         }else if MySingleton.shared.payemail.isValidEmail() == false {
             showToast(message: "Enter Valid Email Addreess")
+            return
         }else if MySingleton.shared.paymobile == "" {
             showToast(message: "Enter Mobile No")
+            return
         }else if MySingleton.shared.paymobilecountrycode == "" {
             showToast(message: "Enter Country Code")
+            return
         }else if mobilenoMaxLengthBool == false {
             showToast(message: "Enter Valid Mobile No")
+            return
         }else if fnameCharBool == false{
             showToast(message: "More Than 3 Char")
+            return
         }else if lnameCharBool == false{
             showToast(message: "More Than 3 Char")
+            return
         }else if MySingleton.shared.checkTermsAndCondationStatus == false {
             showToast(message: "Please Accept T&C and Privacy Policy")
+            return
         }else {
             gotoSelectPaymentMethodsVC()
-            
-            
-//            MySingleton.shared.loderString = "fdetails"
-//            loderBool = true
-//            showLoadera()
-//            
-//            DispatchQueue.main.async {
-//                MySingleton.shared.transferBookingVM?.CALL_BOOKING_API(dictParam: MySingleton.shared.payload)
-//            }
         }
         
     }
@@ -661,7 +686,7 @@ extension BDTransferVC {
         
         
         DispatchQueue.main.async {
-           // self.gotoSelectPaymentMethodsVC(str: response.hit_url ?? "")
+            // self.gotoSelectPaymentMethodsVC(str: response.hit_url ?? "")
         }
     }
     

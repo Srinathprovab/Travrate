@@ -73,11 +73,11 @@ class TransfersListVC: BaseTableVC, PreTransfersearchVMDelegate, AppliedTransfer
     }
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        MySingleton.shared.callboolapi = true
-        guard let vc = DashBoardTBVC.newInstance.self else {return}
-        vc.selectedIndex = 0
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false)
+        callapibool = false
+        MySingleton.shared.callboolapi = false
+        guard let vc = BookTransfersVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true)
     }
     
     override func didTapOnBookNowBtnAction(cell: TransfersInf0TVCell) {
@@ -171,7 +171,7 @@ extension TransfersListVC {
         
         
         
-        dateslbl.text = response.data?.sight_seen_search_params?.trip_type == "oneway" ? "\(MySingleton.shared.convertDateFormat(inputDate: response.data?.sight_seen_search_params?.from_date ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) ,\(response.data?.sight_seen_search_params?.trip_type ?? "")" : "\(MySingleton.shared.convertDateFormat(inputDate: response.data?.sight_seen_search_params?.from_date ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))  to \(MySingleton.shared.convertDateFormat(inputDate: response.data?.sight_seen_search_params?.to_date ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) ,\(response.data?.sight_seen_search_params?.trip_type ?? "")"
+        dateslbl.text = response.data?.sight_seen_search_params?.trip_type == "oneway" ? "\(MySingleton.shared.convertDateFormat(inputDate: response.data?.sight_seen_search_params?.from_date ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) , Oneway" : "\(MySingleton.shared.convertDateFormat(inputDate: response.data?.sight_seen_search_params?.from_date ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))  to \(MySingleton.shared.convertDateFormat(inputDate: response.data?.sight_seen_search_params?.to_date ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) , Roundtrip"
         
         
         

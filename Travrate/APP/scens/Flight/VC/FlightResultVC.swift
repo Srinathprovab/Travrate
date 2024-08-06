@@ -1167,8 +1167,6 @@ extension FlightResultVC {
         
         flnew = list
         
-        
-        
         list.forEach { i in
             i.map { k in
                 
@@ -1287,7 +1285,6 @@ extension FlightResultVC {
             }
             arrayIndex += 1
             
-            
         }
         
         
@@ -1297,7 +1294,6 @@ extension FlightResultVC {
         }else {
             TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
         }
-        
         
         
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))

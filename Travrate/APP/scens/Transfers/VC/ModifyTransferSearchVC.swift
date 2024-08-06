@@ -20,6 +20,17 @@ class ModifyTransferSearchVC: BaseTableVC {
         return vc
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let  transferjournytype = defaults.string(forKey: UserDefaultsKeys.transferjournytype)
+        
+        if transferjournytype == "oneway" {
+            taponOnewayBtn()
+        }else {
+            taponRoundtripBtnAction()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,7 +142,6 @@ extension ModifyTransferSearchVC {
                                          "EmptyTVCell"])
         
         
-        taponOnewayBtn()
     }
     
     
@@ -174,7 +184,6 @@ extension ModifyTransferSearchVC {
         let tolatitude =  defaults.string(forKey: UserDefaultsKeys.transfertolat)
         let tolongitude =  defaults.string(forKey: UserDefaultsKeys.transfertolang)
         
-    
         
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["transfer_type"] = journytype
@@ -189,21 +198,24 @@ extension ModifyTransferSearchVC {
         MySingleton.shared.payload["departure_date"] = fromdate
         MySingleton.shared.payload["depart_time"] = fromtime
         
-      
+        
+        
+        
         if journytype == "oneway" {
             
             MySingleton.shared.payload["return_date"] = ""
             MySingleton.shared.payload["return_time"] = ""
             
-            if fromcity == "From Airport*" {
+            if fromcity == nil {
                 showToast(message: "Select From Airtport")
-            }else if tocity == "To Airport*" {
+            }else if tocity == nil {
                 showToast(message: "Select To Airtport")
-            }else if fromdate == "Select Date*" {
+            }else if fromdate == nil {
                 showToast(message: "Select Date")
-            }else if fromtime == "Select Time*" {
+            }else if fromtime == nil {
                 showToast(message: "Select Time")
             }else {
+                
                 gotoTransfersListVC()
             }
         }else {
@@ -212,27 +224,26 @@ extension ModifyTransferSearchVC {
             MySingleton.shared.payload["return_time"] = totime
             
             
-            if fromcity == "From Airport*" {
+            if fromcity == nil {
                 showToast(message: "Select From Airtport")
-            }else if tocity == "To Airport*" {
+            }else if tocity == nil {
                 showToast(message: "Select To Airtport")
-            }else if fromdate == "Select Date*" {
+            }else if fromdate == nil {
                 showToast(message: "Select Date")
-            }else if fromtime == "Select Time*" {
+            }else if fromtime == nil {
                 showToast(message: "Select Time")
-            }else if todate == "Select Date*" {
-                showToast(message: "Select Date")
-            }else if totime == "Select Time*" {
-                showToast(message: "Select Time")
+            }else if todate == nil || todate == "Select Date"{
+                showToast(message: "Select Return Date")
+            }else if totime == nil || totime == "Select Time"{
+                showToast(message: "Select Return Time")
             }else {
                 gotoTransfersListVC()
             }
-            
-            
         }
         
+        
     }
-
+    
     
     func gotoTransfersListVC() {
         MySingleton.shared.afterResultsBool = false

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -192,8 +191,11 @@
                                             <constraint firstAttribute="trailing" secondItem="2t1-eN-S82" secondAttribute="trailing" constant="10" id="9eS-rt-qjB"/>
                                             <constraint firstItem="2t1-eN-S82" firstAttribute="leading" secondItem="LjA-GA-Ent" secondAttribute="leading" constant="10" id="EbP-by-0Us"/>
                                             <constraint firstItem="foZ-5t-wgG" firstAttribute="centerY" secondItem="ZFP-nm-KSV" secondAttribute="centerY" id="IgV-ua-459"/>
-                                            <constraint firstAttribute="height" constant="115" id="Ihc-XF-I8H"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="115" id="Ihc-XF-I8H"/>
+                                            <constraint firstAttribute="bottom" secondItem="2t1-eN-S82" secondAttribute="bottom" constant="11" id="Uf4-rJ-IcD"/>
                                             <constraint firstItem="ZFP-nm-KSV" firstAttribute="top" secondItem="LjA-GA-Ent" secondAttribute="top" constant="60" id="XZF-SL-Xv3"/>
+                                            <constraint firstItem="2t1-eN-S82" firstAttribute="top" secondItem="ZFP-nm-KSV" secondAttribute="bottom" constant="5.3300000000000001" id="YUt-wy-jVO"/>
+                                            <constraint firstItem="ZFP-nm-KSV" firstAttribute="leading" secondItem="aFx-cN-Dx5" secondAttribute="trailing" constant="57" id="Z5t-kT-T9z"/>
                                             <constraint firstItem="aFx-cN-Dx5" firstAttribute="centerY" secondItem="ZFP-nm-KSV" secondAttribute="centerY" id="ZiG-q4-gbD"/>
                                             <constraint firstAttribute="trailing" secondItem="foZ-5t-wgG" secondAttribute="trailing" constant="10" id="fng-Ly-MZt"/>
                                             <constraint firstItem="2t1-eN-S82" firstAttribute="centerX" secondItem="ZFP-nm-KSV" secondAttribute="centerX" id="hRd-d4-rqS"/>
@@ -404,7 +406,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="115"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Istanbul Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnJ-pk-pcx">
-                                                <rect key="frame" x="100" y="60.000000000000007" width="193" height="19.333333333333336"/>
+                                                <rect key="frame" x="45" y="60.000000000000007" width="303" height="19.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="HeadingColor"/>
                                                 <nil key="highlightedColor"/>
@@ -432,14 +434,16 @@
                                         <color key="backgroundColor" name="LayoverColor"/>
                                         <constraints>
                                             <constraint firstItem="cnJ-pk-pcx" firstAttribute="top" secondItem="4Or-6k-R7v" secondAttribute="top" constant="60" id="9oM-ga-LKF"/>
-                                            <constraint firstAttribute="height" constant="115" id="Etd-nh-QBb"/>
+                                            <constraint firstAttribute="bottom" secondItem="Hth-qD-JP8" secondAttribute="bottom" constant="11" id="Bul-Zm-QcO"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="115" id="Etd-nh-QBb"/>
                                             <constraint firstAttribute="trailing" secondItem="Hth-qD-JP8" secondAttribute="trailing" constant="10" id="J9E-uT-JMf"/>
                                             <constraint firstItem="Hth-qD-JP8" firstAttribute="leading" secondItem="4Or-6k-R7v" secondAttribute="leading" constant="10" id="SgG-cs-iuA"/>
                                             <constraint firstItem="cnJ-pk-pcx" firstAttribute="centerX" secondItem="4Or-6k-R7v" secondAttribute="centerX" id="VTE-1Z-Wte"/>
                                             <constraint firstItem="Zee-yx-29D" firstAttribute="leading" secondItem="4Or-6k-R7v" secondAttribute="leading" constant="13" id="YDm-5F-i8B"/>
-                                            <constraint firstAttribute="trailing" secondItem="cnJ-pk-pcx" secondAttribute="trailing" constant="100" id="cua-S2-pix"/>
+                                            <constraint firstAttribute="trailing" secondItem="cnJ-pk-pcx" secondAttribute="trailing" constant="45" id="cua-S2-pix"/>
                                             <constraint firstItem="Hth-qD-JP8" firstAttribute="centerX" secondItem="cnJ-pk-pcx" secondAttribute="centerX" id="eH7-2n-teO"/>
                                             <constraint firstItem="Hth-qD-JP8" firstAttribute="top" secondItem="Zee-yx-29D" secondAttribute="bottom" id="etj-Dp-oh5"/>
+                                            <constraint firstItem="cnJ-pk-pcx" firstAttribute="leading" secondItem="Zee-yx-29D" secondAttribute="trailing" constant="2" id="oCH-Gu-7EJ"/>
                                             <constraint firstItem="Zee-yx-29D" firstAttribute="centerY" secondItem="cnJ-pk-pcx" secondAttribute="centerY" id="y7V-xD-tQZ"/>
                                         </constraints>
                                     </view>

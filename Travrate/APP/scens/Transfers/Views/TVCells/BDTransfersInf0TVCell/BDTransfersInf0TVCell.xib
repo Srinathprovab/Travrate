@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -40,28 +39,34 @@
                                     <constraint firstAttribute="width" constant="160" id="aax-yk-ckA"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Skoda Octavia" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMG-2W-LR0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" ambiguous="YES" text="Skoda Octavia" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMG-2W-LR0">
                                 <rect key="frame" x="185" y="15" width="335" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Up to Passengers 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOa-xX-XeK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" ambiguous="YES" text="Up to Passengers 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOa-xX-XeK">
                                 <rect key="frame" x="412.66666666666669" y="42" width="107.33333333333331" height="16.666666666666671"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Standard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PL-l8-J8h">
-                                <rect key="frame" x="449" y="68.666666666666671" width="71" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Standard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PL-l8-J8h">
+                                <rect key="frame" x="449" y="86.333333333333329" width="71" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                 <color key="textColor" name="Buttoncolor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free Cancellation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrh-k1-haz">
-                                <rect key="frame" x="423.33333333333331" y="90.666666666666671" width="96.666666666666686" height="16.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Free Cancellation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrh-k1-haz">
+                                <rect key="frame" x="423.33333333333331" y="108.33333333333331" width="96.666666666666686" height="16.666666666666671"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                 <color key="textColor" name="Buttoncolor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" ambiguous="YES" text="Oneway" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-M0-sOA">
+                                <rect key="frame" x="467" y="60.666666666666686" width="53" height="19.333333333333314"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -75,11 +80,13 @@
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="91l-UM-wDb"/>
                             <constraint firstItem="WKd-80-Ydy" firstAttribute="leading" secondItem="k0C-07-1g7" secondAttribute="leading" constant="15" id="Bbh-B4-g5O"/>
                             <constraint firstItem="cOa-xX-XeK" firstAttribute="top" secondItem="BMG-2W-LR0" secondAttribute="bottom" constant="5" id="PLd-Mj-5pz"/>
+                            <constraint firstAttribute="trailing" secondItem="0mY-M0-sOA" secondAttribute="trailing" constant="15" id="SAN-ow-bAM"/>
                             <constraint firstItem="yrh-k1-haz" firstAttribute="top" secondItem="8PL-l8-J8h" secondAttribute="bottom" id="e6T-g4-gOp"/>
-                            <constraint firstAttribute="bottom" secondItem="yrh-k1-haz" secondAttribute="bottom" constant="22.670000000000002" id="ffL-dH-PeC"/>
-                            <constraint firstItem="8PL-l8-J8h" firstAttribute="top" secondItem="cOa-xX-XeK" secondAttribute="bottom" constant="10" id="fqF-Zf-2zL"/>
+                            <constraint firstAttribute="bottom" secondItem="yrh-k1-haz" secondAttribute="bottom" constant="5" id="ffL-dH-PeC"/>
                             <constraint firstAttribute="trailing" secondItem="8PL-l8-J8h" secondAttribute="trailing" constant="15" id="jq4-Bz-P0W"/>
+                            <constraint firstItem="8PL-l8-J8h" firstAttribute="top" secondItem="0mY-M0-sOA" secondAttribute="bottom" constant="6.3300000000000001" id="sKA-aJ-kpj"/>
                             <constraint firstAttribute="trailing" secondItem="yrh-k1-haz" secondAttribute="trailing" constant="15" id="vg4-HR-2ZL"/>
+                            <constraint firstItem="0mY-M0-sOA" firstAttribute="top" secondItem="cOa-xX-XeK" secondAttribute="bottom" constant="2" id="wZr-a5-fDS"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -107,6 +114,7 @@
                 <outlet property="carmodellbl" destination="BMG-2W-LR0" id="S5z-d5-Nf0"/>
                 <outlet property="passangerslbl" destination="cOa-xX-XeK" id="wQz-7o-wkq"/>
                 <outlet property="titlelbl" destination="8PL-l8-J8h" id="kfy-AZ-x4Q"/>
+                <outlet property="triplbl" destination="0mY-M0-sOA" id="r59-H5-WMN"/>
             </connections>
             <point key="canvasLocation" x="325.95419847328242" y="110.21126760563381"/>
         </tableViewCell>

@@ -9,11 +9,12 @@ import UIKit
 
 class BDTransfersInf0TVCell: TableViewCell {
 
+    
     @IBOutlet weak var carimage: UIImageView!
     @IBOutlet weak var carmodellbl: UILabel!
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var passangerslbl: UILabel!
-    
+    @IBOutlet weak var triplbl: UILabel!
     
     
     var transferdata : Transfer_data?
@@ -48,6 +49,11 @@ class BDTransfersInf0TVCell: TableViewCell {
                 }
             }
         })
+        
+        
+        triplbl.font = .InterMedium(size: 14)
+        triplbl.text = defaults.string(forKey: UserDefaultsKeys.transferjournytype) == "oneway" ? "Oneway" : "Roundtrip"
+        
         
     }
     

@@ -205,6 +205,41 @@ class SportsBookingDetailsVC: BaseTableVC, SportsBookingVMDelegate, LoginViewMod
         }
     }
     
+    override func didTapOnTermsBtnAction(cell:TermsAgreeTVCell) {
+        
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+        
+        gotoMoreDetailsVC(str: "Terms & Conditions")
+    }
+    
+    override func didTapOnPrivacyPolicyBtnAction(cell:TermsAgreeTVCell) {
+        
+        if cell.checkBool {
+            continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+            gifimg.isHidden = false
+        }else {
+            continuetoPaymentBtnView.backgroundColor = .Buttoncolor
+            gifimg.isHidden = true
+        }
+        
+        gotoMoreDetailsVC(str: "Privacy Policy")
+    }
+    
+    
+    func gotoMoreDetailsVC(str:String){
+        guard let vc = MoreDetailsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.titleString = str
+        present(vc, animated: true)
+    }
+    
+    
     
     
     override func didTapOnCountryCodeBtn(cell: ContactInformationTVCell) {
@@ -290,7 +325,7 @@ extension SportsBookingDetailsVC {
     func setupUI(){
         
         setuplabels(lbl: titlelbl, text: "Booking Details", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
-
+        
         continuetoPaymentBtnView.backgroundColor = .Buttoncolor
         continuetoPaymentBtnView.isUserInteractionEnabled = true
         continuetoPaymentBtnlbl.text = "Continue To Next"

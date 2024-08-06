@@ -113,9 +113,13 @@ class BookedTravelDetailsTVCell: TableViewCell {
         // labelsView.addBottomBorderWithColor(color: .SubTitleColor, width: 1)
         ulView.backgroundColor = HexColor("#E6E8E7")
         
-        setuplabels(lbl: passengerTypelbl, text: "Traveller Name", textcolor: HexColor("#5B5B5B"), font: .OpenSansBold(size: 14), align: .center)
-        setuplabels(lbl: travellerNamelbl, text: "Ticket No", textcolor: HexColor("#5B5B5B"), font: .OpenSansBold(size: 14), align: .center)
-        setuplabels(lbl: emaillbl, text: "Status", textcolor: HexColor("#5B5B5B"), font: .OpenSansBold(size: 14), align: .center)
+        
+        setuplabels(lbl: passengerTypelbl, text: "Traveller Name", textcolor: HexColor("#5B5B5B"), font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: travellerNamelbl, text: "Ticket No", textcolor: HexColor("#5B5B5B"), font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: emaillbl, text: "Status", textcolor: HexColor("#5B5B5B"), font: .InterBold(size: 14), align: .center)
+        setuplabels(lbl: mobilelbl, text: "", textcolor: HexColor("#5B5B5B"), font: .InterBold(size: 14), align: .center)
+
+        
         passengerTypelbl.text = "Passenger Name"
         travellerNamelbl.text = "Passport No"
         emaillbl.text = "    Country"

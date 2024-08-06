@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -355,7 +354,7 @@
                                         <constraints>
                                             <constraint firstItem="I2N-NO-1wg" firstAttribute="leading" secondItem="UXo-os-VIc" secondAttribute="trailing" constant="50" id="1O9-PB-Zin"/>
                                             <constraint firstAttribute="trailing" secondItem="qs5-Am-raG" secondAttribute="trailing" constant="13" id="2So-pG-a61"/>
-                                            <constraint firstAttribute="height" constant="150" id="5ls-nV-oro"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="5ls-nV-oro"/>
                                             <constraint firstItem="I2N-NO-1wg" firstAttribute="centerX" secondItem="pi5-wu-IiL" secondAttribute="centerX" id="BuQ-Hr-I6J"/>
                                             <constraint firstItem="gNV-Ss-P0D" firstAttribute="leading" secondItem="pi5-wu-IiL" secondAttribute="leading" constant="20" id="F9r-ux-5T8"/>
                                             <constraint firstItem="I2N-NO-1wg" firstAttribute="centerY" secondItem="UXo-os-VIc" secondAttribute="centerY" id="FjR-Ab-Ge4"/>
@@ -367,6 +366,7 @@
                                             <constraint firstAttribute="trailing" secondItem="gNV-Ss-P0D" secondAttribute="trailing" constant="20" id="fZ2-cG-Owf"/>
                                             <constraint firstAttribute="trailing" secondItem="HWC-hm-FCx" secondAttribute="trailing" constant="20" id="kp8-88-ji1"/>
                                             <constraint firstAttribute="bottom" secondItem="gNV-Ss-P0D" secondAttribute="bottom" constant="6.3300000000000001" id="sS8-Du-DnO"/>
+                                            <constraint firstItem="qs5-Am-raG" firstAttribute="leading" secondItem="I2N-NO-1wg" secondAttribute="trailing" constant="4" id="tS7-J9-vev"/>
                                             <constraint firstItem="UXo-os-VIc" firstAttribute="leading" secondItem="pi5-wu-IiL" secondAttribute="leading" constant="13" id="ytK-FZ-lct"/>
                                         </constraints>
                                     </view>
@@ -2658,10 +2658,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

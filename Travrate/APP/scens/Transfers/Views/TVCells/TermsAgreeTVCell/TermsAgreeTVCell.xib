@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -44,7 +43,11 @@
                                 <string key="userLabel">By booking this item, you agree to pay the total amount shown, which includes Service Fees, on the right and to the , User Terms, Privacy policy .</string>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4N-NF-Zhj">
-                                <rect key="frame" x="0.0" y="0.0" width="502" height="73"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="LnT-hW-JIn"/>
+                                    <constraint firstAttribute="height" constant="42" id="zbg-5T-hVG"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
@@ -56,16 +59,14 @@
                         <constraints>
                             <constraint firstItem="o7c-Tl-RyX" firstAttribute="top" secondItem="Fbw-bb-Vbd" secondAttribute="top" constant="10" id="G2E-X1-8Sd"/>
                             <constraint firstAttribute="bottom" secondItem="DSZ-zH-RFp" secondAttribute="bottom" id="LNt-7i-R19"/>
-                            <constraint firstItem="o4N-NF-Zhj" firstAttribute="top" secondItem="Fbw-bb-Vbd" secondAttribute="top" id="Lio-uv-BC1"/>
                             <constraint firstItem="o7c-Tl-RyX" firstAttribute="leading" secondItem="Fbw-bb-Vbd" secondAttribute="leading" constant="10" id="OJc-Z0-OYL"/>
                             <constraint firstAttribute="trailing" secondItem="DSZ-zH-RFp" secondAttribute="trailing" constant="10" id="PzD-oh-RU7"/>
                             <constraint firstItem="DSZ-zH-RFp" firstAttribute="top" secondItem="o7c-Tl-RyX" secondAttribute="top" id="TZJ-Qf-efp"/>
-                            <constraint firstItem="o4N-NF-Zhj" firstAttribute="leading" secondItem="Fbw-bb-Vbd" secondAttribute="leading" id="We8-Te-2Cy"/>
                             <constraint firstItem="DSZ-zH-RFp" firstAttribute="leading" secondItem="o7c-Tl-RyX" secondAttribute="trailing" constant="10" id="XC0-lx-e56"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="73" id="XkQ-cG-eAu"/>
-                            <constraint firstAttribute="bottom" secondItem="o4N-NF-Zhj" secondAttribute="bottom" id="ctw-96-DKa"/>
                             <constraint firstItem="DSZ-zH-RFp" firstAttribute="top" secondItem="Fbw-bb-Vbd" secondAttribute="top" constant="10" id="oTH-WO-9jS"/>
-                            <constraint firstAttribute="trailing" secondItem="o4N-NF-Zhj" secondAttribute="trailing" id="vwZ-sR-dp7"/>
+                            <constraint firstItem="o4N-NF-Zhj" firstAttribute="top" secondItem="Fbw-bb-Vbd" secondAttribute="top" id="rBu-pW-Mfd"/>
+                            <constraint firstItem="o4N-NF-Zhj" firstAttribute="leading" secondItem="Fbw-bb-Vbd" secondAttribute="leading" id="zsn-9V-FJg"/>
                         </constraints>
                     </view>
                 </subviews>
