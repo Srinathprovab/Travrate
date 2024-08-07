@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="936-lx-bB8" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                        <rect key="frame" x="10" y="10" width="394" height="45"/>
+                        <rect key="frame" x="15" y="10" width="384" height="45"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xp-lb-y17">
-                                <rect key="frame" x="10" y="10" width="374" height="25"/>
+                                <rect key="frame" x="10" y="10" width="364" height="25"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -51,10 +50,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="936-lx-bB8" secondAttribute="trailing" constant="10" id="Dok-VO-Qu4"/>
+                    <constraint firstAttribute="trailing" secondItem="936-lx-bB8" secondAttribute="trailing" constant="15" id="Dok-VO-Qu4"/>
                     <constraint firstItem="936-lx-bB8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="bdO-9a-Sjj"/>
                     <constraint firstAttribute="bottom" secondItem="936-lx-bB8" secondAttribute="bottom" constant="10" id="fbx-LP-Fs0"/>
-                    <constraint firstItem="936-lx-bB8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="gAr-aj-Yb5"/>
+                    <constraint firstItem="936-lx-bB8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="gAr-aj-Yb5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

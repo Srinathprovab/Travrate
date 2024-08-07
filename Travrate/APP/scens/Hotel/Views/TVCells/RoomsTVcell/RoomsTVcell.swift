@@ -36,9 +36,9 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
     @IBOutlet weak var amenitieslbl: UILabel!
     @IBOutlet weak var amenitiesUL: UIView!
     @IBOutlet weak var amenitiesBtn: UIButton!
-    @IBOutlet weak var roomDetailsTV: UITableView!
-    @IBOutlet weak var tvHeight: NSLayoutConstraint!
-    @IBOutlet weak var viewHeight: NSLayoutConstraint!
+    //    @IBOutlet weak var roomDetailsTV: UITableView!
+    //    @IBOutlet weak var tvHeight: NSLayoutConstraint!
+    //    @IBOutlet weak var viewHeight: NSLayoutConstraint!
     
     
     var latString = ""
@@ -75,12 +75,14 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
         locname = cellInfo?.buttonTitle ?? ""
         
         
-        updateHeight(height: 200)
+        // updateHeight(height: 200)
+        
+        
         
         
     }
     
-   
+    
     
     @objc func gotoroom(){
         roomtaped()
@@ -117,7 +119,7 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
         amenitiesBtn.setTitle("", for: .normal)
         
         
-        setuTV()
+        // setuTV()
     }
     
     func setupViews(v:UIView,radius:CGFloat,color:UIColor) {
@@ -129,19 +131,19 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
     }
     
     
-    func setuTV() {
-        roomDetailsTV.register(UINib(nibName: "NewRoomTVCell", bundle: nil), forCellReuseIdentifier: "rooms")
-        roomDetailsTV.register(UINib(nibName: "TitleLabelTVCell", bundle: nil), forCellReuseIdentifier: "hdetails")
-        roomDetailsTV.register(UINib(nibName: "AmenitiesTVCell", bundle: nil), forCellReuseIdentifier: "amenities")
-        
-        
-        roomDetailsTV.isScrollEnabled = false
-        roomDetailsTV.delegate = self
-        roomDetailsTV.dataSource = self
-        roomDetailsTV.tableFooterView = UIView()
-        roomDetailsTV.separatorStyle = .none
-        roomDetailsTV.showsHorizontalScrollIndicator = false
-    }
+    //    func setuTV() {
+    //        roomDetailsTV.register(UINib(nibName: "NewRoomTVCell", bundle: nil), forCellReuseIdentifier: "rooms")
+    //        roomDetailsTV.register(UINib(nibName: "TitleLabelTVCell", bundle: nil), forCellReuseIdentifier: "hdetails")
+    //        roomDetailsTV.register(UINib(nibName: "AmenitiesTVCell", bundle: nil), forCellReuseIdentifier: "amenities")
+    //
+    //
+    //        roomDetailsTV.isScrollEnabled = false
+    //        roomDetailsTV.delegate = self
+    //        roomDetailsTV.dataSource = self
+    //        roomDetailsTV.tableFooterView = UIView()
+    //        roomDetailsTV.separatorStyle = .none
+    //        roomDetailsTV.showsHorizontalScrollIndicator = false
+    //    }
     
     
     
@@ -150,7 +152,8 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
     }
     
     func roomtaped() {
-        roomDetailsTV.isHidden = false
+        hotelroomtap = "room"
+        //    roomDetailsTV.isHidden = false
         roomslbl.textColor = .AppTabSelectColor
         roomsUL.backgroundColor = .AppTabSelectColor
         
@@ -162,14 +165,14 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
         
         NotificationCenter.default.post(name: NSNotification.Name("roomtapbool"), object: true)
         
-        updateHeight(height: 200)
+        //  updateHeight(height: 200)
         delegate?.didTapOnRoomsBtn(cell:self)
     }
     
     
     @IBAction func didTapOnHotelsDetailsBtn(_ sender: Any) {
-        
-        roomDetailsTV.isHidden = false
+        hotelroomtap = "details"
+        //  roomDetailsTV.isHidden = false
         hotelsDetailslbl.textColor = .AppTabSelectColor
         hotelsDetailsUL.backgroundColor = .AppTabSelectColor
         roomslbl.textColor = .AppLabelColor.withAlphaComponent(0.5)
@@ -178,13 +181,14 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
         amenitiesUL.backgroundColor = .WhiteColor
         
         NotificationCenter.default.post(name: NSNotification.Name("roomtapbool"), object: false)
-        tvHeight.constant = 356
+        //  tvHeight.constant = 356
         delegate?.didTapOnHotelsDetailsBtn(cell:self)
     }
     
     
     @IBAction func didTapOnAmenitiesBtn(_ sender: Any) {
-        roomDetailsTV.isHidden = false
+        hotelroomtap = "aminities"
+        //   roomDetailsTV.isHidden = false
         amenitieslbl.textColor = .AppTabSelectColor
         amenitiesUL.backgroundColor = .AppTabSelectColor
         roomslbl.textColor = .AppLabelColor.withAlphaComponent(0.5)
@@ -194,12 +198,12 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
         
         NotificationCenter.default.post(name: NSNotification.Name("roomtapbool"), object: false)
         
-        tvHeight.constant = 356
+        //   tvHeight.constant = 356
         delegate?.didTapOnAmenitiesBtn(cell:self)
     }
     
     @IBAction func didTapOnMapBtnAction(_ sender: Any) {
-        roomDetailsTV.isHidden = true
+        //  roomDetailsTV.isHidden = true
         amenitieslbl.textColor = .AppLabelColor.withAlphaComponent(0.5)
         amenitiesUL.backgroundColor = .WhiteColor
         roomslbl.textColor = .AppLabelColor.withAlphaComponent(0.5)
@@ -227,109 +231,61 @@ class RoomsTVcell: TableViewCell, NewRoomTVCellDelegate {
 }
 
 
-extension RoomsTVcell: UITableViewDataSource ,UITableViewDelegate {
-    
-    func updateHeight(height:Int) {
-        
-        if self.key == "rooms" {
-           // tvHeight.constant = CGFloat(height * roomsDetails.count)
-            tvHeight.constant = 8000
-            roomDetailsTV.reloadData()
-        }else {
-            viewHeight.constant = 356
-        }
-        
-    }
-    
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if self.key == "rooms" {
-            return roomsDetails.count
-        }else {
-            return 1
-        }
-        
-        
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.key == "rooms" {
-            return roomsDetails[section].count
-        }
-        else if self.key == "hotels details"{
-            return formatDesc.count
-        }
-        else {
-            return 1
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var ccell = UITableViewCell()
-        
-        if self.key == "rooms" {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "rooms") as? NewRoomTVCell {
-                cell.selectionStyle = .none
-                cell.delegate = self
-                if indexPath.section < roomsDetails.count && indexPath.row < roomsDetails[indexPath.section].count {
-                    
-                    //  cell.newRoomindexPath = IndexPath(row: indexPath.row, section: indexPath.section)
-                    
-                    let section = indexPath.section
-                    let data = roomsDetails[section]
-                    
-                    
-                    cell.room = data
-        
-                    cell.tvheight.constant = CGFloat(cell.room.count * 101)
-                    cell.roomInfoTV.reloadData()
-                    
-                } else {
-                    print("Index out of range error: indexPath = \(indexPath)")
-                }
-                
-                
-                ccell = cell
-            }
-        }else if self.key == "hotels details"{
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "hdetails") as? TitleLabelTVCell {
-                cell.selectionStyle = .none
-                cell.hotelNamelbl.text = "\(formatDesc[indexPath.row].heading ?? "")".htmlToString1
-               // cell.locationlbl.text = formatDesc[indexPath.row].content?.htmlToString1
-                
-                
-                let decodedText = formatDesc[indexPath.row].content?.replacingOccurrences(of: "\\r\\n", with: "<br>")
-                    .replacingOccurrences(of: "\\", with: "")
-                    .htmlToString
-                
-                cell.locationlbl.text = decodedText
-                
-                
-                
-                cell.setupHotelDetails()
-                ccell = cell
-            }
-            
-        }else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "amenities") as? AmenitiesTVCell {
-                cell.selectionStyle = .none
-                if formatAmeArray.count == 0 {
-                    cell.amenitiesCV.setEmptyMessage("No Data Found")
-                }else {
-                    
-                    cell.amenitiesCV.reloadData()
-                }
-                
-                ccell = cell
-            }
-        }
-        return ccell
-    }
-    
-    
-    
-}
+//extension RoomsTVcell: UITableViewDataSource ,UITableViewDelegate {
+//
+//    func updateHeight(height:Int) {
+//
+//        if self.key == "rooms" {
+//           // tvHeight.constant = CGFloat(height * roomsDetails.count)
+//            tvHeight.constant = 0
+//            roomDetailsTV.reloadData()
+//        }else {
+//            viewHeight.constant = 356
+//        }
+//
+//    }
+//
+//
+//
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        if self.key == "rooms" {
+//            return roomsDetails.count
+//        }else {
+//            return 1
+//        }
+//
+//
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if self.key == "rooms" {
+//            return roomsDetails[section].count
+//        }
+//        else if self.key == "hotels details"{
+//            return formatDesc.count
+//        }
+//        else {
+//            return 1
+//        }
+//
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        var ccell = UITableViewCell()
+//
+//        if self.key == "rooms" {
+//
+//        }else if self.key == "hotels details"{
+//
+//
+//        }else {
+//
+//        }
+//        return ccell
+//    }
+//
+//
+//
+//}
 
 

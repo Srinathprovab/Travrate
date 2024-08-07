@@ -12,7 +12,7 @@ protocol ActivitiesTypeInfoTVCellDelegate:AnyObject {
     func didTapOnBookNowBtnAction(cell:ActivitiesTypeInfoTVCell)
 }
 
-class ActivitiesTypeInfoTVCell: UITableViewCell {
+class ActivitiesTypeInfoTVCell: TableViewCell {
     
     
     @IBOutlet weak var activitiesTypeNamelbl: UILabel!
@@ -27,6 +27,7 @@ class ActivitiesTypeInfoTVCell: UITableViewCell {
     @IBOutlet weak var errorlbl: UILabel!
     
     
+    var details:ActivityDetailsModalities?
     
     let dropDown = DropDown()
     var agentpayable = String()
@@ -35,18 +36,22 @@ class ActivitiesTypeInfoTVCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-       
-        booknowbtn.layer.cornerRadius = 4
-        img.layer.cornerRadius = 6
-        booknowbtn.addTarget(self, action: #selector(didTapOnBookNowBtnAction(_:)), for: .touchUpInside)
-        chooseDateBtn.addTarget(self, action: #selector(didTapOnChooseDateBtnAction(_:)), for: .touchUpInside)
+        setupUI()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    
+    func setupUI() {
+        holderView.layer.cornerRadius = 8
+        booknowbtn.layer.cornerRadius = 4
+        img.layer.cornerRadius = 6
+        booknowbtn.addTarget(self, action: #selector(didTapOnBookNowBtnAction(_:)), for: .touchUpInside)
+        chooseDateBtn.addTarget(self, action: #selector(didTapOnChooseDateBtnAction(_:)), for: .touchUpInside)
     }
     
     
@@ -92,6 +97,36 @@ class ActivitiesTypeInfoTVCell: UITableViewCell {
             
             
         }
+    }
+    
+    
+    
+    override func updateUI() {
+        
+       
+        
+        let data = cellInfo?.moreData as? ActivityDetailsModalities
+        
+        
+        self.activitiesTypeNamelbl.text = data?.name
+        self.rateKeySring = data?.rates?[0].rateDetails?[0].rateKey ?? ""
+        self.agentpayable = String(format: "%.2f",  data?.amountsFrom?[0].amount?.default_value ?? 0.0)
+        self.setupDropDown()
+       
+        
+        MySingleton.shared.setAttributedTextnew(str1: "\(MySingleton.shared.activites_currency) ",
+                                                str2: String(format: "%.2f",  data?.amountsFrom?[0].amount?.default_value ?? 0.0),
+                                                lbl: self.kedlbl,
+                                                str1font: .InterMedium(size: 12),
+                                                str2font: .InterBold(size: 22),
+                                                str1Color: .TitleColor,
+                                                str2Color: HexColor("#3C627A"))
+        
+        
+        
+            
+     
+        
     }
     
 }

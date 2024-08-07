@@ -123,6 +123,11 @@ enum TVCellType {
     case CancellationStringTVCell
     case NewHotelPriceSummeryTVCell
     case PopularHotelDestinationsTVCell
+    case NewRoomTVCell
+    case AmenitiesTVCell
+    case TitleLabelTVCell
+    case NoDataFoundTVCell
+    
     
     
     //VISA
@@ -196,6 +201,10 @@ enum TVCellType {
     case ActivityInformationTVCell
     case ContractRemarkTVCell
     case BDPickupLocationTVCell
+    case ActivitiesTypeTVCell
+    case ActivitiesHighlightsTVCell
+    case ActivitiesDecreptionTVCell
+    case ActivitiesTypeInfoTVCell
     
     
     //TRIPS

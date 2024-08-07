@@ -11,7 +11,7 @@ protocol ActivitiesTypeTVCellDelegate:AnyObject {
     func didTapOnBookNowBtnAction(cell:ActivitiesTypeInfoTVCell)
 }
 
-class ActivitiesTypeTVCell: UITableViewCell, ActivitiesTypeInfoTVCellDelegate {
+class ActivitiesTypeTVCell: TableViewCell, ActivitiesTypeInfoTVCellDelegate {
     
     
     @IBOutlet weak var typeTV: UITableView!
@@ -19,6 +19,8 @@ class ActivitiesTypeTVCell: UITableViewCell, ActivitiesTypeInfoTVCellDelegate {
     @IBOutlet weak var activityTypelbl: UILabel!
     @IBOutlet weak var totalPricelbl: UILabel!
     
+    
+    var details:ActivityDetailsModalities?
     var cancelPolicy = [Cancelpolicy]()
     weak var delegate:ActivitiesTypeTVCellDelegate?
     override func awakeFromNib() {
@@ -40,6 +42,12 @@ class ActivitiesTypeTVCell: UITableViewCell, ActivitiesTypeInfoTVCellDelegate {
         setuplabels(lbl: totalPricelbl, text: "Total price", textcolor: .TitleColor, font: .InterSemiBold(size: 14), align: .center)
 
         setupTV()
+    }
+    
+    
+    override func updateUI() {
+        details = cellInfo?.moreData as? ActivityDetailsModalities
+        updateHeight()
     }
     
     
@@ -67,14 +75,11 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
         typeTV.separatorStyle = .none
         typeTV.allowsMultipleSelection = true
         
-        
-        
-        
     }
     
     
     func updateHeight() {
-        tvheight.constant = calculateTableViewHeight()
+        tvheight.constant = CGFloat((MySingleton.shared.activity_details?.modalities?.count ?? 0) * 245)
         typeTV.reloadData()
     }
     

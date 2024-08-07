@@ -56,6 +56,10 @@ class TitleLabelTVCell: TableViewCell {
         hotelNamelbl.font = UIFont.LatoMedium(size: 14)
         locationlbl.textColor = HexColor("#5B5B5B")
         locationlbl.font = UIFont.LatoRegular(size: 14)
+        
+        self.hotelNamelbl.text = cellInfo?.title?.htmlToString1
+        self.locationlbl.text = cellInfo?.subTitle?.replacingOccurrences(of: "\\r\\n", with: "<br>").replacingOccurrences(of: "\\", with: "").htmlToString
+        
     }
     
     

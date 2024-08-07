@@ -19,19 +19,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddo-SQ-Ocp" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="10" width="488" height="128"/>
+                        <rect key="frame" x="15" y="10" width="458" height="128"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ct5-KG-QPX">
-                                <rect key="frame" x="0.0" y="0.0" width="488" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="458" height="40"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9UV-dM-F8U">
-                                        <rect key="frame" x="0.0" y="0.0" width="488" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="458" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWB-PD-KW2">
-                                                <rect key="frame" x="0.0" y="0.0" width="244" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="229" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activities Type" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9K-hy-r4a">
-                                                        <rect key="frame" x="67.666666666666671" y="10.333333333333334" width="109.00000000000001" height="19.333333333333329"/>
+                                                        <rect key="frame" x="60" y="10.333333333333334" width="109" height="19.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -44,10 +44,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-SK-MCl">
-                                                <rect key="frame" x="244" y="0.0" width="244" height="40"/>
+                                                <rect key="frame" x="229" y="0.0" width="229" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wO6-6c-pDz">
-                                                        <rect key="frame" x="83" y="10.333333333333334" width="78" height="19.333333333333329"/>
+                                                        <rect key="frame" x="75.666666666666686" y="10.333333333333334" width="78" height="19.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xOY-qa-yVW">
-                                <rect key="frame" x="0.0" y="40" width="488" height="88"/>
+                                <rect key="frame" x="0.0" y="40" width="458" height="88"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="czK-ip-EXj"/>
@@ -115,8 +115,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Ddo-SQ-Ocp" secondAttribute="bottom" constant="10" id="JbO-eh-9oM"/>
-                    <constraint firstAttribute="trailing" secondItem="Ddo-SQ-Ocp" secondAttribute="trailing" id="lZ4-Gf-jYn"/>
-                    <constraint firstItem="Ddo-SQ-Ocp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pWH-KQ-jQ7"/>
+                    <constraint firstAttribute="trailing" secondItem="Ddo-SQ-Ocp" secondAttribute="trailing" constant="15" id="lZ4-Gf-jYn"/>
+                    <constraint firstItem="Ddo-SQ-Ocp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="pWH-KQ-jQ7"/>
                     <constraint firstItem="Ddo-SQ-Ocp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="v4Q-37-GzF"/>
                 </constraints>
             </tableViewCellContentView>

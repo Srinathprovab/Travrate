@@ -47,7 +47,11 @@ class ActivitiesDetailsVC: BaseTableVC, ActivityDetailsVMDelagate {
         backbtn.addTarget(self, action: #selector(didTapOnBackBtnAction(_:)), for: .touchUpInside)
         commonTableView.registerTVCells(["ActivitiesImagesTVCell",
                                          "EmptyTVCell",
-                                        "ActivitiesDetailsTVCell"])
+                                         "ActivitiesTypeTVCell",
+                                         "ActivitiesHighlightsTVCell",
+                                         "ActivitiesDecreptionTVCell",
+                                         "ActivitiesTypeInfoTVCell",
+                                         "ActivitiesDetailsTVCell"])
         setupTVCells()
         
     }
@@ -72,7 +76,8 @@ class ActivitiesDetailsVC: BaseTableVC, ActivityDetailsVMDelagate {
     
     //MARK: - didTapOnActivitiesBtnsAction  ActivitiesDetailsTVCell
     override func didTapOnActivitiesBtnsAction(cell: ActivitiesDetailsTVCell) {
-        //commonTableView.reloadData()
+        setupTVCells()
+       // commonTableView.reloadData()
     }
     
     
@@ -84,7 +89,7 @@ class ActivitiesDetailsVC: BaseTableVC, ActivityDetailsVMDelagate {
         
         
         MySingleton.shared.payload.removeAll()
-       
+        
         MySingleton.shared.payload["booking_source"] =  MySingleton.shared.activites_booking_source
         MySingleton.shared.payload["rateKey"] = MySingleton.shared.rateKeySring
         MySingleton.shared.payload["mark_amt"] = "0"
@@ -142,6 +147,7 @@ extension ActivitiesDetailsVC {
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["booking_source"] = MySingleton.shared.activites_booking_source
         MySingleton.shared.payload["activity_code"] = MySingleton.shared.activity_code
+        
         MySingleton.shared.activityDetailsVM?.CALL_GET_ACTIVITES_DETAILS_API(dictParam: MySingleton.shared.payload)
     }
     
@@ -152,6 +158,9 @@ extension ActivitiesDetailsVC {
         hideLoadera()
         holderView.isHidden = false
         
+        MySingleton.shared.activity_details = nil
+        MySingleton.shared.activitiesImagesArray.removeAll()
+        
         if response.status == false {
             resultnil()
         }else {
@@ -161,7 +170,7 @@ extension ActivitiesDetailsVC {
             MySingleton.shared.activity_details = response.data?.activity_details
             MySingleton.shared.activity_type = response.data?.activity_details?.type ?? ""
             MySingleton.shared.activitiesImagesArray = response.data?.activity_details?.images ?? []
-         //   MySingleton.shared.modalitiesdetails = response.data?.activity_details?.modalities ?? []
+            //   MySingleton.shared.modalitiesdetails = response.data?.activity_details?.modalities ?? []
             destinationcitylbl.text = response.data?.activity_search_params?.activity_destination
             
             let fromdate = defaults.string(forKey: UserDefaultsKeys.calActivitesDepDate)
@@ -180,15 +189,15 @@ extension ActivitiesDetailsVC {
                 labelText += ", Infant \(infantcount)"
             }
             paxlbl.text = labelText
+            activitiestap = "activities"
             
-           
             
             DispatchQueue.main.async {
                 self.setupTVCells()
             }
         }
         
-       
+        
     }
     
     
@@ -196,8 +205,27 @@ extension ActivitiesDetailsVC {
         
         MySingleton.shared.tablerow.removeAll()
         
-        MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesImagesTVCell))
+       MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesImagesTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesDetailsTVCell))
+        
+        if activitiestap == "activities" {
+
+            if (MySingleton.shared.activity_details?.modalities?.count ?? 0) > 0 {
+                
+                MySingleton.shared.activity_details?.modalities?.forEach({ i in
+                    MySingleton.shared.tablerow.append(TableRow(moreData:i,cellType:.ActivitiesTypeInfoTVCell))
+                    MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
+                })
+               
+            }
+        }else if activitiestap == "highlights" {
+            MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesHighlightsTVCell))
+        }else {
+            MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesDecreptionTVCell))
+        }
+        
+        
+        
         MySingleton.shared.tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow

@@ -810,8 +810,8 @@ extension FlightResultVC:AppliedFilters {
         }else if sortBy == .DepartureLow {
             
             let sortedArray = flights.flatMap { $0 }.sorted { a, b in
-                let operator_name1 = a.flight_details?.summary?.first?.destination?.time ?? ""
-                let operator_name2 = b.flight_details?.summary?.first?.destination?.time ?? ""
+                let operator_name1 = a.flight_details?.summary?.first?.origin?.time ?? ""
+                let operator_name2 = b.flight_details?.summary?.first?.origin?.time ?? ""
                 return operator_name1 < operator_name2 // Sort in descending order
             }
             
@@ -822,8 +822,8 @@ extension FlightResultVC:AppliedFilters {
             
             
             let sortedArray = flights.flatMap { $0 }.sorted { a, b in
-                let operator_name1 = a.flight_details?.summary?.first?.destination?.time ?? ""
-                let operator_name2 = b.flight_details?.summary?.first?.destination?.time ?? ""
+                let operator_name1 = a.flight_details?.summary?.first?.origin?.time ?? ""
+                let operator_name2 = b.flight_details?.summary?.first?.origin?.time ?? ""
                 return operator_name1 > operator_name2 // Sort in descending order
             }
             
@@ -833,8 +833,8 @@ extension FlightResultVC:AppliedFilters {
         }else if sortBy == .ArrivalLow{
             
             let sortedArray = flights.flatMap { $0 }.sorted { a, b in
-                let operator_name1 = a.flight_details?.summary?.first?.origin?.time ?? ""
-                let operator_name2 = b.flight_details?.summary?.first?.origin?.time ?? ""
+                let operator_name1 = a.flight_details?.summary?.first?.destination?.time ?? ""
+                let operator_name2 = b.flight_details?.summary?.first?.destination?.time ?? ""
                 return operator_name1 < operator_name2 // Sort in descending order
             }
             
@@ -843,8 +843,8 @@ extension FlightResultVC:AppliedFilters {
         }else if sortBy == .ArrivalHigh{
             
             let sortedArray = flights.flatMap { $0 }.sorted { a, b in
-                let operator_name1 = a.flight_details?.summary?.first?.origin?.time ?? ""
-                let operator_name2 = b.flight_details?.summary?.first?.origin?.time ?? ""
+                let operator_name1 = a.flight_details?.summary?.first?.destination?.time ?? ""
+                let operator_name2 = b.flight_details?.summary?.first?.destination?.time ?? ""
                 return operator_name1 > operator_name2 // Sort in descending order
             }
             

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,34 +19,34 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFm-Ku-kWu" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                        <rect key="frame" x="10" y="10" width="493" height="134"/>
+                        <rect key="frame" x="15" y="10" width="483" height="134"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration : 1 DAYS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mQ-8h-gOb">
-                                <rect key="frame" x="10" y="9.9999999999999982" width="473" height="19.333333333333329"/>
+                                <rect key="frame" x="10" y="9.9999999999999982" width="463" height="19.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Duration : 1 DAYS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NR6-eC-8ny">
-                                <rect key="frame" x="10" y="34.333333333333336" width="473" height="19.333333333333336"/>
+                                <rect key="frame" x="10" y="34.333333333333336" width="463" height="19.333333333333336"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration : 1 DAYS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJy-VS-zPf">
-                                <rect key="frame" x="10" y="58.666666666666679" width="473" height="19.333333333333336"/>
+                                <rect key="frame" x="10" y="58.666666666666679" width="463" height="19.333333333333336"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration : 1 DAYS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oH1-eR-gvS">
-                                <rect key="frame" x="10" y="83" width="473" height="19.333333333333329"/>
+                                <rect key="frame" x="10" y="83" width="463" height="19.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration : 1 DAYS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRN-Sr-d8j">
-                                <rect key="frame" x="10" y="107.33333333333333" width="473" height="19.333333333333329"/>
+                                <rect key="frame" x="10" y="107.33333333333333" width="463" height="19.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -87,9 +86,9 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="AFm-Ku-kWu" secondAttribute="trailing" constant="10" id="4xv-EK-EWs"/>
+                    <constraint firstAttribute="trailing" secondItem="AFm-Ku-kWu" secondAttribute="trailing" constant="15" id="4xv-EK-EWs"/>
                     <constraint firstAttribute="bottom" secondItem="AFm-Ku-kWu" secondAttribute="bottom" constant="10" id="n2s-Fr-gNZ"/>
-                    <constraint firstItem="AFm-Ku-kWu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="oc1-Ly-RVd"/>
+                    <constraint firstItem="AFm-Ku-kWu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="oc1-Ly-RVd"/>
                     <constraint firstItem="AFm-Ku-kWu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="sYs-W1-AIS"/>
                 </constraints>
             </tableViewCellContentView>

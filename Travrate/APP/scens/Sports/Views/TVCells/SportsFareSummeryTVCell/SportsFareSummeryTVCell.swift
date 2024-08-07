@@ -88,7 +88,7 @@ class SportsFareSummeryTVCell: TableViewCell {
         
         totalFarelbl.text = "\(currency) \((grossFare + serviceFee) + shippingFees)"
         totalgrossFarelbl.text = "\(currency) \(grossFare)"
-        
+        totlConvertedGrand = Double(grossFare)
         
         //        if sportsPersonCount == 0 {
         //            totalFarelbl.text = "\(currency) \((grossFare + serviceFee))"

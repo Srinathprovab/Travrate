@@ -32,7 +32,7 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     }
     
     
-   
+    
     var selectedCell: NewRoomDetailsTVCell?
     var tablerow = [TableRow]()
     var viewmodel:HotelDetailsViewModel?
@@ -95,7 +95,7 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         setuplabels(lbl: datelbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
         setuplabels(lbl: paxlbl, text: "", textcolor: .BackBtnColor, font: .InterRegular(size: 14), align: .center)
         
-        holderView.backgroundColor = .AppBorderColor
+        holderView.backgroundColor = .WhiteColor
         self.citylbl.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? ""
         self.datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd")) - \(MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "", f1: "dd-MM-yyyy", f2: "MMM dd"))"
         
@@ -118,7 +118,13 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         //        setuplabels(lbl: kwdlbl, text: "Book Now", textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .right)
         //        bookNowBtn.setTitle("", for: .normal)
         //        bookNowBtn.addTarget(self, action: #selector(didTapOnBookNowBtn(_:)), for: .touchUpInside)
-        commonTableView.registerTVCells(["HotelImagesTVCell","EmptyTVCell","RoomsTVcell"])
+        commonTableView.registerTVCells(["HotelImagesTVCell",
+                                         "EmptyTVCell",
+                                         "NewRoomTVCell",
+                                         "AmenitiesTVCell",
+                                         "TitleLabelTVCell",
+                                         "NoDataFoundTVCell",
+                                         "RoomsTVcell"])
         
     }
     
@@ -149,91 +155,97 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     
     //MARK: - didTapOnRoomsBtn
     override func didTapOnRoomsBtn(cell: RoomsTVcell) {
-        hotelDetailsTapBool = true
-        cell.key = "rooms"
-        cell.roomDetailsTV.reloadData()
+        //        hotelDetailsTapBool = true
+        //        cell.key = "rooms"
+        //        cell.roomDetailsTV.reloadData()
+        
+        setuptv()
     }
     
     
     //MARK: - didTapOnHotelsDetailsBtn
     override func didTapOnHotelsDetailsBtn(cell: RoomsTVcell) {
-        cell.key = "hotels details"
-        hotelDetailsTapBool = false
-        cell.roomDetailsTV.reloadData()
+        //        cell.key = "hotels details"
+        //        hotelDetailsTapBool = false
+        //        cell.roomDetailsTV.reloadData()
+        
+        setuptv()
     }
     
     
     //MARK: - didTapOnAmenitiesBtn
     override func didTapOnAmenitiesBtn(cell: RoomsTVcell) {
-        cell.key = "amenities"
-        hotelDetailsTapBool = false
-        cell.roomDetailsTV.reloadData()
+        //        cell.key = "amenities"
+        //        hotelDetailsTapBool = false
+        //        cell.roomDetailsTV.reloadData()
+        
+        setuptv()
     }
     
     //MARK: - didTapOnCancellationPolicyBtnAction
-    override func didTapOnCancellationPolicyBtnAction(cell:NewRoomDetailsTVCell){
-        MySingleton.shared.cancellationRoomStringArray = cell.cancellatonStringArray
-        
-        
-        guard let vc = CancellationPolicyPopupVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: false)
-        
-    }
+    //    override func didTapOnCancellationPolicyBtnAction(cell:NewRoomDetailsTVCell){
+    //        MySingleton.shared.cancellationRoomStringArray = cell.cancellatonStringArray
+    //
+    //
+    //        guard let vc = CancellationPolicyPopupVC.newInstance.self else {return}
+    //        vc.modalPresentationStyle = .overCurrentContext
+    //        self.present(vc, animated: false)
+    //
+    //    }
     
     
     //MARK: - didTapOnSelectRoomBtnAction
-    override func didTapOnSelectRoomBtnAction(cell:NewRoomDetailsTVCell){
-        hotelDetailsTapBool = true
-        continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
-        gifimg.isHidden = false
-        
-        MySingleton.shared.cancellationRoomStringArray = cell.cancellatonStringArray
-        
-        bookNowlbl.isHidden = false
-        
-        // Toggle the selected state
-        cell.isSelectedCell.toggle()
-        
-        // Update the button color
-        cell.updateButtonColor()
-        
-        // Check if a different cell was previously selected
-        if let previouslySelectedCell = selectedCell {
-            // Deselect the previously selected cell
-            previouslySelectedCell.isSelectedCell = false
-            previouslySelectedCell.updateButtonColor()
-        }
-        
-        // Select the tapped cell
-        cell.isSelectedCell = true
-        cell.updateButtonColor()
-        
-        // Update the selectedCell reference
-        selectedCell = cell
-        
-        //        bookNowView.isUserInteractionEnabled = true
-        //        bookNowView.alpha = 1
-        grandTotal = cell.pricelbl.text ?? ""
-        setuplabels(lbl: bookNowlbl, text: cell.pricelbl.text ?? "" , textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .left)
-        
-       
-        selectedrRateKeyArray = cell.ratekey
-        
-        MySingleton.shared.setAttributedTextnew(str1: "\(cell.currency )",
-                                                str2: "\(cell.exactprice )",
-                                                lbl: bookNowlbl,
-                                                str1font: .LatoBold(size: 12),
-                                                str2font: .LatoBold(size: 18),
-                                                str1Color: .WhiteColor,
-                                                str2Color: .WhiteColor)
-        
-        
-        roomselected = cell.selectedRoom
-        print("roomselected : \(roomselected)")
-        
-        
-    }
+    //    override func didTapOnSelectRoomBtnAction(cell:NewRoomDetailsTVCell){
+    //        hotelDetailsTapBool = true
+    //        continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+    //        gifimg.isHidden = false
+    //
+    //        MySingleton.shared.cancellationRoomStringArray = cell.cancellatonStringArray
+    //
+    //        bookNowlbl.isHidden = false
+    //
+    //        // Toggle the selected state
+    //        cell.isSelectedCell.toggle()
+    //
+    //        // Update the button color
+    //        cell.updateButtonColor()
+    //
+    //        // Check if a different cell was previously selected
+    //        if let previouslySelectedCell = selectedCell {
+    //            // Deselect the previously selected cell
+    //            previouslySelectedCell.isSelectedCell = false
+    //            previouslySelectedCell.updateButtonColor()
+    //        }
+    //
+    //        // Select the tapped cell
+    //        cell.isSelectedCell = true
+    //        cell.updateButtonColor()
+    //
+    //        // Update the selectedCell reference
+    //        selectedCell = cell
+    //
+    //        //        bookNowView.isUserInteractionEnabled = true
+    //        //        bookNowView.alpha = 1
+    //        grandTotal = cell.pricelbl.text ?? ""
+    //        setuplabels(lbl: bookNowlbl, text: cell.pricelbl.text ?? "" , textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .left)
+    //
+    //
+    //        selectedrRateKeyArray = cell.ratekey
+    //
+    //        MySingleton.shared.setAttributedTextnew(str1: "\(cell.currency )",
+    //                                                str2: "\(cell.exactprice )",
+    //                                                lbl: bookNowlbl,
+    //                                                str1font: .LatoBold(size: 12),
+    //                                                str2font: .LatoBold(size: 18),
+    //                                                str1Color: .WhiteColor,
+    //                                                str2Color: .WhiteColor)
+    //
+    //
+    //        roomselected = cell.selectedRoom
+    //        print("roomselected : \(roomselected)")
+    //
+    //
+    //    }
     
     
     //MARK: - didTapOnBackBtnAction
@@ -268,6 +280,95 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         }
     }
     
+    
+    
+    
+    override func didTapOnCancellationPolicyBtnAction(cell: NewRoomDetailsTVCell) {
+        MySingleton.shared.cancellationRoomStringArray = cell.cancellatonStringArray
+        
+        
+        guard let vc = CancellationPolicyPopupVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
+    }
+    
+    override func didTapOnSelectRoomBtnAction(cell: NewRoomDetailsTVCell) {
+        
+        
+        
+        //        if let indexPath = roomInfoTV.indexPath(for: cell) {
+        //            // Toggle the selected state
+        //            selectedCellStates[indexPath] = !selectedCellStates[indexPath, default: false]
+        //
+        //            // Update the button color
+        //            cell.updateButtonColor()
+        //
+        //            // Deselect the previously selected cell, if any
+        //            for (index, isSelected) in selectedCellStates {
+        //                if index != indexPath && isSelected {
+        //                    selectedCellStates[index] = false
+        //                    if let previouslySelectedCell = cell.roomInfoTV.cellForRow(at: index) as? NewRoomDetailsTVCell {
+        //                        previouslySelectedCell.updateButtonColor()
+        //                    }
+        //                }
+        //            }
+        //
+        //
+        //        }
+        
+        
+        
+        hotelDetailsTapBool = true
+        continuetoPaymentBtnView.backgroundColor = .BooknowBtnColor
+        gifimg.isHidden = false
+        
+        MySingleton.shared.cancellationRoomStringArray = cell.cancellatonStringArray
+        
+        bookNowlbl.isHidden = false
+        
+        // Toggle the selected state
+        cell.isSelectedCell.toggle()
+        
+        // Update the button color
+        cell.updateButtonColor()
+        
+        // Check if a different cell was previously selected
+        if let previouslySelectedCell = selectedCell {
+            // Deselect the previously selected cell
+            previouslySelectedCell.isSelectedCell = false
+            previouslySelectedCell.updateButtonColor()
+        }
+        
+        // Select the tapped cell
+        cell.isSelectedCell = true
+        cell.updateButtonColor()
+        
+        // Update the selectedCell reference
+        selectedCell = cell
+        
+        //        bookNowView.isUserInteractionEnabled = true
+        //        bookNowView.alpha = 1
+        grandTotal = cell.pricelbl.text ?? ""
+        setuplabels(lbl: bookNowlbl, text: cell.pricelbl.text ?? "" , textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .left)
+        
+        
+        selectedrRateKeyArray = cell.ratekey
+        
+        MySingleton.shared.setAttributedTextnew(str1: "\(cell.currency )",
+                                                str2: "\(cell.exactprice )",
+                                                lbl: bookNowlbl,
+                                                str1font: .LatoBold(size: 12),
+                                                str2font: .LatoBold(size: 18),
+                                                str1Color: .WhiteColor,
+                                                str2Color: .WhiteColor)
+        
+        
+        roomselected = cell.selectedRoom
+        print("roomselected : \(roomselected)")
+        
+        
+        
+    }
 }
 
 
@@ -299,6 +400,7 @@ extension HotelDetailsVC {
         loderBool = false
         hideLoadera()
         
+        hotelroomtap = "room"
         holderView.isHidden = false
         hsearchid = response.params?.search_id ?? ""
         htoken = response.hotel_details?.token ?? ""
@@ -320,11 +422,10 @@ extension HotelDetailsVC {
         }
     }
     
-
+    
     
     func setuptv() {
         tablerow.removeAll()
-        
         
         if roomsDetails.count > 0 {
             
@@ -344,11 +445,40 @@ extension HotelDetailsVC {
                                      tempText: hotelDetails?.tokenKey,
                                      cellType:.RoomsTVcell))
             
-            tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
             
-    }else {
-        TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
-    }
+            if hotelroomtap == "room" {
+                
+                roomsDetails.forEach { i in
+                    tablerow.append(TableRow(title:"",moreData:i,cellType:.NewRoomTVCell))
+                }
+                
+                
+            }else  if hotelroomtap == "details" {
+                
+                formatDesc.forEach { i in
+                    tablerow.append(TableRow(title:i.heading,subTitle: i.content,key: "hoteldisc",cellType:.TitleLabelTVCell))
+                }
+                
+                
+            }else {
+                if formatAmeArray.count > 0 {
+                    formatAmeArray.forEach { i in
+                        if i.ame != "" {
+                            tablerow.append(TableRow(title:i.ame,cellType:.AmenitiesTVCell))
+                        }
+                    }
+                }else {
+                    tablerow.append(TableRow(height: 200,cellType:.NoDataFoundTVCell))
+                }
+            }
+            
+            
+            
+            tablerow.append(TableRow(height:80,cellType:.EmptyTVCell))
+            
+        }else {
+            TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
+        }
         
         commonTVData = tablerow
         commonTableView.reloadData()

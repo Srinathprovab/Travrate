@@ -101,6 +101,8 @@ var starRatingInputArray = [String]()
 var hotelstarratingArray = [String]()
 var filterresettapbool = true
 var filteredSportsTickekData = [SportsDetailsData]()
+var hotelroomtap = "room"
+var activitiestap = "activities"
 
 //DASHBOARD
 var mrtitlecode = ""

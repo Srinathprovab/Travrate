@@ -25,23 +25,28 @@ class NewRoomTVCell: TableViewCell, NewRoomDetailsTVCellDelegate {
     @IBOutlet weak var topView: BorderedView!
     
     
-    
-    
     var newRoomindexPath: IndexPath?
     var room = [Rooms]()
     weak var delegate:NewRoomTVCellDelegate?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         setuTV()
-        
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    
+    override func updateUI() {
+        room = cellInfo?.moreData as! [Rooms]
+        tvheight.constant = CGFloat(room.count * 101)
+        roomInfoTV.reloadData()
     }
     
     
@@ -67,6 +72,13 @@ class NewRoomTVCell: TableViewCell, NewRoomDetailsTVCellDelegate {
         topView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner] // Top right corner, Top left corner respectively
         topView.layer.cornerRadius = 10
         topView.clipsToBounds = true
+        
+        roomInfoTV.layer.borderWidth = 1
+        roomInfoTV.layer.borderColor = UIColor.AppBorderColor.cgColor
+        
+        roomInfoTV.layer.cornerRadius = 10
+        roomInfoTV.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
     }
     
     

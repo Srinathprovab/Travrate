@@ -19,6 +19,9 @@ class NewRoomDetailsTVCell: UITableViewCell {
     @IBOutlet weak var pricelbl: UILabel!
     @IBOutlet weak var selectRoomBtnView: BorderedView!
     
+    @IBOutlet weak var leftview: BorderedView!
+    @IBOutlet weak var rightview: BorderedView!
+    
     
     var cancellatonStringArray = [Cancellation_string]()
     var selectedRoom = String()
@@ -55,6 +58,12 @@ class NewRoomDetailsTVCell: UITableViewCell {
     func setupUI() {
         
         selectRoomBtnView.backgroundColor = .AppBtnColor
+        
+//        leftview.layer.maskedCorners = [.layerMinXMaxYCorner]
+//        leftview.layer.cornerRadius = 8
+//
+//        rightview.layer.maskedCorners = [.layerMaxXMaxYCorner]
+//        rightview.layer.cornerRadius = 8
         
         
     }
