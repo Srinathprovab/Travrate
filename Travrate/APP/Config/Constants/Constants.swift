@@ -195,10 +195,17 @@ var hotel_address = ""
 var total_rooms = ""
 var adult_count = ""
 var vocherpdf = ""
+
 var bottom_text_info = [Bottom_text_info]()
 var social_linksArray = [Social_links]()
 var bookingitinerarydetails = [Booking_itinerary_summary]()
 var Customerdetails = [Customer_details]()
+
+
+var hotelbookingdetails : Hotel_Booking_details?
+var hotelCustomerdetails = [Hotel_Customer_details]()
+
+
 var currency = ""
 var totalPrice = ""
 var totalPax = ""

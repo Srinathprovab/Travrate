@@ -26,13 +26,17 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     
     func callAPI() {
         BASE_URL = ""
+        MySingleton.shared.afterResultsBool = true
         MySingleton.shared.loderString = "payment"
+        
         loderBool = true
         showLoadera()
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
             callGetFlightVoucherAPI()
+        }else if tabselect == "Hotel" {
+            callGetHotelVoucherAPI()
         }else if tabselect == "transfers" {
             callGetTransfersVoucherAPI()
         }else if tabselect == "Sports" {
@@ -42,7 +46,7 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
         }else if tabselect == "Activities" {
             callGetActivitesVoucherAPI()
         }else {
-            callGetHotelVoucherAPI()
+            
         }
         
         
@@ -152,7 +156,7 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
 //MARK: - Flight Voucher Deatails
 extension BookingConfirmedVC {
     func callGetFlightVoucherAPI() {
-        viewModel?.Call_Get_voucher_Details_API(dictParam: [:], url: urlString)
+        viewModel?.Call_Get_voucher_Details_API(dictParam: [:], url: MySingleton.shared.voucherurlsting)
     }
     
     
@@ -229,15 +233,50 @@ extension BookingConfirmedVC {
     
     
     func callGetHotelVoucherAPI() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            loderBool = false
-            self.hideLoadera()
-            self.setupHotelTVCells()
-        }
-        
+        viewModel?.CALL_HOTEL_VOUCHER_DETAILS_api(dictParam: [:], url: MySingleton.shared.voucherurlsting)
     }
     
     
+    func hotelVoucherDetails(response: HotelVoucherModel) {
+        
+        BASE_URL = BASE_URL1
+        loderBool = false
+        self.hideLoadera()
+        
+        
+        
+        response.data?.booking_details?.forEach({ i in
+            bookedDate = i.voucher_date ?? ""
+            bookingsource = i.booking_source ?? ""
+            bookingId = i.booking_id ?? ""
+            pnrNo = "pnr"
+            
+        })
+        
+        response.data?.booking_details?.forEach({ j in
+            
+            hotelbookingdetails = j
+            hotelCustomerdetails = j.customer_details ?? []
+            
+            
+            j.itinerary_details?.forEach({ i in
+                
+                
+                bookingRefrence = i.app_reference ?? ""
+                bookingStatus = i.status ?? ""
+               
+            })
+        })
+        
+        
+        
+        DispatchQueue.main.async {
+            self.setupHotelTVCells()
+        }
+       
+    }
+    
+
     
     func setupHotelTVCells() {
         MySingleton.shared.tablerow.removeAll()
@@ -250,8 +289,8 @@ extension BookingConfirmedVC {
                                  tempText: pnrNo,
                                  cellType:.NewBookingConfirmedTVCell))
         
-        MySingleton.shared.tablerow.append(TableRow(cellType:.BookingHotelDetailsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
+        MySingleton.shared.tablerow.append(TableRow(key:"bc",cellType:.BookingHotelDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:"Lead",
                                                     key:"hotel",
                                                     cellType:.BookedTravelDetailsTVCell))
         

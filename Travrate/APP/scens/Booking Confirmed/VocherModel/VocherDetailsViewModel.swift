@@ -12,6 +12,8 @@ protocol VocherDetailsViewModelDelegate : BaseViewModelProtocol {
     func sportsvoucherDetails(response:SportsVoucherModel)
     func carrentalVoucherDetails(response:CarVoucherModel)
     func activitiesVoucherDetails(response:ActivitiesVoucherModel)
+    
+    func hotelVoucherDetails(response:HotelVoucherModel)
 }
 
 class VocherDetailsViewModel {
@@ -36,6 +38,31 @@ class VocherDetailsViewModel {
                 if sucess {
                     guard let response = result else {return}
                     self.view.vocherdetails(response: response)
+                } else {
+                    // Show alert
+                    self.view.showToast(message: errorMessage ?? "")
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    //MARK: -  CALL_HOTEL_VOUCHER_DETAILS_api
+    func CALL_HOTEL_VOUCHER_DETAILS_api(dictParam: [String: Any],url:String){
+        let parms = NSDictionary(dictionary:dictParam)
+        print("Parameters = \(parms)")
+        
+        self.view?.showLoader()
+        
+        ServiceManager.postOrPutApiCall(endPoint: url ,urlParams: parms as? Dictionary<String, String> ,parameters: parms, resultType: HotelVoucherModel.self, p:dictParam) { sucess, result, errorMessage in
+            
+            DispatchQueue.main.async {
+                self.view?.hideLoader()
+                if sucess {
+                    guard let response = result else {return}
+                    self.view.hotelVoucherDetails(response: response)
                 } else {
                     // Show alert
                     self.view.showToast(message: errorMessage ?? "")

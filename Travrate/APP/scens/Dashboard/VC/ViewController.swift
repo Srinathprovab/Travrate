@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             self.gotodashBoardScreen()
-            //   self.gotoBookingConfirmedVC()
+            // self.gotoBookingConfirmedVC()
             
         })
     }
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     func gotoBookingConfirmedVC() {
         
         
-        defaults.setValue("Flight", forKey: UserDefaultsKeys.tabselect)
+        defaults.setValue("Hotel", forKey: UserDefaultsKeys.tabselect)
         
         guard let vc = BookingConfirmedVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
@@ -80,9 +80,15 @@ class ViewController: UIViewController {
         
         //  MySingleton.shared.voucherurlsting = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/voucher/TR-CAR-20240712103921/PTBSID0000007785/BOOKING_CONFIRMED/show_voucher"
         
-       // urlString = "https://provab.net/travrate/index.php/voucher/flight/TRG-F-TP-0312-1710223991/PTBSID0000000016/BOOKING_INPROGRESS/show_voucher"
+        MySingleton.shared.voucherurlsting = "https://provab.net/travrate/index.php/voucher/flight/TRG-F-TP-0312-1710223991/PTBSID0000000016/BOOKING_INPROGRESS/show_voucher"
         
         // urlString = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/sport/voucher/TR-SE-20240710125733/voucher_view"
+        
+        // MySingleton.shared.voucherurlsting = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/voucher/hotel/TRG-H-DW-13807/PTBSID0000000094/BOOKING_CONFIRMED/show_voucher"
+        //   MySingleton.shared.voucherurlsting = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/voucher/hotel/TRG-H-DW-13815/PTBSID0000000094/BOOKING_CONFIRMED/show_voucher"
+        // MySingleton.shared.voucherurlsting = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/voucher/hotel/TRG-H-DW-13781/PTBSID0000000094/BOOKING_CONFIRMED/show_voucher"
+        
+        
         callapibool = true
         present(vc, animated: true)
     }

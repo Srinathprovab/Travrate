@@ -106,7 +106,7 @@ class LoadWebViewVC: UIViewController, WKNavigationDelegate, MobileSecureBooking
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
         if keystr == "voucher" {
             callapibool = false
-           dismiss(animated: true)
+            dismiss(animated: true)
         }else {
             gotoDashboard()
         }
@@ -176,21 +176,20 @@ extension LoadWebViewVC {
     }
     
     func getHandelResponseDetails(response: updatePaymentFlightModel) {
+        print(" ====== getHandelResponseDetails    =======")
         print(response.data)
         callSecureBookingAPI(str: response.data ?? "")
     }
     
     
     func callSecureBookingAPI(str:String) {
-        print(str)
         MySingleton.shared.viewmodel1?.Call_mobile_secure_booking_API(dictParam: [:], url: str)
-        
     }
     
     
     
     func mobilesecurebookingDetails(response: MobilePrePaymentModel) {
-       
+        
         print(" ======= Voucher URL =======")
         print(response.url)
         
@@ -210,9 +209,7 @@ extension LoadWebViewVC {
         //
     }
     
-    
-    
-    
+
 }
 
 

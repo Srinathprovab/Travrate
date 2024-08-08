@@ -1005,14 +1005,6 @@ extension FlightResultVC {
         self.holderView.isHidden = true
         defaults.set(false, forKey: "flightfilteronce")
         MySingleton.shared.loderString = "loder"
-        loderBool = true
-        showLoadera()
-        
-        
-        MySingleton.shared.vm?.CALL_GET_ACTIVE_BOOKING_SOURCE_API(dictParam: [:])
-    }
-    
-    func activebookingSourceResult(response: ActiveBookingSourceModel) {
         
         
         prices.removeAll()
@@ -1025,6 +1017,16 @@ extension FlightResultVC {
         luggageArray.removeAll()
         noofstopsArray.removeAll()
         layoverdurationArray.removeAll()
+        
+        
+        loderBool = true
+        showLoadera()
+        
+        
+        MySingleton.shared.vm?.CALL_GET_ACTIVE_BOOKING_SOURCE_API(dictParam: [:])
+    }
+    
+    func activebookingSourceResult(response: ActiveBookingSourceModel) {
         
         bsDataArray = response.data ?? []
         bookingSourceDataArrayCount = response.data?.count ?? 0

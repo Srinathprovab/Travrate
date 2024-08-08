@@ -42,7 +42,7 @@ class TermsAgreeTVCell: TableViewCell {
   
     
     @objc func labelTapped(gesture:UITapGestureRecognizer) {
-        if gesture.didTapAttributedString("Terms ans Conditions", in: titlelbl) {
+        if gesture.didTapAttributedString("Terms & Conditions", in: titlelbl) {
             
             checkBool = true
             checkboximg.image = UIImage(named: "check")
@@ -66,15 +66,15 @@ class TermsAgreeTVCell: TableViewCell {
        // titlelbl.text = cellInfo?.title ?? ""
         
         if cellInfo?.key == "transfer" {
-             str1 = "By booking this item, you agree to pay the total amount shown, which includes Service Fees. You also agree to the "
-             str2 = "Terms ans Conditions"
+             str1 = "By booking this item, you agree to pay the total amount shown, which includes Service fees. You also agree to the "
+             str2 = "Terms & Conditions"
              str3 = " and "
              str4 = "Privacy Policy."
             
         }else {
 
             str1 = "By Booking This item, You agree to pay the total amount shown, with includes service fees. you also agree to the "
-            str2 = "Terms ans Conditions"
+            str2 = "Terms & Conditions"
             str3 = " and "
             str4 = "Privacy Policy."
         }
@@ -85,10 +85,10 @@ class TermsAgreeTVCell: TableViewCell {
                                   str3: str3,
                                   str4: str4,
                                   lbl: titlelbl,
-                                  str1font: .InterMedium(size: 14),
+                                  str1font: .InterRegular(size: 14),
                                   str2font: .InterBold(size: 14),
-                                  str1Color: .TitleColor,
-                                  str2Color: .BooknowBtnColor)
+                                  str1Color: .SubTitleColor,
+                                  str2Color: .BackBtnColor)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
         titlelbl.addGestureRecognizer(tapGesture)

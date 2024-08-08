@@ -39,14 +39,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="341" id="KGk-i7-Jjw" customClass="NewHotelPriceSummeryTVCell" customModule="Travrate" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="520"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="520"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eyE-Qo-apt">
-                        <rect key="frame" x="15" y="9.9999999999999716" width="345" height="500.33333333333326"/>
+                        <rect key="frame" x="15" y="10" width="345" height="535.33333333333337"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KH2-ex-elh" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="345" height="278"/>
@@ -230,8 +230,44 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aV0-HF-ENY">
+                                <rect key="frame" x="0.0" y="278" width="345" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Price" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6N-3y-fN8">
+                                        <rect key="frame" x="16" y="7.9999999999999982" width="81" height="19.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                        <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD :170.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXl-iN-gNf">
+                                        <rect key="frame" x="234.33333333333334" y="8.3333333333333162" width="94.666666666666657" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
+                                        <color key="textColor" name="IttenarySelectedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaO-8E-VYt">
+                                        <rect key="frame" x="0.0" y="34" width="345" height="1"/>
+                                        <color key="backgroundColor" name="AppBorderColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="GZt-L2-qad"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="TXl-iN-gNf" secondAttribute="trailing" constant="16" id="0Tb-pN-Poz"/>
+                                    <constraint firstAttribute="trailing" secondItem="SaO-8E-VYt" secondAttribute="trailing" id="7Ke-g0-I31"/>
+                                    <constraint firstAttribute="height" constant="35" id="7sF-Hp-vRb"/>
+                                    <constraint firstItem="TXl-iN-gNf" firstAttribute="centerY" secondItem="i6N-3y-fN8" secondAttribute="centerY" id="I5g-F5-kbS"/>
+                                    <constraint firstItem="i6N-3y-fN8" firstAttribute="leading" secondItem="aV0-HF-ENY" secondAttribute="leading" constant="16" id="LLO-7e-HCW"/>
+                                    <constraint firstAttribute="bottom" secondItem="i6N-3y-fN8" secondAttribute="bottom" constant="7.6699999999999999" id="O6o-94-Q8t"/>
+                                    <constraint firstItem="i6N-3y-fN8" firstAttribute="top" secondItem="aV0-HF-ENY" secondAttribute="top" constant="8" id="QXb-Bf-0Ku"/>
+                                    <constraint firstItem="SaO-8E-VYt" firstAttribute="leading" secondItem="aV0-HF-ENY" secondAttribute="leading" id="exy-2Z-4rz"/>
+                                    <constraint firstAttribute="bottom" secondItem="SaO-8E-VYt" secondAttribute="bottom" id="kP4-bs-03J"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c3z-RZ-gRO">
-                                <rect key="frame" x="0.0" y="278" width="345" height="222.33333333333337"/>
+                                <rect key="frame" x="0.0" y="313" width="345" height="222.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IMI-fD-shF">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="176"/>
@@ -362,13 +398,13 @@
                                         <rect key="frame" x="0.0" y="176" width="345" height="46.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3G-by-f3R">
-                                                <rect key="frame" x="15.999999999999996" y="14.999999999999998" width="34.666666666666657" height="19.333333333333329"/>
-                                                <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                                <rect key="frame" x="16" y="14.999999999999998" width="34" height="19.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                                 <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD :170.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYF-wu-fNd">
-                                                <rect key="frame" x="234.33333333333334" y="15.333333333333316" width="94.666666666666657" height="18.666666666666671"/>
+                                                <rect key="frame" x="234.33333333333334" y="15.333333333333373" width="94.666666666666657" height="18.666666666666679"/>
                                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                                 <color key="textColor" name="IttenarySelectedColor"/>
                                                 <nil key="highlightedColor"/>
@@ -420,7 +456,9 @@
                 <outlet property="pricesummerylbl" destination="E2C-8w-IcD" id="afH-kU-zci"/>
                 <outlet property="roomCountLabel" destination="kKG-3C-7HV" id="fmj-Ar-waM"/>
                 <outlet property="roomTypelbl" destination="qHe-la-wf0" id="Vis-MY-fHU"/>
+                <outlet property="roompricelbl" destination="TXl-iN-gNf" id="7UT-Eq-HkZ"/>
                 <outlet property="topview" destination="JF4-M7-k2X" id="cZ2-8v-bDp"/>
+                <outlet property="totaltitlelbl" destination="u3G-by-f3R" id="gL4-hP-btS"/>
                 <outlet property="whatsAppPriceLbl" destination="157-2o-FMX" id="Dwe-Q3-ezh"/>
                 <outlet property="whatsAppView" destination="idl-89-MVr" id="PtK-kA-gz9"/>
             </connections>

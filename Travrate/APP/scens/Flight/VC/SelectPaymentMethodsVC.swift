@@ -106,18 +106,21 @@ class SelectPaymentMethodsVC: BaseTableVC, MobileProcessPassengerDetailVMDelegat
     //MARK: - PaymentTypeTVCell
     override func didTapOnPayNowBtnAction(cell: PaymentTypeTVCell) {
         
+        MySingleton.shared.afterResultsBool = true
+        MySingleton.shared.loderString = "payment"
+        loderBool = true
+        showLoadera()
+        
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
             callFlightSendToPaymentAPI()
         }else if tabselect == "Hotel" {
-            hotelSendToPayment()
-            // gotoBookingConfirmedVC()
+            hotelHotelSendToPayment()
         }else if tabselect == "Sports" {
             callSportsSendToPayment()
         }else if tabselect == "transfers" {
             callTransferSendToPaymentAPI()
-            // gotoBookingConfirmedVC()
         }else if tabselect == "CarRental" {
             callCarrentalSendToPaymentAPI()
         }else if tabselect == "Activities" {
@@ -329,13 +332,13 @@ extension SelectPaymentMethodsVC {
     
     
     func flightgetPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
-        print("====== response.data  ======")
-        print(response.data)
         
-        gotoLoadWebViewVC(urlStr1: response.data ?? "")
-        //        DispatchQueue.main.async {
-        //            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
-        //        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {[self] in
+            loderBool = false
+            hideLoadera()
+            
+            gotoLoadWebViewVC(urlStr1: response.data ?? "")
+        }
     }
     
     
@@ -344,7 +347,7 @@ extension SelectPaymentMethodsVC {
         guard let vc = LoadWebViewVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.urlString = urlStr1
-        present(vc, animated: true)
+        present(vc, animated: false)
     }
     
     
@@ -401,9 +404,9 @@ extension SelectPaymentMethodsVC {
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         
         MySingleton.shared.tablerow.append(TableRow(cellType:.PaymentTypeTVCell))
-        MySingleton.shared.tablerow.append(TableRow(cellType:.BookingHotelDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(key:"details",cellType:.BookingHotelDetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Lead Passenger",
-                                                    key:"hotel",
+                                                    key:"hotel1",
                                                     cellType:.BookedTravelDetailsTVCell))
         
         
@@ -427,7 +430,7 @@ extension SelectPaymentMethodsVC {
     }
     
     
-    func hotelSendToPayment() {
+    func hotelHotelSendToPayment() {
         
         MySingleton.shared.payload.removeAll()
         MySingleton.shared.payload["search_id"] = responseHotelBookingDetials?.data?.search_id
@@ -446,23 +449,16 @@ extension SelectPaymentMethodsVC {
         DispatchQueue.main.async {
             self.hdvm?.CALL_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.data?.url ?? "")
         }
-        
-        //        DispatchQueue.main.async {
-        //            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data?.url ?? "")
-        //        }
     }
     
     
     func getPaymentgatewayUrlDetails(response: getPaymentgatewayUrlModel) {
-        print("====== response.data  ======")
-        print(response.data)
-        
-        
-        //        DispatchQueue.main.async {
-        //            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
-        //        }
-        
-        gotoLoadWebViewVC(urlStr1: response.data ?? "")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {[self] in
+            loderBool = false
+            hideLoadera()
+            
+            gotoLoadWebViewVC(urlStr1: response.data ?? "")
+        }
     }
     
     

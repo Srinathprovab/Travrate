@@ -9,8 +9,6 @@ import UIKit
 
 class ActivitiesSearchVC: BaseTableVC {
     
-    
-    
     static var newInstance: ActivitiesSearchVC? {
         let storyboard = UIStoryboard(name: Storyboard.Activities.name,
                                       bundle: nil)
@@ -138,10 +136,6 @@ class ActivitiesSearchVC: BaseTableVC {
     
     
 }
-
-
-
-
 
 
 //MARK: - addObserver

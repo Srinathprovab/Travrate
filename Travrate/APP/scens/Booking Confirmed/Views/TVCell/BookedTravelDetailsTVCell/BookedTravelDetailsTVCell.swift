@@ -40,7 +40,7 @@ class BookedTravelDetailsTVCell: TableViewCell {
     override func updateUI() {
     
         keystr = cellInfo?.key ?? ""
-        
+        adultDetailsTV.isScrollEnabled = false
         
         if keystr == "BC" {
             if Customerdetails.count > 0 {
@@ -52,8 +52,8 @@ class BookedTravelDetailsTVCell: TableViewCell {
             emaillbl.text = "Email"
             mobilelbl.text = "Mobile"
           
-            if travelerArray.count > 0 {
-                tvHeight.constant = CGFloat(travelerArray.count * 48)
+            if hotelCustomerdetails.count > 0 {
+                tvHeight.constant = CGFloat(hotelCustomerdetails.count * 48)
             }
             
         }else if keystr == "sports" {
@@ -129,9 +129,11 @@ class BookedTravelDetailsTVCell: TableViewCell {
     }
     
     func setupTV() {
-        adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "cell")
+        adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "flight")
+        adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "hotel")
         adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "cell1")
         adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "sports")
+        adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "car")
         adultDetailsTV.register(UINib(nibName: "BookedAdultDetailsTVCell", bundle: nil), forCellReuseIdentifier: "transfer")
         
         adultDetailsTV.delegate = self
@@ -158,6 +160,8 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if keystr == "BC" {
             return Customerdetails.count
+        }else if keystr == "hotel" {
+            return hotelCustomerdetails.count
         }else if keystr == "sports" {
             return MySingleton.shared.sports_passengers.count
         }else if keystr == "car" {
@@ -176,7 +180,7 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
         
         if keystr == "BC" {
             
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? BookedAdultDetailsTVCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "flight") as? BookedAdultDetailsTVCell {
                 cell.selectionStyle = .none
                 
                 let data = Customerdetails[indexPath.row]
@@ -185,6 +189,29 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 cell.emaillbl.text = data.passenger_nationality_name ?? ""
                 if indexPath.row == 0{
                     cell.setAttributedText(str1: "\(data.first_name ?? "") \(data.last_name ?? "")", str2: "\n\(cellInfo?.title ?? "")")
+                }
+                
+                c = cell
+            }
+        }else if keystr == "hotel" {
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "hotel") as? BookedAdultDetailsTVCell {
+                cell.selectionStyle = .none
+                
+                let data = hotelCustomerdetails[indexPath.row]
+               
+                cell.passengerTypelbl.text = data.pax_type
+                cell.travellerNamelbl.text = "\(data.first_name ?? "") \(data.last_name ?? "")"
+                cell.emaillbl.text = "----"
+                cell.mobileLbl.text = "----"
+                
+                
+                if indexPath.row == 0{
+                    cell.setAttributedText(str1: "\(cellInfo?.title ?? "")", str2: "")
+                    cell.passengerTypelbl.text = "Lead"
+                    cell.travellerNamelbl.text = "\(data.first_name ?? "") \(data.last_name ?? "")"
+                    cell.emaillbl.text = data.email
+                    cell.mobileLbl.text = data.phone
                 }
                 
                 c = cell
@@ -204,7 +231,7 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
             }
         }else if keystr == "car" {
             
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "sports") as? BookedAdultDetailsTVCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "car") as? BookedAdultDetailsTVCell {
                 cell.selectionStyle = .none
                 
                 let data = MySingleton.shared.carpassengerDetails[indexPath.row]

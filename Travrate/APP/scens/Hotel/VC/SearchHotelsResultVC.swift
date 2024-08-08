@@ -26,6 +26,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     @IBOutlet weak var viewMapBtn: UIButton!
     @IBOutlet weak var sessionTimelbl: UILabel!
     @IBOutlet weak var hotelsCountlbl: UILabel!
+    @IBOutlet weak var searchbtn: UIButton!
     
     // var loaderVC: LoderVC!
     var bookingSourceDataArrayCount = Int()
@@ -33,7 +34,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     var lastContentOffset: CGFloat = 0
     var tablerow = [TableRow]()
     var filtered = [HotelSearchResult]()
-    
+    var totalcount = 0
     var searchText = String()
     var isvcfrom = String()
     var payload = [String:Any]()
@@ -86,6 +87,11 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     //MARK: - setupRefreshControl
     
     func setupUI() {
+        
+        searchbtn.layer.cornerRadius = 4
+        searchbtn.layer.borderWidth = 1
+        searchbtn.layer.borderColor = UIColor.BorderColor.cgColor
+        searchbtn.addTarget(self, action: #selector(didTapOnSearcHotelshBtnAction(_:)), for: .touchUpInside)
         
         
         setuplabels(lbl: cittlbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
@@ -194,7 +200,9 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     }
     
     
-    
+    @objc func didTapOnSearcHotelshBtnAction(_ sender:UIButton) {
+        print("didTapOnSearcHotelshBtnAction")
+    }
     
     @objc func didTapOnFilterBtnAction(_ sender:UIButton) {
         gotoFilterVC(strkey: "hotelfilter")
@@ -422,7 +430,7 @@ extension SearchHotelsResultVC {
     func callHotelSearchAPI(bookingsource:String,searchid:String){
         payload.removeAll()
         payload["offset"] = "0"
-        payload["limit"] = "100"
+        payload["limit"] = "1000"
         payload["booking_source"] = bookingsource
         payload["search_id"] = searchid
         payload["ResultIndex"] = "1"
@@ -454,7 +462,7 @@ extension SearchHotelsResultVC {
         if let newResults = response.data?.hotelSearchResult, !newResults.isEmpty {
             // Append the new data to the existing data
             hotelSearchResult.append(contentsOf: newResults)
-            
+            totalcount = hotelSearchResult.count
         } else {
             // No more items to load, update UI accordingly
             print("No more items to load.")
@@ -499,6 +507,8 @@ extension SearchHotelsResultVC {
         hotelfiltermodel.starRatingNew = starRatingInputArray
         
         hotelsCountlbl.text = "\(list.count)"
+        totalcount = list.count
+        
         
         list.forEach { i in
             
@@ -705,7 +715,7 @@ extension SearchHotelsResultVC {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
                 
                 if isSearchBool == false {
-                    callHotelSearchPaginationAPI()
+                  // callHotelSearchPaginationAPI()
                 }
             }
             
@@ -720,7 +730,7 @@ extension SearchHotelsResultVC {
         payload.removeAll()
         payload["booking_source"] = hbookingsource
         payload["search_id"] = hsearchid
-        payload["offset"] = "2"
+        payload["offset"] = "\(totalcount + 1)"
         payload["limit"] = "10"
         payload["no_of_nights"] = "1"
         
@@ -748,6 +758,7 @@ extension SearchHotelsResultVC {
         if let newResults = response.data?.hotelSearchResult, !newResults.isEmpty {
             // Append the new data to the existing data
             hotelSearchResult.append(contentsOf: newResults)
+            totalcount = hotelSearchResult.count
             DispatchQueue.main.async {
                 self.appendValues(list: hotelSearchResult)
             }

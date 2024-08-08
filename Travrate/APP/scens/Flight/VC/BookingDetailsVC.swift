@@ -55,6 +55,7 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         origin_array.removeAll()
         whatsAppCheck = false
         notificationCheck = true
+        origin_array.append("4")
         priceCheck = false
         flexibleCheck = false
         gifimg.isHidden = true

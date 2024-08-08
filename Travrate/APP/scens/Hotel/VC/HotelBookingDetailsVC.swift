@@ -62,6 +62,8 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
     
     func setupUI() {
         
+        
+        
         guard let gifURL = Bundle.main.url(forResource: "pay", withExtension: "gif") else { return }
         guard let imageData = try? Data(contentsOf: gifURL) else { return }
         guard let image = UIImage.gifImageWithData(imageData) else { return }
@@ -374,7 +376,7 @@ extension HotelBookingDetailsVC {
         MySingleton.shared.positionsCount = 0
         
         
-        MySingleton.shared.tablerow.append(TableRow(cellType:.BookingHotelDetailsTVCell))
+        MySingleton.shared.tablerow.append(TableRow(key:"details",cellType:.BookingHotelDetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(key:"booking",cellType:.HotelBookingCancellationpolicyTVCell))
         
         

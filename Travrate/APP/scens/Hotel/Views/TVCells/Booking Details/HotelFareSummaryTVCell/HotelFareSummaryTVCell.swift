@@ -23,7 +23,7 @@ class HotelFareSummaryTVCell: TableViewCell {
     @IBOutlet weak var kwdpricelbl: UILabel!
     @IBOutlet weak var addonView: UIView!
     @IBOutlet weak var addonValue: UILabel!
-    
+    @IBOutlet weak var roompricelbl: UILabel!
     
     weak var delegate:HotelFareSummaryTVCellDelegate?
     
@@ -56,6 +56,17 @@ class HotelFareSummaryTVCell: TableViewCell {
         }else {
             addonView.isHidden = true
         }
+        
+        
+        MySingleton.shared.setAttributedTextnew(str1: "",
+                                                str2: grandTotal,
+                                                lbl: roompricelbl,
+                                                str1font: .OpenSansRegular(size: 16),
+                                                str2font: .OpenSansBold(size: 16),
+                                                str1Color: HexColor("#515151"),
+                                                str2Color: HexColor("#515151"))
+        
+        
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(addon(_:)), name: NSNotification.Name("addon"), object: nil)

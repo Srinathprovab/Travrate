@@ -33,6 +33,8 @@ class NewHotelPriceSummeryTVCell: TableViewCell {
     @IBOutlet weak var holderView: UIStackView!
     @IBOutlet weak var pricesummerylbl: UILabel!
     @IBOutlet weak var topview: UIView!
+    @IBOutlet weak var roompricelbl: UILabel!
+    @IBOutlet weak var totaltitlelbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -132,6 +134,13 @@ class NewHotelPriceSummeryTVCell: TableViewCell {
         priceChangeLabel.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(hotelpriceChange)"
         
         
+        roompricelbl.text = grandTotal
+        roompricelbl.font = .InterBold(size: 14)
+        roompricelbl.textColor = .TitleColor
+        
+        totaltitlelbl.text = "Total"
+        totaltitlelbl.font = .InterBold(size: 16)
+        totaltitlelbl.textColor = .TitleColor
         
     }
     
