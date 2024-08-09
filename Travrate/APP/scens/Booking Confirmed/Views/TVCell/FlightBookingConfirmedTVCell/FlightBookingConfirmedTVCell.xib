@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Medium.ttf">
+            <string>OpenSans-Medium</string>
+        </array>
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="d5F-kZ-Ol4" customClass="FlightBookingConfirmedTVCell" customModule="Travrate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="620" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d5F-kZ-Ol4" id="fRo-I3-SaZ">
+                <rect key="frame" x="0.0" y="0.0" width="620" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LQ-bw-uSa">
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="300"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newbg" translatesAutoresizingMaskIntoConstraints="NO" id="TbM-50-Vam">
+                                <rect key="frame" x="0.0" y="0.0" width="620" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="Cr2-JP-Dyc"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="hpE-3o-d91">
+                                <rect key="frame" x="217.33333333333331" y="206.33333333333334" width="185.33333333333331" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Booking Date: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFK-iL-Yuj">
+                                        <rect key="frame" x="0.0" y="0.0" width="96.666666666666671" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="BW-54F4G4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxl-1V-gVV">
+                                        <rect key="frame" x="97.666666666666657" y="0.0" width="87.666666666666657" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="tu2-H1-Co1">
+                                <rect key="frame" x="201.33333333333337" y="179.33333333333334" width="217.66666666666663" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="App Reference: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8y-8j-MGn">
+                                        <rect key="frame" x="0.0" y="0.0" width="104.66666666666667" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TR-64522-8457" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ry9-4R-yK6">
+                                        <rect key="frame" x="105.66666666666666" y="0.0" width="112" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for booking with us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnx-59-SxM">
+                                <rect key="frame" x="205.66666666666663" y="152.33333333333334" width="209" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bcbg" translatesAutoresizingMaskIntoConstraints="NO" id="TnZ-Zx-907">
+                                <rect key="frame" x="275.66666666666669" y="55" width="69" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="N2E-hv-y2J"/>
+                                    <constraint firstAttribute="width" constant="69" id="tUX-jP-TwK"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mqs-ug-mmB">
+                                <rect key="frame" x="10" y="60" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="atF-nr-4Ci"/>
+                                    <constraint firstAttribute="width" constant="35" id="dN2-XJ-gHw"/>
+                                </constraints>
+                                <color key="tintColor" name="TitleColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="back"/>
+                                <connections>
+                                    <action selector="didTapOnBackBtnAction:" destination="d5F-kZ-Ol4" eventType="touchUpInside" id="QNu-Jw-iTM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking confirmation Receipt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jw2-dS-QZl">
+                                <rect key="frame" x="161.66666666666663" y="119.99999999999999" width="297" height="27.333333333333329"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ium-Nb-P2c">
+                                <rect key="frame" x="223" y="233.33333333333334" width="174" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="GDS Pnr No: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNq-qp-WZZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="85.333333333333329" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="BW-54F4G4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q2-ir-kKF">
+                                        <rect key="frame" x="86.333333333333314" y="0.0" width="87.666666666666686" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="P2I-h7-GgK">
+                                <rect key="frame" x="239" y="260.33333333333331" width="142.33333333333337" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Pnr No: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBQ-cj-0Ht">
+                                        <rect key="frame" x="0.0" y="0.0" width="53.666666666666664" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="BW-54F4G4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK9-5E-Dve">
+                                        <rect key="frame" x="54.666666666666693" y="0.0" width="87.666666666666686" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.87450980389999999" green="1" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="P2I-h7-GgK" secondAttribute="bottom" constant="17.670000000000002" id="1QJ-Ar-f4G"/>
+                            <constraint firstItem="TbM-50-Vam" firstAttribute="leading" secondItem="7LQ-bw-uSa" secondAttribute="leading" id="A72-eV-xzk"/>
+                            <constraint firstItem="TnZ-Zx-907" firstAttribute="centerX" secondItem="7LQ-bw-uSa" secondAttribute="centerX" id="Axc-Up-7vg"/>
+                            <constraint firstItem="Mqs-ug-mmB" firstAttribute="leading" secondItem="7LQ-bw-uSa" secondAttribute="leading" constant="10" id="CHI-un-LsU"/>
+                            <constraint firstItem="P2I-h7-GgK" firstAttribute="top" secondItem="Ium-Nb-P2c" secondAttribute="bottom" constant="5" id="HxG-yT-J2H"/>
+                            <constraint firstItem="hpE-3o-d91" firstAttribute="centerX" secondItem="dnx-59-SxM" secondAttribute="centerX" id="J50-wC-mFL"/>
+                            <constraint firstItem="jw2-dS-QZl" firstAttribute="centerX" secondItem="TnZ-Zx-907" secondAttribute="centerX" id="JpL-j1-haB"/>
+                            <constraint firstItem="dnx-59-SxM" firstAttribute="top" secondItem="jw2-dS-QZl" secondAttribute="bottom" constant="5" id="ONl-g8-AR5"/>
+                            <constraint firstItem="tu2-H1-Co1" firstAttribute="centerX" secondItem="dnx-59-SxM" secondAttribute="centerX" id="P3w-Q9-BiO"/>
+                            <constraint firstItem="TnZ-Zx-907" firstAttribute="top" secondItem="7LQ-bw-uSa" secondAttribute="top" constant="55" id="Qe8-Av-RJq"/>
+                            <constraint firstItem="dnx-59-SxM" firstAttribute="centerX" secondItem="jw2-dS-QZl" secondAttribute="centerX" id="S2S-Ce-s4o"/>
+                            <constraint firstAttribute="trailing" secondItem="TbM-50-Vam" secondAttribute="trailing" id="WJf-Xu-gwl"/>
+                            <constraint firstItem="P2I-h7-GgK" firstAttribute="centerX" secondItem="7LQ-bw-uSa" secondAttribute="centerX" id="ZU3-2f-mNr"/>
+                            <constraint firstItem="TbM-50-Vam" firstAttribute="top" secondItem="7LQ-bw-uSa" secondAttribute="top" id="hpM-gu-gaz"/>
+                            <constraint firstItem="hpE-3o-d91" firstAttribute="top" secondItem="tu2-H1-Co1" secondAttribute="bottom" constant="5" id="iIT-bf-ZOY"/>
+                            <constraint firstItem="Ium-Nb-P2c" firstAttribute="top" secondItem="hpE-3o-d91" secondAttribute="bottom" constant="5" id="icK-tk-1cp"/>
+                            <constraint firstItem="jw2-dS-QZl" firstAttribute="top" secondItem="TnZ-Zx-907" secondAttribute="bottom" constant="20" id="jEf-oj-mZ8"/>
+                            <constraint firstItem="Mqs-ug-mmB" firstAttribute="centerY" secondItem="TnZ-Zx-907" secondAttribute="centerY" id="jbF-u0-tkd"/>
+                            <constraint firstAttribute="bottom" secondItem="TbM-50-Vam" secondAttribute="bottom" id="mZY-vS-HVA"/>
+                            <constraint firstItem="tu2-H1-Co1" firstAttribute="top" secondItem="dnx-59-SxM" secondAttribute="bottom" constant="5" id="n8V-I9-pYp"/>
+                            <constraint firstItem="Ium-Nb-P2c" firstAttribute="centerX" secondItem="jw2-dS-QZl" secondAttribute="centerX" id="tT2-A7-2em"/>
+                            <constraint firstItem="TnZ-Zx-907" firstAttribute="centerX" secondItem="7LQ-bw-uSa" secondAttribute="centerX" id="wqI-PA-wNu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7LQ-bw-uSa" firstAttribute="top" secondItem="fRo-I3-SaZ" secondAttribute="top" id="K3d-lS-NxP"/>
+                    <constraint firstItem="7LQ-bw-uSa" firstAttribute="leading" secondItem="fRo-I3-SaZ" secondAttribute="leading" id="X8z-yt-2F6"/>
+                    <constraint firstAttribute="bottom" secondItem="7LQ-bw-uSa" secondAttribute="bottom" id="irW-cg-9Bg"/>
+                    <constraint firstAttribute="trailing" secondItem="7LQ-bw-uSa" secondAttribute="trailing" id="w1E-0s-xU3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="Xxf-9O-eZ8"/>
+            <connections>
+                <outlet property="appreferencelbl" destination="Ry9-4R-yK6" id="QeR-ni-0PQ"/>
+                <outlet property="bgimage" destination="TbM-50-Vam" id="Shb-KK-F1U"/>
+                <outlet property="bookingdetelbl" destination="wxl-1V-gVV" id="Agc-5K-kVx"/>
+                <outlet property="gdspnrlbl" destination="5Q2-ir-kKF" id="aSS-6F-6fO"/>
+                <outlet property="pnrnolbl" destination="aK9-5E-Dve" id="6cx-2A-YfD"/>
+                <outlet property="referencelbltitlelbl" destination="DFK-iL-Yuj" id="lBZ-Kt-Ram"/>
+            </connections>
+            <point key="canvasLocation" x="384.73282442748092" y="272.53521126760563"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="back" width="20" height="20"/>
+        <image name="bcbg" width="69" height="45"/>
+        <image name="newbg" width="428" height="249"/>
+        <namedColor name="TitleColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

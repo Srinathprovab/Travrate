@@ -43,6 +43,12 @@ class BookedTravelDetailsTVCell: TableViewCell {
         adultDetailsTV.isScrollEnabled = false
         
         if keystr == "BC" {
+            
+            passengerTypelbl.text = "Passenger"
+            travellerNamelbl.text = "Name"
+            emaillbl.text = "Email Id"
+            mobilelbl.text = "Mobile"
+            
             if Customerdetails.count > 0 {
                 tvHeight.constant = CGFloat(Customerdetails.count * 48)
             }
@@ -120,9 +126,6 @@ class BookedTravelDetailsTVCell: TableViewCell {
         setuplabels(lbl: mobilelbl, text: "", textcolor: HexColor("#5B5B5B"), font: .InterBold(size: 14), align: .center)
 
         
-        passengerTypelbl.text = "Passenger Name"
-        travellerNamelbl.text = "Passport No"
-        emaillbl.text = "    Country"
         
         
         setupTV()
@@ -184,12 +187,19 @@ extension BookedTravelDetailsTVCell:UITableViewDelegate,UITableViewDataSource {
                 cell.selectionStyle = .none
                 
                 let data = Customerdetails[indexPath.row]
-                cell.passengerTypelbl.text = "\(data.first_name ?? "") \(data.last_name ?? "")"
-                cell.travellerNamelbl.text = data.passport_number ?? ""
-                cell.emaillbl.text = data.passenger_nationality_name ?? ""
+                cell.passengerTypelbl.text = data.passenger_type
+                cell.travellerNamelbl.text = "\(data.first_name ?? "") \(data.last_name ?? "")"
+                cell.emaillbl.text = "------"
+                cell.mobileLbl.text = "------"
+                
+                
                 if indexPath.row == 0{
-                    cell.setAttributedText(str1: "\(data.first_name ?? "") \(data.last_name ?? "")", str2: "\n\(cellInfo?.title ?? "")")
+                    cell.emaillbl.text = MySingleton.shared.payemail
+                    cell.mobileLbl.text = "\(MySingleton.shared.paymobilecountrycode) \(MySingleton.shared.paymobile)"
+//                    cell.setAttributedText(str1: "", str2: "\n\(cellInfo?.title ?? "")")
+                    cell.passengerTypelbl.text = "Lead"
                 }
+                
                 
                 c = cell
             }

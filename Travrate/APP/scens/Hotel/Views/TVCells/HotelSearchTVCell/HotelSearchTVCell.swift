@@ -155,8 +155,10 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
     @IBAction func didTapOnClearCityTFBtnAction(_ sender: Any) {
         
         fromcityTF.text = ""
-        fromcityTF.placeholder = "City / Location"
+        fromcityTF.placeholder = "City/Location"
         fromcityTF.becomeFirstResponder()
+        defaults.set("City/Location", forKey: UserDefaultsKeys.locationcity)
+        defaults.set("", forKey: UserDefaultsKeys.locationid)
         updateHeight(height: 0)
     }
     
@@ -251,6 +253,7 @@ extension HotelSearchTVCell:UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             cell.titlelbl.text = hotelList[indexPath.row].value
             cell.subTitlelbl.text = hotelList[indexPath.row].label
+            cell.plainImg.image = UIImage(named: "hotel")
             ccell = cell
         }
         return ccell
@@ -310,14 +313,30 @@ extension HotelSearchTVCell {
         
         
         
+//        //ToolBar
+//        let toolbar = UIToolbar();
+//        toolbar.sizeToFit()
+//        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+//        
+//        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
         
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        let label = UILabel()
+        label.text = "Check In" // Initial text, can be changed dynamically
+        label.sizeToFit()
+        label.font = .OpenSansMedium(size: 16)
+        let labelButton = UIBarButtonItem(customView: label)
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
         
         self.checkinTF.inputAccessoryView = toolbar
         self.checkinTF.inputView = checkinDatePicker
@@ -366,14 +385,30 @@ extension HotelSearchTVCell {
         
         
         
+//        //ToolBar
+//        let toolbar = UIToolbar();
+//        toolbar.sizeToFit()
+//        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+//        
+//        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
         
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        let label = UILabel()
+        label.text = "Check Out" // Initial text, can be changed dynamically
+        label.sizeToFit()
+        label.font = .OpenSansMedium(size: 16)
+        let labelButton = UIBarButtonItem(customView: label)
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
         
         self.checkoutTF.inputAccessoryView = toolbar
         self.checkoutTF.inputView = checkoutDatePicker
@@ -410,6 +445,11 @@ extension HotelSearchTVCell {
         if textField == nationalitylTF {
             nationalitylbl.text = ""
             nationalitylTF.text = ""
+            nationalitylTF.placeholder = "Select Nationality"
+            defaults.set("Select Nationality", forKey: UserDefaultsKeys.hnationality)
+            defaults.set("", forKey: UserDefaultsKeys.hnationalitycode)
+            
+            
             filterdcountrylist.removeAll()
             filterdcountrylist = MySingleton.shared.clist
             loadCountryNamesAndCode()
@@ -478,6 +518,7 @@ extension HotelSearchTVCell {
             self?.countryCode = self?.isocountrycodeArray[index] ?? ""
             self?.nationalitylTF.text = ""
             self?.nationalitylTF.resignFirstResponder()
+            self?.nationalitylTF.placeholder = ""
             defaults.set(self?.countryNames[index] ?? "", forKey: UserDefaultsKeys.hnationality)
             defaults.set(self?.isocountrycodeArray[index] ?? "", forKey: UserDefaultsKeys.hnationalitycode)
             self?.delegate?.didTapOnSelectCountryCodeList(cell: self!)

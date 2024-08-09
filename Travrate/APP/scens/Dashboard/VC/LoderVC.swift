@@ -65,13 +65,20 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
         
         if MySingleton.shared.afterResultsBool == false {
             waitView.isHidden = true
+            
             callAPI()
         }else {
             flightinfo.isHidden = true
             hotelinfoView.isHidden = true
             img.image = UIImage(named: "travlogo")
-            waitView.isHidden = false
+           
             // img.sd_setImage(with: URL(string: "MySingleton.shared.loderimgurl" ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            
+            if MySingleton.shared.loderString == "payment"  {
+                waitView.isHidden = true
+            }else {
+                waitView.isHidden = false
+            }
         }
         
         

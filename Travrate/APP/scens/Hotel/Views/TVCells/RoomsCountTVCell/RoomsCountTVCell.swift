@@ -467,13 +467,13 @@ class RoomsCountTVCell: UITableViewCell {
         
         setuplabels(lbl: titlelbl1, text: "Room 1", textcolor: .SubTitleColor, font: .LatoRegular(size: 16), align: .left)
         setuplabels(lbl: adultslbl1, text: "Adult", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .left)
-        setuplabels(lbl: adultsSubtitlelbl1, text: "+12 yrs", textcolor: .SubTitleColor, font: .LatoRegular(size: 14), align: .left)
+        setuplabels(lbl: adultsSubtitlelbl1, text: "(+12)", textcolor: .SubTitleColor, font: .LatoRegular(size: 14), align: .left)
         setuplabels(lbl: adultsCountlbl1, text: "2", textcolor: HexColor("#27272A"), font: .LatoRegular(size: 18), align: .center)
         aIncrementBtn1.setTitle("", for: .normal)
         aDecrementBtn1.setTitle("", for: .normal)
         
         setuplabels(lbl: childrenlbl1, text: "Child", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .left)
-        setuplabels(lbl: childrenSubtitlelbl1, text: "+2-12 yrs", textcolor: .SubTitleColor, font: .LatoRegular(size: 13), align: .left)
+        setuplabels(lbl: childrenSubtitlelbl1, text: "(0 - 11)", textcolor: .SubTitleColor, font: .LatoRegular(size: 13), align: .left)
         setuplabels(lbl: childrenCountlbl1, text: "0", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .center)
         cIncrementBtn1.setTitle("", for: .normal)
         cDecrementBtn1.setTitle("", for: .normal)
@@ -490,13 +490,13 @@ class RoomsCountTVCell: UITableViewCell {
         
         setuplabels(lbl: titlelbl2, text: "Room 2", textcolor: .SubTitleColor, font: .LatoRegular(size: 16), align: .left)
         setuplabels(lbl: adultslbl2, text: "Adult", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .left)
-        setuplabels(lbl: adultsSubtitlelbl2, text: "+12 yrs", textcolor: .SubTitleColor, font: .LatoRegular(size: 14), align: .left)
+        setuplabels(lbl: adultsSubtitlelbl2, text: "(+12)", textcolor: .SubTitleColor, font: .LatoRegular(size: 14), align: .left)
         setuplabels(lbl: adultsCountlbl2, text: "1", textcolor: HexColor("#27272A"), font: .LatoRegular(size: 18), align: .center)
         aIncrementBtn1.setTitle("", for: .normal)
         aDecrementBtn1.setTitle("", for: .normal)
         
         setuplabels(lbl: childrenlbl2, text: "Child", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .left)
-        setuplabels(lbl: childrenSubtitlelbl2, text: "+2-12 yrs", textcolor: .SubTitleColor, font: .LatoRegular(size: 13), align: .left)
+        setuplabels(lbl: childrenSubtitlelbl2, text: "(0 - 11)", textcolor: .SubTitleColor, font: .LatoRegular(size: 13), align: .left)
         setuplabels(lbl: childrenCountlbl2, text: "0", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .center)
         cIncrementBtn1.setTitle("", for: .normal)
         cDecrementBtn1.setTitle("", for: .normal)
@@ -513,13 +513,13 @@ class RoomsCountTVCell: UITableViewCell {
         
         setuplabels(lbl: titlelbl3, text: "Room 3", textcolor: .SubTitleColor, font: .LatoRegular(size: 16), align: .left)
         setuplabels(lbl: adultslbl3, text: "Adult", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .left)
-        setuplabels(lbl: adultsSubtitlelbl3, text: "+12 yrs", textcolor: .SubTitleColor, font: .LatoRegular(size: 14), align: .left)
+        setuplabels(lbl: adultsSubtitlelbl3, text: "(+12)", textcolor: .SubTitleColor, font: .LatoRegular(size: 14), align: .left)
         setuplabels(lbl: adultsCountlbl3, text: "1", textcolor: HexColor("#27272A"), font: .LatoRegular(size: 18), align: .center)
         aIncrementBtn1.setTitle("", for: .normal)
         aDecrementBtn1.setTitle("", for: .normal)
         
         setuplabels(lbl: childrenlbl3, text: "Child", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .left)
-        setuplabels(lbl: childrenSubtitlelbl3, text: "+2-12 yrs", textcolor: .SubTitleColor, font: .LatoRegular(size: 13), align: .left)
+        setuplabels(lbl: childrenSubtitlelbl3, text: "(0 - 11)", textcolor: .SubTitleColor, font: .LatoRegular(size: 13), align: .left)
         setuplabels(lbl: childrenCountlbl3, text: "0", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .center)
         cIncrementBtn1.setTitle("", for: .normal)
         cDecrementBtn1.setTitle("", for: .normal)
@@ -536,13 +536,13 @@ class RoomsCountTVCell: UITableViewCell {
         
         setuplabels(lbl: titlelbl4, text: "Room 4", textcolor: .SubTitleColor, font: .LatoRegular(size: 16), align: .left)
         setuplabels(lbl: adultslbl4, text: "Adult", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .left)
-        setuplabels(lbl: adultsSubtitlelbl4, text: "+12 yrs", textcolor: .SubTitleColor, font: .LatoRegular(size: 14), align: .left)
+        setuplabels(lbl: adultsSubtitlelbl4, text: "(+12)", textcolor: .SubTitleColor, font: .LatoRegular(size: 14), align: .left)
         setuplabels(lbl: adultsCountlbl4, text: "1", textcolor: HexColor("#27272A"), font: .LatoRegular(size: 18), align: .center)
         aIncrementBtn1.setTitle("", for: .normal)
         aDecrementBtn1.setTitle("", for: .normal)
         
         setuplabels(lbl: childrenlbl4, text: "Child", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .left)
-        setuplabels(lbl: childrenSubtitlelbl4, text: "+2-12 yrs", textcolor: .SubTitleColor, font: .LatoRegular(size: 13), align: .left)
+        setuplabels(lbl: childrenSubtitlelbl4, text: "(0 - 11)", textcolor: .SubTitleColor, font: .LatoRegular(size: 13), align: .left)
         setuplabels(lbl: childrenCountlbl4, text: "0", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .center)
         cIncrementBtn1.setTitle("", for: .normal)
         cDecrementBtn1.setTitle("", for: .normal)

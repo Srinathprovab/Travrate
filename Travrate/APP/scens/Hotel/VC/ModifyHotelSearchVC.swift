@@ -68,10 +68,11 @@ class ModifyHotelSearchVC: BaseTableVC {
             if cell.checkinTF.isFirstResponder == true {
                 defaults.set(formatter.string(from: selectedDepDate), forKey: UserDefaultsKeys.checkin)
                 defaults.set(formatter.string(from: nextDay), forKey: UserDefaultsKeys.checkout)
-                cell.checkoutDatePicker.minimumDate = nextDay
+                cell.checkoutDatePicker.minimumDate = selectedDepDate
             }else {
                 defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
                 defaults.set(formatter.string(from: cell.checkoutDatePicker.date), forKey: UserDefaultsKeys.checkout)
+                cell.checkoutDatePicker.minimumDate = cell.checkoutDatePicker.date
             }
             
         }
@@ -206,7 +207,7 @@ extension ModifyHotelSearchVC {
       
         
         //        MySingleton.shared.payload["language"] = "english"
-        //        MySingleton.shared.payload["search_source"] = "Mobile_IOS"
+                MySingleton.shared.payload["search_source"] = "Mobile_IOS"
         //        MySingleton.shared.payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"
         //        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         

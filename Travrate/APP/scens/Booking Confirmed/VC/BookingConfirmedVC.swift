@@ -77,10 +77,11 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
                                          "BCFlightDetailsTVCell",
                                          "CarRentalResultTVCell",
                                          "PickupTVCell",
-                                         "TitleLblTVCell", 
+                                         "TitleLblTVCell",
                                          "BookingHotelDetailsTVCell",
                                          "BDTransfersInf0TVCell",
                                          "ActivityInformationTVCell",
+                                         "FlightBookingConfirmedTVCell",
                                          "ActivitiesBookingDetailsTVCell",
                                          "BookedTravelDetailsTVCell"])
         
@@ -136,6 +137,10 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     }
     
     
+    override func didTapOnYoutubeBtnAction(cell:HeaderTableViewCell){
+        gotoLoadWebViewVC(str: social_linksArray[3].url_link ?? "", keystr: "link")
+    }
+    
     
     //MARK: -didTapOnViewStadiumBtnAction
     override func didTapOnViewStadiumBtnAction(cell:SportInfoTVCell) {
@@ -150,6 +155,16 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate {
     }
     
     
+    //MARK: -didTapOnBackBtnAction FlightBookingConfirmedTVCell
+    override func didTapOnBackBtnAction(cell: FlightBookingConfirmedTVCell) {
+        BASE_URL = BASE_URL1
+        callapibool = true
+        MySingleton.shared.callboolapi = true
+        guard let vc = DashBoardTBVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.selectedIndex = 0
+        present(vc, animated: true)
+    }
 }
 
 
@@ -163,7 +178,11 @@ extension BookingConfirmedVC {
     
     func vocherdetails(response: VocherModel) {
         BASE_URL = BASE_URL1
+        loderBool = false
+        self.hideLoadera()
         
+        
+        MySingleton.shared.bookedbaggageDetails = response.data?.flight_details?.summary ?? []
         social_linksArray = response.data?.social_links ?? []
         bottom_text_info = response.data?.bottom_text_info ?? []
         vocherpdf = response.data?.voucher_pdf ?? ""
@@ -186,9 +205,9 @@ extension BookingConfirmedVC {
                 
                 bookingRefrence = i.app_reference ?? ""
                 bookingStatus = i.status ?? ""
-               
+                
                 DispatchQueue.main.async {
-                    self.setupTV()
+                    self.setupTV(bd: response.data?.booking_details ?? [], info: response.cancelltion_policy ?? "")
                 }
                 
             })
@@ -197,26 +216,28 @@ extension BookingConfirmedVC {
     }
     
     
-    func setupTV() {
+    func setupTV(bd:[Booking_details],info:String) {
         tablerow.removeAll()
         
         tablerow.append(TableRow(title:bookingId,
                                  subTitle: bookingRefrence,
                                  key: "flight",
                                  buttonTitle: bookedDate,
+                                 moreData: bd,
                                  tempText: pnrNo,
-                                 cellType:.NewBookingConfirmedTVCell))
+                                 cellType:.FlightBookingConfirmedTVCell))
+        
+        
         
         tablerow.append(TableRow(title:"\(bookedjurnycitys)",key: "bc",cellType:.LabelTVCell))
         tablerow.append(TableRow(moreData: bookingitinerarydetails,cellType:.BCFlightDetailsTVCell))
         tablerow.append(TableRow(title:"Passenger Details",key: "bc",cellType:.LabelTVCell))
-        tablerow.append(TableRow(title:"Lead Passenger",key:"BC",moreData:Customerdetails,cellType:.BookedTravelDetailsTVCell))
+        tablerow.append(TableRow(title:"Lead",key:"BC",moreData:Customerdetails,cellType:.BookedTravelDetailsTVCell))
         tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         tablerow.append(TableRow(title:"Important Information",key: "bc",cellType:.LabelTVCell))
         tablerow.append(TableRow(cellType:.ImportentInfoTableViewCell))
         tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title:"",cellType:.HeaderTableViewCell))
-        tablerow.append(TableRow(height:35,cellType:.EmptyTVCell))
+        tablerow.append(TableRow(title:info,cellType:.HeaderTableViewCell))
         tablerow.append(TableRow(height:60,cellType:.EmptyTVCell))
         
         commonTVData = tablerow
@@ -264,7 +285,7 @@ extension BookingConfirmedVC {
                 
                 bookingRefrence = i.app_reference ?? ""
                 bookingStatus = i.status ?? ""
-               
+                
             })
         })
         
@@ -273,21 +294,21 @@ extension BookingConfirmedVC {
         DispatchQueue.main.async {
             self.setupHotelTVCells()
         }
-       
+        
     }
     
-
+    
     
     func setupHotelTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:bookingId,
-                                 subTitle: bookingRefrence,
-                                 key: "sports",
-                                 buttonTitle: bookedDate,
-                                 tempText: pnrNo,
-                                 cellType:.NewBookingConfirmedTVCell))
+                                                    subTitle: bookingRefrence,
+                                                    key: "sports",
+                                                    buttonTitle: bookedDate,
+                                                    tempText: pnrNo,
+                                                    cellType:.NewBookingConfirmedTVCell))
         
         MySingleton.shared.tablerow.append(TableRow(key:"bc",cellType:.BookingHotelDetailsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Lead",
@@ -383,7 +404,7 @@ extension BookingConfirmedVC {
             self.hideLoadera()
             self.setupTransferTVCells()
         }
-       
+        
     }
     
     
@@ -394,15 +415,15 @@ extension BookingConfirmedVC {
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:bookingId,
-                                 subTitle: bookingRefrence,
-                                 key: "transfer",
-                                 buttonTitle: bookedDate,
-                                 tempText: pnrNo,
-                                 cellType:.NewBookingConfirmedTVCell))
+                                                    subTitle: bookingRefrence,
+                                                    key: "transfer",
+                                                    buttonTitle: bookedDate,
+                                                    tempText: pnrNo,
+                                                    cellType:.NewBookingConfirmedTVCell))
         
         MySingleton.shared.tablerow.append(TableRow(moreData:transfer_data,cellType:.BDTransfersInf0TVCell))
         
-       
+        
         
         MySingleton.shared.tablerow.append(TableRow(title:"Lead",
                                                     key:"transfer",
@@ -574,7 +595,7 @@ extension BookingConfirmedVC {
                                  cellType:.PickupTVCell))
         
         
-       
+        
         
         tablerow.append(TableRow(title:"Driver Details",key: "carbc",cellType:.TitleLblTVCell))
         tablerow.append(TableRow(key:"car",cellType:.BookedTravelDetailsTVCell))
@@ -608,7 +629,7 @@ extension BookingConfirmedVC {
         hideLoadera()
         loderBool = false
         
-       
+        
         
         DispatchQueue.main.async {
             self.setupActivitiesVoucherTVCells(res: response)
@@ -621,9 +642,9 @@ extension BookingConfirmedVC {
         tablerow.removeAll()
         
         let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MMM-yyyy"
-            let currentDate = Date()
-            let formattedDate = dateFormatter.string(from: currentDate)
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
         
         tablerow.append(TableRow(title:res.data?.booking_itinerary_details?[0].booking_reference,
                                  subTitle: res.data?.booking_itinerary_details?[0].app_reference,
@@ -636,8 +657,8 @@ extension BookingConfirmedVC {
         tablerow.append(TableRow(cellType:.ActivitiesBookingDetailsTVCell))
         
         tablerow.append(TableRow(title:"Lead",
-                                                    key:"activites",
-                                                    cellType:.BookedTravelDetailsTVCell))
+                                 key:"activites",
+                                 cellType:.BookedTravelDetailsTVCell))
         
         tablerow.append(TableRow(moreData:res,cellType:.ActivityInformationTVCell))
         

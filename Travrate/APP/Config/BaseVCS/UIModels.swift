@@ -94,6 +94,7 @@ enum TVCellType {
     case SelectMealTVCell
     case SpecialAssistanceTVCell
     case NewSpecialAssistanceTVCell
+    case FlightBookingConfirmedTVCell
     
     
     //FILTER

@@ -717,6 +717,11 @@
 		8404DA2B2C3E8A8B000A648A /* Sports_passengers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404DA2A2C3E8A8B000A648A /* Sports_passengers.swift */; };
 		8404DA2D2C3E8ACB000A648A /* Event_list_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404DA2C2C3E8ACB000A648A /* Event_list_data.swift */; };
 		8404DA412C3E8C45000A648A /* SportsViewVoucherVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404DA402C3E8C45000A648A /* SportsViewVoucherVM.swift */; };
+		8410750A2C65FA0B00C12552 /* Voucher_Flight_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841075092C65FA0B00C12552 /* Voucher_Flight_details.swift */; };
+		8410750D2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410750B2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.swift */; };
+		8410750E2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8410750C2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.xib */; };
+		841075122C6617AB00C12552 /* BookedFlightInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841075102C6617AB00C12552 /* BookedFlightInfoTVCell.swift */; };
+		841075132C6617AB00C12552 /* BookedFlightInfoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841075112C6617AB00C12552 /* BookedFlightInfoTVCell.xib */; };
 		841EE1982C4640DF00F604D6 /* Booking_passenger_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EE1972C4640DF00F604D6 /* Booking_passenger_details.swift */; };
 		841EE19A2C4640F400F604D6 /* Booking_transction_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EE1992C4640F400F604D6 /* Booking_transction_details.swift */; };
 		841EE19E2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EE19C2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.swift */; };
@@ -1663,6 +1668,11 @@
 		8404DA2A2C3E8A8B000A648A /* Sports_passengers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports_passengers.swift; sourceTree = "<group>"; };
 		8404DA2C2C3E8ACB000A648A /* Event_list_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_list_data.swift; sourceTree = "<group>"; };
 		8404DA402C3E8C45000A648A /* SportsViewVoucherVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewVoucherVM.swift; sourceTree = "<group>"; };
+		841075092C65FA0B00C12552 /* Voucher_Flight_details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voucher_Flight_details.swift; sourceTree = "<group>"; };
+		8410750B2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightBookingConfirmedTVCell.swift; sourceTree = "<group>"; };
+		8410750C2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlightBookingConfirmedTVCell.xib; sourceTree = "<group>"; };
+		841075102C6617AB00C12552 /* BookedFlightInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedFlightInfoTVCell.swift; sourceTree = "<group>"; };
+		841075112C6617AB00C12552 /* BookedFlightInfoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookedFlightInfoTVCell.xib; sourceTree = "<group>"; };
 		841EE1972C4640DF00F604D6 /* Booking_passenger_details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Booking_passenger_details.swift; sourceTree = "<group>"; };
 		841EE1992C4640F400F604D6 /* Booking_transction_details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Booking_transction_details.swift; sourceTree = "<group>"; };
 		841EE19C2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalDriverInfoTVCell.swift; sourceTree = "<group>"; };
@@ -4811,6 +4821,7 @@
 				65207C172BF4942F0076EF76 /* VocherModel.swift */,
 				65207C182BF4942F0076EF76 /* VocherModelDetails.swift */,
 				65207C192BF4942F0076EF76 /* Social_links.swift */,
+				841075092C65FA0B00C12552 /* Voucher_Flight_details.swift */,
 			);
 			path = VocherModel;
 			sourceTree = "<group>";
@@ -4845,6 +4856,8 @@
 		65207C222BF494300076EF76 /* TVCell */ = {
 			isa = PBXGroup;
 			children = (
+				8410750F2C66179400C12552 /* BookedFlightInfoTVCell */,
+				841075082C65F5BD00C12552 /* FlightBookingConfirmedTVCell */,
 				65207C232BF494300076EF76 /* BookedTravelDetailsTVCell */,
 				65207C262BF494300076EF76 /* BCFlightInfoTVCell */,
 				65207C292BF494300076EF76 /* BookedAdultDetailsTVCell */,
@@ -5525,6 +5538,24 @@
 				8404DA2C2C3E8ACB000A648A /* Event_list_data.swift */,
 			);
 			path = SportsVoucherModel;
+			sourceTree = "<group>";
+		};
+		841075082C65F5BD00C12552 /* FlightBookingConfirmedTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				8410750B2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.swift */,
+				8410750C2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.xib */,
+			);
+			path = FlightBookingConfirmedTVCell;
+			sourceTree = "<group>";
+		};
+		8410750F2C66179400C12552 /* BookedFlightInfoTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				841075102C6617AB00C12552 /* BookedFlightInfoTVCell.swift */,
+				841075112C6617AB00C12552 /* BookedFlightInfoTVCell.xib */,
+			);
+			path = BookedFlightInfoTVCell;
 			sourceTree = "<group>";
 		};
 		841EE19B2C467F1C00F604D6 /* AdditionalDriverInfoTVCell */ = {
@@ -6321,6 +6352,7 @@
 				65207DEA2BF494310076EF76 /* SelectFareInfoTVCell.xib in Resources */,
 				65207EA92BF494320076EF76 /* ImportentInfoSubTableViewCell.xib in Resources */,
 				65207CB22BF494310076EF76 /* Lato-Light.ttf in Resources */,
+				8410750E2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.xib in Resources */,
 				65207E662BF494320076EF76 /* SpecialOffersCVCell.xib in Resources */,
 				65207E612BF494320076EF76 /* MoreServiceCVCell.xib in Resources */,
 				65207E6A2BF494320076EF76 /* SelectDestCVCell.xib in Resources */,
@@ -6359,6 +6391,7 @@
 				84EA32012C47FA530031C482 /* ActivitiesDecreptionTVCell.xib in Resources */,
 				65207E042BF494320076EF76 /* PaymentTypeCVCell.xib in Resources */,
 				84EA31BE2C476B800031C482 /* ActivitiesSearchTVCell.xib in Resources */,
+				841075132C6617AB00C12552 /* BookedFlightInfoTVCell.xib in Resources */,
 				65207DD62BF494310076EF76 /* SpecialAssistanceTVCell.xib in Resources */,
 				65207CAB2BF494310076EF76 /* Inter-SemiBold.ttf in Resources */,
 				65207E782BF494320076EF76 /* CruisePackegesTVCell.xib in Resources */,
@@ -6725,6 +6758,7 @@
 			files = (
 				650BB2F02C06F74300EE1865 /* ModifySportSearchVC.swift in Sources */,
 				65207E8E2BF494320076EF76 /* Booking_customer_details.swift in Sources */,
+				8410750A2C65FA0B00C12552 /* Voucher_Flight_details.swift in Sources */,
 				6545D8172BFC6FCA00FBCB60 /* Itinerary.swift in Sources */,
 				846D24C92C40BC510030C539 /* carPrePaymrntConfirmationModel.swift in Sources */,
 				65207CE72BF494310076EF76 /* Near_by.swift in Sources */,
@@ -7035,6 +7069,7 @@
 				65207EC82BF494320076EF76 /* LoginModel.swift in Sources */,
 				65207DAA2BF494310076EF76 /* RadioButtonTVCell.swift in Sources */,
 				65C894C62BFDD3AA007ADD77 /* ViewStadiumBtnsTVCell.swift in Sources */,
+				8410750D2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.swift in Sources */,
 				65207DA22BF494310076EF76 /* NewDepartureTimeTVCell.swift in Sources */,
 				65207E3F2BF494320076EF76 /* SelectLanguageTVCell.swift in Sources */,
 				65207E382BF494320076EF76 /* mobilecontactusViewModel.swift in Sources */,
@@ -7042,6 +7077,7 @@
 				84EA31C42C477D290031C482 /* GetActivitesDestinationListVM.swift in Sources */,
 				65207CFA2BF494310076EF76 /* Hotel_details.swift in Sources */,
 				843D49152C42591D00C0F127 /* Declension_titles.swift in Sources */,
+				841075122C6617AB00C12552 /* BookedFlightInfoTVCell.swift in Sources */,
 				65207CA32BF494310076EF76 /* StringExtension.swift in Sources */,
 				65207CEC2BF494310076EF76 /* Discount.swift in Sources */,
 				65D327412BF72B6000FE879D /* Tour_departure_details.swift in Sources */,

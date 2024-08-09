@@ -946,7 +946,7 @@ extension BookingDetailsVC {
         MySingleton.shared.payload["insurance_totalprice"] = ""
         MySingleton.shared.payload["insurance_baseprice"] = ""
         MySingleton.shared.payload["hidseatprice"] = ""
-        MySingleton.shared.payload["device_source"] = "MOBILE(A)"
+        MySingleton.shared.payload["device_source"] = "Mobile_IOS"
         MySingleton.shared.payload["addon_services"] = origin_arrayString
         
         

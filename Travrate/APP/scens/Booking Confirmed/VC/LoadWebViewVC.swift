@@ -107,7 +107,10 @@ class LoadWebViewVC: UIViewController, WKNavigationDelegate, MobileSecureBooking
         if keystr == "voucher" {
             callapibool = false
             dismiss(animated: true)
-        }else {
+        }else if keystr == "link" {
+            callapibool = false
+            dismiss(animated: true)
+        }else{
             gotoDashboard()
         }
     }

@@ -112,6 +112,7 @@ class MySingleton {
     var similarflightList = [[FlightList]]()
     var flightPriceDetails: PriceDetails?
     var baggageDetails = [Baggage_details]()
+    var bookedbaggageDetails = [Summary]()
     var mpbpriceDetails: PriceDetails?
     var mpbFlightData : MPBFlightDetails?
     var frequent_flyersArray = [Frequent_flyers]()

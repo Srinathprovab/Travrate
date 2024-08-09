@@ -31,11 +31,11 @@ class BookedAdultDetailsTVCell: UITableViewCell {
     func setupUI() {
         
         holderView.backgroundColor = .WhiteColor
-        setuplabels(lbl: passengerTypelbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 12), align: .center)
-        setuplabels(lbl: travellerNamelbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 14), align: .center)
-        setuplabels(lbl: emaillbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 12), align: .center)
+        setuplabels(lbl: passengerTypelbl, text: "", textcolor: HexColor("#5B5B5B"), font: .OpenSansRegular(size: 12), align: .center)
+        setuplabels(lbl: travellerNamelbl, text: "", textcolor: HexColor("#5B5B5B"), font: .OpenSansRegular(size: 14), align: .center)
+        setuplabels(lbl: emaillbl, text: "", textcolor: HexColor("#5B5B5B"), font: .OpenSansRegular(size: 12), align: .center)
+        setuplabels(lbl: mobileLbl, text: "", textcolor: HexColor("#5B5B5B"), font: .OpenSansRegular(size: 12), align: .center)
         
-        setuplabels(lbl: mobileLbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 12), align: .center)
     }
     
     func setupViews(v:UIView,radius:CGFloat,color:UIColor) {

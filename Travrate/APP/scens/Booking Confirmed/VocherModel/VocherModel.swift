@@ -13,6 +13,7 @@ struct VocherModel : Codable {
     let cancelltion_policy : String?
     let city_data_list : [Citydatalist]?
     let item : String?
+    
 
     enum CodingKeys: String, CodingKey {
 
