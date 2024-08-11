@@ -183,14 +183,14 @@ class ServiceManager {
             encoding: URLEncoding.default,
             headers: headers).validate().responseJSON { resp in
                 
-               // print(resp.value as Any)
+                // print(resp.value as Any)
                 print(resp.response?.statusCode as Any)
                 
                 
                 if let data = resp.data { // Assuming `response` is the API response object
                     do {
                         if let json = try JSONSerialization.jsonObject(with:  data , options: []) as? [String: Any] {
-
+                            
                             let arrJson = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
                             let theJSONText = NSString(data: arrJson, encoding: String.Encoding.utf8.rawValue)
                             print(theJSONText ?? "")
@@ -203,13 +203,13 @@ class ServiceManager {
                 
                 
                 
-
+                
                 if resp.value != nil {
                     //do something with data
                     
                     switch resp.result {
                     case .success(let data):
-                       
+                        
                         
                         
                         do {
@@ -228,7 +228,7 @@ class ServiceManager {
                             NotificationCenter.default.post(name: NSNotification.Name("resultnil"), object: nil)
                             completionHandler(false, nil, ApiError.unknown.message)
                         }
-
+                        
                         
                         
                         
@@ -331,14 +331,14 @@ class ServiceManager {
             encoding: URLEncoding.default,
             headers: headers).validate().responseJSON { resp in
                 
-               // print(resp.value as Any)
+                // print(resp.value as Any)
                 print(resp.response?.statusCode as Any)
                 
                 
                 if let data = resp.data { // Assuming `response` is the API response object
                     do {
                         if let json = try JSONSerialization.jsonObject(with:  data , options: []) as? [String: Any] {
-
+                            
                             let arrJson = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
                             let theJSONText = NSString(data: arrJson, encoding: String.Encoding.utf8.rawValue)
                             print(theJSONText ?? "")
@@ -351,13 +351,13 @@ class ServiceManager {
                 
                 
                 
-
+                
                 if resp.value != nil {
                     //do something with data
                     
                     switch resp.result {
                     case .success(let data):
-                       
+                        
                         
                         
                         do {
@@ -376,7 +376,7 @@ class ServiceManager {
                             NotificationCenter.default.post(name: NSNotification.Name("resultnil"), object: nil)
                             completionHandler(false, nil, ApiError.unknown.message)
                         }
-
+                        
                         
                         
                         
@@ -480,33 +480,33 @@ class ServiceManager {
             encoding: URLEncoding.default,
             headers: headers).validate().responseJSON { resp in
                 
-               // print(resp.value as Any)
-             //   print(resp.response?.statusCode as Any)
+                // print(resp.value as Any)
+                //   print(resp.response?.statusCode as Any)
                 
                 
-                if let data = resp.data { // Assuming `response` is the API response object
-                    do {
-                        if let json = try JSONSerialization.jsonObject(with:  data , options: []) as? [String: Any] {
-
-                            let arrJson = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
-                            let theJSONText = NSString(data: arrJson, encoding: String.Encoding.utf8.rawValue)
-                            print(theJSONText ?? "")
-                        }
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
+                //                if let data = resp.data { // Assuming `response` is the API response object
+                //                    do {
+                //                        if let json = try JSONSerialization.jsonObject(with:  data , options: []) as? [String: Any] {
+                //
+                //                            let arrJson = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+                //                            let theJSONText = NSString(data: arrJson, encoding: String.Encoding.utf8.rawValue)
+                //                            print(theJSONText ?? "")
+                //                        }
+                //                    } catch {
+                //                        print(error.localizedDescription)
+                //                    }
+                //                }
                 
                 
                 
                 
-
+                
                 if resp.value != nil {
                     //do something with data
                     
                     switch resp.result {
                     case .success(let data):
-                       
+                        
                         
                         
                         do {
@@ -525,7 +525,7 @@ class ServiceManager {
                             NotificationCenter.default.post(name: NSNotification.Name("resultnil"), object: nil)
                             completionHandler(false, nil, ApiError.unknown.message)
                         }
-
+                        
                         
                         
                         

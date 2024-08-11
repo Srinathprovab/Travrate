@@ -218,8 +218,10 @@ extension HotelSearchTVCell:UITableViewDelegate, UITableViewDataSource {
     
     
     override func textFieldDidBeginEditing(_ textField: UITextField) {
-        fromcityTF.text = ""
-        CallShowCityListAPI(str: textField.text ?? "")
+        if textField == fromcityTF {
+            fromcityTF.text = ""
+            CallShowCityListAPI(str: textField.text ?? "")
+        }
     }
     
     func CallShowCityListAPI(str:String) {
@@ -443,17 +445,21 @@ extension HotelSearchTVCell {
     
     @objc func searchTextBegin(_ textField:UITextField)  {
         if textField == nationalitylTF {
+            
             nationalitylbl.text = ""
             nationalitylTF.text = ""
             nationalitylTF.placeholder = "Select Nationality"
+            
             defaults.set("Select Nationality", forKey: UserDefaultsKeys.hnationality)
             defaults.set("", forKey: UserDefaultsKeys.hnationalitycode)
-            
             
             filterdcountrylist.removeAll()
             filterdcountrylist = MySingleton.shared.clist
             loadCountryNamesAndCode()
             ndropDown.show()
+        }else {
+            
+            
         }
         
     }

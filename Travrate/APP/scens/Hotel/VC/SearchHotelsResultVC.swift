@@ -430,7 +430,7 @@ extension SearchHotelsResultVC {
     func callHotelSearchAPI(bookingsource:String,searchid:String){
         payload.removeAll()
         payload["offset"] = "0"
-        payload["limit"] = "1000"
+        payload["limit"] = "100"
         payload["booking_source"] = bookingsource
         payload["search_id"] = searchid
         payload["ResultIndex"] = "1"

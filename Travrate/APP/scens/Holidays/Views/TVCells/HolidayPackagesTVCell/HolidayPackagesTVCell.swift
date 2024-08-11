@@ -47,8 +47,8 @@ class HolidayPackagesTVCell: TableViewCell {
             progress: { receivedSize, expectedSize, url in
                 // Optionally handle progress updates here
                 // Example: Update a progress indicator
-                let progress = Float(receivedSize) / Float(expectedSize)
-                print("Download Progress: \(progress)")
+//                let progress = Float(receivedSize) / Float(expectedSize)
+//                print("Download Progress: \(progress)")
             },
             completed: { image, error, cacheType, url in
                 if let error = error {
