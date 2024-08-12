@@ -70,9 +70,15 @@ class ModifyHotelSearchVC: BaseTableVC {
                 defaults.set(formatter.string(from: nextDay), forKey: UserDefaultsKeys.checkout)
                 cell.checkoutDatePicker.minimumDate = selectedDepDate
             }else {
+                
+                
                 defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
                 defaults.set(formatter.string(from: cell.checkoutDatePicker.date), forKey: UserDefaultsKeys.checkout)
-                cell.checkoutDatePicker.minimumDate = cell.checkoutDatePicker.date
+                
+//                cell.checkinDatePicker.minimumDate = cell.checkinDatePicker.date
+//                cell.checkoutDatePicker.minimumDate = cell.checkoutDatePicker.date
+                
+                
             }
             
         }

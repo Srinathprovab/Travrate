@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -132,7 +131,7 @@ burj nahar intersection</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="CommonButtonColor"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.098039215686274508" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ETh-gF-DEf" secondAttribute="bottom" id="03C-Fl-cpo"/>
                                     <constraint firstAttribute="trailing" secondItem="ETh-gF-DEf" secondAttribute="trailing" id="A0A-Xw-LMn"/>
@@ -298,9 +297,6 @@ burj nahar intersection</string>
         </namedColor>
         <namedColor name="AppHolderViewColor">
             <color red="0.94499999284744263" green="0.95300000905990601" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="CommonButtonColor">
-            <color red="0.90980392156862744" green="0.16470588235294117" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="HeadingColor">
             <color red="0.10599999874830246" green="0.29399999976158142" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

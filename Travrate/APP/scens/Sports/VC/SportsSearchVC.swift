@@ -29,7 +29,7 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupUI()
         MySingleton.shared.sportsCityvm = SportServiceVM(self)
@@ -80,6 +80,10 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
     
     override func didTapOnSearchSportsBtnAction(cell: SportsSearchTVCell) {
         
+        MySingleton.shared.payload.removeAll()
+        
+        
+        
         if  MySingleton.shared.sportsserviceName.isEmpty == true || MySingleton.shared.sportsserviceName == "Please Select Service"{
             showToast(message: "Please Select Service")
         }else if MySingleton.shared.sportsTeamName.isEmpty == true {
@@ -91,7 +95,7 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
         }else if defaults.string(forKey: UserDefaultsKeys.sportcalRetDate) == "Select Date" {
             showToast(message: "Select Date")
         }else {
-            MySingleton.shared.payload.removeAll()
+            
             MySingleton.shared.payload["from"] = ""
             MySingleton.shared.payload["destination_id"] = ""
             MySingleton.shared.payload["from_type"] = ""
@@ -104,6 +108,10 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
             
             gotoSelectSportsListVC()
         }
+        
+        
+        
+        
         
         
     }

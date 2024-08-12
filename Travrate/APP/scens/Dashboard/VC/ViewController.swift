@@ -35,6 +35,11 @@ class ViewController: UIViewController {
             defaults.set("1", forKey: UserDefaultsKeys.activitesadultCount)
             defaults.set("2", forKey: UserDefaultsKeys.guestcount)
             
+            startRatingArray.removeAll()
+            starRatingInputArray.removeAll()
+            starRatingInputArray = ["3","4","5"]
+            hotelfiltermodel.starRatingNew = ["3","4","5"]
+            
             UserDefaults.standard.set(true, forKey: "ExecuteOnce")
         }
         

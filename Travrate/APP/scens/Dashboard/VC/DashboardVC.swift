@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseCrashlytics
 
 class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataViewModelDelegate {
 
@@ -582,6 +583,8 @@ extension DashboardVC {
     
     func addObserver() {
         
+        forceCrash()
+        
         MySingleton.shared.removeallstoredValues()
        
         MySingleton.shared.returnDateTapbool = false
@@ -610,6 +613,13 @@ extension DashboardVC {
         }
         
     }
+    
+   
+
+    func forceCrash() {
+//        fatalError("Test crash")
+    }
+
     
     
     

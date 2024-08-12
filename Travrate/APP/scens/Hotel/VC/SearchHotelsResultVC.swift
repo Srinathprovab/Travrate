@@ -504,6 +504,7 @@ extension SearchHotelsResultVC {
         amenitiesArray.removeAll()
         mapModelArray.removeAll()
         hotelstarratingArray.removeAll()
+        
         hotelfiltermodel.starRatingNew = starRatingInputArray
         
         hotelsCountlbl.text = "\(list.count)"

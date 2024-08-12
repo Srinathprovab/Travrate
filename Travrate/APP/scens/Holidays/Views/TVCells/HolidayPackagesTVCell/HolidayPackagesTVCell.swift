@@ -64,7 +64,7 @@ class HolidayPackagesTVCell: TableViewCell {
                     }
                 } else {
                     // Optionally handle success here
-                    print("Image loaded successfully")
+                   // print("Image loaded successfully")
                 }
             }
         )

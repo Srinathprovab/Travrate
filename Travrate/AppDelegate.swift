@@ -11,12 +11,14 @@ import MFSDK
 import IQKeyboardManager
 import GoogleMaps
 import FirebaseCore
+import Firebase
+import FirebaseMessaging
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
     
-    
+    var fcmToken = String()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -38,7 +40,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyAfgpJ36EyQji0KETVN-UuooOpATS_zgb0")
         
         
+        // Configure Firebase
         FirebaseApp.configure()
+        
+        // Set Messaging delegate
+        Messaging.messaging().delegate = self
+        
+        // Request notification permissions
+        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
+        application.registerForRemoteNotifications()
+        
+        // Get FCM token
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("Error fetching FCM registration token: \(error)")
+            } else if let token = token {
+                print("FCM registration token: \(token)")
+            }
+        }
+        
+        
         
         return true
     }
@@ -58,6 +81,87 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+    
+    @objc func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print("Firebase registration token: \(String(describing: fcmToken))")
+        
+        let dataDict: [String: String] = ["token": fcmToken ?? ""]
+        NotificationCenter.default.post(
+            name: Notification.Name("FCMToken"),
+            object: nil,
+            userInfo: dataDict
+        )
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+    
+    
+    
 }
 
 
+
+extension AppDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        
+        Messaging.messaging().appDidReceiveMessage(userInfo)
+        
+        // Change this to your preferred presentation option
+        completionHandler([.banner, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        
+        Messaging.messaging().appDidReceiveMessage(userInfo)
+        
+        completionHandler()
+    }
+    
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        Messaging.messaging().appDidReceiveMessage(userInfo)
+        completionHandler(.noData)
+    }
+}
+
+
+//func sendMessageToTopic() {
+//    let urlString = "https://fcm.googleapis.com/fcm/send"
+//    guard let url = URL(string: urlString) else { return }
+//
+//    var request = URLRequest(url: url)
+//    request.httpMethod = "POST"
+//    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//    request.setValue("key=YOUR_SERVER_KEY", forHTTPHeaderField: "Authorization") // Not recommended to include in client code
+//
+//    let notification: [String: Any] = [
+//        "to": "/topics/timerUpdates",
+//        "notification": [
+//            "title": "Time Alert",
+//            "body": "The timer is about to expire!"
+//        ]
+//    ]
+//
+//    request.httpBody = try? JSONSerialization.data(withJSONObject: notification, options: [])
+//
+//    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//        if let error = error {
+//            print("Error sending FCM notification: \(error)")
+//            return
+//        }
+//
+//        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+//            print("Failed to send FCM notification, status code: \(httpResponse.statusCode)")
+//        } else {
+//            print("FCM notification sent successfully")
+//        }
+//    }
+//    task.resume()
+//}

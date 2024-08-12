@@ -528,7 +528,13 @@ class MySingleton {
         if totalTime != 0 {
             totalTime -= 1
             delegate?.updateTimer()
-        } else {
+        }
+        
+//        else if totalTime == 60 {
+//            triggerLocalNotification()
+//        }
+        
+        else {
             sessionStop()
             delegate?.timerDidFinish()
             endBackgroundTask()
@@ -548,6 +554,21 @@ class MySingleton {
             self.timer = nil
         }
     }
+    
+//     func triggerLocalNotification() {
+//            let content = UNMutableNotificationContent()
+//            content.title = "Time Alert"
+//            content.body = "The timer is about to expire in 60 seconds!"
+//            content.sound = .default
+//
+//            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+//
+//            UNUserNotificationCenter.current().add(request) { error in
+//                if let error = error {
+//                    print("Error scheduling local notification: \(error)")
+//                }
+//            }
+//        }
     
     
     private func endBackgroundTask() {

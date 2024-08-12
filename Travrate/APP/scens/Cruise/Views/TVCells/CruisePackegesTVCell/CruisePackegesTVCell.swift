@@ -79,7 +79,7 @@ class CruisePackegesTVCell: TableViewCell {
                     }
                 } else {
                     // Optionally handle success here
-                    print("Image loaded successfully")
+                   // print("Image loaded successfully")
                 }
             }
         )
@@ -156,8 +156,8 @@ extension CruisePackegesTVCell:UITableViewDelegate,UITableViewDataSource {
                 progress: { receivedSize, expectedSize, url in
                     // Optionally handle progress updates here
                     // Example: Update a progress indicator
-                    let progress = Float(receivedSize) / Float(expectedSize)
-                    print("Download Progress: \(progress)")
+//                    let progress = Float(receivedSize) / Float(expectedSize)
+//                    print("Download Progress: \(progress)")
                 },
                 completed: { image, error, cacheType, url in
                     if let error = error {
@@ -173,7 +173,7 @@ extension CruisePackegesTVCell:UITableViewDelegate,UITableViewDataSource {
                         }
                     } else {
                         // Optionally handle success here
-                        print("Image loaded successfully")
+                       // print("Image loaded successfully")
                     }
                 }
             )

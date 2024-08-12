@@ -1115,6 +1115,8 @@ extension BookingDetailsVC:TimerManagerDelegate {
                                                 str1font: .OpenSansMedium(size: 14),
                                                 str2font: .OpenSansMedium(size: 14),
                                                 str1Color: .TitleColor,
+                     
+                                                
                                                 str2Color: .BooknowBtnColor)
         
         

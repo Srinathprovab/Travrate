@@ -27,6 +27,10 @@ target 'Travrate' do
   pod 'FirebaseAnalytics'
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Crashlytics'
+
 
   target 'TravrateTests' do
     inherit! :search_paths

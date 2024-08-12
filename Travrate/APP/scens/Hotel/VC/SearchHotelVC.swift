@@ -76,9 +76,15 @@ class SearchHotelVC: BaseTableVC {
                 defaults.set(formatter.string(from: nextDay), forKey: UserDefaultsKeys.checkout)
                 cell.checkoutDatePicker.minimumDate = selectedDepDate
             }else {
+                
+                
                 defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
                 defaults.set(formatter.string(from: cell.checkoutDatePicker.date), forKey: UserDefaultsKeys.checkout)
-                cell.checkoutDatePicker.minimumDate = cell.checkoutDatePicker.date
+                
+//                cell.checkinDatePicker.minimumDate = cell.checkinDatePicker.date
+//                cell.checkoutDatePicker.minimumDate = cell.checkoutDatePicker.date
+                
+                
             }
             
         }
@@ -169,8 +175,12 @@ extension SearchHotelVC {
     
     func setInitalValues() {
         
+//        startRatingArray.removeAll()
+//        starRatingInputArray = ["3","4","5"]
         startRatingArray.removeAll()
-        starRatingInputArray = ["3","4","5"]
+        startRatingArray = starRatingInputArray
+        hotelfiltermodel.starRatingNew = starRatingInputArray
+       
         
         adtArray.removeAll()
         chArray.removeAll()
@@ -193,7 +203,7 @@ extension SearchHotelVC {
         let childcount = defaults.integer(forKey: UserDefaultsKeys.hotelchildcount)
         
         
-        var adultsCoutntStr = adultcount > 1 ? "Room \(roomscount) | Adult \(adultcount)" : "Room \(roomscount) | Adult \(adultcount)"
+        let adultsCoutntStr = adultcount > 1 ? "Room \(roomscount) | Adult \(adultcount)" : "Room \(roomscount) | Adult \(adultcount)"
         var labelText = adultsCoutntStr
         if childcount > 0 {
             labelText += ", Child \(childcount)"
@@ -221,8 +231,10 @@ extension SearchHotelVC {
         MySingleton.shared.payload["child"] = chArray
         
         
+        hotelfiltermodel.starRatingNew = starRatingInputArray
         if starRatingInputArray.count > 0 {
-            MySingleton.shared.payload["star_rating"] = starRatingInputArray
+           // MySingleton.shared.payload["star_rating"] = starRatingInputArray
+            MySingleton.shared.payload["star_rating"] = hotelfiltermodel.starRatingNew
         }
         
         
