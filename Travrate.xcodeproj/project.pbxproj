@@ -915,6 +915,7 @@
 		84EA32072C47FCB30031C482 /* ActivitiesHighlightsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA32042C47FCB30031C482 /* ActivitiesHighlightsTVCell.swift */; };
 		84EA32092C4803730031C482 /* ActivityDetailsModalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA32082C4803720031C482 /* ActivityDetailsModalities.swift */; };
 		84EA320B2C4803AE0031C482 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA320A2C4803AE0031C482 /* Duration.swift */; };
+		84EE2E8E2C69C8F700A44129 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84EE2E8D2C69C8F700A44129 /* GoogleService-Info.plist */; };
 		84F2477A2C4E3E6C003526A0 /* Booking_Activity_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F247792C4E3E6C003526A0 /* Booking_Activity_details.swift */; };
 		84F2477E2C4E6E1E003526A0 /* ContractRemarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2477C2C4E6E1E003526A0 /* ContractRemarkTVCell.swift */; };
 		84F2477F2C4E6E1E003526A0 /* ContractRemarkTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F2477D2C4E6E1E003526A0 /* ContractRemarkTVCell.xib */; };
@@ -1861,6 +1862,8 @@
 		84EA32052C47FCB30031C482 /* ActivitiesHighlightsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesHighlightsTVCell.xib; sourceTree = "<group>"; };
 		84EA32082C4803720031C482 /* ActivityDetailsModalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailsModalities.swift; sourceTree = "<group>"; };
 		84EA320A2C4803AE0031C482 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		84EE2E8D2C69C8F700A44129 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84EE2E8F2C69CB8E00A44129 /* Travrate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Travrate.entitlements; sourceTree = "<group>"; };
 		84F247792C4E3E6C003526A0 /* Booking_Activity_details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking_Activity_details.swift; sourceTree = "<group>"; };
 		84F2477C2C4E6E1E003526A0 /* ContractRemarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractRemarkTVCell.swift; sourceTree = "<group>"; };
 		84F2477D2C4E6E1E003526A0 /* ContractRemarkTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractRemarkTVCell.xib; sourceTree = "<group>"; };
@@ -2096,6 +2099,7 @@
 		652078D92BF4934A0076EF76 /* Travrate */ = {
 			isa = PBXGroup;
 			children = (
+				84EE2E8F2C69CB8E00A44129 /* Travrate.entitlements */,
 				6520790A2BF4942E0076EF76 /* APP */,
 				652078DA2BF4934A0076EF76 /* AppDelegate.swift */,
 				652078DC2BF4934A0076EF76 /* SceneDelegate.swift */,
@@ -2126,6 +2130,7 @@
 		6520790A2BF4942E0076EF76 /* APP */ = {
 			isa = PBXGroup;
 			children = (
+				84EE2E8C2C69C8E400A44129 /* FireBase */,
 				6520790B2BF4942E0076EF76 /* Scenes */,
 				6520790F2BF4942E0076EF76 /* Config */,
 				652079592BF4942E0076EF76 /* scens */,
@@ -6190,6 +6195,14 @@
 			path = ActivitiesHighlightsTVCell;
 			sourceTree = "<group>";
 		};
+		84EE2E8C2C69C8E400A44129 /* FireBase */ = {
+			isa = PBXGroup;
+			children = (
+				84EE2E8D2C69C8F700A44129 /* GoogleService-Info.plist */,
+			);
+			path = FireBase;
+			sourceTree = "<group>";
+		};
 		84F2477B2C4E6E04003526A0 /* ContractRemarkTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -6509,6 +6522,7 @@
 				65207D972BF494310076EF76 /* CheckBoxTVCell.xib in Resources */,
 				84D96CC22C4CE2DF00323B8E /* SportsTripsTVCell.xib in Resources */,
 				65207D422BF494310076EF76 /* Flight.storyboard in Resources */,
+				84EE2E8E2C69C8F700A44129 /* GoogleService-Info.plist in Resources */,
 				84A1700F2C452ECA002C7F83 /* TransferfareSummeryTVCell.xib in Resources */,
 				6545D8152BFC509C00FBCB60 /* SelectSportServiceTVCell.xib in Resources */,
 				65207DD92BF494310076EF76 /* AddSpecialAssistanceTVCell.xib in Resources */,
@@ -7585,6 +7599,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Travrate/Travrate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
@@ -7604,7 +7619,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7629,6 +7644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Travrate/Travrate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
@@ -7648,7 +7664,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -24,6 +24,9 @@ target 'Travrate' do
   pod 'MyFatoorah'
   pod 'Ottu'
   pod 'EasyTipView', '~> 2.1.0'
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
 
   target 'TravrateTests' do
     inherit! :search_paths

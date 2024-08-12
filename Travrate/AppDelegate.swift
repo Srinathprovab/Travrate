@@ -10,6 +10,7 @@ import CoreData
 import MFSDK
 import IQKeyboardManager
 import GoogleMaps
+import FirebaseCore
 
 
 @UIApplicationMain
@@ -37,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyAfgpJ36EyQji0KETVN-UuooOpATS_zgb0")
         
         
+        FirebaseApp.configure()
         
         return true
     }
