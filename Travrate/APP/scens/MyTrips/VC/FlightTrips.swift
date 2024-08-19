@@ -8,29 +8,54 @@
 import Foundation
 
 
+
+
 extension BookingsVC {
     
-    //MARK: - callFlightUpcomingAPI
-    func callFlightUpcomingAPI() {
+    func callFlightBookingsAPI() {
         MySingleton.shared.payload.removeAll()
-        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid)
-        trips?.CALL_GET_FLIGHT_TRIPS_API(dictParam: MySingleton.shared.payload)
-    }
-    
-    func flightTripsResponse(response: FlightsTripsModel) {
-        basicloderBool = false
+        MySingleton.shared.payload["user_id"] = "2831"
+        
         DispatchQueue.main.async {
-            self.setupFlightUpcomingTVCells(res:  response.completed?.booking_details ?? [])
+            self.trips?.CALL_GET_FLIGHT_TRIPS_API(dictParam: MySingleton.shared.payload)
         }
     }
     
     
-    func setupFlightUpcomingTVCells(res:[Flight_trips_Booking_details]) {
+    func flightTripsResponse(response: FlightsTripsModel) {
+        basicloderBool = false
+        
+        upcommingbookings = response.upcoming_booking ?? [[]]
+        completedbookings = response.completed_booking ?? [[]]
+        cancelledbookings = response.cancelled_booking ?? [[]]
+        
+        
+        DispatchQueue.main.async {[self] in
+            if tripsBtnTap == "upcoming" {
+                setupFlightUpcomingTVCells(res: upcommingbookings)
+            }else  if tripsBtnTap == "completed" {
+                callFlightCompletedTVCells(res: completedbookings)
+            }else {
+                setupFlightCancelledTVCells(res: cancelledbookings)
+            }
+            
+        }
+    
+    }
+    
+}
+
+
+extension BookingsVC {
+    
+    func setupFlightUpcomingTVCells(res:[[Booking]]) {
         MySingleton.shared.tablerow.removeAll()
         
-        if res[0].booking_itinerary_details?.count ?? 0 > 0 {
-            TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
-            MySingleton.shared.tablerow.append(TableRow(moreData:res,cellType:.FlightTripsTVCell))
+        if res.count > 0 {
+            res.forEach { i in
+                TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
+                MySingleton.shared.tablerow.append(TableRow(moreData:i,cellType:.FlightTripsTVCell))
+            }
         }else {
             TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
         }
@@ -42,14 +67,35 @@ extension BookingsVC {
     
     
     //MARK: - callFlightCompletedTVCells
-    func callFlightCompletedTVCells(){
-        setupFlightCompletedTVCells()
-    }
-    
-    func setupFlightCompletedTVCells() {
+    func callFlightCompletedTVCells(res:[[Booking]]) {
         MySingleton.shared.tablerow.removeAll()
         
-        TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
+        if res.count > 0 {
+            res.forEach { i in
+                TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
+                MySingleton.shared.tablerow.append(TableRow(moreData:i,cellType:.FlightTripsTVCell))
+            }
+        }else {
+            TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
+        }
+        
+        commonTVData =  MySingleton.shared.tablerow
+        commonTableView.reloadData()
+    }
+    
+    
+    //MARK: - setupFlightCancelledTVCells
+    func setupFlightCancelledTVCells(res:[[Booking]]) {
+        MySingleton.shared.tablerow.removeAll()
+        
+        if res.count > 0 {
+            res.forEach { i in
+                TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
+                MySingleton.shared.tablerow.append(TableRow(moreData:i,cellType:.FlightTripsTVCell))
+            }
+        }else {
+            TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
+        }
         
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -57,20 +103,4 @@ extension BookingsVC {
     
     
     
-    
-    //MARK: - callFlightCancelledTVCells
-    func callFlightCancelledTVCells(){
-        setupFlightCancelledTVCells()
-    }
-    
-    
-    func setupFlightCancelledTVCells() {
-        MySingleton.shared.tablerow.removeAll()
-        
-        TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
-        
-        
-        commonTVData =  MySingleton.shared.tablerow
-        commonTableView.reloadData()
-    }
 }

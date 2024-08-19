@@ -25,35 +25,35 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="214" id="KGk-i7-Jjw" customClass="HotelTripsTVCell" customModule="Travrate" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="442" height="420"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="219" id="KGk-i7-Jjw" customClass="HotelTripsTVCell" customModule="Travrate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="442" height="425"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="442" height="420"/>
+                <rect key="frame" x="0.0" y="0.0" width="442" height="425"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ooN-Mm-1UP">
-                        <rect key="frame" x="15" y="0.0" width="412" height="410"/>
+                        <rect key="frame" x="5" y="0.0" width="432" height="415"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Vw-T4-FbZ" customClass="BorderedView" customModule="Burhantrips" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="412" height="360"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Vw-T4-FbZ" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="432" height="355"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cruise" translatesAutoresizingMaskIntoConstraints="NO" id="qpK-eh-WXd">
-                                        <rect key="frame" x="0.0" y="0.0" width="412" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="432" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="If4-ck-N52"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="loc9" translatesAutoresizingMaskIntoConstraints="NO" id="Td7-gg-HCR">
-                                        <rect key="frame" x="15" y="249" width="16" height="16"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc9" translatesAutoresizingMaskIntoConstraints="NO" id="Td7-gg-HCR">
+                                        <rect key="frame" x="15" y="250.66666666666663" width="16" height="16"/>
                                         <color key="tintColor" name="AppGreenColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="E6q-IR-uUB"/>
                                             <constraint firstAttribute="width" constant="16" id="gaa-ci-ivU"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBF-pn-2WQ">
-                                        <rect key="frame" x="36" y="238.66666666666663" width="326" height="36.333333333333371"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBF-pn-2WQ">
+                                        <rect key="frame" x="36" y="242" width="346" height="33"/>
                                         <string key="text">burj nahar intersection al murar 7 
 burj nahar intersection</string>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
@@ -61,19 +61,19 @@ burj nahar intersection</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AhD-MN-odd">
-                                        <rect key="frame" x="15" y="300" width="382" height="40.666666666666686"/>
+                                        <rect key="frame" x="15" y="295" width="402" height="40.666666666666686"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="KlJ-hJ-m6X">
-                                                <rect key="frame" x="0.0" y="0.0" width="84.333333333333329" height="40.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="89.333333333333329" height="40.666666666666664"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Check in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B3-XH-P4w">
-                                                        <rect key="frame" x="0.0" y="0.0" width="84.333333333333329" height="19.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="89.333333333333329" height="19.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="23-8-2023" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tI-VP-CY7">
-                                                        <rect key="frame" x="0.0" y="21.333333333333314" width="84.333333333333329" height="19.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="21.333333333333314" width="89.333333333333329" height="19.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" name="TitleColor"/>
                                                         <nil key="highlightedColor"/>
@@ -81,16 +81,16 @@ burj nahar intersection</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="aSW-A4-Y2q">
-                                                <rect key="frame" x="99.333333333333343" y="0.0" width="84.333333333333343" height="40.666666666666664"/>
+                                                <rect key="frame" x="104.33333333333334" y="0.0" width="89.333333333333343" height="40.666666666666664"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Check out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mw4-tU-Z60">
-                                                        <rect key="frame" x="0.0" y="0.0" width="84.333333333333329" height="19.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="89.333333333333329" height="19.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="23-8-2023" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ol-Fj-29q">
-                                                        <rect key="frame" x="0.0" y="21.333333333333314" width="84.333333333333329" height="19.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="21.333333333333314" width="89.333333333333329" height="19.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" name="TitleColor"/>
                                                         <nil key="highlightedColor"/>
@@ -98,16 +98,16 @@ burj nahar intersection</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="0js-8u-45I">
-                                                <rect key="frame" x="198.66666666666666" y="0.0" width="83.999999999999972" height="40.666666666666664"/>
+                                                <rect key="frame" x="208.66666666666666" y="0.0" width="88.999999999999972" height="40.666666666666664"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Guest(s)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mg-op-C8c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="84" height="19.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="19.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGd-mr-pyY">
-                                                        <rect key="frame" x="0.0" y="21.333333333333314" width="84" height="19.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="21.333333333333314" width="89" height="19.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" name="TitleColor"/>
                                                         <nil key="highlightedColor"/>
@@ -115,16 +115,16 @@ burj nahar intersection</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="SBm-5S-RjL">
-                                                <rect key="frame" x="297.66666666666669" y="0.0" width="84.333333333333314" height="40.666666666666664"/>
+                                                <rect key="frame" x="312.66666666666669" y="0.0" width="89.333333333333314" height="40.666666666666664"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Rooms" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMe-g6-2eB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="84.333333333333329" height="19.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="89.333333333333329" height="19.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6q-kd-MPB">
-                                                        <rect key="frame" x="0.0" y="21.333333333333314" width="84.333333333333329" height="19.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="21.333333333333314" width="89.333333333333329" height="19.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" name="TitleColor"/>
                                                         <nil key="highlightedColor"/>
@@ -136,8 +136,8 @@ burj nahar intersection</string>
                                             <constraint firstAttribute="height" constant="40.670000000000002" id="ESP-uu-N7N"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17M-PH-nCQ" customClass="AARatingBar" customModule="AARatingBar">
-                                        <rect key="frame" x="322" y="212" width="80" height="15"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17M-PH-nCQ" customClass="AARatingBar" customModule="AARatingBar">
+                                        <rect key="frame" x="342" y="213.66666666666666" width="80" height="15"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="tintColor" systemColor="systemYellowColor"/>
                                         <constraints>
@@ -150,8 +150,8 @@ burj nahar intersection</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Saffron Boutique Hotel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWj-BM-TVW">
-                                        <rect key="frame" x="15" y="210" width="292" height="18.666666666666657"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saffron Boutique Hotel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWj-BM-TVW">
+                                        <rect key="frame" x="15" y="210" width="312" height="22"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -191,10 +191,10 @@ burj nahar intersection</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVP-zI-OC7">
-                                <rect key="frame" x="0.0" y="360" width="412" height="50"/>
+                                <rect key="frame" x="0.0" y="355" width="432" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNO-wb-E90">
-                                        <rect key="frame" x="276" y="10" width="120" height="30"/>
+                                        <rect key="frame" x="296" y="15" width="120" height="30"/>
                                         <color key="backgroundColor" name="BooknowBtnColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="I03-qP-3U7"/>
@@ -205,18 +205,31 @@ burj nahar intersection</string>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="ViewVoucher"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23-8-2023" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZn-MI-hAg">
-                                        <rect key="frame" x="16" y="15.333333333333313" width="65.333333333333329" height="19.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="RzI-2k-AYM">
+                                        <rect key="frame" x="25" y="10" width="261" height="40.666666666666664"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cz9-Mg-q1e">
+                                                <rect key="frame" x="0.0" y="0.0" width="261" height="19.333333333333332"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                                <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23-8-2023" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apV-d5-gWC">
+                                                <rect key="frame" x="0.0" y="21.333333333333314" width="261" height="19.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
+                                                <color key="textColor" name="TitleColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" name="BorderColor"/>
+                                <color key="backgroundColor" name="WhiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="VNO-wb-E90" firstAttribute="leading" secondItem="RzI-2k-AYM" secondAttribute="trailing" constant="10" id="4do-nS-Ty7"/>
                                     <constraint firstAttribute="trailing" secondItem="VNO-wb-E90" secondAttribute="trailing" constant="16" id="78c-oy-uv6"/>
-                                    <constraint firstAttribute="height" constant="50" id="bnI-EB-uPW"/>
-                                    <constraint firstItem="DZn-MI-hAg" firstAttribute="centerY" secondItem="FVP-zI-OC7" secondAttribute="centerY" id="ccQ-Zl-XFM"/>
-                                    <constraint firstItem="DZn-MI-hAg" firstAttribute="leading" secondItem="FVP-zI-OC7" secondAttribute="leading" constant="16" id="nfQ-df-cLG"/>
+                                    <constraint firstAttribute="height" constant="60" id="DR0-WL-Xje"/>
+                                    <constraint firstItem="RzI-2k-AYM" firstAttribute="top" secondItem="FVP-zI-OC7" secondAttribute="top" constant="10" id="ikC-x9-xOp"/>
+                                    <constraint firstItem="RzI-2k-AYM" firstAttribute="leading" secondItem="FVP-zI-OC7" secondAttribute="leading" constant="25" id="jAt-0q-695"/>
                                     <constraint firstItem="VNO-wb-E90" firstAttribute="centerY" secondItem="FVP-zI-OC7" secondAttribute="centerY" id="poY-fw-Jhc"/>
                                 </constraints>
                             </view>
@@ -228,24 +241,28 @@ burj nahar intersection</string>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ooN-Mm-1UP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7o2-y9-WXU"/>
-                    <constraint firstItem="ooN-Mm-1UP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="8X9-3A-EIx"/>
+                    <constraint firstItem="ooN-Mm-1UP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="8X9-3A-EIx"/>
                     <constraint firstAttribute="bottom" secondItem="ooN-Mm-1UP" secondAttribute="bottom" constant="10" id="Crg-Zq-Rod"/>
-                    <constraint firstAttribute="trailing" secondItem="ooN-Mm-1UP" secondAttribute="trailing" constant="15" id="DoQ-Ly-etb"/>
+                    <constraint firstAttribute="trailing" secondItem="ooN-Mm-1UP" secondAttribute="trailing" constant="5" id="DoQ-Ly-etb"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bottomView" destination="FVP-zI-OC7" id="4PE-FH-azh"/>
                 <outlet property="checkoutlbl" destination="1Ol-Fj-29q" id="9sm-SE-4ZH"/>
                 <outlet property="chickinlbl" destination="0tI-VP-CY7" id="eeN-sA-52n"/>
                 <outlet property="guestlbl" destination="RGd-mr-pyY" id="Aur-l7-d24"/>
+                <outlet property="holderView" destination="ooN-Mm-1UP" id="yDB-H7-Vb6"/>
                 <outlet property="hotelVoucherBtn" destination="VNO-wb-E90" id="LLC-OG-a1N"/>
                 <outlet property="hotelimage" destination="qpK-eh-WXd" id="kI9-gF-U6z"/>
                 <outlet property="hotellocationlbl" destination="BBF-pn-2WQ" id="WI9-2U-v6J"/>
                 <outlet property="hotelnamelbl" destination="HWj-BM-TVW" id="GaN-1O-HYO"/>
                 <outlet property="ratingView" destination="17M-PH-nCQ" id="JX7-fT-XtP"/>
                 <outlet property="roomCountLabel" destination="y6q-kd-MPB" id="W8l-i2-ELO"/>
+                <outlet property="roomtypelbl" destination="apV-d5-gWC" id="mqE-9O-ExT"/>
+                <outlet property="viewVoucherBtn" destination="VNO-wb-E90" id="WTu-5Q-bey"/>
             </connections>
-            <point key="canvasLocation" x="328" y="125"/>
+            <point key="canvasLocation" x="329.7709923664122" y="186.97183098591549"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -260,11 +277,11 @@ burj nahar intersection</string>
         <namedColor name="BooknowBtnColor">
             <color red="0.93300002813339233" green="0.097999997437000275" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="BorderColor">
-            <color red="0.72200000286102295" green="0.72200000286102295" blue="0.72200000286102295" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="TitleColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WhiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

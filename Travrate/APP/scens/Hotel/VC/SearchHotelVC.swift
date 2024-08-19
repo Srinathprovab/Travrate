@@ -130,6 +130,9 @@ class SearchHotelVC: BaseTableVC {
     override func didTapOnHotelSearchBtnAction(cell:HotelSearchTVCell) {
         didTapOnHotelSearchBtnAction()
     }
+    
+    
+    
 }
 
 
@@ -180,7 +183,6 @@ extension SearchHotelVC {
         startRatingArray.removeAll()
         startRatingArray = starRatingInputArray
         hotelfiltermodel.starRatingNew = starRatingInputArray
-       
         
         adtArray.removeAll()
         chArray.removeAll()

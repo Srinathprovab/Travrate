@@ -63,6 +63,13 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
     func setupUI() {
         
         
+
+        
+        origin_array.removeAll()
+        hotelwhatsAppCheck = false
+        hotelnotificationCheck = true
+        hotelnotificationPrice = "1"
+        origin_array.append("7")
         
         guard let gifURL = Bundle.main.url(forResource: "pay", withExtension: "gif") else { return }
         guard let imageData = try? Data(contentsOf: gifURL) else { return }

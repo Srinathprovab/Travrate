@@ -58,8 +58,11 @@ class BookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewModelDe
         origin_array.append("4")
         priceCheck = false
         flexibleCheck = false
-        gifimg.isHidden = true
         
+        
+        
+        
+        gifimg.isHidden = true
         continuetoPaymentBtnView.backgroundColor = .Buttoncolor
         continuetoPaymentBtnView.isUserInteractionEnabled = true
         

@@ -13,7 +13,7 @@ extension BookingsVC {
     //MARK: - callSportstUpcomingAPI
     func callSportstUpcomingAPI() {
         MySingleton.shared.payload.removeAll()
-        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid)
+        MySingleton.shared.payload["user_id"] = "2890"
         trips?.CALL_GET_SPORTS_TRIPS_API(dictParam: MySingleton.shared.payload)
     }
     
@@ -22,19 +22,19 @@ extension BookingsVC {
         basicloderBool = false
         
         if tripsBtnTap == "upcoming" {
-            DispatchQueue.main.async {
-                self.setupSportstUpcomingTVCells(data:  response.data?.upcoming ?? [])
-            }
+           
+                self.setupSportstUpcomingTVCells(data:  response.upcoming ?? [])
+            
         }else {
-            DispatchQueue.main.async {
-                self.setupSportstCompletesTVCells(data:  response.data?.completed ?? [])
-            }
+          
+                self.setupSportstCompletesTVCells(data:  response.completed ?? [])
+            
         }
     }
     
     
     
-    func setupSportstUpcomingTVCells(data:[SportsUpcoming]) {
+    func setupSportstUpcomingTVCells(data:[SportsCompleted]) {
         MySingleton.shared.tablerow.removeAll()
         
         if data.count > 0 {
@@ -53,6 +53,9 @@ extension BookingsVC {
         }else {
             TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
         }
+        
+        
+        MySingleton.shared.tablerow.append(TableRow(title:"",height:50,cellType:.EmptyTVCell))
         
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -80,6 +83,8 @@ extension BookingsVC {
         }else {
             TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
         }
+        
+        MySingleton.shared.tablerow.append(TableRow(title:"",height:50,cellType:.EmptyTVCell))
         
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()

@@ -28,7 +28,7 @@ class SignupTVCell: TableViewCell {
     @IBOutlet weak var confPassBtn: UIButton!
     @IBOutlet weak var signupbtn: UIButton!
     @IBOutlet weak var countrycodeTF: UITextField!
-    
+    @IBOutlet weak var skipBtn: UIButton!
     @IBOutlet weak var fnameview: UIView!
     @IBOutlet weak var lnameview: UIView!
     @IBOutlet weak var mobileview: UIView!
@@ -72,6 +72,11 @@ class SignupTVCell: TableViewCell {
     
     
     func setupUI() {
+        
+        skipBtn.layer.cornerRadius = 15
+        skipBtn.layer.borderWidth = 1
+        skipBtn.layer.borderColor = UIColor.WhiteColor.cgColor
+    
         
         passTF.isSecureTextEntry = true
         confPassTF.isSecureTextEntry = true

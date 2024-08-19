@@ -27,6 +27,11 @@ class BookingsVC: BaseTableVC, TripsViewModelDelegate {
         return vc
     }
     
+    
+    var upcommingbookings = [[Booking]]()
+    var completedbookings = [[Booking]]()
+    var cancelledbookings = [[Booking]]()
+    
     var tabselect = String()
     var titletext = String()
     var trips :TripsViewModel?
@@ -39,27 +44,11 @@ class BookingsVC: BaseTableVC, TripsViewModelDelegate {
         hideLoadera()
         
         
-        tabselect = defaults.string(forKey: UserDefaultsKeys.tripsselect) ?? "Flight"
-        if tabselect == "Sports" {
-            cancelledView.isHidden = true
-        }
         
-        
-        if  tripsBtnTap == "upcoming" {
-            DispatchQueue.main.async {
-                self.tapOnUpcomingBtn()
-            }
-        }else  if  tripsBtnTap == "completed" {
-            DispatchQueue.main.async {
-                self.tapOnCompletedBtn()
-            }
-        }else {
-            DispatchQueue.main.async {
-                self.tapOnCancelledBtn()
-            }
-        }
         
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +57,20 @@ class BookingsVC: BaseTableVC, TripsViewModelDelegate {
         setupUI()
         
         trips = TripsViewModel(self)
+        
+        tabselect = defaults.string(forKey: UserDefaultsKeys.tripsselect) ?? "Flight"
+        if tabselect == "Flight" {
+            tapOnUpcomingBtn()
+        }else if tabselect == "Hotel" {
+            tapOnUpcomingBtn()
+        }else if tabselect == "Sports" {
+            cancelledView.isHidden = true
+            tapOnUpcomingBtn()
+        }else if tabselect == "Activities" {
+            tapOnUpcomingBtn()
+        }else {
+            tapOnUpcomingBtn()
+        }
     }
     
     
@@ -109,24 +112,39 @@ class BookingsVC: BaseTableVC, TripsViewModelDelegate {
     
     
     
-    //MARK: - didTapOnViewVoutureBtnAction Flights
+    //MARK: - didTapOnVoucherBtnAction Sports
+    override func didTapOnVoucherBtnAction(cell: SportsTripsTVCell) {
+        gotoLoadWebViewVC(urlStr1: cell.voutureUrl)
+    }
+    
+    
+    override func didTapOnViewHotelVoucher(cell:HotelTripsTVCell) {
+        gotoLoadWebViewVC(urlStr1: cell.voucherPdfUrl)
+    }
+    
     override func didTapOnViewVoutureBtnAction(cell: FlightTripsTVCell) {
         gotoLoadWebViewVC(urlStr1: cell.voutureurl)
     }
+    
+    override func didTapOnActivitesDetailsBtnAction(cell:ActivitiesTripsTVCell) {
+        gotoLoadWebViewVC(urlStr1: cell.activitiesVoucherUrl)
+    }
+    
+    
+    override func didTapOnVoucherBtnAction(cell: CarRentalTripsTVCell) {
+        print(cell.voucherString)
+       // gotoLoadWebViewVC(urlStr1: cell.voucherString)
+    }
+    
+    
+    
     
     func gotoLoadWebViewVC(urlStr1:String) {
         guard let vc = LoadWebViewVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.urlString = urlStr1
-        vc.keystr = "voucher"
+        vc.keystr = "link"
         present(vc, animated: true)
-    }
-    
-    
-    //MARK: - didTapOnVoucherBtnAction Sports
-    override func didTapOnVoucherBtnAction(cell: SportsTripsTVCell) {
-        print(cell.voutureUrl)
-        gotoLoadWebViewVC(urlStr1: cell.voutureUrl)
     }
     
     
@@ -177,17 +195,19 @@ extension BookingsVC {
         
         if callapibool == true {
             if tabselect == "Flight" {
-                self.callFlightUpcomingAPI()
+                DispatchQueue.main.async {[self] in
+                    callFlightBookingsAPI()
+                }
             }else if tabselect == "Transfers" {
                 callTransferstUpcomingAPI()
             }else if tabselect == "Sports" {
                 callSportstUpcomingAPI()
             }else if tabselect == "Car Rentals" {
-                callCarRentaltUpcomingAPI()
+                callCarRentalTripsAPI()
             }else if tabselect == "Activities" {
-                callActivitiestUpcomingAPI()
+                callActivitiesTripsAPI()
             }else{
-                self.callHoteltUpcomingAPI()
+                callHotelTripsAPI()
             }
         }
     }
@@ -198,18 +218,20 @@ extension BookingsVC {
         
         if callapibool == true {
             if tabselect == "Flight" {
-                callFlightCompletedTVCells()
+                DispatchQueue.main.async {[self] in
+                    callFlightBookingsAPI()
+                }
             }else if tabselect == "Transfers" {
                 callTransferstCompletedTVCells()
             }else if tabselect == "Sports" {
                 
                 callSportstUpcomingAPI()
             }else if tabselect == "Car Rentals" {
-                callCarRentaltCompletedTVCells()
+                callCarRentalTripsAPI()
             }else if tabselect == "Activities" {
-                callActivitiestCompletedTVCells()
+                callActivitiesTripsAPI()
             }else{
-                callHoteltCompletedTVCells()
+                callHotelTripsAPI()
             }
         }
     }
@@ -221,22 +243,28 @@ extension BookingsVC {
         
         if callapibool == true {
             if tabselect == "Flight" {
-                callFlightCancelledTVCells()
+                DispatchQueue.main.async {[self] in
+                    callFlightBookingsAPI()
+                }
             }else if tabselect == "Transfers" {
                 callTransferstCancelledTVCells()
             }else if tabselect == "Sports" {
                 callSportstUpcomingAPI()
             }else if tabselect == "Car Rentals" {
-                callCarRentaltCancelledTVCells()
+                callCarRentalTripsAPI()
             }else if tabselect == "Activities" {
-                callActivitiestCancelledTVCells()
+                callActivitiesTripsAPI()
             }else {
-                callHoteltCancelledTVCells()
+                callHotelTripsAPI()
             }
         }
     }
     
+    
+    
+    
 }
+
 
 
 

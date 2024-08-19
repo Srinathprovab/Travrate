@@ -35,7 +35,7 @@ class LoginVC: BaseTableVC, LoginViewModelDelegate {
     
     func setupUI() {
         commonTableView.isScrollEnabled = false
-        commonTableView.registerTVCells(["LoginTVCell"])
+        commonTableView.registerTVCells(["LoginTVCell","EmptyTVCell"])
         setupTVCells()
     }
     
@@ -99,6 +99,7 @@ class LoginVC: BaseTableVC, LoginViewModelDelegate {
 extension LoginVC {
     func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
+       // MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         MySingleton.shared.tablerow.append(TableRow(cellType:.LoginTVCell))
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -123,7 +124,7 @@ extension LoginVC {
             
             defaults.set(true, forKey: UserDefaultsKeys.loggedInStatus)
             defaults.set(response.logindetails?.user_id, forKey: UserDefaultsKeys.userid)
-           
+            
             defaults.set(response.logindetails?.email, forKey: UserDefaultsKeys.useremail)
             defaults.set(response.logindetails?.phone, forKey: UserDefaultsKeys.usermobile)
             defaults.set(response.logindetails?.country_code, forKey: UserDefaultsKeys.usermobilecode)
@@ -134,7 +135,7 @@ extension LoginVC {
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
                 dismiss(animated: true)
             }
-           
+            
         }
         
     }

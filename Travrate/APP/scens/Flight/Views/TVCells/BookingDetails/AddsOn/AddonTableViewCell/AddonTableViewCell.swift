@@ -226,6 +226,8 @@ extension AddonTableViewCell {
             cell.subTitleLabel.text = data.details
             cell.originValue = data.origin ?? ""
             cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
+            
+           
         }
         
         return cell

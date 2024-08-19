@@ -94,8 +94,6 @@ class CarRentalResultTVCell: TableViewCell {
             caroption7.text = "\(carlist?.luggageSmall ?? "") Small Bags"
             
             depositeAmountlbl.text = "Excluded Security Deposit: \(carlist?.product?[0].currency ?? "") \(carlist?.product?[0].deposit ?? "")"
-            
-            
             markuplbl.text = "Total or markup and discount : \(carlist?.product?[0].currency ?? "") \(carlist?.markup?.value ?? 0)"
             
             

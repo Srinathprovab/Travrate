@@ -283,6 +283,9 @@ struct ApiEndpoints {
     static let flight_mobile_pre_payment_confirmation = "flight/mobile_pre_payment_confirmation/"
     static let flight_mobile_send_to_payment = "flight/mobile_send_to_payment"
     static let report_flight = "report/flight"
+    static let report_hotel = "report/hotel"
+    static let report_activities = "report/activities"
+    static let report_car = "report/car"
     
     
     

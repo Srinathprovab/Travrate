@@ -25,6 +25,12 @@ class LoginTVCell: TableViewCell {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var emailview: UIView!
     @IBOutlet weak var passwordview: UIView!
+    @IBOutlet weak var skipBtn: UIButton!
+    
+    
+    
+    
+    
     var passbool = false
     weak var delegate:LoginTVCellDelegate?
     override func awakeFromNib() {
@@ -43,14 +49,13 @@ class LoginTVCell: TableViewCell {
     
     func setupUI() {
         
-        holderView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner] // Top left corner, Top right corner respectively
-        holderView.layer.cornerRadius = 10
-        holderView.clipsToBounds = true
+        
     
         passTF.isSecureTextEntry = true
         loginBtn.layer.cornerRadius = 6
         setupTF(tf: emailTF)
         setupTF(tf: passTF)
+        
     }
     
     

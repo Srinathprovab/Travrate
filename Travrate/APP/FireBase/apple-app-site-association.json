@@ -1,0 +1,12 @@
+
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "<Your_Team_ID>.<Your_Bundle_ID>",
+        "paths": ["*"]
+      }
+    ]
+  }
+}

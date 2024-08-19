@@ -108,7 +108,7 @@ class LoadWebViewVC: UIViewController, WKNavigationDelegate, MobileSecureBooking
             callapibool = false
             dismiss(animated: true)
         }else if keystr == "link" {
-            callapibool = false
+            callapibool = true
             dismiss(animated: true)
         }else{
             gotoDashboard()

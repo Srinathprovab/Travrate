@@ -18,6 +18,7 @@ import FirebaseMessaging
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
     
+    var window: UIWindow?
     var fcmToken = String()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -85,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     @objc func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("Firebase registration token: \(String(describing: fcmToken))")
         
-        let dataDict: [String: String] = ["token": fcmToken ?? ""]
+        let dataDict: [String: Any] = ["token": fcmToken ?? ""]
         NotificationCenter.default.post(
             name: Notification.Name("FCMToken"),
             object: nil,
@@ -96,6 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     
+   
     
 }
 
@@ -132,6 +134,8 @@ extension AppDelegate {
 }
 
 
+
+//NOTIFICATIOn
 //func sendMessageToTopic() {
 //    let urlString = "https://fcm.googleapis.com/fcm/send"
 //    guard let url = URL(string: urlString) else { return }
@@ -164,4 +168,80 @@ extension AppDelegate {
 //        }
 //    }
 //    task.resume()
+//}
+
+
+
+//HANDEL DOMAINS
+// In AppDelegate.swift
+//func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+//    if userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+//       let url = userActivity.webpageURL {
+//        handleUniversalLink(url)
+//    }
+//    return true
+//}
+//
+//// In SceneDelegate.swift (for apps with scenes)
+//func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+//    if userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+//       let url = userActivity.webpageURL {
+//        handleUniversalLink(url)
+//    }
+//}
+//
+//private func handleUniversalLink(_ url: URL) {
+//    // Handle the URL in your app
+//    print("Received Universal Link: \(url)")
+//    // Add custom logic to route the URL to the appropriate part of your app
+//}
+
+
+
+//private func handleUniversalLink(_ url: URL) {
+//    print("Received Universal Link: \(url)")
+//    
+//    // Extract the path components from the URL
+//    let pathComponents = url.pathComponents
+//    guard pathComponents.count > 1 else {
+//        return
+//    }
+//    
+//    // Route the URL to the appropriate part of your app
+//    switch pathComponents[1] {
+//    case "home":
+//        navigateToHome()
+//    case "profile":
+//        navigateToProfile()
+//    case "item":
+//        if pathComponents.count > 2, let itemId = pathComponents[2] {
+//            navigateToItem(withId: itemId)
+//        }
+//    default:
+//        break
+//    }
+//}
+//
+//private func navigateToHome() {
+//    // Code to navigate to the home screen
+//    if let navigationController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController {
+//        navigationController.popToRootViewController(animated: true)
+//    }
+//}
+//
+//private func navigateToProfile() {
+//    // Code to navigate to the profile screen
+//    if let navigationController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController {
+//        let profileViewController = ProfileViewController()
+//        navigationController.pushViewController(profileViewController, animated: true)
+//    }
+//}
+//
+//private func navigateToItem(withId itemId: String) {
+//    // Code to navigate to a specific item screen
+//    if let navigationController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController {
+//        let itemViewController = ItemViewController()
+//        itemViewController.itemId = itemId
+//        navigationController.pushViewController(itemViewController, animated: true)
+//    }
 //}

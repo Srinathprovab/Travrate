@@ -8,38 +8,56 @@
 import Foundation
 
 
+
 extension BookingsVC {
     
-    //MARK: - callActivitiestUpcomingAPI
-    func callActivitiestUpcomingAPI() {
-        showToast(message: "callActivitiestUpcomingAPI")
+    func callActivitiesTripsAPI() {
+        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.payload["user_id"] = "2890"
+        
         DispatchQueue.main.async {
-            self.setupActivitiestUpcomingTVCells()
+            self.trips?.CALL_GET_ACTIVITIES_TRIPS_API(dictParam: MySingleton.shared.payload)
         }
     }
     
-    func setupActivitiestUpcomingTVCells() {
-        MySingleton.shared.tablerow.removeAll()
+    
+    func activitiesTripsResponse(response : ActivitiesTripsModel) {
+        basicloderBool = false
         
         
-        for i in 0...100 {
-            MySingleton.shared.tablerow.append(TableRow(cellType:.ActivitiesTripsTVCell))
+        DispatchQueue.main.async {[self] in
+            if tripsBtnTap == "upcoming" {
+                setupActivitiestUpcomingTVCells(res: response.upcoming_booking ?? [])
+            }else  if tripsBtnTap == "completed" {
+                setupActivitiestCompletedTVCells(res: response.completed_booking ?? [])
+            }else {
+                setupActivitiestCancelledTVCells(res: response.cancelled_booking ?? [])
+            }
+            
         }
         
-        commonTVData =  MySingleton.shared.tablerow
-        commonTableView.reloadData()
     }
     
     
+}
+
+
+extension BookingsVC {
     
-    //MARK: - callActivitiestCompletedTVCells
-    func callActivitiestCompletedTVCells(){
-        setupActivitiestCompletedTVCells()
-    }
     
-    func setupActivitiestCompletedTVCells() {
+    
+    func setupActivitiestUpcomingTVCells(res:[Activities_Completed_booking]) {
         MySingleton.shared.tablerow.removeAll()
         
+        if res.count > 0 {
+            res.forEach { i in
+                MySingleton.shared.tablerow.append(TableRow(moreData:i,cellType:.ActivitiesTripsTVCell))
+            }
+            
+        }else {
+            TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
+        }
+        
         
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -48,17 +66,43 @@ extension BookingsVC {
     
     
     
-    //MARK: - callActivitiestCancelledTVCells
-    func callActivitiestCancelledTVCells(){
-        setupActivitiestCancelledTVCells()
-    }
-    
-    
-    func setupActivitiestCancelledTVCells() {
+    func setupActivitiestCompletedTVCells(res:[Activities_Completed_booking]) {
         MySingleton.shared.tablerow.removeAll()
         
-       
+        if res.count > 0 {
+            res.forEach { i in
+                MySingleton.shared.tablerow.append(TableRow(moreData:i,cellType:.ActivitiesTripsTVCell))
+            }
+            
+        }else {
+            TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
+        }
+        
+        
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
     }
+    
+    
+    
+    
+    func setupActivitiestCancelledTVCells(res:[Activities_Completed_booking]) {
+        MySingleton.shared.tablerow.removeAll()
+        
+        if res.count > 0 {
+            res.forEach { i in
+                MySingleton.shared.tablerow.append(TableRow(moreData:i,cellType:.ActivitiesTripsTVCell))
+            }
+            
+        }else {
+            TableViewHelper.EmptyMessage(message: "No data found", tableview: commonTableView, vc: self)
+        }
+        
+        
+        commonTVData =  MySingleton.shared.tablerow
+        commonTableView.reloadData()
+    }
+    
+    
+    
 }

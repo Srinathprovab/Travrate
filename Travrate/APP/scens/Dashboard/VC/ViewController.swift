@@ -41,6 +41,7 @@ class ViewController: UIViewController {
             hotelfiltermodel.starRatingNew = ["3","4","5"]
             
             UserDefaults.standard.set(true, forKey: "ExecuteOnce")
+            
         }
         
         
