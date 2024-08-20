@@ -510,6 +510,7 @@ extension SearchHotelsResultVC {
         
         list.forEach { i in
             
+            
             prices.append(i.price ?? "0")
             hotelstarratingArray.append("\(i.star_rating ?? 0)")
             neighbourwoodArray.append(i.location ?? "")
@@ -522,6 +523,18 @@ extension SearchHotelsResultVC {
                     amenitiesArray.append(facilityName)
                 }
             }
+            
+            i.near_by?.forEach { k in
+                if let distance = k.distance, let poiName = k.poiName {
+                    let nearbyname = "\(distance) metres for \(poiName)"
+                    if !nearbyname.isEmpty {
+                        nearBylocationsArray.append(nearbyname)
+                    }
+                }
+            }
+
+            
+            
         }
         
         prices = Array(Set(prices))
@@ -822,8 +835,11 @@ extension SearchHotelsResultVC:AppliedFilters{
             let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(hotel.refund ?? "")
             let niberhoodMatch = niberhoodA.isEmpty || niberhoodA.contains(hotel.location ?? "")
             
+            let aminitiesMatch = aminitiesA.isEmpty || aminitiesA.contains(hotel.facility?.first?.name ?? "")
             
-            return priceInRange && ratingMatches && refundableMatch && niberhoodMatch
+            let nearByLocAMatch = nearByLocA.isEmpty || nearByLocA.contains("\(hotel.near_by?.first?.distance ?? "") metres for \(hotel.near_by?.first?.poiName ?? "")")
+            
+            return priceInRange && ratingMatches && refundableMatch && niberhoodMatch && aminitiesMatch && nearByLocAMatch
         }
         
         // Update the filtered results

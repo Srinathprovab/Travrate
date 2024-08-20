@@ -59,28 +59,29 @@ class HotelsTVCell: TableViewCell {
     
     
     
-  
+    
     override func updateUI() {
-
+        
         
     }
     
     
     func setupUI() {
         
-        
+        ratingView.isUserInteractionEnabled = false
         hotelImg.image = UIImage(named: "city")
         hotelImg.layer.cornerRadius = 8
         hotelImg.clipsToBounds = true
         locImg.image = UIImage(named: "loc")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#A3A3A3"))
         
-//        MySingleton.shared.setAttributedTextnew(str1: "",
-//                                                str2: "",
-//                                                lbl: self.kwdlbl,
-//                                                str1font: .InterBold(size: 12),
-//                                                str2font: .InterBold(size: 18),
-//                                                str1Color: .BackBtnColor,
-//                                                str2Color: .BackBtnColor)
+        //        MySingleton.shared.setAttributedTextnew(str1: "",
+        //                                                str2: "",
+        //                                                lbl: self.kwdlbl,
+        //                                                str1font: .InterBold(size: 12),
+        //                                                str2font: .InterBold(size: 18),
+        //                                                str1Color: .BackBtnColor,
+        //                                                str2Color: .BackBtnColor)
+        
         
     }
     
@@ -93,7 +94,7 @@ class HotelsTVCell: TableViewCell {
         v.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.4).cgColor
     }
     
-  
+    
     
     
     @IBAction func didTapOnTermsAndConditionBtn(_ sender: Any) {

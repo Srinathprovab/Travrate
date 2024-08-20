@@ -66,7 +66,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     @IBOutlet weak var returnDateBtn: UIButton!
     @IBOutlet weak var additionalView: UIView!
     @IBOutlet weak var selectadditionallbl: UILabel!
-    
+    @IBOutlet weak var swapimg: UIImageView!
     
     
     
@@ -355,6 +355,9 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             defaults.setValue(u, forKey: UserDefaultsKeys.toCode)
             
         }
+        
+        
+        rotateImageView()
     }
     
     @IBAction func didTapOnFlightSearchBtnAction(_ sender: Any) {
@@ -458,6 +461,13 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         }
     }
     
+    
+    
+    func rotateImageView() {
+        UIView.animate(withDuration: 0.5) {
+            self.swapimg?.transform = (self.swapimg?.transform.rotated(by: .pi))!
+        }
+    }
     
 }
 

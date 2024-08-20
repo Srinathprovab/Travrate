@@ -181,7 +181,7 @@ extension DepartureTimeTVCell {
                         cell.img.image = UIImage(named: self.timeImages[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
                         cell.contentView.backgroundColor = .WhiteColor
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                   // print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -215,7 +215,7 @@ extension DepartureTimeTVCell {
                         cell.img.image = UIImage(named: self.timeImages[indexPath.row])?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
                         cell.contentView.backgroundColor = .WhiteColor
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                   // print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -224,10 +224,6 @@ extension DepartureTimeTVCell {
                     cell.contentView.backgroundColor = .WhiteColor
                 }
             }
-            
-            
-            
-            
             
         default:
             break

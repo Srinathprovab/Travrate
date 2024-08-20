@@ -187,7 +187,7 @@ extension NewDepartureTimeTVCell {
                         cell.subtitlelbl.textColor = .AppLabelColor
                         cell.holderView.backgroundColor = .WhiteColor
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                  //  print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -221,7 +221,7 @@ extension NewDepartureTimeTVCell {
                         cell.subtitlelbl.textColor = .AppLabelColor
                         cell.holderView.backgroundColor = .WhiteColor
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                  //  print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {

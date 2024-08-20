@@ -251,7 +251,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.checkImg.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -279,7 +279,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.checkImg.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -310,7 +310,7 @@ extension CheckBoxTVCell {
                         cell.unselected() // Deselect the cell
                         self.selectedIndices.append(indexPath)
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -336,7 +336,7 @@ extension CheckBoxTVCell {
                         cell.unselected() // Deselect the cell
                         self.selectedIndices.append(indexPath)
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -365,7 +365,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -395,7 +395,7 @@ extension CheckBoxTVCell {
                         DispatchQueue.main.async {
                             cell.unselected() // Deselect the cell
                         }
-                        print("Deselected: \(cell.titlelbl.text ?? "")")
+                        //print("Deselected: \(cell.titlelbl.text ?? "")")
                     }
                 }
             } else {
@@ -422,7 +422,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -447,7 +447,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -472,7 +472,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -515,7 +515,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -543,7 +543,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -571,7 +571,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -599,7 +599,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -645,7 +645,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -673,7 +673,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -700,7 +700,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -727,7 +727,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -779,7 +779,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -807,7 +807,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -834,7 +834,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -875,7 +875,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -920,7 +920,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {
@@ -947,7 +947,7 @@ extension CheckBoxTVCell {
                     DispatchQueue.main.async {
                         cell.unselected() // Deselect the cell
                     }
-                    print("Deselected: \(cell.titlelbl.text ?? "")")
+                    //print("Deselected: \(cell.titlelbl.text ?? "")")
                 }
             }else {
                 DispatchQueue.main.async {

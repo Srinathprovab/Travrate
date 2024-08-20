@@ -5,7 +5,7 @@ struct HotelSearchResult : Codable {
     let booking_source : String?
     let hotel_desc : String?
     let currency : String?
-  //  let dis_mar : [String]?
+    //  let dis_mar : [String]?
     let city_code : String?
     let address : String?
     let location : String?
@@ -36,13 +36,14 @@ struct HotelSearchResult : Codable {
     let xml_net : String?
     let refund : String?
     let latitude : String?
-
+    let near_by : [Near_by]?
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case booking_source = "booking_source"
         case hotel_desc = "hotel_desc"
         case currency = "currency"
-    //    case dis_mar = "dis_mar"
+        //    case dis_mar = "dis_mar"
         case city_code = "city_code"
         case address = "address"
         case location = "location"
@@ -73,14 +74,17 @@ struct HotelSearchResult : Codable {
         case xml_net = "xml_net"
         case refund = "refund"
         case latitude = "latitude"
+        case near_by = "near_by"
+        
+        
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         booking_source = try values.decodeIfPresent(String.self, forKey: .booking_source)
         hotel_desc = try values.decodeIfPresent(String.self, forKey: .hotel_desc)
         currency = try values.decodeIfPresent(String.self, forKey: .currency)
-  //      dis_mar = try values.decodeIfPresent([String].self, forKey: .dis_mar)
+        //      dis_mar = try values.decodeIfPresent([String].self, forKey: .dis_mar)
         city_code = try values.decodeIfPresent(String.self, forKey: .city_code)
         address = try values.decodeIfPresent(String.self, forKey: .address)
         location = try values.decodeIfPresent(String.self, forKey: .location)
@@ -111,6 +115,29 @@ struct HotelSearchResult : Codable {
         xml_net = try values.decodeIfPresent(String.self, forKey: .xml_net)
         refund = try values.decodeIfPresent(String.self, forKey: .refund)
         latitude = try values.decodeIfPresent(String.self, forKey: .latitude)
+        near_by = try values.decodeIfPresent([Near_by].self, forKey: .near_by)
     }
+    
+}
 
+
+
+struct Near_by : Codable {
+    let poiName : String?
+    let distance : String?
+    
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case poiName = "poiName"
+        case distance = "distance"
+        
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        poiName = try values.decodeIfPresent(String.self, forKey: .poiName)
+        distance = try values.decodeIfPresent(String.self, forKey: .distance)
+    }
+    
 }
