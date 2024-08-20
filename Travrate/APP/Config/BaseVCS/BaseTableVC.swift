@@ -1421,6 +1421,12 @@ extension BaseTableVC: UITableViewDataSource {
                 commonCell = cell
                 
                 
+            case .HotelBDCancellationTVCell :
+                let cell: HotelBDCancellationTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+                
             default:
                 print("handle this case in getCurrentCellAt")
             }

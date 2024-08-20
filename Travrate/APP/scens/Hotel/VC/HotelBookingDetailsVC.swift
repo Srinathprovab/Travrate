@@ -95,6 +95,7 @@ class HotelBookingDetailsVC: BaseTableVC, LoginViewModelDelegate, RegisterViewMo
                                          "LoginDetailsTableViewCell",
                                          "NewHotelPriceSummeryTVCell",
                                          "TermsAgreeTVCell",
+                                         "HotelBDCancellationTVCell",
                                          "ContactInformationTVCell",
                                          "TotalNoofTravellerTVCell",
                                          "AddDeatilsOfGuestTVCell",
@@ -384,8 +385,10 @@ extension HotelBookingDetailsVC {
         
         
         MySingleton.shared.tablerow.append(TableRow(key:"details",cellType:.BookingHotelDetailsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(key:"booking",cellType:.HotelBookingCancellationpolicyTVCell))
+       
+      //  MySingleton.shared.tablerow.append(TableRow(key:"booking",cellType:.HotelBookingCancellationpolicyTVCell))
         
+        MySingleton.shared.tablerow.append(TableRow(cellType:.HotelBDCancellationTVCell))
         
         let userloggedBool = defaults.bool(forKey: UserDefaultsKeys.loggedInStatus)
         if userloggedBool == false {

@@ -128,6 +128,7 @@ enum TVCellType {
     case AmenitiesTVCell
     case TitleLabelTVCell
     case NoDataFoundTVCell
+    case HotelBDCancellationTVCell
     
     
     
