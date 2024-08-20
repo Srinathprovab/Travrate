@@ -99,6 +99,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
    
     
+    func applicationWillTerminate(_ application: UIApplication) {
+        UserDefaults.standard.set(false, forKey: "ExecuteHotelOnce")
+    }
+    
 }
 
 

@@ -35,15 +35,22 @@ class ViewController: UIViewController {
             defaults.set("1", forKey: UserDefaultsKeys.activitesadultCount)
             defaults.set("2", forKey: UserDefaultsKeys.guestcount)
             
-            startRatingArray.removeAll()
-            starRatingInputArray.removeAll()
-            starRatingInputArray = ["3","4","5"]
-            hotelfiltermodel.starRatingNew = ["3","4","5"]
+           
             
             UserDefaults.standard.set(true, forKey: "ExecuteOnce")
             
         }
         
+        
+        if !UserDefaults.standard.bool(forKey: "ExecuteHotelOnce") {
+            
+            startRatingArray.removeAll()
+            starRatingInputArray.removeAll()
+            starRatingInputArray = ["3","4","5"]
+            hotelfiltermodel.starRatingNew = ["3","4","5"]
+            
+            UserDefaults.standard.set(true, forKey: "ExecuteHotelOnce")
+        }
         
         
         MySingleton.shared.callonce()
@@ -57,9 +64,6 @@ class ViewController: UIViewController {
             
         })
     }
-    
-    
-    
     
     
     func gotodashBoardScreen() {

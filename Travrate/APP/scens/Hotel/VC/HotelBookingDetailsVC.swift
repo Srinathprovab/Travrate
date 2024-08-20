@@ -514,6 +514,10 @@ extension HotelBookingDetailsVC {
                                                 str1Color: .WhiteColor,
                                                 str2Color: .WhiteColor)
         
+        
+        
+        totlConvertedGrand = totlConvertedGrand + (Double(hotelnotificationPrice) ?? 0.0)
+        
         DispatchQueue.main.async {
             self.setuptv()
         }

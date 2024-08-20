@@ -55,7 +55,7 @@ class ActivitiesImagesTVCell: TableViewCell {
             activityImage.sd_setImage(with: URL(string:  MySingleton.shared.activitiesImagesArray[0].image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                 if let error = error {
                     // Handle error loading image
-                    print("Error loading image: \(error.localizedDescription)")
+                  //  print("Error loading image: \(error.localizedDescription)")
                     // Check if the error is due to a 404 Not Found response
                     if (error as NSError).code == NSURLErrorBadServerResponse {
                         // Set placeholder image for 404 error
@@ -137,7 +137,7 @@ extension ActivitiesImagesTVCell: UICollectionViewDelegate, UICollectionViewData
             cell.hotelImg.sd_setImage(with: URL(string:  MySingleton.shared.activitiesImagesArray[indexPath.row].image ?? ""), placeholderImage: UIImage(named: "placeholder"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                 if let error = error {
                     // Handle error loading image
-                    print("Error loading image: \(error.localizedDescription)")
+                   // print("Error loading image: \(error.localizedDescription)")
                     // Check if the error is due to a 404 Not Found response
                     if (error as NSError).code == NSURLErrorBadServerResponse {
                         // Set placeholder image for 404 error
@@ -156,7 +156,7 @@ extension ActivitiesImagesTVCell: UICollectionViewDelegate, UICollectionViewData
             cell.img.sd_setImage(with: URL(string:  MySingleton.shared.activitiesImagesArray[3].image ?? ""), placeholderImage: UIImage(named: "placeholder"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                 if let error = error {
                     // Handle error loading image
-                    print("Error loading image: \(error.localizedDescription)")
+                   // print("Error loading image: \(error.localizedDescription)")
                     // Check if the error is due to a 404 Not Found response
                     if (error as NSError).code == NSURLErrorBadServerResponse {
                         // Set placeholder image for 404 error

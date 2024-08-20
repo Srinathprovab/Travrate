@@ -62,6 +62,9 @@ struct Upcoming_booking : Codable {
     let created_by_id : String?
     let car_data : Car_data?
     let product : Product?
+    let booking_url : String?
+    
+    
 
     enum CodingKeys: String, CodingKey {
 
@@ -96,6 +99,7 @@ struct Upcoming_booking : Codable {
         case created_by_id = "created_by_id"
         case car_data = "car_data"
         case product = "product"
+        case booking_url = "booking_url"
     }
 
     init(from decoder: Decoder) throws {
@@ -131,6 +135,8 @@ struct Upcoming_booking : Codable {
         created_by_id = try values.decodeIfPresent(String.self, forKey: .created_by_id)
         car_data = try values.decodeIfPresent(Car_data.self, forKey: .car_data)
         product = try values.decodeIfPresent(Product.self, forKey: .product)
+        booking_url = try values.decodeIfPresent(String.self, forKey: .booking_url)
+        
     }
 
 }

@@ -45,6 +45,7 @@ class SportInfoTVCell: TableViewCell {
     
     override func updateUI() {
         vslbl.isHidden = true
+        vslbl.textColor = .WhiteColor
         
         titlelbl.text = cellInfo?.title ?? ""
         subtitlelbl.text = cellInfo?.subTitle ?? ""
@@ -53,13 +54,13 @@ class SportInfoTVCell: TableViewCell {
         sportcitylbl.text = cellInfo?.headerText ?? ""
         datelbl.text = cellInfo?.tempText ?? ""
         
-        MySingleton.shared.setAttributedTextnew(str1: "\(cellInfo?.currency ?? ""): ",
+        MySingleton.shared.setAttributedTextnew(str1: "\(cellInfo?.currency ?? "") ",
                                                 str2: cellInfo?.price ?? "",
                                                 lbl: kwdlbl,
-                                                str1font: .OpenSansRegular(size: 12),
-                                                str2font: .OpenSansBold(size: 20),
-                                                str1Color: .TitleColor,
-                                                str2Color: .TitleColor)
+                                                str1font: .InterBold(size: 12),
+                                                str2font: .InterBold(size: 20),
+                                                str1Color: .BackBtnColor,
+                                                str2Color: .BackBtnColor)
         
         
         
@@ -117,20 +118,23 @@ class SportInfoTVCell: TableViewCell {
             self.sportimg1.sd_setImage(with: URL(string: participantsA[0].participants_img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                 if let error = error {
                     // Handle error loading image
-                    print("Error loading image: \(error.localizedDescription)")
+                //    print("Error loading image: \(error.localizedDescription)")
                     // Check if the error is due to a 404 Not Found response
                     if (error as NSError).code == NSURLErrorBadServerResponse {
                         // Set placeholder image for 404 error
                         self.sportimg1.isHidden = true
                         self.vslbl.isHidden = true
+                        self.vslbl.textColor = .WhiteColor
                     } else {
                         // Set placeholder image for other errors
                         self.sportimg1.isHidden = true
                         self.vslbl.isHidden = true
+                        self.vslbl.textColor = .WhiteColor
                     }
                 }else {
                     self.sportimg1.isHidden = false
                     self.vslbl.isHidden = false
+                    self.vslbl.textColor = .TitleColor
                 }
             })
             
@@ -139,7 +143,7 @@ class SportInfoTVCell: TableViewCell {
             self.sportimg2.sd_setImage(with: URL(string: participantsA[1].participants_img ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                 if let error = error {
                     // Handle error loading image
-                    print("Error loading image: \(error.localizedDescription)")
+                //    print("Error loading image: \(error.localizedDescription)")
                     // Check if the error is due to a 404 Not Found response
                     if (error as NSError).code == NSURLErrorBadServerResponse {
                         // Set placeholder image for 404 error

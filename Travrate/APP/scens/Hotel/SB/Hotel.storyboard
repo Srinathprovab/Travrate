@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -687,9 +686,62 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
                                             </button>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8w-Z5-uEI">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQd-sN-Xcb" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                                                        <rect key="frame" x="15" y="10" width="363" height="40"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hotel Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4N-lM-ZCi">
+                                                                <rect key="frame" x="0.0" y="0.0" width="363" height="40"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTX-Si-YTC">
+                                                                <rect key="frame" x="333" y="10" width="20" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="cXH-W7-XP4"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="oAd-CP-2Cs"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="subtitleNewcolor"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="close"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="c4N-lM-ZCi" secondAttribute="bottom" id="4i4-No-yhI"/>
+                                                            <constraint firstItem="CTX-Si-YTC" firstAttribute="centerY" secondItem="c4N-lM-ZCi" secondAttribute="centerY" id="JGF-bf-UBh"/>
+                                                            <constraint firstItem="c4N-lM-ZCi" firstAttribute="leading" secondItem="DQd-sN-Xcb" secondAttribute="leading" id="PWU-ph-ZwG"/>
+                                                            <constraint firstAttribute="trailing" secondItem="c4N-lM-ZCi" secondAttribute="trailing" id="d1U-rp-0Yf"/>
+                                                            <constraint firstAttribute="trailing" secondItem="CTX-Si-YTC" secondAttribute="trailing" constant="10" id="e1M-d4-dno"/>
+                                                            <constraint firstItem="c4N-lM-ZCi" firstAttribute="top" secondItem="DQd-sN-Xcb" secondAttribute="top" id="g3A-gq-K34"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="BorderColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="DQd-sN-Xcb" secondAttribute="trailing" constant="15" id="CW5-mG-R6b"/>
+                                                    <constraint firstAttribute="bottom" secondItem="DQd-sN-Xcb" secondAttribute="bottom" constant="10" id="Lpn-dn-UkG"/>
+                                                    <constraint firstItem="DQd-sN-Xcb" firstAttribute="top" secondItem="H8w-Z5-uEI" secondAttribute="top" constant="10" id="Ugq-bD-5gA"/>
+                                                    <constraint firstItem="DQd-sN-Xcb" firstAttribute="leading" secondItem="H8w-Z5-uEI" secondAttribute="leading" constant="15" id="mbB-Li-yMC"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="H8w-Z5-uEI" secondAttribute="trailing" id="3x1-76-GpI"/>
                                             <constraint firstAttribute="bottom" secondItem="sFe-a2-CaE" secondAttribute="bottom" constant="10" id="OiY-uP-iYS"/>
                                             <constraint firstItem="sFe-a2-CaE" firstAttribute="leading" secondItem="d0Q-Yu-qO7" secondAttribute="leading" constant="13" id="PpE-gj-sRh"/>
                                             <constraint firstItem="sFe-a2-CaE" firstAttribute="top" secondItem="d0Q-Yu-qO7" secondAttribute="top" constant="10" id="Qig-UD-GGV"/>
@@ -697,7 +749,10 @@
                                             <constraint firstAttribute="height" constant="60" id="WIK-9q-KrT"/>
                                             <constraint firstItem="cc6-Hv-ZZT" firstAttribute="leading" secondItem="sFe-a2-CaE" secondAttribute="trailing" constant="15" id="XoI-oG-XMv"/>
                                             <constraint firstItem="IHk-H3-eGY" firstAttribute="centerY" secondItem="d0Q-Yu-qO7" secondAttribute="centerY" id="YDq-NJ-W2L"/>
+                                            <constraint firstItem="H8w-Z5-uEI" firstAttribute="top" secondItem="d0Q-Yu-qO7" secondAttribute="top" id="azp-6d-2mY"/>
                                             <constraint firstItem="IHk-H3-eGY" firstAttribute="leading" secondItem="cc6-Hv-ZZT" secondAttribute="trailing" constant="15" id="egI-Ce-N4o"/>
+                                            <constraint firstItem="H8w-Z5-uEI" firstAttribute="leading" secondItem="d0Q-Yu-qO7" secondAttribute="leading" id="gzn-bm-OwP"/>
+                                            <constraint firstAttribute="bottom" secondItem="H8w-Z5-uEI" secondAttribute="bottom" id="uwF-ZI-NPS"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="h8a-R8-NuK">
@@ -763,6 +818,7 @@
                     </view>
                     <connections>
                         <outlet property="cittlbl" destination="4pN-iz-1fV" id="h5b-mB-CeL"/>
+                        <outlet property="closeHotelNameSearchViewBtn" destination="CTX-Si-YTC" id="feJ-mg-RkB"/>
                         <outlet property="commonTableView" destination="h8a-R8-NuK" id="G69-1y-61j"/>
                         <outlet property="cvHolderView" destination="d0Q-Yu-qO7" id="Y7K-zY-og4"/>
                         <outlet property="dateslbl" destination="v1h-i1-vBw" id="CqG-kR-rFu"/>
@@ -771,6 +827,8 @@
                         <outlet property="filterImg" destination="DFt-1A-U5w" id="nBX-Gd-TNA"/>
                         <outlet property="filterlbl" destination="gZp-qC-qNp" id="hmW-Nx-jnZ"/>
                         <outlet property="holderView" destination="TqC-Rd-wXV" id="tvI-er-GlS"/>
+                        <outlet property="hotelNameSearchTF" destination="c4N-lM-ZCi" id="LBw-5d-jZT"/>
+                        <outlet property="hotelNameSearchTFView" destination="H8w-Z5-uEI" id="wMt-rt-Sdn"/>
                         <outlet property="hotelsCountlbl" destination="TeJ-bf-spb" id="7HE-WI-FCY"/>
                         <outlet property="paxlbl" destination="OQ9-CH-ezk" id="a5D-DT-HlI"/>
                         <outlet property="recommandedView" destination="0HR-k4-xjD" id="UCG-IT-wpV"/>
@@ -1618,6 +1676,9 @@
         </namedColor>
         <namedColor name="WhiteColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subtitleNewcolor">
+            <color red="0.3449999988079071" green="0.3449999988079071" blue="0.3449999988079071" alpha="0.50999999046325684" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

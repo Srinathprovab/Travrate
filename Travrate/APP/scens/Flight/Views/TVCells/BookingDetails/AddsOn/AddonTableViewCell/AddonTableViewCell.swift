@@ -227,6 +227,12 @@ extension AddonTableViewCell {
             cell.originValue = data.origin ?? ""
             cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
             
+            if indexPath.row == 0{
+                cell.checkIMAGE.image = UIImage(named: "check")
+                MySingleton.shared.addonServicesOrigenArray.append(data.origin ?? "")
+                tableView.selectAllRows(animated: true)
+                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            }
            
         }
         
@@ -383,6 +389,7 @@ extension AddonTableViewCell {
     
     private func updateHotelTotal(for service: HotelAddonModel, isSelected: Bool) {
         let amount = Double(service.price ?? "0") ?? 0
+        
         if isSelected {
             totlConvertedGrand += amount
         } else {

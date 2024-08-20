@@ -89,8 +89,27 @@ class FlightResultTVCell: TableViewCell {
         let kwdprice = String(format: "%.2f", flightlist?.price?.api_total_display_fare ?? 0.0)
         let strikekwdprice = String(format: "%.2f", flightlist?.price?.api_total_display_fare_withoutmarkup ?? 0.0)
         
-        kwdlbl.text = "\(flightlist?.price?.api_currency ?? ""):\(kwdprice)"
-        strikekwdlbl.text = "\(flightlist?.price?.api_currency ?? ""):\(strikekwdprice)"
+        
+        
+        MySingleton.shared.setAttributedTextnew(str1: "\(flightlist?.price?.api_currency ?? ""): ",
+                                                str2: "\(kwdprice)",
+                                                lbl: kwdlbl,
+                                                str1font: .InterBold(size: 12),
+                                                str2font: .InterBold(size: 20),
+                                                str1Color: .BackBtnColor,
+                                                str2Color: .BackBtnColor)
+        
+        
+        MySingleton.shared.setAttributedTextnew(str1: "\(flightlist?.price?.api_currency ?? ""): ",
+                                                str2: "\(strikekwdprice)",
+                                                lbl: kwdlbl,
+                                                str1font: .InterBold(size: 12),
+                                                str2font: .InterBold(size: 20),
+                                                str1Color: .BackBtnColor,
+                                                str2Color: .BackBtnColor)
+        
+       // kwdlbl.text = "\(flightlist?.price?.api_currency ?? ""):\(kwdprice)"
+      //  strikekwdlbl.text = "\(flightlist?.price?.api_currency ?? ""):\(strikekwdprice)"
         
         if kwdprice == strikekwdprice {
             strikekwdlbl.isHidden = true

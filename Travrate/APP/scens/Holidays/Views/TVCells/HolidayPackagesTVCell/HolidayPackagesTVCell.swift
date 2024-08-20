@@ -53,7 +53,7 @@ class HolidayPackagesTVCell: TableViewCell {
             completed: { image, error, cacheType, url in
                 if let error = error {
                     // Handle error loading image
-                    print("Error loading image: \(error.localizedDescription)")
+                 //   print("Error loading image: \(error.localizedDescription)")
                     // Check if the error is due to a 404 Not Found response
                     if (error as NSError).code == NSURLErrorFileDoesNotExist {
                         // Set placeholder image for 404 error

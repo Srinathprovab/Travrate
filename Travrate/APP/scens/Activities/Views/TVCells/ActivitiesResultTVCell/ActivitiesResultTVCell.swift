@@ -75,17 +75,17 @@ class ActivitiesResultTVCell: TableViewCell {
         MySingleton.shared.setAttributedTextnew(str1: "\(MySingleton.shared.activites_currency) ",
                                                 str2: activitylist?.amountStarts ?? "",
                                                 lbl: kwdlbl,
-                                                str1font: .InterMedium(size: 12),
+                                                str1font: .InterBold(size: 12),
                                                 str2font: .InterBold(size: 22),
-                                                str1Color: .TitleColor,
-                                                str2Color: HexColor("#3C627A"))
+                                                str1Color: .BackBtnColor,
+                                                str2Color: .BackBtnColor)
         
         
         selectedImage = activitylist?.image ?? ""
         activityimg.sd_setImage(with: URL(string: activitylist?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
             if let error = error {
                 // Handle error loading image
-                print("Error loading image: \(error.localizedDescription)")
+             //   print("Error loading image: \(error.localizedDescription)")
                 // Check if the error is due to a 404 Not Found response
                 if (error as NSError).code == NSURLErrorBadServerResponse {
                     // Set placeholder image for 404 error

@@ -16,10 +16,10 @@ class CarRentalTripsTVCell: TableViewCell {
     
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var carimg: UIImageView!
-//    @IBOutlet weak var depositeAmountlbl: UILabel!
-//    @IBOutlet weak var markupView: UIStackView!
-//    @IBOutlet weak var viewDetailsBtn: UIButton!
-//    @IBOutlet weak var kwdlbl: UILabel!
+    //    @IBOutlet weak var depositeAmountlbl: UILabel!
+    //    @IBOutlet weak var markupView: UIStackView!
+    //    @IBOutlet weak var viewDetailsBtn: UIButton!
+    //    @IBOutlet weak var kwdlbl: UILabel!
     @IBOutlet weak var seatslbl: UILabel!
     @IBOutlet weak var caroption2: UILabel!
     @IBOutlet weak var caroption3: UILabel!
@@ -27,7 +27,7 @@ class CarRentalTripsTVCell: TableViewCell {
     @IBOutlet weak var caroption5: UILabel!
     @IBOutlet weak var caroption6: UILabel!
     @IBOutlet weak var caroption7: UILabel!
-  //  @IBOutlet weak var markuplbl: UILabel!
+    //  @IBOutlet weak var markuplbl: UILabel!
     @IBOutlet weak var voucherBtn: UIButton!
     
     
@@ -60,12 +60,12 @@ class CarRentalTripsTVCell: TableViewCell {
         
         cardetails = cellInfo?.moreData as? Upcoming_booking
         titlelbl.text = cardetails?.car_name
-        
+        voucherString = cardetails?.booking_url ?? ""
         
         self.carimg.sd_setImage(with: URL(string: cardetails?.car_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
             if let error = error {
                 // Handle error loading image
-                print("Error loading image: \(error.localizedDescription)")
+               // print("Error loading image: \(error.localizedDescription)")
                 // Check if the error is due to a 404 Not Found response
                 if (error as NSError).code == NSURLErrorBadServerResponse {
                     // Set placeholder image for 404 error
@@ -78,7 +78,7 @@ class CarRentalTripsTVCell: TableViewCell {
         })
         
         
-       
+        
         seatslbl.text = "\(cardetails?.car_data?.adults ?? "") Seats"
         caroption2.text = "\(cardetails?.car_data?.luggageMed ?? "") Medium Bags"
         caroption3.text = cardetails?.car_data?.transmission ?? ""
@@ -90,17 +90,16 @@ class CarRentalTripsTVCell: TableViewCell {
         
         
         
-//        MySingleton.shared.setAttributedTextnew(str1: cardetails?.currency ?? "",
-//                                                str2: cardetails?.total_amount ?? "",
-//                                                lbl: kwdlbl,
-//                                                str1font: .InterBold(size: 12),
-//                                                str2font: .InterBold(size: 16),
-//                                                str1Color: .BackBtnColor,
-//                                                str2Color: .BackBtnColor)
-//        
+        //        MySingleton.shared.setAttributedTextnew(str1: cardetails?.currency ?? "",
+        //                                                str2: cardetails?.total_amount ?? "",
+        //                                                lbl: kwdlbl,
+        //                                                str1font: .InterBold(size: 12),
+        //                                                str2font: .InterBold(size: 16),
+        //                                                str1Color: .BackBtnColor,
+        //                                                str2Color: .BackBtnColor)
+        //
         
         
-        voucherString = "urllllllllllllllllll"
         
     }
     

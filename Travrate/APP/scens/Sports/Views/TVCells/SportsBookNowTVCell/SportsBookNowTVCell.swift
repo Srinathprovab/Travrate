@@ -67,7 +67,7 @@ class SportsBookNowTVCell: TableViewCell {
     
     
     override func updateUI() {
-        MySingleton.shared.setAttributedTextnew(str1: "\(cellInfo?.currency ?? ""):", str2: "\(cellInfo?.price ?? "")", lbl: kwdlbk, str1font: .OpenSansRegular(size: 14), str2font: .OpenSansBold(size: 20), str1Color: .TitleColor, str2Color: .TitleColor)
+        MySingleton.shared.setAttributedTextnew(str1: "\(cellInfo?.currency ?? ""):", str2: "\(cellInfo?.price ?? "")", lbl: kwdlbk, str1font: .InterBold(size: 12), str2font: .InterBold(size: 20), str1Color: .BackBtnColor, str2Color: .BackBtnColor)
         
         sportnamelbl.text = cellInfo?.title ?? ""
         searchid = cellInfo?.searchid ?? ""

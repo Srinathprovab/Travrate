@@ -27,6 +27,9 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     @IBOutlet weak var sessionTimelbl: UILabel!
     @IBOutlet weak var hotelsCountlbl: UILabel!
     @IBOutlet weak var searchbtn: UIButton!
+    @IBOutlet weak var hotelNameSearchTF: UITextField!
+    @IBOutlet weak var hotelNameSearchTFView: UIView!
+    @IBOutlet weak var closeHotelNameSearchViewBtn: UIButton!
     
     // var loaderVC: LoderVC!
     var bookingSourceDataArrayCount = Int()
@@ -92,6 +95,10 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         searchbtn.layer.borderWidth = 1
         searchbtn.layer.borderColor = UIColor.BorderColor.cgColor
         searchbtn.addTarget(self, action: #selector(didTapOnSearcHotelshBtnAction(_:)), for: .touchUpInside)
+        closeHotelNameSearchViewBtn.addTarget(self, action: #selector(didTapOnCloseSearcHotelshBtnAction(_:)), for: .touchUpInside)
+        hotelNameSearchTF.setLeftPaddingPoints(15)
+        hotelNameSearchTF.font = .InterRegular(size: 14)
+        hotelNameSearchTF.addTarget(self, action: #selector(editingTextField1(_:)), for: .editingChanged)
         
         
         setuplabels(lbl: cittlbl, text: "", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
@@ -110,7 +117,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         let adultsCoutntStr = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Room \(roomscount) | Adult \(adultcount)"
         
         var labelText = adultsCoutntStr
-      //  var labelText = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Adult \(adultcount)"
+        //  var labelText = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Adult \(adultcount)"
         if childcount > 0 {
             labelText += ", Child \(childcount)"
         }
@@ -175,33 +182,23 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     
     
     
-    @objc func editingTextField1(_ tf: UITextField) {
-        searchText = tf.text ?? ""
-        
-        if searchText == "" {
-            isSearchBool = false
-            filterContentForSearchText(searchText)
-        }else {
-            isSearchBool = true
-            filterContentForSearchText(searchText)
-            
-        }
-    }
     
-    
-    func filterContentForSearchText(_ searchText: String) {
-        print("Filterin with:", searchText)
-        filtered.removeAll()
-        filtered = hotelSearchResult.filter { thing in
-            return "\(thing.name?.lowercased() ?? "")".contains(searchText.lowercased())
-        }
-        
-        commonTableView.reloadData()
-    }
     
     
     @objc func didTapOnSearcHotelshBtnAction(_ sender:UIButton) {
-        print("didTapOnSearcHotelshBtnAction")
+        hotelNameSearchTFView.isHidden = false
+        hotelNameSearchTF.becomeFirstResponder()
+    }
+    
+    @objc func didTapOnCloseSearcHotelshBtnAction(_ sender:UIButton) {
+        hotelNameSearchTFView.isHidden = true
+        hotelNameSearchTF.resignFirstResponder()
+        hotelNameSearchTF.text = ""
+        
+        searchText = ""
+        isSearchBool = false
+        filterContentForSearchText(searchText)
+        commonTableView.reloadData()
     }
     
     @objc func didTapOnFilterBtnAction(_ sender:UIButton) {
@@ -263,18 +260,18 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     //MARK: -  didTapOnViewMapBtnAction
     @objc func didTapOnViewMapBtnAction(_ sender:UIButton) {
         mapModelArray.removeAll()
-//        hotelSearchResult.forEach { i in
-//            let mapModel = MapModel(
-//                longitude: i.longitude ?? "",
-//                latitude: i.latitude ?? "",
-//                hotelname: i.name ?? ""
-//            )
-//            mapModelArray.append(mapModel)
-//        }
+        //        hotelSearchResult.forEach { i in
+        //            let mapModel = MapModel(
+        //                longitude: i.longitude ?? "",
+        //                latitude: i.latitude ?? "",
+        //                hotelname: i.name ?? ""
+        //            )
+        //            mapModelArray.append(mapModel)
+        //        }
         
         mapModelArray.removeAll()
         if isSearchBool == false {
-           
+            
             hotelSearchResult.forEach { i in
                 let mapModel = MapModel(
                     longitude: i.longitude ?? "",
@@ -534,7 +531,7 @@ extension SearchHotelsResultVC {
         hotelstarratingArray = Array(Set(hotelstarratingArray))
         neighbourwoodArray = Array(Set(neighbourwoodArray))
         
-       
+        
         
         DispatchQueue.main.async {[self] in
             commonTableView.reloadData()
@@ -559,7 +556,7 @@ extension SearchHotelsResultVC {
             cell.selectionStyle = .none
             cell.delegate = self
             
-            if( isSearchBool == true){
+            if(isSearchBool == true){
                 
                 let dict = filtered[indexPath.row]
                 
@@ -568,7 +565,7 @@ extension SearchHotelsResultVC {
                 cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                     if let error = error {
                         // Handle error loading image
-                        print("Error loading image: \(error.localizedDescription)")
+                    //    print("Error loading image: \(error.localizedDescription)")
                         // Check if the error is due to a 404 Not Found response
                         if (error as NSError).code == NSURLErrorBadServerResponse {
                             // Set placeholder image for 404 error
@@ -582,13 +579,14 @@ extension SearchHotelsResultVC {
                 
                 
                 cell.locationlbl.text = dict.address
-                MySingleton.shared.setAttributedTextnew(str1: dict.currency ?? "",
-                                                        str2: String(format: "%.2f", dict.price ?? ""),
+                MySingleton.shared.setAttributedTextnew(str1: "\(dict.currency ?? "") ",
+                                                        str2: dict.price ?? "",
                                                         lbl: cell.kwdlbl,
-                                                        str1font: .InterBold(size: 14),
-                                                        str2font: .InterBold(size: 16),
-                                                        str1Color: .TitleColor,
-                                                        str2Color: .TitleColor)
+                                                        str1font: .InterBold(size: 12),
+                                                        str2font: .InterBold(size: 20),
+                                                        str1Color: .BackBtnColor,
+                                                        str2Color: .BackBtnColor)
+                
                 cell.bookingsource = dict.booking_source ?? ""
                 cell.hotelid = String(dict.hotel_code ?? "0")
                 cell.lat = dict.latitude ?? ""
@@ -631,7 +629,7 @@ extension SearchHotelsResultVC {
                 cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                     if let error = error {
                         // Handle error loading image
-                        print("Error loading image: \(error.localizedDescription)")
+                     //   print("Error loading image: \(error.localizedDescription)")
                         // Check if the error is due to a 404 Not Found response
                         if (error as NSError).code == NSURLErrorBadServerResponse {
                             // Set placeholder image for 404 error
@@ -645,13 +643,14 @@ extension SearchHotelsResultVC {
                 
                 cell.ratingView.value = CGFloat(dict.star_rating ?? 0)
                 cell.locationlbl.text = dict.address
-                MySingleton.shared.setAttributedTextnew(str1: dict.currency ?? "",
+                MySingleton.shared.setAttributedTextnew(str1: "\(dict.currency ?? "") ",
                                                         str2: dict.price ?? "",
                                                         lbl: cell.kwdlbl,
-                                                        str1font: .InterSemiBold(size: 14),
-                                                        str2font: .InterSemiBold(size: 16),
-                                                        str1Color: .TitleColor,
-                                                        str2Color: .TitleColor)
+                                                        str1font: .InterBold(size: 12),
+                                                        str2font: .InterBold(size: 20),
+                                                        str1Color: .BackBtnColor,
+                                                        str2Color: .BackBtnColor)
+                
                 cell.bookingsource = dict.booking_source ?? ""
                 cell.hotelid = String(dict.hotel_code ?? "0")
                 cell.lat = dict.latitude ?? ""
@@ -716,7 +715,7 @@ extension SearchHotelsResultVC {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
                 
                 if isSearchBool == false {
-                  // callHotelSearchPaginationAPI()
+                    // callHotelSearchPaginationAPI()
                 }
             }
             
@@ -793,7 +792,7 @@ extension SearchHotelsResultVC:AppliedFilters{
         
         // Set the filter flag to true
         
-      //  isSearchBool = filterresettapbool == true ? false : true
+        //  isSearchBool = filterresettapbool == true ? false : true
         
         
         if filterresettapbool == true {
@@ -815,7 +814,7 @@ extension SearchHotelsResultVC:AppliedFilters{
         
         
         // Filter the hotels based on the specified criteria
-       let filteredArray = hotelSearchResult.filter { hotel in
+        let filteredArray = hotelSearchResult.filter { hotel in
             guard let totalString = Double(hotel.price ?? "0.0") else { return false }
             
             let priceInRange = totalString >= minpricerange && totalString <= maxpricerange
@@ -839,7 +838,7 @@ extension SearchHotelsResultVC:AppliedFilters{
             TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
             
         }
-
+        
         
         
         // Reload the table view with the filtered results
@@ -1020,3 +1019,32 @@ extension SearchHotelsResultVC {
 
 
 
+extension SearchHotelsResultVC {
+    
+    
+    @objc func editingTextField1(_ tf: UITextField) {
+        searchText = tf.text ?? ""
+        
+        if searchText == "" {
+            isSearchBool = false
+            filterContentForSearchText(searchText)
+        }else {
+            isSearchBool = true
+            filterContentForSearchText(searchText)
+            
+        }
+    }
+    
+    
+    func filterContentForSearchText(_ searchText: String) {
+        print("Filterin with:", searchText)
+        filtered.removeAll()
+        filtered = hotelSearchResult.filter { thing in
+            return "\(thing.name?.lowercased() ?? "")".contains(searchText.lowercased())
+        }
+        
+        commonTableView.reloadData()
+    }
+    
+    
+}

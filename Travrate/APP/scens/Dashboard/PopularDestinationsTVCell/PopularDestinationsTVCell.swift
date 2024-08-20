@@ -211,7 +211,7 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 } else {
                     cell.img.sd_setImage(with: URL(string: flight.image ?? ""), placeholderImage: UIImage(named: "placeholder.png"), completed: { (image, error, cacheType, imageURL) in
                         if let error = error {
-                            print("Error loading image: \(error.localizedDescription)")
+                        //    print("Error loading image: \(error.localizedDescription)")
                             cell.img.image = UIImage(named: "noimage1")
                         }
                     })

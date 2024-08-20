@@ -74,13 +74,13 @@ class HotelsTVCell: TableViewCell {
         hotelImg.clipsToBounds = true
         locImg.image = UIImage(named: "loc")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#A3A3A3"))
         
-        MySingleton.shared.setAttributedTextnew(str1: "",
-                                                str2: "",
-                                                lbl: self.kwdlbl,
-                                                str1font: .InterBold(size: 14),
-                                                str2font: .InterBold(size: 16),
-                                                str1Color: .TitleColor,
-                                                str2Color: .TitleColor)
+//        MySingleton.shared.setAttributedTextnew(str1: "",
+//                                                str2: "",
+//                                                lbl: self.kwdlbl,
+//                                                str1font: .InterBold(size: 12),
+//                                                str2font: .InterBold(size: 18),
+//                                                str1Color: .BackBtnColor,
+//                                                str2Color: .BackBtnColor)
         
     }
     

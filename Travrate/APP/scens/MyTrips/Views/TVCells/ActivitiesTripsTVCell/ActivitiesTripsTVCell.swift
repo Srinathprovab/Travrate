@@ -69,7 +69,7 @@ class ActivitiesTripsTVCell: TableViewCell {
         self.activityimg.sd_setImage(with: URL(string: details?.itinerary_details?[0].image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
             if let error = error {
                 // Handle error loading image
-                print("Error loading image: \(error.localizedDescription)")
+               // print("Error loading image: \(error.localizedDescription)")
                 // Check if the error is due to a 404 Not Found response
                 if (error as NSError).code == NSURLErrorBadServerResponse {
                     // Set placeholder image for 404 error

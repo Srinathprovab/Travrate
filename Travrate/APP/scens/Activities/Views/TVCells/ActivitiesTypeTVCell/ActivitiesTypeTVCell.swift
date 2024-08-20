@@ -163,7 +163,7 @@ extension ActivitiesTypeTVCell:UITableViewDelegate,UITableViewDataSource {
                 cell.img.sd_setImage(with: URL(string: imageUrl ?? ""), placeholderImage: UIImage(named: "placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                     if let error = error {
                         // Handle error loading image
-                        print("Error loading image: \(error.localizedDescription)")
+                      //  print("Error loading image: \(error.localizedDescription)")
                         // Check if the error is due to a 404 Not Found response
                         if (error as NSError).code == NSURLErrorBadServerResponse {
                             // Set placeholder image for 404 error

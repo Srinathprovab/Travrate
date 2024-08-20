@@ -65,7 +65,7 @@ class CarRentalResultTVCell: TableViewCell {
             carimg.sd_setImage(with: URL(string: carlist?.car_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                 if let error = error {
                     // Handle error loading image
-                    print("Error loading image: \(error.localizedDescription)")
+                 //   print("Error loading image: \(error.localizedDescription)")
                     // Check if the error is due to a 404 Not Found response
                     if (error as NSError).code == NSURLErrorBadServerResponse {
                         // Set placeholder image for 404 error
@@ -101,10 +101,10 @@ class CarRentalResultTVCell: TableViewCell {
             MySingleton.shared.setAttributedTextnew(str1: "\(carlist?.product?[0].currency ?? "") ",
                                                     str2: carlist?.product?[0].total ?? "",
                                                     lbl: kwdlbl,
-                                                    str1font: .InterSemiBold(size: 12),
+                                                    str1font: .InterBold(size: 12),
                                                     str2font: .InterBold(size: 22),
-                                                    str1Color: .TitleColor,
-                                                    str2Color: .TitleColor)
+                                                    str1Color: .BackBtnColor,
+                                                    str2Color: .BackBtnColor)
             
             
             if carlist?.markup?.value == 0 {
@@ -121,7 +121,7 @@ class CarRentalResultTVCell: TableViewCell {
             carimg.sd_setImage(with: URL(string: carlist1?.car_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                 if let error = error {
                     // Handle error loading image
-                    print("Error loading image: \(error.localizedDescription)")
+                  //  print("Error loading image: \(error.localizedDescription)")
                     // Check if the error is due to a 404 Not Found response
                     if (error as NSError).code == NSURLErrorBadServerResponse {
                         // Set placeholder image for 404 error

@@ -60,7 +60,7 @@ class TransfersInf0TVCell: TableViewCell {
         carimg.sd_setImage(with: URL(string: transferlist?.car_detail?.images ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
             if let error = error {
                 // Handle error loading image
-                print("Error loading image: \(error.localizedDescription)")
+              //  print("Error loading image: \(error.localizedDescription)")
                 // Check if the error is due to a 404 Not Found response
                 if (error as NSError).code == NSURLErrorBadServerResponse {
                     // Set placeholder image for 404 error
@@ -73,13 +73,13 @@ class TransfersInf0TVCell: TableViewCell {
         })
         
         
-        MySingleton.shared.setAttributedTextnew(str1: transferlist?.currency ?? "",
+        MySingleton.shared.setAttributedTextnew(str1: "\(transferlist?.currency ?? "") ",
                                                 str2: String(format: "%.2f", transferlist?.price ?? ""),
                                                 lbl: kwdlbl,
-                                                str1font: .InterSemiBold(size: 12),
+                                                str1font: .InterBold(size: 12),
                                                 str2font: .InterBold(size: 20),
-                                                str1Color: .TitleColor,
-                                                str2Color: .TitleColor)
+                                                str1Color: .BackBtnColor,
+                                                str2Color: .BackBtnColor)
         
     }
     

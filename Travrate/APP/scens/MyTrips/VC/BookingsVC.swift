@@ -132,8 +132,7 @@ class BookingsVC: BaseTableVC, TripsViewModelDelegate {
     
     
     override func didTapOnVoucherBtnAction(cell: CarRentalTripsTVCell) {
-        print(cell.voucherString)
-       // gotoLoadWebViewVC(urlStr1: cell.voucherString)
+        gotoLoadWebViewVC(urlStr1: cell.voucherString)
     }
     
     

@@ -54,7 +54,7 @@ class HotelBookingCancellationpolicyTVCell: TableViewCell {
 
     override func updateUI() {
         
-        tvheight.constant = CGFloat(MySingleton.shared.cancellationRoomStringArray.count * 78)
+        tvheight.constant = CGFloat(MySingleton.shared.roompaxesdetails.count * 78)
         cancellationTV.reloadData()
     }
     
@@ -90,18 +90,21 @@ extension HotelBookingCancellationpolicyTVCell:UITableViewDelegate,UITableViewDa
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MySingleton.shared.cancellationRoomStringArray.count
+        return MySingleton.shared.roompaxesdetails.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var c = UITableViewCell()
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CancellationStringTVCell {
             
+            
+            let data = MySingleton.shared.roompaxesdetails[indexPath.row]
+            
             if cellInfo?.key == "booking" {
                 cell.titlelbl.isHidden = false
             }
-            cell.titlelbl.text = "Room \(indexPath.row + 1): \(MySingleton.shared.cancellationRoomStringArray[0].room_name ?? "")"
-            cell.cancellationStringlbl.text = MySingleton.shared.cancellationRoomStringArray[indexPath.row].policy
+            cell.titlelbl.text = "Room \(indexPath.row + 1): \(data.room_name ?? "")"
+            cell.cancellationStringlbl.text = data.cancellation_string?[0].policy
             
             c = cell
             
