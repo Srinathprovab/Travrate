@@ -439,15 +439,15 @@ class MySingleton {
                     self.countrylist = countries
                     
                 } else {
-                    print("Unable to find 'country_list' key in the JSON dictionary.")
+                    //print("Unable to find 'country_list' key in the JSON dictionary.")
                 }
                 
                 
             } catch let error {
-                print("Error decoding JSON: \(error)")
+                //print("Error decoding JSON: \(error)")
             }
         } else {
-            print("Unable to find clist.json in the Xcode project.")
+            //print("Unable to find clist.json in the Xcode project.")
         }
         
         
@@ -473,15 +473,15 @@ class MySingleton {
                     self.PaymentSelectionArray = payments
                     
                 } else {
-                    print("Unable to find 'data' key in the JSON dictionary.")
+                    //print("Unable to find 'data' key in the JSON dictionary.")
                 }
                 
                 
             } catch let error {
-                print("Error decoding JSON: \(error)")
+                //print("Error decoding JSON: \(error)")
             }
         } else {
-            print("Unable to find clist.json in the Xcode project.")
+            //print("Unable to find clist.json in the Xcode project.")
         }
         
         
@@ -565,7 +565,7 @@ class MySingleton {
 //
 //            UNUserNotificationCenter.current().add(request) { error in
 //                if let error = error {
-//                    print("Error scheduling local notification: \(error)")
+//                    //print("Error scheduling local notification: \(error)")
 //                }
 //            }
 //        }
@@ -762,7 +762,7 @@ extension MySingleton {
         
         // Optionally clear disk cache as well
         SDImageCache.shared.clearDisk {
-            print("Disk cache cleared when view controller is dismissed")
+            //print("Disk cache cleared when view controller is dismissed")
         }
     }
 }

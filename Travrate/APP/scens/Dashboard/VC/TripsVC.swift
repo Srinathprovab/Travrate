@@ -40,7 +40,7 @@ class TripsVC: BaseTableVC {
         
         MySingleton.shared.tablerow.append(TableRow(title:"Flight",image: "flighttrip",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Hotel",image: "hoteltrip",cellType:.TripsTVCell))
-        MySingleton.shared.tablerow.append(TableRow(title:"Transfers",image: "transfer",cellType:.TripsTVCell))
+       // MySingleton.shared.tablerow.append(TableRow(title:"Transfers",image: "transfer",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Sports",image: "sports",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Car Rentals",image: "s3",cellType:.TripsTVCell))
         MySingleton.shared.tablerow.append(TableRow(title:"Activities",image: "activitiestrip",cellType:.TripsTVCell))

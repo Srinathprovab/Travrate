@@ -14,7 +14,7 @@ extension BookingsVC {
     
     func callFlightBookingsAPI() {
         MySingleton.shared.payload.removeAll()
-        MySingleton.shared.payload["user_id"] = "2831"
+        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid)
         
         DispatchQueue.main.async {
             self.trips?.CALL_GET_FLIGHT_TRIPS_API(dictParam: MySingleton.shared.payload)

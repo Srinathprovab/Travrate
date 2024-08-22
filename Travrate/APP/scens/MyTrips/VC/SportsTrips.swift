@@ -13,7 +13,7 @@ extension BookingsVC {
     //MARK: - callSportstUpcomingAPI
     func callSportstUpcomingAPI() {
         MySingleton.shared.payload.removeAll()
-        MySingleton.shared.payload["user_id"] = "2890"
+        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid)
         trips?.CALL_GET_SPORTS_TRIPS_API(dictParam: MySingleton.shared.payload)
     }
     
