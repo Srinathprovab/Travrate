@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		158B4395A54597AB9B849CB0 /* Pods_TravrateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB6A948F5373C2BFA2296E9C /* Pods_TravrateTests.framework */; };
-		3BDA7DA02ABC95FCC3221EC4 /* Pods_Travrate_TravrateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5EBE01057C6188554066842 /* Pods_Travrate_TravrateUITests.framework */; };
+		4ACEB7454E373B32D1A5C9F0 /* Pods_TravrateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A306DEDDB4726665AF91909 /* Pods_TravrateTests.framework */; };
+		64BD483E8F74B41686E30C17 /* Pods_Travrate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44B62DAEC117A04DD1C68A5 /* Pods_Travrate.framework */; };
 		6500CADF2BF7910000433C89 /* SubmitOTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6500CADE2BF7910000433C89 /* SubmitOTPVC.swift */; };
 		6500CAE12BF7979400433C89 /* HolidayEnquireyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6500CAE02BF7979400433C89 /* HolidayEnquireyModel.swift */; };
 		650A1A1A2BFB34EE00F439CC /* OTPSucessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650A1A192BFB34EE00F439CC /* OTPSucessModel.swift */; };
@@ -403,8 +403,6 @@
 		65207E032BF494320076EF76 /* StarRatingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65207B232BF4942F0076EF76 /* StarRatingCVCell.xib */; };
 		65207E042BF494320076EF76 /* PaymentTypeCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65207B252BF4942F0076EF76 /* PaymentTypeCVCell.xib */; };
 		65207E052BF494320076EF76 /* PaymentTypeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207B262BF4942F0076EF76 /* PaymentTypeCVCell.swift */; };
-		65207E062BF494320076EF76 /* Ottu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65207B292BF4942F0076EF76 /* Ottu.storyboard */; };
-		65207E072BF494320076EF76 /* OttuPaymentGatewayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207B2B2BF4942F0076EF76 /* OttuPaymentGatewayVC.swift */; };
 		65207E082BF494320076EF76 /* Transfers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65207B322BF4942F0076EF76 /* Transfers.storyboard */; };
 		65207E092BF494320076EF76 /* BookTransfersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207B352BF4942F0076EF76 /* BookTransfersVC.swift */; };
 		65207E0A2BF494320076EF76 /* BDTransferVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207B362BF4942F0076EF76 /* BDTransferVC.swift */; };
@@ -525,17 +523,6 @@
 		65207E7D2BF494320076EF76 /* CruiseItineraryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207BF62BF4942F0076EF76 /* CruiseItineraryTVCell.swift */; };
 		65207E7E2BF494320076EF76 /* CruiseContactdetailsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65207BF82BF4942F0076EF76 /* CruiseContactdetailsTVCell.xib */; };
 		65207E7F2BF494320076EF76 /* CruiseContactdetailsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207BF92BF4942F0076EF76 /* CruiseContactdetailsTVCell.swift */; };
-		65207E802BF494320076EF76 /* PaymentMethodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207BFD2BF4942F0076EF76 /* PaymentMethodCollectionViewCell.swift */; };
-		65207E812BF494320076EF76 /* CardPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207BFF2BF4942F0076EF76 /* CardPaymentViewController.swift */; };
-		65207E822BF494320076EF76 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C012BF4942F0076EF76 /* UIButtonExtension.swift */; };
-		65207E832BF494320076EF76 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C022BF4942F0076EF76 /* UIImageViewExtension.swift */; };
-		65207E842BF494320076EF76 /* MFApplePayButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C042BF4942F0076EF76 /* MFApplePayButtonViewController.swift */; };
-		65207E852BF494320076EF76 /* PaymentGateway.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65207C052BF4942F0076EF76 /* PaymentGateway.storyboard */; };
-		65207E862BF494320076EF76 /* updatePaymentFlightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C072BF4942F0076EF76 /* updatePaymentFlightViewModel.swift */; };
-		65207E872BF494320076EF76 /* updatePaymentFlightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C082BF4942F0076EF76 /* updatePaymentFlightModel.swift */; };
-		65207E882BF494320076EF76 /* PaymentGatewayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C092BF4942F0076EF76 /* PaymentGatewayVC.swift */; };
-		65207E892BF494320076EF76 /* ViewController+MFSDKServicesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C0A2BF4942F0076EF76 /* ViewController+MFSDKServicesCall.swift */; };
-		65207E8A2BF494320076EF76 /* ViewController+CollectionViewDelegateAndDatSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C0B2BF4942F0076EF76 /* ViewController+CollectionViewDelegateAndDatSource.swift */; };
 		65207E8B2BF494320076EF76 /* Citydatalist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C0E2BF4942F0076EF76 /* Citydatalist.swift */; };
 		65207E8C2BF494320076EF76 /* VocherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C0F2BF4942F0076EF76 /* VocherDetailsViewModel.swift */; };
 		65207E8D2BF494320076EF76 /* Booking_itinerary_summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207C102BF4942F0076EF76 /* Booking_itinerary_summary.swift */; };
@@ -928,14 +915,13 @@
 		84EA32072C47FCB30031C482 /* ActivitiesHighlightsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA32042C47FCB30031C482 /* ActivitiesHighlightsTVCell.swift */; };
 		84EA32092C4803730031C482 /* ActivityDetailsModalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA32082C4803720031C482 /* ActivityDetailsModalities.swift */; };
 		84EA320B2C4803AE0031C482 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA320A2C4803AE0031C482 /* Duration.swift */; };
-		84EE2E8E2C69C8F700A44129 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84EE2E8D2C69C8F700A44129 /* GoogleService-Info.plist */; };
 		84F2477A2C4E3E6C003526A0 /* Booking_Activity_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F247792C4E3E6C003526A0 /* Booking_Activity_details.swift */; };
 		84F2477E2C4E6E1E003526A0 /* ContractRemarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2477C2C4E6E1E003526A0 /* ContractRemarkTVCell.swift */; };
 		84F2477F2C4E6E1E003526A0 /* ContractRemarkTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F2477D2C4E6E1E003526A0 /* ContractRemarkTVCell.xib */; };
 		84F247832C4E8DCE003526A0 /* BDPickupLocationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F247812C4E8DCE003526A0 /* BDPickupLocationTVCell.swift */; };
 		84F247842C4E8DCE003526A0 /* BDPickupLocationTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F247822C4E8DCE003526A0 /* BDPickupLocationTVCell.xib */; };
 		84F707092C5CB1BA00A9DB5C /* FlightsTripsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F707082C5CB1BA00A9DB5C /* FlightsTripsModel.swift */; };
-		AD1825F257CCF4DA9BA1837A /* Pods_Travrate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC6B31B46CF74E104514757 /* Pods_Travrate.framework */; };
+		DB89E0902D901545F8EF4B34 /* Pods_Travrate_TravrateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0B87825123E6B811158423 /* Pods_Travrate_TravrateUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -956,11 +942,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07D89F1E0CB545CF03D2AF6E /* Pods-Travrate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate.debug.xcconfig"; path = "Target Support Files/Pods-Travrate/Pods-Travrate.debug.xcconfig"; sourceTree = "<group>"; };
-		0889BF848C7C9BAF0223EB6C /* Pods-Travrate-TravrateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate-TravrateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		27B431B333E1AFFF637CC5DA /* Pods-Travrate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate.release.xcconfig"; path = "Target Support Files/Pods-Travrate/Pods-Travrate.release.xcconfig"; sourceTree = "<group>"; };
-		29D09C6794CEEE01C2164811 /* Pods-TravrateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravrateTests.debug.xcconfig"; path = "Target Support Files/Pods-TravrateTests/Pods-TravrateTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5E4DA48AC170136D3A1BFF39 /* Pods-Travrate-TravrateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate-TravrateUITests.release.xcconfig"; path = "Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests.release.xcconfig"; sourceTree = "<group>"; };
+		01AD2701146D9AA84964538C /* Pods-Travrate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate.debug.xcconfig"; path = "Target Support Files/Pods-Travrate/Pods-Travrate.debug.xcconfig"; sourceTree = "<group>"; };
+		5B0B87825123E6B811158423 /* Pods_Travrate_TravrateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travrate_TravrateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6500CADE2BF7910000433C89 /* SubmitOTPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitOTPVC.swift; sourceTree = "<group>"; };
 		6500CAE02BF7979400433C89 /* HolidayEnquireyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayEnquireyModel.swift; sourceTree = "<group>"; };
 		650A1A192BFB34EE00F439CC /* OTPSucessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPSucessModel.swift; sourceTree = "<group>"; };
@@ -1364,8 +1347,6 @@
 		65207B232BF4942F0076EF76 /* StarRatingCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StarRatingCVCell.xib; sourceTree = "<group>"; };
 		65207B252BF4942F0076EF76 /* PaymentTypeCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentTypeCVCell.xib; sourceTree = "<group>"; };
 		65207B262BF4942F0076EF76 /* PaymentTypeCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTypeCVCell.swift; sourceTree = "<group>"; };
-		65207B292BF4942F0076EF76 /* Ottu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ottu.storyboard; sourceTree = "<group>"; };
-		65207B2B2BF4942F0076EF76 /* OttuPaymentGatewayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OttuPaymentGatewayVC.swift; sourceTree = "<group>"; };
 		65207B322BF4942F0076EF76 /* Transfers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transfers.storyboard; sourceTree = "<group>"; };
 		65207B352BF4942F0076EF76 /* BookTransfersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTransfersVC.swift; sourceTree = "<group>"; };
 		65207B362BF4942F0076EF76 /* BDTransferVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BDTransferVC.swift; sourceTree = "<group>"; };
@@ -1486,17 +1467,6 @@
 		65207BF62BF4942F0076EF76 /* CruiseItineraryTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CruiseItineraryTVCell.swift; sourceTree = "<group>"; };
 		65207BF82BF4942F0076EF76 /* CruiseContactdetailsTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CruiseContactdetailsTVCell.xib; sourceTree = "<group>"; };
 		65207BF92BF4942F0076EF76 /* CruiseContactdetailsTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CruiseContactdetailsTVCell.swift; sourceTree = "<group>"; };
-		65207BFD2BF4942F0076EF76 /* PaymentMethodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodCollectionViewCell.swift; sourceTree = "<group>"; };
-		65207BFF2BF4942F0076EF76 /* CardPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPaymentViewController.swift; sourceTree = "<group>"; };
-		65207C012BF4942F0076EF76 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
-		65207C022BF4942F0076EF76 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
-		65207C042BF4942F0076EF76 /* MFApplePayButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFApplePayButtonViewController.swift; sourceTree = "<group>"; };
-		65207C052BF4942F0076EF76 /* PaymentGateway.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentGateway.storyboard; sourceTree = "<group>"; };
-		65207C072BF4942F0076EF76 /* updatePaymentFlightViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = updatePaymentFlightViewModel.swift; sourceTree = "<group>"; };
-		65207C082BF4942F0076EF76 /* updatePaymentFlightModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = updatePaymentFlightModel.swift; sourceTree = "<group>"; };
-		65207C092BF4942F0076EF76 /* PaymentGatewayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentGatewayVC.swift; sourceTree = "<group>"; };
-		65207C0A2BF4942F0076EF76 /* ViewController+MFSDKServicesCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+MFSDKServicesCall.swift"; sourceTree = "<group>"; };
-		65207C0B2BF4942F0076EF76 /* ViewController+CollectionViewDelegateAndDatSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionViewDelegateAndDatSource.swift"; sourceTree = "<group>"; };
 		65207C0E2BF4942F0076EF76 /* Citydatalist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Citydatalist.swift; sourceTree = "<group>"; };
 		65207C0F2BF4942F0076EF76 /* VocherDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocherDetailsViewModel.swift; sourceTree = "<group>"; };
 		65207C102BF4942F0076EF76 /* Booking_itinerary_summary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Booking_itinerary_summary.swift; sourceTree = "<group>"; };
@@ -1655,6 +1625,7 @@
 		65D3273E2BF72B6000FE879D /* Tour__2_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour__2_data.swift; sourceTree = "<group>"; };
 		65D3273F2BF72B6000FE879D /* Tour_departure_details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour_departure_details.swift; sourceTree = "<group>"; };
 		65D327432BF72BB600FE879D /* HolidaySelectedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidaySelectedVM.swift; sourceTree = "<group>"; };
+		6A306DEDDB4726665AF91909 /* Pods_TravrateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravrateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84022ED52C34156500E72017 /* SelectOptionsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionsTVCell.swift; sourceTree = "<group>"; };
 		84022ED62C34156500E72017 /* SelectOptionsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectOptionsTVCell.xib; sourceTree = "<group>"; };
 		8403F40B2C357C6000E8819A /* DurationSliderTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSliderTVCell.swift; sourceTree = "<group>"; };
@@ -1884,7 +1855,6 @@
 		84EA32052C47FCB30031C482 /* ActivitiesHighlightsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesHighlightsTVCell.xib; sourceTree = "<group>"; };
 		84EA32082C4803720031C482 /* ActivityDetailsModalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailsModalities.swift; sourceTree = "<group>"; };
 		84EA320A2C4803AE0031C482 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
-		84EE2E8D2C69C8F700A44129 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84EE2E8F2C69CB8E00A44129 /* Travrate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Travrate.entitlements; sourceTree = "<group>"; };
 		84F247792C4E3E6C003526A0 /* Booking_Activity_details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking_Activity_details.swift; sourceTree = "<group>"; };
 		84F2477C2C4E6E1E003526A0 /* ContractRemarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractRemarkTVCell.swift; sourceTree = "<group>"; };
@@ -1892,10 +1862,12 @@
 		84F247812C4E8DCE003526A0 /* BDPickupLocationTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDPickupLocationTVCell.swift; sourceTree = "<group>"; };
 		84F247822C4E8DCE003526A0 /* BDPickupLocationTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BDPickupLocationTVCell.xib; sourceTree = "<group>"; };
 		84F707082C5CB1BA00A9DB5C /* FlightsTripsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsTripsModel.swift; sourceTree = "<group>"; };
-		92D6525F49CB260653D84D98 /* Pods-TravrateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravrateTests.release.xcconfig"; path = "Target Support Files/Pods-TravrateTests/Pods-TravrateTests.release.xcconfig"; sourceTree = "<group>"; };
-		ADC6B31B46CF74E104514757 /* Pods_Travrate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travrate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5EBE01057C6188554066842 /* Pods_Travrate_TravrateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travrate_TravrateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB6A948F5373C2BFA2296E9C /* Pods_TravrateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravrateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		956A14263237AE61A5D4D849 /* Pods-TravrateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravrateTests.debug.xcconfig"; path = "Target Support Files/Pods-TravrateTests/Pods-TravrateTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9B41521F2E105F70639BFF6D /* Pods-Travrate-TravrateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate-TravrateUITests.release.xcconfig"; path = "Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A2B9D4164B77832BE801AD02 /* Pods-TravrateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravrateTests.release.xcconfig"; path = "Target Support Files/Pods-TravrateTests/Pods-TravrateTests.release.xcconfig"; sourceTree = "<group>"; };
+		B44B62DAEC117A04DD1C68A5 /* Pods_Travrate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travrate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D52099457EC297BE229588A6 /* Pods-Travrate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate.release.xcconfig"; path = "Target Support Files/Pods-Travrate/Pods-Travrate.release.xcconfig"; sourceTree = "<group>"; };
+		E9AD074C5DFD3CAE26403AB0 /* Pods-Travrate-TravrateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travrate-TravrateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1903,7 +1875,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD1825F257CCF4DA9BA1837A /* Pods_Travrate.framework in Frameworks */,
+				64BD483E8F74B41686E30C17 /* Pods_Travrate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1911,7 +1883,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				158B4395A54597AB9B849CB0 /* Pods_TravrateTests.framework in Frameworks */,
+				4ACEB7454E373B32D1A5C9F0 /* Pods_TravrateTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1919,13 +1891,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BDA7DA02ABC95FCC3221EC4 /* Pods_Travrate_TravrateUITests.framework in Frameworks */,
+				DB89E0902D901545F8EF4B34 /* Pods_Travrate_TravrateUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05339A531F051EF64AC4702B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B44B62DAEC117A04DD1C68A5 /* Pods_Travrate.framework */,
+				5B0B87825123E6B811158423 /* Pods_Travrate_TravrateUITests.framework */,
+				6A306DEDDB4726665AF91909 /* Pods_TravrateTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		650A1A1B2BFB377000F439CC /* SportsSearchModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2096,7 +2078,7 @@
 				652078FA2BF4934D0076EF76 /* TravrateUITests */,
 				652078D82BF4934A0076EF76 /* Products */,
 				9BB6B282C797305FD6DD1AC6 /* Pods */,
-				C5E9B577AF57C478C51D26CF /* Frameworks */,
+				05339A531F051EF64AC4702B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2364,13 +2346,11 @@
 				652079662BF4942E0076EF76 /* Hotel */,
 				652079F02BF4942F0076EF76 /* Holidays */,
 				65207A0D2BF4942F0076EF76 /* Flight */,
-				65207B272BF4942F0076EF76 /* OttuPaymentgateway */,
 				65207B2F2BF4942F0076EF76 /* Transfers */,
 				65207B4D2BF4942F0076EF76 /* Visa */,
 				65207B662BF4942F0076EF76 /* Sports */,
 				65207B812BF4942F0076EF76 /* Dashboard */,
 				65207BDE2BF4942F0076EF76 /* Cruise */,
-				65207BFB2BF4942F0076EF76 /* PaymentGateway */,
 				65207C0C2BF4942F0076EF76 /* Booking Confirmed */,
 				65207C3E2BF494300076EF76 /* Insurance */,
 				65207C602BF494300076EF76 /* Login */,
@@ -3889,55 +3869,6 @@
 			path = PaymentTypeCVCell;
 			sourceTree = "<group>";
 		};
-		65207B272BF4942F0076EF76 /* OttuPaymentgateway */ = {
-			isa = PBXGroup;
-			children = (
-				65207B282BF4942F0076EF76 /* SB */,
-				65207B2A2BF4942F0076EF76 /* ViewController */,
-				65207B2C2BF4942F0076EF76 /* Views */,
-			);
-			path = OttuPaymentgateway;
-			sourceTree = "<group>";
-		};
-		65207B282BF4942F0076EF76 /* SB */ = {
-			isa = PBXGroup;
-			children = (
-				65207B292BF4942F0076EF76 /* Ottu.storyboard */,
-			);
-			path = SB;
-			sourceTree = "<group>";
-		};
-		65207B2A2BF4942F0076EF76 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				65207B2B2BF4942F0076EF76 /* OttuPaymentGatewayVC.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		65207B2C2BF4942F0076EF76 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				65207B2D2BF4942F0076EF76 /* TVCells */,
-				65207B2E2BF4942F0076EF76 /* CVCells */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		65207B2D2BF4942F0076EF76 /* TVCells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TVCells;
-			sourceTree = "<group>";
-		};
-		65207B2E2BF4942F0076EF76 /* CVCells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CVCells;
-			sourceTree = "<group>";
-		};
 		65207B2F2BF4942F0076EF76 /* Transfers */ = {
 			isa = PBXGroup;
 			children = (
@@ -4755,64 +4686,6 @@
 			children = (
 			);
 			path = CVCells;
-			sourceTree = "<group>";
-		};
-		65207BFB2BF4942F0076EF76 /* PaymentGateway */ = {
-			isa = PBXGroup;
-			children = (
-				65207BFC2BF4942F0076EF76 /* Custom cells */,
-				65207BFE2BF4942F0076EF76 /* Card Payment Controller */,
-				65207C002BF4942F0076EF76 /* Extensions */,
-				65207C032BF4942F0076EF76 /* Apple Pay */,
-				65207C052BF4942F0076EF76 /* PaymentGateway.storyboard */,
-				65207C062BF4942F0076EF76 /* ViewController */,
-			);
-			path = PaymentGateway;
-			sourceTree = "<group>";
-		};
-		65207BFC2BF4942F0076EF76 /* Custom cells */ = {
-			isa = PBXGroup;
-			children = (
-				65207BFD2BF4942F0076EF76 /* PaymentMethodCollectionViewCell.swift */,
-			);
-			path = "Custom cells";
-			sourceTree = "<group>";
-		};
-		65207BFE2BF4942F0076EF76 /* Card Payment Controller */ = {
-			isa = PBXGroup;
-			children = (
-				65207BFF2BF4942F0076EF76 /* CardPaymentViewController.swift */,
-			);
-			path = "Card Payment Controller";
-			sourceTree = "<group>";
-		};
-		65207C002BF4942F0076EF76 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				65207C012BF4942F0076EF76 /* UIButtonExtension.swift */,
-				65207C022BF4942F0076EF76 /* UIImageViewExtension.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		65207C032BF4942F0076EF76 /* Apple Pay */ = {
-			isa = PBXGroup;
-			children = (
-				65207C042BF4942F0076EF76 /* MFApplePayButtonViewController.swift */,
-			);
-			path = "Apple Pay";
-			sourceTree = "<group>";
-		};
-		65207C062BF4942F0076EF76 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				65207C072BF4942F0076EF76 /* updatePaymentFlightViewModel.swift */,
-				65207C082BF4942F0076EF76 /* updatePaymentFlightModel.swift */,
-				65207C092BF4942F0076EF76 /* PaymentGatewayVC.swift */,
-				65207C0A2BF4942F0076EF76 /* ViewController+MFSDKServicesCall.swift */,
-				65207C0B2BF4942F0076EF76 /* ViewController+CollectionViewDelegateAndDatSource.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		65207C0C2BF4942F0076EF76 /* Booking Confirmed */ = {
@@ -6279,7 +6152,6 @@
 		84EE2E8C2C69C8E400A44129 /* FireBase */ = {
 			isa = PBXGroup;
 			children = (
-				84EE2E8D2C69C8F700A44129 /* GoogleService-Info.plist */,
 				844ED2C72C6B21F10056AADB /* apple-app-site-association.json */,
 			);
 			path = FireBase;
@@ -6316,24 +6188,14 @@
 		9BB6B282C797305FD6DD1AC6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				07D89F1E0CB545CF03D2AF6E /* Pods-Travrate.debug.xcconfig */,
-				27B431B333E1AFFF637CC5DA /* Pods-Travrate.release.xcconfig */,
-				0889BF848C7C9BAF0223EB6C /* Pods-Travrate-TravrateUITests.debug.xcconfig */,
-				5E4DA48AC170136D3A1BFF39 /* Pods-Travrate-TravrateUITests.release.xcconfig */,
-				29D09C6794CEEE01C2164811 /* Pods-TravrateTests.debug.xcconfig */,
-				92D6525F49CB260653D84D98 /* Pods-TravrateTests.release.xcconfig */,
+				01AD2701146D9AA84964538C /* Pods-Travrate.debug.xcconfig */,
+				D52099457EC297BE229588A6 /* Pods-Travrate.release.xcconfig */,
+				E9AD074C5DFD3CAE26403AB0 /* Pods-Travrate-TravrateUITests.debug.xcconfig */,
+				9B41521F2E105F70639BFF6D /* Pods-Travrate-TravrateUITests.release.xcconfig */,
+				956A14263237AE61A5D4D849 /* Pods-TravrateTests.debug.xcconfig */,
+				A2B9D4164B77832BE801AD02 /* Pods-TravrateTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C5E9B577AF57C478C51D26CF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				ADC6B31B46CF74E104514757 /* Pods_Travrate.framework */,
-				C5EBE01057C6188554066842 /* Pods_Travrate_TravrateUITests.framework */,
-				EB6A948F5373C2BFA2296E9C /* Pods_TravrateTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -6343,12 +6205,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 652079012BF4934D0076EF76 /* Build configuration list for PBXNativeTarget "Travrate" */;
 			buildPhases = (
-				C08E39C940263B2A5CB371CF /* [CP] Check Pods Manifest.lock */,
+				76CD3A58968537717B7050D6 /* [CP] Check Pods Manifest.lock */,
 				652078D32BF4934A0076EF76 /* Sources */,
 				652078D42BF4934A0076EF76 /* Frameworks */,
 				652078D52BF4934A0076EF76 /* Resources */,
-				3221D16D5BE5495656650F85 /* [CP] Embed Pods Frameworks */,
-				F3C89EE371A743F60395D319 /* [CP] Copy Pods Resources */,
+				F38AD888B0E45E063006F872 /* [CP] Embed Pods Frameworks */,
+				E3E35E5F653887DF22F37280 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -6363,7 +6225,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 652079042BF4934D0076EF76 /* Build configuration list for PBXNativeTarget "TravrateTests" */;
 			buildPhases = (
-				EF967FDEC4F46DBB6586264E /* [CP] Check Pods Manifest.lock */,
+				9A1BA497F1C83CC1BE90ED9B /* [CP] Check Pods Manifest.lock */,
 				652078E92BF4934D0076EF76 /* Sources */,
 				652078EA2BF4934D0076EF76 /* Frameworks */,
 				652078EB2BF4934D0076EF76 /* Resources */,
@@ -6382,12 +6244,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 652079072BF4934D0076EF76 /* Build configuration list for PBXNativeTarget "TravrateUITests" */;
 			buildPhases = (
-				9C1EBDED8D8FED3E083B4F35 /* [CP] Check Pods Manifest.lock */,
+				BB4D68E8118680060A0D235C /* [CP] Check Pods Manifest.lock */,
 				652078F32BF4934D0076EF76 /* Sources */,
 				652078F42BF4934D0076EF76 /* Frameworks */,
 				652078F52BF4934D0076EF76 /* Resources */,
-				9A06440022F7053D8FB08F45 /* [CP] Embed Pods Frameworks */,
-				D4638FCDD548C84E3C5701F4 /* [CP] Copy Pods Resources */,
+				889C22F75299AC23DBB99996 /* [CP] Embed Pods Frameworks */,
+				B1A53396F70EDB5772AC8D1B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -6508,7 +6370,6 @@
 				65207DCF2BF494310076EF76 /* FareSummaryTVCell.xib in Resources */,
 				65207E3E2BF494320076EF76 /* SelectLanguageTVCell.xib in Resources */,
 				65207E2D2BF494320076EF76 /* SportsStadiumTVCell.xib in Resources */,
-				65207E852BF494320076EF76 /* PaymentGateway.storyboard in Resources */,
 				65207ED22BF494320076EF76 /* SideMenuTitleTVCell.xib in Resources */,
 				65207DF32BF494310076EF76 /* AddMealToPassengerTVCell.xib in Resources */,
 				65207EC12BF494320076EF76 /* Login.storyboard in Resources */,
@@ -6616,7 +6477,6 @@
 				65207D972BF494310076EF76 /* CheckBoxTVCell.xib in Resources */,
 				84D96CC22C4CE2DF00323B8E /* SportsTripsTVCell.xib in Resources */,
 				65207D422BF494310076EF76 /* Flight.storyboard in Resources */,
-				84EE2E8E2C69C8F700A44129 /* GoogleService-Info.plist in Resources */,
 				84A1700F2C452ECA002C7F83 /* TransferfareSummeryTVCell.xib in Resources */,
 				6545D8152BFC509C00FBCB60 /* SelectSportServiceTVCell.xib in Resources */,
 				841F8D902C7499B100522BB5 /* BDCancellationStringTVCell.xib in Resources */,
@@ -6655,7 +6515,6 @@
 				65207DA02BF494310076EF76 /* SortbyTVCell.xib in Resources */,
 				841F8D952C749B0B00522BB5 /* CancellationInfoTVCell.xib in Resources */,
 				8403F4132C35821900E8819A /* TransitTimeSliderTVCell.xib in Resources */,
-				65207E062BF494320076EF76 /* Ottu.storyboard in Resources */,
 				65207DF72BF494310076EF76 /* FromCityTVCell.xib in Resources */,
 				65207DB32BF494310076EF76 /* InternationalTravelInsuranceTVCell.xib in Resources */,
 				65207DC42BF494310076EF76 /* AddonContentTVCell.xib in Resources */,
@@ -6725,63 +6584,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3221D16D5BE5495656650F85 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Travrate/Pods-Travrate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Travrate/Pods-Travrate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Travrate/Pods-Travrate-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A06440022F7053D8FB08F45 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9C1EBDED8D8FED3E083B4F35 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Travrate-TravrateUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C08E39C940263B2A5CB371CF /* [CP] Check Pods Manifest.lock */ = {
+		76CD3A58968537717B7050D6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -6803,24 +6606,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D4638FCDD548C84E3C5701F4 /* [CP] Copy Pods Resources */ = {
+		889C22F75299AC23DBB99996 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EF967FDEC4F46DBB6586264E /* [CP] Check Pods Manifest.lock */ = {
+		9A1BA497F1C83CC1BE90ED9B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -6842,7 +6645,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F3C89EE371A743F60395D319 /* [CP] Copy Pods Resources */ = {
+		B1A53396F70EDB5772AC8D1B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Travrate-TravrateUITests/Pods-Travrate-TravrateUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB4D68E8118680060A0D235C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Travrate-TravrateUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3E35E5F653887DF22F37280 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -6857,6 +6699,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Travrate/Pods-Travrate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F38AD888B0E45E063006F872 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Travrate/Pods-Travrate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Travrate/Pods-Travrate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Travrate/Pods-Travrate-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -6915,7 +6774,6 @@
 				84F707092C5CB1BA00A9DB5C /* FlightsTripsModel.swift in Sources */,
 				65207CF32BF494310076EF76 /* Airline_list.swift in Sources */,
 				844B87FD2C4910BC0068CC93 /* BoxOfficeAmount.swift in Sources */,
-				65207E8A2BF494320076EF76 /* ViewController+CollectionViewDelegateAndDatSource.swift in Sources */,
 				65207D792BF494310076EF76 /* Addon_services.swift in Sources */,
 				84A1700E2C452ECA002C7F83 /* TransferfareSummeryTVCell.swift in Sources */,
 				843D490B2C4257EF00C0F127 /* Additional_services_revert.swift in Sources */,
@@ -7001,10 +6859,8 @@
 				841EE19E2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.swift in Sources */,
 				8492403B2C4A4C3500D87EEA /* Cancelpolicy.swift in Sources */,
 				844B87F22C48E3460068CC93 /* ActivityInformationTVCell.swift in Sources */,
-				65207E892BF494320076EF76 /* ViewController+MFSDKServicesCall.swift in Sources */,
 				842BAE822C731C88008F5E87 /* Car_data.swift in Sources */,
 				65207CC52BF494310076EF76 /* Decodable.swift in Sources */,
-				65207E842BF494320076EF76 /* MFApplePayButtonViewController.swift in Sources */,
 				657BF30D2C05EE77000E636A /* DeliveryMethods.swift in Sources */,
 				65207EB82BF494320076EF76 /* MainTravelPersonTVCell.swift in Sources */,
 				84A16FFE2C44D605002C7F83 /* AddDeatilsOfPassengerTVCell.swift in Sources */,
@@ -7022,7 +6878,6 @@
 				653467BA2C0210630059A0E1 /* Penalty.swift in Sources */,
 				657BF31C2C060205000E636A /* Ticket_value.swift in Sources */,
 				65207D632BF494310076EF76 /* FlightSummery.swift in Sources */,
-				65207E832BF494320076EF76 /* UIImageViewExtension.swift in Sources */,
 				65207CF92BF494310076EF76 /* Rooms.swift in Sources */,
 				65207E942BF494320076EF76 /* VocherModel.swift in Sources */,
 				65207D5F2BF494310076EF76 /* PaymentModel.swift in Sources */,
@@ -7064,7 +6919,6 @@
 				8404DA112C3E47CF000A648A /* CarrentalPreSearchModel.swift in Sources */,
 				65207E602BF494320076EF76 /* MoreDetailsModel.swift in Sources */,
 				84F2477A2C4E3E6C003526A0 /* Booking_Activity_details.swift in Sources */,
-				65207E862BF494320076EF76 /* updatePaymentFlightViewModel.swift in Sources */,
 				84EA31BA2C47696C0031C482 /* ActivitiesSearchVC.swift in Sources */,
 				843D491A2C426F0100C0F127 /* Bg_condition.swift in Sources */,
 				65207CDE2BF494310076EF76 /* SelectedHotelImageVC.swift in Sources */,
@@ -7107,9 +6961,7 @@
 				65207E052BF494320076EF76 /* PaymentTypeCVCell.swift in Sources */,
 				846D24C72C40B9140030C539 /* CarBookingVM.swift in Sources */,
 				65207E9C2BF494320076EF76 /* BookedTravelDetailsTVCell.swift in Sources */,
-				65207E812BF494320076EF76 /* CardPaymentViewController.swift in Sources */,
 				65207CFD2BF494310076EF76 /* HotelSelectedDetailsModel.swift in Sources */,
-				65207E072BF494320076EF76 /* OttuPaymentGatewayVC.swift in Sources */,
 				65207DD82BF494310076EF76 /* AddSpecialAssistanceTVCell.swift in Sources */,
 				65207DD02BF494310076EF76 /* ContactInformationTVCell.swift in Sources */,
 				65207D462BF494310076EF76 /* MPBViewModel.swift in Sources */,
@@ -7283,7 +7135,6 @@
 				65207E592BF494320076EF76 /* Deail_code_list.swift in Sources */,
 				65207D732BF494310076EF76 /* SFSearch_params.swift in Sources */,
 				65207D0C2BF494310076EF76 /* RoomsCountTVCell.swift in Sources */,
-				65207E872BF494320076EF76 /* updatePaymentFlightModel.swift in Sources */,
 				84EA31E22C47C3B10031C482 /* Activity_details.swift in Sources */,
 				65207D952BF494310076EF76 /* SliderTVCell.swift in Sources */,
 				65207E0F2BF494320076EF76 /* TransfersInf0TVCell.swift in Sources */,
@@ -7313,7 +7164,6 @@
 				65207D4C2BF494310076EF76 /* SearchLoaderViewModel.swift in Sources */,
 				65207D492BF494310076EF76 /* SelectCityViewModel.swift in Sources */,
 				65207D372BF494310076EF76 /* HolidayPackagesTVCell.swift in Sources */,
-				65207E802BF494320076EF76 /* PaymentMethodCollectionViewCell.swift in Sources */,
 				65207D782BF494310076EF76 /* MPBFlightDetails.swift in Sources */,
 				65207ED92BF494320076EF76 /* SignupTVCell.swift in Sources */,
 				65207EBF2BF494320076EF76 /* InsurenceSearchTVCell.swift in Sources */,
@@ -7370,7 +7220,6 @@
 				65207D852BF494310076EF76 /* Cancelation_fee.swift in Sources */,
 				65207D8F2BF494310076EF76 /* MBPModel.swift in Sources */,
 				65207CEA2BF494310076EF76 /* Hdata.swift in Sources */,
-				65207E822BF494320076EF76 /* UIButtonExtension.swift in Sources */,
 				841F8D962C749B0B00522BB5 /* CancellationInfoTVCell.swift in Sources */,
 				65207CE42BF494310076EF76 /* Loc.swift in Sources */,
 				65207D722BF494310076EF76 /* Onward.swift in Sources */,
@@ -7506,7 +7355,6 @@
 				84EA32092C4803730031C482 /* ActivityDetailsModalities.swift in Sources */,
 				65207C9C2BF494310076EF76 /* ServiceManager.swift in Sources */,
 				65207EB22BF494320076EF76 /* InsuranceVC.swift in Sources */,
-				65207E882BF494320076EF76 /* PaymentGatewayVC.swift in Sources */,
 				65207D242BF494310076EF76 /* HotelsTVCell.swift in Sources */,
 				65207DE32BF494310076EF76 /* TicketIssuingTimeTVCell.swift in Sources */,
 				8492404A2C4ABEB600D87EEA /* Cancellation_details.swift in Sources */,
@@ -7699,7 +7547,7 @@
 		};
 		652079022BF4934D0076EF76 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07D89F1E0CB545CF03D2AF6E /* Pods-Travrate.debug.xcconfig */;
+			baseConfigurationReference = 01AD2701146D9AA84964538C /* Pods-Travrate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -7714,6 +7562,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Travrate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Travrate;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app will use the camera to take photos and videos for uploading profile pictures.";
@@ -7748,7 +7597,7 @@
 		};
 		652079032BF4934D0076EF76 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B431B333E1AFFF637CC5DA /* Pods-Travrate.release.xcconfig */;
+			baseConfigurationReference = D52099457EC297BE229588A6 /* Pods-Travrate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -7762,6 +7611,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Travrate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Travrate;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app will use the camera to take photos and videos for uploading profile pictures.";
@@ -7796,7 +7646,7 @@
 		};
 		652079052BF4934D0076EF76 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29D09C6794CEEE01C2164811 /* Pods-TravrateTests.debug.xcconfig */;
+			baseConfigurationReference = 956A14263237AE61A5D4D849 /* Pods-TravrateTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -7817,7 +7667,7 @@
 		};
 		652079062BF4934D0076EF76 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92D6525F49CB260653D84D98 /* Pods-TravrateTests.release.xcconfig */;
+			baseConfigurationReference = A2B9D4164B77832BE801AD02 /* Pods-TravrateTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -7838,7 +7688,7 @@
 		};
 		652079082BF4934D0076EF76 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0889BF848C7C9BAF0223EB6C /* Pods-Travrate-TravrateUITests.debug.xcconfig */;
+			baseConfigurationReference = E9AD074C5DFD3CAE26403AB0 /* Pods-Travrate-TravrateUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -7857,7 +7707,7 @@
 		};
 		652079092BF4934D0076EF76 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E4DA48AC170136D3A1BFF39 /* Pods-Travrate-TravrateUITests.release.xcconfig */;
+			baseConfigurationReference = 9B41521F2E105F70639BFF6D /* Pods-Travrate-TravrateUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

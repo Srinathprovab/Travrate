@@ -1025,11 +1025,7 @@ extension BookingDetailsVC {
         return randomNumber
     }
     
-    func gotoOttuPaymentGatewayVC() {
-        guard let vc = OttuPaymentGatewayVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
-    }
+    
     
     
 }

@@ -19,7 +19,6 @@ enum Storyboard: String {
     case Visa
     case Holidays
     case Cruise
-    case Ottu
     case Fare
     case Transfers
     case Sports

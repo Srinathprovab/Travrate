@@ -16,13 +16,9 @@ target 'Travrate' do
   pod 'Alamofire'
   pod 'DropDown'
   pod 'TTRangeSlider'
-  pod 'MaterialComponents/TextControls+OutlinedTextFields'
   pod 'AARatingBar'
   pod 'GoogleMaps'
   pod 'Toast-Swift', '~> 5.0.1'
-  pod 'SwiftRangeSlider', '~> 2.0'
-  pod 'MyFatoorah'
-  pod 'Ottu'
   pod 'EasyTipView', '~> 2.1.0'
   
 

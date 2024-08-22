@@ -69,3 +69,26 @@ struct getPaymentgatewayUrlModel : Codable {
     }
     
 }
+
+
+struct sportssecureBooingModel : Codable {
+    
+    let status : Bool?
+    let message : String?
+    let hit_url : String?
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case status = "status"
+        case message = "message"
+        case hit_url = "hit_url"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        status = try values.decodeIfPresent(Bool.self, forKey: .status)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
+        hit_url = try values.decodeIfPresent(String.self, forKey: .hit_url)
+    }
+    
+}

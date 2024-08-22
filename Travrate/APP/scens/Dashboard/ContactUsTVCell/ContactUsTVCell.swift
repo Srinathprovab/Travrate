@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MaterialComponents
 import DropDown
 
 
@@ -201,14 +200,14 @@ extension ContactUsTVCell {
     }
     
     
-    @objc func searchTextBegin(textField: MDCOutlinedTextField) {
+    @objc func searchTextBegin(textField: UITextField) {
         textField.text = ""
         loadCountryNamesAndCode()
         dropDown.show()
     }
     
     
-    @objc func searchTextChanged(textField: MDCOutlinedTextField) {
+    @objc func searchTextChanged(textField: UITextField) {
         searchText = textField.text ?? ""
         if searchText == "" {
             isSearchBool = false

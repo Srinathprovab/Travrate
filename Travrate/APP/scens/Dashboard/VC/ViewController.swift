@@ -108,13 +108,7 @@ class ViewController: UIViewController {
         present(vc, animated: true)
     }
     
-    
-    func gotoOttuPaymentGatewayVC() {
-        
-        guard let vc = OttuPaymentGatewayVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
-    }
+
     
     
     func setAttributedTextnew(str1:String,str2:String,lbl:UILabel,str1font:UIFont,str2font:UIFont,str1Color:UIColor,str2Color:UIColor)  {
