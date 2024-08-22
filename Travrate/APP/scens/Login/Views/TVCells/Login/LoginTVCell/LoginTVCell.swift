@@ -49,7 +49,7 @@ class LoginTVCell: TableViewCell {
     
     func setupUI() {
         
-        
+        skipBtn.layer.cornerRadius = 15
     
         passTF.isSecureTextEntry = true
         loginBtn.layer.cornerRadius = 6

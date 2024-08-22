@@ -30,6 +30,9 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginbg" translatesAutoresizingMaskIntoConstraints="NO" id="Ii4-3r-ZUA">
                         <rect key="frame" x="0.0" y="0.0" width="447" height="1031"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1031" id="JWv-ph-RuH"/>
+                        </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gj4-du-efA" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
                         <rect key="frame" x="20" y="158" width="407" height="760"/>
@@ -516,6 +519,7 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="gj4-du-efA" secondAttribute="bottom" constant="113" id="8l0-qQ-rrN"/>
                     <constraint firstItem="gj4-du-efA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Hyv-QI-Eby"/>
                     <constraint firstAttribute="trailing" secondItem="gj4-du-efA" secondAttribute="trailing" constant="20" id="I5Y-Wn-KeJ"/>
                     <constraint firstItem="Kw4-4s-HCm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="80" id="Mod-Xc-w4Q"/>

@@ -10,6 +10,7 @@ import UIKit
 class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewModelDelegate {
     
     
+    @IBOutlet weak var logoutView: UIView!
     
     static var newInstance: SideMenuViewController? {
         let storyboard = UIStoryboard(name: Storyboard.Login.name,
@@ -35,7 +36,7 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
         let userloggedBool = defaults.bool(forKey: UserDefaultsKeys.loggedInStatus)
         if userloggedBool == true {
             
-            
+            logoutView.isHidden = false
             callShowProfileAPI()
         }
         
@@ -69,11 +70,7 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
         MySingleton.shared.tablerow.append(TableRow(title:"Services",key: "links", cellType: .QuickLinkTableViewCell))
         MySingleton.shared.tablerow.append(TableRow(height: 40, cellType: .EmptyTVCell))
         
-        if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
-            MySingleton.shared.tablerow.append(TableRow(title:"Delete Account",key: "deleteacc", image: "deleteacc",cellType:.SideMenuTitleTVCell))
-            MySingleton.shared.tablerow.append(TableRow(height: 10, bgColor: HexColor("#FFFFFF") , cellType: .EmptyTVCell))
-            MySingleton.shared.tablerow.append(TableRow(title:"Logout",key: "logout", image: "IonLogOut",cellType:.SideMenuTitleTVCell))
-        }
+       
         
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -91,95 +88,31 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
         switch cell.menuTitlelbl.text {
             
         case "Flight":
-            
-            
             defaults.set("Flight", forKey: UserDefaultsKeys.tabselect)
-            //            defaults.set("Origin", forKey: UserDefaultsKeys.fromcityname)
-            //            defaults.set("Destination", forKey: UserDefaultsKeys.tocityname)
-            //            defaults.set("Economy", forKey: UserDefaultsKeys.selectClass)
-            //            defaults.set("Economy", forKey: UserDefaultsKeys.rselectClass)
-            //            defaults.set("Add Date", forKey: UserDefaultsKeys.calDepDate)
-            //            defaults.set("Add Date", forKey: UserDefaultsKeys.calRetDate)
-            //            defaults.set("1", forKey: UserDefaultsKeys.adultCount)
-            //            defaults.set("0", forKey: UserDefaultsKeys.childCount)
-            //            defaults.set("0", forKey: UserDefaultsKeys.infantsCount)
-            //            defaults.set("ALL", forKey: UserDefaultsKeys.fcariercode)
-            //            defaults.set("ALL AIRLINES", forKey: UserDefaultsKeys.fcariername)
-            
-            
-            
             showFlightSearchVC()
             break
             
         case "Hotel":
             defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
-            //            defaults.set("City/Location*", forKey: UserDefaultsKeys.locationcity)
-            //            defaults.set("Add Date", forKey: UserDefaultsKeys.checkin)
-            //            defaults.set("Add Date", forKey: UserDefaultsKeys.checkout)
-            //            defaults.set("Select Nationality*", forKey: UserDefaultsKeys.hnationality)
-            //
-            
             gotoSearchHotelVC()
             break
             
         case "Transfers":
             defaults.set("transfers", forKey: UserDefaultsKeys.tabselect)
-            //            defaults.set("From Airport*", forKey: UserDefaultsKeys.transferfromcityname)
-            //            defaults.set("", forKey: UserDefaultsKeys.transferfromcityid)
-            //            defaults.set("To Airport*", forKey: UserDefaultsKeys.transfertocityname)
-            //            defaults.set("", forKey: UserDefaultsKeys.transfertocityid)
-            //            defaults.set("Select Date*", forKey: UserDefaultsKeys.transfercalDepDate)
-            //            defaults.set("Select Time*", forKey: UserDefaultsKeys.transfercalDepTime)
-            //            defaults.set("Select Date*", forKey: UserDefaultsKeys.transfercalRetDate)
-            //            defaults.set("Select Time*", forKey: UserDefaultsKeys.transfercalRetTime)
-            //            defaults.set("", forKey: UserDefaultsKeys.transferfromlat)
-            //            defaults.set("", forKey: UserDefaultsKeys.transferfromlang)
-            //            defaults.set("", forKey: UserDefaultsKeys.transfertolat)
-            //            defaults.set("", forKey: UserDefaultsKeys.transfertolang)
-            
             gotoBookTransfersVC()
-            
             break
+            
             
         case "Sports":
             gotoSportsSearchVC()
             break
             
-            //        case "Car Rental":
-            //            gotoCVisaVC()
-            //            break
-            //
-            //        case "Activities":
-            //            gotoCAutoPaymentVC()
-            //            break
-            //
-            //        case "Holidays":
-            //            gotoCVisaVC()
-            //            break
-            //
-            //        case "Cruise":
-            //            gotoCAutoPaymentVC()
-            //            break
             
-        case "My Bookings":
-            print("My Bookings")
+        case "Manage Bookings":
+            gotoMyTrips()
             break
             
-        case "Free Cancelation":
-            print("Free Cancelation")
-            break
-            
-        case "Customer Support":
-            print("Customer Support")
-            break
-            
-        case "Logout":
-            callLogoutAPI()
-            break
-            
-        case "Delete Account":
-            deleteUserAccountAPI()
-            break
+      
             
         default:
             break
@@ -187,11 +120,15 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
     }
     
     
+    func gotoMyTrips() {
+        callapibool = true
+        guard let vc = DashBoardTBVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.selectedIndex = 1
+        present(vc, animated: true)
+    }
+    
     func gotoSportsSearchVC() {
-        
-        //        defaults.set("Select Date", forKey: UserDefaultsKeys.sportcalDepDate)
-        //        defaults.set("Select Date", forKey: UserDefaultsKeys.sportcalRetDate)
-        
         callapibool = true
         guard let vc = SportsSearchVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
@@ -227,6 +164,14 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
     }
     
     
+    @IBAction func didTapOnDelegateBtnAction(_ sender: UIButton) {
+        sender.tag == 1 ? deleteUserAccountAPI() : callLogoutAPI()
+    }
+    
+    
+    
+    
+    
 }
 
 
@@ -245,6 +190,8 @@ extension SideMenuViewController {
     func profileDetails(response: ProfileModel) {
         
         basicloderBool = false
+        logoutView.isHidden = false
+        
         MySingleton.shared.profiledata = response.data
         MySingleton.shared.username = "\(response.data?.first_name ?? "") \(response.data?.last_name ?? "")"
         
@@ -266,6 +213,7 @@ extension SideMenuViewController {
     
     func logoutSucess(response: LoginModel) {
         basicloderBool = false
+        logoutView.isHidden = true
         defaults.set(false, forKey: UserDefaultsKeys.loggedInStatus)
         defaults.set("0", forKey: UserDefaultsKeys.userid)
         showToast(message: response.data ?? "")
@@ -292,6 +240,7 @@ extension SideMenuViewController {
     
     func userDeleteSucess(response: LoginModel) {
         basicloderBool = false
+        logoutView.isHidden = true
         
         defaults.set(false, forKey: UserDefaultsKeys.loggedInStatus)
         defaults.set("0", forKey: UserDefaultsKeys.userid)

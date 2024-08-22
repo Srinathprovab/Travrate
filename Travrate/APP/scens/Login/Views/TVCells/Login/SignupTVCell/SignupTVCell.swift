@@ -73,9 +73,7 @@ class SignupTVCell: TableViewCell {
     
     func setupUI() {
         
-        skipBtn.layer.cornerRadius = 15
-        skipBtn.layer.borderWidth = 1
-        skipBtn.layer.borderColor = UIColor.WhiteColor.cgColor
+       
     
         
         passTF.isSecureTextEntry = true

@@ -60,6 +60,7 @@ class SportsSearchVC: BaseTableVC, SportServiceVMDelegate {
             if cell.depDateTF.isFirstResponder == true {
                 defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)
                 defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalRetDate)
+                
                 cell.retDatePicker.minimumDate = cell.depDatePicker.date
             }else {
                 defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.sportcalDepDate)

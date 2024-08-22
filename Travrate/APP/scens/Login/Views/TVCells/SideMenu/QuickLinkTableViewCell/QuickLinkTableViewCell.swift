@@ -44,7 +44,7 @@ class QuickLinkTableViewCell: TableViewCell, UITableViewDataSource, UITableViewD
     override func updateUI() {
         
         if cellInfo?.key == "links" {
-            updateHeight(height: 5)
+            updateHeight(height: 6)
         } else {
             updateHeight(height: 3)
         }
@@ -74,7 +74,7 @@ extension QuickLinkTableViewCell {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if cellInfo?.key == "links" {
-            return 5
+            return 6
         } else {
             return 3
         }
@@ -111,10 +111,16 @@ extension QuickLinkTableViewCell {
                 cell.menuOptionImg.image = UIImage(named: "transfer")
                 cell.delegate = self
                 return cell
-            }else  {
+            }else if indexPath.row == 4 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
                 cell.menuTitlelbl.text = "Sports"
                 cell.menuOptionImg.image = UIImage(named: "sports")
+                cell.delegate = self
+                return cell
+            }else  {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
+                cell.menuTitlelbl.text = "Manage Bookings"
+                cell.menuOptionImg.image = UIImage(named: "tab2")?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
                 cell.delegate = self
                 return cell
             }
@@ -144,5 +150,7 @@ extension QuickLinkTableViewCell {
         }
         
     }
+    
+    
 }
 

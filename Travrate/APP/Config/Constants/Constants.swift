@@ -32,12 +32,12 @@ var loderBool = false
 var basicloderBool = false
 
 
-var BASE_URL = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/"
-var BASE_URL1 = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/"
+//var BASE_URL = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/"
+//var BASE_URL1 = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/"
 
 
-//var BASE_URL = "https://travrate.com/android_ios_webservices/mobile/index.php/"
-//var BASE_URL1 = "https://travrate.com/android_ios_webservices/mobile/index.php/"
+var BASE_URL = "https://travrate.com/android_ios_webservices/mobile/index.php/"
+var BASE_URL1 = "https://travrate.com/android_ios_webservices/mobile/index.php/"
 
 var accessToken = "e3VzZXJuYW1lOmFudWpob29kYSxwYXNzd29yZDp0cmF2Z2F0ZUBtb2JpbGVhcHAsYXV0aHR5cGU6dGVzdH0="
 var authorizationkey = "Api-Key mXSkj6CS.hXxp9suftZUk7X8zagbA9GhQnhQL9KOh"

@@ -24,12 +24,7 @@ target 'Travrate' do
   pod 'MyFatoorah'
   pod 'Ottu'
   pod 'EasyTipView', '~> 2.1.0'
-  pod 'FirebaseAnalytics'
-  pod 'FirebaseAuth'
-  pod 'FirebaseFirestore'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Crashlytics'
+  
 
 
   target 'TravrateTests' do
