@@ -33,6 +33,16 @@
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
+		<key>NSCameraUsageDescription</key>
+		<string>Need to access your camera to capture a photo add and update profile picture.</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>Travrate needs your location to show hotel locations.</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>Travrate needs your location to show hotel locations, even in the background.</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Travrate needs your location to show hotel locations.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Need to access your photo library to select a photo add and update profile picture</string>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 		<key>UISceneConfigurations</key>
