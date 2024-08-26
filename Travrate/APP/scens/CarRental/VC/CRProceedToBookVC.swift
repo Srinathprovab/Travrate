@@ -156,7 +156,7 @@ extension CRProceedToBookVC {
         
         MySingleton.shared.carAddonServices = response.addon_services ?? []
         
-        MySingleton.shared.carproductarray = response.result_token?.product ?? []
+        MySingleton.shared.selectedcarproductarray = response.result_token?.product ?? []
         MySingleton.shared.extraOption = response.result_token?.extra_option ?? []
         MySingleton.shared.carsearchid = "\(response.result_token?.search_id ?? 0)"
         MySingleton.shared.carcurrency = response.result_token?.product?[0].currency ?? ""
@@ -189,7 +189,7 @@ extension CRProceedToBookVC {
         
         
         
-        MySingleton.shared.carproductarray.forEach { i in
+        MySingleton.shared.selectedcarproductarray.forEach { i in
             MySingleton.shared.tablerow.append(TableRow(title:pkgtitleStr,moreData: i,cellType:.SelectedCRPackageTVCell))
         }
         
@@ -199,7 +199,7 @@ extension CRProceedToBookVC {
         
         
         
-        MySingleton.shared.carproductarray.forEach { i in
+        MySingleton.shared.selectedcarproductarray.forEach { i in
             MySingleton.shared.tablerow.append(TableRow(key:"proceedbooking",moreData: i,cellType:.CRFareSummaryTVCell))
         }
         

@@ -2,7 +2,7 @@
 //  AddonTableViewCell.swift
 //  Burhantrips
 //
-//  Created by MA1882 on 20/01/24.  
+//  Created by MA1882 on 20/01/24.
 //
 
 import UIKit
@@ -216,8 +216,6 @@ extension AddonTableViewCell {
             cell.originValue = data.origin ?? ""
             cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
             
-            
-            
         }else {
             let data = hotel_Addservices[indexPath.row]
             // Display data in the cell
@@ -227,13 +225,13 @@ extension AddonTableViewCell {
             cell.originValue = data.origin ?? ""
             cell.priceImage.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD") \(data.price ?? "0")"
             
-            if indexPath.row == 0{
+            if hotelnotificationCheck == true && indexPath.row == 0 {
                 cell.checkIMAGE.image = UIImage(named: "check")
                 MySingleton.shared.addonServicesOrigenArray.append(data.origin ?? "")
-                tableView.selectAllRows(animated: true)
+               // tableView.selectAllRows(animated: true)
                 tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             }
-           
+            
         }
         
         return cell

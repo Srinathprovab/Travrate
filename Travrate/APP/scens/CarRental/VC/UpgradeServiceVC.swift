@@ -59,7 +59,9 @@ class UpgradeServiceVC: BaseTableVC, CarDetailsVMDelegate {
         
         
         MySingleton.shared.carproductcode = cell.carproductcode
-        MySingleton.shared.carextraoptionPrice = cell.carproductcode
+        MySingleton.shared.carextraoptionPrice = cell.extraOptionPrice
+        MySingleton.shared.carresultindex = cell.selectedIndex
+        
         
         gotoCRProceedToBookVC()
     }
@@ -135,7 +137,7 @@ extension UpgradeServiceVC {
         MySingleton.shared.tablerow.removeAll()
         
         MySingleton.shared.carproductarray.forEach { i in
-            MySingleton.shared.tablerow.append(TableRow(moreData: i,cellType:.ChoosePackageTVCell))
+            MySingleton.shared.tablerow.append(TableRow(data:MySingleton.shared.selectedcarproductarray, moreData: i,cellType:.ChoosePackageTVCell))
         }
         
         

@@ -54,7 +54,8 @@ class CarRentalChoosePackageVC: BaseTableVC, CarDetailsVMDelegate {
         
         
         MySingleton.shared.carproductcode = cell.carproductcode
-        MySingleton.shared.carextraoptionPrice = cell.carproductcode
+        MySingleton.shared.carextraoptionPrice = cell.extraOptionPrice
+        MySingleton.shared.carresultindex = cell.selectedIndex
       
         gotoCRProceedToBookVC()
     }

@@ -9,9 +9,6 @@ import UIKit
 
 class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelDelegate {
     
-    
-    
-    
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var cityslbl: UILabel!
     @IBOutlet weak var datelbl: UILabel!

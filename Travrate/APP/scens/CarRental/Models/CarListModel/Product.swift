@@ -20,6 +20,7 @@ struct Product : Codable {
     let costperextradistance : String?
     let minage : String?
     let product_type : String?
+    let pro_index : String?
 
     enum CodingKeys: String, CodingKey {
 
@@ -35,6 +36,7 @@ struct Product : Codable {
         case costperextradistance = "costperextradistance"
         case minage = "minage"
         case product_type = "product_type"
+        case pro_index = "pro_index"
     }
 
     init(from decoder: Decoder) throws {
@@ -51,6 +53,7 @@ struct Product : Codable {
         costperextradistance = try values.decodeIfPresent(String.self, forKey: .costperextradistance)
         minage = try values.decodeIfPresent(String.self, forKey: .minage)
         product_type = try values.decodeIfPresent(String.self, forKey: .product_type)
+        pro_index = try values.decodeIfPresent(String.self, forKey: .pro_index)
     }
 
 }

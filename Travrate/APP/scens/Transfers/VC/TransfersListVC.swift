@@ -10,7 +10,7 @@ import UIKit
 class TransfersListVC: BaseTableVC, PreTransfersearchVMDelegate, AppliedTransferFilters {
     
     
-    
+    @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var fromcitylbl: UILabel!
     @IBOutlet weak var tocitylbl: UILabel!
     @IBOutlet weak var dateslbl: UILabel!
@@ -137,10 +137,11 @@ extension TransfersListVC {
         
         
         DispatchQueue.main.async {[self] in
-            
+            holderView.isHidden = true
             MySingleton.shared.loderString = "fdetails"
             loderBool = true
             showLoadera()
+            
             
             MySingleton.shared.preTransfersearchVM?.CALL_PRE_TRANSFER_SERACH_API(dictParam: MySingleton.shared.payload)
         }
@@ -239,6 +240,7 @@ extension TransfersListVC {
     
     func appendPriceAndDate(list:[Raw_transfer_list]) {
         
+        holderView.isHidden = false
         hideLoadera()
         loderBool = false
         

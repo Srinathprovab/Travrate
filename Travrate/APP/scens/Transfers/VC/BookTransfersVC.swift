@@ -9,6 +9,7 @@ import UIKit
 
 class BookTransfersVC: BaseTableVC {
     
+    
     @IBOutlet weak var onewaybtn: UIButton!
     @IBOutlet weak var roundtripBtn: UIButton!
     

@@ -22,9 +22,12 @@ class ChoosePackageTVCell: TableViewCell {
     @IBOutlet weak var liabililtylbl: UILabel!
     @IBOutlet weak var depositelbl: UILabel!
     @IBOutlet weak var milagelbl: UILabel!
+
     
  
+    var selectedIndex = String()
     var carproductcode = String()
+    var selectedcarproduct = [Product]()
     var extraOptionPrice = String()
     var carproduct : Product?
     weak var delegate:ChoosePackageTVCellDelergate?
@@ -42,10 +45,11 @@ class ChoosePackageTVCell: TableViewCell {
     override func updateUI() {
         
         
-      
+        selectedcarproduct = cellInfo?.data as? [Product] ?? []
         carproduct = cellInfo?.moreData as? Product
         carproductcode = carproduct?.product_type ?? ""
         extraOptionPrice = carproduct?.total ?? ""
+        selectedIndex = carproduct?.pro_index ?? ""
         
         selectBtn.layer.cornerRadius = 4
         selectBtn.addTarget(self, action: #selector(didTapOnSelectPackageBtnAction(_:)), for: .touchUpInside)
@@ -89,6 +93,13 @@ class ChoosePackageTVCell: TableViewCell {
             titleView.backgroundColor = .Buttoncolor
         }
         
+        if selectedcarproduct.count > 0 {
+            if selectedcarproduct[0].total == extraOptionPrice {
+                selectBtn.setTitle("Selected", for: .normal)
+            }else {
+                selectBtn.setTitle("Upgrade", for: .normal)
+            }
+        }
         
         
        

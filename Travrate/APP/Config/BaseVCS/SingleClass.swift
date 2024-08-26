@@ -224,6 +224,7 @@ class MySingleton {
     var carcurrency = String()
     var carextraoptionPrice = String()
     var carproductarray = [Product]()
+    var selectedcarproductarray = [Product]()
     var carresulttoken = String()
     var carresultindex = String()
     

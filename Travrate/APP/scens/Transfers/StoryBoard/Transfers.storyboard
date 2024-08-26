@@ -183,7 +183,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIe-4t-QSu">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIe-4t-QSu">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GCP-2b-eR2">
@@ -388,6 +388,7 @@
                         <outlet property="commonTableView" destination="GCP-2b-eR2" id="1h8-2t-U1k"/>
                         <outlet property="dateslbl" destination="wMV-7X-eZg" id="CRf-rG-QPf"/>
                         <outlet property="fromcitylbl" destination="yb7-Ia-lqB" id="R4r-RM-h3A"/>
+                        <outlet property="holderView" destination="NIe-4t-QSu" id="so8-7Y-ZWz"/>
                         <outlet property="modifybtn" destination="UMZ-Sc-9Lg" id="gA4-uv-mmK"/>
                         <outlet property="tocitylbl" destination="mZe-8s-pln" id="1t4-bO-ee6"/>
                     </connections>
