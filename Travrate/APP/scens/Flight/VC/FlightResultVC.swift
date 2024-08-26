@@ -1005,6 +1005,8 @@ extension FlightResultVC {
         self.holderView.isHidden = true
         defaults.set(false, forKey: "flightfilteronce")
         MySingleton.shared.loderString = "loder"
+        loderBool = true
+        showLoadera()
         
         
         prices.removeAll()
@@ -1019,8 +1021,7 @@ extension FlightResultVC {
         layoverdurationArray.removeAll()
         
         
-        loderBool = true
-        showLoadera()
+        
         
         
         MySingleton.shared.vm?.CALL_GET_ACTIVE_BOOKING_SOURCE_API(dictParam: [:])

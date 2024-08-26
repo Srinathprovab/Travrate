@@ -1496,10 +1496,13 @@ extension BaseTableVC {
     
     // Function to remove the child view controller
     func removeLoader() {
+        loaderVC?.stopGifAnimation()
         loaderVC?.willMove(toParent: nil)
         loaderVC?.view.removeFromSuperview()
         loaderVC?.removeFromParent()
+        loaderVC = nil // Set loaderVC to nil to ensure deallocation
     }
+
     
     // Function to show the loader
     func showLoadera() {

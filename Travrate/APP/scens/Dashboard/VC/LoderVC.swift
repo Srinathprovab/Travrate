@@ -43,6 +43,10 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     var timer: Timer?
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        stopGifAnimation()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         setuplabels(lbl: triptypelbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
@@ -190,20 +194,26 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     }
     
     
+    
     func loadGifFrames() {
-        // Replace "your_gif_file" with the name of your GIF file (without extension)
+        gifImages = []
         if let gifURL = Bundle.main.url(forResource: MySingleton.shared.loderString, withExtension: "gif"),
            let gifSource = CGImageSourceCreateWithURL(gifURL as CFURL, nil) {
             let frameCount = CGImageSourceGetCount(gifSource)
             
             for index in 0..<frameCount {
-                if let cgImage = CGImageSourceCreateImageAtIndex(gifSource, index, nil) {
-                    let uiImage = UIImage(cgImage: cgImage)
-                    gifImages.append(uiImage)
+                autoreleasepool {
+                    if let cgImage = CGImageSourceCreateImageAtIndex(gifSource, index, nil) {
+                        let uiImage = UIImage(cgImage: cgImage)
+                        if let resizedImage = uiImage.resized(toWidth: 100) { // Resize to a smaller width
+                            gifImages.append(resizedImage)
+                        }
+                    }
                 }
             }
         }
     }
+
     
     func startGifAnimation() {
         timer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(updateGifFrame), userInfo: nil, repeats: true)
@@ -220,9 +230,14 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     
     // Don't forget to invalidate the timer when the view controller is deallocated
     deinit {
-        timer?.invalidate()
+        stopGifAnimation()
     }
     
+    func stopGifAnimation() {
+        timer?.invalidate()
+        timer = nil
+    }
+
     
     
     func numberOfNights(checkInDate: String, checkOutDate: String) -> Int {
@@ -370,4 +385,21 @@ extension LoderVC {
     }
     
     
+}
+
+
+
+extension UIImage {
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let scale = width / self.size.width
+        let newHeight = self.size.height * scale
+        let newSize = CGSize(width: width, height: newHeight)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        self.draw(in: CGRect(origin: .zero, size: newSize))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return resizedImage
+    }
 }
