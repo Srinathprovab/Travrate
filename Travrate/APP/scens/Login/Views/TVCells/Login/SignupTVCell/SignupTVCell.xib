@@ -29,9 +29,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginbg" translatesAutoresizingMaskIntoConstraints="NO" id="Ii4-3r-ZUA">
-                        <rect key="frame" x="0.0" y="0.0" width="447" height="1031"/>
+                        <rect key="frame" x="0.0" y="0.0" width="447" height="1041"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1031" id="JWv-ph-RuH"/>
+                            <constraint firstAttribute="height" constant="1041" id="nL2-Pz-Ygh"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gj4-du-efA" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
@@ -525,7 +525,7 @@
                     <constraint firstItem="Kw4-4s-HCm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="80" id="Mod-Xc-w4Q"/>
                     <constraint firstItem="Ii4-3r-ZUA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="OVD-fk-Dki"/>
                     <constraint firstItem="Kw4-4s-HCm" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="OVy-mD-weY"/>
-                    <constraint firstAttribute="bottom" secondItem="Ii4-3r-ZUA" secondAttribute="bottom" id="cfS-lH-MzE"/>
+                    <constraint firstAttribute="bottom" secondItem="Ii4-3r-ZUA" secondAttribute="bottom" constant="-10" id="cfS-lH-MzE"/>
                     <constraint firstItem="u0V-0r-ux8" firstAttribute="centerY" secondItem="Kw4-4s-HCm" secondAttribute="centerY" id="l8B-2a-XOE"/>
                     <constraint firstItem="u0V-0r-ux8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nek-hz-UxG"/>
                     <constraint firstItem="Ii4-3r-ZUA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="oIg-UC-7tt"/>

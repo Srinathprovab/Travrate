@@ -38,7 +38,7 @@ class HolidayPackagesTVCell: TableViewCell {
         
         let compressor = ImageCompressionTransformer(quality: 0.1) // Compress to 50% quality
         let imageUrl = URL(string: cellInfo?.image ?? "")
-
+        
         packageImage.sd_setImage(
             with: imageUrl,
             placeholderImage: UIImage(named: "placeholder.png"),
@@ -47,13 +47,13 @@ class HolidayPackagesTVCell: TableViewCell {
             progress: { receivedSize, expectedSize, url in
                 // Optionally handle progress updates here
                 // Example: Update a progress indicator
-//                let progress = Float(receivedSize) / Float(expectedSize)
-//                print("Download Progress: \(progress)")
+                //                let progress = Float(receivedSize) / Float(expectedSize)
+                //                print("Download Progress: \(progress)")
             },
             completed: { image, error, cacheType, url in
                 if let error = error {
                     // Handle error loading image
-                 //   print("Error loading image: \(error.localizedDescription)")
+                    //   print("Error loading image: \(error.localizedDescription)")
                     // Check if the error is due to a 404 Not Found response
                     if (error as NSError).code == NSURLErrorFileDoesNotExist {
                         // Set placeholder image for 404 error
@@ -64,23 +64,19 @@ class HolidayPackagesTVCell: TableViewCell {
                     }
                 } else {
                     // Optionally handle success here
-                   // print("Image loaded successfully")
+                    // print("Image loaded successfully")
                 }
             }
         )
-
-        updateHeight()
+        
+        
     }
     
-    
-    func updateHeight() {
-        tvHeight.constant = CGFloat(MySingleton.shared.holidaylist.count * 260)
-        holidaysTV.reloadData()
-    }
-    
+  
     
     func setupUI() {
         setupTV()
+        updateHeight()
     }
     
 }
@@ -101,6 +97,7 @@ extension HolidayPackagesTVCell:UITableViewDelegate,UITableViewDataSource {
         holidaysTV.isScrollEnabled = false
         holidaysTV.separatorStyle = .none
         
+        holidaysTV.estimatedRowHeight = 260
     }
     
     
@@ -134,6 +131,22 @@ extension HolidayPackagesTVCell:UITableViewDelegate,UITableViewDataSource {
         }
         delegate?.didTapOnHolidayPackage(cell: self)
     }
+    
+    
+    
+    func updateHeight() {
+        var totalHeight: CGFloat = 0
+        for index in 0..<MySingleton.shared.holidaylist.count {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = holidaysTV.cellForRow(at: indexPath) as? HolidaysInfoTVCell {
+                totalHeight += cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            }
+        }
+        tvHeight.constant = CGFloat((MySingleton.shared.holidaylist.count)) * totalHeight 
+        holidaysTV.reloadData()
+    }
+    
+    
     
     
 }

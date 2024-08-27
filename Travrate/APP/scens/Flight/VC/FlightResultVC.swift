@@ -575,28 +575,7 @@ extension FlightResultVC:AppliedFilters {
     
     func filtersByApplied(minpricerange: Double, maxpricerange: Double, noofStopsArray: [String], refundableTypeArray: [String], departureTime: [String], arrivalTime: [String], noOvernightFlight: [String], airlinesFilterArray: [String], luggageFilterArray: [String], connectingFlightsFilterArray: [String], ConnectingAirportsFilterArray: [String], mindurationrange: Double, maxdurationrange: Double, minTransitTimerange: Double, maxransitTimerange: Double) {
         
-        
-        print(" ===== minpricerange ====== \n\(minpricerange)")
-        print(" ===== maxpricerange ====== \n\(maxpricerange)")
-        print(" ===== noofStopsArray ====== \n\(noofStopsArray.joined(separator: ","))")
-        print(" ===== refundableTypeArray ====== \n\(refundableTypeArray)")
-        print(" ===== airlinesFilterArray ====== \n\(airlinesFilterArray.joined(separator: ","))")
-        print(" ===== departureTime ====== \n\(departureTime)")
-        print(" ===== arrivalTime ====== \n\(arrivalTime)")
-        print(" ===== noOvernightFlight ====== \n\(noOvernightFlight)")
-        print(" ===== connectingFlightsFilterArray ====== \n\(connectingFlightsFilterArray)")
-        print(" ===== ConnectingAirportsFilterArray ====== \n\(ConnectingAirportsFilterArray)")
-        print(" ===== luggageFilterArray ====== \n\(luggageFilterArray)")
-        
-        
-        print(" ===== mindurationrange ====== \n\(mindurationrange)")
-        print(" ===== maxdurationrange ====== \n\(maxdurationrange)")
-        
-        print(" ===== minTransitTimerange ====== \n\(minTransitTimerange)")
-        print(" ===== maxransitTimerange ====== \n\(maxransitTimerange)")
-        
-        
-        
+      
         let sortedArray = flnew.map { flight in
             flight.filter { j in
                 
@@ -734,7 +713,8 @@ extension FlightResultVC:AppliedFilters {
         }
         
         
-        setupTVCell(list: sortedArray ?? [[]])
+       // setupTVCell(list: sortedArray ?? [[]])
+        filterresettapbool == true ? setupTVCell(list: flnew ?? [[]]) : setupTVCell(list: sortedArray ?? [[]])
         
     }
     

@@ -355,6 +355,7 @@ extension CarRentalResultsVC {
    
     func sportFilterByApplied(minpricerange: Double, maxpricerange: Double, fuleArray: [String], carmanualArray: [String], doorcountArray: [String]) {
         
+        
             
             // Filter the car rentals based on the specified criteria
             let filteredArray = MySingleton.shared.carlist.filter { car in
@@ -377,18 +378,13 @@ extension CarRentalResultsVC {
             return fuelMatches && transmissionMatches && doorCountMatches && priceInRange
         }
 
-        setupTVCells(list: filteredArray)
-
-        // Reload the table view with the filtered results
-        commonTableView.reloadData()
         
+        filterresettapbool == true ? setupTVCells(list: MySingleton.shared.carlist) : setupTVCells(list: filteredArray)
+
        
         
     }
     
-    
-   
-
     
    
     

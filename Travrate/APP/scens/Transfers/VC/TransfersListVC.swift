@@ -296,10 +296,7 @@ extension TransfersListVC {
     
     func sportFilterByApplied(minpricerange: Double, maxpricerange: Double, cartypeArray: [String]) {
         
-        print("minpricerange : \(minpricerange)")
-        print("maxpricerange : \(maxpricerange)")
-        print("cartypeArray : \(cartypeArray.joined(separator: ","))")
-        
+       
         
         // Filter the car rentals based on the specified criteria
         let filteredArray = MySingleton.shared.transferlist.filter { car in
@@ -315,9 +312,9 @@ extension TransfersListVC {
         
         setupTVCells(list: filteredArray)
         
-        // Reload the table view with the filtered results
-        commonTableView.reloadData()
+        filterresettapbool == true ? setupTVCells(list: MySingleton.shared.transferlist) : setupTVCells(list: filteredArray)
         
+      
     }
     
     

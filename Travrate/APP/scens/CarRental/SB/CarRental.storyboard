@@ -395,7 +395,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uI-1d-doD">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uI-1d-doD">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="icd-GB-Wvo">
@@ -502,6 +502,7 @@
                     <connections>
                         <outlet property="commonTableView" destination="icd-GB-Wvo" id="V05-1O-qUq"/>
                         <outlet property="dateslbl" destination="Hth-qD-JP8" id="rJ4-Pz-PKG"/>
+                        <outlet property="holderview" destination="3uI-1d-doD" id="zYT-CD-d1g"/>
                         <outlet property="proceedBtn" destination="f6q-wt-bDI" id="jkA-Zq-LlW"/>
                         <outlet property="titlelbl" destination="cnJ-pk-pcx" id="Wuu-0J-bWK"/>
                     </connections>
@@ -518,7 +519,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLz-W9-p8K">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLz-W9-p8K">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0fx-8t-pQt">
@@ -644,6 +645,7 @@
                         <outlet property="continuetoPaymentBtnView" destination="IHD-F3-A2s" id="1Gy-2A-mX9"/>
                         <outlet property="continuetoPaymentBtnlbl" destination="qeq-Ak-IRc" id="436-DG-9bD"/>
                         <outlet property="gifimg" destination="Pny-yM-Fx0" id="qBZ-RR-AJq"/>
+                        <outlet property="holderview" destination="PLz-W9-p8K" id="c1l-eV-vCw"/>
                         <outlet property="titlelbl" destination="aST-9m-58n" id="ynf-DQ-lzD"/>
                     </connections>
                 </viewController>

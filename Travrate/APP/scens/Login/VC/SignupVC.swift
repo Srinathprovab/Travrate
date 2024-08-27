@@ -95,10 +95,13 @@ class SignupVC: BaseTableVC, RegisterViewModelDelegate {
         }else if lname.isEmpty == true {
             showToast(message: "Enter Last Name")
             errorTextField(v: cell.lnameview)
-        }else if mobile.isEmpty == true {
+        }
+        else if mobile.isEmpty == true {
             showToast(message: "Enter Mobile Number")
             errorTextField(v: cell.mobileview)
-        }else if email.isEmpty == true {
+        }
+        
+        else if email.isEmpty == true {
             showToast(message: "Enter Email Address")
             errorTextField(v: cell.emailview)
         }else if email.isValidEmail() == false {
@@ -136,7 +139,9 @@ class SignupVC: BaseTableVC, RegisterViewModelDelegate {
 extension SignupVC {
     func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
+        
         MySingleton.shared.tablerow.append(TableRow(cellType:.SignupTVCell))
+        
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
     }

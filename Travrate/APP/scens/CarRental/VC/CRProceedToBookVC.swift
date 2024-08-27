@@ -13,6 +13,7 @@ class CRProceedToBookVC: BaseTableVC, CarPreBookingVMDelegate {
     @IBOutlet weak var proceedBtn: UIButton!
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var dateslbl: UILabel!
+    @IBOutlet weak var holderview: UIView!
     
     static var newInstance: CRProceedToBookVC? {
         let storyboard = UIStoryboard(name: Storyboard.CarRental.name,
@@ -128,6 +129,7 @@ extension CRProceedToBookVC {
     
     func callAPI() {
         
+        holderview.isHidden = true
         MySingleton.shared.loderString = "fdetails"
         MySingleton.shared.afterResultsBool = true
         loderBool = true
@@ -147,6 +149,7 @@ extension CRProceedToBookVC {
    
     func carPreBooking(response: CarPreBookingMode) {
         
+        holderview.isHidden = false
         loderBool = false
         hideLoadera()
         cardetails = response.result_token

@@ -252,11 +252,7 @@ extension SelectSportsListVC {
     }
     
     func sportFilterByApplied(tournamentA: [String], eventsA: [String], sportsCityA: [String], sportsCountryA: [String]) {
-        // Print the input arrays
-        print(" ===== tournamentA ====== \n\(tournamentA.joined(separator: ","))")
-        print(" ===== eventsA ====== \n\(eventsA.joined(separator: ","))")
-        print(" ===== sportsCityA ====== \n\(sportsCityA.joined(separator: ","))")
-        print(" ===== sportsCountryA ====== \n\(sportsCountryA.joined(separator: ","))")
+       
         
         // Filter the sports list array based on the input arrays
         let filteredSportsList = MySingleton.shared.sportslistArray.filter { event in
@@ -269,7 +265,9 @@ extension SelectSportsListVC {
             return isTournamentMatch && isEventMatch && isCityMatch && isCountryMatch
         }
         
-        setupTVCells(list: filteredSportsList)
+        
+        
+        filterresettapbool == true ? setupTVCells(list: MySingleton.shared.sportslistArray) : setupTVCells(list: filteredSportsList)
         
     }
     

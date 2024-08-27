@@ -63,10 +63,13 @@ class ResetPasswordVC: BaseTableVC, ResetPasswordViewModelDelegate {
         }else if email.isValidEmail() == false {
             showToast(message: "Enter Vlaid Email Address")
             cell.emailview.layer.borderColor = UIColor.BooknowBtnColor.cgColor
-        }else if mobile.isEmpty == true {
+        }
+        else if mobile.isEmpty == true {
             showToast(message: "Enter Mobile Number")
             cell.mobileview.layer.borderColor = UIColor.BooknowBtnColor.cgColor
-        }else {
+        }
+        
+        else {
             callAPI()
         }
         

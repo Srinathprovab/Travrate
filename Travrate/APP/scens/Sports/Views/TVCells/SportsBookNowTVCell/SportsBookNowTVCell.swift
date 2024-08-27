@@ -38,6 +38,7 @@ class SportsBookNowTVCell: TableViewCell {
         setupUI()
     }
     
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -49,8 +50,8 @@ class SportsBookNowTVCell: TableViewCell {
         bookNowbtn.layer.cornerRadius = 4
         
       
-        MySingleton.shared.setAttributedTextnew(str1: "important Notes ",
-                                                str2: "(Flash)",
+        MySingleton.shared.setAttributedTextnew(str1: "important Notes",
+                                                str2: "",
                                                 lbl: flashlbl,
                                                 str1font: .OpenSansRegular(size: 13),
                                                 str2font: .OpenSansMedium(size: 13),
@@ -101,7 +102,7 @@ extension SportsBookNowTVCell {
     }
     
     @objc func tappedOnLabel(_ gesture: UITapGestureRecognizer) {
-        if gesture.didTapAttributedString("(Flash)", in: flashlbl) {
+        if gesture.didTapAttributedString("important Notes", in: flashlbl) {
             var preferences = EasyTipView.Preferences()
             preferences.drawing.backgroundColor = .black.withAlphaComponent(0.7)
             preferences.drawing.foregroundColor = .white

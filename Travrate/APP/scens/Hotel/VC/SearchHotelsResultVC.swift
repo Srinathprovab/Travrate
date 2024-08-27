@@ -813,18 +813,7 @@ extension SearchHotelsResultVC:AppliedFilters{
         }else{
             isSearchBool = true
         }
-        
-        
-        
-        // Print filter parameters for debugging
-        print("Min Price Range: \(minpricerange)")
-        print("Max Price Range: \(maxpricerange)")
-        print("Star Rating: \(starRatingNew.joined(separator: ","))")
-        print("Refundable Types: \(refundableTypeArray)")
-        print(" ==== nearByLocA === \n\(nearByLocA)")
-        print(" ==== niberhoodA === \n\(niberhoodA)")
-        print(" ==== aminitiesA === \n\(aminitiesA)")
-        
+       
         
         // Filter the hotels based on the specified criteria
         let filteredArray = hotelSearchResult.filter { hotel in

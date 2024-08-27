@@ -14,6 +14,7 @@ class CRBookingDetailsVC: BaseTableVC {
     @IBOutlet weak var continuetoPaymentBtnView: UIView!
     @IBOutlet weak var continuetoPaymentBtnlbl: UILabel!
     @IBOutlet weak var continuebtn: UIButton!
+    @IBOutlet weak var holderview: UIView!
     
     static var newInstance: CRBookingDetailsVC? {
         let storyboard = UIStoryboard(name: Storyboard.CarRental.name,
@@ -22,8 +23,8 @@ class CRBookingDetailsVC: BaseTableVC {
         return vc
     }
     
+    
     var countrycode = String()
-  
     var fname = String()
     var lname = String()
     var email = String()
@@ -339,13 +340,15 @@ extension CRBookingDetailsVC {
     
     
     func callAPI() {
+        holderview.isHidden = true
         MySingleton.shared.loderString = "fdetails"
         MySingleton.shared.afterResultsBool = true
         loderBool = true
         showLoadera()
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
+            holderview.isHidden = false
             loderBool = false
             hideLoadera()
             

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -37,13 +36,13 @@
                         <rect key="frame" x="16" y="0.0" width="532" height="111"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Long Side, Upper tier" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdD-ZS-vq0">
-                                <rect key="frame" x="12" y="14" width="378" height="22"/>
+                                <rect key="frame" x="12" y="14.000000000000002" width="378" height="19.666666666666671"/>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No.of tickets 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6f-TM-Jml">
-                                <rect key="frame" x="12" y="42" width="80" height="16.666666666666671"/>
+                                <rect key="frame" x="12" y="41.666666666666664" width="80" height="17"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -100,7 +99,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service fee 45.00 KWD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01R-K8-sDe">
-                                <rect key="frame" x="395.66666666666669" y="83.333333333333329" width="124.33333333333331" height="16.666666666666671"/>
+                                <rect key="frame" x="396" y="83.333333333333329" width="124" height="16.666666666666671"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                 <color key="textColor" name="TitleColor"/>
                                 <nil key="highlightedColor"/>
@@ -109,6 +108,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2A4-H1-X3E" firstAttribute="top" secondItem="B2Y-Sv-O4y" secondAttribute="bottom" constant="5" id="5bY-B5-73Y"/>
+                            <constraint firstItem="tlT-xp-DOP" firstAttribute="top" secondItem="LdD-ZS-vq0" secondAttribute="bottom" constant="2" id="7HQ-Zk-2a5"/>
+                            <constraint firstItem="S6f-TM-Jml" firstAttribute="top" secondItem="LdD-ZS-vq0" secondAttribute="bottom" constant="8.3300000000000001" id="8Lp-cl-7Mr"/>
                             <constraint firstItem="01R-K8-sDe" firstAttribute="top" secondItem="2A4-H1-X3E" secondAttribute="bottom" constant="5" id="9Ud-Pd-8Cm"/>
                             <constraint firstAttribute="bottom" secondItem="BPF-Xv-cNE" secondAttribute="bottom" constant="13.67" id="Chr-Ku-L1M"/>
                             <constraint firstAttribute="trailing" secondItem="2A4-H1-X3E" secondAttribute="trailing" constant="12" id="Cwx-uS-oit"/>
@@ -117,8 +118,8 @@
                             <constraint firstItem="S6f-TM-Jml" firstAttribute="leading" secondItem="0Nf-TF-3CF" secondAttribute="leading" constant="12" id="K9F-Ci-1Ee"/>
                             <constraint firstItem="LdD-ZS-vq0" firstAttribute="leading" secondItem="0Nf-TF-3CF" secondAttribute="leading" constant="12" id="KU2-1k-Vkq"/>
                             <constraint firstItem="LdD-ZS-vq0" firstAttribute="top" secondItem="0Nf-TF-3CF" secondAttribute="top" constant="14" id="Lj2-tU-08f"/>
+                            <constraint firstAttribute="bottom" secondItem="QXa-ZA-peK" secondAttribute="bottom" constant="19.670000000000002" id="R2O-QC-PeY"/>
                             <constraint firstItem="BPF-Xv-cNE" firstAttribute="top" secondItem="S6f-TM-Jml" secondAttribute="bottom" constant="24.670000000000002" id="RC0-8C-rfg"/>
-                            <constraint firstItem="S6f-TM-Jml" firstAttribute="top" secondItem="LdD-ZS-vq0" secondAttribute="bottom" constant="6" id="UCP-3H-VuM"/>
                             <constraint firstItem="tlT-xp-DOP" firstAttribute="centerY" secondItem="0Nf-TF-3CF" secondAttribute="centerY" id="fba-pb-LH4"/>
                             <constraint firstItem="tlT-xp-DOP" firstAttribute="centerX" secondItem="0Nf-TF-3CF" secondAttribute="centerX" id="g3i-7H-pcY"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="111" id="gZD-Ce-xN7"/>

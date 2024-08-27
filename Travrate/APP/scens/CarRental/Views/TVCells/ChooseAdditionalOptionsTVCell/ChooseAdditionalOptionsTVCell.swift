@@ -67,7 +67,12 @@ extension ChooseAdditionalOptionsTVCell:UICollectionViewDelegate,UICollectionVie
         optionscv.delegate = self
         optionscv.dataSource = self
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 155, height: 70)
+        if screenHeight < 835 {
+            layout.itemSize = CGSize(width: 147, height: 70)
+        }else {
+            layout.itemSize = CGSize(width: 155, height: 70)
+        }
+        
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 0
@@ -81,7 +86,6 @@ extension ChooseAdditionalOptionsTVCell:UICollectionViewDelegate,UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        return  MySingleton.shared.extraOption.count
-       
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

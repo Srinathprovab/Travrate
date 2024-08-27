@@ -290,10 +290,9 @@ extension ActivitiesSearchResultsVC {
             return priceInRange && durationTypeMatch && activitiesTypeMatch
         }
 
-        setupTVCells(list: filteredArray)
+        //setupTVCells(list: filteredArray)
+        filterresettapbool == true ? setupTVCells(list: MySingleton.shared.activityList) : setupTVCells(list: filteredArray)
         
-        // Reload the table view with the filtered results
-        commonTableView.reloadData()
     }
 
     
