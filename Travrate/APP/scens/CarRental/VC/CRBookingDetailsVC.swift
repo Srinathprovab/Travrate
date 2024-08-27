@@ -362,7 +362,7 @@ extension CRBookingDetailsVC {
         MySingleton.shared.tablerow.append(TableRow(title:"",moreData: cardetails,cellType:.SelectedCarRentalTVCell))
         
         
-        MySingleton.shared.carproductarray.forEach { i in
+        MySingleton.shared.selectedcarproductarray.forEach { i in
             MySingleton.shared.tablerow.append(TableRow(key:"bookingdetails",
                                                         moreData: i,
                                                         cellType:.SelectedCRPackageTVCell))
@@ -379,7 +379,7 @@ extension CRBookingDetailsVC {
         
         MySingleton.shared.tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         
-        MySingleton.shared.carproductarray.forEach { i in
+        MySingleton.shared.selectedcarproductarray.forEach { i in
             MySingleton.shared.tablerow.append(TableRow(key:"bookingdetails",moreData: i,cellType:.CRFareSummaryTVCell))
             
         }
