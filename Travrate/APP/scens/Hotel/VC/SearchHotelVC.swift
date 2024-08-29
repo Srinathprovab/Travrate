@@ -81,10 +81,7 @@ class SearchHotelVC: BaseTableVC {
                 defaults.set(formatter.string(from: cell.checkinDatePicker.date), forKey: UserDefaultsKeys.checkin)
                 defaults.set(formatter.string(from: cell.checkoutDatePicker.date), forKey: UserDefaultsKeys.checkout)
                 
-//                cell.checkinDatePicker.minimumDate = cell.checkinDatePicker.date
-//                cell.checkoutDatePicker.minimumDate = cell.checkoutDatePicker.date
-                
-                
+
             }
             
         }

@@ -11,6 +11,7 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
     
     
     @IBOutlet weak var logoutView: UIView!
+    @IBOutlet weak var copyRightlbl: UILabel!
     
     static var newInstance: SideMenuViewController? {
         let storyboard = UIStoryboard(name: Storyboard.Login.name,
@@ -53,6 +54,10 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
     
     
     func setupUI() {
+        
+        let currentYear = Calendar.current.component(.year, from: Date())
+        copyRightlbl.text = "Copyright (C)\(currentYear)."
+        
         setupMenuTVCells()
         commonTableView.isScrollEnabled = true
         commonTableView.registerTVCells(["MenuBGTVCell",

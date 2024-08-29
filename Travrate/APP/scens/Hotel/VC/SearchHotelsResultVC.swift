@@ -44,6 +44,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     var payload1 = [String:Any]()
     var countrycode = String()
     
+    var noofnights = String()
     var bsDataArray = [ABSData]()
     var viewModel:HotelSearchViewModel?
     
@@ -401,7 +402,7 @@ extension SearchHotelsResultVC {
             print(theJSONText ?? "")
             payload1["search_params"] = theJSONText
             payload1["offset"] = "0"
-            payload1["limit"] = "100"
+            payload1["limit"] = "10"
             
             viewModel?.CallHotelPreSearchAPI(dictParam: payload1)
             
@@ -427,7 +428,7 @@ extension SearchHotelsResultVC {
     func callHotelSearchAPI(bookingsource:String,searchid:String){
         payload.removeAll()
         payload["offset"] = "0"
-        payload["limit"] = "100"
+        payload["limit"] = "10"
         payload["booking_source"] = bookingsource
         payload["search_id"] = searchid
         payload["ResultIndex"] = "1"
@@ -510,7 +511,7 @@ extension SearchHotelsResultVC {
         
         list.forEach { i in
             
-            
+            noofnights = "\(i.no_of_nights ?? 0)"
             prices.append(i.price ?? "0")
             hotelstarratingArray.append("\(i.star_rating ?? 0)")
             neighbourwoodArray.append(i.location ?? "")
@@ -532,7 +533,7 @@ extension SearchHotelsResultVC {
                     }
                 }
             }
-
+            
             
             
         }
@@ -578,7 +579,7 @@ extension SearchHotelsResultVC {
                 cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                     if let error = error {
                         // Handle error loading image
-                    //    print("Error loading image: \(error.localizedDescription)")
+                        //    print("Error loading image: \(error.localizedDescription)")
                         // Check if the error is due to a 404 Not Found response
                         if (error as NSError).code == NSURLErrorBadServerResponse {
                             // Set placeholder image for 404 error
@@ -642,7 +643,7 @@ extension SearchHotelsResultVC {
                 cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                     if let error = error {
                         // Handle error loading image
-                     //   print("Error loading image: \(error.localizedDescription)")
+                        //   print("Error loading image: \(error.localizedDescription)")
                         // Check if the error is due to a 404 Not Found response
                         if (error as NSError).code == NSURLErrorBadServerResponse {
                             // Set placeholder image for 404 error
@@ -663,6 +664,7 @@ extension SearchHotelsResultVC {
                                                         str2font: .InterBold(size: 20),
                                                         str1Color: .BackBtnColor,
                                                         str2Color: .BackBtnColor)
+                
                 
                 cell.bookingsource = dict.booking_source ?? ""
                 cell.hotelid = String(dict.hotel_code ?? "0")
@@ -728,7 +730,7 @@ extension SearchHotelsResultVC {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
                 
                 if isSearchBool == false {
-                    // callHotelSearchPaginationAPI()
+                    callHotelSearchPaginationAPI()
                 }
             }
             
@@ -745,7 +747,7 @@ extension SearchHotelsResultVC {
         payload["search_id"] = hsearchid
         payload["offset"] = "\(totalcount + 1)"
         payload["limit"] = "10"
-        payload["no_of_nights"] = "1"
+        payload["no_of_nights"] = noofnights
         
         viewModel?.CallHotelSearchPagenationAPI(dictParam: payload)
         
@@ -781,7 +783,6 @@ extension SearchHotelsResultVC {
             // You can show a message or hide a loading indicator here
         }
         
-        
     }
     
     
@@ -813,7 +814,7 @@ extension SearchHotelsResultVC:AppliedFilters{
         }else{
             isSearchBool = true
         }
-       
+        
         
         // Filter the hotels based on the specified criteria
         let filteredArray = hotelSearchResult.filter { hotel in
@@ -913,7 +914,6 @@ extension SearchHotelsResultVC:AppliedFilters{
             break
             
             
-            
         default:
             break
         }
@@ -922,9 +922,6 @@ extension SearchHotelsResultVC:AppliedFilters{
         if sortBy == .nothing {
             isSearchBool = false
         }
-        
-        
-        
     }
     
     

@@ -85,9 +85,9 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         }
         
         
-        if MySingleton.shared.topCityGuides.count > 0 {
-            MySingleton.shared.tablerow.append(TableRow(cellType:.TopcityGuidesTVCell))
-        }
+//        if MySingleton.shared.topCityGuides.count > 0 {
+//            MySingleton.shared.tablerow.append(TableRow(cellType:.TopcityGuidesTVCell))
+//        }
         
         if MySingleton.shared.deail_code_list.count > 0 {
             MySingleton.shared.tablerow.append(TableRow(cellType:.SpecialOffersTVCell))

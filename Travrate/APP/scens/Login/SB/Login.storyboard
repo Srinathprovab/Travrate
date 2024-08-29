@@ -143,19 +143,11 @@
                                                         <color key="textColor" name="BackBtnColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Provab Technosoft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2UZ-HH-rh3">
-                                                        <rect key="frame" x="98.666666666666671" y="42" width="195.66666666666663" height="16.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <color key="textColor" name="BackBtnColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" name="LayoverColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="2UZ-HH-rh3" firstAttribute="centerX" secondItem="to6-SQ-Y2o" secondAttribute="centerX" id="SWL-Rf-lxW"/>
                                                     <constraint firstAttribute="height" constant="80" id="X9P-lS-dtq"/>
                                                     <constraint firstItem="6bz-0L-Vm9" firstAttribute="centerX" secondItem="to6-SQ-Y2o" secondAttribute="centerX" id="ZnD-NB-2bc"/>
-                                                    <constraint firstItem="2UZ-HH-rh3" firstAttribute="top" secondItem="6bz-0L-Vm9" secondAttribute="bottom" constant="5" id="b1R-Bc-c4p"/>
                                                     <constraint firstItem="6bz-0L-Vm9" firstAttribute="top" secondItem="to6-SQ-Y2o" secondAttribute="top" constant="20" id="sm1-K3-39h"/>
                                                 </constraints>
                                             </view>
@@ -185,6 +177,7 @@
                     </view>
                     <connections>
                         <outlet property="commonTableView" destination="ISU-Jr-P5X" id="qQ9-PR-ltM"/>
+                        <outlet property="copyRightlbl" destination="6bz-0L-Vm9" id="nLu-63-TtR"/>
                         <outlet property="logoutView" destination="DXL-cn-KPf" id="dgy-e8-RTq"/>
                     </connections>
                 </viewController>

@@ -93,7 +93,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     var txtbool = Bool()
     
     let depDatePicker = UIDatePicker()
-    //  let retDatePicker = UIDatePicker()
     let retDatePicker = UIDatePicker()
     
     var filterdcountrylist = [AirlineDate]()

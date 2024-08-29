@@ -408,7 +408,7 @@ extension EditProfileVC {
                 MySingleton.shared.username = "\(profileUpdateModel.data?.first_name ?? "") \(profileUpdateModel.data?.last_name ?? "")"
                 
                 
-                
+                 
                 let seconds = 2.0
                 DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
                     self.gotoDashBoardTBVC()
