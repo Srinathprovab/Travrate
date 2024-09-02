@@ -666,7 +666,7 @@ extension DashboardVC {
         
         
         DispatchQueue.main.async {[self] in
-            //callGetRecentSearchAPI()
+            callGetRecentSearchAPI()
         }
     }
     

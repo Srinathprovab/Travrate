@@ -254,8 +254,8 @@ extension PopularHotelDestinationsTVCell:UICollectionViewDelegate,UICollectionVi
                 
                 defaults.set("\(hotel.city_name) (\(hotel.country))", forKey: UserDefaultsKeys.locationcity)
                 defaults.set(hotel.id, forKey: UserDefaultsKeys.locationid)
-                defaults.set(MySingleton.shared.convertDateFormat(inputDate: hotel.check_in, f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkin)
-                defaults.set(MySingleton.shared.convertDateFormat(inputDate: hotel.check_out, f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkout)
+                defaults.set(MySingleton.shared.convertDateFormat(inputDate: hotel.check_in, f1: "dd/MM/yyyy", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkin)
+                defaults.set(MySingleton.shared.convertDateFormat(inputDate: hotel.check_out, f1: "dd/MM/yyyy", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkout)
                 defaults.set("2", forKey: UserDefaultsKeys.roomcount)
                 defaults.set("Kuwait", forKey: UserDefaultsKeys.hnationality)
                 defaults.set("KW", forKey: UserDefaultsKeys.hnationalitycode)

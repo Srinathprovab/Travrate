@@ -219,6 +219,8 @@ extension HotelSearchTVCell:UITableViewDelegate, UITableViewDataSource {
     
     override func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == fromcityTF {
+            defaults.setValue("City/Location", forKey: UserDefaultsKeys.locationcity)
+            defaults.setValue("", forKey: UserDefaultsKeys.locationid)
             fromcityTF.text = ""
             CallShowCityListAPI(str: textField.text ?? "")
         }

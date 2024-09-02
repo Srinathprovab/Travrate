@@ -121,19 +121,58 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType)
             if journyType == "oneway" {
                 
-                cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tcity) ?? "")"
+                cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fromcitynameshow) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocitynameshow) ?? "")"
                 datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: searchdata?.from_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
                 flightEconomylbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass)
-                triptypelbl.text = "Oneway - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
+                
+//                var paxcount = defaults.integer(forKey: UserDefaultsKeys.totalTravellerCount)
+//                if paxcount > 1 {
+//                    triptypelbl.text = "Oneway - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
+//                }else {
+//                    triptypelbl.text = "Oneway - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Traveller"
+//                }
+                
+                
+                let adultcount = defaults.integer(forKey: UserDefaultsKeys.adultCount)
+                let childcount = defaults.integer(forKey: UserDefaultsKeys.childCount)
+                let infantcount = defaults.integer(forKey: UserDefaultsKeys.infantsCount)
+                let classname = defaults.string(forKey: UserDefaultsKeys.selectClass)
+                var labelText = adultcount > 1 ? "\(adultcount) Adults" : "\(adultcount) Adult"
+                if childcount > 0 {
+                    labelText += ",\(childcount) Child"
+                }
+                if infantcount > 0 {
+                    labelText += ",\(infantcount) Infant"
+                }
+                triptypelbl.text = "Oneway - \(labelText)"
+                
                 
             }else {
                 
-                cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tcity) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "")"
+                cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fromcitynameshow) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocitynameshow) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.fromcitynameshow) ?? "")"
                 datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: searchdata?.from_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM")) - \(MySingleton.shared.convertDateFormat(inputDate: searchdata?.to_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
                 
                 flightEconomylbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.rselectClass) ?? "")"
-                triptypelbl.text = "RoundTrip - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
                 
+//                var paxcount = defaults.integer(forKey: UserDefaultsKeys.totalTravellerCount)
+//                if paxcount > 1 {
+//                    triptypelbl.text = "RoundTrip - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
+//                }else {
+//                    triptypelbl.text = "RoundTrip - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Traveller"
+//                }
+                
+                let adultcount = defaults.integer(forKey: UserDefaultsKeys.adultCount)
+                let childcount = defaults.integer(forKey: UserDefaultsKeys.childCount)
+                let infantcount = defaults.integer(forKey: UserDefaultsKeys.infantsCount)
+                let classname = defaults.string(forKey: UserDefaultsKeys.selectClass)
+                var labelText = adultcount > 1 ? "\(adultcount) Adults" : "\(adultcount) Adult"
+                if childcount > 0 {
+                    labelText += ",\(childcount) Child"
+                }
+                if infantcount > 0 {
+                    labelText += ",\(infantcount) Infant"
+                }
+                triptypelbl.text = "RoundTrip - \(labelText)"
             }
             
             
@@ -169,7 +208,8 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             let childcount = MySingleton.shared.hotelchildcount
             var labelText = "\(adultcount) Adults"
             if childcount > 0 {
-                labelText += " - \(childcount) Child"
+                let newchildcount = childcount > 1 ? "\(childcount) Children" : "\(childcount) Child"
+                labelText += ", \(newchildcount)"
             }
            
             guestlbl.text = labelText

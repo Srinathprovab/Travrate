@@ -406,6 +406,8 @@ struct UserDefaultsKeys {
     
     
     //ONE WAY
+    static var fromcitynameshow = "fromcitynameshow"
+    static var tocitynameshow = "tocitynameshow"
     static var fromCode = "fromCode"
     static var toCode = "toCode"
     static var fromCity = "fromCity"

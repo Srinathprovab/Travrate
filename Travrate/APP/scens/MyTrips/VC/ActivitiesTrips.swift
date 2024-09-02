@@ -35,7 +35,6 @@ extension BookingsVC {
             }
             
         }
-        
     }
     
     

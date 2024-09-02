@@ -25,6 +25,10 @@ struct Arr_data : Codable {
     let search_flight : String?
     let adult : String?
     let child : String?
+    let from_city : String?
+    let to_city : String?
+    
+    
 
     enum CodingKeys: String, CodingKey {
 
@@ -51,6 +55,9 @@ struct Arr_data : Codable {
         case search_flight = "search_flight"
         case adult = "adult"
         case child = "child"
+        
+        case from_city = "from_city"
+        case to_city = "to_city"
     }
 
     init(from decoder: Decoder) throws {
@@ -78,6 +85,10 @@ struct Arr_data : Codable {
         search_flight = try values.decodeIfPresent(String.self, forKey: .search_flight)
         adult = try values.decodeIfPresent(String.self, forKey: .adult)
         child = try values.decodeIfPresent(String.self, forKey: .child)
+        
+        from_city = try values.decodeIfPresent(String.self, forKey: .from_city)
+        to_city = try values.decodeIfPresent(String.self, forKey: .to_city)
+        
     }
 
 }

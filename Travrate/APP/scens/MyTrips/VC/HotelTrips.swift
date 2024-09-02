@@ -46,7 +46,7 @@ extension BookingsVC {
     //MARK: -  setupHoteltUpcomingTVCells
     func setupHoteltUpcomingTVCells(res:[Hotel_Completed_booking]) {
         MySingleton.shared.tablerow.removeAll()
-
+        
         if res.count > 0 {
             res.forEach { i in
                 MySingleton.shared.tablerow.append(TableRow(moreData:i,cellType:.HotelTripsTVCell))
@@ -66,7 +66,7 @@ extension BookingsVC {
     //MARK: -  setupHoteltCompletedTVCells
     func setupHoteltCompletedTVCells(res:[Hotel_Completed_booking]) {
         MySingleton.shared.tablerow.removeAll()
-
+        
         if res.count > 0 {
             res.forEach { i in
                 MySingleton.shared.tablerow.append(TableRow(moreData:i,cellType:.HotelTripsTVCell))
@@ -86,7 +86,7 @@ extension BookingsVC {
     //MARK: -  setupHoteltCancelledTVCells
     func setupHoteltCancelledTVCells(res:[Hotel_Completed_booking]) {
         MySingleton.shared.tablerow.removeAll()
-
+        
         if res.count > 0 {
             res.forEach { i in
                 MySingleton.shared.tablerow.append(TableRow(moreData:i,cellType:.HotelTripsTVCell))

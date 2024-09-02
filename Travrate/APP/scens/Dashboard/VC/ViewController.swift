@@ -17,6 +17,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         if !UserDefaults.standard.bool(forKey: "ExecuteOnce") {
             
+            defaults.set("Origin", forKey: UserDefaultsKeys.fromcityname)
+            defaults.set("Destination", forKey: UserDefaultsKeys.tocityname)
+            
             defaults.set("KWD", forKey: UserDefaultsKeys.selectedCurrency)
             defaults.set("ALL", forKey: UserDefaultsKeys.fcariername)
             defaults.set("ALL", forKey: UserDefaultsKeys.fcariercode)
@@ -26,6 +29,7 @@ class ViewController: UIViewController {
             defaults.set("0", forKey: UserDefaultsKeys.infantsCount)
             defaults.set("1", forKey: UserDefaultsKeys.totalTravellerCount)
             defaults.set("Economy", forKey: UserDefaultsKeys.selectClass)
+            defaults.set("Economy", forKey: UserDefaultsKeys.rselectClass)
             
             defaults.set("1", forKey: UserDefaultsKeys.visaadultCount)
             defaults.set("0", forKey: UserDefaultsKeys.visachildCount)
@@ -34,6 +38,11 @@ class ViewController: UIViewController {
             defaults.set("1 Passenger", forKey: UserDefaultsKeys.visatotalpassengercount)
             defaults.set("1", forKey: UserDefaultsKeys.activitesadultCount)
             defaults.set("2", forKey: UserDefaultsKeys.guestcount)
+            
+            
+            
+            defaults.set("Select Nationality", forKey: UserDefaultsKeys.hnationality)
+            defaults.set("", forKey: UserDefaultsKeys.hnationalitycode)
             
             
             

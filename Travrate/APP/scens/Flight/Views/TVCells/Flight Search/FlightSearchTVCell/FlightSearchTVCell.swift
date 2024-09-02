@@ -402,6 +402,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     
     override func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == fromTF {
+            defaults.setValue("Origin", forKey: UserDefaultsKeys.fromcityname)
             fromTF.placeholder = "Origin"
             self.fromlbl.text = ""
             fromtvHeight.constant = 0
@@ -409,6 +410,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             //  dropDown.show()
             
         }else {
+            defaults.setValue("Destination", forKey: UserDefaultsKeys.tocityname)
             toTF.placeholder = "Destination"
             self.tolbl.text = ""
             totvHeight.constant = 0
@@ -467,6 +469,9 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             self.swapimg?.transform = (self.swapimg?.transform.rotated(by: .pi))!
         }
     }
+    
+    
+    
     
 }
 
@@ -771,6 +776,7 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
                 
                 //toTF.becomeFirstResponder()
                 
+                defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.fromcitynameshow)
                 defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromCode)
                 defaults.set(cityList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.fromCity)
                 defaults.set(cityList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.fromlocid)
@@ -779,6 +785,8 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
                 
                 defaults.set("\(cityList[indexPath.row].city ?? "")", forKey: UserDefaultsKeys.fcity)
                 
+                
+               
                 
                 
                 fromtvHeight.constant = 0
@@ -789,6 +797,8 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
                 toTF.placeholder = ""
                 toTF.resignFirstResponder()
                 
+                
+                defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.tocitynameshow)
                 defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCode)
                 defaults.set(cityList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.toCity)
                 defaults.set(cityList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.tolocid)
@@ -1095,13 +1105,20 @@ extension FlightSearchTVCell {
 
 extension FlightSearchTVCell {
     
+    
+
+    
     @objc func searchTextBegin(textField: UITextField) {
+        
+      
+        
         airlineTF.text = ""
         airlinelbl.text = ""
         filterdcountrylist.removeAll()
         filterdcountrylist = MySingleton.shared.airlinelist
         loadCountryNamesAndCode()
         airlinetimeDropdown.show()
+        
     }
     
     

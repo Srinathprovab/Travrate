@@ -1064,18 +1064,18 @@ extension FlightResultVC {
         MySingleton.shared.enablePaymentButtonBool1 = false
         MySingleton.shared.enablePaymentButtonBool2 = false
         
-        cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fcity) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tcity) ?? "")"
+        cityslbl.text = "\(defaults.string(forKey: UserDefaultsKeys.fromcitynameshow) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocitynameshow) ?? "")"
         
         let adultcount = defaults.integer(forKey: UserDefaultsKeys.adultCount)
         let childcount = defaults.integer(forKey: UserDefaultsKeys.childCount)
         let infantcount = defaults.integer(forKey: UserDefaultsKeys.infantsCount)
         let classname = defaults.string(forKey: UserDefaultsKeys.selectClass)
-        var labelText = adultcount > 1 ? "Adults \(adultcount)" : "Adult \(adultcount)"
+        var labelText = adultcount > 1 ? "\(adultcount) Adults" : "\(adultcount) Adult"
         if childcount > 0 {
-            labelText += ", Child \(childcount)"
+            labelText += ",\(childcount) Child"
         }
         if infantcount > 0 {
-            labelText += ", Infant \(infantcount)"
+            labelText += ",\(infantcount) Infant"
         }
         paxlbl.text = "\(labelText) | \(classname ?? "")"
         

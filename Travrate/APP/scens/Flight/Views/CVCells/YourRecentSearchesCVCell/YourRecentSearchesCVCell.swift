@@ -47,6 +47,8 @@ class YourRecentSearchesCVCell: UICollectionViewCell {
     var fcityname = String()
     var tcityname = String()
     
+    
+    
     weak var delegate:YourRecentSearchesCVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()

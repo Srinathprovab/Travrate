@@ -35,13 +35,29 @@ class ItineraryTVCell: TableViewCell {
         depFind = Int(cellInfo?.title ?? "") ?? 0
         fdetais = cellInfo?.moreData as! [ItinearyFlightDetails]
         
-        tvHeight.constant = CGFloat((fdetais.count * 222))
+                tvHeight.constant = CGFloat((fdetais.count * 240))
+                additinararyTV.reloadData()
+        
+        
+       // updateHeight()
+    }
+    
+    
+    func updateHeight() {
+        var totalHeight: CGFloat = 0
+        for index in 0..<fdetais.count {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = additinararyTV.cellForRow(at: indexPath) as? AddItineraryTVCell {
+                totalHeight += cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            }
+        }
+        tvHeight.constant = CGFloat((fdetais.count)) * totalHeight
         additinararyTV.reloadData()
     }
     
     
+    
     func setupUI() {
-        
         setupTV()
     }
     
@@ -54,6 +70,8 @@ class ItineraryTVCell: TableViewCell {
         additinararyTV.showsVerticalScrollIndicator = false
         additinararyTV.separatorStyle = .none
         additinararyTV.isScrollEnabled = false
+        
+        additinararyTV.estimatedRowHeight = 240
     }
     
 }
@@ -80,15 +98,17 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
             cell.economylbl.text = "\(data.cabin_class ?? "")"
             
             cell.flightnumber.text = "(\(data.operator_code ?? "")-\(data.flight_number ?? ""))"
-            cell.fromcitylbl.text = "\(data.origin?.city ?? "")"
+            cell.fromcitylbl.text = "\(data.origin?.city ?? "") (\(data.origin?.loc ?? ""))"
+            cell.fromcitylbl.numberOfLines = 0
             cell.fromdatelbl.text = "\(data.origin?.date ?? "") \(data.origin?.time ?? "")"
             cell.fromairportlbl.text = "\(data.origin?.airport_name ?? "")"
-           
             
-            cell.tocitylbl.text = "\(data.destination?.city ?? "")"
+            
+            cell.tocitylbl.text = "\(data.destination?.city ?? "") (\(data.destination?.loc ?? ""))"
+            cell.tocitylbl.numberOfLines = 0
             cell.todatelbl.text = "\(data.destination?.date ?? "") \(data.destination?.time ?? "")"
             cell.toairportlbl.text = "\(data.destination?.airport_name ?? "")"
-           
+            
             
             if let operatorImageURL = data.operator_image {
                 cell.operatorimg.sd_setImage(with: URL(string: operatorImageURL), placeholderImage: UIImage(named: "placeholder.png"))
@@ -172,7 +192,7 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
                 cell.fromterminallbl.text = "Terminal: \(data.origin?.terminal ?? "")"
             }
             
-           
+            
             if indexPath.row == 0 {
                 cell.totalJourneyTimelbl.isHidden = false
             }else {

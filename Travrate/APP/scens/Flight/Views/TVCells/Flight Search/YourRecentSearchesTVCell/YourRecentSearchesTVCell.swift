@@ -197,10 +197,11 @@ extension YourRecentSearchesTVCell:UICollectionViewDelegate,UICollectionViewData
             cell.depature = MySingleton.shared.recentData?[indexPath.row].arr_data?.depature ?? ""
             cell.to = MySingleton.shared.recentData?[indexPath.row].arr_data?.to ?? ""
             cell.v_class = MySingleton.shared.recentData?[indexPath.row].arr_data?.v_class ?? ""
-            cell.fcityname = MySingleton.shared.recentData?[indexPath.row].arr_data?.from_custom ?? ""
-            cell.tcityname = MySingleton.shared.recentData?[indexPath.row].arr_data?.to_custom ?? ""
+            cell.fcityname = MySingleton.shared.recentData?[indexPath.row].arr_data?.from_city ?? ""
+            cell.tcityname = MySingleton.shared.recentData?[indexPath.row].arr_data?.to_city ?? ""
        
        
+           
             
             commonCell = cell
         }

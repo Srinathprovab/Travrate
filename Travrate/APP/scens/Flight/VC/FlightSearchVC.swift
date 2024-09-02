@@ -216,9 +216,12 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
         defaults.setValue(cell.currency, forKey: UserDefaultsKeys.selectedCurrency)
         defaults.setValue(cell.user_id, forKey: UserDefaultsKeys.userid)
         defaults.setValue(cell.v_class, forKey: UserDefaultsKeys.selectClass)
-        defaults.setValue(cell.fcityname, forKey: UserDefaultsKeys.fromcityname)
-        defaults.setValue(cell.tcityname, forKey: UserDefaultsKeys.tocityname)
+        defaults.setValue(cell.fcityname, forKey: UserDefaultsKeys.fromcitynameshow)
+        defaults.setValue(cell.tcityname, forKey: UserDefaultsKeys.tocitynameshow)
         
+        
+        defaults.setValue(cell.from_custom, forKey: UserDefaultsKeys.fromcityname)
+        defaults.setValue(cell.to_custom, forKey: UserDefaultsKeys.tocityname)
         
         defaults.setValue(cell.fcityname, forKey: UserDefaultsKeys.fcity)
         defaults.setValue(cell.tcityname, forKey: UserDefaultsKeys.tcity)

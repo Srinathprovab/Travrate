@@ -42,10 +42,6 @@ class BookingsVC: BaseTableVC, TripsViewModelDelegate {
         basicloderBool = true
         loderBool = false
         hideLoadera()
-        
-        
-        
-        
     }
     
     

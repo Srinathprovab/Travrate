@@ -271,8 +271,8 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 
                 let flight = filteredFlights[indexPath.row]
                 
-                defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.traveldate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calDepDate)
-                defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.returndate ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calRetDate)
+                defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.traveldate ?? "", f1: "dd/MM/yyyy", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calDepDate)
+                defaults.setValue(MySingleton.shared.convertDateFormat(inputDate: flight.returndate ?? "", f1: "dd/MM/yyyy", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.calRetDate)
                 defaults.setValue(flight.airline_class, forKey: UserDefaultsKeys.selectClass)
                 defaults.setValue(flight.airline_class, forKey: UserDefaultsKeys.rselectClass)
                 defaults.setValue("1", forKey: UserDefaultsKeys.adultCount)

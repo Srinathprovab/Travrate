@@ -479,10 +479,12 @@ class AddRoomsVCViewController: UIViewController, UITableViewDelegate, UITableVi
         defaults.setValue(adultcount + childcount, forKey: UserDefaultsKeys.guestcount)
         
         
-        let adultsCoutntStr = adultcount > 1 ? "Room \(roomscount) | Adult \(adultcount)" : "Room \(roomscount) | Adult \(adultcount)"
+        let roomcount = roomscount > 1 ? "\(roomscount) Rooms" : "\(roomscount) Room"
+        let adultsCoutntStr = adultcount > 1 ? "\(roomcount) | \(adultcount) Adults" : "\(roomcount) | \(adultcount) Adult"
         var labelText = adultsCoutntStr
         if childcount > 0 {
-            labelText += ", Child \(childcount)"
+            let newchildcount = childcount > 1 ? "\(childcount) Children" : "\(childcount) Child"
+            labelText += ", \(newchildcount)"
         }
        
         defaults.set(labelText, forKey: UserDefaultsKeys.selectPersons)

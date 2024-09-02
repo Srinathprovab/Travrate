@@ -104,12 +104,14 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
         let childcount = defaults.integer(forKey: UserDefaultsKeys.hotelchildcount)
         
         
-        let adultsCoutntStr = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Room \(roomscount) | Adult \(adultcount)"
+        let roomcount = roomscount > 1 ? "\(roomscount) Rooms" : "\(roomscount) Room"
+        let adultsCoutntStr = adultcount > 1 ? "\(roomcount) | \(adultcount) Adults" : "\(roomcount) | \(adultcount) Adult"
         
         var labelText = adultsCoutntStr
         //  var labelText = adultcount > 1 ? "Room \(roomscount) | Adults \(adultcount)" : "Adult \(adultcount)"
         if childcount > 0 {
-            labelText += ", Child \(childcount)"
+            let newchildcount = childcount > 1 ? "\(childcount) Children" : "\(childcount) Child"
+            labelText += ", \(newchildcount)"
         }
         paxlbl.text = labelText
         

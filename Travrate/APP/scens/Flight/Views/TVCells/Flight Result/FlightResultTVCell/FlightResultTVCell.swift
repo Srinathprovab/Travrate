@@ -232,9 +232,9 @@ extension FlightResultTVCell:UITableViewDelegate,UITableViewDataSource {
             
             cell.flightDetailsTapBtn.addTarget(self, action: #selector(didTapFlightDetailsPopupBrtnBtnAction(_:)), for: .touchUpInside)
             cell.fromCityTimelbl.text = data.origin?.time
-            cell.fromCityNamelbl.text = "\(data.origin?.city ?? "")(\(data.origin?.loc ?? ""))"
+            cell.fromCityNamelbl.text = "\(data.origin?.city ?? "")"
             cell.toCityTimelbl.text = data.destination?.time
-            cell.toCityNamelbl.text = "\(data.destination?.city ?? "")(\(data.destination?.loc ?? ""))"
+            cell.toCityNamelbl.text = "\(data.destination?.city ?? "")"
             cell.hourslbl.text = data.duration
             cell.noOfStopslbl.text = "\(data.no_of_stops ?? 0) Stop"
             cell.inNolbl.text = "\(data.operator_code ?? "") - \(data.flight_number ?? "")"
@@ -261,6 +261,10 @@ extension FlightResultTVCell:UITableViewDelegate,UITableViewDataSource {
                 self.bookNowlbl.text = "Select Fare"
             }else {
                 self.bookNowlbl.text = "Book Now"
+            }
+            
+            if data.no_of_stops == 0 {
+                cell.noOfStopslbl.text = "Non Stop"
             }
             
             
