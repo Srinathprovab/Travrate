@@ -12,12 +12,14 @@ struct CruiseModel : Codable {
     let status : Bool?
     let cruise_package_text : String?
     let data : [CruiseData]?
+    let home_sliders : [Home_sliders_Cruise]?
     
     enum CodingKeys: String, CodingKey {
         
         case status = "status"
         case cruise_package_text = "cruise_package_text"
         case data = "data"
+        case home_sliders = "home_sliders"
     }
     
     init(from decoder: Decoder) throws {
@@ -25,6 +27,7 @@ struct CruiseModel : Codable {
         status = try values.decodeIfPresent(Bool.self, forKey: .status)
         cruise_package_text = try values.decodeIfPresent(String.self, forKey: .cruise_package_text)
         data = try values.decodeIfPresent([CruiseData].self, forKey: .data)
+        home_sliders = try values.decodeIfPresent([Home_sliders_Cruise].self, forKey: .home_sliders)
     }
     
 }

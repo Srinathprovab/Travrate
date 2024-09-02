@@ -46,8 +46,6 @@ class CruiseAddItineraryTVCell: UITableViewCell {
         if showbool {
             
             dropdownimg.image = UIImage(named: "dropup")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
-            
-            
             subtitleHolderView.isHidden = false
         }else {
             dropdownimg.image = UIImage(named: "downarrow")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)

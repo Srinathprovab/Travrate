@@ -39,6 +39,42 @@ class CruisePackegesTVCell: TableViewCell {
         
         
         titlelbl.text = MySingleton.shared.cruise?.cruise_package_text ?? ""
+        
+        let compressor = ImageCompressionTransformer(quality: 0.1) // Compress to 50% quality
+        let imageUrl = URL(string: cellInfo?.image ?? "")
+        
+        packageImage.sd_setImage(
+            with: imageUrl,
+            placeholderImage: UIImage(named: "placeholder.png"),
+            options: [.retryFailed],
+            context: [.imageTransformer: compressor],
+            progress: { receivedSize, expectedSize, url in
+                // Optionally handle progress updates here
+                // Example: Update a progress indicator
+                //                let progress = Float(receivedSize) / Float(expectedSize)
+                //                print("Download Progress: \(progress)")
+            },
+            completed: { image, error, cacheType, url in
+                if let error = error {
+                    // Handle error loading image
+                    //   print("Error loading image: \(error.localizedDescription)")
+                    // Check if the error is due to a 404 Not Found response
+                    if (error as NSError).code == NSURLErrorFileDoesNotExist {
+                        // Set placeholder image for 404 error
+                        self.packageImage.image = UIImage(named: "noimage")
+                    } else {
+                        // Set placeholder image for other errors
+                        self.packageImage.image = UIImage(named: "noimage")
+                    }
+                } else {
+                    // Optionally handle success here
+                    // print("Image loaded successfully")
+                }
+            }
+        )
+        
+        
+        
         updateHeight()
     }
     
@@ -50,6 +86,9 @@ class CruisePackegesTVCell: TableViewCell {
     
     
     func setupUI() {
+        
+        titlelbl.text = cellInfo?.title ?? ""
+        
         
         let compressor = ImageCompressionTransformer(quality: 0.1) // Compress to 50% quality
         let imageUrl = URL(string: cellInfo?.image ?? "")
@@ -122,24 +161,7 @@ extension CruisePackegesTVCell:UITableViewDelegate,UITableViewDataSource {
             cell.titlelbl.text = data.heading ?? ""
             cell.subtitlelbl.text = data.subheading ?? ""
             
-            
-            //            cell.img.sd_setImage(with: URL(string:  data.image_url ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], context: [.imageTransformer: compressor], progress: <#SDImageLoaderProgressBlock?#>, completed: { (image, error, cacheType, imageURL) in
-            //                            if let error = error {
-            //                                // Handle error loading image
-            //                                print("Error loading image: \(error.localizedDescription)")
-            //                                // Check if the error is due to a 404 Not Found response
-            //                                if (error as NSError).code == NSURLErrorBadServerResponse {
-            //                                    // Set placeholder image for 404 error
-            //                                    cell.img.image = UIImage(named: "noimage")
-            //                                } else {
-            //                                    // Set placeholder image for other errors
-            //                                    cell.img.image = UIImage(named: "noimage")
-            //                                }
-            //                            }
-            //                        })
-            
-            
-            
+           
             
             let compressor = ImageCompressionTransformer(quality: 0.1) // Compress to 50% quality
             
@@ -178,27 +200,7 @@ extension CruisePackegesTVCell:UITableViewDelegate,UITableViewDataSource {
                 }
             )
             
-            cell.img.image = UIImage(named: "noimage")
             
-            //            let imageUrl = URL(string: data.image_url ?? "")
-            //
-            //                    cell.img.sd_setImage(
-            //                        with: imageUrl,
-            //                        placeholderImage: UIImage(named: "placeholder.png"),
-            //                        options: [.retryFailed, .lowPriority],
-            //                        context: nil,
-            //                        progress: { receivedSize, expectedSize, url in
-            //                            // Optionally handle progress updates here
-            //                        },
-            //                        completed: { image, error, cacheType, url in
-            //                            // Optionally handle completion here
-            //                            if let error = error {
-            //                                print("Error loading image: \(error.localizedDescription)")
-            //                            }
-            //                        }
-            //                    )
-            //
-            //
             
             
             cell.cruiseKey = data.key ?? ""

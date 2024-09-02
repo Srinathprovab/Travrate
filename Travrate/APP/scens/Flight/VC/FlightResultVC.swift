@@ -1056,8 +1056,6 @@ extension FlightResultVC {
         
         bookingSourceDataArrayCount -= 1
         
-        
-        
         MySingleton.shared.payemail = ""
         MySingleton.shared.paymobile = ""
         MySingleton.shared.paymobilecountrycode = ""

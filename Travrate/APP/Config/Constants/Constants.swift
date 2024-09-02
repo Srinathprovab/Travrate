@@ -48,6 +48,7 @@ var mobilenoMaxLength = Int()
 var mobilenoMaxLengthBool = false
 var isLoadingData = false
 
+
 var promocodeValue = Double()
 var whatsAppCheck = false
 var priceCheck = false

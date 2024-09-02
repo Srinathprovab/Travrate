@@ -137,42 +137,19 @@ extension HolidayItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSo
 
 extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     
-    func calculateTableViewHeight() -> CGFloat {
-        // Ensure the prototype cell is initialized
-        if prototypeCell == nil {
-            prototypeCell = UINib(nibName: "CruiseAddItineraryTVCell", bundle: nil).instantiate(withOwner: nil, options: nil).first as? CruiseAddItineraryTVCell
-        }
-        
-        // Calculate the total height based on the data and prototype cell
-        var totalHeight: CGFloat = 0
-        for data in MySingleton.shared.holidayItinerary {
-            if let cell = prototypeCell {
-                configureCell(cell, with: data)
-                
-                // Ensure the label can accommodate its content
-                cell.subtitlelbl.numberOfLines = 0
-                cell.subtitlelbl.lineBreakMode = .byWordWrapping
-                
-                cell.setNeedsLayout()
-                cell.layoutIfNeeded()
-                
-                let height = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-                totalHeight += height
-            }
-        }
-        
-        // Adjust padding based on typical content
-        let padding: CGFloat = 20
-        totalHeight += padding
-        
-        return totalHeight
-    }
     
     
     func updateHeight() {
-        tvHeight.constant = calculateTableViewHeight()
+        var totalHeight: CGFloat = 0
+        for index in 0..<MySingleton.shared.holidayItinerary.count {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = itineraryTV.cellForRow(at: indexPath) as? CruiseAddItineraryTVCell {
+                totalHeight += cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            }
+        }
+        
+        tvHeight.constant = CGFloat((MySingleton.shared.holidayItinerary.count)) * totalHeight
         itineraryTV.reloadData()
-        itineraryTV.layoutIfNeeded()
     }
     
     
@@ -187,7 +164,7 @@ extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         itineraryTV.separatorStyle = .none
         
         itineraryTV.rowHeight = UITableView.automaticDimension
-        itineraryTV.estimatedRowHeight = 350
+        itineraryTV.estimatedRowHeight = 500
         
     }
     
@@ -235,9 +212,6 @@ extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         })
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
     
     
 }

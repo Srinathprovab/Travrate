@@ -35,11 +35,11 @@ class ItineraryTVCell: TableViewCell {
         depFind = Int(cellInfo?.title ?? "") ?? 0
         fdetais = cellInfo?.moreData as! [ItinearyFlightDetails]
         
-                tvHeight.constant = CGFloat((fdetais.count * 240))
-                additinararyTV.reloadData()
+        tvHeight.constant = CGFloat((fdetais.count * 230))
+        additinararyTV.reloadData()
         
         
-       // updateHeight()
+        // updateHeight()
     }
     
     

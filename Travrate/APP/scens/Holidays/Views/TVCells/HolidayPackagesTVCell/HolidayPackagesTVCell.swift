@@ -70,13 +70,15 @@ class HolidayPackagesTVCell: TableViewCell {
         )
         
         
+        
+        updateHeight()
     }
     
-  
+    
     
     func setupUI() {
         setupTV()
-        updateHeight()
+        
     }
     
 }
@@ -115,7 +117,41 @@ extension HolidayPackagesTVCell:UITableViewDelegate,UITableViewDataSource {
             cell.subtitlelbl.text = data.subheading ?? ""
             cell.holidayKey = data.origin ?? ""
             
-            cell.img.sd_setImage(with: URL(string: data.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+            let compressor = ImageCompressionTransformer(quality: 0.1) // Compress to 50% quality
+            // Assume `compressor` is already defined and initialized
+            let imageUrl = URL(string: data.image ?? "")
+            
+            
+            // Set image with placeholder and transformers
+            cell.img.sd_setImage(
+                with: imageUrl,
+                placeholderImage: UIImage(named: "placeholder.png"),
+                options: [.retryFailed],
+                context: [.imageTransformer: compressor],
+                progress: { receivedSize, expectedSize, url in
+                    // Optionally handle progress updates here
+                    // Example: Update a progress indicator
+//                    let progress = Float(receivedSize) / Float(expectedSize)
+//                    print("Download Progress: \(progress)")
+                },
+                completed: { image, error, cacheType, url in
+                    if let error = error {
+                        // Handle error loading image
+                     //   print("Error loading image: \(error.localizedDescription)")
+                        // Check if the error is due to a 404 Not Found response
+                        if (error as NSError).code == NSURLErrorFileDoesNotExist {
+                            // Set placeholder image for 404 error
+                            cell.img.image = UIImage(named: "noimage")
+                        } else {
+                            // Set placeholder image for other errors
+                            cell.img.image = UIImage(named: "noimage")
+                        }
+                    } else {
+                        // Optionally handle success here
+                       // print("Image loaded successfully")
+                    }
+                }
+            )
             
             
             c = cell
@@ -134,19 +170,23 @@ extension HolidayPackagesTVCell:UITableViewDelegate,UITableViewDataSource {
     
     
     
+    //    func updateHeight() {
+    //        var totalHeight: CGFloat = 0
+    //        for index in 0..<MySingleton.shared.holidaylist.count {
+    //            let indexPath = IndexPath(row: index, section: 0)
+    //            if let cell = holidaysTV.cellForRow(at: indexPath) as? HolidaysInfoTVCell {
+    //                totalHeight += cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+    //            }
+    //        }
+    //        tvHeight.constant = CGFloat((MySingleton.shared.holidaylist.count)) * totalHeight
+    //        holidaysTV.reloadData()
+    //    }
+    
+    
     func updateHeight() {
-        var totalHeight: CGFloat = 0
-        for index in 0..<MySingleton.shared.holidaylist.count {
-            let indexPath = IndexPath(row: index, section: 0)
-            if let cell = holidaysTV.cellForRow(at: indexPath) as? HolidaysInfoTVCell {
-                totalHeight += cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-            }
-        }
-        tvHeight.constant = CGFloat((MySingleton.shared.holidaylist.count)) * totalHeight 
+        tvHeight.constant = CGFloat(MySingleton.shared.holidaylist.count * 260)
         holidaysTV.reloadData()
     }
-    
-    
     
     
 }

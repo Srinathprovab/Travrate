@@ -9,8 +9,7 @@ import UIKit
 
 class HolidaysVC: BaseTableVC, HolidayListVMDelegate {
     
-    
-    
+
     
     static var newInstance: HolidaysVC? {
         let storyboard = UIStoryboard(name: Storyboard.Holidays.name,
@@ -81,7 +80,7 @@ extension HolidaysVC {
         commonTableView.registerTVCells(["HolidayPackagesTVCell",
                                          "EmptyTVCell"])
         
-       
+        
     }
     
     
@@ -105,6 +104,7 @@ extension HolidaysVC {
         hideLoadera()
         
         if response.status == true {
+            MySingleton.shared.holidaylist.removeAll()
             MySingleton.shared.holidaylist = response.data ?? []
             
             desc = response.home_sliders?.text ?? ""
@@ -143,7 +143,7 @@ extension HolidaysVC {
     
     func addObserver() {
         
-       
+        
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)

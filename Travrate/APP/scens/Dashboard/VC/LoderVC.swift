@@ -34,6 +34,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     @IBOutlet weak var carRentalDateslbl: UILabel!
     @IBOutlet weak var flightEconomylbl: UILabel!
     @IBOutlet weak var waitView: UIView!
+    @IBOutlet weak var closebtn: UIButton!
     
     
     var searchdata:SearchData?
@@ -48,6 +49,8 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        closebtn.addTarget(self, action: #selector(didTapOnCloseBtnAction(_:)), for: .touchUpInside)
         
         setuplabels(lbl: triptypelbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
         setuplabels(lbl: cityslbl, text: "", textcolor: .TitleColor, font: .InterBold(size: 16), align: .center)
@@ -75,7 +78,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             flightinfo.isHidden = true
             hotelinfoView.isHidden = true
             img.image = UIImage(named: "travlogo")
-           
+            
             // img.sd_setImage(with: URL(string: "MySingleton.shared.loderimgurl" ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
             if MySingleton.shared.loderString == "payment"  {
@@ -125,12 +128,12 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
                 datelbl.text = "\(MySingleton.shared.convertDateFormat(inputDate: searchdata?.from_date ?? "", f1: "dd-MM-yyyy", f2: "EEE, dd MMM"))"
                 flightEconomylbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass)
                 
-//                var paxcount = defaults.integer(forKey: UserDefaultsKeys.totalTravellerCount)
-//                if paxcount > 1 {
-//                    triptypelbl.text = "Oneway - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
-//                }else {
-//                    triptypelbl.text = "Oneway - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Traveller"
-//                }
+                //                var paxcount = defaults.integer(forKey: UserDefaultsKeys.totalTravellerCount)
+                //                if paxcount > 1 {
+                //                    triptypelbl.text = "Oneway - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
+                //                }else {
+                //                    triptypelbl.text = "Oneway - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Traveller"
+                //                }
                 
                 
                 let adultcount = defaults.integer(forKey: UserDefaultsKeys.adultCount)
@@ -154,12 +157,12 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
                 
                 flightEconomylbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.rselectClass) ?? "")"
                 
-//                var paxcount = defaults.integer(forKey: UserDefaultsKeys.totalTravellerCount)
-//                if paxcount > 1 {
-//                    triptypelbl.text = "RoundTrip - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
-//                }else {
-//                    triptypelbl.text = "RoundTrip - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Traveller"
-//                }
+                //                var paxcount = defaults.integer(forKey: UserDefaultsKeys.totalTravellerCount)
+                //                if paxcount > 1 {
+                //                    triptypelbl.text = "RoundTrip - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Travellers"
+                //                }else {
+                //                    triptypelbl.text = "RoundTrip - \(defaults.string(forKey: UserDefaultsKeys.totalTravellerCount) ?? "") Traveller"
+                //                }
                 
                 let adultcount = defaults.integer(forKey: UserDefaultsKeys.adultCount)
                 let childcount = defaults.integer(forKey: UserDefaultsKeys.childCount)
@@ -211,9 +214,9 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
                 let newchildcount = childcount > 1 ? "\(childcount) Children" : "\(childcount) Child"
                 labelText += ", \(newchildcount)"
             }
-           
+            
             guestlbl.text = labelText
-           
+            
             
             // Example usage:
             let checkInDate = defaults.string(forKey: UserDefaultsKeys.checkin) ?? ""
@@ -253,7 +256,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
             }
         }
     }
-
+    
     
     func startGifAnimation() {
         timer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(updateGifFrame), userInfo: nil, repeats: true)
@@ -277,7 +280,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
         timer?.invalidate()
         timer = nil
     }
-
+    
     
     
     func numberOfNights(checkInDate: String, checkOutDate: String) -> Int {
@@ -424,6 +427,50 @@ extension LoderVC {
         }
     }
     
+    
+}
+
+
+extension LoderVC {
+    
+    @objc func didTapOnCloseBtnAction(_ sender:UIButton) {
+        stopAPICall()
+        stopGifAnimation()
+        gotoFlightSearchVC()
+    }
+    
+    
+    func stopAPICall() {
+        // Create a URL
+        let url = URL(string: "\(ApiEndpoints.general_search_flight)")!
+        
+        // Create a URLSession
+        let session = URLSession.shared
+        
+        // Create a data task
+        let dataTask = session.dataTask(with: url) { data, response, error in
+            // Handle the response here
+            if let error = error {
+                print("Request failed with error: \(error)")
+            } else if let data = data {
+                print("Received data: \(data)")
+            }
+        }
+        
+        // Start the task
+        dataTask.resume()
+        dataTask.cancel()
+        
+        
+    }
+    
+    func gotoFlightSearchVC() {
+        MySingleton.shared.callboolapi = false
+        guard let vc = FlightSearchVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.isfromVC = "back"
+        present(vc, animated: false)
+    }
     
 }
 

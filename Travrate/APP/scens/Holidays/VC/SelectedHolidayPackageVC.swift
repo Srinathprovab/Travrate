@@ -153,6 +153,10 @@ class SelectedHolidayPackageVC: BaseTableVC, HolidaySelectedVMDelegate {
         commonTableView.reloadData()
     }
     
+    
+    override func didTapOnTitleDropDownBtnAction(cell:CruiseAddItineraryTVCell) {
+        commonTableView.reloadData()
+    }
    
 }
 

@@ -877,6 +877,7 @@
 		84D96CC72C4CE2FC00323B8E /* CarRentalTripsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D96CC52C4CE2FC00323B8E /* CarRentalTripsTVCell.xib */; };
 		84D96CCB2C4CE31800323B8E /* ActivitiesTripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D96CC92C4CE31800323B8E /* ActivitiesTripsTVCell.swift */; };
 		84D96CCC2C4CE31800323B8E /* ActivitiesTripsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D96CCA2C4CE31800323B8E /* ActivitiesTripsTVCell.xib */; };
+		84E7CBEA2C85F21300079A2C /* Home_sliders_Cruise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7CBE92C85F21300079A2C /* Home_sliders_Cruise.swift */; };
 		84E8B7A72C64C8F7007E13E7 /* HotelVoucherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8B7A62C64C8F7007E13E7 /* HotelVoucherModel.swift */; };
 		84E8B7A92C64C92C007E13E7 /* Hotel_Booking_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8B7A82C64C92C007E13E7 /* Hotel_Booking_details.swift */; };
 		84E8B7AB2C64C954007E13E7 /* Hotel_Itinerary_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8B7AA2C64C954007E13E7 /* Hotel_Itinerary_details.swift */; };
@@ -1818,6 +1819,7 @@
 		84D96CC52C4CE2FC00323B8E /* CarRentalTripsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarRentalTripsTVCell.xib; sourceTree = "<group>"; };
 		84D96CC92C4CE31800323B8E /* ActivitiesTripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTripsTVCell.swift; sourceTree = "<group>"; };
 		84D96CCA2C4CE31800323B8E /* ActivitiesTripsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTripsTVCell.xib; sourceTree = "<group>"; };
+		84E7CBE92C85F21300079A2C /* Home_sliders_Cruise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_sliders_Cruise.swift; sourceTree = "<group>"; };
 		84E8B7A62C64C8F7007E13E7 /* HotelVoucherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelVoucherModel.swift; sourceTree = "<group>"; };
 		84E8B7A82C64C92C007E13E7 /* Hotel_Booking_details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel_Booking_details.swift; sourceTree = "<group>"; };
 		84E8B7AA2C64C954007E13E7 /* Hotel_Itinerary_details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel_Itinerary_details.swift; sourceTree = "<group>"; };
@@ -4602,6 +4604,7 @@
 			children = (
 				65207BE52BF4942F0076EF76 /* CruiseModel.swift */,
 				65207BE62BF4942F0076EF76 /* CruiseDetailsModel.swift */,
+				84E7CBE92C85F21300079A2C /* Home_sliders_Cruise.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -6921,6 +6924,7 @@
 				843D49182C426EC400C0F127 /* TransferPreBookingModel.swift in Sources */,
 				65207D842BF494310076EF76 /* PriceDetails.swift in Sources */,
 				65207E8D2BF494320076EF76 /* Booking_itinerary_summary.swift in Sources */,
+				84E7CBEA2C85F21300079A2C /* Home_sliders_Cruise.swift in Sources */,
 				843D48F62C4244DB00C0F127 /* PreTransfersearchVM.swift in Sources */,
 				65207D6E2BF494310076EF76 /* FlightModel.swift in Sources */,
 				65207E372BF494320076EF76 /* CurrencyListViewModel.swift in Sources */,
@@ -7547,7 +7551,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W7386UDMSR;
@@ -7567,12 +7571,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.travrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -7595,9 +7599,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Travrate/Travrate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = 5TLY5PME9K;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W7386UDMSR;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Travrate/Info.plist;
@@ -7614,15 +7620,16 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = provab.Travrate.com;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.travrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Travrate Distribution";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

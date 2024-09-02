@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aOT-gx-Opk">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -647,7 +648,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round Trip - 1 Adult" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NE5-ck-e7C">
-                                                                <rect key="frame" x="53.666666666666664" y="12" width="111.66666666666671" height="0.0"/>
+                                                                <rect key="frame" x="53.666666666666664" y="12" width="111.66666666666669" height="0.0"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -944,13 +945,25 @@
                                             <constraint firstItem="ZEe-63-Irn" firstAttribute="leading" secondItem="LWR-C9-3Gg" secondAttribute="leading" id="d6l-Pf-qBb"/>
                                         </constraints>
                                     </stackView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5x5-cw-BGJ">
+                                        <rect key="frame" x="333" y="65" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="75a-QZ-jBi"/>
+                                            <constraint firstAttribute="width" constant="40" id="LRz-6e-xnM"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="cancelcircle"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="WhiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="LWR-C9-3Gg" secondAttribute="trailing" constant="10" id="4ca-Dk-jdo"/>
+                                    <constraint firstItem="5x5-cw-BGJ" firstAttribute="top" secondItem="Zdq-GB-Gm9" secondAttribute="top" constant="65" id="9uD-Vv-Rez"/>
                                     <constraint firstItem="LWR-C9-3Gg" firstAttribute="centerX" secondItem="Zdq-GB-Gm9" secondAttribute="centerX" id="UX1-T9-xEc"/>
                                     <constraint firstItem="LWR-C9-3Gg" firstAttribute="leading" secondItem="Zdq-GB-Gm9" secondAttribute="leading" constant="10" id="bUN-DV-0gi"/>
                                     <constraint firstItem="LWR-C9-3Gg" firstAttribute="centerY" secondItem="Zdq-GB-Gm9" secondAttribute="centerY" id="bVf-q1-AUm"/>
+                                    <constraint firstAttribute="trailing" secondItem="5x5-cw-BGJ" secondAttribute="trailing" constant="20" id="xrb-r4-dfc"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -970,6 +983,7 @@
                         <outlet property="checkinlbl" destination="W63-60-Ama" id="1Q7-n9-Ort"/>
                         <outlet property="checkoutlbl" destination="vSM-XM-Xtg" id="JTR-le-F1W"/>
                         <outlet property="cityslbl" destination="bPt-Kz-GyS" id="su1-wz-4DB"/>
+                        <outlet property="closebtn" destination="5x5-cw-BGJ" id="gDZ-p3-YmR"/>
                         <outlet property="datelbl" destination="asp-EJ-Ui3" id="d4q-as-pi1"/>
                         <outlet property="flightEconomylbl" destination="ak5-V3-6sp" id="JJv-NE-xDs"/>
                         <outlet property="flightinfo" destination="rV3-m6-1e1" id="90d-zv-QoH"/>
@@ -1209,6 +1223,7 @@
     </scenes>
     <resources>
         <image name="back1" width="20" height="20"/>
+        <image name="cancelcircle" width="24" height="24"/>
         <image name="edit1" width="18.333333969116211" height="18"/>
         <image name="flash" width="428" height="926"/>
         <image name="loder.gif" width="142" height="142"/>

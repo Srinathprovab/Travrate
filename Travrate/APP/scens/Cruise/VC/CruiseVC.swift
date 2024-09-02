@@ -21,6 +21,7 @@ class CruiseVC: BaseTableVC, CruiseViewModelDelegate {
    
     
     deinit {
+        home_sliders.removeAll()
         MySingleton.shared.cruiseList.removeAll()
         MySingleton.shared.cruise = nil
         NotificationCenter.default.removeObserver(self)
@@ -28,6 +29,7 @@ class CruiseVC: BaseTableVC, CruiseViewModelDelegate {
     
     
     
+    var home_sliders = [Home_sliders_Cruise]()
     
     override func viewWillAppear(_ animated: Bool) {
         addObserver()
@@ -112,6 +114,8 @@ extension CruiseVC {
             hideLoadera()
         }
         
+        
+        home_sliders = response.home_sliders ?? []
         MySingleton.shared.cruiseList = response.data ?? []
         MySingleton.shared.cruise = response
         
@@ -126,7 +130,9 @@ extension CruiseVC {
     func setupTVCells() {
         MySingleton.shared.tablerow.removeAll()
         
-        MySingleton.shared.tablerow.append(TableRow(title:"",cellType:.CruisePackegesTVCell))
+        MySingleton.shared.tablerow.append(TableRow(title:MySingleton.shared.cruise?.cruise_package_text,
+                                                    image: home_sliders[1].image,
+                                                    cellType:.CruisePackegesTVCell))
         MySingleton.shared.tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow
