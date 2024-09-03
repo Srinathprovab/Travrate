@@ -41,6 +41,7 @@ class MySingleton {
     var myVariable1: Int
     var myVariable2: String
     var tablerow = [TableRow]()
+    var flightinputspayload = [String:Any]()
     var payload = [String:Any]()
     var payload1 = [String:Any]()
     var inputs = [String:Any]()

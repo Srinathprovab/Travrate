@@ -266,8 +266,6 @@ extension MealSelectionVC {
         
         MySingleton.shared.payload.removeAll()
         
-        
-        
         MySingleton.shared.payload["trip_type"] = defaults.string(forKey: UserDefaultsKeys.journeyType)
         MySingleton.shared.payload["adult"] = defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "1"
         MySingleton.shared.payload["child"] = defaults.string(forKey: UserDefaultsKeys.childCount) ?? "0"
@@ -333,8 +331,6 @@ extension MealSelectionVC {
         }
         
     }
-    
-    
     
     
 }

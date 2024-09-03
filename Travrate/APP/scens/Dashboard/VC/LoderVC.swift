@@ -326,7 +326,7 @@ extension LoderVC {
         
         let tabselect = defaults.string(forKey: UserDefaultsKeys.tabselect)
         if tabselect == "Flight" {
-            MySingleton.shared.lodervm?.CALL_FLIGHT_LODER_DETAILS_API(dictParam: MySingleton.shared.payload)
+            MySingleton.shared.lodervm?.CALL_FLIGHT_LODER_DETAILS_API(dictParam: MySingleton.shared.flightinputspayload)
         }else if tabselect == "Sports" {
             
             sportsView.isHidden = false

@@ -147,17 +147,56 @@ extension CruiseItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSou
 extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     
     
+//    func calculateTableViewHeight() -> CGFloat {
+//        // Ensure the prototype cell is initialized
+//        if prototypeCell == nil {
+//            prototypeCell = UINib(nibName: "CruiseAddItineraryTVCell", bundle: nil).instantiate(withOwner: nil, options: nil).first as? CruiseAddItineraryTVCell
+//        }
+//        
+//        // Calculate the total height based on the data and prototype cell
+//        var totalHeight: CGFloat = 0
+//       
+//        for data in MySingleton.shared.cruiseItinerary {
+//            if let cell = prototypeCell {
+//                //configureCell(cell, with: data)
+//                
+//                cell.setNeedsLayout()
+//                cell.layoutIfNeeded()
+//                
+//                let height = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+//                totalHeight += height
+//            }
+//        }
+//        
+//        
+//        let padding: CGFloat = 150
+//        totalHeight += padding
+//        
+//       
+//        
+//        return totalHeight
+//    }
+//    
+//    func updateHeight() {
+//        tvHeight.constant = calculateTableViewHeight()
+//        itineraryTV.reloadData()
+//        itineraryTV.layoutIfNeeded()
+//    }
+    
+    
     func calculateTableViewHeight() -> CGFloat {
         // Ensure the prototype cell is initialized
         if prototypeCell == nil {
             prototypeCell = UINib(nibName: "CruiseAddItineraryTVCell", bundle: nil).instantiate(withOwner: nil, options: nil).first as? CruiseAddItineraryTVCell
         }
-        
+
         // Calculate the total height based on the data and prototype cell
         var totalHeight: CGFloat = 0
+
         for data in MySingleton.shared.cruiseItinerary {
             if let cell = prototypeCell {
-                //configureCell(cell, with: data)
+                // Configure your cell here with data
+                 configureCell(cell, with: data)
                 
                 cell.setNeedsLayout()
                 cell.layoutIfNeeded()
@@ -166,21 +205,19 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
                 totalHeight += height
             }
         }
-        
-        
-        let padding: CGFloat = 150
+
+        let padding: CGFloat = 16 // Adjust this value as needed
         totalHeight += padding
-        
-       
-        
+
         return totalHeight
     }
-    
+
     func updateHeight() {
         tvHeight.constant = calculateTableViewHeight()
         itineraryTV.reloadData()
         itineraryTV.layoutIfNeeded()
     }
+
     
 //    func updateHeight() {
 //            var totalHeight: CGFloat = 0

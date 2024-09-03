@@ -169,7 +169,6 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
         defaults.set(previousjourneyType, forKey: UserDefaultsKeys.journeyType)
         
         
-        
         if isfromVC == "resultsReturn" {
             MySingleton.shared.callboolapi = false
             dismiss(animated: true)
@@ -372,28 +371,28 @@ extension FlightSearchVC {
 
 extension FlightSearchVC {
     func didTapOnFlightSearchBtnAction() {
-        MySingleton.shared.payload.removeAll()
+        MySingleton.shared.flightinputspayload.removeAll()
         
         
         
-        MySingleton.shared.payload["trip_type"] = defaults.string(forKey: UserDefaultsKeys.journeyType)
-        MySingleton.shared.payload["adult"] = defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "1"
-        MySingleton.shared.payload["child"] = defaults.string(forKey: UserDefaultsKeys.childCount) ?? "0"
-        MySingleton.shared.payload["infant"] = defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "0"
-        MySingleton.shared.payload["from"] = defaults.string(forKey: UserDefaultsKeys.fromCity)
-        MySingleton.shared.payload["from_loc_id"] = defaults.string(forKey: UserDefaultsKeys.fromlocid)
-        MySingleton.shared.payload["to"] = defaults.string(forKey: UserDefaultsKeys.toCity)
-        MySingleton.shared.payload["to_loc_id"] = defaults.string(forKey: UserDefaultsKeys.tolocid)
-        MySingleton.shared.payload["depature"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
-        MySingleton.shared.payload["out_jrn"] = "All Times"
-        MySingleton.shared.payload["ret_jrn"] = "All Times"
-        MySingleton.shared.payload["direct_flight"] = MySingleton.shared.directflightString
-        MySingleton.shared.payload["carrier"] = ""
-        MySingleton.shared.payload["psscarrier"] = defaults.string(forKey: UserDefaultsKeys.fcariercode) ?? "ALL"
-        MySingleton.shared.payload["search_flight"] = "Search"
-        MySingleton.shared.payload["search_source"] = "Mobile_IOS"
-        MySingleton.shared.payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
-        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
+        MySingleton.shared.flightinputspayload["trip_type"] = defaults.string(forKey: UserDefaultsKeys.journeyType)
+        MySingleton.shared.flightinputspayload["adult"] = defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "1"
+        MySingleton.shared.flightinputspayload["child"] = defaults.string(forKey: UserDefaultsKeys.childCount) ?? "0"
+        MySingleton.shared.flightinputspayload["infant"] = defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "0"
+        MySingleton.shared.flightinputspayload["from"] = defaults.string(forKey: UserDefaultsKeys.fromCity)
+        MySingleton.shared.flightinputspayload["from_loc_id"] = defaults.string(forKey: UserDefaultsKeys.fromlocid)
+        MySingleton.shared.flightinputspayload["to"] = defaults.string(forKey: UserDefaultsKeys.toCity)
+        MySingleton.shared.flightinputspayload["to_loc_id"] = defaults.string(forKey: UserDefaultsKeys.tolocid)
+        MySingleton.shared.flightinputspayload["depature"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
+        MySingleton.shared.flightinputspayload["out_jrn"] = "All Times"
+        MySingleton.shared.flightinputspayload["ret_jrn"] = "All Times"
+        MySingleton.shared.flightinputspayload["direct_flight"] = MySingleton.shared.directflightString
+        MySingleton.shared.flightinputspayload["carrier"] = ""
+        MySingleton.shared.flightinputspayload["psscarrier"] = defaults.string(forKey: UserDefaultsKeys.fcariercode) ?? "ALL"
+        MySingleton.shared.flightinputspayload["search_flight"] = "Search"
+        MySingleton.shared.flightinputspayload["search_source"] = "Mobile_IOS"
+        MySingleton.shared.flightinputspayload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
+        MySingleton.shared.flightinputspayload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         
         
         
@@ -401,11 +400,11 @@ extension FlightSearchVC {
             
             
             if defaults.string(forKey: UserDefaultsKeys.selectClass) == "P.Economy" {
-                MySingleton.shared.payload["v_class"] = "Premium"
+                MySingleton.shared.flightinputspayload["v_class"] = "Premium"
             }else {
-                MySingleton.shared.payload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
+                MySingleton.shared.flightinputspayload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
             }
-            MySingleton.shared.payload["return"] = ""
+            MySingleton.shared.flightinputspayload["return"] = ""
             
             if defaults.string(forKey: UserDefaultsKeys.fromcityname) == "Origin" {
                 showToast(message: "Enter From City")
@@ -419,12 +418,12 @@ extension FlightSearchVC {
             
         }else {
             if defaults.string(forKey: UserDefaultsKeys.selectClass) == "P.Economy" {
-                MySingleton.shared.payload["v_class"] = "Premium"
+                MySingleton.shared.flightinputspayload["v_class"] = "Premium"
             }else {
-                MySingleton.shared.payload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
+                MySingleton.shared.flightinputspayload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
             }
             // MySingleton.shared.payload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
-            MySingleton.shared.payload["return"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
+            MySingleton.shared.flightinputspayload["return"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
             
             if defaults.string(forKey: UserDefaultsKeys.fromcityname) == "Origin" {
                 showToast(message: "Enter From City")
