@@ -71,6 +71,8 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         
         setupUI()
         commonTableView.register(UINib(nibName: "HotelsTVCell", bundle: nil), forCellReuseIdentifier: "cell44")
+        commonTableView.register(UINib(nibName: "EmptyTVCell", bundle: nil), forCellReuseIdentifier: "emptyTVCell")
+        
         
         filtered = hotelSearchResult
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("nointernet"), object: nil)
@@ -296,7 +298,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
             }
             
         }
-        gotoMapViewVC()
+        gotoMapViewVC(keystr: "viewmap")
     }
     
     
@@ -343,17 +345,18 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     func didTapOnLocationBtnAction(cell: HotelsTVCell) {
         mapModelArray.removeAll()
         let mapModel = MapModel(
-            longitude: cell.lat,
-            latitude: cell.long,
+            longitude: cell.long,
+            latitude: cell.lat,
             hotelname: cell.hotelNamelbl.text ?? ""
         )
         mapModelArray.append(mapModel)
-        gotoMapViewVC()
+        gotoMapViewVC(keystr: "show")
     }
     
-    func gotoMapViewVC() {
+    func gotoMapViewVC(keystr:String) {
         guard let vc = MapViewVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
+        vc.key = keystr
         present(vc, animated: true)
     }
     
@@ -559,149 +562,169 @@ extension SearchHotelsResultVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //check search text & original text
         if( isSearchBool == true){
-            return filtered.count
+            return filtered.count + 1
         }else{
-            return hotelSearchResult.count
+            return hotelSearchResult.count + 1
         }
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var ccell = UITableViewCell()
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell44", for: indexPath) as? HotelsTVCell{
-            cell.selectionStyle = .none
-            cell.delegate = self
+        let rowCount = isSearchBool ? filtered.count : hotelSearchResult.count
+        
+        
+        if indexPath.row == rowCount {
+                // Dequeue the empty cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "emptyTVCell", for: indexPath) as? EmptyTVCell{
+                // Configure the empty cell as needed, or leave it empty
+                cell.backgroundColor = .red // Example configuration
+                ccell = cell
+            }
+        } else {
             
-            if(isSearchBool == true){
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell44", for: indexPath) as? HotelsTVCell{
+                cell.selectionStyle = .none
+                cell.delegate = self
                 
-                let dict = filtered[indexPath.row]
-                
-                cell.hotelNamelbl.text = dict.name
-                
-                cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
-                    if let error = error {
-                        // Handle error loading image
-                        //    print("Error loading image: \(error.localizedDescription)")
-                        // Check if the error is due to a 404 Not Found response
-                        if (error as NSError).code == NSURLErrorBadServerResponse {
-                            // Set placeholder image for 404 error
-                            cell.hotelImg.image = UIImage(named: "noimage")
-                        } else {
-                            // Set placeholder image for other errors
-                            cell.hotelImg.image = UIImage(named: "noimage")
+                if(isSearchBool == true){
+                    
+                    let dict = filtered[indexPath.row]
+                    
+                    cell.hotelNamelbl.text = dict.name
+                    
+                    cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                        if let error = error {
+                            // Handle error loading image
+                            //    print("Error loading image: \(error.localizedDescription)")
+                            // Check if the error is due to a 404 Not Found response
+                            if (error as NSError).code == NSURLErrorBadServerResponse {
+                                // Set placeholder image for 404 error
+                                cell.hotelImg.image = UIImage(named: "noimage")
+                            } else {
+                                // Set placeholder image for other errors
+                                cell.hotelImg.image = UIImage(named: "noimage")
+                            }
                         }
+                    })
+                    
+                    
+                    cell.locationlbl.text = dict.address
+                    MySingleton.shared.setAttributedTextnew(str1: "\(dict.currency ?? "") ",
+                                                            str2: dict.price ?? "",
+                                                            lbl: cell.kwdlbl,
+                                                            str1font: .InterBold(size: 12),
+                                                            str2font: .InterBold(size: 20),
+                                                            str1Color: .BackBtnColor,
+                                                            str2Color: .BackBtnColor)
+                    
+                    cell.bookingsource = dict.booking_source ?? ""
+                    cell.hotelid = String(dict.hotel_code ?? "0")
+                    cell.lat = dict.latitude ?? ""
+                    cell.long = dict.longitude ?? ""
+                    
+                    
+                    if MySingleton.shared.totalnights == "0" || MySingleton.shared.totalnights == "1" {
+                        cell.totalpricefornightslbl.text = "Total Price For 1 Night"
+                    }else {
+                        cell.totalpricefornightslbl.text = "Total Price For \(MySingleton.shared.totalnights) Nights"
                     }
-                })
-                
-                
-                cell.locationlbl.text = dict.address
-                MySingleton.shared.setAttributedTextnew(str1: "\(dict.currency ?? "") ",
-                                                        str2: dict.price ?? "",
-                                                        lbl: cell.kwdlbl,
-                                                        str1font: .InterBold(size: 12),
-                                                        str2font: .InterBold(size: 20),
-                                                        str1Color: .BackBtnColor,
-                                                        str2Color: .BackBtnColor)
-                
-                cell.bookingsource = dict.booking_source ?? ""
-                cell.hotelid = String(dict.hotel_code ?? "0")
-                cell.lat = dict.latitude ?? ""
-                cell.long = dict.longitude ?? ""
-                
-                
-                if MySingleton.shared.totalnights == "0" || MySingleton.shared.totalnights == "1" {
-                    cell.totalpricefornightslbl.text = "Total Price For 1 Night"
-                }else {
-                    cell.totalpricefornightslbl.text = "Total Price For \(MySingleton.shared.totalnights) Nights"
-                }
-                
-                //   cell.setAttributedString1(str1:dict.currency ?? "", str2: dict.price ?? "")
-                cell.ratingView.value = CGFloat(dict.star_rating ?? 0)
-                cell.hotel_DescLabel = dict.hotel_desc ?? "bbbbb"
-                
-                
-                if let facilities = dict.facility, !facilities.isEmpty {
-                    cell.facilityArray = facilities
-                } else {
-                    // Handle the case when facility is empty or nil
-                    print("Facility array is empty or nil")
-                }
-                
-                
-                if dict.star_rating == 0 {
-                    cell.ratingView.isHidden = true
-                }else {
-                    cell.ratingView.isHidden = false
-                }
-                
-                ccell = cell
-            }else{
-                let dict = hotelSearchResult[indexPath.row]
-                
-                
-                hotelsCountlbl.text = "\(hotelSearchResult.count)"
-                
-                cell.hotelNamelbl.text = dict.name
-                cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
-                    if let error = error {
-                        // Handle error loading image
-                        //   print("Error loading image: \(error.localizedDescription)")
-                        // Check if the error is due to a 404 Not Found response
-                        if (error as NSError).code == NSURLErrorBadServerResponse {
-                            // Set placeholder image for 404 error
-                            cell.hotelImg.image = UIImage(named: "noimage")
-                        } else {
-                            // Set placeholder image for other errors
-                            cell.hotelImg.image = UIImage(named: "noimage")
+                    
+                    //   cell.setAttributedString1(str1:dict.currency ?? "", str2: dict.price ?? "")
+                    cell.ratingView.value = CGFloat(dict.star_rating ?? 0)
+                    cell.hotel_DescLabel = dict.hotel_desc ?? "bbbbb"
+                    
+                    
+                    if let facilities = dict.facility, !facilities.isEmpty {
+                        cell.facilityArray = facilities
+                    } else {
+                        // Handle the case when facility is empty or nil
+                        print("Facility array is empty or nil")
+                    }
+                    
+                    
+                    if dict.star_rating == 0 {
+                        cell.ratingView.isHidden = true
+                    }else {
+                        cell.ratingView.isHidden = false
+                    }
+                    
+                    ccell = cell
+                    
+                    
+                    
+                }else{
+                    
+                    
+                    
+                    let dict = hotelSearchResult[indexPath.row]
+                    
+                    
+                    hotelsCountlbl.text = "\(hotelSearchResult.count)"
+                    
+                    cell.hotelNamelbl.text = dict.name
+                    cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
+                        if let error = error {
+                            // Handle error loading image
+                            //   print("Error loading image: \(error.localizedDescription)")
+                            // Check if the error is due to a 404 Not Found response
+                            if (error as NSError).code == NSURLErrorBadServerResponse {
+                                // Set placeholder image for 404 error
+                                cell.hotelImg.image = UIImage(named: "noimage")
+                            } else {
+                                // Set placeholder image for other errors
+                                cell.hotelImg.image = UIImage(named: "noimage")
+                            }
                         }
+                    })
+                    
+                    cell.ratingView.value = CGFloat(dict.star_rating ?? 0)
+                    cell.locationlbl.text = dict.address
+                    MySingleton.shared.setAttributedTextnew(str1: "\(dict.currency ?? "") ",
+                                                            str2: dict.price ?? "",
+                                                            lbl: cell.kwdlbl,
+                                                            str1font: .InterBold(size: 12),
+                                                            str2font: .InterBold(size: 20),
+                                                            str1Color: .BackBtnColor,
+                                                            str2Color: .BackBtnColor)
+                    
+                    
+                    cell.bookingsource = dict.booking_source ?? ""
+                    cell.hotelid = String(dict.hotel_code ?? "0")
+                    cell.lat = dict.latitude ?? ""
+                    cell.long = dict.longitude ?? ""
+                    
+                    if MySingleton.shared.totalnights == "0" || MySingleton.shared.totalnights == "1" {
+                        cell.totalpricefornightslbl.text = "Total Price For 1 Night"
+                    }else {
+                        cell.totalpricefornightslbl.text = "Total Price For \(MySingleton.shared.totalnights) Nights"
                     }
-                })
-                
-                cell.ratingView.value = CGFloat(dict.star_rating ?? 0)
-                cell.locationlbl.text = dict.address
-                MySingleton.shared.setAttributedTextnew(str1: "\(dict.currency ?? "") ",
-                                                        str2: dict.price ?? "",
-                                                        lbl: cell.kwdlbl,
-                                                        str1font: .InterBold(size: 12),
-                                                        str2font: .InterBold(size: 20),
-                                                        str1Color: .BackBtnColor,
-                                                        str2Color: .BackBtnColor)
-                
-                
-                cell.bookingsource = dict.booking_source ?? ""
-                cell.hotelid = String(dict.hotel_code ?? "0")
-                cell.lat = dict.latitude ?? ""
-                cell.long = dict.longitude ?? ""
-                
-                if MySingleton.shared.totalnights == "0" || MySingleton.shared.totalnights == "1" {
-                    cell.totalpricefornightslbl.text = "Total Price For 1 Night"
-                }else {
-                    cell.totalpricefornightslbl.text = "Total Price For \(MySingleton.shared.totalnights) Nights"
+                    //      cell.setAttributedString1(str1:dict.currency ?? "", str2: dict.price ?? "")
+                    
+                    
+                    cell.hotel_DescLabel = dict.hotel_desc ?? "bbbbb"
+                    
+                    if let facilities = dict.facility, !facilities.isEmpty {
+                        cell.facilityArray = facilities
+                    } else {
+                        // Handle the case when facility is empty or nil
+                        print("Facility array is empty or nil")
+                    }
+                    
+                    
+                    
+                    if dict.star_rating == 0 {
+                        cell.ratingView.isHidden = true
+                    }else {
+                        cell.ratingView.isHidden = false
+                    }
+                    
+                    
+                    
+                    
+                    ccell = cell
                 }
-                //      cell.setAttributedString1(str1:dict.currency ?? "", str2: dict.price ?? "")
-                
-                
-                cell.hotel_DescLabel = dict.hotel_desc ?? "bbbbb"
-                
-                if let facilities = dict.facility, !facilities.isEmpty {
-                    cell.facilityArray = facilities
-                } else {
-                    // Handle the case when facility is empty or nil
-                    print("Facility array is empty or nil")
-                }
-                
-                
-                
-                if dict.star_rating == 0 {
-                    cell.ratingView.isHidden = true
-                }else {
-                    cell.ratingView.isHidden = false
-                }
-                
-                
-                
-                
-                ccell = cell
             }
         }
         

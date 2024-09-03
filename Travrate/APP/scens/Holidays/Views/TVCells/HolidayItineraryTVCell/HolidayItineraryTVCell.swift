@@ -148,7 +148,7 @@ extension HolidayItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
             }
         }
         
-        tvHeight.constant = CGFloat((MySingleton.shared.holidayItinerary.count)) * totalHeight
+        tvHeight.constant = CGFloat((MySingleton.shared.holidayItinerary.count)) * totalHeight + 150
         itineraryTV.reloadData()
     }
     

@@ -197,7 +197,7 @@ extension PopularHotelDestinationsTVCell:UICollectionViewDelegate,UICollectionVi
                 } else {
                     cell.img.sd_setImage(with: URL(string: flight.image ?? ""), placeholderImage: UIImage(named: "placeholder.png"), completed: { (image, error, cacheType, imageURL) in
                         if let error = error {
-                        //    print("Error loading image: \(error.localizedDescription)")
+                            //    print("Error loading image: \(error.localizedDescription)")
                             cell.img.image = UIImage(named: "noimage1")
                         }
                     })
@@ -248,21 +248,26 @@ extension PopularHotelDestinationsTVCell:UICollectionViewDelegate,UICollectionVi
                 selectDestCV.reloadData()
             }
         }else {
-                
-                let hotel = filteredHotels[indexPath.row]
-                defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
-                
-                defaults.set("\(hotel.city_name) (\(hotel.country))", forKey: UserDefaultsKeys.locationcity)
-                defaults.set(hotel.id, forKey: UserDefaultsKeys.locationid)
-                defaults.set(MySingleton.shared.convertDateFormat(inputDate: hotel.check_in, f1: "dd/MM/yyyy", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkin)
-                defaults.set(MySingleton.shared.convertDateFormat(inputDate: hotel.check_out, f1: "dd/MM/yyyy", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkout)
-                defaults.set("2", forKey: UserDefaultsKeys.roomcount)
-                defaults.set("Kuwait", forKey: UserDefaultsKeys.hnationality)
-                defaults.set("KW", forKey: UserDefaultsKeys.hnationalitycode)
-                
-                
-                
-                delegate?.didTapOnPopulardestination(cell: self)
+            
+            let hotel = filteredHotels[indexPath.row]
+            defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
+            
+            startRatingArray.removeAll()
+            starRatingInputArray.removeAll()
+            starRatingInputArray = ["3","4","5"]
+            hotelfiltermodel.starRatingNew = ["3","4","5"]
+            
+            defaults.set("\(hotel.city_name) (\(hotel.country))", forKey: UserDefaultsKeys.locationcity)
+            defaults.set(hotel.id, forKey: UserDefaultsKeys.locationid)
+            defaults.set(MySingleton.shared.convertDateFormat(inputDate: hotel.check_in, f1: "dd/MM/yyyy", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkin)
+            defaults.set(MySingleton.shared.convertDateFormat(inputDate: hotel.check_out, f1: "dd/MM/yyyy", f2: "dd-MM-yyyy"), forKey: UserDefaultsKeys.checkout)
+            defaults.set("2", forKey: UserDefaultsKeys.roomcount)
+            defaults.set("Kuwait", forKey: UserDefaultsKeys.hnationality)
+            defaults.set("KW", forKey: UserDefaultsKeys.hnationalitycode)
+            
+            
+            
+            delegate?.didTapOnPopulardestination(cell: self)
             
         }
     }

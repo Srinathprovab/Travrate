@@ -491,7 +491,9 @@ class FilterVC: BaseTableVC{
         tablerow.append(TableRow(title:"Star Ratings",cellType:.PopularFiltersTVCell))
         //   tablerow.append(TableRow(title:"Booking Type",data: paymentTypeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Neighbourhood",data: neighbourwoodArray,cellType:.CheckBoxTVCell))
-        tablerow.append(TableRow(title:"Near By Location's",data: nearBylocationsArray,cellType:.CheckBoxTVCell))
+        if nearBylocationsArray.count > 0 {
+            tablerow.append(TableRow(title:"Near By Location's",data: nearBylocationsArray,cellType:.CheckBoxTVCell))
+        }
         tablerow.append(TableRow(title:"Amenities",data: amenitiesArray,cellType:.CheckBoxTVCell))
         
         

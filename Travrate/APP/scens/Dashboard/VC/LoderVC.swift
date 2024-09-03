@@ -277,6 +277,7 @@ class LoderVC: UIViewController, SearchLoaderViewModelDelegate, SearchHotelLoder
     }
     
     func stopGifAnimation() {
+        gifImages.removeAll()
         timer?.invalidate()
         timer = nil
     }

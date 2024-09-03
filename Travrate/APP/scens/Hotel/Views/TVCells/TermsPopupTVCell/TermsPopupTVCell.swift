@@ -10,6 +10,7 @@ import UIKit
 class TermsPopupTVCell: TableViewCell {
     
     @IBOutlet weak var subtitlelbl: UILabel!
+    @IBOutlet weak var bottomView: BorderedView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +25,11 @@ class TermsPopupTVCell: TableViewCell {
     
     
     override func updateUI() {
+        
+        
+        bottomView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        bottomView.layer.cornerRadius = 8
+        
         // Decode the HTML and set the text
         let decodedText = cellInfo?.subTitle?.replacingOccurrences(of: "\\r\\n", with: "<br>")
             .replacingOccurrences(of: "\\", with: "")

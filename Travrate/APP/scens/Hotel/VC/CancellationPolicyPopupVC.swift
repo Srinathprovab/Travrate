@@ -24,7 +24,7 @@ class CancellationPolicyPopupVC: BaseTableVC {
     
     override func viewWillAppear(_ animated: Bool) {
         commonTableView.registerTVCells(["CancellationStringTVCell"])
-        tvheight.constant = CGFloat(MySingleton.shared.cancellationRoomStringArray.count * 43)
+        tvheight.constant = CGFloat(MySingleton.shared.cancellationRoomStringArray.count * 45)
         setupTVCells()
     }
 

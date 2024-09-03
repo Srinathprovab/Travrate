@@ -99,10 +99,7 @@ class CruiseItineraryTVCell: TableViewCell, CruiseAddItineraryTVCellDelegate {
 extension CruiseItineraryTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
     
     func setupCV() {
-        
-        print("MySingleton.shared.cruiseDetails?.cruise_data?.more_url?.count")
-        print(MySingleton.shared.cruiseDetails?.cruise_data?.more_url?.count ?? 0)
-        
+                
         let nib = UINib(nibName: "HolidaysImagesCVCell", bundle: nil)
         packegeImagesCV.register(nib, forCellWithReuseIdentifier: "cell")
         packegeImagesCV.delegate = self
@@ -160,7 +157,7 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         var totalHeight: CGFloat = 0
         for data in MySingleton.shared.cruiseItinerary {
             if let cell = prototypeCell {
-                configureCell(cell, with: data)
+                //configureCell(cell, with: data)
                 
                 cell.setNeedsLayout()
                 cell.layoutIfNeeded()
@@ -170,9 +167,11 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
             }
         }
         
-        // Add a small padding to avoid cutting off the cell
-        let padding: CGFloat = 0
+        
+        let padding: CGFloat = 150
         totalHeight += padding
+        
+       
         
         return totalHeight
     }
@@ -182,6 +181,19 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         itineraryTV.reloadData()
         itineraryTV.layoutIfNeeded()
     }
+    
+//    func updateHeight() {
+//            var totalHeight: CGFloat = 0
+//            for index in 0..<MySingleton.shared.cruiseItinerary.count {
+//                let indexPath = IndexPath(row: index, section: 0)
+//                if let cell = itineraryTV.cellForRow(at: indexPath) as? CruiseAddItineraryTVCell {
+//                    totalHeight += cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+//                }
+//            }
+//        tvHeight.constant = CGFloat((MySingleton.shared.roompaxesdetails.count)) * totalHeight
+//        itineraryTV.reloadData()
+//        }
+        
     
     
     func setupTV() {
@@ -224,8 +236,7 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     
     // Helper function to configure the cell
     private func configureCell(_ cell: CruiseAddItineraryTVCell, with data: Itinerary) {
-        cell.delegate = self
-        cell.selectionStyle = .none
+       
         
         cell.daylbl.text = "Day \((cell.tag) + 1)"
         cell.titlelbl.text = data.title ?? ""
@@ -244,9 +255,9 @@ extension CruiseItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         })
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
     
     
 }

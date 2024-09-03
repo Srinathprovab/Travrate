@@ -1426,6 +1426,12 @@ extension BaseTableVC: UITableViewDataSource {
                 commonCell = cell
                 
                 
+            case .NewCruiseAddItineraryTVCell :
+                let cell: NewCruiseAddItineraryTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+                
                 
             default:
                 print("handle this case in getCurrentCellAt")

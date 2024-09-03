@@ -69,6 +69,7 @@ class CruiseVC: BaseTableVC, CruiseViewModelDelegate {
     func gotoCruiseDetailsVC() {
         callapibool = true
         guard let vc = CruiseDetailsVC.newInstance.self else {return}
+     //   guard let vc = SelectedCruiseVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }

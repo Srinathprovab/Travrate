@@ -825,6 +825,9 @@
 		849240462C4ABE8F00D87EEA /* Activities_Booking_itinerary_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849240452C4ABE8F00D87EEA /* Activities_Booking_itinerary_details.swift */; };
 		849240482C4ABEA800D87EEA /* Activities_Booking_customer_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849240472C4ABEA800D87EEA /* Activities_Booking_customer_details.swift */; };
 		8492404A2C4ABEB600D87EEA /* Cancellation_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849240492C4ABEB600D87EEA /* Cancellation_details.swift */; };
+		84A138572C86C84C002793E7 /* SelectedCruiseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A138562C86C84C002793E7 /* SelectedCruiseVC.swift */; };
+		84A1385B2C86CF39002793E7 /* NewCruiseAddItineraryTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A1385A2C86CF39002793E7 /* NewCruiseAddItineraryTVCell.xib */; };
+		84A1385C2C86CF39002793E7 /* NewCruiseAddItineraryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A138592C86CF39002793E7 /* NewCruiseAddItineraryTVCell.swift */; };
 		84A16FFE2C44D605002C7F83 /* AddDeatilsOfPassengerTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A16FFC2C44D605002C7F83 /* AddDeatilsOfPassengerTVCell.swift */; };
 		84A16FFF2C44D605002C7F83 /* AddDeatilsOfPassengerTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A16FFD2C44D605002C7F83 /* AddDeatilsOfPassengerTVCell.xib */; };
 		84A170032C44E9B8002C7F83 /* AddPassengerButtonTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A170012C44E9B8002C7F83 /* AddPassengerButtonTVCell.swift */; };
@@ -1772,6 +1775,9 @@
 		849240452C4ABE8F00D87EEA /* Activities_Booking_itinerary_details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activities_Booking_itinerary_details.swift; sourceTree = "<group>"; };
 		849240472C4ABEA800D87EEA /* Activities_Booking_customer_details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activities_Booking_customer_details.swift; sourceTree = "<group>"; };
 		849240492C4ABEB600D87EEA /* Cancellation_details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cancellation_details.swift; sourceTree = "<group>"; };
+		84A138562C86C84C002793E7 /* SelectedCruiseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCruiseVC.swift; sourceTree = "<group>"; };
+		84A138592C86CF39002793E7 /* NewCruiseAddItineraryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCruiseAddItineraryTVCell.swift; sourceTree = "<group>"; };
+		84A1385A2C86CF39002793E7 /* NewCruiseAddItineraryTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewCruiseAddItineraryTVCell.xib; sourceTree = "<group>"; };
 		84A16FFC2C44D605002C7F83 /* AddDeatilsOfPassengerTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeatilsOfPassengerTVCell.swift; sourceTree = "<group>"; };
 		84A16FFD2C44D605002C7F83 /* AddDeatilsOfPassengerTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDeatilsOfPassengerTVCell.xib; sourceTree = "<group>"; };
 		84A170012C44E9B8002C7F83 /* AddPassengerButtonTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPassengerButtonTVCell.swift; sourceTree = "<group>"; };
@@ -4616,6 +4622,7 @@
 				65207BEB2BF4942F0076EF76 /* CruiseDetailsVC.swift */,
 				65207BE92BF4942F0076EF76 /* CruiseEnquireySucessVC.swift */,
 				65207BEA2BF4942F0076EF76 /* CruisePassengerSelectVC.swift */,
+				84A138562C86C84C002793E7 /* SelectedCruiseVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -4632,6 +4639,7 @@
 		65207BED2BF4942F0076EF76 /* TVCells */ = {
 			isa = PBXGroup;
 			children = (
+				84A138582C86CF0D002793E7 /* NewCruiseAddItineraryTVCell */,
 				65207BEE2BF4942F0076EF76 /* CruisePackegesTVCell */,
 				65207BF12BF4942F0076EF76 /* CruiseAddItineraryTVCell */,
 				65207BF42BF4942F0076EF76 /* CruiseItineraryTVCell */,
@@ -5710,6 +5718,15 @@
 			path = ActivitiesVoucherModel;
 			sourceTree = "<group>";
 		};
+		84A138582C86CF0D002793E7 /* NewCruiseAddItineraryTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				84A138592C86CF39002793E7 /* NewCruiseAddItineraryTVCell.swift */,
+				84A1385A2C86CF39002793E7 /* NewCruiseAddItineraryTVCell.xib */,
+			);
+			path = NewCruiseAddItineraryTVCell;
+			sourceTree = "<group>";
+		};
 		84A16FFB2C44D5DF002C7F83 /* AddDeatilsOfPassengerTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -6319,6 +6336,7 @@
 				65207E662BF494320076EF76 /* SpecialOffersCVCell.xib in Resources */,
 				65207E612BF494320076EF76 /* MoreServiceCVCell.xib in Resources */,
 				65207E6A2BF494320076EF76 /* SelectDestCVCell.xib in Resources */,
+				84A1385B2C86CF39002793E7 /* NewCruiseAddItineraryTVCell.xib in Resources */,
 				65207D252BF494310076EF76 /* TitleLblTVCell.xib in Resources */,
 				65207E3C2BF494320076EF76 /* ContactUsTVCell.xib in Resources */,
 				84D96CBD2C4CE2C300323B8E /* TransferTripsTVCell.xib in Resources */,
@@ -6862,6 +6880,7 @@
 				65207ECF2BF494320076EF76 /* SignupVC.swift in Sources */,
 				65207E452BF494320076EF76 /* MoreDetailsVC.swift in Sources */,
 				65207D652BF494310076EF76 /* FlightSearchParams.swift in Sources */,
+				84A138572C86C84C002793E7 /* SelectedCruiseVC.swift in Sources */,
 				843D48F92C4254B000C0F127 /* TransferSearchMode.swift in Sources */,
 				657FA8A72C086E2F0098C16E /* SeatingArrangementTVCell.swift in Sources */,
 				84C895832C4B5085002241D3 /* SendToPaymentModel.swift in Sources */,
@@ -7119,6 +7138,7 @@
 				84EA32022C47FA530031C482 /* ActivitiesDecreptionTVCell.swift in Sources */,
 				65207D902BF494310076EF76 /* MobilePrePaymentModel.swift in Sources */,
 				844B880F2C4911830068CC93 /* MaximumDuration.swift in Sources */,
+				84A1385C2C86CF39002793E7 /* NewCruiseAddItineraryTVCell.swift in Sources */,
 				65207D8D2BF494310076EF76 /* MobilePreBookingModel.swift in Sources */,
 				8456D9022C3FA356007D51A4 /* Car_search_params.swift in Sources */,
 				65207CE52BF494310076EF76 /* HFacility.swift in Sources */,

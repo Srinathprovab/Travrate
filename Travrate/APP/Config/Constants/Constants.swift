@@ -392,6 +392,7 @@ struct UserDefaultsKeys {
     static var usermobile = "usermobile"
     static var usermobilecode = "usermobilecode"
     static var journeyType = "Journey_Type"
+    static var previousjourneyType = "Previous_Journey_Type"
     static var itinerarySelectedIndex = "ItinerarySelectedIndex"
     static var selectedCurrency = "selectedCurrency"
     static var selectedCurrencyType = "selectedCurrencyType"

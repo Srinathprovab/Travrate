@@ -71,6 +71,7 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
         multicitylbl.textColor = .TitleColor
         
         defaults.set("oneway", forKey: UserDefaultsKeys.journeyType)
+       
         setupOnewayTVCells()
     }
     
@@ -163,6 +164,12 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
     
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
+        
+        let previousjourneyType = defaults.string(forKey: UserDefaultsKeys.previousjourneyType)
+        defaults.set(previousjourneyType, forKey: UserDefaultsKeys.journeyType)
+        
+        
+        
         if isfromVC == "resultsReturn" {
             MySingleton.shared.callboolapi = false
             dismiss(animated: true)
@@ -179,6 +186,7 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
     
     
     override func didTapOnReturnDateBtnAction(cell:FlightSearchTVCell) {
+        defaults.set("circle", forKey: UserDefaultsKeys.previousjourneyType)
         roundtripTap()
     }
     
@@ -248,6 +256,7 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
     
     //MARK: - didTapOnOnewayBtnAction
     @IBAction func didTapOnOnewayBtnAction(_ sender: Any) {
+        defaults.set("oneway", forKey: UserDefaultsKeys.previousjourneyType)
         onewayTap()
     }
     

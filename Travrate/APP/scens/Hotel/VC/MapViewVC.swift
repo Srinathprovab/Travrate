@@ -38,7 +38,7 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
     
     
     
-    
+    var key = String()
     var gmsView: GMSMapView?
     let locationManager = CLLocationManager()
     
@@ -56,7 +56,7 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
         
         
         setuplabels(lbl: titlelbl, text: "MapView", textcolor: .BackBtnColor, font: .InterBold(size: 14), align: .center)
-
+        
         
         self.googleMapView.backgroundColor = .clear
         backButton.addTarget(self, action: #selector(backbtnAction), for: .touchUpInside)
@@ -72,9 +72,13 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
         taponMapBtn()
         
         
-        // Add the map view
+        
         initializeGoogleMapView()
+        
+        
     }
+    
+
     
     func initializeGoogleMapView() {
         locationManager.delegate = self
@@ -105,7 +109,7 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate, UIPopoverPresentat
     
     
     @IBAction func didTaspOnShowMapViewBtnAction(_ sender: Any) {
-           taponMapBtn()
+        taponMapBtn()
         
     }
     
@@ -234,39 +238,39 @@ extension MapViewVC: GMSMapViewDelegate {
 extension MapViewVC {
     
     
-//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-//        // Handle marker tap event here
-//        if let mapModel = marker.userData as? MapModel {
-//            let popVC = MapHotelInfoVC()
-//            popVC.modalPresentationStyle = .popover
-//            popVC.mapModel = mapModel
-//            
-//            if let popOverVC = popVC.popoverPresentationController {
-//                popOverVC.delegate = self
-//                
-//                // Set source view and source rect
-//                popOverVC.sourceView = mapView
-//                popOverVC.sourceRect = CGRect(x: 0, y: 0, width: 1, height: 1)
-//                
-//                // If the marker has an icon view, use its bounds to set the sourceRect
-//                if let iconView = marker.iconView {
-//                    popOverVC.sourceRect = mapView.convert(iconView.bounds, from: iconView)
-//                } else {
-//                    // Fallback: use the marker's position on the map view
-//                    let point = mapView.projection.point(for: marker.position)
-//                    popOverVC.sourceRect = CGRect(x: point.x, y: point.y, width: 1, height: 1)
-//                }
-//                
-//                // Set arrow direction and content size
-//                popOverVC.permittedArrowDirections = .up
-//                popVC.preferredContentSize = CGSize(width: 200, height: 200)
-//            }
-//            
-//            self.present(popVC, animated: true, completion: nil)
-//        }
-//        
-//        return true // Return true to consume the tap event
-//    }
+    //    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+    //        // Handle marker tap event here
+    //        if let mapModel = marker.userData as? MapModel {
+    //            let popVC = MapHotelInfoVC()
+    //            popVC.modalPresentationStyle = .popover
+    //            popVC.mapModel = mapModel
+    //
+    //            if let popOverVC = popVC.popoverPresentationController {
+    //                popOverVC.delegate = self
+    //
+    //                // Set source view and source rect
+    //                popOverVC.sourceView = mapView
+    //                popOverVC.sourceRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+    //
+    //                // If the marker has an icon view, use its bounds to set the sourceRect
+    //                if let iconView = marker.iconView {
+    //                    popOverVC.sourceRect = mapView.convert(iconView.bounds, from: iconView)
+    //                } else {
+    //                    // Fallback: use the marker's position on the map view
+    //                    let point = mapView.projection.point(for: marker.position)
+    //                    popOverVC.sourceRect = CGRect(x: point.x, y: point.y, width: 1, height: 1)
+    //                }
+    //
+    //                // Set arrow direction and content size
+    //                popOverVC.permittedArrowDirections = .up
+    //                popVC.preferredContentSize = CGSize(width: 200, height: 200)
+    //            }
+    //
+    //            self.present(popVC, animated: true, completion: nil)
+    //        }
+    //
+    //        return true // Return true to consume the tap event
+    //    }
     
     
     

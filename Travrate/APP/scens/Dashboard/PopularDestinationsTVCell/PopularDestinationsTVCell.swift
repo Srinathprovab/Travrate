@@ -289,6 +289,10 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 defaults.set(flight.to_city, forKey: UserDefaultsKeys.tolocid)
                 
                 
+                
+                defaults.set("Kuwait", forKey: UserDefaultsKeys.fromcitynameshow)
+                defaults.set(flight.airport_city, forKey: UserDefaultsKeys.tocitynameshow)
+                
                 defaults.set(flight.from_airport_city, forKey: UserDefaultsKeys.fromcityname)
                 defaults.set(flight.to_airport_city, forKey: UserDefaultsKeys.tocityname)
                 defaults.set(flight.from_airport_city, forKey: UserDefaultsKeys.fcity)

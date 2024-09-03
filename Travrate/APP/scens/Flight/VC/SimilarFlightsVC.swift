@@ -20,11 +20,12 @@ class SimilarFlightsVC: BaseTableVC {
     }
     
     
+    var privousjourneyType = String()
     var arrayIndex = 0
     var isFirstCell = true // Flag to check if it's the first cell
     
     override func viewWillAppear(_ animated: Bool) {
-        setupTVCell()
+        
     }
     
     override func viewDidLoad() {
@@ -35,6 +36,9 @@ class SimilarFlightsVC: BaseTableVC {
 
         commonTableView.registerTVCells(["FlightResultTVCell",
                                          "EmptyTVCell"])
+        
+        setupTVCell()
+        
     }
     
     
