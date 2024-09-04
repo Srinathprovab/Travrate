@@ -578,7 +578,7 @@ extension SearchHotelsResultVC {
                 // Dequeue the empty cell
             if let cell = tableView.dequeueReusableCell(withIdentifier: "emptyTVCell", for: indexPath) as? EmptyTVCell{
                 // Configure the empty cell as needed, or leave it empty
-                cell.backgroundColor = .red // Example configuration
+                cell.backgroundColor = .WhiteColor // Example configuration
                 ccell = cell
             }
         } else {

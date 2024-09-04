@@ -91,6 +91,7 @@ class FlightResultTVCell: TableViewCell {
         
         
         
+        
         MySingleton.shared.setAttributedTextnew(str1: "\(flightlist?.price?.api_currency ?? ""): ",
                                                 str2: "\(kwdprice)",
                                                 lbl: kwdlbl,
@@ -102,7 +103,7 @@ class FlightResultTVCell: TableViewCell {
         
         MySingleton.shared.setAttributedTextnew(str1: "\(flightlist?.price?.api_currency ?? ""): ",
                                                 str2: "\(strikekwdprice)",
-                                                lbl: kwdlbl,
+                                                lbl: strikekwdlbl,
                                                 str1font: .InterBold(size: 12),
                                                 str2font: .InterBold(size: 20),
                                                 str1Color: .BackBtnColor,
