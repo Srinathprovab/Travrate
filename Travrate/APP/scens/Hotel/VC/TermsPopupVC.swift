@@ -58,6 +58,8 @@ class TermsPopupVC: BaseTableVC {
                                                     subTitle: subtitlestr,
                                                     cellType:.TermsPopupTVCell))
         
+        
+        
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()
     }

@@ -48,6 +48,7 @@ class ViewFlightDetailsVC: BaseTableVC,FlightDetailsViewModelDelegate {
 
         commonTableView.registerTVCells(["TicketIssuingTimeTVCell",
                                          "ItineraryTVCell",
+                                         "EmptyTVCell",
                                          "FareBreakdownTVCell"])
         
         
@@ -111,9 +112,12 @@ extension ViewFlightDetailsVC {
             MySingleton.shared.tablerow.append(TableRow(title: "\(index)",
                                                         moreData: element,
                                                         cellType: .ItineraryTVCell))
+           
         }
         
                 
+        MySingleton.shared.tablerow.append(TableRow(height: 50,
+                                                    cellType: .EmptyTVCell))
         
         commonTVData = MySingleton.shared.tablerow
         commonTableView.reloadData()

@@ -25,17 +25,17 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="227" id="KGk-i7-Jjw" customClass="AddItineraryTVCell" customModule="Travrate" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="488" height="229"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="488" height="229"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gt1-2f-kZr">
-                        <rect key="frame" x="0.0" y="5" width="488" height="212"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gt1-2f-kZr">
+                        <rect key="frame" x="0.0" y="5" width="488" height="219"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8c5-hT-Orq">
-                                <rect key="frame" x="10" y="0.0" width="468" height="212"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8c5-hT-Orq">
+                                <rect key="frame" x="10" y="0.0" width="468" height="219"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Waw-Ch-pD4">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Waw-Ch-pD4">
                                         <rect key="frame" x="0.0" y="0.0" width="468" height="167"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBl-hP-m4N">
@@ -81,26 +81,26 @@
                                                     <constraint firstItem="pcp-h3-qiO" firstAttribute="leading" secondItem="qBl-hP-m4N" secondAttribute="leading" constant="14" id="spZ-Ey-Y0B"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="56B-mb-gmn">
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56B-mb-gmn">
                                                 <rect key="frame" x="0.0" y="60" width="468" height="107"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Hc-Ry-fOp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="156" height="107"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Hc-Ry-fOp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="107"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kuwait(KWI)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twV-O6-640">
-                                                                <rect key="frame" x="12" y="0.0" width="132" height="19.333333333333332"/>
+                                                                <rect key="frame" x="12" y="0.0" width="175" height="19.333333333333332"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18 oct 2023 04:10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTt-3i-giB">
-                                                                <rect key="frame" x="12" y="24.333333333333329" width="130" height="13.666666666666664"/>
+                                                                <rect key="frame" x="12" y="24.333333333333329" width="173" height="13.666666666666664"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6B-K8-ZSa">
-                                                                <rect key="frame" x="12" y="43" width="132" height="27.333333333333329"/>
+                                                                <rect key="frame" x="12" y="43" width="175" height="27.333333333333329"/>
                                                                 <string key="text">Kuwait international 
 airport</string>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
@@ -108,7 +108,7 @@ airport</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terminal-1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odp-eJ-End">
-                                                                <rect key="frame" x="12" y="75.333333333333343" width="132" height="13.666666666666671"/>
+                                                                <rect key="frame" x="12" y="75.333333333333343" width="175" height="13.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
                                                                 <color key="textColor" name="SubtitleColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -128,19 +128,20 @@ airport</string>
                                                             <constraint firstItem="twV-O6-640" firstAttribute="leading" secondItem="6Hc-Ry-fOp" secondAttribute="leading" constant="12" id="miN-CJ-8KJ"/>
                                                             <constraint firstItem="A6B-K8-ZSa" firstAttribute="top" secondItem="UTt-3i-giB" secondAttribute="bottom" constant="5" id="qCz-fl-uNY"/>
                                                             <constraint firstItem="UTt-3i-giB" firstAttribute="top" secondItem="twV-O6-640" secondAttribute="bottom" constant="5" id="zZp-Fb-EDu"/>
+                                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Odp-eJ-End" secondAttribute="bottom" constant="5" id="zah-mY-VUE"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ec3-3N-Djm">
-                                                        <rect key="frame" x="156" y="0.0" width="156" height="107"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ec3-3N-Djm">
+                                                        <rect key="frame" x="199" y="0.0" width="70" height="107"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="05:30" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4C-Fk-aQd">
-                                                                <rect key="frame" x="8" y="25" width="140" height="16.666666666666671"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:30" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4C-Fk-aQd">
+                                                                <rect key="frame" x="8" y="25" width="54" height="16.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                                 <color key="textColor" name="BackBtnColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PY5-xe-sp0" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
-                                                                <rect key="frame" x="78" y="43.666666666666671" width="0.0" height="20"/>
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PY5-xe-sp0" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                                                                <rect key="frame" x="35" y="43.666666666666671" width="0.0" height="20"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZH6-wG-tpR">
                                                                         <rect key="frame" x="-11.666666666666657" y="4.3333333333333286" width="23.333333333333332" height="11"/>
@@ -162,22 +163,22 @@ airport</string>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="dash" translatesAutoresizingMaskIntoConstraints="NO" id="Y9x-kX-7mb">
-                                                                <rect key="frame" x="38" y="52.666666666666671" width="40" height="2"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dash" translatesAutoresizingMaskIntoConstraints="NO" id="Y9x-kX-7mb">
+                                                                <rect key="frame" x="-5" y="52.666666666666671" width="40" height="2"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="2" id="cWg-Y4-Pw5"/>
                                                                     <constraint firstAttribute="width" constant="40" id="y0S-1J-JDP"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="dash" translatesAutoresizingMaskIntoConstraints="NO" id="pF8-tn-BRP">
-                                                                <rect key="frame" x="78" y="52.666666666666671" width="40" height="2"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dash" translatesAutoresizingMaskIntoConstraints="NO" id="pF8-tn-BRP">
+                                                                <rect key="frame" x="35" y="52.666666666666671" width="40" height="2"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="Br9-Gt-Qf8"/>
                                                                     <constraint firstAttribute="height" constant="2" id="MLY-l4-fDZ"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Economy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ed-L7-NC6">
-                                                                <rect key="frame" x="52.333333333333343" y="65.666666666666657" width="51.666666666666657" height="16.666666666666671"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Economy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ed-L7-NC6">
+                                                                <rect key="frame" x="9.3333333333333393" y="65.666666666666657" width="51.666666666666657" height="16.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                                 <color key="textColor" name="BackBtnColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -187,6 +188,7 @@ airport</string>
                                                         <constraints>
                                                             <constraint firstItem="PY5-xe-sp0" firstAttribute="centerY" secondItem="ec3-3N-Djm" secondAttribute="centerY" id="1RL-AD-bqk"/>
                                                             <constraint firstItem="pF8-tn-BRP" firstAttribute="centerY" secondItem="PY5-xe-sp0" secondAttribute="centerY" id="AEi-Y2-cSL"/>
+                                                            <constraint firstAttribute="width" constant="70" id="CO4-LG-0ac"/>
                                                             <constraint firstItem="6Ed-L7-NC6" firstAttribute="centerX" secondItem="PY5-xe-sp0" secondAttribute="centerX" id="FIe-4Z-1r0"/>
                                                             <constraint firstItem="Y9x-kX-7mb" firstAttribute="centerY" secondItem="PY5-xe-sp0" secondAttribute="centerY" id="IHm-n0-WCm"/>
                                                             <constraint firstItem="k4C-Fk-aQd" firstAttribute="centerX" secondItem="ec3-3N-Djm" secondAttribute="centerX" id="KUP-2L-4C7"/>
@@ -199,23 +201,23 @@ airport</string>
                                                             <constraint firstItem="pF8-tn-BRP" firstAttribute="leading" secondItem="PY5-xe-sp0" secondAttribute="trailing" id="zlQ-Wb-Nzk"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yo3-hc-y4L">
-                                                        <rect key="frame" x="312" y="0.0" width="156" height="107"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yo3-hc-y4L">
+                                                        <rect key="frame" x="269" y="0.0" width="199" height="107"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kuwait(KWI)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh1-bK-bLu">
-                                                                <rect key="frame" x="12" y="0.0" width="132" height="19.333333333333332"/>
+                                                                <rect key="frame" x="12" y="0.0" width="175" height="19.333333333333332"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18 oct 2023 04:10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x94-Se-IqN">
-                                                                <rect key="frame" x="12" y="24.333333333333329" width="130" height="13.666666666666664"/>
+                                                                <rect key="frame" x="12" y="24.333333333333329" width="173" height="13.666666666666664"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us5-se-wuM">
-                                                                <rect key="frame" x="12" y="43" width="132" height="27.333333333333329"/>
+                                                                <rect key="frame" x="12" y="43" width="175" height="27.333333333333329"/>
                                                                 <string key="text">Kuwait international 
 airport</string>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
@@ -223,7 +225,7 @@ airport</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terminal-1" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZ8-Hc-SFy">
-                                                                <rect key="frame" x="12" y="75.333333333333343" width="132" height="13.666666666666671"/>
+                                                                <rect key="frame" x="12" y="75.333333333333343" width="175" height="13.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
                                                                 <color key="textColor" name="SubtitleColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -240,12 +242,16 @@ airport</string>
                                                             <constraint firstItem="x94-Se-IqN" firstAttribute="top" secondItem="rh1-bK-bLu" secondAttribute="bottom" constant="5" id="RAc-fw-qVs"/>
                                                             <constraint firstItem="rh1-bK-bLu" firstAttribute="top" secondItem="yo3-hc-y4L" secondAttribute="top" id="c0z-ZK-Vuv"/>
                                                             <constraint firstItem="rh1-bK-bLu" firstAttribute="leading" secondItem="yo3-hc-y4L" secondAttribute="leading" constant="12" id="ds1-CK-dxy"/>
+                                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MZ8-Hc-SFy" secondAttribute="bottom" constant="5" id="feN-xe-ktf"/>
                                                             <constraint firstAttribute="trailing" secondItem="MZ8-Hc-SFy" secondAttribute="trailing" constant="12" id="pH1-SI-6Er"/>
                                                             <constraint firstItem="x94-Se-IqN" firstAttribute="leading" secondItem="yo3-hc-y4L" secondAttribute="leading" constant="12" id="pYb-5i-e8F"/>
                                                             <constraint firstAttribute="trailing" secondItem="us5-se-wuM" secondAttribute="trailing" constant="12" id="rg3-oW-DiX"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="ec3-3N-Djm" firstAttribute="centerX" secondItem="56B-mb-gmn" secondAttribute="centerX" id="WXf-aX-U96"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -260,14 +266,14 @@ airport</string>
                                             <constraint firstItem="qBl-hP-m4N" firstAttribute="top" secondItem="Waw-Ch-pD4" secondAttribute="top" id="uw6-qz-2pf"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n2y-Pu-jcU">
-                                        <rect key="frame" x="0.0" y="167" width="468" height="45"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2y-Pu-jcU">
+                                        <rect key="frame" x="0.0" y="167" width="468" height="52"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtC-bT-Pey">
-                                                <rect key="frame" x="14" y="5" width="440" height="40"/>
+                                                <rect key="frame" x="14" y="5" width="440" height="47"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="layover Duration Abu Dhabi (AUH) 1h 50m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TuR-df-o6x">
-                                                        <rect key="frame" x="102.33333333333333" y="11.666666666666659" width="235.66666666666669" height="16.666666666666671"/>
+                                                        <rect key="frame" x="102.33333333333333" y="15.333333333333345" width="235.66666666666669" height="16.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -284,8 +290,8 @@ airport</string>
                                         <constraints>
                                             <constraint firstItem="wtC-bT-Pey" firstAttribute="leading" secondItem="n2y-Pu-jcU" secondAttribute="leading" constant="14" id="EQy-dB-DgK"/>
                                             <constraint firstAttribute="bottom" secondItem="wtC-bT-Pey" secondAttribute="bottom" id="EuE-9H-vwj"/>
+                                            <constraint firstAttribute="height" constant="52" id="Lrg-Gv-AUP"/>
                                             <constraint firstAttribute="trailing" secondItem="wtC-bT-Pey" secondAttribute="trailing" constant="14" id="OYK-XR-0hi"/>
-                                            <constraint firstAttribute="height" constant="45" id="XBi-kR-zbR"/>
                                             <constraint firstItem="wtC-bT-Pey" firstAttribute="top" secondItem="n2y-Pu-jcU" secondAttribute="top" constant="5" id="ccF-kP-f8h"/>
                                         </constraints>
                                     </view>

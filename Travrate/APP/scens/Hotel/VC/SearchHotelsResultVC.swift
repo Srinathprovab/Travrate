@@ -575,7 +575,7 @@ extension SearchHotelsResultVC {
         
         
         if indexPath.row == rowCount {
-                // Dequeue the empty cell
+            // Dequeue the empty cell
             if let cell = tableView.dequeueReusableCell(withIdentifier: "emptyTVCell", for: indexPath) as? EmptyTVCell{
                 // Configure the empty cell as needed, or leave it empty
                 cell.backgroundColor = .WhiteColor // Example configuration
@@ -847,14 +847,26 @@ extension SearchHotelsResultVC:AppliedFilters{
             
             let priceInRange = totalString >= minpricerange && totalString <= maxpricerange
             let ratingMatches = starRatingNew.isEmpty || starRatingNew.contains("\(hotel.star_rating ?? 0)")
-            let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(hotel.refund ?? "")
+            //    let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(hotel.refund ?? "")
             let niberhoodMatch = niberhoodA.isEmpty || niberhoodA.contains(hotel.location ?? "")
             
-            let aminitiesMatch = aminitiesA.isEmpty || aminitiesA.contains(hotel.facility?.first?.name ?? "")
+          
             
-            let nearByLocAMatch = nearByLocA.isEmpty || nearByLocA.contains("\(hotel.near_by?.first?.distance ?? "") metres for \(hotel.near_by?.first?.poiName ?? "")")
+            // Check if the hotel's amenities match any selected amenities or the array is empty
+            let aminitiesMatch = aminitiesA.isEmpty || (hotel.facility?.contains { facility in
+                aminitiesA.contains(facility.name ?? "")
+            } ?? false)
             
-            return priceInRange && ratingMatches && refundableMatch && niberhoodMatch && aminitiesMatch && nearByLocAMatch
+            
+            // Check if the hotel's nearby location matches any selected locations or the array is empty
+            let nearByLocAMatch = nearByLocA.isEmpty || (hotel.near_by?.contains { nearby in
+                let nearbyLocation = "\(nearby.distance ?? "") metres for \(nearby.poiName ?? "")"
+                return nearByLocA.contains(nearbyLocation)
+            } ?? false)
+            
+            
+            
+            return priceInRange && ratingMatches && niberhoodMatch && aminitiesMatch && nearByLocAMatch
         }
         
         // Update the filtered results

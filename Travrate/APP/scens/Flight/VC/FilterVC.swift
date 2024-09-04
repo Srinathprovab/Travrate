@@ -266,7 +266,7 @@ class FilterVC: BaseTableVC{
     
     override func viewWillAppear(_ animated: Bool) {
         
-       
+        
         
         for noOfStops in noofstopsArray {
             if let stopsInt = Int(noOfStops) {

@@ -32,7 +32,7 @@ class FlightResultVC: BaseTableVC, FlightListModelProtocal, SearchDataViewModelD
     var flights = [[FlightList]]()
     
     override func viewWillDisappear(_ animated: Bool) {
-        flights.removeAll()
+        // flights.removeAll()
     }
     
     
@@ -512,12 +512,12 @@ extension Sequence where Iterator.Element: Hashable {
 //MARK: - AppliedFilters
 
 extension FlightResultVC:AppliedFilters {
-
+    
     
     func hotelFilterByApplied(minpricerange: Double, maxpricerange: Double, starRating: String, starRatingNew: [String], refundableTypeArray: [String], nearByLocA: [String], niberhoodA: [String], aminitiesA: [String]) {
         
     }
-
+    
     
     func isTimeInRange(time: String, range: String) -> Bool {
         let timeFormatter = DateFormatter()
@@ -576,7 +576,7 @@ extension FlightResultVC:AppliedFilters {
     
     func filtersByApplied(minpricerange: Double, maxpricerange: Double, noofStopsArray: [String], refundableTypeArray: [String], departureTime: [String], arrivalTime: [String], noOvernightFlight: [String], airlinesFilterArray: [String], luggageFilterArray: [String], connectingFlightsFilterArray: [String], ConnectingAirportsFilterArray: [String], mindurationrange: Double, maxdurationrange: Double, minTransitTimerange: Double, maxransitTimerange: Double) {
         
-      
+        
         let sortedArray = flnew.map { flight in
             flight.filter { j in
                 
@@ -667,11 +667,6 @@ extension FlightResultVC:AppliedFilters {
                 
                 
                 
-                //                let luggageMatch = luggageFilterArray.isEmpty || summary.contains(where: {
-                //                    let formattedWeight = MySingleton.shared.convertToPC(input: $0.weight_Allowance ?? "")
-                //                    return luggageFilterArray.contains(formattedWeight ?? "")
-                //                }) == true
-                
                 guard let firstFlightDetail = details.first?.first else {
                     print("No flight details found in the first element")
                     // Handle case where there are no flight details
@@ -679,8 +674,20 @@ extension FlightResultVC:AppliedFilters {
                 }
                 
                 // Now you can apply your luggage matching logic on the `firstFlightDetail`
-                let formattedWeight = MySingleton.shared.convertToPC(input: firstFlightDetail.weight_Allowance ?? "")
-                let luggageMatch = luggageFilterArray.isEmpty || formattedWeight.map { luggageFilterArray.contains($0) } ?? false
+                // let formattedWeight = MySingleton.shared.convertToPC(input: firstFlightDetail.weight_Allowance ?? "")
+                // let luggageMatch = luggageFilterArray.isEmpty || formattedWeight.map { luggageFilterArray.contains($0) } ?? false
+                
+                
+                
+                let luggageMatch = luggageFilterArray.isEmpty || summary.contains { item in
+                    if let weightAllowance = item.weight_Allowance {
+                        let formattedWeight = MySingleton.shared.convertToPC(input: firstFlightDetail.weight_Allowance ?? "")
+                        return luggageFilterArray.contains(formattedWeight ?? "")
+                    }
+                    return false
+                }
+                
+                
                 
                 
                 // Duration filtering
@@ -709,12 +716,13 @@ extension FlightResultVC:AppliedFilters {
                 
                 return priceRangeMatch  && noOfStopsMatch && refundableMatch && airlinesMatch && connectingFlightsMatch && luggageMatch && depMatch && arrMatch && ConnectingAirportsMatch && durationMatch
                 
-                //transitTimeMatch
+                
+                
             }
         }
         
         
-       // setupTVCell(list: sortedArray ?? [[]])
+        // setupTVCell(list: sortedArray ?? [[]])
         filterresettapbool == true ? setupTVCell(list: flnew ?? [[]]) : setupTVCell(list: sortedArray ?? [[]])
         
     }
@@ -772,8 +780,9 @@ extension FlightResultVC:AppliedFilters {
             
             setupTVCell(list: sortedArrays)
             
-            
         }else if sortBy == .PriceHigh{
+            
+            
             
             let sortedArrays = flights.sorted { (item1, item2) in
                 let price1 = item1.first?.price?.api_total_display_fare ?? 0.0

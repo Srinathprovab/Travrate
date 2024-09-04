@@ -324,10 +324,7 @@ extension SelectPaymentMethodsVC {
         DispatchQueue.main.async {
             MySingleton.shared.mobilepaymentvm?.CALL_FLIGHT_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.url ?? "")
         }
-        
-        //        DispatchQueue.main.async {
-        //            MySingleton.shared.SsportsPaymentvm?.CALL_SECURE_BOOKING_API(dictParam: [:], url: response.data ?? "")
-        //        }
+    
     }
     
     
