@@ -63,6 +63,9 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
     var cname = [String]()
     var countryCode = String()
     var cnameArray = [String]()
+    let dateFormat = "dd-MM-yyyy"
+    
+    
     
     weak var delegate: HotelSearchTVCellDelegate?
     override func awakeFromNib() {
@@ -81,6 +84,9 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
     
     
     func setupUI() {
+        
+        MySingleton.shared.newdateFormatter.dateFormat = dateFormat
+        MySingleton.shared.newdateFormatter.locale = Locale(identifier: "en_US_POSIX")
         
         fromcityTF.textColor = .TitleColor
         fromcityTF.font = .OpenSansMedium(size: 16)
@@ -116,8 +122,12 @@ class HotelSearchTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
         
         
         fromcityTF.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? "City/Location"
-        checkinlbl.text = defaults.string(forKey: UserDefaultsKeys.checkin) ?? "Add Date"
-        checkoutlbl.text = defaults.string(forKey: UserDefaultsKeys.checkout) ?? "Add Date"
+        checkinlbl.text = MySingleton.shared.updateIfDateIsPast(dateKey: UserDefaultsKeys.checkin, defaultLabel: "Add Date")
+        checkoutlbl.text = MySingleton.shared.updateIfDateIsPast(dateKey: UserDefaultsKeys.checkout, defaultLabel: "Add Date")
+        
+        
+        
+
         roomcountlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectPersons) ?? "")"
         nationalitylbl.text = "\(defaults.string(forKey: UserDefaultsKeys.hnationality) ?? "Select Nationality")"
         
@@ -315,17 +325,7 @@ extension HotelSearchTVCell {
             }
         }
         
-        
-        
-//        //ToolBar
-//        let toolbar = UIToolbar();
-//        toolbar.sizeToFit()
-//        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-//        
-//        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        
+      
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
@@ -347,9 +347,7 @@ extension HotelSearchTVCell {
         
     }
     
-    
-    
-    
+
     
     
     //MARK: - showretDatePicker
@@ -359,7 +357,7 @@ extension HotelSearchTVCell {
         //        retDatePicker.minimumDate = Date()
         // Set minimumDate for retDatePicker based on depDatePicker or retdepDatePicker
         let selectedDate = self.checkinTF.isFirstResponder ? checkinDatePicker.date : checkoutDatePicker.date
-       // checkoutDatePicker.minimumDate = selectedDate
+        // checkoutDatePicker.minimumDate = selectedDate
         
         checkoutDatePicker.preferredDatePickerStyle = .wheels
         
@@ -388,16 +386,7 @@ extension HotelSearchTVCell {
         }
         
         
-        
-//        //ToolBar
-//        let toolbar = UIToolbar();
-//        toolbar.sizeToFit()
-//        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-//        
-//        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        
+     
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()

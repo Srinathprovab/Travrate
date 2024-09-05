@@ -118,6 +118,9 @@ class FlightResultTVCell: TableViewCell {
             strikekwdlbl.isHidden = false
         }
         
+        if kwdprice < strikekwdprice {
+            strikekwdlbl.isHidden = true
+        }
         
         setAttributedString1(str1: strikekwdlbl.text ?? "")
         checkSimelarFlights()
@@ -199,9 +202,6 @@ class FlightResultTVCell: TableViewCell {
     }
     
 }
-
-
-
 
 
 extension FlightResultTVCell:UITableViewDelegate,UITableViewDataSource {

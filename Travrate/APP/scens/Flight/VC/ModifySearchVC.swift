@@ -100,7 +100,7 @@ class ModifySearchVC: BaseTableVC {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd-MM-yyyy"
             defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
-          
+            
         }else {
             
             let formatter = DateFormatter()
@@ -115,7 +115,7 @@ class ModifySearchVC: BaseTableVC {
             }else {
                 defaults.set(formatter.string(from: cell.depDatePicker.date), forKey: UserDefaultsKeys.calDepDate)
                 defaults.set(formatter.string(from: cell.retDatePicker.date), forKey: UserDefaultsKeys.calRetDate)
-                
+  
             }
         }
         

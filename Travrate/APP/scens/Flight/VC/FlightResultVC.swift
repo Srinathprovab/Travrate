@@ -1234,8 +1234,6 @@ extension FlightResultVC {
     }
     
     
-    
-    
     func setupTVCell(list:[[FlightList]]) {
         MySingleton.shared.tablerow.removeAll()
         

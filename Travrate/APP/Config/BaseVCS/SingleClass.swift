@@ -366,7 +366,7 @@ class MySingleton {
     var totalTime = 1
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     var preferences = EasyTipView.Preferences()
-    
+    let newdateFormatter = DateFormatter()
     
     func setupTipView(arrowPosition:EasyTipView.ArrowPosition){
         
@@ -633,6 +633,29 @@ class MySingleton {
         // Return true if there is a match, false otherwise
         return match != nil
     }
+    
+    
+    //MARK: - updateIfDateIsPast
+    func updateIfDateIsPast(dateKey: String, defaultLabel: String) -> String {
+        if let dateString = defaults.string(forKey: dateKey),
+           let storedDate = newdateFormatter.date(from: dateString) {
+            if storedDate < Date() {
+                // Update to today's date if the stored date is in the past
+                let todayDateString = newdateFormatter.string(from: Date())
+                defaults.set(todayDateString, forKey: dateKey)
+                return todayDateString
+            } else {
+                // Return the stored date if it's not in the past
+                return dateString
+            }
+        } else {
+            // If the date is not set, update to today's date
+            let todayDateString = newdateFormatter.string(from: Date())
+            defaults.set(todayDateString, forKey: dateKey)
+            return todayDateString
+        }
+    }
+    
     
 }
 

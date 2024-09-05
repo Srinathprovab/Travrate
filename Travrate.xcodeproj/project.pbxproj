@@ -852,6 +852,8 @@
 		84C4FF182C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C4FF172C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib */; };
 		84C4FF192C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4FF162C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift */; };
 		84C895832C4B5085002241D3 /* SendToPaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C895822C4B5085002241D3 /* SendToPaymentModel.swift */; };
+		84CDE26C2C8988640006365A /* NewAddItineraryTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CDE26B2C8988640006365A /* NewAddItineraryTVCell.xib */; };
+		84CDE26D2C8988640006365A /* NewAddItineraryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDE26A2C8988640006365A /* NewAddItineraryTVCell.swift */; };
 		84D4C5DE2C5E352B004BA22F /* SportsTripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4C5DD2C5E352B004BA22F /* SportsTripModel.swift */; };
 		84D4C5E02C5E3576004BA22F /* SportsCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4C5DF2C5E3576004BA22F /* SportsCompleted.swift */; };
 		84D4C5E22C5E3583004BA22F /* SportsUpcoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4C5E12C5E3583004BA22F /* SportsUpcoming.swift */; };
@@ -1802,6 +1804,8 @@
 		84C4FF162C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreRulesBtnTVCell.swift; sourceTree = "<group>"; };
 		84C4FF172C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeeMoreRulesBtnTVCell.xib; sourceTree = "<group>"; };
 		84C895822C4B5085002241D3 /* SendToPaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendToPaymentModel.swift; sourceTree = "<group>"; };
+		84CDE26A2C8988640006365A /* NewAddItineraryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddItineraryTVCell.swift; sourceTree = "<group>"; };
+		84CDE26B2C8988640006365A /* NewAddItineraryTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewAddItineraryTVCell.xib; sourceTree = "<group>"; };
 		84D4C5DD2C5E352B004BA22F /* SportsTripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsTripModel.swift; sourceTree = "<group>"; };
 		84D4C5DF2C5E3576004BA22F /* SportsCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCompleted.swift; sourceTree = "<group>"; };
 		84D4C5E12C5E3583004BA22F /* SportsUpcoming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsUpcoming.swift; sourceTree = "<group>"; };
@@ -3609,6 +3613,7 @@
 		65207AE12BF4942F0076EF76 /* Fdetails */ = {
 			isa = PBXGroup;
 			children = (
+				84CDE2692C89884D0006365A /* NewAddItineraryTVCell */,
 				84C4FF1A2C2EB50D00E31A39 /* SeeMoreRulesBtnTVCell */,
 				653467B42C0207AF0059A0E1 /* AddFareRulesTVCell */,
 				65207AE22BF4942F0076EF76 /* FareRulesTVCell */,
@@ -5799,6 +5804,15 @@
 			path = SeeMoreRulesBtnTVCell;
 			sourceTree = "<group>";
 		};
+		84CDE2692C89884D0006365A /* NewAddItineraryTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				84CDE26A2C8988640006365A /* NewAddItineraryTVCell.swift */,
+				84CDE26B2C8988640006365A /* NewAddItineraryTVCell.xib */,
+			);
+			name = NewAddItineraryTVCell;
+			sourceTree = "<group>";
+		};
 		84D4C5DC2C5E3513004BA22F /* SportsTripModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -6566,6 +6580,7 @@
 				65207E232BF494320076EF76 /* AutopayTabCVCell.xib in Resources */,
 				65207CAF2BF494310076EF76 /* Lato-Regular.ttf in Resources */,
 				65207DAB2BF494310076EF76 /* RadioButtonTVCell.xib in Resources */,
+				84CDE26C2C8988640006365A /* NewAddItineraryTVCell.xib in Resources */,
 				65207E502BF494320076EF76 /* TabSelectTVCell.xib in Resources */,
 				65207CAE2BF494310076EF76 /* Oswald-SemiBold.ttf in Resources */,
 				65207EAD2BF494320076EF76 /* BookingConfirmedTVCell.xib in Resources */,
@@ -7194,6 +7209,7 @@
 				845BB4E02C297C4300571339 /* ShareResultTVCell.swift in Sources */,
 				65207D672BF494310076EF76 /* FlightDataModel.swift in Sources */,
 				65207E432BF494320076EF76 /* SelectLanguageVC.swift in Sources */,
+				84CDE26D2C8988640006365A /* NewAddItineraryTVCell.swift in Sources */,
 				65207E512BF494320076EF76 /* TopcityGuidesTVCell.swift in Sources */,
 				65207D862BF494310076EF76 /* Custom_farerules.swift in Sources */,
 				65207DCE2BF494310076EF76 /* FareSummaryTVCell.swift in Sources */,
@@ -7571,7 +7587,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W7386UDMSR;
@@ -7596,7 +7612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.travrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -7621,7 +7637,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W7386UDMSR;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -7645,7 +7661,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.travrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

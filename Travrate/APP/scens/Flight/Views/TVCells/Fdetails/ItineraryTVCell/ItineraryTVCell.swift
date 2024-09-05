@@ -14,6 +14,7 @@ class ItineraryTVCell: TableViewCell {
     
     
     
+    var originalTimeViewHeight = 52
     var depFind = Int()
     var fdetais = [ItinearyFlightDetails]()
     override func awakeFromNib() {
@@ -35,44 +36,33 @@ class ItineraryTVCell: TableViewCell {
         depFind = Int(cellInfo?.title ?? "") ?? 0
         fdetais = cellInfo?.moreData as! [ItinearyFlightDetails]
         
-        tvHeight.constant = CGFloat((fdetais.count * 230))
-        additinararyTV.reloadData()
+        updateHeight(height: 220)
         
-        
-        // updateHeight()
     }
     
+   
     
-    func updateHeight() {
-        var totalHeight: CGFloat = 0
-        for index in 0..<fdetais.count {
-            let indexPath = IndexPath(row: index, section: 0)
-            if let cell = additinararyTV.cellForRow(at: indexPath) as? AddItineraryTVCell {
-                totalHeight += cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-            }
-        }
-        tvHeight.constant = CGFloat((fdetais.count)) * totalHeight
-        additinararyTV.reloadData()
-    }
+//    func updateHeight() {
+//        var totalHeight: CGFloat = 0
+//        for index in 0..<fdetais.count {
+//            let indexPath = IndexPath(row: index, section: 0)
+//            if let cell = additinararyTV.cellForRow(at: indexPath) as? NewAddItineraryTVCell {
+//                totalHeight += cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+//            }
+//        }
+//        tvHeight.constant = CGFloat((fdetais.count)) * totalHeight
+//        additinararyTV.reloadData()
+//    }
     
     
     
     func setupUI() {
         setupTV()
+//        updateHeight()
     }
     
     
-    func setupTV() {
-        additinararyTV.register(UINib(nibName: "AddItineraryTVCell", bundle: nil), forCellReuseIdentifier: "cell")
-        additinararyTV.delegate = self
-        additinararyTV.dataSource = self
-        additinararyTV.tableFooterView = UIView()
-        additinararyTV.showsVerticalScrollIndicator = false
-        additinararyTV.separatorStyle = .none
-        additinararyTV.isScrollEnabled = false
-        
-        additinararyTV.estimatedRowHeight = 240
-    }
+    
     
 }
 
@@ -82,6 +72,34 @@ class ItineraryTVCell: TableViewCell {
 extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     
     
+    func setupTV() {
+        additinararyTV.register(UINib(nibName: "NewAddItineraryTVCell", bundle: nil), forCellReuseIdentifier: "cell")
+        additinararyTV.delegate = self
+        additinararyTV.dataSource = self
+        additinararyTV.tableFooterView = UIView()
+        additinararyTV.showsVerticalScrollIndicator = false
+        additinararyTV.separatorStyle = .none
+        additinararyTV.isScrollEnabled = false
+        
+        additinararyTV.estimatedRowHeight = 200 // Estimated row height
+        additinararyTV.rowHeight = UITableView.automaticDimension
+
+    }
+    
+    
+    func updateHeight(height:Int) {
+       // tvHeight.constant = CGFloat((fdetais.count * height))
+        additinararyTV.reloadData()
+        updateTableViewHeight()
+    }
+    
+    func updateTableViewHeight() {
+        // Calculate the height of the table view based on its content
+        self.additinararyTV.layoutIfNeeded()
+        self.tvHeight.constant = self.additinararyTV.contentSize.height
+    }
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fdetais.count
     }
@@ -89,7 +107,7 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var c = UITableViewCell()
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? AddItineraryTVCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? NewAddItineraryTVCell {
             
             cell.selectionStyle = .none
             let data = fdetais[indexPath.row]
@@ -130,13 +148,31 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
                 }
             }
             
+//            if tableView.isLast(for: indexPath) {
+//                cell.timeView.isHidden = true
+//                cell.depimg.isHidden = true
+//                cell.imgwidth.constant = 0
+//                cell.imgleft.constant = 0
+//                cell.totalJourneyTimelbl.isHidden = true
+//            }
+            
+            
             if tableView.isLast(for: indexPath) {
                 cell.timeView.isHidden = true
+                cell.timeViewHeightConstraint.constant = 0 // Set height to 0 when hiding
                 cell.depimg.isHidden = true
                 cell.imgwidth.constant = 0
                 cell.imgleft.constant = 0
                 cell.totalJourneyTimelbl.isHidden = true
+            } else {
+                cell.timeView.isHidden = false
+                cell.timeViewHeightConstraint.constant = CGFloat(originalTimeViewHeight) // Reset to the original height when visible
             }
+
+            // Call layoutIfNeeded to apply the constraint changes
+            cell.layoutIfNeeded()
+
+            
             
             var totalDuration: TimeInterval = 0
             var totalLayoverTime: TimeInterval = 0

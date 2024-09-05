@@ -72,7 +72,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         setupUI()
         commonTableView.register(UINib(nibName: "HotelsTVCell", bundle: nil), forCellReuseIdentifier: "cell44")
         commonTableView.register(UINib(nibName: "EmptyTVCell", bundle: nil), forCellReuseIdentifier: "emptyTVCell")
-        
+        commonTableView.backgroundColor = .AppHolderViewColor
         
         filtered = hotelSearchResult
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("nointernet"), object: nil)
@@ -578,7 +578,7 @@ extension SearchHotelsResultVC {
             // Dequeue the empty cell
             if let cell = tableView.dequeueReusableCell(withIdentifier: "emptyTVCell", for: indexPath) as? EmptyTVCell{
                 // Configure the empty cell as needed, or leave it empty
-                cell.backgroundColor = .WhiteColor // Example configuration
+                cell.backgroundColor = .AppHolderViewColor // Example configuration
                 ccell = cell
             }
         } else {

@@ -103,6 +103,9 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     var isSearchBool = Bool()
     var searchText = String()
     
+    let dateFormat = "dd-MM-yyyy"
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -120,6 +123,9 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     
     
     func setupUI() {
+        
+        MySingleton.shared.newdateFormatter.dateFormat = dateFormat
+        MySingleton.shared.newdateFormatter.locale = Locale(identifier: "en_US_POSIX")
         
         setAttributedString(str1: "    Advanced search options")
         setAttributedString1(str1: "    Select Aditional options")
@@ -210,7 +216,15 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             fromlbl.text = defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "Origin"
             tolbl.text = defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "Destination"
             
-            self.depDatelbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Add Date"
+            //  self.depDatelbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Add Date"
+            
+            self.depDatelbl.text = MySingleton.shared.updateIfDateIsPast(dateKey: UserDefaultsKeys.calDepDate, defaultLabel: "Add Date")
+            
+            
+            
+            
+            
+            
             returnDateView.alpha = 0.5
             retlbl.text = "Add Date"
             defaults.set("Add Date", forKey: UserDefaultsKeys.calRetDate)
@@ -237,8 +251,16 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             fromlbl.text = defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "Origin"
             tolbl.text = defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "Destination"
             
-            self.depDatelbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Add Date"
-            self.retlbl.text = defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "Add Date"
+            //            self.depDatelbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Add Date"
+            //            self.retlbl.text = defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "Add Date"
+            
+            // Check and update depDatelbl and retlbl for past dates
+            self.depDatelbl.text = MySingleton.shared.updateIfDateIsPast(dateKey: UserDefaultsKeys.calDepDate, defaultLabel: "Add Date")
+            self.retlbl.text = MySingleton.shared.updateIfDateIsPast(dateKey: UserDefaultsKeys.calRetDate, defaultLabel: "Add Date")
+            
+            
+            
+            
             returnDateView.alpha = 1
             self.depTF.isHidden = false
             self.retTF.isHidden = false
@@ -352,6 +374,13 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             
             defaults.setValue(v, forKey: UserDefaultsKeys.fromCode)
             defaults.setValue(u, forKey: UserDefaultsKeys.toCode)
+            
+            
+            let p = "\(defaults.string(forKey: UserDefaultsKeys.fromcitynameshow) ?? "")"
+            let q = "\(defaults.string(forKey: UserDefaultsKeys.tocitynameshow) ?? "")"
+            
+            defaults.setValue(p, forKey: UserDefaultsKeys.tocitynameshow)
+            defaults.setValue(q, forKey: UserDefaultsKeys.fromcitynameshow)
             
         }
         
@@ -472,6 +501,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     
     
     
+   
     
 }
 
@@ -786,7 +816,7 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
                 defaults.set("\(cityList[indexPath.row].city ?? "")", forKey: UserDefaultsKeys.fcity)
                 
                 
-               
+                
                 
                 
                 fromtvHeight.constant = 0
@@ -889,7 +919,7 @@ extension FlightSearchTVCell {
         retDatePicker.datePickerMode = .date
         //        retDatePicker.minimumDate = Date()
         // Set minimumDate for retDatePicker based on depDatePicker or retDatePicker
-        let selectedDate = self.depTF.isFirstResponder ? depDatePicker.date : retDatePicker.date
+        let selectedDate = self.depTF.isFirstResponder ? depDatePicker.date : depDatePicker.date
         retDatePicker.minimumDate = selectedDate
         
         retDatePicker.preferredDatePickerStyle = .wheels
@@ -1106,11 +1136,11 @@ extension FlightSearchTVCell {
 extension FlightSearchTVCell {
     
     
-
+    
     
     @objc func searchTextBegin(textField: UITextField) {
         
-      
+        
         
         airlineTF.text = ""
         airlinelbl.text = ""

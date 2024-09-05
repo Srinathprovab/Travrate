@@ -104,12 +104,12 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
             
         case "Transfers":
             defaults.set("transfers", forKey: UserDefaultsKeys.tabselect)
-            gotoBookTransfersVC()
+           // gotoBookTransfersVC()
             break
             
             
         case "Sports":
-            gotoSportsSearchVC()
+           // gotoSportsSearchVC()
             break
             
             
