@@ -303,6 +303,7 @@ class MySingleton {
     var activity_image = String()
     var activity_duration_type = String()
     var activity_name_type = String()
+    var newSelectedRoomIndex = String()
     
     
     //View Models

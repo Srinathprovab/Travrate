@@ -23,6 +23,8 @@ class NewRoomDetailsTVCell: UITableViewCell {
     @IBOutlet weak var rightview: BorderedView!
     
     
+    var selectedindexPath:Int?
+    var selectedRoomIndex = String()
     var cancellatonStringArray = [Cancellation_string]()
     var selectedRoom = String()
     var currency = ""

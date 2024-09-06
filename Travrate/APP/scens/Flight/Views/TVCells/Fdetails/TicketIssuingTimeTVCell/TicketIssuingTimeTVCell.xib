@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -54,14 +53,14 @@ within 24 hours at max.</string>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="agX-VO-ePM" secondAttribute="bottom" constant="12.67" id="2lH-N8-ZzM"/>
-                            <constraint firstItem="agX-VO-ePM" firstAttribute="centerY" secondItem="ZOy-Rb-wsW" secondAttribute="centerY" id="7uU-vN-P9a"/>
                             <constraint firstItem="ZOy-Rb-wsW" firstAttribute="leading" secondItem="BNW-kn-nCg" secondAttribute="leading" constant="10" id="8qN-ac-kdT"/>
                             <constraint firstItem="agX-VO-ePM" firstAttribute="leading" secondItem="ZOy-Rb-wsW" secondAttribute="trailing" constant="10" id="HGx-Te-nbM"/>
-                            <constraint firstAttribute="height" constant="76" id="TZe-eA-Xv7"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="76" id="TZe-eA-Xv7"/>
                             <constraint firstItem="ynj-BP-aQA" firstAttribute="top" secondItem="BNW-kn-nCg" secondAttribute="top" constant="10" id="V07-3h-J2H"/>
                             <constraint firstAttribute="trailing" secondItem="agX-VO-ePM" secondAttribute="trailing" constant="10" id="Vun-tm-qhQ"/>
                             <constraint firstAttribute="trailing" secondItem="ynj-BP-aQA" secondAttribute="trailing" constant="10" id="fbJ-Ts-hia"/>
                             <constraint firstItem="ynj-BP-aQA" firstAttribute="leading" secondItem="BNW-kn-nCg" secondAttribute="leading" constant="10" id="tpy-2S-SUS"/>
+                            <constraint firstItem="agX-VO-ePM" firstAttribute="top" secondItem="ynj-BP-aQA" secondAttribute="bottom" constant="9.3300000000000001" id="whl-3j-FyA"/>
                             <constraint firstItem="ZOy-Rb-wsW" firstAttribute="top" secondItem="ynj-BP-aQA" secondAttribute="bottom" constant="16" id="zPe-mC-77e"/>
                         </constraints>
                     </view>

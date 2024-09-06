@@ -7,10 +7,6 @@
 
 import UIKit
 
-
-
-
-
 protocol NewRoomTVCellDelegate:AnyObject {
     func didTapOnCancellationPolicyBtnAction(cell:NewRoomDetailsTVCell)
     func didTapOnSelectRoomBtnAction(cell:NewRoomDetailsTVCell)
@@ -25,7 +21,9 @@ class NewRoomTVCell: TableViewCell, NewRoomDetailsTVCellDelegate {
     @IBOutlet weak var topView: BorderedView!
     
     
-    var newRoomindexPath: IndexPath?
+   
+    var indexArray = [IndexPath]()
+    var newRoomindexPath: Int?
     var room = [Rooms]()
     weak var delegate:NewRoomTVCellDelegate?
     
@@ -44,6 +42,7 @@ class NewRoomTVCell: TableViewCell, NewRoomDetailsTVCellDelegate {
     
     
     override func updateUI() {
+        
         room = cellInfo?.moreData as! [Rooms]
         tvheight.constant = CGFloat(room.count * 101)
         roomInfoTV.reloadData()
@@ -88,6 +87,7 @@ class NewRoomTVCell: TableViewCell, NewRoomDetailsTVCellDelegate {
     
     func didTapOnSelectRoomBtnAction(cell: NewRoomDetailsTVCell) {
         
+        newRoomindexPath = Int(cellInfo?.title ?? "0")
         
         if let indexPath = roomInfoTV.indexPath(for: cell) {
             // Toggle the selected state
@@ -134,7 +134,7 @@ extension NewRoomTVCell: UITableViewDataSource ,UITableViewDelegate {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? NewRoomDetailsTVCell {
             cell.selectionStyle = .none
             cell.delegate = self
-            
+            cell.selectedindexPath = indexPath.row
             
             let data = room[indexPath.row]
             self.titlelbl.text = data.name ?? ""
@@ -151,17 +151,9 @@ extension NewRoomTVCell: UITableViewDataSource ,UITableViewDelegate {
             cell.cancellatonStringArray = data.cancellation_string ?? []
             cell.exactprice = data.net ?? ""
             cell.currency = data.currency ?? ""
-            cell.indexpathvalue = newRoomindexPath
             
-           
             
-//            if data.refund == "Refundable" {
-//                cell.fareTypelbl.text = "Refundable"
-//                cell.fareTypeString = "Refundable"
-//            }else {
-//                cell.fareTypelbl.text = "Non Refundable"
-//                cell.fareTypeString = "Non Refundable"
-//            }
+    
             
             // Access the cancellationPolicies array
             if let cancellationPolicies1 = data.cancellationPolicies {
@@ -179,11 +171,7 @@ extension NewRoomTVCell: UITableViewDataSource ,UITableViewDelegate {
             // Set the selected state based on isSelectedCell property
             cell.isSelectedCell = selectedCellIndices.contains(indexPath)
             
-            //            // Set the selected state based on selectedCellStates dictionary
-            //            cell.isSelectedCell = selectedCellStates[indexPath, default: false]
-            
-            
-            
+           
             
             cell.ratekey = data.rateKey ?? ""
             cell.selectedRoom = "\(data.room_selected ?? 0)"
@@ -191,7 +179,7 @@ extension NewRoomTVCell: UITableViewDataSource ,UITableViewDelegate {
             
             let guestcount = defaults.integer(forKey: UserDefaultsKeys.guestcount)
             cell.noofGuestlbl.text = "\(guestcount) Guest"
-            
+           
             
             ccell = cell
         }

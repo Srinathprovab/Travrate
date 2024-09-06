@@ -297,7 +297,7 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate, TimerManagerDe
     override func didTapOnSelectRoomBtnAction(cell: NewRoomDetailsTVCell) {
         
         
-        
+    
         //        if let indexPath = roomInfoTV.indexPath(for: cell) {
         //            // Toggle the selected state
         //            selectedCellStates[indexPath] = !selectedCellStates[indexPath, default: false]
@@ -450,8 +450,12 @@ extension HotelDetailsVC {
             
             if hotelroomtap == "room" {
                 
-                roomsDetails.forEach { i in
-                    tablerow.append(TableRow(title:"",moreData:i,cellType:.NewRoomTVCell))
+//                roomsDetails.forEach { i in
+//                    tablerow.append(TableRow(title:"",moreData:i,cellType:.NewRoomTVCell))
+//                }
+                
+                for (index,value) in roomsDetails.enumerated() {
+                    tablerow.append(TableRow(title:"Room\(index)",moreData:value,cellType:.NewRoomTVCell))
                 }
                 
                 

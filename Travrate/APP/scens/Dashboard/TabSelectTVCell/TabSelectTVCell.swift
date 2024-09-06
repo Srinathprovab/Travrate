@@ -39,18 +39,20 @@ class TabSelectTVCell: TableViewCell {
     @IBOutlet weak var moreServiceCV: UICollectionView!
     @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var moreServicelbl: UILabel!
+    @IBOutlet weak var moreserviceheight: NSLayoutConstraint!
     
     //    var serviceArray1 = ["Visa","Holidays","Transfers","Sports","Cruise","Auto pay","Insurence"]
     //    var serviceImgsArray1 = ["s1","s2","s3","sports","s5","s6","s7"]
     
     
     var moreTabNameArray = [String]()
-//    var serviceArray = ["Transfers","Sports","Car rental","Activities","Holidays","Cruise"]
-//    var serviceImgsArray = ["transfer","sports","s3","activitiestrip","s2","s5",]
+    //    var serviceArray = ["Transfers","Sports","Car rental","Activities","Holidays","Cruise"]
+    //    var serviceImgsArray = ["transfer","sports","s3","activitiestrip","s2","s5",]
     
     
     var serviceArray = ["Holidays","Cruise"]
-    var serviceImgsArray = ["s2","s5",]
+    var serviceImgsArray = ["s2","s5"]
+    
     
     weak var delegate:TabSelectTVCellDelegate?
     override func awakeFromNib() {
@@ -137,7 +139,11 @@ class TabSelectTVCell: TableViewCell {
         }
         
         
-        
+        if serviceArray.count > 3 {
+            moreserviceheight.constant = 260
+        }else {
+            moreserviceheight.constant = 176
+        }
     }
     
     
@@ -282,6 +288,7 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
             
         }
     }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

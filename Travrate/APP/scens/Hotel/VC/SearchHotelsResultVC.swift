@@ -850,7 +850,7 @@ extension SearchHotelsResultVC:AppliedFilters{
             //    let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(hotel.refund ?? "")
             let niberhoodMatch = niberhoodA.isEmpty || niberhoodA.contains(hotel.location ?? "")
             
-          
+            
             
             // Check if the hotel's amenities match any selected amenities or the array is empty
             let aminitiesMatch = aminitiesA.isEmpty || (hotel.facility?.contains { facility in

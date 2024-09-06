@@ -54,6 +54,10 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         MySingleton.shared.indexpagevm = IndexPageViewModel(self)
         MySingleton.shared.countrylistvm = AllCountryCodeListViewModel(self)
         MySingleton.shared.recentsearchvm = SearchDataViewModel(self)
+        
+        if MySingleton.shared.callboolapi == true {
+            callIndexPageAPI()
+        }
     }
     
     
@@ -606,9 +610,9 @@ extension DashboardVC {
         //        NotificationCenter.default.removeObserver(self)
         
         
-        if MySingleton.shared.callboolapi == true {
-            callIndexPageAPI()
-        }
+//        if MySingleton.shared.callboolapi == true {
+//            callIndexPageAPI()
+//        }
         
     }
     
