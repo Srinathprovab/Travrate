@@ -965,7 +965,9 @@ extension SelectPaymentMethodsVC {
         loderBool = false
         hideLoadera()
         
+        MySingleton.shared.carselectedoption = response.data?.selected_option ?? ""
         MySingleton.shared.PaymentSelectionArray = response.payment_selection ?? []
+        MySingleton.shared.paymenttype = response.payment_selection?[0].value ?? ""
         appref = response.data?.app_reference ?? ""
         carRentalsendToPaymenthiturl = "\(BASE_URL)car/send_to_payment/\(response.data?.app_reference ?? "")/\(response.data?.search_id ?? "")"
         totlConvertedGrand = Double(response.data?.total_amount ?? "") ?? 0.0
@@ -973,6 +975,8 @@ extension SelectPaymentMethodsVC {
         DispatchQueue.main.async {
             self.setupCarRentalTVCells()
         }
+        
+        
         
     }
     
@@ -1017,7 +1021,7 @@ extension SelectPaymentMethodsVC {
         
         
         MySingleton.shared.payload.removeAll()
-        MySingleton.shared.payload["knet_pg"] = MySingleton.shared.paymenttype
+        MySingleton.shared.payload["pg_type"] = MySingleton.shared.paymenttype
         MySingleton.shared.payload["selected_option"] = MySingleton.shared.carselectedoption
         MySingleton.shared.payload["extra_option_price"] = MySingleton.shared.car_extra_option_price
         
@@ -1030,12 +1034,9 @@ extension SelectPaymentMethodsVC {
     
     func carSendtoPaymentDetails(response: CarSecureBookingMode) {
         
-        
-        //  let hit_url = "https://provab.net/travrate/android_ios_webservices/mobile/index.php/car/secure_booking/\(appref)"
-        
-        DispatchQueue.main.async {
-            MySingleton.shared.carBookingVM?.CALL_CAR_SECURE_BOOKING_API(dictParam: [:], urlstr: response.hit_url ?? "")
-        }
+            DispatchQueue.main.async {
+                self.hdvm?.CALL_GET_PAYMENT_GATEWAY_URL_API(dictParam: [:], url: response.hit_url ?? "")
+            }
         
         
     }

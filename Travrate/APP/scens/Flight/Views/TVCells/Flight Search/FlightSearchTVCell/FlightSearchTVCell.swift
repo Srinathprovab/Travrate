@@ -105,8 +105,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     
     let dateFormat = "dd-MM-yyyy"
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -166,7 +164,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         airlineTF.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
         
         
-        
         fromtv.layer.borderWidth = 1
         fromtv.layer.borderColor = UIColor.AppBorderColor.cgColor
         
@@ -180,11 +177,10 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         
         
         advanceSearchlbl.text = "    + Advanced search options"
+        
     }
     
     override func updateUI() {
-        
-        
         
         MySingleton.shared.getCountryList()
         
@@ -197,6 +193,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         adultCountlbl.text = defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "1"
         childCountlbl.text = defaults.string(forKey: UserDefaultsKeys.childCount) ?? "0"
         infantCountlbl.text = defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "0"
+        
         
         MySingleton.shared.adultsCount = Int(defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "") ?? 1
         MySingleton.shared.childCount = Int(defaults.string(forKey: UserDefaultsKeys.childCount) ?? "") ?? 0
@@ -219,10 +216,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             //  self.depDatelbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Add Date"
             
             self.depDatelbl.text = MySingleton.shared.updateIfDateIsPast(dateKey: UserDefaultsKeys.calDepDate, defaultLabel: "Add Date")
-            
-            
-            
-            
             
             
             returnDateView.alpha = 0.5
@@ -258,9 +251,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             self.depDatelbl.text = MySingleton.shared.updateIfDateIsPast(dateKey: UserDefaultsKeys.calDepDate, defaultLabel: "Add Date")
             self.retlbl.text = MySingleton.shared.updateIfDateIsPast(dateKey: UserDefaultsKeys.calRetDate, defaultLabel: "Add Date")
             
-            
-            
-            
             returnDateView.alpha = 1
             self.depTF.isHidden = false
             self.retTF.isHidden = false
@@ -283,8 +273,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             directFlightCheckImg.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal).withTintColor(.TitleColor)
         }
         
-        
-        
         updateLabelColor(label: fromlbl, defaultText: "Origin", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
         updateLabelColor(label: tolbl, defaultText: "Destination", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
         updateLabelColor(label: depDatelbl, defaultText: "Add Date", defaultColor: .subtitleNewcolor, selectedColor: .TitleColor)
@@ -297,6 +285,8 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         
         NotificationCenter.default.addObserver(self, selector: #selector(returndate), name: Notification.Name("returndate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(roundtripTap), name: Notification.Name("roundtripTap"), object: nil)
+        
+        
     }
     
     
@@ -319,8 +309,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     @IBAction func didTapOnRoundTripClassBtnAction(_ sender: Any) {
         roundtripclassDropdown.show()
     }
-    
-    
     
     @IBAction func didTapOnDirectFlightCheckBtnAction(_ sender: Any) {
         MySingleton.shared.directFlightBool.toggle()
@@ -467,8 +455,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         
     }
     
-    
-    
     @IBAction func didTapOnOutwardTimeBtnAction(_ sender: Any) {
         outwardtimeDropdown.show()
     }
@@ -492,7 +478,6 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     }
     
     
-    
     func rotateImageView() {
         UIView.animate(withDuration: 0.5) {
             self.swapimg?.transform = (self.swapimg?.transform.rotated(by: .pi))!
@@ -501,10 +486,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     
     
     
-   
-    
 }
-
 
 extension FlightSearchTVCell {
     
@@ -591,13 +573,9 @@ extension FlightSearchTVCell {
         }
     }
     
-    
 }
 
-
-
 extension FlightSearchTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
-    
     
     func setupinfoCV() {
         
@@ -644,7 +622,6 @@ extension FlightSearchTVCell:UICollectionViewDelegate,UICollectionViewDataSource
         }
         return commonCell
     }
-    
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -735,7 +712,6 @@ extension FlightSearchTVCell {
 }
 
 
-
 extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
     
     
@@ -815,10 +791,6 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
                 
                 defaults.set("\(cityList[indexPath.row].city ?? "")", forKey: UserDefaultsKeys.fcity)
                 
-                
-                
-                
-                
                 fromtvHeight.constant = 0
             }else {
                 tolbl.text = "\(cityList[indexPath.row].city ?? "") (\(cityList[indexPath.row].code ?? ""))"
@@ -841,14 +813,7 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-    
-    
-    
-    
 }
-
-
-
 
 
 extension FlightSearchTVCell {
@@ -886,7 +851,6 @@ extension FlightSearchTVCell {
         }
         
         
-        
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
@@ -909,8 +873,6 @@ extension FlightSearchTVCell {
         self.depTF.inputView = depDatePicker
         
     }
-    
-    
     
     
     //MARK: - showretDatePicker
@@ -1063,8 +1025,6 @@ extension FlightSearchTVCell {
     }
     
     
-    
-    
     func updateTotalTravelerCount() {
         
         let totalTravelers = MySingleton.shared.adultsCount + MySingleton.shared.childCount + MySingleton.shared.infantsCount
@@ -1076,8 +1036,9 @@ extension FlightSearchTVCell {
         defaults.set(MySingleton.shared.infantsCount, forKey: UserDefaultsKeys.infantsCount)
         
     }
+    
+    
 }
-
 
 
 extension FlightSearchTVCell {
@@ -1135,13 +1096,7 @@ extension FlightSearchTVCell {
 
 extension FlightSearchTVCell {
     
-    
-    
-    
     @objc func searchTextBegin(textField: UITextField) {
-        
-        
-        
         airlineTF.text = ""
         airlinelbl.text = ""
         filterdcountrylist.removeAll()
@@ -1178,6 +1133,7 @@ extension FlightSearchTVCell {
         
     }
     
+    
     func loadCountryNamesAndCode(){
         countryNames.removeAll()
         countrycodesArray.removeAll()
@@ -1197,3 +1153,4 @@ extension FlightSearchTVCell {
         }
     }
 }
+

@@ -64,6 +64,7 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
     func setupUI() {
         
         setupMenu()
+        commonTableView.backgroundColor = .WhiteColor
         commonTableView.registerTVCells(["TabSelectTVCell",
                                          "PopularDestinationsTVCell",
                                          "TopcityGuidesTVCell",

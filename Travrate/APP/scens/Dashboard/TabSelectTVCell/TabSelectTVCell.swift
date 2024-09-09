@@ -46,8 +46,8 @@ class TabSelectTVCell: TableViewCell {
     
     
     var moreTabNameArray = [String]()
-    //    var serviceArray = ["Transfers","Sports","Car rental","Activities","Holidays","Cruise"]
-    //    var serviceImgsArray = ["transfer","sports","s3","activitiestrip","s2","s5",]
+//        var serviceArray = ["Transfers","Sports","Car rental","Activities","Holidays","Cruise"]
+//        var serviceImgsArray = ["transfer","sports","s3","activitiestrip","s2","s5",]
     
     
     var serviceArray = ["Holidays","Cruise"]
