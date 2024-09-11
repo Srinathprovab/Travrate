@@ -209,6 +209,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             
             roundtripclassView.isHidden = true
             classlbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
+            defaults.setValue("Economy", forKey: UserDefaultsKeys.rselectClass)
             
             fromlbl.text = defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "Origin"
             tolbl.text = defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "Destination"

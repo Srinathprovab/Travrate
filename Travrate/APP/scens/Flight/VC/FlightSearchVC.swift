@@ -417,11 +417,20 @@ extension FlightSearchVC {
             }
             
         }else {
+            
             if defaults.string(forKey: UserDefaultsKeys.selectClass) == "P.Economy" {
-                MySingleton.shared.flightinputspayload["v_class"] = "Premium"
+                MySingleton.shared.flightinputspayload["v_class"] = "PremiumEconomy"
             }else {
                 MySingleton.shared.flightinputspayload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
             }
+            
+            if defaults.string(forKey: UserDefaultsKeys.rselectClass) == "P.Economy" {
+                MySingleton.shared.flightinputspayload["v_class_round"] = "PremiumEconomy"
+            }else {
+                MySingleton.shared.flightinputspayload["v_class_round"] = defaults.string(forKey: UserDefaultsKeys.rselectClass)
+            }
+            
+            
             // MySingleton.shared.payload["v_class"] = defaults.string(forKey: UserDefaultsKeys.selectClass)
             MySingleton.shared.flightinputspayload["return"] = MySingleton.shared.convertDateFormat(inputDate: defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "", f1: "dd-MM-yyyy", f2: "dd/MM/yyyy")
             

@@ -207,6 +207,7 @@ class TabSelectTVCell: TableViewCell {
 
 extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
     
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return serviceArray.count
     }
@@ -296,6 +297,7 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
         }
         
     }
+    
     
     
     

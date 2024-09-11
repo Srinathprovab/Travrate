@@ -3030,6 +3030,7 @@
 				65207A222BF4942F0076EF76 /* NoInternetConnectionVC.swift */,
 				65207A232BF4942F0076EF76 /* PopupVC.swift */,
 				65207A242BF4942F0076EF76 /* FlightSearchVC.swift */,
+				65207A2D2BF4942F0076EF76 /* ModifySearchVC.swift */,
 				65207A252BF4942F0076EF76 /* FlightResultVC.swift */,
 				65207A2C2BF4942F0076EF76 /* SimilarFlightsVC.swift */,
 				65207A262BF4942F0076EF76 /* SelectFareVC.swift */,
@@ -3038,7 +3039,6 @@
 				65207A292BF4942F0076EF76 /* ViewFlightDetailsVC.swift */,
 				65207A2A2BF4942F0076EF76 /* SelectPaymentMethodsVC.swift */,
 				65207A2B2BF4942F0076EF76 /* AirlineSelectVC.swift */,
-				65207A2D2BF4942F0076EF76 /* ModifySearchVC.swift */,
 				845BB4DA2C297B7600571339 /* ShareResultVC.swift */,
 			);
 			path = VC;
@@ -7587,7 +7587,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W7386UDMSR;
@@ -7612,7 +7612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.travrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -7623,7 +7623,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -7637,7 +7637,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W7386UDMSR;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -7661,7 +7661,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.travrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -7672,7 +7672,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
