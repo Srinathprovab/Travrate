@@ -25,6 +25,7 @@ protocol TabSelectTVCellDelegate:AnyObject {
     func didTapOnActivitiesbtnAction(cell:TabSelectTVCell)
     func didTapOnInsurencebtnAction(cell:TabSelectTVCell)
     func didTapOnCarRentalBtnAction(cell:TabSelectTVCell)
+    
 }
 
 
@@ -46,8 +47,8 @@ class TabSelectTVCell: TableViewCell {
     
     
     var moreTabNameArray = [String]()
-//        var serviceArray = ["Transfers","Sports","Car rental","Activities","Holidays","Cruise"]
-//        var serviceImgsArray = ["transfer","sports","s3","activitiestrip","s2","s5",]
+    //    var serviceArray = ["Transfers","Sports","Car rental","Activities","Holidays","Cruise"]
+    //    var serviceImgsArray = ["transfer","sports","s3","activitiestrip","s2","s5",]
     
     
     var serviceArray = ["Holidays","Cruise"]
@@ -89,7 +90,6 @@ class TabSelectTVCell: TableViewCell {
             
             hotelView.layer.borderColor = UIColor.AppBtnColor.cgColor
             hotelView.backgroundColor = .LayoverColor
-            
             
             moreView.layer.borderColor = UIColor.BorderColor.cgColor
             moreView.backgroundColor = .WhiteColor
@@ -147,7 +147,6 @@ class TabSelectTVCell: TableViewCell {
     }
     
     
-    
     func setupmoreServiceCV() {
         
         moreServicelbl.text = "More Services"
@@ -172,14 +171,17 @@ class TabSelectTVCell: TableViewCell {
         delegate?.didTapOnClosebtnAction(cell: self)
     }
     
+    
     @IBAction func didTapOnSelectCurrencyBtnAction(_ sender: Any) {
         delegate?.didTapOnSelectCurrencyBtnAction(cell: self)
     }
+    
     
     @IBAction func didTapOnFlightTabSelectBtnAction(_ sender: Any) {
         MySingleton.shared.tabselect = "flight"
         delegate?.didTapOnFlightTabSelectBtnAction(cell: self)
     }
+    
     
     @IBAction func didTapOnHotelTabSelect(_ sender: Any) {
         MySingleton.shared.tabselect = "hotel"
@@ -190,6 +192,7 @@ class TabSelectTVCell: TableViewCell {
     @IBAction func didTapOnMenuBtnAction(_ sender: Any) {
         delegate?.didTapOnMenuBtnAction(cell: self)
     }
+    
     
     @IBAction func didTapOnMoreServiceBtnAction(_ sender: Any) {
         MySingleton.shared.tabselect = "more"
@@ -204,10 +207,10 @@ class TabSelectTVCell: TableViewCell {
 
 extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return serviceArray.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var commonCell = UICollectionViewCell()
@@ -216,19 +219,14 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
             cell.titlelbl.text = serviceArray[indexPath.row]
             cell.img.image = UIImage(named: serviceImgsArray[indexPath.row])?.withRenderingMode(.alwaysOriginal)
             
-            
-            
-            
             if moreTabNameArray.contains(cell.titlelbl.text ?? "") {
-                print("=== select ===")
-                print(indexPath.row)
+                
                 cell.holderView.backgroundColor = .LayoverColor
                 cell.holderView.layer.borderWidth = 1
                 cell.holderView.layer.borderColor = UIColor.Buttoncolor.cgColor
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
             }else {
-                print("=== Deselect ===")
-                print(indexPath.row)
+                
                 cell.holderView.backgroundColor = .WhiteColor
                 cell.holderView.layer.borderWidth = 1
                 cell.holderView.layer.borderColor = UIColor.BorderColor.cgColor
@@ -245,9 +243,6 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? MoreServiceCVCell {
             
-            //            cell.holderView.backgroundColor = .LayoverColor
-            //            cell.holderView.layer.borderWidth = 1
-            //            cell.holderView.layer.borderColor = UIColor.Buttoncolor.cgColor
             moreTabNameArray.append(titlelbl.text ?? "")
             
             switch cell.titlelbl.text {
@@ -290,14 +285,9 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
     }
     
     
-    
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
         if let cell = collectionView.cellForItem(at: indexPath) as? MoreServiceCVCell {
-            //            cell.holderView.backgroundColor = .WhiteColor
-            //            cell.holderView.layer.borderWidth = 1
-            //            cell.holderView.layer.borderColor = UIColor.BorderColor.cgColor
-            
             
             if let index = moreTabNameArray.firstIndex(of: cell.titlelbl.text ?? "") {
                 moreTabNameArray.remove(at: index)
@@ -306,6 +296,7 @@ extension TabSelectTVCell:UICollectionViewDelegate,UICollectionViewDataSource {
         }
         
     }
+    
     
     
 }
