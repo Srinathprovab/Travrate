@@ -299,7 +299,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6tY-Dk-cmt">
-                                <rect key="frame" x="54" y="239" width="285" height="80"/>
+                                <rect key="frame" x="87.666666666666686" y="269" width="218" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="40e-AT-C6A"/>
                                 </constraints>
@@ -308,13 +308,12 @@
                         <viewLayoutGuide key="safeArea" id="nsV-KU-TFV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6tY-Dk-cmt" firstAttribute="leading" secondItem="nsV-KU-TFV" secondAttribute="leading" constant="54" id="3fR-zS-lfm"/>
+                            <constraint firstItem="6tY-Dk-cmt" firstAttribute="centerX" secondItem="ibm-Jg-M33" secondAttribute="centerX" id="4sI-CK-rcM"/>
                             <constraint firstItem="nsV-KU-TFV" firstAttribute="trailing" secondItem="C5W-uh-5dx" secondAttribute="trailing" id="8cF-00-6tL"/>
                             <constraint firstItem="C5W-uh-5dx" firstAttribute="top" secondItem="ibm-Jg-M33" secondAttribute="top" id="Gs9-f7-ZRG"/>
                             <constraint firstAttribute="bottom" secondItem="C5W-uh-5dx" secondAttribute="bottom" id="K6p-fK-95q"/>
                             <constraint firstItem="C5W-uh-5dx" firstAttribute="leading" secondItem="nsV-KU-TFV" secondAttribute="leading" id="RpS-Rf-wux"/>
-                            <constraint firstItem="6tY-Dk-cmt" firstAttribute="top" secondItem="nsV-KU-TFV" secondAttribute="top" constant="180" id="afc-ld-3TL"/>
-                            <constraint firstItem="nsV-KU-TFV" firstAttribute="trailing" secondItem="6tY-Dk-cmt" secondAttribute="trailing" constant="54" id="xDY-wy-tnN"/>
+                            <constraint firstItem="6tY-Dk-cmt" firstAttribute="top" secondItem="nsV-KU-TFV" secondAttribute="top" constant="210" id="afc-ld-3TL"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -648,7 +647,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round Trip - 1 Adult" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NE5-ck-e7C">
-                                                                <rect key="frame" x="53.666666666666664" y="12" width="111.66666666666669" height="0.0"/>
+                                                                <rect key="frame" x="53.666666666666664" y="12" width="111.66666666666671" height="0.0"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>

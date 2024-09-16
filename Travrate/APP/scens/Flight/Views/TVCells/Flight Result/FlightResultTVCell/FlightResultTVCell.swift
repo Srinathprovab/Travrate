@@ -36,7 +36,8 @@ class FlightResultTVCell: TableViewCell {
     @IBOutlet weak var bookNowlbl: UILabel!
     @IBOutlet weak var simalarView: UIView!
     @IBOutlet weak var simalrViewHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var totlapricecurrencylbl: UILabel!
+    @IBOutlet weak var strikekwdcurrencylbl: UILabel!
     
     
     var shareresultaccesskey = String()
@@ -91,8 +92,24 @@ class FlightResultTVCell: TableViewCell {
         
         
         
+        MySingleton.shared.setAttributedTextnew(str1: "\(flightlist?.price?.api_currency ?? "")",
+                                                str2: "",
+                                                lbl: totlapricecurrencylbl,
+                                                str1font: .InterBold(size: 12),
+                                                str2font: .InterBold(size: 20),
+                                                str1Color: .BackBtnColor,
+                                                str2Color: .BackBtnColor)
         
-        MySingleton.shared.setAttributedTextnew(str1: "\(flightlist?.price?.api_currency ?? ""): ",
+        MySingleton.shared.setAttributedTextnew(str1: "",
+                                                str2: "",
+                                                lbl: strikekwdcurrencylbl,
+                                                str1font: .InterBold(size: 12),
+                                                str2font: .InterBold(size: 20),
+                                                str1Color: .BackBtnColor,
+                                                str2Color: .BackBtnColor)
+        
+        
+        MySingleton.shared.setAttributedTextnew(str1: "",
                                                 str2: "\(kwdprice)",
                                                 lbl: kwdlbl,
                                                 str1font: .InterBold(size: 12),
@@ -101,25 +118,29 @@ class FlightResultTVCell: TableViewCell {
                                                 str2Color: .BackBtnColor)
         
         
-        MySingleton.shared.setAttributedTextnew(str1: "\(flightlist?.price?.api_currency ?? ""): ",
+        MySingleton.shared.setAttributedTextnew(str1: "\(flightlist?.price?.api_currency ?? ""):",
                                                 str2: "\(strikekwdprice)",
                                                 lbl: strikekwdlbl,
                                                 str1font: .InterBold(size: 12),
-                                                str2font: .InterBold(size: 20),
+                                                str2font: .InterBold(size: 12),
                                                 str1Color: .BackBtnColor,
                                                 str2Color: .BackBtnColor)
         
-       // kwdlbl.text = "\(flightlist?.price?.api_currency ?? ""):\(kwdprice)"
-      //  strikekwdlbl.text = "\(flightlist?.price?.api_currency ?? ""):\(strikekwdprice)"
+        
+        
+     
         
         if kwdprice == strikekwdprice {
             strikekwdlbl.isHidden = true
+           strikekwdcurrencylbl.isHidden = true
         }else {
             strikekwdlbl.isHidden = false
+            strikekwdcurrencylbl.isHidden = false
         }
         
         if kwdprice < strikekwdprice {
             strikekwdlbl.isHidden = true
+            strikekwdcurrencylbl.isHidden = true
         }
         
         setAttributedString1(str1: strikekwdlbl.text ?? "")

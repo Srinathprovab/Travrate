@@ -1006,6 +1006,7 @@ extension FlightResultVC {
         luggageArray.removeAll()
         noofstopsArray.removeAll()
         layoverdurationArray.removeAll()
+        totalDurationArray.removeAll()
         
         
         
@@ -1077,7 +1078,14 @@ extension FlightResultVC {
         let adultcount = defaults.integer(forKey: UserDefaultsKeys.adultCount)
         let childcount = defaults.integer(forKey: UserDefaultsKeys.childCount)
         let infantcount = defaults.integer(forKey: UserDefaultsKeys.infantsCount)
-        let classname = defaults.string(forKey: UserDefaultsKeys.selectClass)
+        var classname = String()
+         let jtype = defaults.string(forKey: UserDefaultsKeys.journeyType)
+        if jtype == "oneway" {
+            classname = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? ""
+        }else {
+            classname = "\(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.rselectClass) ?? "")"
+        }
+        
         var labelText = adultcount > 1 ? "\(adultcount) Adults" : "\(adultcount) Adult"
         if childcount > 0 {
             labelText += ",\(childcount) Child"
@@ -1085,7 +1093,7 @@ extension FlightResultVC {
         if infantcount > 0 {
             labelText += ",\(infantcount) Infant"
         }
-        paxlbl.text = "\(labelText) | \(classname ?? "")"
+        paxlbl.text = "\(labelText) | \(classname)"
         
         
         if let newResults = response.data?.j_flight_list, !newResults.isEmpty {
@@ -1265,6 +1273,7 @@ extension FlightResultVC {
                                                             userCatdetails:j.journeyKey,
                                                             data1: j.flight_details?.summary,
                                                             data2: j.farerulesref_content))
+                
                 
                 
                 

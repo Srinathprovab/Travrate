@@ -133,6 +133,7 @@ var sportsCountryArray = [String]()
 var transfer_data : Transfer_data?
 
 
+var totalDurationArray = [String]()
 var mapModelArray: [MapModel] = []
 var faretypeArray = [String]()
 var directFlightBool = true

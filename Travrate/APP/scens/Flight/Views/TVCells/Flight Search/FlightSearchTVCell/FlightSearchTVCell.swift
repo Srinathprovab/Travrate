@@ -187,7 +187,7 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         setupTV()
         fromtvHeight.constant = 0
         totvHeight.constant = 0
-        CallShowCityListAPI(str: "")
+      //  CallShowCityListAPI(str: "")
         
         
         adultCountlbl.text = defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "1"
@@ -443,12 +443,22 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         cityList = response
         print(cityList)
         if txtbool == true {
-            fromtvHeight.constant = CGFloat(cityList.count * 80)
+            if cityList.count >= 3 {
+                fromtvHeight.constant = 250
+            }else {
+                fromtvHeight.constant = CGFloat(cityList.count * 80)
+            }
+            
             DispatchQueue.main.async {[self] in
                 fromtv.reloadData()
             }
         }else {
-            totvHeight.constant = CGFloat(cityList.count * 80)
+           
+            if cityList.count >= 3 {
+                totvHeight.constant = 250
+            }else {
+                totvHeight.constant = CGFloat(cityList.count * 80)
+            }
             DispatchQueue.main.async {[self] in
                 totv.reloadData()
             }

@@ -40,25 +40,25 @@ class ItineraryTVCell: TableViewCell {
         
     }
     
-   
     
-//    func updateHeight() {
-//        var totalHeight: CGFloat = 0
-//        for index in 0..<fdetais.count {
-//            let indexPath = IndexPath(row: index, section: 0)
-//            if let cell = additinararyTV.cellForRow(at: indexPath) as? NewAddItineraryTVCell {
-//                totalHeight += cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-//            }
-//        }
-//        tvHeight.constant = CGFloat((fdetais.count)) * totalHeight
-//        additinararyTV.reloadData()
-//    }
+    
+    //    func updateHeight() {
+    //        var totalHeight: CGFloat = 0
+    //        for index in 0..<fdetais.count {
+    //            let indexPath = IndexPath(row: index, section: 0)
+    //            if let cell = additinararyTV.cellForRow(at: indexPath) as? NewAddItineraryTVCell {
+    //                totalHeight += cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+    //            }
+    //        }
+    //        tvHeight.constant = CGFloat((fdetais.count)) * totalHeight
+    //        additinararyTV.reloadData()
+    //    }
     
     
     
     func setupUI() {
         setupTV()
-//        updateHeight()
+        //        updateHeight()
     }
     
     
@@ -83,12 +83,12 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         
         additinararyTV.estimatedRowHeight = 200 // Estimated row height
         additinararyTV.rowHeight = UITableView.automaticDimension
-
+        
     }
     
     
     func updateHeight(height:Int) {
-       // tvHeight.constant = CGFloat((fdetais.count * height))
+        // tvHeight.constant = CGFloat((fdetais.count * height))
         additinararyTV.reloadData()
         updateTableViewHeight()
     }
@@ -98,7 +98,7 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
         self.additinararyTV.layoutIfNeeded()
         self.tvHeight.constant = self.additinararyTV.contentSize.height
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fdetais.count
@@ -148,13 +148,13 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
                 }
             }
             
-//            if tableView.isLast(for: indexPath) {
-//                cell.timeView.isHidden = true
-//                cell.depimg.isHidden = true
-//                cell.imgwidth.constant = 0
-//                cell.imgleft.constant = 0
-//                cell.totalJourneyTimelbl.isHidden = true
-//            }
+            //            if tableView.isLast(for: indexPath) {
+            //                cell.timeView.isHidden = true
+            //                cell.depimg.isHidden = true
+            //                cell.imgwidth.constant = 0
+            //                cell.imgleft.constant = 0
+            //                cell.totalJourneyTimelbl.isHidden = true
+            //            }
             
             
             if tableView.isLast(for: indexPath) {
@@ -168,10 +168,10 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
                 cell.timeView.isHidden = false
                 cell.timeViewHeightConstraint.constant = CGFloat(originalTimeViewHeight) // Reset to the original height when visible
             }
-
+            
             // Call layoutIfNeeded to apply the constraint changes
             cell.layoutIfNeeded()
-
+            
             
             
             var totalDuration: TimeInterval = 0
@@ -179,6 +179,7 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
             
             for i in 0..<fdetais.count {
                 let flight = fdetais[i]
+                
                 if let duration = flight.duration {
                     totalDuration += parseFlightDuration(duration)
                 }
@@ -191,12 +192,14 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
                     }
                 }
             }
+           
             
             let totalJourneyTime = totalDuration + totalLayoverTime
-            cell.totalJourneyTimelbl.text = "Total Journey Time: \(formatDuration(totalJourneyTime))"
-            
+           
             if fdetais.count <= 1 {
                 cell.hourslbl.text = "\(data.duration ?? "")"
+                cell.totalJourneyTimelbl.text = "Total Journey Time: \(data.duration ?? "")"
+                
             } else {
                 cell.hourslbl.text = "\(data.duration ?? "")"
                 
@@ -213,6 +216,9 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
                 } else {
                     cell.timelbl.text = ""
                 }
+                
+                cell.totalJourneyTimelbl.text = "Total Journey Time: \(formatDuration(totalJourneyTime))"
+                
             }
             
             
@@ -235,6 +241,8 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
                 cell.totalJourneyTimelbl.isHidden = true
             }
             
+            
+         //   if data.fclass?.name
             
             
             c = cell
@@ -273,24 +281,66 @@ extension ItineraryTVCell:UITableViewDelegate,UITableViewDataSource {
     }
     
     
+//    func parseFlightDuration(_ duration: String) -> TimeInterval {
+//        let components = duration.split(separator: " ")
+//        var totalSeconds: TimeInterval = 0
+//        
+//        for component in components {
+//            if component.hasSuffix("h") {
+//                if let hours = Double(component.dropLast()) {
+//                    totalSeconds += hours * 3600
+//                }
+//            } else if component.hasSuffix("m") {
+//                if let minutes = Double(component.dropLast()) {
+//                    totalSeconds += minutes * 60
+//                }
+//            }
+//        }
+//        return totalSeconds
+//    }
+    
+    
+//    func parseFlightDuration(_ duration: String) -> TimeInterval {
+//        let components = duration.split(separator: " ")
+//        var totalSeconds: TimeInterval = 0
+//        
+//        for component in components {
+//            if component.contains("H") {
+//                if let hours = Double(component.replacingOccurrences(of: "H", with: "")) {
+//                    totalSeconds += hours * 3600
+//                }
+//            } else if component.contains("M") {
+//                if let minutes = Double(component.replacingOccurrences(of: "M", with: "")) {
+//                    totalSeconds += minutes * 60
+//                }
+//            }
+//        }
+//        
+//        return totalSeconds
+//    }
+
+    
     func parseFlightDuration(_ duration: String) -> TimeInterval {
         let components = duration.split(separator: " ")
         var totalSeconds: TimeInterval = 0
         
         for component in components {
-            if component.hasSuffix("h") {
-                if let hours = Double(component.dropLast()) {
+            let lowercasedComponent = component.lowercased() // Convert to lowercase
+            
+            if lowercasedComponent.contains("h") {
+                if let hours = Double(lowercasedComponent.replacingOccurrences(of: "h", with: "")) {
                     totalSeconds += hours * 3600
                 }
-            } else if component.hasSuffix("m") {
-                if let minutes = Double(component.dropLast()) {
+            } else if lowercasedComponent.contains("m") {
+                if let minutes = Double(lowercasedComponent.replacingOccurrences(of: "m", with: "")) {
                     totalSeconds += minutes * 60
                 }
             }
         }
+        
         return totalSeconds
     }
-    
+
     
     
     
