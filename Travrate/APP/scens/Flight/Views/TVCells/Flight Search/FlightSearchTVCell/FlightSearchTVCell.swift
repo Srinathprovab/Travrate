@@ -791,7 +791,7 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
                     toTF.placeholder = ""
                 }
                 
-                //toTF.becomeFirstResponder()
+                
                 
                 defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.fromcitynameshow)
                 defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromCode)
@@ -803,6 +803,7 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
                 defaults.set("\(cityList[indexPath.row].city ?? "")", forKey: UserDefaultsKeys.fcity)
                 
                 fromtvHeight.constant = 0
+                totvHeight.constant = 0
             }else {
                 tolbl.text = "\(cityList[indexPath.row].city ?? "") (\(cityList[indexPath.row].code ?? ""))"
                 tolbl.textColor = .TitleColor
@@ -821,6 +822,7 @@ extension FlightSearchTVCell:UITableViewDelegate, UITableViewDataSource {
                 
                 
                 totvHeight.constant = 0
+                fromtvHeight.constant = 0
             }
         }
     }
