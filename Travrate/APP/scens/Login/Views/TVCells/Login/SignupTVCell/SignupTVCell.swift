@@ -230,7 +230,7 @@ class SignupTVCell: TableViewCell {
         countrycodesArray.removeAll()
         isocountrycodeArray.removeAll()
         originArray.removeAll()
-        
+        print(filterdcountrylist)
         filterdcountrylist.forEach { i in
             countryNames.append(i.name ?? "")
             countrycodesArray.append(i.country_code ?? "")
@@ -266,6 +266,7 @@ class SignupTVCell: TableViewCell {
             self?.mobileTF.becomeFirstResponder()
             self?.cname = self?.countryNames[index] ?? ""
             self?.delegate?.didTapOnCountryCodeBtn(cell: self!)
+            
             
         }
     }

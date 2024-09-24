@@ -128,7 +128,7 @@ class SignupVC: BaseTableVC, RegisterViewModelDelegate {
     
     
     override func didTapOnCountryCodeBtn(cell:SignupTVCell) {
-        countrycode = cell.countrycodeTF.text ?? ""
+        countrycode = cell.nationalityCode
     }
     
     
@@ -153,6 +153,7 @@ extension SignupVC {
         MySingleton.shared.payload["first_name"] = fname
         MySingleton.shared.payload["last_name"] = lname
         MySingleton.shared.payload["phone"] = mobile
+        MySingleton.shared.payload["country_code"] = countrycode
         MySingleton.shared.payload["email"] = email
         MySingleton.shared.payload["password"] = password
         MySingleton.shared.registervm?.CALL_USER_REGISTER_API(dictParam:  MySingleton.shared.payload)
