@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  Travrate
+
+  Created by Admin on 25/09/24.
+  
+*/
+
+
+"flight_word_en" = "Flight";
+"hotel_word_en" = "Hotel";
+"moreservice_word_en" = "More Services";
+
+"popular_flight_destinations_en" = "Popular Flight Destinations";
+"popular_hotel_destinations_en" = "Popular Hotel Destinations";
+"special_offers_en" = "Special Offers";
+
+
+"flight_word_ar" = "ذهاب فقط";
+"hotel_word_ar" = "ذهاب وإياب";
+"moreservice_word_ar" = "مدن متعددة";
+
+
+"popular_flight_destinations_ar" = "وجهات الطيران الشهيرة";
+"popular_hotel_destinations_ar" = "وجهات الفنادق الشهيرة";
+"special_offers_ar" = "عروض خاصة";
+
+"home" = "Home";
+"trips" = "Trips";
+"profile" = "Profile";
+"more" = "More";
+
+"home" = "الرئيسية";     // Home
+"trips" = "رحلات";       // Trips
+"profile" = "الملف الشخصي"; // Profile
+"more" = "المزيد";       // More
+

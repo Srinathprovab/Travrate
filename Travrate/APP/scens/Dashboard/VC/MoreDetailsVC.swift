@@ -8,7 +8,6 @@
 import UIKit
 
 class MoreDetailsVC: BaseTableVC, MoreDetailsViewModelDelegate {
-   
     
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var titlelbl: UILabel!
@@ -23,11 +22,11 @@ class MoreDetailsVC: BaseTableVC, MoreDetailsViewModelDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
-         
+        
         holderView.isHidden = true
         callAPI()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +34,7 @@ class MoreDetailsVC: BaseTableVC, MoreDetailsViewModelDelegate {
         setupUI()
         MySingleton.shared.moredetailsvm = MoreDetailsViewModel(self)
     }
-     
+    
     
     
     func setupUI() {
@@ -43,7 +42,7 @@ class MoreDetailsVC: BaseTableVC, MoreDetailsViewModelDelegate {
     }
     
     
-   
+    
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
         callapibool = false
@@ -64,29 +63,61 @@ extension MoreDetailsVC {
         loderBool = true
         showLoadera()
         //BASE_URL = ""
-        switch titleString {
-        case "About Us":
-            MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
-                                                                        urlStr: "\(BASE_URL)general/cms?id=1")
-            break
-            
-        case "Terms & Conditions":
-            MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
-                                                                        urlStr: "\(BASE_URL)general/cms?id=3")
-            break
-            
-            
-        case "Privacy Policy":
-            MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
-                                                                        urlStr: "\(BASE_URL)general/cms?id=4")
-            break
-            
-       
-            
-        default:
-            break
+        
+        
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            switch titleString {
+                
+            case "من نحن":  // "About Us" in Arabic
+                MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
+                                                                            urlStr: "\(BASE_URL)general/cms?id=1")
+                break
+                
+            case "الشروط والأحكام":  // "Terms & Conditions" in Arabic
+                MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
+                                                                            urlStr: "\(BASE_URL)general/cms?id=3")
+                break
+                
+            case "سياسة الخصوصية":  // "Privacy Policy" in Arabic
+                MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
+                                                                            urlStr: "\(BASE_URL)general/cms?id=4")
+                break
+                
+                
+                
+            default:
+                break
+            }
+        } else {
+            switch titleString {
+            case "About Us":
+                MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
+                                                                            urlStr: "\(BASE_URL)general/cms?id=1")
+                break
+                
+            case "Terms & Conditions":
+                MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
+                                                                            urlStr: "\(BASE_URL)general/cms?id=3")
+                break
+                
+                
+            case "Privacy Policy":
+                MySingleton.shared.moredetailsvm?.CALL_GET_MORE_DETAILS_API(dictParam: [:],
+                                                                            urlStr: "\(BASE_URL)general/cms?id=4")
+                break
+                
+                
+                
+            default:
+                break
+            }
         }
     }
+    
+    
+    
+    
     
     
     
@@ -106,9 +137,14 @@ extension MoreDetailsVC {
         MySingleton.shared.tablerow.removeAll()
         
         
-        titlelbl.text = MySingleton.shared.moreDetailsData?.page_title ?? ""
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            titlelbl.text = MySingleton.shared.moreDetailsData?.page_title_ar ?? ""
+        } else {
+            titlelbl.text = MySingleton.shared.moreDetailsData?.page_title ?? ""
+        }
         MySingleton.shared.tablerow.append(TableRow(cellType:.MoreDetailsTVCell))
-       
+        
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
     }

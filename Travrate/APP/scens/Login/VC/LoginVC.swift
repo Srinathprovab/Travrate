@@ -34,6 +34,11 @@ class LoginVC: BaseTableVC, LoginViewModelDelegate {
     
     
     func setupUI() {
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            UITableView.appearance().semanticContentAttribute = .forceRightToLeft
+        } else {
+            UITableView.appearance().semanticContentAttribute = .forceLeftToRight
+        }
         commonTableView.isScrollEnabled = false
         commonTableView.registerTVCells(["LoginTVCell","EmptyTVCell"])
         setupTVCells()

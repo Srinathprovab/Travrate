@@ -36,6 +36,13 @@ class SignupTVCell: TableViewCell {
     @IBOutlet weak var passview: UIView!
     @IBOutlet weak var confPassview: UIView!
     
+    @IBOutlet weak var imglogo: UIImageView!
+    @IBOutlet weak var fnametitlelbl: UILabel!
+    @IBOutlet weak var lnametitlelbl: UILabel!
+    @IBOutlet weak var mobilenotitlelbl: UILabel!
+    @IBOutlet weak var emailtitlelbl: UILabel!
+    @IBOutlet weak var passwordtitlelbl: UILabel!
+    @IBOutlet weak var confpasswordtitlelbl: UILabel!
     
     var cname = String()
     var maxLength = 8
@@ -73,6 +80,48 @@ class SignupTVCell: TableViewCell {
     
     func setupUI() {
         
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            fnametitlelbl.text = "الاسم الاول"
+            lnametitlelbl.text = "أسم العائلة"
+            emailtitlelbl.text = "عنوان البريد الالكترونى"
+            mobilenotitlelbl.text = "رقم الهاتف المحمول"
+            passwordtitlelbl.text = "كلمة المرور"
+            confpasswordtitlelbl.text = "تأكيد كلمة المرور"
+            
+            fnameTF.placeholder = "الاسم الاول"
+            lnameTF.placeholder = "أسم العائلة"
+            emailTF.placeholder = "عنوان البريد الالكترونى"
+            mobileTF.placeholder = "رقم الهاتف المحمول"
+            passTF.placeholder = "كلمة المرور"
+            confPassTF.placeholder = "تأكيد كلمة المرور"
+            countrycodeTF.placeholder = "الكويت"
+            
+            
+            imglogo.image = UIImage(named: "logo3_ar")
+            signupbtn.setTitle("سجل", for: .normal)
+        } else {
+            fnametitlelbl.text = "First Name"
+            lnametitlelbl.text = "Last Name"
+            emailtitlelbl.text = "Email Address"
+            mobilenotitlelbl.text = "Mobile Number"
+            passwordtitlelbl.text = "Password"
+            confpasswordtitlelbl.text = "Confirm Password"
+            
+            
+            fnameTF.placeholder = "First Name"
+            lnameTF.placeholder = "Last Name"
+            emailTF.placeholder = "Email Address"
+            mobileTF.placeholder = "Mobile Number"
+            passTF.placeholder = "Password"
+            confPassTF.placeholder = "Confirm Password"
+            countrycodeTF.placeholder = "Kuwait"
+            
+            
+            
+            imglogo.image = UIImage(named: "logo2")
+            signupbtn.setTitle("Sign Up", for: .normal)
+        }
        
     
         
@@ -100,6 +149,23 @@ class SignupTVCell: TableViewCell {
         tf.delegate = self
         tf.setLeftPaddingPoints(15)
         tf.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
+    }
+    
+    
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            textField.textAlignment = .right
+            textField.keyboardType = .default
+            textField.autocorrectionType = .no
+            textField.semanticContentAttribute = .forceLeftToRight
+            textField.reloadInputViews()
+            textField.setRightPaddingPoints(15)
+        } else {
+            textField.textAlignment = .left
+            textField.semanticContentAttribute = .forceRightToLeft
+            textField.setLeftPaddingPoints(15)
+        }
     }
     
     

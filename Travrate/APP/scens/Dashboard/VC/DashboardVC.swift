@@ -90,9 +90,9 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         }
         
         
-//        if MySingleton.shared.topCityGuides.count > 0 {
-//            MySingleton.shared.tablerow.append(TableRow(cellType:.TopcityGuidesTVCell))
-//        }
+        //        if MySingleton.shared.topCityGuides.count > 0 {
+        //            MySingleton.shared.tablerow.append(TableRow(cellType:.TopcityGuidesTVCell))
+        //        }
         
         if MySingleton.shared.deail_code_list.count > 0 {
             MySingleton.shared.tablerow.append(TableRow(cellType:.SpecialOffersTVCell))
@@ -238,6 +238,44 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         gotoSearchHotelVC()
     }
     
+    
+    //MARK: - didTapOnChangeLanguageBtnAction
+    override func didTapOnChangeLanguageBtnAction(cell: TabSelectTVCell){
+
+        let currentlang = LanguageManager.shared.currentLanguage()
+        if currentlang == "ar" {
+            LanguageManager.shared.setLanguage("en")
+        } else {
+            LanguageManager.shared.setLanguage("ar")
+        }
+
+        // Update layout direction based on selected language
+        updateUILayoutDirection()
+
+        // Reload UI
+        commonTableView.reloadData()
+    }
+
+    
+    
+    func updateUILayoutDirection() {
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        } else {
+            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+        }
+
+        // Force window to reload and reflect the new layout direction
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = scene.windows.first {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let rootViewController = storyboard.instantiateInitialViewController()
+            window.rootViewController = rootViewController
+
+            UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromRight, animations: {}, completion: nil)
+        }
+    }
+
 }
 
 
@@ -268,6 +306,31 @@ extension DashboardVC:IndexPageViewModelDelegate {
 }
 
 extension DashboardVC {
+    
+    
+//    func gotoDashboardVC() {
+//        callapibool = true
+//
+//        // Ensure you have the correct scene and window
+//        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//           let window = scene.windows.first {
+//            
+//            // Instantiate the Dashboard view controller
+//            guard let vc = DashBoardTBVC.newInstance.self else { return }
+//            vc.modalPresentationStyle = .fullScreen
+//            vc.selectedIndex = 0
+//
+//            // Set it as the root view controller of the window
+//            window.rootViewController = vc
+//
+//            // Optional: Smooth transition animation
+//            UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromRight, animations: {}, completion: nil)
+//        }
+//    }
+    
+    
+   
+
     
     func gotoSelectLanguageVC() {
         guard let vc = SelectLanguageVC.newInstance.self else {return}

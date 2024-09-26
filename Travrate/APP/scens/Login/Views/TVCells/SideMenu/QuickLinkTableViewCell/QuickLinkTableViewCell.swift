@@ -14,7 +14,7 @@ protocol QuickLinkTableViewCellDelegate: AnyObject {
 
 class QuickLinkTableViewCell: TableViewCell, UITableViewDataSource, UITableViewDelegate, SideMenuTitleTVCellDelegate {
     
-
+    
     
     @IBOutlet weak var holderViewHeight: NSLayoutConstraint!
     @IBOutlet weak var linkstv: UITableView!
@@ -82,44 +82,77 @@ extension QuickLinkTableViewCell {
     
     
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         
         
         if cellInfo?.key == "links" {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! SideMenuTitleTVCell
                 cell.menuOptionImg.isHidden = true
-                cell.menuTitlelbl.text = "Quick Links"
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    cell.menuTitlelbl.text = "روابط سريعة"
+                } else {
+                    cell.menuTitlelbl.text = "Quick Links"
+                }
+                
                 cell.arrowImage.isHidden = true
                 cell.delegate = self
                 return cell
             } else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Flight"
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    cell.menuTitlelbl.text = "الرحلات الجوية"
+                } else {
+                    cell.menuTitlelbl.text = "Flight"
+                }
                 cell.menuOptionImg.image = UIImage(named: "flight")
                 cell.delegate = self
                 return cell
             } else if indexPath.row == 2 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Hotel"
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    cell.menuTitlelbl.text = "الفنادق"
+                } else {
+                    cell.menuTitlelbl.text = "Hotel"
+                }
                 cell.menuOptionImg.image = UIImage(named: "hotel")
                 cell.delegate = self
                 return cell
             } else if indexPath.row == 3 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Transfers"
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    cell.menuTitlelbl.text = "النقل"
+                } else {
+                    cell.menuTitlelbl.text = "Transfers"
+                }
                 cell.menuOptionImg.image = UIImage(named: "transfer")
                 cell.delegate = self
                 return cell
             }else if indexPath.row == 4 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Sports"
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    cell.menuTitlelbl.text = "الرياضة"
+                } else {
+                    cell.menuTitlelbl.text = "Sports"
+                }
                 cell.menuOptionImg.image = UIImage(named: "sports")
                 cell.delegate = self
                 return cell
             }else  {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Manage Bookings"
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    cell.menuTitlelbl.text = "إدارة الحجوزات"
+                } else {
+                    cell.menuTitlelbl.text = "Manage Bookings"
+                }
                 cell.menuOptionImg.image = UIImage(named: "tab2")?.withRenderingMode(.alwaysOriginal).withTintColor(.Buttoncolor)
                 cell.delegate = self
                 return cell
@@ -128,20 +161,35 @@ extension QuickLinkTableViewCell {
             if indexPath.row == 0 {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "My Bookings"
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    cell.menuTitlelbl.text = "حجوزاتي"
+                } else {
+                    cell.menuTitlelbl.text = "My Bookings"
+                }
                 cell.menuOptionImg.isHidden = true
                 cell.delegate = self
                 return cell
             } else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Free Cancellation"
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    cell.menuTitlelbl.text = "إلغاء مجاني"
+                } else {
+                    cell.menuTitlelbl.text = "Free Cancellation"
+                }
                 cell.menuOptionImg.isHidden = true
                 cell.delegate = self
                 return cell
                 
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! SideMenuTitleTVCell
-                cell.menuTitlelbl.text = "Customer Support"
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    cell.menuTitlelbl.text = "خدمة العملاء"
+                } else {
+                    cell.menuTitlelbl.text = "Customer Support"
+                }
                 cell.menuOptionImg.isHidden = true
                 cell.delegate = self
                 return cell

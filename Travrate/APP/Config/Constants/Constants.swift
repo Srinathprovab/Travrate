@@ -376,6 +376,7 @@ struct Message {
 
 struct UserDefaultsKeys {
     
+    static var selectedLanguage = "Selected_Language"
     static var mobilecountrycode = "mobilecountrycode"
     static var mobilecountryname = "mobilecountryname"
     static var tabselect = "tabselect"

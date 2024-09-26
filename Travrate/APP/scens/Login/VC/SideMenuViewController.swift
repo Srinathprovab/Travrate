@@ -12,6 +12,8 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
     
     @IBOutlet weak var logoutView: UIView!
     @IBOutlet weak var copyRightlbl: UILabel!
+    @IBOutlet weak var logoutlbl: UILabel!
+    @IBOutlet weak var deletelbl: UILabel!
     
     static var newInstance: SideMenuViewController? {
         let storyboard = UIStoryboard(name: Storyboard.Login.name,
@@ -56,7 +58,18 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
     func setupUI() {
         
         let currentYear = Calendar.current.component(.year, from: Date())
-        copyRightlbl.text = "Copyright (C)\(currentYear)."
+        
+       
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            deletelbl.text = "حذف الحساب"
+            logoutlbl.text = "تسجيل الخروج"
+            copyRightlbl.text = "حقوق النشر (C)\(currentYear)."
+        } else {
+            deletelbl.text = "Delete Account"
+            logoutlbl.text = "Logout"
+            copyRightlbl.text = "Copyright (C)\(currentYear)."
+        }
         
         setupMenuTVCells()
         commonTableView.isScrollEnabled = true
@@ -75,7 +88,7 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
         MySingleton.shared.tablerow.append(TableRow(title:"Services",key: "links", cellType: .QuickLinkTableViewCell))
         MySingleton.shared.tablerow.append(TableRow(height: 40, cellType: .EmptyTVCell))
         
-       
+        
         
         commonTVData =  MySingleton.shared.tablerow
         commonTableView.reloadData()
@@ -87,42 +100,70 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
         present(vc, animated: true)
     }
     
-    //   var links = ["Flight", "Hotel", "Visa", "Auto Payment"]
     
     override func didTaponCell(cell: SideMenuTitleTVCell) {
-        switch cell.menuTitlelbl.text {
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            switch cell.menuTitlelbl.text {
             
-        case "Flight":
-            defaults.set("Flight", forKey: UserDefaultsKeys.tabselect)
-            showFlightSearchVC()
-            break
+            case "الرحلات الجوية":  // "Flight" in Arabic
+                defaults.set("Flight", forKey: UserDefaultsKeys.tabselect)
+                showFlightSearchVC()
+                break
+                
+            case "الفنادق":  // "Hotel" in Arabic
+                defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
+                gotoSearchHotelVC()
+                break
+                
+            case "النقل":  // "Transfers" in Arabic
+                defaults.set("transfers", forKey: UserDefaultsKeys.tabselect)
+                // gotoBookTransfersVC()
+                break
+                
+            case "الرياضة":  // "Sports" in Arabic
+                // gotoSportsSearchVC()
+                break
+                
+            case "إدارة الحجوزات":  // "Manage Bookings" in Arabic
+                gotoMyTrips()
+                break
+                
+            default:
+                break
+            }
+        } else {
+            switch cell.menuTitlelbl.text {
             
-        case "Hotel":
-            defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
-            gotoSearchHotelVC()
-            break
-            
-        case "Transfers":
-            defaults.set("transfers", forKey: UserDefaultsKeys.tabselect)
-           // gotoBookTransfersVC()
-            break
-            
-            
-        case "Sports":
-           // gotoSportsSearchVC()
-            break
-            
-            
-        case "Manage Bookings":
-            gotoMyTrips()
-            break
-            
-      
-            
-        default:
-            break
+            case "Flight":
+                defaults.set("Flight", forKey: UserDefaultsKeys.tabselect)
+                showFlightSearchVC()
+                break
+                
+            case "Hotel":
+                defaults.set("Hotel", forKey: UserDefaultsKeys.tabselect)
+                gotoSearchHotelVC()
+                break
+                
+            case "Transfers":
+                defaults.set("transfers", forKey: UserDefaultsKeys.tabselect)
+                // gotoBookTransfersVC()
+                break
+                
+            case "Sports":
+                // gotoSportsSearchVC()
+                break
+                
+            case "Manage Bookings":
+                gotoMyTrips()
+                break
+                
+            default:
+                break
+            }
         }
     }
+
+    
     
     
     func gotoMyTrips() {

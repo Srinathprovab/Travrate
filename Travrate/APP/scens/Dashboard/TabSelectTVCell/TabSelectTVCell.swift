@@ -26,11 +26,17 @@ protocol TabSelectTVCellDelegate:AnyObject {
     func didTapOnInsurencebtnAction(cell:TabSelectTVCell)
     func didTapOnCarRentalBtnAction(cell:TabSelectTVCell)
     
+    func didTapOnChangeLanguageBtnAction(cell:TabSelectTVCell)
+    
 }
 
 
 class TabSelectTVCell: TableViewCell {
     
+    
+    @IBOutlet weak var flighttitlelbl: UILabel!
+    @IBOutlet weak var hoteltitlelbl: UILabel!
+    @IBOutlet weak var moreservicetitlelbl: UILabel!
     
     @IBOutlet weak var currencylbl: UILabel!
     @IBOutlet weak var flightView: UIView!
@@ -42,10 +48,14 @@ class TabSelectTVCell: TableViewCell {
     @IBOutlet weak var moreServicelbl: UILabel!
     @IBOutlet weak var moreserviceheight: NSLayoutConstraint!
     
+    @IBOutlet weak var languageView: BorderedView!
+    @IBOutlet weak var langlbl: UILabel!
+    @IBOutlet weak var languageBtn: UIButton!
+    @IBOutlet weak var logoimg: UIImageView!
     //    var serviceArray1 = ["Visa","Holidays","Transfers","Sports","Cruise","Auto pay","Insurence"]
     //    var serviceImgsArray1 = ["s1","s2","s3","sports","s5","s6","s7"]
     
-    
+    var langbool = false
     var moreTabNameArray = [String]()
     //    var serviceArray = ["Transfers","Sports","Car rental","Activities","Holidays","Cruise"]
     //    var serviceImgsArray = ["transfer","sports","s3","activitiestrip","s2","s5",]
@@ -70,6 +80,22 @@ class TabSelectTVCell: TableViewCell {
     }
     
     override func updateUI() {
+        
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            flighttitlelbl.text = "ذهاب فقط"
+            hoteltitlelbl.text = "ذهاب وإياب"
+            moreservicetitlelbl.text = "مدن متعددة"
+            logoimg.image = UIImage(named: "logo2_ar")
+        } else {
+            flighttitlelbl.text = "Flight"
+            hoteltitlelbl.text = "Hotel"
+            moreservicetitlelbl.text = "More Services"
+            logoimg.image = UIImage(named: "logo2")
+        }
+       
+        
+        langlbl.text = LanguageManager.shared.currentLanguage()
         currencylbl.text = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"
         switch MySingleton.shared.tabselect {
             
@@ -149,6 +175,8 @@ class TabSelectTVCell: TableViewCell {
     
     func setupmoreServiceCV() {
         
+        languageBtn.addTarget(self, action: #selector(didTapOnChangeLanguageBtnAction(_:)), for: .touchUpInside)
+        
         moreServicelbl.text = "More Services"
         let nib = UINib(nibName: "MoreServiceCVCell", bundle: nil)
         moreServiceCV.register(nib, forCellWithReuseIdentifier: "cell1")
@@ -198,6 +226,11 @@ class TabSelectTVCell: TableViewCell {
         MySingleton.shared.tabselect = "more"
         moreserviceView.isHidden = false
         delegate?.didTapOnMoreServiceBtnAction(cell: self)
+    }
+    
+    
+    @objc func didTapOnChangeLanguageBtnAction(_ sender:UIButton) {
+        delegate?.didTapOnChangeLanguageBtnAction(cell: self)
     }
     
     

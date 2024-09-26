@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -108,7 +109,7 @@
                                         <rect key="frame" x="0.0" y="31.666666666666686" width="301" height="48"/>
                                         <subviews>
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="pOo-8y-k5y">
-                                                <rect key="frame" x="0.0" y="0.0" width="301" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="256" height="48"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Medium" family="Open Sans" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                                             </textField>
@@ -130,10 +131,10 @@
                                         <constraints>
                                             <constraint firstItem="pOo-8y-k5y" firstAttribute="leading" secondItem="cOW-qa-7vM" secondAttribute="leading" id="3Yh-KE-Kca"/>
                                             <constraint firstItem="uGh-X5-FQm" firstAttribute="centerY" secondItem="pOo-8y-k5y" secondAttribute="centerY" id="Eb8-hp-r24"/>
+                                            <constraint firstItem="uGh-X5-FQm" firstAttribute="leading" secondItem="pOo-8y-k5y" secondAttribute="trailing" constant="5" id="JyE-gY-Sd3"/>
                                             <constraint firstAttribute="bottom" secondItem="pOo-8y-k5y" secondAttribute="bottom" id="Tov-27-KkK"/>
                                             <constraint firstItem="pOo-8y-k5y" firstAttribute="top" secondItem="cOW-qa-7vM" secondAttribute="top" id="eFR-9O-egG"/>
                                             <constraint firstAttribute="height" constant="48" id="nke-vz-aIQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="pOo-8y-k5y" secondAttribute="trailing" id="qhl-ef-dtN"/>
                                             <constraint firstAttribute="trailing" secondItem="uGh-X5-FQm" secondAttribute="trailing" constant="20" id="xd2-Av-nRq"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -324,13 +325,20 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="donthaveBtn" destination="9S2-DG-gXL" id="N4a-Xf-6Wx"/>
                 <outlet property="emailTF" destination="csQ-94-e3K" id="F8j-cP-9cH"/>
+                <outlet property="emailtitlelbl" destination="fJa-GU-eCE" id="IQ0-LW-bgx"/>
                 <outlet property="emailview" destination="b2C-ho-ae3" id="8Zf-HL-DIJ"/>
+                <outlet property="forgetBtn" destination="CNf-4G-bXo" id="GuL-KA-NvA"/>
                 <outlet property="holderView" destination="xoC-bw-nS6" id="32z-sJ-hqA"/>
                 <outlet property="loginBtn" destination="q4S-4Z-4SH" id="xst-8g-Oul"/>
+                <outlet property="logo" destination="Ah6-7Y-xme" id="4cC-jF-pMJ"/>
                 <outlet property="passTF" destination="pOo-8y-k5y" id="RtA-2p-J25"/>
+                <outlet property="passwordtitlelbl" destination="dGX-Sk-mhp" id="mRd-aA-kmp"/>
                 <outlet property="passwordview" destination="cOW-qa-7vM" id="zME-bW-UIF"/>
                 <outlet property="showPasswordBtn" destination="uGh-X5-FQm" id="IHk-Pd-U49"/>
+                <outlet property="signupBtn" destination="apV-7M-xn1" id="ZO8-5T-d8b"/>
+                <outlet property="signuporlogintitle" destination="GJp-69-y9H" id="Fvb-qC-Pic"/>
                 <outlet property="skipBtn" destination="C3H-WH-7vm" id="sNd-MG-HfH"/>
             </connections>
             <point key="canvasLocation" x="-67.938931297709928" y="341.19718309859155"/>

@@ -9,6 +9,7 @@ import UIKit
 
 class MoreDetailsTVCell: TableViewCell {
 
+    @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var titlelbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +25,15 @@ class MoreDetailsTVCell: TableViewCell {
     
     
     override func updateUI() {
-        titlelbl.attributedText = MySingleton.shared.moreDetailsData?.page_description?.htmlToAttributedString
+        
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            titlelbl.attributedText = MySingleton.shared.moreDetailsData?.page_description_ar?.htmlToAttributedString
+            img.image = UIImage(named: "logo3_ar")
+        } else {
+            titlelbl.attributedText = MySingleton.shared.moreDetailsData?.page_description?.htmlToAttributedString
+            img.image = UIImage(named: "logo")
+        }
     }
     
 }

@@ -43,7 +43,11 @@ class MyAccountVC: BaseTableVC {
         profilePic.layer.cornerRadius = 40
         profilePic.layer.borderColor = UIColor.BorderColor.cgColor
         profilePic.layer.borderWidth = 2
-        setAttributedString(str1: "Login To View Your Profile")
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            setAttributedString(str1: "تسجيل الدخول لعرض رحلاتك")
+        } else {
+            setAttributedString(str1: "Login To View Your Trips")
+        }
         commonTableView.backgroundColor = .WhiteColor
         commonTableView.registerTVCells(["EditProfileTVCell",
                                          "EmptyTVCell"])
@@ -89,10 +93,10 @@ extension MyAccountVC {
     }
     
     @objc func labelTapped(gesture:UITapGestureRecognizer) {
-        
-        if gesture.didTapAttributedString("Login To View Your Profile", in: loginlbl) {
-            didTapOnLoginBtnAction()
-        }
+        didTapOnLoginBtnAction()
+//        if gesture.didTapAttributedString("Login To View Your Profile", in: loginlbl) {
+//           
+//        }
         
     }
     

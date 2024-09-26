@@ -23,6 +23,7 @@ struct TopFlightListModel {
     let airline_class:String?
     let from_airport_city: String?
     let to_airport_city:String?
+    let airport_city_ar: String?
     // Add other properties as needed
 }
 
@@ -38,6 +39,7 @@ protocol PopularDestinationsTVCellDelegate: AnyObject {
 class PopularDestinationsTVCell: TableViewCell {
     
     
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var citySelectCV: UICollectionView!
     @IBOutlet weak var selectDestCV: UICollectionView!
     
@@ -68,12 +70,26 @@ class PopularDestinationsTVCell: TableViewCell {
     
     
     override func updateUI() {
+        
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            titlelbl.text = "وجهات الطيران الشهيرة"
+        } else {
+            titlelbl.text = "Popular Flight Destinations"
+        }
+        
+        
         flightlist = MySingleton.shared.topFlightDetails
         itemCount = flightlist.count
         
         countryArray.removeAll()
         flightlist.forEach { i in
-            countryArray.append(i.country ?? "")
+           // countryArray.append(i.country ?? "")
+            if LanguageManager.shared.currentLanguage() == "ar" {
+                countryArray.append(i.country_arabic ?? "")
+            } else {
+                countryArray.append(i.country ?? "")
+            }
         }
         countryArray = countryArray.unique()
         
@@ -83,9 +99,21 @@ class PopularDestinationsTVCell: TableViewCell {
             let selectedCity = countryArray[0]
             // Assuming TopFlightListModel and TopFlightDetails have similar properties
             filteredFlights = flightlist.filter { flight in
-                if let airportCity = flight.country {
-                    return airportCity.contains(selectedCity)
+//                if let airportCity = flight.country {
+//                    return airportCity.contains(selectedCity)
+//                }
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    if let airportCity = flight.country_arabic {
+                        return airportCity.contains(selectedCity)
+                    }
+                } else {
+                    if let airportCity = flight.country {
+                        return airportCity.contains(selectedCity)
+                    }
                 }
+                
+                
                 return false
             }.map { flight in
                 // TopFlightListModel(airport_city: flight.airport_city ?? "", image: flight.image)
@@ -103,7 +131,8 @@ class PopularDestinationsTVCell: TableViewCell {
                                    to_loc: flight.to_loc ?? "",
                                    airline_class: flight.airline_class ?? "",
                                    from_airport_city:flight.from_airport_city,
-                                   to_airport_city: flight.to_airport_city)
+                                   to_airport_city: flight.to_airport_city, 
+                                   airport_city_ar: flight.to_airport_city_ar)
             }
             
         }
@@ -204,7 +233,13 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
             
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as? SelectDestCVCell {
                 let flight = filteredFlights[indexPath.row]
-                cell.titlelbl.text = flight.airport_city
+               // cell.titlelbl.text = flight.airport_city
+                
+                if LanguageManager.shared.currentLanguage() == "ar" {
+                    cell.titlelbl.text = flight.airport_city_ar
+                } else {
+                    cell.titlelbl.text = flight.airport_city
+                }
                 
                 if flight.image == nil || flight.image?.isEmpty == true {
                     cell.img.image = UIImage(named: "noimage")
@@ -237,9 +272,21 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                 let selectedCity = countryArray[indexPath.row]
                 // Assuming TopFlightListModel and TopFlightDetails have similar properties
                 filteredFlights = flightlist.filter { flight in
-                    if let airportCity = flight.country {
-                        return airportCity.contains(selectedCity)
+//                    if let airportCity = flight.country {
+//                        return airportCity.contains(selectedCity)
+//                    }
+                    
+                    if LanguageManager.shared.currentLanguage() == "ar" {
+                        if let airportCity = flight.country_arabic {
+                            return airportCity.contains(selectedCity)
+                        }
+                    } else {
+                        if let airportCity = flight.country {
+                            return airportCity.contains(selectedCity)
+                        }
                     }
+                    
+                    
                     return false
                 }.map { flight in
                     TopFlightListModel(airport_city: flight.airport_city ?? "",
@@ -256,7 +303,8 @@ extension PopularDestinationsTVCell:UICollectionViewDelegate,UICollectionViewDat
                                        to_loc: flight.to_loc ?? "",
                                        airline_class: flight.airline_class ?? "",
                                        from_airport_city:flight.from_airport_city,
-                                       to_airport_city: flight.to_airport_city)
+                                       to_airport_city: flight.to_airport_city, 
+                                       airport_city_ar: flight.to_airport_city_ar)
                 }
                 
                 // Update the selected index path

@@ -9,7 +9,7 @@ import UIKit
 
 class TopcityGuidesTVCell: TableViewCell {
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var topcitysCV: UICollectionView!
     
     
@@ -31,6 +31,13 @@ class TopcityGuidesTVCell: TableViewCell {
     
     
     override func updateUI() {
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            titlelbl.text = NSLocalizedString("popular_hotel_destinations_en", comment: "")
+        } else {
+            titlelbl.text = NSLocalizedString("popular_hotel_destinations_en", comment: "")
+        }
+        
         hotellist = MySingleton.shared.topCityGuides
         itemCount = hotellist.count
       //  startAutoScroll()

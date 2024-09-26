@@ -27,12 +27,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5FZ-Ja-5cH">
                         <rect key="frame" x="0.0" y="0.0" width="471" height="229"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Offers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPo-ls-xtq">
-                                <rect key="frame" x="15" y="15" width="441" height="22"/>
-                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
-                                <color key="textColor" name="BackBtnColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7pr-UQ-5o2">
                                 <rect key="frame" x="18" y="52" width="435" height="170"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -46,16 +40,22 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular Flight Destinations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sda-R7-RAU">
+                                <rect key="frame" x="15" y="15" width="441" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" name="BackBtnColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="7pr-UQ-5o2" secondAttribute="bottom" constant="7" id="3Mg-AW-6qK"/>
-                            <constraint firstItem="7pr-UQ-5o2" firstAttribute="top" secondItem="cPo-ls-xtq" secondAttribute="bottom" constant="15" id="5hQ-MW-SeL"/>
-                            <constraint firstItem="cPo-ls-xtq" firstAttribute="leading" secondItem="5FZ-Ja-5cH" secondAttribute="leading" constant="15" id="7cb-7F-nkZ"/>
                             <constraint firstAttribute="trailing" secondItem="7pr-UQ-5o2" secondAttribute="trailing" constant="18" id="9WY-Rs-myM"/>
-                            <constraint firstItem="cPo-ls-xtq" firstAttribute="top" secondItem="5FZ-Ja-5cH" secondAttribute="top" constant="15" id="E3i-aQ-NGl"/>
                             <constraint firstItem="7pr-UQ-5o2" firstAttribute="leading" secondItem="5FZ-Ja-5cH" secondAttribute="leading" constant="18" id="FUD-uq-ILd"/>
-                            <constraint firstAttribute="trailing" secondItem="cPo-ls-xtq" secondAttribute="trailing" constant="15" id="M3P-kf-cp6"/>
+                            <constraint firstItem="Sda-R7-RAU" firstAttribute="top" secondItem="5FZ-Ja-5cH" secondAttribute="top" constant="15" id="cB0-zq-bda"/>
+                            <constraint firstItem="Sda-R7-RAU" firstAttribute="leading" secondItem="5FZ-Ja-5cH" secondAttribute="leading" constant="15" id="fIV-fU-CcL"/>
+                            <constraint firstItem="7pr-UQ-5o2" firstAttribute="top" secondItem="Sda-R7-RAU" secondAttribute="bottom" constant="15" id="fxR-gV-hRK"/>
+                            <constraint firstAttribute="trailing" secondItem="Sda-R7-RAU" secondAttribute="trailing" constant="15" id="pk5-4Y-uMT"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -69,6 +69,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="offerCV" destination="7pr-UQ-5o2" id="wDv-ah-GEu"/>
+                <outlet property="titlelbl" destination="Sda-R7-RAU" id="JUZ-kt-ghw"/>
             </connections>
             <point key="canvasLocation" x="254.19847328244273" y="113.02816901408451"/>
         </tableViewCell>

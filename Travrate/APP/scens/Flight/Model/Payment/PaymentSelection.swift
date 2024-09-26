@@ -26,3 +26,33 @@ struct Payment_selection : Codable {
     }
 
 }
+
+
+struct Language_selection : Codable {
+    let id : String?
+    let label : String?
+    let english : String?
+    let arabic : String?
+   
+
+    enum CodingKeys: String, CodingKey {
+
+        case id = "id"
+        case label = "label"
+        case english = "english"
+        case arabic = "arabic"
+       
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(String.self, forKey: .id)
+        label = try values.decodeIfPresent(String.self, forKey: .label)
+        english = try values.decodeIfPresent(String.self, forKey: .english)
+        arabic = try values.decodeIfPresent(String.self, forKey: .arabic)
+       
+    }
+
+}
+
+

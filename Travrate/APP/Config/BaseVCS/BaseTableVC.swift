@@ -109,6 +109,7 @@ class BaseTableVC: UIViewController, TabSelectTVCellDelegate, FlightSearchTVCell
     func didTapOnCruisebtnAction(cell: TabSelectTVCell) {}
     func didTapOnActivitiesbtnAction(cell: TabSelectTVCell) {}
     func didTapOnInsurencebtnAction(cell:TabSelectTVCell) {}
+    func didTapOnChangeLanguageBtnAction(cell:TabSelectTVCell){}
     
     func didTapOnAdvanceOption(cell: FlightSearchTVCell) {}
     func didTapOnClassBtnAction(cell:FlightSearchTVCell){}

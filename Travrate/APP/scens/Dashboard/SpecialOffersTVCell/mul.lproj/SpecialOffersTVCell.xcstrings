@@ -1,0 +1,18 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Sda-R7-RAU.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Popular Flight Destinations\"; ObjectID = \"Sda-R7-RAU\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Popular Flight Destinations"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

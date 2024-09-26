@@ -38,16 +38,21 @@ class MenuBGTVCell: TableViewCell {
     override func updateUI() {
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
             
-      //      loginBtn.setTitle("   \( MySingleton.shared.username)", for: .normal)
+            //      loginBtn.setTitle("   \( MySingleton.shared.username)", for: .normal)
             loginBtn.setTitle("   \( MySingleton.shared.profiledata?.first_name ?? "") \( MySingleton.shared.profiledata?.last_name ?? "")", for: .normal)
             loginBtn.isUserInteractionEnabled = false
             editProfileView.isHidden = false
             
+            if LanguageManager.shared.currentLanguage() == "ar" {
+                editProfileBtn.setTitle("تعديل الملف الشخصي", for: .normal)
+            } else {
+                editProfileBtn.setTitle("Edit Profile", for: .normal)
+            }
             if MySingleton.shared.profiledata?.image != "" {
                 profileImage.sd_setImage(with: URL(string: MySingleton.shared.profiledata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"),options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                     if let error = error {
                         // Handle error loading image
-                      //  print("Error loading image: \(error.localizedDescription)")
+                        //  print("Error loading image: \(error.localizedDescription)")
                         // Check if the error is due to a 404 Not Found response
                         if (error as NSError).code == NSURLErrorBadServerResponse {
                             // Set placeholder image for 404 error
@@ -64,7 +69,14 @@ class MenuBGTVCell: TableViewCell {
             
         } else {
             profileImage.image = UIImage(named: "noprofile")?.withRenderingMode(.alwaysOriginal)
-            loginBtn.setTitle("   Login/Sign up", for: .normal)
+            
+            if LanguageManager.shared.currentLanguage() == "ar" {
+                loginBtn.setTitle("   تسجيل الدخول / الاشتراك", for: .normal)
+            } else {
+                loginBtn.setTitle("   Login/Sign up", for: .normal)
+            }
+            
+            
             editProfileView.isHidden = true
             loginBtn.isUserInteractionEnabled = true
         }
@@ -77,7 +89,7 @@ class MenuBGTVCell: TableViewCell {
             profileImage.sd_setImage(with: URL(string: MySingleton.shared.profiledata?.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"),options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                 if let error = error {
                     // Handle error loading image
-                  //  print("Error loading image: \(error.localizedDescription)")
+                    //  print("Error loading image: \(error.localizedDescription)")
                     // Check if the error is due to a 404 Not Found response
                     if (error as NSError).code == NSURLErrorBadServerResponse {
                         // Set placeholder image for 404 error

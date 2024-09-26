@@ -28,7 +28,7 @@ protocol PopularHotelDestinationsTVCellDellegate: AnyObject {
 
 class PopularHotelDestinationsTVCell: TableViewCell {
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var citySelectCV: UICollectionView!
     @IBOutlet weak var selectDestCV: UICollectionView!
     
@@ -59,6 +59,15 @@ class PopularHotelDestinationsTVCell: TableViewCell {
     
     
     override func updateUI() {
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            titlelbl.text = "وجهات الفنادق الشهيرة";
+        } else {
+            titlelbl.text = "Popular Hotel Destinations"
+        }
+        
+       
+        
         hotellist = MySingleton.shared.topHotelDetails
         itemCount = hotellist.count
         

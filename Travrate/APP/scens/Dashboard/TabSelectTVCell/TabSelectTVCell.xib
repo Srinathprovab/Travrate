@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -269,6 +270,47 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RzQ-Gt-xJc" customClass="BorderedView" customModule="Travrate" customModuleProvider="target">
+                                        <rect key="frame" x="400" y="50" width="60" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYi-mz-Zwu">
+                                                <rect key="frame" x="14.999999999999998" y="2.6666666666666634" width="16.333333333333329" height="14.666666666666664"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lang" translatesAutoresizingMaskIntoConstraints="NO" id="GBc-Fq-CCq">
+                                                <rect key="frame" x="39" y="2" width="16" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="rXs-4F-1ao"/>
+                                                    <constraint firstAttribute="width" constant="16" id="vQp-Ie-rJt"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1K-XL-K5y">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="20"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="C1K-XL-K5y" firstAttribute="top" secondItem="RzQ-Gt-xJc" secondAttribute="top" id="1wD-VT-bH1"/>
+                                            <constraint firstAttribute="bottom" secondItem="C1K-XL-K5y" secondAttribute="bottom" id="21j-MY-Def"/>
+                                            <constraint firstAttribute="height" constant="20" id="Kec-eV-pih"/>
+                                            <constraint firstItem="C1K-XL-K5y" firstAttribute="leading" secondItem="RzQ-Gt-xJc" secondAttribute="leading" id="LQi-hq-uYG"/>
+                                            <constraint firstItem="GBc-Fq-CCq" firstAttribute="centerY" secondItem="RzQ-Gt-xJc" secondAttribute="centerY" id="MD5-fq-yaN"/>
+                                            <constraint firstAttribute="trailing" secondItem="C1K-XL-K5y" secondAttribute="trailing" id="OGK-mr-pph"/>
+                                            <constraint firstAttribute="width" constant="60" id="RH3-Uy-NXl"/>
+                                            <constraint firstItem="GYi-mz-Zwu" firstAttribute="centerY" secondItem="RzQ-Gt-xJc" secondAttribute="centerY" id="WdI-Tg-Qhy"/>
+                                            <constraint firstAttribute="trailing" secondItem="GBc-Fq-CCq" secondAttribute="trailing" constant="5" id="k4M-fJ-cqc"/>
+                                            <constraint firstItem="GYi-mz-Zwu" firstAttribute="leading" secondItem="RzQ-Gt-xJc" secondAttribute="leading" constant="15" id="w6t-yU-og9"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -277,8 +319,10 @@
                                     <constraint firstItem="JWp-bs-VFY" firstAttribute="centerY" secondItem="Tk5-Jz-4uo" secondAttribute="centerY" id="5gj-zm-OTq"/>
                                     <constraint firstItem="vE9-Mi-Zo8" firstAttribute="centerX" secondItem="xMz-24-5g0" secondAttribute="centerX" id="Haa-wO-dPz"/>
                                     <constraint firstItem="syI-ST-Spr" firstAttribute="leading" secondItem="7oc-0h-uL4" secondAttribute="trailing" constant="8" id="Ian-5I-Rju"/>
+                                    <constraint firstItem="JWp-bs-VFY" firstAttribute="leading" secondItem="RzQ-Gt-xJc" secondAttribute="trailing" constant="10" id="Knz-7q-hfL"/>
                                     <constraint firstItem="vE9-Mi-Zo8" firstAttribute="top" secondItem="Css-QU-fwE" secondAttribute="bottom" constant="30" id="LfU-oS-HGg"/>
                                     <constraint firstItem="7oc-0h-uL4" firstAttribute="top" secondItem="vE9-Mi-Zo8" secondAttribute="bottom" constant="50" id="OZ1-8k-ssA"/>
+                                    <constraint firstItem="RzQ-Gt-xJc" firstAttribute="centerY" secondItem="Zys-bf-uRP" secondAttribute="centerY" id="Qga-qT-VbL"/>
                                     <constraint firstAttribute="bottom" secondItem="QlM-v3-wsu" secondAttribute="bottom" constant="45" id="SHq-aw-Jxt"/>
                                     <constraint firstAttribute="height" constant="316" id="XJ9-QY-adW"/>
                                     <constraint firstAttribute="trailing" secondItem="JWp-bs-VFY" secondAttribute="trailing" constant="15" id="Yvm-jx-XOE"/>
@@ -369,12 +413,19 @@
             <connections>
                 <outlet property="currencylbl" destination="Wer-As-ZcM" id="Kzf-Pf-ekg"/>
                 <outlet property="flightView" destination="3Yb-AA-CKs" id="fcG-g2-3p6"/>
+                <outlet property="flighttitlelbl" destination="rCM-FL-Ucg" id="jsA-IE-rHM"/>
                 <outlet property="hotelView" destination="7oc-0h-uL4" id="QHW-Yz-0F5"/>
+                <outlet property="hoteltitlelbl" destination="lQ0-FZ-wey" id="GzV-0U-hWy"/>
+                <outlet property="langlbl" destination="GYi-mz-Zwu" id="8Z4-j6-gGa"/>
+                <outlet property="languageBtn" destination="C1K-XL-K5y" id="g2G-hU-6gX"/>
+                <outlet property="languageView" destination="RzQ-Gt-xJc" id="szA-Zd-aeu"/>
+                <outlet property="logoimg" destination="vE9-Mi-Zo8" id="RcW-Gd-ELa"/>
                 <outlet property="moreServiceCV" destination="fbE-z3-mRs" id="HPj-eg-SUG"/>
                 <outlet property="moreServicelbl" destination="vcN-TR-t99" id="Ct7-TL-sjN"/>
                 <outlet property="moreView" destination="syI-ST-Spr" id="pdt-RJ-Tb2"/>
                 <outlet property="moreserviceView" destination="wka-2L-cTf" id="jKG-KG-QXr"/>
                 <outlet property="moreserviceheight" destination="rTk-HA-e5a" id="0Qm-Bh-Gw2"/>
+                <outlet property="moreservicetitlelbl" destination="vcN-TR-t99" id="M4L-gW-jzx"/>
                 <outlet property="titlelbl" destination="Ujb-7M-1OO" id="NgJ-br-lmB"/>
             </connections>
             <point key="canvasLocation" x="304.58015267175574" y="540.14084507042253"/>
@@ -386,6 +437,7 @@
         <image name="flight" width="30" height="30"/>
         <image name="hometop" width="428" height="268"/>
         <image name="hotel" width="30" height="30"/>
+        <image name="lang" width="20" height="20"/>
         <image name="logo2" width="218" height="70"/>
         <image name="menu" width="30" height="30"/>
         <image name="more" width="30" height="30"/>

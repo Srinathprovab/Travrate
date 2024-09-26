@@ -9,13 +9,16 @@ import UIKit
 
 
 protocol EditProfileTVCellDelegate: AnyObject {
+    
     func didTapOnUpdateProfileBtnAction(cell:EditProfileTVCell)
     func editingTextField(tf:UITextField)
     func didTapOnMailBtnAction(cell:EditProfileTVCell)
     func didTapOnFeMailBtnAction(cell:EditProfileTVCell)
     func donedatePicker(cell:EditProfileTVCell)
     func cancelDatePicker(cell:EditProfileTVCell)
+    
 }
+
 
 class EditProfileTVCell: TableViewCell {
     
@@ -146,8 +149,6 @@ class EditProfileTVCell: TableViewCell {
     
     
 }
-
-
 
 extension EditProfileTVCell {
     

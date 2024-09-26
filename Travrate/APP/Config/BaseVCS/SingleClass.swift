@@ -277,6 +277,7 @@ class MySingleton {
     var sportsBookingData:SportsBookingData?
     var participantsArray = [Participants]()
     var PaymentSelectionArray = [Payment_selection]()
+    var languageSelectionArray = [Language_selection]()
     var SportsPaymentSelectionArray = [SportsPaymentSelection]()
     var sports_passengers = [Sports_passengers]()
     var extraOption = [Extra_option]()
@@ -443,6 +444,40 @@ class MySingleton {
                     
                 } else {
                     //print("Unable to find 'country_list' key in the JSON dictionary.")
+                }
+                
+                
+            } catch let error {
+                //print("Error decoding JSON: \(error)")
+            }
+        } else {
+            //print("Unable to find clist.json in the Xcode project.")
+        }
+        
+        
+    }
+    
+    
+    
+    //MARK: - getPaymentList
+    func getLanguagesList() {
+        
+        
+        // Get the path to the clist.json file in the Xcode project
+        if let jsonFilePath = Bundle.main.path(forResource: "language", ofType: "json") {
+            do {
+                // Read the data from the file
+                let jsonData = try Data(contentsOf: URL(fileURLWithPath: jsonFilePath))
+                
+                // Decode the JSON data into a dictionary
+                let jsonDictionary = try JSONDecoder().decode([String: [Language_selection]].self, from: jsonData)
+                
+                // Access the array of countries using the "country_list" key
+                if let payments = jsonDictionary["data"] {
+                    self.languageSelectionArray = payments
+                    
+                } else {
+                    //print("Unable to find 'data' key in the JSON dictionary.")
                 }
                 
                 

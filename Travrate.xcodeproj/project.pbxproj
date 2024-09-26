@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -472,7 +472,6 @@
 		65207E4A2BF494320076EF76 /* DashBoardTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207BA42BF4942F0076EF76 /* DashBoardTBVC.swift */; };
 		65207E4B2BF494320076EF76 /* LoderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207BA52BF4942F0076EF76 /* LoderVC.swift */; };
 		65207E4C2BF494320076EF76 /* TripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207BA62BF4942F0076EF76 /* TripsVC.swift */; };
-		65207E4D2BF494320076EF76 /* SpecialOffersTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65207BA82BF4942F0076EF76 /* SpecialOffersTVCell.xib */; };
 		65207E4E2BF494320076EF76 /* SpecialOffersTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207BA92BF4942F0076EF76 /* SpecialOffersTVCell.swift */; };
 		65207E4F2BF494320076EF76 /* TabSelectTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65207BAB2BF4942F0076EF76 /* TabSelectTVCell.swift */; };
 		65207E502BF494320076EF76 /* TabSelectTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65207BAC2BF4942F0076EF76 /* TabSelectTVCell.xib */; };
@@ -795,6 +794,7 @@
 		8456D90F2C3FE2A3007D51A4 /* CarPreBookingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456D90E2C3FE2A3007D51A4 /* CarPreBookingVM.swift */; };
 		8456D9172C3FF93C007D51A4 /* AdditionalOptionsCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456D9152C3FF93C007D51A4 /* AdditionalOptionsCVCell.swift */; };
 		8456D9182C3FF93C007D51A4 /* AdditionalOptionsCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8456D9162C3FF93C007D51A4 /* AdditionalOptionsCVCell.xib */; };
+		845830342CA5372700BF3650 /* language.json in Resources */ = {isa = PBXBuildFile; fileRef = 845830332CA5372700BF3650 /* language.json */; };
 		8459E3A82C2AC418007CED6C /* ShareResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459E3A72C2AC418007CED6C /* ShareResultViewModel.swift */; };
 		845BB4DB2C297B7600571339 /* ShareResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB4DA2C297B7600571339 /* ShareResultVC.swift */; };
 		845BB4DF2C297C4300571339 /* ShareResultTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845BB4DE2C297C4300571339 /* ShareResultTVCell.xib */; };
@@ -882,6 +882,9 @@
 		84D96CC72C4CE2FC00323B8E /* CarRentalTripsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D96CC52C4CE2FC00323B8E /* CarRentalTripsTVCell.xib */; };
 		84D96CCB2C4CE31800323B8E /* ActivitiesTripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D96CC92C4CE31800323B8E /* ActivitiesTripsTVCell.swift */; };
 		84D96CCC2C4CE31800323B8E /* ActivitiesTripsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D96CCA2C4CE31800323B8E /* ActivitiesTripsTVCell.xib */; };
+		84DDD4882CA3D126008CD58D /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDD4872CA3D126008CD58D /* LanguageManager.swift */; };
+		84DDD4922CA3E865008CD58D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDD4902CA3E865008CD58D /* Localizable.strings */; };
+		84DDD4962CA3F174008CD58D /* SpecialOffersTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDD4952CA3F174008CD58D /* SpecialOffersTVCell.xib */; };
 		84E7CBEA2C85F21300079A2C /* Home_sliders_Cruise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7CBE92C85F21300079A2C /* Home_sliders_Cruise.swift */; };
 		84E8B7A72C64C8F7007E13E7 /* HotelVoucherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8B7A62C64C8F7007E13E7 /* HotelVoucherModel.swift */; };
 		84E8B7A92C64C92C007E13E7 /* Hotel_Booking_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8B7A82C64C92C007E13E7 /* Hotel_Booking_details.swift */; };
@@ -1422,7 +1425,6 @@
 		65207BA42BF4942F0076EF76 /* DashBoardTBVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardTBVC.swift; sourceTree = "<group>"; };
 		65207BA52BF4942F0076EF76 /* LoderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoderVC.swift; sourceTree = "<group>"; };
 		65207BA62BF4942F0076EF76 /* TripsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsVC.swift; sourceTree = "<group>"; };
-		65207BA82BF4942F0076EF76 /* SpecialOffersTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialOffersTVCell.xib; sourceTree = "<group>"; };
 		65207BA92BF4942F0076EF76 /* SpecialOffersTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialOffersTVCell.swift; sourceTree = "<group>"; };
 		65207BAB2BF4942F0076EF76 /* TabSelectTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabSelectTVCell.swift; sourceTree = "<group>"; };
 		65207BAC2BF4942F0076EF76 /* TabSelectTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabSelectTVCell.xib; sourceTree = "<group>"; };
@@ -1747,6 +1749,7 @@
 		8456D90E2C3FE2A3007D51A4 /* CarPreBookingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPreBookingVM.swift; sourceTree = "<group>"; };
 		8456D9152C3FF93C007D51A4 /* AdditionalOptionsCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalOptionsCVCell.swift; sourceTree = "<group>"; };
 		8456D9162C3FF93C007D51A4 /* AdditionalOptionsCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionalOptionsCVCell.xib; sourceTree = "<group>"; };
+		845830332CA5372700BF3650 /* language.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = language.json; sourceTree = "<group>"; };
 		8459E3A72C2AC418007CED6C /* ShareResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultViewModel.swift; sourceTree = "<group>"; };
 		845BB4DA2C297B7600571339 /* ShareResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultVC.swift; sourceTree = "<group>"; };
 		845BB4DD2C297C4300571339 /* ShareResultTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareResultTVCell.swift; sourceTree = "<group>"; };
@@ -1829,6 +1832,12 @@
 		84D96CC52C4CE2FC00323B8E /* CarRentalTripsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarRentalTripsTVCell.xib; sourceTree = "<group>"; };
 		84D96CC92C4CE31800323B8E /* ActivitiesTripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTripsTVCell.swift; sourceTree = "<group>"; };
 		84D96CCA2C4CE31800323B8E /* ActivitiesTripsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTripsTVCell.xib; sourceTree = "<group>"; };
+		84DDD4872CA3D126008CD58D /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		84DDD4892CA3D1C4008CD58D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		84DDD4912CA3E865008CD58D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84DDD4932CA3E868008CD58D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84DDD4942CA3F174008CD58D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SpecialOffersTVCell.xib; sourceTree = "<group>"; };
+		84DDD4972CA3F174008CD58D /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/SpecialOffersTVCell.xcstrings; sourceTree = "<group>"; };
 		84E7CBE92C85F21300079A2C /* Home_sliders_Cruise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_sliders_Cruise.swift; sourceTree = "<group>"; };
 		84E8B7A62C64C8F7007E13E7 /* HotelVoucherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelVoucherModel.swift; sourceTree = "<group>"; };
 		84E8B7A82C64C92C007E13E7 /* Hotel_Booking_details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel_Booking_details.swift; sourceTree = "<group>"; };
@@ -2114,6 +2123,7 @@
 				652078E32BF4934C0076EF76 /* Assets.xcassets */,
 				652078E52BF4934C0076EF76 /* LaunchScreen.storyboard */,
 				652078E82BF4934C0076EF76 /* Info.plist */,
+				84DDD4902CA3E865008CD58D /* Localizable.strings */,
 			);
 			path = Travrate;
 			sourceTree = "<group>";
@@ -2213,6 +2223,7 @@
 				6520791B2BF4942E0076EF76 /* sucessful.gif */,
 				6520791C2BF4942E0076EF76 /* SessionManager.swift */,
 				6520791D2BF4942E0076EF76 /* payment.gif */,
+				84DDD4872CA3D126008CD58D /* LanguageManager.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -2336,6 +2347,7 @@
 				652079572BF4942E0076EF76 /* clist.json */,
 				652079582BF4942E0076EF76 /* currencylist.json */,
 				84B82D092C48179900A160D6 /* paymentes.json */,
+				845830332CA5372700BF3650 /* language.json */,
 			);
 			path = CurrencyListJson;
 			sourceTree = "<group>";
@@ -4391,7 +4403,7 @@
 		65207BA72BF4942F0076EF76 /* SpecialOffersTVCell */ = {
 			isa = PBXGroup;
 			children = (
-				65207BA82BF4942F0076EF76 /* SpecialOffersTVCell.xib */,
+				84DDD4952CA3F174008CD58D /* SpecialOffersTVCell.xib */,
 				65207BA92BF4942F0076EF76 /* SpecialOffersTVCell.swift */,
 			);
 			path = SpecialOffersTVCell;
@@ -6317,6 +6329,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 652078CE2BF4934A0076EF76;
 			productRefGroup = 652078D82BF4934A0076EF76 /* Products */;
@@ -6450,7 +6463,7 @@
 				6512C7742C171DF80077EA68 /* CarRentalTSeatsCVCell.xib in Resources */,
 				653467C12C0475730059A0E1 /* SportsFareSummeryTVCell.xib in Resources */,
 				65207CB12BF494310076EF76 /* Oswald-Regular.ttf in Resources */,
-				65207E4D2BF494320076EF76 /* SpecialOffersTVCell.xib in Resources */,
+				84DDD4962CA3F174008CD58D /* SpecialOffersTVCell.xib in Resources */,
 				65207CB42BF494310076EF76 /* Roboto-Medium.ttf in Resources */,
 				65207EDA2BF494320076EF76 /* LoginTVCell.xib in Resources */,
 				65207E7E2BF494320076EF76 /* CruiseContactdetailsTVCell.xib in Resources */,
@@ -6494,6 +6507,7 @@
 				65207DF12BF494310076EF76 /* SelectMealTVCell.xib in Resources */,
 				65207DCC2BF494310076EF76 /* AddonTableViewCell.xib in Resources */,
 				65207CB52BF494310076EF76 /* Poppins-Light.ttf in Resources */,
+				845830342CA5372700BF3650 /* language.json in Resources */,
 				84D96CCC2C4CE31800323B8E /* ActivitiesTripsTVCell.xib in Resources */,
 				65207DA62BF494310076EF76 /* BaggageInfoTVCell.xib in Resources */,
 				65207E1E2BF494320076EF76 /* VisaTVCell.xib in Resources */,
@@ -6558,6 +6572,7 @@
 				65207DE72BF494310076EF76 /* ItineraryTVCell.xib in Resources */,
 				65207CB32BF494310076EF76 /* Lato-Medium.ttf in Resources */,
 				65207D3A2BF494310076EF76 /* HolidayAddItineraryTVCell.xib in Resources */,
+				84DDD4922CA3E865008CD58D /* Localizable.strings in Resources */,
 				84C4FF182C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib in Resources */,
 				65207E332BF494320076EF76 /* Main.storyboard in Resources */,
 				846D24DE2C40E2AA0030C539 /* PickupTVCell.xib in Resources */,
@@ -7387,6 +7402,7 @@
 				84EA32092C4803730031C482 /* ActivityDetailsModalities.swift in Sources */,
 				65207C9C2BF494310076EF76 /* ServiceManager.swift in Sources */,
 				65207EB22BF494320076EF76 /* InsuranceVC.swift in Sources */,
+				84DDD4882CA3D126008CD58D /* LanguageManager.swift in Sources */,
 				65207D242BF494310076EF76 /* HotelsTVCell.swift in Sources */,
 				65207DE32BF494310076EF76 /* TicketIssuingTimeTVCell.swift in Sources */,
 				8492404A2C4ABEB600D87EEA /* Cancellation_details.swift in Sources */,
@@ -7451,8 +7467,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				652078E62BF4934C0076EF76 /* Base */,
+				84DDD4892CA3D1C4008CD58D /* ar */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		84DDD4902CA3E865008CD58D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84DDD4912CA3E865008CD58D /* en */,
+				84DDD4932CA3E868008CD58D /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		84DDD4952CA3F174008CD58D /* SpecialOffersTVCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84DDD4942CA3F174008CD58D /* Base */,
+				84DDD4972CA3F174008CD58D /* mul */,
+			);
+			name = SpecialOffersTVCell.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -7463,6 +7498,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -7526,6 +7562,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

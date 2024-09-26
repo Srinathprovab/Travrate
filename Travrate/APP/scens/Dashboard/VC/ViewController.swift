@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         if !UserDefaults.standard.bool(forKey: "ExecuteOnce") {
             
+          
+            LanguageManager.shared.setLanguage("en")
             defaults.set("Origin", forKey: UserDefaultsKeys.fromcityname)
             defaults.set("Destination", forKey: UserDefaultsKeys.tocityname)
             
@@ -64,6 +66,7 @@ class ViewController: UIViewController {
         
         MySingleton.shared.callonce()
         MySingleton.shared.getCountryList()
+        MySingleton.shared.getLanguagesList()
         
         
         

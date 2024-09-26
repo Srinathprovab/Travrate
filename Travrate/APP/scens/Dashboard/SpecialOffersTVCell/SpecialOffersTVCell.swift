@@ -10,7 +10,7 @@ import UIKit
 class SpecialOffersTVCell: TableViewCell {
     
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var offerCV: UICollectionView!
     
     
@@ -42,6 +42,13 @@ class SpecialOffersTVCell: TableViewCell {
     
     
     func setupofferCV() {
+        
+     
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            titlelbl.text = "عروض خاصة"
+        } else {
+            titlelbl.text = "Special Offers"
+        }
         
         
         let nib = UINib(nibName: "SpecialOffersCVCell", bundle: nil)
@@ -78,7 +85,7 @@ extension SpecialOffersTVCell:UICollectionViewDelegate,UICollectionViewDataSourc
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as? SpecialOffersCVCell {
             
           //  cell.titlelbl.text = offerlist[indexPath.row].room_type
-            cell.codelbl.text = offerlist[indexPath.row].promo_code
+           // cell.codelbl.text = offerlist[indexPath.row].promo_code
             cell.img.sd_setImage(with: URL(string:  offerlist[indexPath.row].topDealImg ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"), options: [.retryFailed], completed: { (image, error, cacheType, imageURL) in
                 if let error = error {
                     // Handle error loading image

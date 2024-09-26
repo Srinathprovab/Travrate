@@ -31,8 +31,12 @@
 		<string>Inter-SemiBold.ttf</string>
 		<string>OpenSans-Medium.ttf</string>
 	</array>
+   
+
 	<key>UIApplicationSceneManifest</key>
 	<dict>
+        <key>UIViewSemanticContentAttribute</key>
+        <string>YES</string>
 		<key>NSCameraUsageDescription</key>
 		<string>Need to access your camera to capture a photo add and update profile picture.</string>
 		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>

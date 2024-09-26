@@ -27,7 +27,13 @@ class TripsVC: BaseTableVC {
     
     func setupUI() {
         
-        setAttributedString(str1: "Login To View Your Trips")
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            setAttributedString(str1: "تسجيل الدخول لعرض رحلاتك")
+        } else {
+            setAttributedString(str1: "Login To View Your Trips")
+        }
+        
+       
         commonTableView.registerTVCells(["TripsTVCell",
                                          "EmptyTVCell"])
         
@@ -110,13 +116,29 @@ extension TripsVC {
         loginlbl.isUserInteractionEnabled = true
     }
     
-    @objc func labelTapped(gesture:UITapGestureRecognizer) {
+    @objc func labelTapped(gesture: UITapGestureRecognizer) {
         
-        if gesture.didTapAttributedString("Login To View Your Trips", in: loginlbl) {
-            didTapOnLoginBtnAction()
-        }
-        
+        didTapOnLoginBtnAction()
+        // Check if the current language is Arabic
+//        if LanguageManager.shared.currentLanguage() == "ar" {
+//            // Ensure the label is aligned to the right for Arabic
+//            loginlbl.textAlignment = .center
+//            
+//            // Check if the gesture tapped the Arabic attributed string
+//            if gesture.didTapAttributedString("تسجيل الدخول لعرض رحلاتك", in: loginlbl) {
+//                didTapOnLoginBtnAction()
+//            }
+//        } else {
+//            // Ensure the label is aligned to the left for non-Arabic text
+//            loginlbl.textAlignment = .center
+//            
+//            // Check if the gesture tapped the English attributed string
+//            if gesture.didTapAttributedString("Login To View Your Trips", in: loginlbl) {
+//                didTapOnLoginBtnAction()
+//            }
+//        }
     }
+
     
     
     
