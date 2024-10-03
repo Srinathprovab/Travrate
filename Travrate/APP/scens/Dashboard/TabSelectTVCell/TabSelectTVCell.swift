@@ -81,6 +81,7 @@ class TabSelectTVCell: TableViewCell {
     
     override func updateUI() {
         
+        languageView.isHidden = false
         
         if LanguageManager.shared.currentLanguage() == "ar" {
             flighttitlelbl.text = "ذهاب فقط"
@@ -93,7 +94,7 @@ class TabSelectTVCell: TableViewCell {
             moreservicetitlelbl.text = "More Services"
             logoimg.image = UIImage(named: "logo2")
         }
-       
+        
         
         langlbl.text = LanguageManager.shared.currentLanguage()
         currencylbl.text = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"

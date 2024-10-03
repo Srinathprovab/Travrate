@@ -39,6 +39,22 @@ class EditProfileTVCell: TableViewCell {
     @IBOutlet weak var pincodeTF: UITextField!
     @IBOutlet weak var UpdateBtn: UIButton!
     
+    
+    @IBOutlet weak var fnamelbl: UILabel!
+    @IBOutlet weak var lnamelbl: UILabel!
+    @IBOutlet weak var mobilelbl: UILabel!
+    @IBOutlet weak var emaillbl: UILabel!
+    @IBOutlet weak var doblbl: UILabel!
+    @IBOutlet weak var genderlbl: UILabel!
+    @IBOutlet weak var addresslbl: UILabel!
+    @IBOutlet weak var countrylbl: UILabel!
+    @IBOutlet weak var statelbl: UILabel!
+    @IBOutlet weak var citylbl: UILabel!
+    @IBOutlet weak var pincodelbl: UILabel!
+    
+    @IBOutlet weak var maletitlelbl: UILabel!
+    @IBOutlet weak var femaletitlelbl: UILabel!
+    
     let datePicker = UIDatePicker()
     var gender = String()
     weak var delegate:EditProfileTVCellDelegate?
@@ -79,6 +95,66 @@ class EditProfileTVCell: TableViewCell {
             femaleSelected()
         }else {
             maleSelected()
+        }
+        
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            
+            fnamelbl.text = "الاسم الأول"
+            lnamelbl.text = "اسم العائلة"
+            emaillbl.text = "عنوان البريد الإلكتروني"
+            mobilelbl.text = "رقم الهاتف المحمول"
+            addresslbl.text = "العنوان"
+            citylbl.text = "المدينة"
+            statelbl.text = "الولاية"
+            countrylbl.text = "البلد"
+            pincodelbl.text = "الرمز البريدي"
+            doblbl.text = "تاريخ الميلاد"
+            
+            maletitlelbl.text = "ذكر"      
+            femaletitlelbl.text = "أنثى"
+           
+            
+            fnameTF.placeholder = "الاسم الأول"
+            lnameTF.placeholder = "اسم العائلة"
+            emailTF.placeholder = "عنوان البريد الإلكتروني"
+            mobileTF.placeholder = "رقم الهاتف المحمول"
+            addressTF.placeholder = "العنوان"
+            cityTF.placeholder = "المدينة"
+            stateTF.placeholder = "الولاية"
+            countryTF.placeholder = "البلد"
+            pincodeTF.placeholder = "الرمز البريدي"
+            dobTF.placeholder = "تاريخ الميلاد"
+            
+            UpdateBtn.setTitle("تحديث", for: .normal)
+           
+        } else {
+            fnamelbl.text = "First Name"
+            lnamelbl.text = "Last Name"
+            emaillbl.text = "Email Address"
+            mobilelbl.text = "Mobile Number"
+            addresslbl.text = "Address"
+            citylbl.text = "City"
+            statelbl.text = "State"
+            countrylbl.text = "Country"
+            pincodelbl.text = "Pincode"
+            doblbl.text = "Date Of Birth"
+            maletitlelbl.text = "Male"
+            femaletitlelbl.text = "FeMale"
+            
+            fnameTF.placeholder = "First Name"
+            lnameTF.placeholder = "Last Name"
+            emailTF.placeholder = "Email Address"
+            mobileTF.placeholder = "Mobile Number"
+            addressTF.placeholder = "Address"
+            cityTF.placeholder = "City"
+            stateTF.placeholder = "State"
+            countryTF.placeholder = "Country"
+            pincodeTF.placeholder = "Pincode"
+            dobTF.placeholder = "Date Of Birth"
+            
+            
+            UpdateBtn.setTitle("Update", for: .normal)
         }
         
     }

@@ -756,20 +756,33 @@
             <connections>
                 <outlet property="UpdateBtn" destination="kcr-d9-HRM" id="lyf-py-Kbl"/>
                 <outlet property="addressTF" destination="Qan-Dg-MKd" id="37J-ja-K5n"/>
+                <outlet property="addresslbl" destination="1kx-sZ-iuS" id="EQN-gi-aUp"/>
                 <outlet property="cityTF" destination="EHb-Nh-c2e" id="Sig-EZ-jh6"/>
+                <outlet property="citylbl" destination="qCc-um-sb4" id="lNh-Yq-B6q"/>
                 <outlet property="countryTF" destination="SYK-hL-q7q" id="N8G-9J-ALu"/>
+                <outlet property="countrylbl" destination="0vF-B1-xiH" id="ETR-Uy-S8f"/>
                 <outlet property="dobTF" destination="UX4-69-lHD" id="u6R-hT-v3X"/>
+                <outlet property="doblbl" destination="SdH-OK-XqT" id="eaQ-tn-bBJ"/>
                 <outlet property="emailTF" destination="Ieu-rT-OYK" id="5Xc-er-teO"/>
                 <outlet property="emailView" destination="OHS-xx-Dv6" id="MdL-Fy-w1H"/>
+                <outlet property="emaillbl" destination="UzB-QE-FRH" id="scK-te-VF1"/>
                 <outlet property="femaleimg" destination="WLD-Mn-fCM" id="N0B-mi-Xj8"/>
+                <outlet property="femaletitlelbl" destination="PEA-Py-FPD" id="ilH-av-NCV"/>
                 <outlet property="fnameTF" destination="dRP-Px-ky6" id="fcS-bL-EGx"/>
+                <outlet property="fnamelbl" destination="Gf4-ga-WLl" id="uTy-2O-cqO"/>
+                <outlet property="genderlbl" destination="Pbt-3A-KKg" id="s3b-LY-wCh"/>
                 <outlet property="holderView" destination="bDF-qI-FSl" id="KBy-Z4-Tdy"/>
                 <outlet property="lnameTF" destination="pNc-NS-SK8" id="oCg-4w-0mi"/>
+                <outlet property="lnamelbl" destination="Vff-cE-vXi" id="Wob-pZ-Vdg"/>
                 <outlet property="maleImg" destination="KRm-3c-zcd" id="KS9-nB-Zxw"/>
+                <outlet property="maletitlelbl" destination="WKo-33-xJ4" id="qdE-FS-obT"/>
                 <outlet property="mobileTF" destination="cgf-1H-7pk" id="mXc-8o-zr4"/>
                 <outlet property="mobileView" destination="AkW-7D-MO9" id="6dG-7N-2bt"/>
+                <outlet property="mobilelbl" destination="ENz-Sg-yBC" id="Ogt-bd-8zV"/>
                 <outlet property="pincodeTF" destination="qGf-8K-0uN" id="2Db-AB-Qpv"/>
+                <outlet property="pincodelbl" destination="vDY-B7-ODq" id="Bgj-Tm-h3s"/>
                 <outlet property="stateTF" destination="Afu-ej-GzB" id="oUC-Bx-vz4"/>
+                <outlet property="statelbl" destination="AaC-NZ-dpO" id="890-tB-3PA"/>
             </connections>
             <point key="canvasLocation" x="195.41984732824426" y="321.83098591549299"/>
         </tableViewCell>

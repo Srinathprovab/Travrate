@@ -211,12 +211,36 @@ class SideMenuViewController: BaseTableVC, ProfileViewModelDelegate, LogoutViewM
     
     
     @IBAction func didTapOnDelegateBtnAction(_ sender: UIButton) {
-        sender.tag == 1 ? deleteUserAccountAPI() : callLogoutAPI()
+        sender.tag == 1 ? showDeleteAccountAlert() : callLogoutAPI()
     }
     
     
     
-    
+  
+        // This function shows the alert
+        func showDeleteAccountAlert() {
+            let alertController = UIAlertController(
+                title: "Delete Account",
+                message: "Are you sure you want to delete your account?",
+                preferredStyle: .alert
+            )
+
+            // Add the "Delete" action, which will call your API
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                self.deleteUserAccountAPI()
+            }
+
+            // Add the "Cancel" action to dismiss the alert
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+            // Add both actions to the alert controller
+            alertController.addAction(deleteAction)
+            alertController.addAction(cancelAction)
+
+            // Present the alert
+            self.present(alertController, animated: true, completion: nil)
+        }
+
     
 }
 

@@ -15,6 +15,7 @@ class MyAccountVC: BaseTableVC {
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var editbtn: UIButton!
     @IBOutlet weak var loginlbl: UILabel!
+    @IBOutlet weak var titlelbl: UILabel!
     
     
     static var newInstance: EditProfileVC? {
@@ -45,8 +46,10 @@ class MyAccountVC: BaseTableVC {
         profilePic.layer.borderWidth = 2
         if LanguageManager.shared.currentLanguage() == "ar" {
             setAttributedString(str1: "تسجيل الدخول لعرض رحلاتك")
+            titlelbl.text = "حسابي"
         } else {
             setAttributedString(str1: "Login To View Your Trips")
+            titlelbl.text = "My Account"
         }
         commonTableView.backgroundColor = .WhiteColor
         commonTableView.registerTVCells(["EditProfileTVCell",

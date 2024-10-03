@@ -22,42 +22,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         
         
+       
+        checkForAppUpdate()
+        
+        
+        
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 100 // Adjust this value as needed
         
         
         // Override point for customization after application launch.
         // set up your My Fatoorah Merchant details
-//        let token = "rLtt6JWvbUHDDhsZnfpAhpYk4dxYDQkbcPTyGaKp2TYqQgG7FGZ5Th_WD53Oq8Ebz6A53njUoo1w3pjU1D4vs_ZMqFiz_j0urb_BH9Oq9VZoKFoJEDAbRZepGcQanImyYrry7Kt6MnMdgfG5jn4HngWoRdKduNNyP4kzcp3mRv7x00ahkm9LAK7ZRieg7k1PDAnBIOG3EyVSJ5kK4WLMvYr7sCwHbHcu4A5WwelxYK0GMJy37bNAarSJDFQsJ2ZvJjvMDmfWwDVFEVe_5tOomfVNt6bOg9mexbGjMrnHBnKnZR1vQbBtQieDlQepzTZMuQrSuKn-t5XZM7V6fCW7oP-uXGX-sMOajeX65JOf6XVpk29DP6ro8WTAflCDANC193yof8-f5_EYY-3hXhJj7RBXmizDpneEQDSaSz5sFk0sV5qPcARJ9zGG73vuGFyenjPPmtDtXtpx35A-BVcOSBYVIWe9kndG3nclfefjKEuZ3m4jL9Gg1h2JBvmXSMYiZtp9MR5I6pvbvylU_PP5xJFSjVTIz7IQSjcVGO41npnwIxRXNRxFOdIUHn0tjQ-7LwvEcTXyPsHXcMD8WtgBh-wxR8aKX7WPSsT1O8d8reb2aR7K3rkV3K82K_0OgawImEpwSvp9MNKynEAJQS6ZHe_J_l77652xwPNxMRTMASk1ZsJL"
-//        MFSettings.shared.configure(token: token, country: .kuwait, environment: .test)
-//        // you can change color and title of nvgigation bar
-//        let them = MFTheme(navigationTintColor: .white, navigationBarTintColor: .lightGray, navigationTitle: "Payment", cancelButtonTitle: "Cancel")
-//        MFSettings.shared.setTheme(theme: them)
+        //        let token = "rLtt6JWvbUHDDhsZnfpAhpYk4dxYDQkbcPTyGaKp2TYqQgG7FGZ5Th_WD53Oq8Ebz6A53njUoo1w3pjU1D4vs_ZMqFiz_j0urb_BH9Oq9VZoKFoJEDAbRZepGcQanImyYrry7Kt6MnMdgfG5jn4HngWoRdKduNNyP4kzcp3mRv7x00ahkm9LAK7ZRieg7k1PDAnBIOG3EyVSJ5kK4WLMvYr7sCwHbHcu4A5WwelxYK0GMJy37bNAarSJDFQsJ2ZvJjvMDmfWwDVFEVe_5tOomfVNt6bOg9mexbGjMrnHBnKnZR1vQbBtQieDlQepzTZMuQrSuKn-t5XZM7V6fCW7oP-uXGX-sMOajeX65JOf6XVpk29DP6ro8WTAflCDANC193yof8-f5_EYY-3hXhJj7RBXmizDpneEQDSaSz5sFk0sV5qPcARJ9zGG73vuGFyenjPPmtDtXtpx35A-BVcOSBYVIWe9kndG3nclfefjKEuZ3m4jL9Gg1h2JBvmXSMYiZtp9MR5I6pvbvylU_PP5xJFSjVTIz7IQSjcVGO41npnwIxRXNRxFOdIUHn0tjQ-7LwvEcTXyPsHXcMD8WtgBh-wxR8aKX7WPSsT1O8d8reb2aR7K3rkV3K82K_0OgawImEpwSvp9MNKynEAJQS6ZHe_J_l77652xwPNxMRTMASk1ZsJL"
+        //        MFSettings.shared.configure(token: token, country: .kuwait, environment: .test)
+        //        // you can change color and title of nvgigation bar
+        //        let them = MFTheme(navigationTintColor: .white, navigationBarTintColor: .lightGray, navigationTitle: "Payment", cancelButtonTitle: "Cancel")
+        //        MFSettings.shared.setTheme(theme: them)
         
         
         GMSServices.provideAPIKey("AIzaSyAfgpJ36EyQji0KETVN-UuooOpATS_zgb0")
         
         
-//        // Configure Firebase
-//        FirebaseApp.configure()
-//        
-//        // Set Messaging delegate
-//        Messaging.messaging().delegate = self
-//        
-//        // Request notification permissions
-//        UNUserNotificationCenter.current().delegate = self
-//        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-//        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
-//        application.registerForRemoteNotifications()
-//        
-//        // Get FCM token
-//        Messaging.messaging().token { token, error in
-//            if let error = error {
-//                print("Error fetching FCM registration token: \(error)")
-//            } else if let token = token {
-//                print("FCM registration token: \(token)")
-//            }
-//        }
+        //        // Configure Firebase
+        //        FirebaseApp.configure()
+        //
+        //        // Set Messaging delegate
+        //        Messaging.messaging().delegate = self
+        //
+        //        // Request notification permissions
+        //        UNUserNotificationCenter.current().delegate = self
+        //        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        //        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
+        //        application.registerForRemoteNotifications()
+        //
+        //        // Get FCM token
+        //        Messaging.messaging().token { token, error in
+        //            if let error = error {
+        //                print("Error fetching FCM registration token: \(error)")
+        //            } else if let token = token {
+        //                print("FCM registration token: \(token)")
+        //            }
+        //        }
         
         
         
@@ -80,23 +85,151 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     
     
-//    @objc func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-//        print("Firebase registration token: \(String(describing: fcmToken))")
-//        
-//        let dataDict: [String: Any] = ["token": fcmToken ?? ""]
-//        NotificationCenter.default.post(
-//            name: Notification.Name("FCMToken"),
-//            object: nil,
-//            userInfo: dataDict
-//        )
-//        // TODO: If necessary send token to application server.
-//        // Note: This callback is fired at each app startup and whenever a new token is generated.
-//    }
-   
+    //    @objc func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+    //        print("Firebase registration token: \(String(describing: fcmToken))")
+    //
+    //        let dataDict: [String: Any] = ["token": fcmToken ?? ""]
+    //        NotificationCenter.default.post(
+    //            name: Notification.Name("FCMToken"),
+    //            object: nil,
+    //            userInfo: dataDict
+    //        )
+    //        // TODO: If necessary send token to application server.
+    //        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    //    }
+    
+    //MARK: - applicationWillTerminate
     
     func applicationWillTerminate(_ application: UIApplication) {
         UserDefaults.standard.set(false, forKey: "ExecuteHotelOnce")
     }
+    
+    //MARK: - showUpdateAlert
+    //    func showUpdateAlert(latestVersion: String, appStoreURL: String) {
+    //        let alert = UIAlertController(title: "Update Available", message: "A new version \(latestVersion) is available. Please update to enjoy the latest features.", preferredStyle: .alert)
+    //
+    //        alert.addAction(UIAlertAction(title: "Update Now", style: .default) { _ in
+    //            if let url = URL(string: appStoreURL) {
+    //                UIApplication.shared.open(url)
+    //            }
+    //        })
+    //
+    //        alert.addAction(UIAlertAction(title: "Later", style: .cancel) { _ in
+    //            // Navigate to HomeVC
+    //            self.gotoDashBoardTBVC()
+    //        })
+    //
+    //        // Present the alert on the main thread
+    //        DispatchQueue.main.async {
+    //            if let topController = self.topViewController() {
+    //                topController.present(alert, animated: true, completion: nil)
+    //            }
+    //        }
+    //    }
+    //
+   
+    
+    func checkForAppUpdate() {
+        // Replace 'YOUR_APP_ID' with the actual App Store ID of your app
+        let appID = "6651840936"
+        let urlString = "https://itunes.apple.com/lookup?id=\(appID)"
+        
+        guard let url = URL(string: urlString) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error fetching app version info: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            do {
+                if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let results = jsonResponse["results"] as? [[String: Any]],
+                   let appStoreVersion = results.first?["version"] as? String {
+                    // Compare with the installed version
+                    self.compareAppVersions(appStoreVersion)
+                }
+            } catch {
+                print("Error parsing version info: \(error.localizedDescription)")
+            }
+        }
+        task.resume()
+    }
+    
+    
+    
+    func compareAppVersions(_ appStoreVersion: String) {
+        if let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            if currentVersion != appStoreVersion {
+                // If the versions don't match, show an alert prompting the user to update
+                DispatchQueue.main.async {
+                    self.promptUserToUpdate(appStoreVersion: appStoreVersion)
+                }
+            }
+        }
+    }
+    
+    
+    func promptUserToUpdate(appStoreVersion: String) {
+        let alertController = UIAlertController(
+            title: "Update Available",
+            message: "A new version (\(appStoreVersion)) of Travrate is available. Please update to the latest version for the best experience.",
+            preferredStyle: .alert
+        )
+        
+        let updateAction = UIAlertAction(title: "Update", style: .default) { _ in
+            // Redirect user to the App Store
+            if let url = URL(string: "https://apps.apple.com/app/id6651840936") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            // Navigate to HomeVC
+            self.gotoDashBoardTBVC()
+        }
+        
+        alertController.addAction(updateAction)
+        alertController.addAction(cancelAction)
+        
+        DispatchQueue.main.async {
+            if let topController = self.topViewController() {
+                topController.present(alertController, animated: true, completion: nil)
+            }
+        }
+        
+    }
+    
+    
+    func gotoDashBoardTBVC() {
+        
+        callapibool = true
+        guard let vc = DashBoardTBVC.newInstance else { return }
+        vc.modalPresentationStyle = .fullScreen
+        vc.selectedIndex = 0
+        
+        // Access the active window scene
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = scene.windows.first(where: { $0.isKeyWindow }),
+           let rootViewController = window.rootViewController {
+            rootViewController.present(vc, animated: false, completion: nil)
+        }
+    }
+    
+    
+    
+    func topViewController() -> UIViewController? {
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = scene.windows.first(where: { $0.isKeyWindow }),
+              var topController = window.rootViewController else {
+            return nil
+        }
+        
+        while let presentedViewController = topController.presentedViewController {
+            topController = presentedViewController
+        }
+        return topController
+    }
+    
     
 }
 
@@ -107,23 +240,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //                                willPresent notification: UNNotification,
 //                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 //        let userInfo = notification.request.content.userInfo
-//        
+//
 //        Messaging.messaging().appDidReceiveMessage(userInfo)
-//        
+//
 //        // Change this to your preferred presentation option
 //        completionHandler([.banner, .sound])
 //    }
-//    
+//
 //    func userNotificationCenter(_ center: UNUserNotificationCenter,
 //                                didReceive response: UNNotificationResponse,
 //                                withCompletionHandler completionHandler: @escaping () -> Void) {
 //        let userInfo = response.notification.request.content.userInfo
-//        
+//
 //        Messaging.messaging().appDidReceiveMessage(userInfo)
-//        
+//
 //        completionHandler()
 //    }
-//    
+//
 //    func application(_ application: UIApplication,
 //                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
 //                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -199,13 +332,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 //private func handleUniversalLink(_ url: URL) {
 //    print("Received Universal Link: \(url)")
-//    
+//
 //    // Extract the path components from the URL
 //    let pathComponents = url.pathComponents
 //    guard pathComponents.count > 1 else {
 //        return
 //    }
-//    
+//
 //    // Route the URL to the appropriate part of your app
 //    switch pathComponents[1] {
 //    case "home":
