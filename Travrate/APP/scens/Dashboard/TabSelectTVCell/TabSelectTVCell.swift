@@ -81,7 +81,7 @@ class TabSelectTVCell: TableViewCell {
     
     override func updateUI() {
         
-        languageView.isHidden = false
+        languageView.isHidden = true
         
         if LanguageManager.shared.currentLanguage() == "ar" {
             flighttitlelbl.text = "ذهاب فقط"

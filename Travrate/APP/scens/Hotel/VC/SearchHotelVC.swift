@@ -268,7 +268,7 @@ extension SearchHotelVC {
         
       
         //        MySingleton.shared.payload["language"] = "english"
-            MySingleton.shared.payload["search_source"] = "Mobile_IOS"
+            MySingleton.shared.payload["search_source"] = "MOBILE(I)"
         //        MySingleton.shared.payload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD"
         //        MySingleton.shared.payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         

@@ -251,10 +251,10 @@ extension ModifySearchVC {
         MySingleton.shared.flightinputspayload["carrier"] = ""
         MySingleton.shared.flightinputspayload["psscarrier"] = defaults.string(forKey: UserDefaultsKeys.fcariercode) ?? "ALL"
         MySingleton.shared.flightinputspayload["search_flight"] = "Search"
-        MySingleton.shared.flightinputspayload["search_source"] = "Mobile_IOS"
+        MySingleton.shared.flightinputspayload["search_source"] = "MOBILE(I)"
         MySingleton.shared.flightinputspayload["currency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
         MySingleton.shared.flightinputspayload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
-        
+        MySingleton.shared.flightinputspayload["device_source"] = "MOBILE(I)"
         
         
         if defaults.string(forKey: UserDefaultsKeys.journeyType) == "oneway" {

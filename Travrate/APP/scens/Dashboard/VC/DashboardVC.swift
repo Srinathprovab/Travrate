@@ -56,7 +56,11 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         MySingleton.shared.recentsearchvm = SearchDataViewModel(self)
         
         if MySingleton.shared.callboolapi == true {
-            callIndexPageAPI()
+            
+            DispatchQueue.main.async { [self] in
+                callIndexPageAPI()
+            }
+            
         }
     }
     

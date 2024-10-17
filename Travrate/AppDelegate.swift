@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import IQKeyboardManager
 import GoogleMaps
-
+import StoreKit
 
 
 @UIApplicationMain
@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         
         
-       
+        
         checkForAppUpdate()
         
         
@@ -104,30 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UserDefaults.standard.set(false, forKey: "ExecuteHotelOnce")
     }
     
-    //MARK: - showUpdateAlert
-    //    func showUpdateAlert(latestVersion: String, appStoreURL: String) {
-    //        let alert = UIAlertController(title: "Update Available", message: "A new version \(latestVersion) is available. Please update to enjoy the latest features.", preferredStyle: .alert)
-    //
-    //        alert.addAction(UIAlertAction(title: "Update Now", style: .default) { _ in
-    //            if let url = URL(string: appStoreURL) {
-    //                UIApplication.shared.open(url)
-    //            }
-    //        })
-    //
-    //        alert.addAction(UIAlertAction(title: "Later", style: .cancel) { _ in
-    //            // Navigate to HomeVC
-    //            self.gotoDashBoardTBVC()
-    //        })
-    //
-    //        // Present the alert on the main thread
-    //        DispatchQueue.main.async {
-    //            if let topController = self.topViewController() {
-    //                topController.present(alert, animated: true, completion: nil)
-    //            }
-    //        }
-    //    }
-    //
-   
     
     func checkForAppUpdate() {
         // Replace 'YOUR_APP_ID' with the actual App Store ID of your app
@@ -146,6 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                    let results = jsonResponse["results"] as? [[String: Any]],
                    let appStoreVersion = results.first?["version"] as? String {
                     // Compare with the installed version
+                    
                     self.compareAppVersions(appStoreVersion)
                 }
             } catch {
@@ -162,11 +139,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             if currentVersion != appStoreVersion {
                 // If the versions don't match, show an alert prompting the user to update
                 DispatchQueue.main.async {
-                    self.promptUserToUpdate(appStoreVersion: appStoreVersion)
+                     self.promptUserToUpdate(appStoreVersion: appStoreVersion)
                 }
             }
         }
     }
+    
     
     
     func promptUserToUpdate(appStoreVersion: String) {
@@ -184,7 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            // Navigate to HomeVC
+            // Navigate to HomeVC after canceling
             self.gotoDashBoardTBVC()
         }
         
@@ -193,27 +171,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         DispatchQueue.main.async {
             if let topController = self.topViewController() {
-                topController.present(alertController, animated: true, completion: nil)
+                topController.present(alertController, animated: true) {
+                    // Dismiss after 5 seconds
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                        MySingleton.shared.callboolapi = false
+                        alertController.dismiss(animated: true) {
+                            // After dismissing the alert, go to dashboard/home
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self.gotoDashBoardTBVC()
+                            }
+                        }
+                    }
+                }
             }
         }
-        
     }
-    
-    
+
     func gotoDashBoardTBVC() {
-        
-        callapibool = true
+        MySingleton.shared.callboolapi = true
         guard let vc = DashBoardTBVC.newInstance else { return }
         vc.modalPresentationStyle = .fullScreen
         vc.selectedIndex = 0
         
-        // Access the active window scene
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = scene.windows.first(where: { $0.isKeyWindow }),
-           let rootViewController = window.rootViewController {
-            rootViewController.present(vc, animated: false, completion: nil)
+        DispatchQueue.main.async {
+            // Access the active window scene
+            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = scene.windows.first(where: { $0.isKeyWindow }),
+               let rootViewController = window.rootViewController {
+                rootViewController.present(vc, animated: false, completion: nil)
+            }
         }
     }
+
     
     
     
@@ -377,3 +366,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        navigationController.pushViewController(itemViewController, animated: true)
 //    }
 //}
+
