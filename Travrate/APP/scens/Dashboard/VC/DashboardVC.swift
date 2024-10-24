@@ -252,6 +252,7 @@ class DashboardVC: BaseTableVC, AllCountryCodeListViewModelDelegate, SearchDataV
         } else {
             LanguageManager.shared.setLanguage("ar")
         }
+        
 
         // Update layout direction based on selected language
         updateUILayoutDirection()

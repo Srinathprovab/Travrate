@@ -709,6 +709,7 @@
 		8410750E2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8410750C2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.xib */; };
 		841075122C6617AB00C12552 /* BookedFlightInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841075102C6617AB00C12552 /* BookedFlightInfoTVCell.swift */; };
 		841075132C6617AB00C12552 /* BookedFlightInfoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841075112C6617AB00C12552 /* BookedFlightInfoTVCell.xib */; };
+		841EB4592CCA2EA900D6CBFA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDD4902CA3E865008CD58D /* Localizable.strings */; };
 		841EE1982C4640DF00F604D6 /* Booking_passenger_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EE1972C4640DF00F604D6 /* Booking_passenger_details.swift */; };
 		841EE19A2C4640F400F604D6 /* Booking_transction_details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EE1992C4640F400F604D6 /* Booking_transction_details.swift */; };
 		841EE19E2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EE19C2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.swift */; };
@@ -883,7 +884,6 @@
 		84D96CCB2C4CE31800323B8E /* ActivitiesTripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D96CC92C4CE31800323B8E /* ActivitiesTripsTVCell.swift */; };
 		84D96CCC2C4CE31800323B8E /* ActivitiesTripsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D96CCA2C4CE31800323B8E /* ActivitiesTripsTVCell.xib */; };
 		84DDD4882CA3D126008CD58D /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDD4872CA3D126008CD58D /* LanguageManager.swift */; };
-		84DDD4922CA3E865008CD58D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDD4902CA3E865008CD58D /* Localizable.strings */; };
 		84DDD4962CA3F174008CD58D /* SpecialOffersTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDD4952CA3F174008CD58D /* SpecialOffersTVCell.xib */; };
 		84E7CBEA2C85F21300079A2C /* Home_sliders_Cruise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7CBE92C85F21300079A2C /* Home_sliders_Cruise.swift */; };
 		84E8B7A72C64C8F7007E13E7 /* HotelVoucherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8B7A62C64C8F7007E13E7 /* HotelVoucherModel.swift */; };
@@ -1663,6 +1663,7 @@
 		8410750C2C65FD7A00C12552 /* FlightBookingConfirmedTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlightBookingConfirmedTVCell.xib; sourceTree = "<group>"; };
 		841075102C6617AB00C12552 /* BookedFlightInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedFlightInfoTVCell.swift; sourceTree = "<group>"; };
 		841075112C6617AB00C12552 /* BookedFlightInfoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookedFlightInfoTVCell.xib; sourceTree = "<group>"; };
+		841EB4582CCA2A2200D6CBFA /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		841EE1972C4640DF00F604D6 /* Booking_passenger_details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Booking_passenger_details.swift; sourceTree = "<group>"; };
 		841EE1992C4640F400F604D6 /* Booking_transction_details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Booking_transction_details.swift; sourceTree = "<group>"; };
 		841EE19C2C467F3A00F604D6 /* AdditionalDriverInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalDriverInfoTVCell.swift; sourceTree = "<group>"; };
@@ -1836,7 +1837,6 @@
 		84DDD4872CA3D126008CD58D /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		84DDD4892CA3D1C4008CD58D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		84DDD4912CA3E865008CD58D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		84DDD4932CA3E868008CD58D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84DDD4942CA3F174008CD58D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SpecialOffersTVCell.xib; sourceTree = "<group>"; };
 		84DDD4972CA3F174008CD58D /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/SpecialOffersTVCell.xcstrings; sourceTree = "<group>"; };
 		84E7CBE92C85F21300079A2C /* Home_sliders_Cruise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_sliders_Cruise.swift; sourceTree = "<group>"; };
@@ -6350,6 +6350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841EB4592CCA2EA900D6CBFA /* Localizable.strings in Resources */,
 				84D5F1EA2C51DFA500C4EFA3 /* OpenSans-SemiBold.ttf in Resources */,
 				84D5F1EB2C51DFA500C4EFA3 /* OpenSans-Light.ttf in Resources */,
 				84D5F1EC2C51DFA500C4EFA3 /* OpenSans-Bold.ttf in Resources */,
@@ -6574,7 +6575,6 @@
 				65207DE72BF494310076EF76 /* ItineraryTVCell.xib in Resources */,
 				65207CB32BF494310076EF76 /* Lato-Medium.ttf in Resources */,
 				65207D3A2BF494310076EF76 /* HolidayAddItineraryTVCell.xib in Resources */,
-				84DDD4922CA3E865008CD58D /* Localizable.strings in Resources */,
 				84C4FF182C2EB50700E31A39 /* SeeMoreRulesBtnTVCell.xib in Resources */,
 				65207E332BF494320076EF76 /* Main.storyboard in Resources */,
 				846D24DE2C40E2AA0030C539 /* PickupTVCell.xib in Resources */,
@@ -7478,7 +7478,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				84DDD4912CA3E865008CD58D /* en */,
-				84DDD4932CA3E868008CD58D /* ar */,
+				841EB4582CCA2A2200D6CBFA /* ar */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -7626,7 +7626,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W7386UDMSR;
@@ -7651,7 +7651,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.travrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -7674,11 +7674,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Travrate/TravrateRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W7386UDMSR;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = 5TLY5PME9K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Travrate/Info.plist;
@@ -7700,11 +7698,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.travrate;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = provab.Travrate.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Travrate Distribution";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

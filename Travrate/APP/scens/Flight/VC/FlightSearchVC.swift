@@ -19,6 +19,10 @@ class FlightSearchVC: BaseTableVC, SearchDataViewModelDelegate, GetAirlineViewMo
     @IBOutlet weak var multicityView: BorderedView!
     @IBOutlet weak var multicitylbl: UILabel!
     
+    @IBOutlet weak var flightSearchTitllelbl: UILabel!
+    @IBOutlet weak var onewayTitllelbl: UILabel!
+    @IBOutlet weak var roundtripTitllelbl: UILabel!
+    
     
     var isfromVC = String()
     static var newInstance: FlightSearchVC? {
@@ -328,6 +332,22 @@ extension FlightSearchVC {
         commonTableView.registerTVCells(["FlightSearchTVCell",
                                          "YourRecentSearchesTVCell",
                                          "EmptyTVCell"])
+    
+        
+        let currentlang = LanguageManager.shared.currentLanguage()
+        if currentlang == "ar" {
+            flightSearchTitllelbl.text = "بحث الرحلات"
+            onewayTitllelbl.text = "ذهاب فقط"
+            roundtripTitllelbl.text = " ذهاب وعودة"
+            
+        } else {
+            flightSearchTitllelbl.text = "Flight Search"
+            onewayTitllelbl.text = "One - way"
+            roundtripTitllelbl.text = "Round - Trip"
+        }
+        
+        
+        
         
     }
     

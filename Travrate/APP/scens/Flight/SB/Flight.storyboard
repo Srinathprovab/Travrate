@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -277,11 +278,14 @@
                     </view>
                     <connections>
                         <outlet property="commonTableView" destination="wE7-om-AsR" id="fCm-cw-RZm"/>
+                        <outlet property="flightSearchTitllelbl" destination="mSg-oG-cSG" id="OaU-cO-z92"/>
                         <outlet property="logoimg" destination="OJZ-HI-kfg" id="pxt-UC-OPP"/>
                         <outlet property="multicityView" destination="UcF-e3-iYI" id="up3-4a-zlz"/>
                         <outlet property="multicitylbl" destination="OfO-Cs-vtH" id="Pzo-Yu-Jbj"/>
+                        <outlet property="onewayTitllelbl" destination="tZN-tp-bv3" id="8ah-SZ-VgL"/>
                         <outlet property="onewayView" destination="eVb-YQ-jpO" id="dK7-aV-YIe"/>
                         <outlet property="onewaylbl" destination="tZN-tp-bv3" id="0hG-4U-mQo"/>
+                        <outlet property="roundtripTitllelbl" destination="8dj-xx-obn" id="jQC-J5-dqy"/>
                         <outlet property="roundtripView" destination="GMI-5q-a8n" id="fzV-Fx-9bF"/>
                         <outlet property="roundtriplbl" destination="8dj-xx-obn" id="AfH-jK-kCn"/>
                     </connections>
@@ -2658,10 +2662,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

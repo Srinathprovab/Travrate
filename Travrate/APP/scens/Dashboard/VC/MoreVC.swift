@@ -9,6 +9,9 @@ import UIKit
 
 class MoreVC: BaseTableVC {
     
+    
+    @IBOutlet weak var titlelbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,11 +38,13 @@ class MoreVC: BaseTableVC {
         
         
         if LanguageManager.shared.currentLanguage() == "ar" {
+            titlelbl.text = "مزيد من التفاصيل"
             MySingleton.shared.tablerow.append(TableRow(title: "من نحن", key: "more", cellType: .TripsTVCell)) // About Us
             MySingleton.shared.tablerow.append(TableRow(title: "الشروط والأحكام", key: "more", cellType: .TripsTVCell)) // Terms & Conditions
             MySingleton.shared.tablerow.append(TableRow(title: "سياسة الخصوصية", key: "more", cellType: .TripsTVCell)) // Privacy Policy
             MySingleton.shared.tablerow.append(TableRow(title: "اتصل بنا", key: "more", cellType: .TripsTVCell)) // Contact Us
         } else {
+            titlelbl.text = "More Details"
             MySingleton.shared.tablerow.append(TableRow(title:"About Us",key: "more",cellType:.TripsTVCell))
             MySingleton.shared.tablerow.append(TableRow(title:"Terms & Conditions",key: "more",cellType:.TripsTVCell))
             MySingleton.shared.tablerow.append(TableRow(title:"Privacy Policy",key: "more",cellType:.TripsTVCell))

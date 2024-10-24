@@ -9,7 +9,7 @@ import UIKit
 
 class TripsVC: BaseTableVC {
     
-    
+    @IBOutlet weak var titlelbl: UILabel!
     @IBOutlet weak var loginlbl: UILabel!
     
     
@@ -28,8 +28,10 @@ class TripsVC: BaseTableVC {
     func setupUI() {
         
         if LanguageManager.shared.currentLanguage() == "ar" {
+            titlelbl.text = "رحلاتي"
             setAttributedString(str1: "تسجيل الدخول لعرض رحلاتك")
         } else {
+            titlelbl.text = "My Trips"
             setAttributedString(str1: "Login To View Your Trips")
         }
         

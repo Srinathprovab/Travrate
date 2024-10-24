@@ -15,7 +15,6 @@ protocol YourRecentSearchesCVCellDelegate: AnyObject {
 class YourRecentSearchesCVCell: UICollectionViewCell {
 
     
-    
     @IBOutlet weak var tripTypelbl: UILabel!
     @IBOutlet weak var citylbl: UILabel!
     @IBOutlet weak var datelbl: UILabel!
@@ -53,6 +52,8 @@ class YourRecentSearchesCVCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+       
     }
     
     @IBAction func didTapOnCloserecentSearchBtnAction(_ sender: Any) {

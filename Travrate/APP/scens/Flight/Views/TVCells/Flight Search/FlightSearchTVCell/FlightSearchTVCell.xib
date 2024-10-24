@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -1480,6 +1481,7 @@
                 <outlet property="adultCountlbl" destination="gyG-XV-gmM" id="FDj-S4-Fgt"/>
                 <outlet property="adultDecBtn" destination="J57-En-q79" id="a9U-Yb-kkK"/>
                 <outlet property="adultIncBtn" destination="zwS-8G-4Y6" id="tB8-5X-eXl"/>
+                <outlet property="adulttitlelb" destination="O6D-Eh-qfA" id="sEF-Ki-v2M"/>
                 <outlet property="advanceSearchlbl" destination="PSs-cI-skA" id="ugh-pV-MlU"/>
                 <outlet property="airlineTF" destination="m1r-fK-qdi" id="qXv-ew-vec"/>
                 <outlet property="airlineView" destination="dNH-RB-gPb" id="R8I-yz-i7E"/>
@@ -1487,12 +1489,19 @@
                 <outlet property="childCountlbl" destination="6XE-B7-emW" id="wjj-fR-3Kf"/>
                 <outlet property="childDecBtn" destination="Ttj-ZB-FuE" id="Xba-YC-1tJ"/>
                 <outlet property="childIncBtn" destination="CrS-Nh-Nao" id="Igs-B3-6pg"/>
+                <outlet property="childtitlelb" destination="3r0-UQ-eas" id="w0p-ey-wDn"/>
+                <outlet property="class1titlelb" destination="oZu-8F-ODg" id="pgP-4a-zvT"/>
+                <outlet property="class2titlelb" destination="Ejc-LB-dYw" id="5V2-3V-Ex0"/>
                 <outlet property="classlbl" destination="9ND-gb-hqY" id="knA-mJ-KSy"/>
                 <outlet property="depDatelbl" destination="gSX-jQ-k3h" id="GLP-D9-9dU"/>
                 <outlet property="depTF" destination="BSZ-75-rEK" id="RWL-pw-XfF"/>
+                <outlet property="departurettlelb" destination="i1M-lv-ZhG" id="HZ6-lA-A7V"/>
                 <outlet property="directFlightCheckImg" destination="VMe-of-D6C" id="nLG-vH-Ja7"/>
+                <outlet property="directflighttitlelb" destination="H73-Mg-yzt" id="Qal-IM-b0A"/>
+                <outlet property="flightSearchBtnlbl" destination="RuK-tz-jKb" id="AFE-eb-z2z"/>
                 <outlet property="fromTF" destination="smV-nT-8Ez" id="aeg-4X-Xq6"/>
                 <outlet property="fromlbl" destination="uvN-F1-gJH" id="aEN-IE-ERl"/>
+                <outlet property="fromtitlelb" destination="zMD-79-I7Z" id="2sW-lg-NYf"/>
                 <outlet property="fromtv" destination="4Kc-eq-oTY" id="P5i-CN-2hF"/>
                 <outlet property="fromtvHeight" destination="hys-pk-RuQ" id="t2y-bu-nS5"/>
                 <outlet property="hideRoundTripBtn" destination="JJz-Yy-x6g" id="d65-OF-JZe"/>
@@ -1500,6 +1509,7 @@
                 <outlet property="infantCountlbl" destination="aJO-6i-oPI" id="x7K-6N-oWV"/>
                 <outlet property="infantDecBtn" destination="HWy-0Q-ca9" id="9DQ-Ye-tlk"/>
                 <outlet property="infantIncBtn" destination="kKG-7y-fAY" id="Zda-Yw-4Ep"/>
+                <outlet property="infanttitlelb" destination="iG1-L5-c9h" id="W80-XE-Hyy"/>
                 <outlet property="infoCV" destination="diY-vl-7l0" id="xZy-m5-xJk"/>
                 <outlet property="infoView" destination="mjY-5f-x7V" id="J8P-DW-42c"/>
                 <outlet property="onewayclassView" destination="vn6-Zu-G6B" id="JBr-Sc-hRo"/>
@@ -1511,12 +1521,15 @@
                 <outlet property="returnDateView" destination="obe-Yl-rPE" id="LTb-ib-qrI"/>
                 <outlet property="returnTimeView" destination="o1n-ez-ari" id="bt8-jr-rkX"/>
                 <outlet property="returnTimelbl" destination="Cqh-y3-Inr" id="yAW-Do-nOi"/>
+                <outlet property="returntitlelb" destination="bo6-3g-Ros" id="BZs-EH-MGF"/>
                 <outlet property="roundtripclassView" destination="EVe-ra-1zr" id="TwL-Bb-hDA"/>
                 <outlet property="roundtripclasslbl" destination="pwq-wR-vem" id="Zpy-n3-HI3"/>
                 <outlet property="selectadditionallbl" destination="VLD-Q3-HfQ" id="jLy-Vm-2D6"/>
+                <outlet property="selectoptionalstitlelb" destination="rn1-Tf-YMo" id="EHt-QC-c1A"/>
                 <outlet property="swapimg" destination="gif-FY-BzH" id="iLm-R8-ugb"/>
                 <outlet property="toTF" destination="Wf5-oU-ubb" id="560-eI-gdz"/>
                 <outlet property="tolbl" destination="3sk-qr-agD" id="TKH-i5-8zc"/>
+                <outlet property="totitlelb" destination="Etk-po-6Yq" id="X7G-x5-SCB"/>
                 <outlet property="totv" destination="6KK-rm-HNf" id="who-cA-CaK"/>
                 <outlet property="totvHeight" destination="rao-AT-nzx" id="t7p-6S-DSs"/>
             </connections>

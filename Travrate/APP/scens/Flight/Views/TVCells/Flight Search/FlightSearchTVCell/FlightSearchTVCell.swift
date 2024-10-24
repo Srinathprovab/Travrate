@@ -69,14 +69,35 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
     @IBOutlet weak var swapimg: UIImageView!
     
     
+    @IBOutlet weak var fromtitlelb: UILabel!
+    @IBOutlet weak var totitlelb: UILabel!
+    @IBOutlet weak var class1titlelb: UILabel!
+    @IBOutlet weak var class2titlelb: UILabel!
+    @IBOutlet weak var departurettlelb: UILabel!
+    @IBOutlet weak var returntitlelb: UILabel!
+    @IBOutlet weak var adulttitlelb: UILabel!
+    @IBOutlet weak var childtitlelb: UILabel!
+    @IBOutlet weak var infanttitlelb: UILabel!
+    @IBOutlet weak var directflighttitlelb: UILabel!
+    @IBOutlet weak var selectoptionalstitlelb: UILabel!
+    @IBOutlet weak var flightSearchBtnlbl: UILabel!
+    
+    
+   
+    
     
     var timeArray = ["ALL times","12:00 AM - 06:00 AM","06:00 AM - 12:00 PM","12:00 PM - 12:00 PM","06:00 PM - 12:00 AM"]
     var selectClassArray = ["Economy","P.Economy","First","Business"]
+    var selectClassArray_ar = ["اقتصادي", "درجة اقتصادية ممتازة", "أولى", "رجال الأعمال"]
+
     // var selectClassArray = ["Economy","Premium","First","Business"]
     var infoimgArray = ["in1","in2","in3","in4"]
     // var infoimgArray1 = ["in1","in2","in3","in4","in5","in6"]
     //  var infoArray1 = ["Add Baggage","Meal","Add Insurance","Add Special assistance","Add Seat","Add airport Transfers"]
+    var infoArray_en = ["Add Baggage","Meal","Add Insurance","Add Special assistance"]
     var infoArray = ["Add Baggage","Meal","Add Insurance","Add Special assistance"]
+    var infoArray_ar = ["إضافة أمتعة", "وجبة", "إضافة تأمين", "إضافة مساعدة خاصة"]
+
     weak var delegate:FlightSearchTVCellDelegate?
     var infoViewbool = false
     let onewayclassDropdown = DropDown()
@@ -176,11 +197,57 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
         directFlightCheckImg.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal).withTintColor(.TitleColor)
         
         
-        advanceSearchlbl.text = "    + Advanced search options"
+       // advanceSearchlbl.text = "    + Advanced search options"
         
+       
+
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            
+            infoArray = infoArray_ar
+            
+            fromtitlelb.text = "من"
+            totitlelb.text = "إلى"
+            class1titlelb.text = "الدرجة"
+            class2titlelb.text = "الدرجة"
+            departurettlelb.text = "المغادرة"
+            returntitlelb.text = "العودة"
+            adulttitlelb.text = "بالغ (12+)"
+            childtitlelb.text = "طفل (2-11)"
+            infanttitlelb.text = "رضيع (0-2)"
+            directflighttitlelb.text = "رحلة مباشرة"
+            advanceSearchlbl.text = "خيار البحث المتقدم"
+            selectoptionalstitlelb.text = "اختر الخيارات الإضافية، سيتم إضافتها في صفحة الحجز النهائي"
+            flightSearchBtnlbl.text = "بحث الرحلات"
+            
+            fromTF.placeholder = ""
+            
+            
+        } else {
+            
+            infoArray = infoArray_en
+            
+            fromtitlelb.text = "From"
+            totitlelb.text = "To"
+            class1titlelb.text = "Class"
+            class2titlelb.text = "Class"
+            departurettlelb.text = "Departure"
+            returntitlelb.text = "Return"
+            adulttitlelb.text = "Adult (12+)"
+            childtitlelb.text = "Child (2-11)"
+            infanttitlelb.text = "Infant (0-2)"
+            directflighttitlelb.text = "Direct Flight"
+            advanceSearchlbl.text = "    + Advanced search options"
+            selectoptionalstitlelb.text = "Select the additional options it will be added in Final booking page"
+            flightSearchBtnlbl.text = "Flight Search"
+            
+            fromTF.placeholder = ""
+        }
     }
     
     override func updateUI() {
+        let currentLang = LanguageManager.shared.currentLanguage()
+       // fromtitlelb.text = NSLocalizedString("from", comment: "")
+     
         
         MySingleton.shared.getCountryList()
         
@@ -208,11 +275,23 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             hideRoundTripBtn.isUserInteractionEnabled = false
             
             roundtripclassView.isHidden = true
-            classlbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
-            defaults.setValue("Economy", forKey: UserDefaultsKeys.rselectClass)
+            if currentLang == "ar" {
+                classlbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass_ar) ?? "رجال الأعمال"
+                defaults.setValue("رجال الأعمال", forKey: UserDefaultsKeys.rselectClass)
+                
+                fromlbl.text = defaults.string(forKey: UserDefaultsKeys.fromcityname_ar) ?? "المنشأ"
+                tolbl.text = defaults.string(forKey: UserDefaultsKeys.tocityname_ar) ?? "الوجهة"
+                
+            }else {
+                classlbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
+                defaults.setValue("Economy", forKey: UserDefaultsKeys.rselectClass)
+                
+                fromlbl.text = defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "Origin"
+                tolbl.text = defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "Destination"
+                
+            }
             
-            fromlbl.text = defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "Origin"
-            tolbl.text = defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "Destination"
+           
             
             //  self.depDatelbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Add Date"
             
@@ -239,16 +318,26 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             
             hideRoundTripBtn.isUserInteractionEnabled = true
             roundtripclassView.isHidden = false
-            classlbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
-            roundtripclasslbl.text = defaults.string(forKey: UserDefaultsKeys.rselectClass) ?? "Economy"
+           
+            if currentLang == "ar" {
+                classlbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass_ar) ?? "رجال الأعمال"
+                roundtripclasslbl.text = defaults.string(forKey: UserDefaultsKeys.rselectClass_ar) ?? "رجال الأعمال"
+                
+                fromlbl.text = defaults.string(forKey: UserDefaultsKeys.fromcityname_ar) ?? "المنشأ"
+                tolbl.text = defaults.string(forKey: UserDefaultsKeys.tocityname_ar) ?? "الوجهة"
+                
+            }else {
+                classlbl.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
+                roundtripclasslbl.text = defaults.string(forKey: UserDefaultsKeys.rselectClass) ?? "Economy"
+                
+                fromlbl.text = defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "Origin"
+                tolbl.text = defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "Destination"
+            }
             
-            fromlbl.text = defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "Origin"
-            tolbl.text = defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "Destination"
             
-            //            self.depDatelbl.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Add Date"
-            //            self.retlbl.text = defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "Add Date"
+           
             
-            // Check and update depDatelbl and retlbl for past dates
+            
             self.depDatelbl.text = MySingleton.shared.updateIfDateIsPast(dateKey: UserDefaultsKeys.calDepDate, defaultLabel: "Add Date")
             self.retlbl.text = MySingleton.shared.updateIfDateIsPast(dateKey: UserDefaultsKeys.calRetDate, defaultLabel: "Add Date")
             
@@ -259,9 +348,9 @@ class FlightSearchTVCell: TableViewCell, SelectCityViewModelProtocal {
             showdepDatePicker()
             showretDatePicker()
             
-            
-            
             returnDateBtn.isHidden = true
+            
+            
         }
         
         
@@ -693,29 +782,79 @@ extension FlightSearchTVCell:UICollectionViewDelegate,UICollectionViewDataSource
 extension FlightSearchTVCell {
     
     func setupOnewayClassDropDown() {
-        onewayclassDropdown.dataSource = selectClassArray
+        
         onewayclassDropdown.direction = .bottom
         onewayclassDropdown.backgroundColor = .WhiteColor
         onewayclassDropdown.anchorView = self.onewayclassView
-        onewayclassDropdown.bottomOffset = CGPoint(x: 0, y: onewayclassView.frame.size.height + 10)
+        
+        
+        // Check current language and adjust offset for RTL
+            let currentLang = LanguageManager.shared.currentLanguage()
+            
+        if currentLang == "ar" {
+            onewayclassDropdown.dataSource = selectClassArray_ar
+                // RTL Mode: Shift dropdown to the right (relative to the anchor view)
+                let anchorWidth = onewayclassView.frame.size.width + 50
+                let dropdownWidth = onewayclassDropdown.width
+                
+                // Adjust bottomOffset for RTL
+            onewayclassDropdown.bottomOffset = CGPoint(x: anchorWidth - (dropdownWidth ?? 0), y: onewayclassView.frame.size.height + 10)
+            } else {
+                onewayclassDropdown.dataSource = selectClassArray
+                // LTR Mode: Default bottom offset
+                onewayclassDropdown.bottomOffset = CGPoint(x: 0, y: onewayclassView.frame.size.height + 10)
+            }
+        
+        
+        
+       // onewayclassDropdown.bottomOffset = CGPoint(x: 0, y: onewayclassView.frame.size.height + 10)
         onewayclassDropdown.selectionAction = { [weak self] (index: Int, item: String) in
             self?.classlbl.text = item
-            defaults.set(item, forKey: UserDefaultsKeys.selectClass)
+           
+            if currentLang == "ar" {
+                defaults.set(item, forKey: UserDefaultsKeys.selectClass_ar)
+            }else {
+                defaults.set(item, forKey: UserDefaultsKeys.selectClass)
+            }
             
             self?.delegate?.didTapOnClassBtnAction(cell: self!)
         }
     }
     
     func setupRoundTripClassDropDown() {
-        roundtripclassDropdown.dataSource = selectClassArray
+        
         roundtripclassDropdown.direction = .bottom
         roundtripclassDropdown.backgroundColor = .WhiteColor
         roundtripclassDropdown.anchorView = self.roundtripclassView
-        roundtripclassDropdown.bottomOffset = CGPoint(x: 0, y: roundtripclassView.frame.size.height + 10)
+        
+        
+        
+        // Check current language and adjust offset for RTL
+            let currentLang = LanguageManager.shared.currentLanguage()
+            
+        if currentLang == "ar" {
+            
+            roundtripclassDropdown.dataSource = selectClassArray_ar
+                let dropdownWidth = roundtripclassDropdown.width
+                let viewWidth = roundtripclassView.frame.size.width
+                
+            roundtripclassDropdown.bottomOffset = CGPoint(x: viewWidth - (dropdownWidth ?? 0), y: roundtripclassView.frame.size.height + 10)
+            } else {
+                
+                roundtripclassDropdown.dataSource = selectClassArray
+                roundtripclassDropdown.bottomOffset = CGPoint(x: 0, y: onewayclassView.frame.size.height + 10)
+            }
+        
+        
+     //   roundtripclassDropdown.bottomOffset = CGPoint(x: 0, y: roundtripclassView.frame.size.height + 10)
         roundtripclassDropdown.selectionAction = { [weak self] (index: Int, item: String) in
             self?.roundtripclasslbl.text = item
-            defaults.set(item, forKey: UserDefaultsKeys.rselectClass)
             
+            if currentLang == "ar" {
+                defaults.set(item, forKey: UserDefaultsKeys.rselectClass_ar)
+            }else {
+                defaults.set(item, forKey: UserDefaultsKeys.rselectClass)
+            }
             
             self?.delegate?.didTapOnClassBtnAction(cell: self!)
         }
@@ -839,6 +978,8 @@ extension FlightSearchTVCell {
         depDatePicker.minimumDate = Date()
         depDatePicker.preferredDatePickerStyle = .wheels
         
+       
+        
         let formter = DateFormatter()
         formter.dateFormat = "dd-MM-yyyy"
         
@@ -870,15 +1011,31 @@ extension FlightSearchTVCell {
         
         
         let label = UILabel()
-        label.text = "Departure Date" // Initial text, can be changed dynamically
         label.sizeToFit()
         label.font = .OpenSansMedium(size: 16)
         let labelButton = UIBarButtonItem(customView: label)
         
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
+        let currentLang = LanguageManager.shared.currentLanguage()
+        if currentLang == "ar" {
+            
+            label.text = "تاريخ المغادرة"
+
+            depDatePicker.locale = Locale(identifier: "ar")
+            
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneButton = UIBarButtonItem(title: "تم", style: .plain, target: self, action: #selector(donedatePicker));
+            let cancelButton = UIBarButtonItem(title: "إلغاء", style: .plain, target: self, action: #selector(cancelDatePicker));
+            toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
+        } else {
+            
+            label.text = "Departure Date"
+            depDatePicker.locale = Locale(identifier: "en")
+            
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+            toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
+        }
         
         
         
@@ -898,6 +1055,8 @@ extension FlightSearchTVCell {
         retDatePicker.minimumDate = selectedDate
         
         retDatePicker.preferredDatePickerStyle = .wheels
+        
+        
         
         
         let formter = DateFormatter()
@@ -929,15 +1088,35 @@ extension FlightSearchTVCell {
         toolbar.sizeToFit()
         
         let label = UILabel()
-        label.text = "Return Date" // Initial text, can be changed dynamically
+       // Initial text, can be changed dynamically
         label.sizeToFit()
         label.font = .OpenSansMedium(size: 16)
         let labelButton = UIBarButtonItem(customView: label)
         
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
+       
+        
+        let currentLang = LanguageManager.shared.currentLanguage()
+        if currentLang == "ar" {
+            
+            label.text = "تاريخ العودة"
+
+            retDatePicker.locale = Locale(identifier: "ar")
+            
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneButton = UIBarButtonItem(title: "تم", style: .plain, target: self, action: #selector(donedatePicker));
+            let cancelButton = UIBarButtonItem(title: "إلغاء", style: .plain, target: self, action: #selector(cancelDatePicker));
+            toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
+        } else {
+            
+            label.text = "Return Date"
+            retDatePicker.locale = Locale(identifier: "en")
+            
+            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+            toolbar.setItems([doneButton,flexibleSpace,flexibleSpace,labelButton,flexibleSpace,flexibleSpace, cancelButton], animated: false)
+        }
+        
         
         
         self.retTF.inputAccessoryView = toolbar

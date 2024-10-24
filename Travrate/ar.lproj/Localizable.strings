@@ -5,3 +5,25 @@
   Created by Admin on 25/09/24.
   
 */
+
+
+
+"flight" = "ذهاب فقط";
+"hotel_word_ar" = "ذهاب وإياب";
+"moreservice_word_ar" = "مدن متعددة";
+
+
+"popular_flight_destinations_ar" = "وجهات الطيران الشهيرة";
+"popular_hotel_destinations_ar" = "وجهات الفنادق الشهيرة";
+"special_offers_ar" = "عروض خاصة";
+
+
+
+"home" = "الرئيسية";
+"trips" = "رحلات";
+"profile" = "الملف الشخصي";
+"more" = "المزيد";       
+
+
+"from" = "من";
+

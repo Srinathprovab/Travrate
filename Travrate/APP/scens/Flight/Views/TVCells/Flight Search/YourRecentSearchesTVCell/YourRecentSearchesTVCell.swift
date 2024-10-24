@@ -16,7 +16,7 @@ class YourRecentSearchesTVCell: TableViewCell, YourRecentSearchesCVCellDelegate 
     
     
     @IBOutlet weak var recentsearchCV: UICollectionView!
-    
+    @IBOutlet weak var titlelbl: UILabel!
     
     var itemCount = Int()
     var autoScrollTimer: Timer?
@@ -44,6 +44,13 @@ class YourRecentSearchesTVCell: TableViewCell, YourRecentSearchesCVCellDelegate 
     }
     
     override func updateUI() {
+        
+        
+        if LanguageManager.shared.currentLanguage() == "ar" {
+            titlelbl.text = "عمليات البحث الأخيرة الخاصة بك"
+        }else {
+            titlelbl.text = "Your recent searches"
+        }
         
         
         if MySingleton.shared.recentData?.count == 0 {

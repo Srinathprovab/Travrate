@@ -179,7 +179,6 @@ extension LoadWebViewVC {
     }
     
     func getHandelResponseDetails(response: updatePaymentFlightModel) {
-        print(" ====== getHandelResponseDetails    =======")
         print(response.data)
         callSecureBookingAPI(str: response.data ?? "")
     }
@@ -192,9 +191,6 @@ extension LoadWebViewVC {
     
     
     func mobilesecurebookingDetails(response: MobilePrePaymentModel) {
-        
-        print(" ======= Voucher URL =======")
-        print(response.url)
         
         MySingleton.shared.voucherurlsting = response.url ?? ""
         response.status == true ? gotoBookingSucessVC():showToast(message: response.message ?? "")
@@ -212,7 +208,7 @@ extension LoadWebViewVC {
         //
     }
     
-
+    
 }
 
 

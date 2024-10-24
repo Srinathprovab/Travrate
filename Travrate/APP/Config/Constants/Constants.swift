@@ -425,6 +425,10 @@ struct UserDefaultsKeys {
     static var infantsCount = "Infants_Count"
     static var selectClass = "select_class"
     static var rselectClass = "rselect_class"
+    
+    static var selectClass_ar = "selectClass_ar"
+    static var rselectClass_ar = "rselectClass_ar"
+    
     static var fromlocid = "from_loc_id"
     static var tolocid = "to_loc_id"
     static var fromcityname = "fromcityname"
@@ -433,6 +437,10 @@ struct UserDefaultsKeys {
     static var tcity = "tcity"
     static var fcariername = "fcariername"
     static var fcariercode = "fcariercode"
+    
+    
+    static var fromcityname_ar = "fromcityname_ar"
+    static var tocityname_ar = "tocityname_ar"
    
     //MULTICITY TRIP
     static var mlocationcity = "mlocation_city"

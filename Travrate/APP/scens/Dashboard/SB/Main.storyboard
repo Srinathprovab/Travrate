@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aOT-gx-Opk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aOT-gx-Opk">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -102,6 +102,7 @@
                     <connections>
                         <outlet property="commonTableView" destination="SJj-As-QsI" id="0so-5V-Gad"/>
                         <outlet property="loginlbl" destination="bwP-dh-UbG" id="k2L-iw-0EE"/>
+                        <outlet property="titlelbl" destination="ZqX-eU-52t" id="yLe-P2-8aS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFt-rG-qAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -400,6 +401,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="Y4x-OS-mbi"/>
                     <connections>
                         <outlet property="commonTableView" destination="Ec9-YA-OuJ" id="w8A-rv-3XA"/>
+                        <outlet property="titlelbl" destination="aKy-h4-JQb" id="gHy-C0-JeV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9R2-MJ-znU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
